@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Voyagers → Outremer</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <header>
+    <h1>Voyagers → Outremer</h1>
+    <p>Static explorer for extracted persons + linking results.</p>
+  </header>
+
+  <main>
+    <section class="panel">
+      <h2>Documents</h2>
+      <div class="row">
+        <select id="docSelect"></select>
+        <button id="loadBtn">Load</button>
+      </div>
+      <pre id="docMeta"></pre>
+    </section>
+
+    <section class="panel">
+      <h2>Persons</h2>
+      <div id="persons"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Links (Voyagers → Outremer)</h2>
+      <div id="links"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Raw JSON</h2>
+      <pre id="raw"></pre>
+    </section>
+  </main>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
