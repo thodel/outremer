@@ -3,25 +3,25 @@
   "source_file": "data/raw/Munro-PopesCrusades-1916.pdf",
   "input_type": "pdf",
   "metadata": {
-    "title": "THE POPES AND THE CRUSADES",
-    "author": "MUNRO",
+    "title": null,
+    "author": null,
     "year": "1916",
-    "language": null,
+    "language": "en",
     "doc_type": "other"
   },
   "persons": [
     {
       "name": "Popes",
       "raw_mention": "Popes",
-      "title": "Pope",
+      "title": null,
       "epithet": null,
       "toponym": null,
       "role": null,
-      "gender": "m",
-      "group": true,
-      "context": "hich have been given are sufficient to show how completely the \nhopes of the Popes had been frustrated. If we weigh all the evi- \ndence we see the manifold ways in which the",
-      "confidence": 0.9,
-      "source_offset": null
+      "gender": "unknown",
+      "group": false,
+      "context": "The Popes and the Crusades  Author(s): Dana C. Munro  Sourc",
+      "confidence": 0.3,
+      "source_offset": 4
     },
     {
       "name": "Crusades",
@@ -479,17 +479,17 @@
       "source_offset": 1743
     },
     {
-      "name": "pope",
-      "raw_mention": "pope",
+      "name": "Pope",
+      "raw_mention": "Pope",
       "title": "Pope",
       "epithet": null,
       "toponym": null,
       "role": null,
-      "gender": "m",
+      "gender": "unknown",
       "group": false,
-      "context": "silver.\" \nThomas Fuller, later, put it bluntly, the pope \"got a bag of money \nby it.\" All reformers in the Church felt that this",
-      "confidence": 0.85,
-      "source_offset": null
+      "context": "t through the power of God   vested in me.\"   The Pope set the time of departure, ordered who should go ",
+      "confidence": 0.3,
+      "source_offset": 1975
     },
     {
       "name": "Why",
@@ -1129,19 +1129,6 @@
       "source_offset": 7663
     },
     {
-      "name": "Crusaders",
-      "raw_mention": "Crusaders",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "and to the Popes an  enormous increase in wealth. Crusaders gave freely to the Church  before starting for th",
-      "confidence": 0.3,
-      "source_offset": 12737
-    },
-    {
       "name": "Second",
       "raw_mention": "Second",
       "title": null,
@@ -1454,6 +1441,19 @@
       "source_offset": 12595
     },
     {
+      "name": "Crusaders",
+      "raw_mention": "Crusaders",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "and to the Popes an  enormous increase in wealth. Crusaders gave freely to the Church  before starting for th",
+      "confidence": 0.3,
+      "source_offset": 12737
+    },
+    {
       "name": "East",
       "raw_mention": "East",
       "title": null,
@@ -1699,32 +1699,6 @@
       "context": " and   his loss was keenly felt by the crusaders. Although other legates   were sent with the various expedi",
       "confidence": 0.3,
       "source_offset": 14903
-    },
-    {
-      "name": "crusader",
-      "raw_mention": "crusader",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": "collective",
-      "gender": "unknown",
-      "group": true,
-      "context": "use the creditors were   frequently Jews. As each crusader was under the protection of the   Church the Pope",
-      "confidence": 0.25,
-      "source_offset": 9316
-    },
-    {
-      "name": "clergy",
-      "raw_mention": "clergy",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": "collective",
-      "gender": "unknown",
-      "group": true,
-      "context": "nd control over those who were not members of the clergy, so   that after a century of crusading activity ",
-      "confidence": 0.25,
-      "source_offset": 9940
     },
     {
       "name": "Cardinal",
@@ -2292,11 +2266,11 @@
       "epithet": null,
       "toponym": null,
       "role": null,
-      "gender": "m",
+      "gender": "unknown",
       "group": false,
-      "context": "ntent.,, \nAs Walter was a partisan of the Hohenstaufens and opposed to the \npapacy he might be considered prejudiced",
-      "confidence": 0.8,
-      "source_offset": null
+      "context": " a great treasure priests are ill-content.,,   As Walter was a partisan of the Hohenstaufens and opposed t",
+      "confidence": 0.3,
+      "source_offset": 21586
     },
     {
       "name": "Hohenstaufens",
@@ -2364,6 +2338,97 @@
       "source_offset": 21793
     },
     {
+      "name": "Islam",
+      "raw_mention": "Islam",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": " much longer be \"the   bulwark of Europe\" against Islam. The fall of the Latin Empire   of Constantinople",
+      "confidence": 0.3,
+      "source_offset": 22576
+    },
+    {
+      "name": "Empire \n of Constantinople",
+      "raw_mention": "Empire \n of Constantinople",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "k of Europe\" against Islam. The fall of the Latin Empire   of Constantinople led to the return of the Greek patriarch. Heresy ",
+      "confidence": 0.3,
+      "source_offset": 22605
+    },
+    {
+      "name": "Heresy",
+      "raw_mention": "Heresy",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "tinople led to the return of the Greek patriarch. Heresy   and opposition to the Church spread in the West",
+      "confidence": 0.3,
+      "source_offset": 22674
+    },
+    {
+      "name": "Princeton",
+      "raw_mention": "Princeton",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": " in them and the Popes' connection   with them.   Princeton University,   April, 1916. This content downloade",
+      "confidence": 0.3,
+      "source_offset": 23509
+    },
+    {
+      "name": "University",
+      "raw_mention": "University",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "nd the Popes' connection   with them.   Princeton University,   April, 1916. This content downloaded from  \u0000\u0000\u0000",
+      "confidence": 0.3,
+      "source_offset": 23519
+    },
+    {
+      "name": "crusader",
+      "raw_mention": "crusader",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": "collective",
+      "gender": "unknown",
+      "group": true,
+      "context": "use the creditors were   frequently Jews. As each crusader was under the protection of the   Church the Pope",
+      "confidence": 0.25,
+      "source_offset": 9316
+    },
+    {
+      "name": "clergy",
+      "raw_mention": "clergy",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": "collective",
+      "gender": "unknown",
+      "group": true,
+      "context": "nd control over those who were not members of the clergy, so   that after a century of crusading activity ",
+      "confidence": 0.25,
+      "source_offset": 9940
+    },
+    {
       "name": "Templars",
       "raw_mention": "Templars",
       "title": null,
@@ -2401,90 +2466,12 @@
       "context": "West, to the great detriment of the Church.   The merchants carried back not merely Oriental wares, but also ",
       "confidence": 0.25,
       "source_offset": 18873
-    },
-    {
-      "name": "Walter von der Vogelweide",
-      "raw_mention": "Walter von der Vogelweide",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "m",
-      "group": false,
-      "context": "the funds which they raised for the crusades. Walter von der Vogelweide voices this feeling in his verses : \nThis content downloaded from",
-      "confidence": 0.95,
-      "source_offset": null
-    },
-    {
-      "name": "Matthew Paris",
-      "raw_mention": "Matthew Paris",
-      "title": null,
-      "epithet": null,
-      "toponym": "St. Albans",
-      "role": "historiographer",
-      "gender": "m",
-      "group": false,
-      "context": "diced. But the same idea was \ncommon ; e. g., Matthew Paris, the historiographer of the monastery \nof St. Albans writes : \n\" By divers wiles",
-      "confidence": 0.95,
-      "source_offset": null
-    },
-    {
-      "name": "simple people of God",
-      "raw_mention": "simple people of God",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": true,
-      "context": "oman curia strove to take their property from the \nsimple people of God, seeking nothing but their gold and silver.\" \nThomas Fuller, later, put it",
-      "confidence": 0.8,
-      "source_offset": null
-    },
-    {
-      "name": "Thomas Fuller",
-      "raw_mention": "Thomas Fuller",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "m",
-      "group": false,
-      "context": "simple people of God, seeking nothing but their gold and silver.\" \nThomas Fuller, later, put it bluntly, the pope \"got a bag of money",
-      "confidence": 0.9,
-      "source_offset": null
-    },
-    {
-      "name": "reformers",
-      "raw_mention": "reformers",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": true,
-      "context": "Fuller, later, put it bluntly, the pope \"got a bag of money \nby it.\" All reformers in the Church felt that this wealth had \nbrought corruption in its train and",
-      "confidence": 0.75,
-      "source_offset": null
-    },
-    {
-      "name": "Greek patriarch",
-      "raw_mention": "Greek patriarch",
-      "title": "Patriarch",
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "m",
-      "group": false,
-      "context": "the Latin Empire \nof Constantinople led to the return of the Greek patriarch. Heresy \nand opposition to the Church spread in the West. There was a \nmarked decline in",
-      "confidence": 0.85,
-      "source_offset": null
     }
   ],
   "links": [
     {
       "person": "Popes",
-      "person_group": true,
+      "person_group": false,
       "candidates": [],
       "top_candidate": null,
       "confidence": 0.0,
@@ -3035,7 +3022,7 @@
       "status": "no_match"
     },
     {
-      "person": "pope",
+      "person": "Pope",
       "person_group": false,
       "candidates": [
         {
@@ -3955,14 +3942,6 @@
       "status": "low"
     },
     {
-      "person": "Crusaders",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
       "person": "Second",
       "person_group": false,
       "candidates": [
@@ -4387,6 +4366,14 @@
       "status": "no_match"
     },
     {
+      "person": "Crusaders",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
       "person": "East",
       "person_group": false,
       "candidates": [],
@@ -4681,22 +4668,6 @@
       },
       "confidence": 0.6667,
       "status": "low"
-    },
-    {
-      "person": "crusader",
-      "person_group": true,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "clergy",
-      "person_group": true,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
     },
     {
       "person": "Cardinal",
@@ -5507,6 +5478,126 @@
       "status": "no_match"
     },
     {
+      "person": "Islam",
+      "person_group": false,
+      "candidates": [
+        {
+          "outremer_id": "AUTH:CR11",
+          "outremer_name": "William the Huntsman",
+          "type": "person",
+          "score": 0.6667,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'islam' ↔ 'William the Huntsman'"
+        },
+        {
+          "outremer_id": "AUTH:CR32",
+          "outremer_name": "William of Tortosa",
+          "type": "person",
+          "score": 0.6667,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'islam' ↔ 'William of Tortosa'"
+        },
+        {
+          "outremer_id": "AUTH:CR44",
+          "outremer_name": "William of Orkney",
+          "type": "person",
+          "score": 0.6667,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'islam' ↔ 'William of Orkney'"
+        }
+      ],
+      "top_candidate": {
+        "outremer_id": "AUTH:CR11",
+        "outremer_name": "William the Huntsman",
+        "type": "person",
+        "score": 0.6667,
+        "match_type": "fuzzy",
+        "evidence": "fuzzy match: 'islam' ↔ 'William the Huntsman'"
+      },
+      "confidence": 0.6667,
+      "status": "low"
+    },
+    {
+      "person": "Empire \n of Constantinople",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "Heresy",
+      "person_group": false,
+      "candidates": [
+        {
+          "outremer_id": "AUTH:CR12",
+          "outremer_name": "Henry I of Troyes, count of Champagne",
+          "type": "person",
+          "score": 0.7273,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'heresy' ↔ 'Henry I of Troyes, count of Champagne'"
+        },
+        {
+          "outremer_id": "AUTH:CR26",
+          "outremer_name": "Henry the Lion",
+          "type": "person",
+          "score": 0.7273,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'heresy' ↔ 'Henry the Lion'"
+        },
+        {
+          "outremer_id": "AUTH:CR54",
+          "outremer_name": "Henry of Grandpré",
+          "type": "person",
+          "score": 0.7273,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'heresy' ↔ 'Henry of Grandpré'"
+        }
+      ],
+      "top_candidate": {
+        "outremer_id": "AUTH:CR12",
+        "outremer_name": "Henry I of Troyes, count of Champagne",
+        "type": "person",
+        "score": 0.7273,
+        "match_type": "fuzzy",
+        "evidence": "fuzzy match: 'heresy' ↔ 'Henry I of Troyes, count of Champagne'"
+      },
+      "confidence": 0.7273,
+      "status": "low"
+    },
+    {
+      "person": "Princeton",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "University",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "crusader",
+      "person_group": true,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "clergy",
+      "person_group": true,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
       "person": "Templars",
       "person_group": true,
       "candidates": [],
@@ -5529,72 +5620,8 @@
       "top_candidate": null,
       "confidence": 0.0,
       "status": "no_match"
-    },
-    {
-      "person": "Walter von der Vogelweide",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR17",
-          "outremer_name": "Walter of Hereford",
-          "type": "person",
-          "score": 0.6047,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'walter von der vogelweide' ↔ 'Walter of Hereford'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR17",
-        "outremer_name": "Walter of Hereford",
-        "type": "person",
-        "score": 0.6047,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'walter von der vogelweide' ↔ 'Walter of Hereford'"
-      },
-      "confidence": 0.6047,
-      "status": "low"
-    },
-    {
-      "person": "Matthew Paris",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "simple people of God",
-      "person_group": true,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Thomas Fuller",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "reformers",
-      "person_group": true,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Greek patriarch",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
     }
   ],
   "text_sha256": "28b5e7f7d267c7053cea13ed28ba90b3c67af1d49c0cc99e70602c4724054560",
-  "extraction_mode": "gemini"
+  "extraction_mode": "fallback"
 }
