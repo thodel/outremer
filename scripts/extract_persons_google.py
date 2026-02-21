@@ -56,8 +56,8 @@ logger = logging.getLogger(__name__)
 # ──────────────────────────────────────────────
 
 _GEMINI_MODEL = "gemini-2.0-flash"
-_CHUNK_SIZE = 8_000
-_CHUNK_OVERLAP = 1_000
+_CHUNK_SIZE = 5_500   # smaller = shorter Gemini response = less truncation
+_CHUNK_OVERLAP = 800
 
 _JSON_PROMPT = """\
 You are a historical NLP assistant specialising in the medieval Levant (Crusades era, 11th–14th centuries).
@@ -131,6 +131,90 @@ def _build_bibtex(metadata: Dict[str, Any]) -> str:
         lines.append(f"  note   = {{Language: {lang}}},")
     lines.append("}")
     return "\n".join(lines)
+
+
+def _sanitise_text(text: str) -> str:
+    """Strip control characters that break JSON when embedded in Gemini responses."""
+    # Keep: tab (\x09), newline (\x0a), carriage return (\x0d), and all printable
+    return re.sub(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]", " ", text)
+
+
+def _repair_json(raw: str) -> str:
+    """Best-effort repair of common Gemini JSON issues before parsing."""
+    # Strip markdown fences
+    raw = re.sub(r"^```(?:json)?\s*", "", raw.strip())
+    raw = re.sub(r"\s*```$", "", raw.strip())
+    # Strip control characters from the response itself
+    raw = re.sub(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]", " ", raw)
+    return raw
+
+
+def _recover_truncated_json(raw: str) -> Dict[str, Any]:
+    """
+    Attempt to salvage persons from a truncated Gemini JSON response.
+    Finds the last complete person object (ending in '}') inside the persons array
+    and reconstructs a valid minimal JSON document from it.
+    """
+    # Try to extract whatever complete person objects we can
+    persons: List[Dict[str, Any]] = []
+    metadata: Dict[str, Any] = {}
+
+    # Find the persons array start
+    persons_start = raw.find('"persons"')
+    if persons_start == -1:
+        return {"persons": persons, "metadata": metadata}
+
+    bracket_start = raw.find("[", persons_start)
+    if bracket_start == -1:
+        return {"persons": persons, "metadata": metadata}
+
+    # Walk through looking for complete {...} objects
+    # Use a simple bracket counter to find each complete object
+    i = bracket_start + 1
+    depth = 0
+    obj_start = -1
+
+    while i < len(raw):
+        c = raw[i]
+        if c == "{":
+            if depth == 0:
+                obj_start = i
+            depth += 1
+        elif c == "}":
+            depth -= 1
+            if depth == 0 and obj_start != -1:
+                obj_str = raw[obj_start:i + 1]
+                try:
+                    obj = json.loads(obj_str)
+                    coerced = _coerce_person(obj)
+                    if coerced:
+                        persons.append(coerced)
+                except (json.JSONDecodeError, Exception):
+                    pass
+                obj_start = -1
+        elif c == "]" and depth == 0:
+            break  # end of persons array (possibly truncated)
+        i += 1
+
+    # Try to extract metadata if it appears after "metadata"
+    meta_start = raw.find('"metadata"')
+    if meta_start != -1:
+        brace_start = raw.find("{", meta_start)
+        if brace_start != -1:
+            depth = 0
+            for j in range(brace_start, len(raw)):
+                if raw[j] == "{":
+                    depth += 1
+                elif raw[j] == "}":
+                    depth -= 1
+                    if depth == 0:
+                        try:
+                            metadata = json.loads(raw[brace_start:j + 1])
+                        except Exception:
+                            pass
+                        break
+
+    return {"persons": persons, "metadata": metadata}
 
 
 def _chunk_text(text: str, size: int = _CHUNK_SIZE, overlap: int = _CHUNK_OVERLAP) -> List[Tuple[int, str]]:
@@ -315,17 +399,31 @@ def _extract_fallback(text: str) -> Dict[str, Any]:
 
 def _extract_gemini_chunk(client: Any, chunk: str) -> Dict[str, Any]:
     """Call Gemini on a single chunk. Returns raw dict or raises."""
-    prompt = _JSON_PROMPT + chunk
+    clean_chunk = _sanitise_text(chunk)
+    prompt = _JSON_PROMPT + clean_chunk
     response = client.models.generate_content(
         model=_GEMINI_MODEL,
         contents=prompt,
         config={"response_mime_type": "application/json"},
     )
     raw_text = response.text or "{}"
-    # Strip possible markdown code fences
-    raw_text = re.sub(r"^```json\s*", "", raw_text.strip())
-    raw_text = re.sub(r"\s*```$", "", raw_text.strip())
-    return json.loads(raw_text)
+    raw_text = _repair_json(raw_text)
+
+    # First try clean parse
+    try:
+        return json.loads(raw_text)
+    except json.JSONDecodeError:
+        pass
+
+    # Response was likely truncated — salvage whatever complete objects exist
+    logger.debug("Attempting truncation recovery for chunk.")
+    recovered = _recover_truncated_json(raw_text)
+    if recovered.get("persons"):
+        logger.info("Recovered %d person(s) from truncated response.", len(recovered["persons"]))
+        return recovered
+
+    # Nothing salvageable — let caller handle fallback
+    raise ValueError(f"Unrecoverable JSON from Gemini (length={len(raw_text)})")
 
 
 def _extract_gemini(text: str, use_genai_metadata: bool) -> Dict[str, Any]:
@@ -410,6 +508,8 @@ def extract_persons_and_metadata(
     """
     if not text or not text.strip():
         return {"persons": [], "metadata": {}, "bibtex": ""}
+
+    text = _sanitise_text(text)
 
     api_key = os.environ.get("GOOGLE_API_KEY", "").strip()
     if api_key:
