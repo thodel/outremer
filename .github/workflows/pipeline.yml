@@ -26,12 +26,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          # PDF text extraction:
-          pip install pypdf
-          # Add whatever your extractor uses (example):
-          # pip install google-genai google-auth
-          # or:
-          # pip install -r requirements.txt
+          pip install -r requirements.txt
 
       - name: Run pipeline
         env:
