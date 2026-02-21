@@ -1,25 +1,421 @@
-# scripts/extract_persons_google.py
+"""
+extract_persons_google.py
+─────────────────────────
+Person + metadata extraction for the Outremer pipeline.
+
+Primary path  : Google Gemini (gemini-2.0-flash) — requires GOOGLE_API_KEY env var.
+Fallback path : regex / heuristic NER — runs without any API key.
+
+Public API
+──────────
+    extract_persons_and_metadata(text, *, use_genai_metadata=True) -> Dict[str, Any]
+
+Returns
+───────
+{
+  "persons": [
+    {
+      "name":          str,
+      "raw_mention":   str,        # exact text span
+      "title":         str | None, # "Count", "Bishop", …
+      "epithet":       str | None, # "the Lion"
+      "toponym":       str | None, # "Flanders"
+      "role":          str | None, # "pilgrim", "knight", …
+      "gender":        str | None, # "m" / "f" / "unknown"
+      "group":         bool,       # True if collective
+      "context":       str,        # ~100-char surrounding snippet
+      "confidence":    float,      # 0.0–1.0
+      "source_offset": int | None
+    }
+  ],
+  "metadata": {
+    "title":    str | None,
+    "author":   str | None,
+    "year":     str | None,
+    "language": str | None,
+    "doc_type": str | None  # "chronicle"/"charter"/"narrative"/"other"
+  },
+  "bibtex": str
+}
+"""
 
 from __future__ import annotations
-from dataclasses import dataclass
-from typing import Any, Dict, List, Optional
 
-def extract_persons_and_metadata(text: str, *, use_genai_metadata: bool = True) -> Dict[str, Any]:
-    """
-    Returns a dict like:
-    {
-      "persons": [...],
-      "metadata": {...},
-      "bibtex": "@misc{...}"
+import hashlib
+import json
+import logging
+import os
+import re
+import unicodedata
+from typing import Any, Dict, List, Optional, Tuple
+
+logger = logging.getLogger(__name__)
+
+# ──────────────────────────────────────────────
+# Constants
+# ──────────────────────────────────────────────
+
+_GEMINI_MODEL = "gemini-2.0-flash"
+_CHUNK_SIZE = 8_000
+_CHUNK_OVERLAP = 1_000
+
+_JSON_PROMPT = """\
+You are a historical NLP assistant specialising in the medieval Levant (Crusades era, 11th–14th centuries).
+
+Extract ALL person mentions from the text below — including individuals, collectives (ethnic groups, armies, unnamed people), and ambiguous references.
+
+For each person/group return a JSON object with these exact fields:
+  name          (string)   : normalised name or label
+  raw_mention   (string)   : exact text span as it appears
+  title         (string|null) : e.g. "Count", "Bishop", "Sultan"
+  epithet       (string|null) : e.g. "the Lion", "the Bold"
+  toponym       (string|null) : place associated with the person, e.g. "Flanders"
+  role          (string|null) : e.g. "pilgrim", "knight", "merchant", "refugee"
+  gender        (string)   : "m", "f", or "unknown"
+  group         (boolean)  : true if collective (army, ethnic group, unnamed crowd)
+  context       (string)   : surrounding ~100 characters of text
+  confidence    (number)   : 0.0–1.0, your certainty this is a real person/group mention
+
+Also extract document metadata with these fields:
+  title    (string|null)
+  author   (string|null)
+  year     (string|null)
+  language (string|null)
+  doc_type (string|null) : "chronicle", "charter", "narrative", "letter", "list", or "other"
+
+Respond ONLY with valid JSON — no markdown fences, no commentary — matching this schema:
+{
+  "persons": [...],
+  "metadata": { "title": ..., "author": ..., "year": ..., "language": ..., "doc_type": ... }
+}
+
+TEXT:
+"""
+
+# ──────────────────────────────────────────────
+# Helpers
+# ──────────────────────────────────────────────
+
+def _normalise(s: str) -> str:
+    """Lowercase + strip accents + collapse whitespace."""
+    s = unicodedata.normalize("NFKD", s)
+    s = "".join(c for c in s if not unicodedata.combining(c))
+    return re.sub(r"\s+", " ", s).lower().strip()
+
+
+def _citekey(title: str, year: Optional[str]) -> str:
+    slug = re.sub(r"[^a-z0-9]", "", _normalise(title))[:20]
+    yr = year or "0000"
+    h = hashlib.md5(title.encode()).hexdigest()[:4]
+    return f"{slug}{yr}{h}"
+
+
+def _build_bibtex(metadata: Dict[str, Any]) -> str:
+    """Build a BibTeX entry from metadata dict. Returns '' if too sparse."""
+    t = metadata.get("title") or ""
+    a = metadata.get("author") or ""
+    y = metadata.get("year") or ""
+    if not t:
+        return ""
+    dtype = metadata.get("doc_type") or "other"
+    btype = "book" if dtype in ("book",) else "article"
+    key = _citekey(t, y)
+    lines = [f"@{btype}{{{key},"]
+    if a:
+        lines.append(f"  author = {{{a}}},")
+    lines.append(f"  title  = {{{t}}},")
+    if y:
+        lines.append(f"  year   = {{{y}}},")
+    lang = metadata.get("language")
+    if lang:
+        lines.append(f"  note   = {{Language: {lang}}},")
+    lines.append("}")
+    return "\n".join(lines)
+
+
+def _chunk_text(text: str, size: int = _CHUNK_SIZE, overlap: int = _CHUNK_OVERLAP) -> List[Tuple[int, str]]:
+    """Split text into overlapping chunks. Returns list of (offset, chunk)."""
+    if len(text) <= size:
+        return [(0, text)]
+    chunks: List[Tuple[int, str]] = []
+    start = 0
+    while start < len(text):
+        end = min(start + size, len(text))
+        chunks.append((start, text[start:end]))
+        if end == len(text):
+            break
+        start += size - overlap
+    return chunks
+
+
+def _dedup_persons(all_persons: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    """Deduplicate persons across chunks by normalised name — keep highest confidence."""
+    seen: Dict[str, Dict[str, Any]] = {}
+    for p in all_persons:
+        key = _normalise(p.get("name") or p.get("raw_mention") or "")
+        if not key:
+            continue
+        if key not in seen or p.get("confidence", 0) > seen[key].get("confidence", 0):
+            seen[key] = p
+    return list(seen.values())
+
+
+def _safe_float(v: Any, default: float = 0.5) -> float:
+    try:
+        return float(v)
+    except (TypeError, ValueError):
+        return default
+
+
+def _coerce_person(raw: Any) -> Optional[Dict[str, Any]]:
+    """Coerce a raw dict from Gemini into the expected person schema."""
+    if not isinstance(raw, dict):
+        return None
+    name = raw.get("name") or raw.get("raw_mention") or ""
+    if not name:
+        return None
+    return {
+        "name": str(name).strip(),
+        "raw_mention": str(raw.get("raw_mention") or name).strip(),
+        "title": raw.get("title") or None,
+        "epithet": raw.get("epithet") or None,
+        "toponym": raw.get("toponym") or None,
+        "role": raw.get("role") or None,
+        "gender": raw.get("gender") or "unknown",
+        "group": bool(raw.get("group", False)),
+        "context": str(raw.get("context") or "")[:200],
+        "confidence": _safe_float(raw.get("confidence"), 0.5),
+        "source_offset": raw.get("source_offset") or None,
     }
-    """
-    # TODO: wire this to your existing logic
-    # - existing NER extraction
-    # - optional: send text to Google Generative API for metadata (if use_genai_metadata)
-    # - create a bibtex entry string
 
+
+def _coerce_metadata(raw: Any) -> Dict[str, Any]:
+    if not isinstance(raw, dict):
+        return {}
+    return {
+        "title": raw.get("title") or None,
+        "author": raw.get("author") or None,
+        "year": raw.get("year") or None,
+        "language": raw.get("language") or None,
+        "doc_type": raw.get("doc_type") or None,
+    }
+
+
+# ──────────────────────────────────────────────
+# Fallback: heuristic NER (no API key needed)
+# ──────────────────────────────────────────────
+
+# Patterns for medieval person-like tokens
+_TITLE_WORDS = re.compile(
+    r"\b(King|Queen|Count|Countess|Duke|Duchess|Prince|Princess|Emperor|"
+    r"Empress|Pope|Bishop|Archbishop|Patriarch|Sultan|Emir|Caliph|Amir|"
+    r"Sir|Lord|Lady|Master|Brother|Fra|Don|Sire|Baron|Viscount|"
+    r"Constable|Marshal|Seneschal|Castellan|Abbot|Abbess)\b",
+    re.I,
+)
+
+_PERSON_PATTERN = re.compile(
+    r"(?:"
+    r"(?:(?:King|Queen|Count|Countess|Duke|Duchess|Prince|Princess|Emperor|"
+    r"Empress|Pope|Bishop|Archbishop|Sultan|Emir|Amir|Sir|Lord|Lady|Master|"
+    r"Brother|Fra|Don|Sire|Baron|Viscount|Constable|Marshal|Seneschal|Abbot|Abbess)\s+)?"
+    r"(?:[A-Z][a-zéèêëàâùûüîïôçœæÀ-ÿ]+(?:\s+(?:de|of|von|van|le|la|the|du|d'|al-|ibn|bin|bar)\s+)?"
+    r"(?:[A-Z][a-zéèêëàâùûüîïôçœæÀ-ÿ\-]+)?)"
+    r")"
+)
+
+_GROUP_PATTERN = re.compile(
+    r"\b(pilgrims?|crusaders?|knights?|Templars?|Hospitallers?|Franks?|"
+    r"Saracens?|Muslims?|Christians?|Jews?|Greeks?|Armenians?|Syrians?|"
+    r"refugees?|merchants?|artisans?|women|children|clergy|soldiers?|"
+    r"captives?|settlers?|colonists?)\b",
+    re.I,
+)
+
+
+def _extract_fallback(text: str) -> Dict[str, Any]:
+    """Heuristic extraction when no API key is available."""
     persons: List[Dict[str, Any]] = []
-    metadata: Dict[str, Any] = {}
-    bibtex: str = ""
+    seen_names: set = set()
+
+    # Individual persons
+    for m in _PERSON_PATTERN.finditer(text):
+        span = m.group(0).strip()
+        if len(span) < 3 or len(span.split()) > 6:
+            continue
+        norm = _normalise(span)
+        if norm in seen_names:
+            continue
+        # Skip if it's just a common word
+        if norm in {"the", "and", "but", "for", "nor", "yet"}:
+            continue
+        seen_names.add(norm)
+        start = max(0, m.start() - 50)
+        end = min(len(text), m.end() + 50)
+        title_m = _TITLE_WORDS.match(span)
+        persons.append({
+            "name": span,
+            "raw_mention": span,
+            "title": title_m.group(0) if title_m else None,
+            "epithet": None,
+            "toponym": None,
+            "role": None,
+            "gender": "unknown",
+            "group": False,
+            "context": text[start:end].replace("\n", " "),
+            "confidence": 0.30,
+            "source_offset": m.start(),
+        })
+
+    # Collectives
+    for m in _GROUP_PATTERN.finditer(text):
+        span = m.group(0).strip()
+        norm = _normalise(span)
+        if norm in seen_names:
+            continue
+        seen_names.add(norm)
+        start = max(0, m.start() - 50)
+        end = min(len(text), m.end() + 50)
+        persons.append({
+            "name": span,
+            "raw_mention": span,
+            "title": None,
+            "epithet": None,
+            "toponym": None,
+            "role": "collective",
+            "gender": "unknown",
+            "group": True,
+            "context": text[start:end].replace("\n", " "),
+            "confidence": 0.25,
+            "source_offset": m.start(),
+        })
+
+    # Metadata: try to guess from first 500 chars
+    header = text[:500]
+    year_m = re.search(r"\b(1[0-9]{3})\b", header)
+    metadata: Dict[str, Any] = {
+        "title": None,
+        "author": None,
+        "year": year_m.group(1) if year_m else None,
+        "language": "en",
+        "doc_type": "other",
+    }
+    # Very rough doc_type guess
+    if re.search(r"\bcharter\b|\bdonation\b|\bgrant\b", text[:300], re.I):
+        metadata["doc_type"] = "charter"
+    elif re.search(r"\bchronicle\b|\bannals?\b", text[:300], re.I):
+        metadata["doc_type"] = "chronicle"
+
+    return {"persons": persons, "metadata": metadata, "bibtex": ""}
+
+
+# ──────────────────────────────────────────────
+# Gemini extraction
+# ──────────────────────────────────────────────
+
+def _extract_gemini_chunk(client: Any, chunk: str) -> Dict[str, Any]:
+    """Call Gemini on a single chunk. Returns raw dict or raises."""
+    prompt = _JSON_PROMPT + chunk
+    response = client.models.generate_content(
+        model=_GEMINI_MODEL,
+        contents=prompt,
+        config={"response_mime_type": "application/json"},
+    )
+    raw_text = response.text or "{}"
+    # Strip possible markdown code fences
+    raw_text = re.sub(r"^```json\s*", "", raw_text.strip())
+    raw_text = re.sub(r"\s*```$", "", raw_text.strip())
+    return json.loads(raw_text)
+
+
+def _extract_gemini(text: str, use_genai_metadata: bool) -> Dict[str, Any]:
+    """Full Gemini extraction with chunking."""
+    try:
+        from google import genai  # type: ignore
+    except ImportError:
+        logger.warning("google-genai not installed; using fallback.")
+        return _extract_fallback(text)
+
+    api_key = os.environ.get("GOOGLE_API_KEY", "").strip()
+    if not api_key:
+        logger.warning("GOOGLE_API_KEY not set; using fallback extraction.")
+        return _extract_fallback(text)
+
+    try:
+        client = genai.Client(api_key=api_key)
+    except Exception as exc:
+        logger.error("Failed to init Gemini client: %s", exc)
+        return _extract_fallback(text)
+
+    chunks = _chunk_text(text)
+    all_persons: List[Dict[str, Any]] = []
+    merged_metadata: Dict[str, Any] = {}
+
+    for offset, chunk in chunks:
+        try:
+            result = _extract_gemini_chunk(client, chunk)
+        except Exception as exc:
+            logger.warning("Gemini chunk failed (offset=%d): %s", offset, exc)
+            # Fall back to heuristics for this chunk
+            result = _extract_fallback(chunk)
+
+        for p in result.get("persons") or []:
+            coerced = _coerce_person(p)
+            if coerced is None:
+                continue
+            # Adjust source offset by chunk offset
+            if coerced["source_offset"] is not None:
+                coerced["source_offset"] += offset
+            all_persons.append(coerced)
+
+        # Merge metadata from first chunk that has content
+        if not merged_metadata.get("title") and result.get("metadata"):
+            merged_metadata = _coerce_metadata(result["metadata"])
+
+    persons = _dedup_persons(all_persons)
+    metadata = merged_metadata or _coerce_metadata({})
+
+    bibtex = ""
+    if use_genai_metadata:
+        bibtex = _build_bibtex(metadata)
 
     return {"persons": persons, "metadata": metadata, "bibtex": bibtex}
+
+
+# ──────────────────────────────────────────────
+# Public API
+# ──────────────────────────────────────────────
+
+def extract_persons_and_metadata(
+    text: str,
+    *,
+    use_genai_metadata: bool = True,
+) -> Dict[str, Any]:
+    """
+    Extract person mentions and document metadata from *text*.
+
+    Uses Google Gemini (gemini-2.0-flash) when GOOGLE_API_KEY is set;
+    falls back to heuristic regex NER otherwise.
+
+    Parameters
+    ----------
+    text : str
+        Full text of the historical source document.
+    use_genai_metadata : bool
+        If True, also extract/generate document metadata and BibTeX.
+
+    Returns
+    -------
+    dict with keys: "persons", "metadata", "bibtex"
+    """
+    if not text or not text.strip():
+        return {"persons": [], "metadata": {}, "bibtex": ""}
+
+    api_key = os.environ.get("GOOGLE_API_KEY", "").strip()
+    if api_key:
+        return _extract_gemini(text, use_genai_metadata)
+    else:
+        result = _extract_fallback(text)
+        if use_genai_metadata:
+            result["bibtex"] = _build_bibtex(result["metadata"])
+        return result
