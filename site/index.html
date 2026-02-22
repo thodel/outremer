@@ -3,71 +3,227 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Voyagers → Outremer</title>
+  <title>People of the Medieval Levant</title>
   <link rel="stylesheet" href="./style.css" />
+  <style>
+    /* Landing-page extras */
+    .hero {
+      background: var(--accent);
+      color: #f9f7f4;
+      padding: 3.5rem 2rem 2.5rem;
+      text-align: center;
+    }
+    .hero h1 { font-size: 2rem; font-weight: normal; letter-spacing: .03em; margin-bottom: .6rem; }
+    .hero .tagline { font-size: 1rem; opacity: .78; max-width: 600px; margin: 0 auto; line-height: 1.7; }
+    .hero-btns { display: flex; justify-content: center; gap: 1rem; margin-top: 1.8rem; flex-wrap: wrap; }
+    .hero-btn {
+      padding: .65rem 1.6rem;
+      border-radius: var(--radius);
+      font-family: var(--font);
+      font-size: .92rem;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .hero-btn.primary   { background: #f9f7f4; color: var(--accent); font-weight: bold; }
+    .hero-btn.secondary { background: transparent; color: #f9f7f4; border: 1px solid rgba(255,255,255,.5); }
+    .hero-btn:hover { opacity: .85; }
+
+    .section { max-width: 860px; margin: 0 auto; padding: 2rem 1.5rem; }
+    .section h2 { font-size: 1.15rem; color: var(--accent); margin-bottom: .9rem; }
+    .section p  { margin-bottom: .9rem; line-height: 1.75; color: #2a2820; }
+
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 1rem; }
+    @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.1rem 1.25rem;
+    }
+    .feature-card h3 { font-size: .95rem; color: var(--accent); margin-bottom: .5rem; }
+    .feature-card p  { font-size: .88rem; color: var(--muted); line-height: 1.6; margin: 0; }
+
+    .team-grid { display: flex; flex-direction: column; gap: .6rem; margin-top: .75rem; }
+    .team-person { font-size: .9rem; line-height: 1.5; }
+    .team-person strong { color: var(--text); }
+    .team-person span   { color: var(--muted); }
+
+    .workflow-steps { counter-reset: step; list-style: none; padding: 0; margin-top: .75rem; }
+    .workflow-steps li {
+      counter-increment: step;
+      display: flex;
+      gap: .9rem;
+      align-items: flex-start;
+      margin-bottom: .8rem;
+      font-size: .9rem;
+      line-height: 1.6;
+      color: #2a2820;
+    }
+    .workflow-steps li::before {
+      content: counter(step);
+      flex-shrink: 0;
+      width: 1.6rem; height: 1.6rem;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .78rem; font-family: var(--mono);
+      margin-top: .1rem;
+    }
+
+    .divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+    .status-note {
+      background: var(--accent-lt);
+      border: 1px solid #d4c9a8;
+      border-radius: var(--radius);
+      padding: .7rem 1rem;
+      font-size: .85rem;
+      color: var(--accent);
+      margin-top: 1rem;
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <div class="header-inner">
-      <h1>Voyagers → Outremer</h1>
-      <p class="subtitle">AI-assisted prosopography of the medieval Levant — Human-in-the-Loop review</p>
+
+  <div class="hero">
+    <h1>People of the Medieval Levant</h1>
+    <p class="tagline">
+      An AI-assisted prosopography of the Crusades era — making visible the full population
+      of the medieval Levant, beyond the traditional focus on elites.
+    </p>
+    <div class="hero-btns">
+      <a class="hero-btn primary" href="./explorer.html">Open Explorer</a>
+      <a class="hero-btn secondary" href="./upload.html">Contribute a Source</a>
     </div>
-  </header>
+  </div>
 
   <main>
-    <!-- Document selector -->
-    <section class="panel" id="panel-docs">
-      <h2>Documents</h2>
-      <div class="row gap">
-        <select id="docSelect"></select>
-        <button id="loadBtn" class="btn-primary">Load</button>
+    <!-- About -->
+    <section class="section">
+      <h2>About the Project</h2>
+      <p>
+        The eastern Mediterranean of the 11th–14th centuries was a region of extraordinary
+        cultural, linguistic, and religious diversity. Yet traditional prosopography of the
+        Crusades era has overwhelmingly focused on ecclesiastical dignitaries, ruling families,
+        and military orders — the groups with the best documentary survival.
+      </p>
+      <p>
+        This project asks: can generative AI and Knowledge Graphs make the <em>full</em> population
+        of the medieval Levant visible at scale? That means not only knights and bishops, but
+        refugees, artisans, merchants, interpreters, women, children, and unnamed collectives
+        who appear only in fragments of surviving sources.
+      </p>
+      <p>
+        The pipeline combines two layers of intelligence. A large language model (Google Gemini)
+        extracts person-like signals from historical texts — names, titles, epithets, roles,
+        group markers — while a knowledge graph of 126 curated authority records grounds those
+        signals in established scholarship. Mismatches between the two layers are treated as
+        data, not errors: they reveal ambiguity, missing entities, and the limits of current
+        authority files. Historical scholars adjudicate the results through a Human-in-the-Loop
+        review interface.
+      </p>
+      <div class="status-note">
+        ⚗️ <strong>Proof of concept.</strong> This is a working demonstration of the methodology,
+        not a finished research database. The authority file currently contains 126 persons;
+        the source corpus is small. Both will grow iteratively through scholar contributions.
       </div>
-      <div id="docMeta" class="meta-block mono"></div>
     </section>
 
-    <!-- Extracted persons -->
-    <section class="panel" id="panel-persons">
-      <h2>Extracted Persons <span id="personCount" class="badge"></span></h2>
-      <div id="persons" class="card-grid"></div>
+    <hr class="divider" />
+
+    <!-- How it works -->
+    <section class="section">
+      <h2>How It Works</h2>
+      <ol class="workflow-steps">
+        <li>Historical texts (PDFs or plain text) are ingested from the source corpus.</li>
+        <li>Gemini extracts person-like mentions with context: name, title, toponym, role, collective vs. individual, confidence score.</li>
+        <li>Each mention is fuzzy-matched against the authority file of known crusader-era persons, producing ranked candidates with confidence scores.</li>
+        <li>Scholars review matches in the Explorer — accepting, rejecting, or flagging candidates with optional comments.</li>
+        <li>Exported decisions feed back into the next iteration, refining the model.</li>
+      </ol>
+
+      <div class="two-col">
+        <div class="feature-card">
+          <h3>Layer 1 — LLM Extraction</h3>
+          <p>Google Gemini reads historical texts in multiple languages and identifies person-like signals, including unnamed collectives and ambiguous references. Uncertainty is kept explicit.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Layer 2 — Knowledge Graph</h3>
+          <p>A curated authority file of 126 crusader-era persons (sourced from an Omeka database) provides the scholarly substrate. Fuzzy matching surfaces ranked candidates with scored confidence.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Human-in-the-Loop</h3>
+          <p>Scholars accept, reject, or flag each candidate link. Ambiguity is a feature, not a bug: contested links expose gaps in the authority file and guide future curation.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Open & Citable</h3>
+          <p>All source code is public. Extracted data and adjudication decisions are downloadable as JSON. BibTeX references are generated per document.</p>
+        </div>
+      </div>
     </section>
 
-    <!-- Links + adjudication -->
-    <section class="panel" id="panel-links">
-      <h2>Links: Voyagers → Outremer</h2>
+    <hr class="divider" />
 
-      <!-- Stats bar -->
-      <div id="statsBar" class="stats-bar hidden">
-        <span id="statReviewed"></span>
-        <span class="sep">·</span>
-        <span id="statAccepted" class="stat-accepted">✅ <span id="statAcceptedN">0</span> accepted</span>
-        <span class="sep">·</span>
-        <span id="statRejected" class="stat-rejected">❌ <span id="statRejectedN">0</span> rejected</span>
-        <span class="sep">·</span>
-        <span id="statFlagged" class="stat-flagged">🚩 <span id="statFlaggedN">0</span> flagged</span>
-        <button id="exportBtn" class="btn-small">Export decisions</button>
+    <!-- Team -->
+    <section class="section">
+      <h2>Project Team</h2>
+      <div class="team-grid">
+        <div class="team-person">
+          <strong>Jochen Burgtorf</strong>
+          <span>— Professor of History, California State University Fullerton.
+          Expert in medieval Mediterranean history and digital prosopography.</span>
+        </div>
+        <div class="team-person">
+          <strong>Tobias Hodel</strong>
+          <span>— Associate Professor of Digital Humanities, University of Bern.
+          Specialist in AI methods for historical documents, HTR, and data modeling.</span>
+        </div>
+        <div class="team-person">
+          <strong>Laura Morreale</strong>
+          <span>— Independent Scholar, Harvard University.
+          Research focuses on medieval cultural contact, multilingual relations, and the Eastern Mediterranean.</span>
+        </div>
       </div>
-
-      <!-- Filter bar -->
-      <div id="filterBar" class="filter-bar hidden">
-        <span class="filter-label">Show:</span>
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="unreviewed">Unreviewed</button>
-        <button class="filter-btn" data-filter="accepted">Accepted</button>
-        <button class="filter-btn" data-filter="rejected">Rejected</button>
-        <button class="filter-btn" data-filter="flagged">Flagged</button>
-        <button class="filter-btn" data-filter="no_match">No match</button>
-      </div>
-
-      <div id="links" class="card-grid"></div>
+      <p style="margin-top:1rem; font-size:.88rem; color:var(--muted);">
+        A book chapter co-authored by Burgtorf and Hodel (ed. Morreale) outlines the theoretical
+        framework. This repository is the technical proof of concept for a grant application.
+      </p>
     </section>
 
-    <!-- Raw JSON -->
-    <section class="panel" id="panel-raw">
-      <h2>Raw JSON <button id="toggleRaw" class="btn-small">show</button></h2>
-      <pre id="raw" class="mono hidden"></pre>
+    <hr class="divider" />
+
+    <!-- Contribute -->
+    <section class="section">
+      <h2>Contribute a Source</h2>
+      <p>
+        Do you work with primary sources from the medieval Levant? You can submit a PDF or plain-text
+        document for processing. Uploaded documents are reviewed before entering the pipeline —
+        you will be notified of the outcome.
+      </p>
+      <p>
+        By submitting a file you confirm that you hold the necessary rights to share it for
+        research purposes. Only PDF and plain-text files up to 50 MB are accepted.
+      </p>
+      <a class="hero-btn primary" href="./upload.html"
+         style="background:var(--accent); color:#fff; text-decoration:none;">
+        Submit a document →
+      </a>
+    </section>
+
+    <hr class="divider" />
+
+    <section class="section" style="padding-bottom:3rem;">
+      <h2>Source Code &amp; Data</h2>
+      <p>
+        Everything is open source.
+        Pipeline code, authority file, and extracted data are available at
+        <a href="https://github.com/thodel/outremer">github.com/thodel/outremer</a>.
+      </p>
     </section>
   </main>
 
-  <script type="module" src="./app.js"></script>
 </body>
 </html>

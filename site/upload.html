@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contribute a Source — People of the Medieval Levant</title>
+  <link rel="stylesheet" href="./style.css" />
+  <style>
+    .upload-wrap { max-width: 620px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+
+    .back-link { font-size: .85rem; color: var(--muted); text-decoration: none; display: inline-block; margin-bottom: 1.5rem; }
+    .back-link:hover { color: var(--accent); }
+
+    h1 { font-size: 1.4rem; color: var(--accent); margin-bottom: .4rem; }
+    .intro { font-size: .9rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.5rem; }
+
+    .form-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+    }
+
+    .field { margin-bottom: 1.1rem; }
+    .field label { display: block; font-size: .85rem; font-weight: bold; margin-bottom: .35rem; color: var(--text); }
+    .field .hint  { font-size: .78rem; color: var(--muted); margin-bottom: .4rem; }
+
+    .field input[type="text"],
+    .field input[type="number"],
+    .field select,
+    .field textarea {
+      width: 100%;
+      padding: .45rem .65rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-family: var(--font);
+      font-size: .88rem;
+      background: var(--bg);
+    }
+    .field input:focus, .field select:focus, .field textarea:focus {
+      outline: 1px solid var(--accent);
+      border-color: var(--accent);
+    }
+
+    .file-drop {
+      border: 2px dashed var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      text-align: center;
+      cursor: pointer;
+      background: #fdfcfa;
+      transition: border-color .15s;
+    }
+    .file-drop:hover, .file-drop.drag-over { border-color: var(--accent); background: var(--accent-lt); }
+    .file-drop .drop-icon { font-size: 2rem; margin-bottom: .4rem; }
+    .file-drop .drop-text { font-size: .88rem; color: var(--muted); }
+    .file-drop .drop-text strong { color: var(--accent); }
+    .file-drop input[type="file"] { display: none; }
+    #fileInfo { font-size: .82rem; color: var(--accent); margin-top: .5rem; font-family: var(--mono); }
+
+    .rights-box {
+      background: #faf7f0;
+      border: 1px solid #d4c9a8;
+      border-radius: var(--radius);
+      padding: 1rem 1.1rem;
+      margin-bottom: 1.1rem;
+    }
+    .rights-box p { font-size: .85rem; line-height: 1.65; color: var(--text); margin-bottom: .75rem; }
+    .rights-check { display: flex; align-items: flex-start; gap: .6rem; }
+    .rights-check input[type="checkbox"] { flex-shrink: 0; width: 1.1rem; height: 1.1rem; margin-top: .15rem; cursor: pointer; accent-color: var(--accent); }
+    .rights-check label { font-size: .85rem; line-height: 1.55; cursor: pointer; }
+
+    #submitBtn {
+      width: 100%;
+      padding: .75rem;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius);
+      font-family: var(--font);
+      font-size: .95rem;
+      cursor: pointer;
+    }
+    #submitBtn:disabled { opacity: .45; cursor: not-allowed; }
+    #submitBtn:not(:disabled):hover { opacity: .88; }
+
+    #statusMsg {
+      margin-top: 1rem;
+      padding: .8rem 1rem;
+      border-radius: var(--radius);
+      font-size: .88rem;
+      display: none;
+    }
+    #statusMsg.success { background: var(--high-bg); color: var(--high); border: 1px solid #9ed0b0; }
+    #statusMsg.error   { background: var(--low-bg);  color: var(--low);  border: 1px solid #e8bfb0; }
+    #statusMsg.loading { background: var(--accent-lt); color: var(--accent); border: 1px solid #d4c9a8; }
+
+    .section-title { font-size: .8rem; font-weight: bold; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-bottom: .75rem; margin-top: 1.25rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <h1>Voyagers → Outremer</h1>
+      <p class="subtitle">People of the Medieval Levant — AI-assisted prosopography</p>
+    </div>
+  </header>
+
+  <div class="upload-wrap">
+    <a class="back-link" href="./index.html">← Back to project</a>
+
+    <h1>Contribute a Source</h1>
+    <p class="intro">
+      Submit a historical source document for inclusion in the pipeline.
+      Uploaded files are reviewed by the project team before processing.
+      You will receive a confirmation ID; the team will be in touch if they have questions.
+    </p>
+
+    <div class="form-panel">
+
+      <!-- File upload -->
+      <div class="field">
+        <label>Document <span style="color:var(--low)">*</span></label>
+        <div class="drop-hint hint">PDF or plain text, max 50 MB.</div>
+        <div class="file-drop" id="fileDrop">
+          <div class="drop-icon">📄</div>
+          <div class="drop-text"><strong>Click to choose</strong> or drag &amp; drop</div>
+          <div id="fileInfo"></div>
+          <input type="file" id="fileInput" accept=".pdf,.txt" />
+        </div>
+      </div>
+
+      <!-- Metadata (optional) -->
+      <div class="section-title">Document metadata <span style="font-weight:normal;text-transform:none;">(optional but helpful)</span></div>
+
+      <div class="field">
+        <label>Title</label>
+        <input type="text" id="metaTitle" placeholder="e.g. Historia rerum in partibus transmarinis gestarum" />
+      </div>
+
+      <div class="two-col" style="display:grid;grid-template-columns:2fr 1fr;gap:.75rem;">
+        <div class="field" style="margin:0">
+          <label>Author</label>
+          <input type="text" id="metaAuthor" placeholder="e.g. William of Tyre" />
+        </div>
+        <div class="field" style="margin:0">
+          <label>Year / Century</label>
+          <input type="text" id="metaYear" placeholder="e.g. 1184" />
+        </div>
+      </div>
+
+      <div class="field" style="margin-top:1rem">
+        <label>Language</label>
+        <select id="metaLang">
+          <option value="">— unknown / other —</option>
+          <option value="la">Latin</option>
+          <option value="fr">Old French</option>
+          <option value="de">Middle High German</option>
+          <option value="ar">Arabic</option>
+          <option value="el">Greek</option>
+          <option value="he">Hebrew</option>
+          <option value="hy">Armenian</option>
+          <option value="en">English</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>Note for the team</label>
+        <textarea id="metaNote" rows="2" placeholder="Any context that would help the reviewers (edition, provenance, scope…)"></textarea>
+      </div>
+
+      <!-- Rights acknowledgment -->
+      <div class="rights-box">
+        <p>
+          By submitting this file you confirm that you have the right to share it for
+          academic research purposes, and that doing so does not violate copyright,
+          contractual obligations, or any applicable law.
+          Files are used solely for research within the People of the Medieval Levant project
+          and will not be redistributed without review.
+        </p>
+        <div class="rights-check">
+          <input type="checkbox" id="rightsCheck" />
+          <label for="rightsCheck">
+            I confirm that I hold or have obtained the necessary rights to upload this document
+            for research purposes. <strong>*</strong>
+          </label>
+        </div>
+      </div>
+
+      <button id="submitBtn" disabled>Submit for review</button>
+
+      <div id="statusMsg"></div>
+    </div>
+  </div>
+
+  <script>
+    // ── Upload endpoint ──────────────────────────────────────────────────────
+    // Caddy proxies /webhook/* → Flask on port 5111
+    const UPLOAD_URL = "http://194.13.80.183/webhook/outremer-upload";
+
+    // ── File drop zone ───────────────────────────────────────────────────────
+    const fileDrop  = document.getElementById("fileDrop");
+    const fileInput = document.getElementById("fileInput");
+    const fileInfo  = document.getElementById("fileInfo");
+    const rightsCheck = document.getElementById("rightsCheck");
+    const submitBtn   = document.getElementById("submitBtn");
+    const statusMsg   = document.getElementById("statusMsg");
+
+    let selectedFile = null;
+
+    function updateSubmitState() {
+      submitBtn.disabled = !(selectedFile && rightsCheck.checked);
+    }
+
+    function showFile(file) {
+      selectedFile = file;
+      const kb = (file.size / 1024).toFixed(1);
+      fileInfo.textContent = `${file.name}  (${kb} KB)`;
+      updateSubmitState();
+    }
+
+    fileDrop.addEventListener("click", () => fileInput.click());
+    fileInput.addEventListener("change", () => {
+      if (fileInput.files[0]) showFile(fileInput.files[0]);
+    });
+
+    fileDrop.addEventListener("dragover", e => { e.preventDefault(); fileDrop.classList.add("drag-over"); });
+    fileDrop.addEventListener("dragleave", () => fileDrop.classList.remove("drag-over"));
+    fileDrop.addEventListener("drop", e => {
+      e.preventDefault();
+      fileDrop.classList.remove("drag-over");
+      if (e.dataTransfer.files[0]) showFile(e.dataTransfer.files[0]);
+    });
+
+    rightsCheck.addEventListener("change", updateSubmitState);
+
+    // ── Submit ───────────────────────────────────────────────────────────────
+    submitBtn.addEventListener("click", async () => {
+      if (!selectedFile || !rightsCheck.checked) return;
+
+      submitBtn.disabled = true;
+      showStatus("loading", "Uploading… please wait.");
+
+      const fd = new FormData();
+      fd.append("file",               selectedFile);
+      fd.append("rights_acknowledged","true");
+      fd.append("title",   document.getElementById("metaTitle").value.trim());
+      fd.append("author",  document.getElementById("metaAuthor").value.trim());
+      fd.append("year",    document.getElementById("metaYear").value.trim());
+      fd.append("language",document.getElementById("metaLang").value);
+      fd.append("note",    document.getElementById("metaNote").value.trim());
+
+      try {
+        const res = await fetch(UPLOAD_URL, { method: "POST", body: fd });
+        const json = await res.json();
+
+        if (res.ok) {
+          showStatus("success",
+            `✅ Received! Your confirmation ID is <strong>${json.id}</strong>. ` +
+            `The project team will review your submission and you will be notified of the outcome.`);
+        } else {
+          showStatus("error", `❌ ${json.error || "Upload failed. Please try again."}`);
+          submitBtn.disabled = false;
+        }
+      } catch (err) {
+        showStatus("error", `❌ Could not reach the server. Please try again later. (${err.message})`);
+        submitBtn.disabled = false;
+      }
+    });
+
+    function showStatus(type, html) {
+      statusMsg.className = type;
+      statusMsg.innerHTML = html;
+      statusMsg.style.display = "block";
+    }
+  </script>
+</body>
+</html>

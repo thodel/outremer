@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Explorer — People of the Medieval Levant</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <h1>Voyagers → Outremer</h1>
+      <p class="subtitle">
+        <a href="./index.html" style="color:rgba(255,255,255,.7);text-decoration:none;">← Project</a>
+        &nbsp;·&nbsp; Explorer &amp; H-i-t-L Review
+      </p>
+    </div>
+  </header>
+
+  <main>
+    <!-- Document selector -->
+    <section class="panel" id="panel-docs">
+      <h2>Documents</h2>
+      <div class="row gap">
+        <select id="docSelect"></select>
+        <button id="loadBtn" class="btn-primary">Load</button>
+      </div>
+      <div id="docMeta" class="meta-block mono"></div>
+    </section>
+
+    <!-- Extracted persons -->
+    <section class="panel" id="panel-persons">
+      <h2>Extracted Persons <span id="personCount" class="badge"></span></h2>
+      <div id="persons" class="card-grid"></div>
+    </section>
+
+    <!-- Links + adjudication -->
+    <section class="panel" id="panel-links">
+      <h2>Links: Voyagers → Outremer</h2>
+
+      <!-- Stats bar -->
+      <div id="statsBar" class="stats-bar hidden">
+        <span id="statReviewed"></span>
+        <span class="sep">·</span>
+        <span id="statAccepted" class="stat-accepted">✅ <span id="statAcceptedN">0</span> accepted</span>
+        <span class="sep">·</span>
+        <span id="statRejected" class="stat-rejected">❌ <span id="statRejectedN">0</span> rejected</span>
+        <span class="sep">·</span>
+        <span id="statFlagged" class="stat-flagged">🚩 <span id="statFlaggedN">0</span> flagged</span>
+        <button id="exportBtn" class="btn-small">Export decisions</button>
+      </div>
+
+      <!-- Filter bar -->
+      <div id="filterBar" class="filter-bar hidden">
+        <span class="filter-label">Show:</span>
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="unreviewed">Unreviewed</button>
+        <button class="filter-btn" data-filter="accepted">Accepted</button>
+        <button class="filter-btn" data-filter="rejected">Rejected</button>
+        <button class="filter-btn" data-filter="flagged">Flagged</button>
+        <button class="filter-btn" data-filter="no_match">No match</button>
+      </div>
+
+      <div id="links" class="card-grid"></div>
+    </section>
+
+    <!-- Raw JSON -->
+    <section class="panel" id="panel-raw">
+      <h2>Raw JSON <button id="toggleRaw" class="btn-small">show</button></h2>
+      <pre id="raw" class="mono hidden"></pre>
+    </section>
+  </main>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
