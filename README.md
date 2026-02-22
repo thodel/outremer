@@ -63,9 +63,11 @@ pip install -r requirements.txt
 
 | Variable | Where | Purpose |
 |---|---|---|
-| `GOOGLE_API_KEY` | env var or `.env` file | Activates Gemini extraction. Without it, the pipeline falls back to heuristic regex NER (lower recall, confidence ≈ 0.30). |
+| `GOOGLE_API_KEY` | env var or `.env` file | Activates Gemini extraction. Without it, the pipeline falls back to heuristic regex NER. |
+| `MISTRAL_API_KEY` | env var or `.env` file | Activates Mistral OCR for image-only / scanned PDFs. Without it, scanned PDFs yield empty text. |
 
-For GitHub Actions, add the key under **Settings → Secrets and variables → Actions** as `GOOGLE_API_KEY`.
+For GitHub Actions, add both under **Settings → Secrets and variables → Actions**:
+`GOOGLE_API_KEY` and `MISTRAL_API_KEY`.
 
 ---
 
@@ -75,11 +77,17 @@ For GitHub Actions, add the key under **Settings → Secrets and variables → A
 # Activate venv first
 source .venv/bin/activate
 
-# With Gemini (recommended)
-export GOOGLE_API_KEY=your_key_here
+# With Gemini + Mistral OCR (recommended)
+export GOOGLE_API_KEY=your_gemini_key
+export MISTRAL_API_KEY=your_mistral_key
 python scripts/run_pipeline.py --input-dir data/raw --genai-metadata
 
-# Without API key (heuristic fallback)
+# With language hint for multilingual sources
+python scripts/run_pipeline.py --input-dir data/raw --genai-metadata --language la   # Latin
+python scripts/run_pipeline.py --input-dir data/raw --genai-metadata --language ar   # Arabic
+# Supported: la, fro (Old French), ar, el (Greek), de (Middle High German)
+
+# Without API keys (heuristic fallback, no OCR)
 python scripts/run_pipeline.py --input-dir data/raw
 
 # All options
