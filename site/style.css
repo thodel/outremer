@@ -304,6 +304,32 @@ select {
 }
 .comment-input:focus { outline: 1px solid var(--accent); border-color: var(--accent); }
 
+/* ── Community votes ─────────────────────────────────────────────────── */
+.community-votes {
+  font-size: .75rem;
+  font-family: var(--mono);
+  display: inline-flex;
+  gap: .35rem;
+  align-items: center;
+  margin-left: .3rem;
+}
+.community-votes.muted { color: var(--border); font-style: italic; }
+.cv-accept { color: var(--high); }
+.cv-reject { color: var(--low); }
+.cv-flag   { color: #8b6f00; }
+
+/* ── Sync indicator ──────────────────────────────────────────────────── */
+.sync-indicator {
+  font-size: .8rem;
+  width: 1.2rem;
+  text-align: center;
+  flex-shrink: 0;
+}
+.sync-pending { color: var(--muted); animation: spin .8s linear infinite; display: inline-block; }
+.sync-ok      { color: var(--high); }
+.sync-err     { color: var(--low); }
+@keyframes spin { to { transform: rotate(360deg); } }
+
 /* ── Raw JSON ────────────────────────────────────────────────────────── */
 #raw {
   background: #f4f1eb;
