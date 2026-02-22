@@ -96,6 +96,32 @@
     #statusMsg.loading { background: var(--accent-lt); color: var(--accent); border: 1px solid #d4c9a8; }
 
     .section-title { font-size: .8rem; font-weight: bold; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-bottom: .75rem; margin-top: 1.25rem; }
+
+    .doi-row { display: flex; gap: .5rem; }
+    .doi-row input { flex: 1; }
+    .btn-fetch {
+      flex-shrink: 0;
+      padding: .45rem .9rem;
+      background: var(--accent-lt);
+      color: var(--accent);
+      border: 1px solid #d4c9a8;
+      border-radius: var(--radius);
+      font-family: var(--font);
+      font-size: .85rem;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .btn-fetch:hover { background: #e8dfc8; }
+    .btn-fetch:disabled { opacity: .5; cursor: not-allowed; }
+
+    #doiStatus {
+      font-size: .78rem;
+      margin-top: .35rem;
+      min-height: 1.2em;
+    }
+    #doiStatus.ok  { color: var(--high); }
+    #doiStatus.err { color: var(--low); }
+    #doiStatus.loading { color: var(--muted); }
   </style>
 </head>
 <body>
@@ -132,6 +158,17 @@
 
       <!-- Metadata (optional) -->
       <div class="section-title">Document metadata <span style="font-weight:normal;text-transform:none;">(optional but helpful)</span></div>
+
+      <!-- DOI lookup -->
+      <div class="field">
+        <label>DOI</label>
+        <div class="hint">Enter a DOI and click Fetch to auto-fill the fields below.</div>
+        <div class="doi-row">
+          <input type="text" id="metaDoi" placeholder="e.g. 10.1234/example or https://doi.org/10.1234/example" />
+          <button type="button" id="doiBtn" class="btn-fetch">Fetch</button>
+        </div>
+        <div id="doiStatus"></div>
+      </div>
 
       <div class="field">
         <label>Title</label>
@@ -194,6 +231,82 @@
   </div>
 
   <script>
+    // ── DOI fetch ────────────────────────────────────────────────────────────
+
+    function normaliseDoi(raw) {
+      return raw.trim()
+        .replace(/^https?:\/\/doi\.org\//i, "")
+        .replace(/^doi:\s*/i, "");
+    }
+
+    function crossrefUrl(doi) {
+      return `https://api.crossref.org/works/${encodeURIComponent(doi)}`;
+    }
+
+    function doiStatus(cls, msg) {
+      const el = document.getElementById("doiStatus");
+      el.className = cls;
+      el.textContent = msg;
+    }
+
+    document.getElementById("doiBtn").addEventListener("click", async () => {
+      const raw = document.getElementById("metaDoi").value;
+      const doi = normaliseDoi(raw);
+      if (!doi) { doiStatus("err", "Please enter a DOI first."); return; }
+
+      const btn = document.getElementById("doiBtn");
+      btn.disabled = true;
+      doiStatus("loading", "Fetching from CrossRef…");
+
+      try {
+        const res = await fetch(crossrefUrl(doi), {
+          headers: { "User-Agent": "outremer-poc/1.0 (mailto:tobias.hodel@unibe.ch)" }
+        });
+        if (!res.ok) throw new Error(`CrossRef returned ${res.status}`);
+        const { message: m } = await res.json();
+
+        // Title — CrossRef returns an array
+        const title = Array.isArray(m.title) ? m.title[0] : (m.title || "");
+        if (title) document.getElementById("metaTitle").value = title;
+
+        // Authors — format as "Family, Given; Family, Given"
+        if (m.author && m.author.length) {
+          const authors = m.author.map(a => {
+            if (a.family && a.given) return `${a.family}, ${a.given}`;
+            return a.family || a.given || a.name || "";
+          }).filter(Boolean).join("; ");
+          document.getElementById("metaAuthor").value = authors;
+        }
+
+        // Year — prefer print, then online, then deposited
+        const yearSrc = m["published-print"] || m["published-online"] || m.deposited;
+        if (yearSrc?.["date-parts"]?.[0]?.[0]) {
+          document.getElementById("metaYear").value = yearSrc["date-parts"][0][0];
+        }
+
+        // Language
+        if (m.language) {
+          const sel = document.getElementById("metaLang");
+          const opt = [...sel.options].find(o => o.value === m.language);
+          if (opt) sel.value = m.language;
+        }
+
+        // Normalise the DOI field to clean form
+        document.getElementById("metaDoi").value = doi;
+
+        doiStatus("ok", `✓ Metadata fetched from CrossRef. Check the fields and adjust if needed.`);
+      } catch (err) {
+        doiStatus("err", `Could not fetch: ${err.message}. Fill in fields manually.`);
+      } finally {
+        btn.disabled = false;
+      }
+    });
+
+    // Also trigger fetch on Enter in the DOI field
+    document.getElementById("metaDoi").addEventListener("keydown", e => {
+      if (e.key === "Enter") { e.preventDefault(); document.getElementById("doiBtn").click(); }
+    });
+
     // ── Upload endpoint ──────────────────────────────────────────────────────
     // Caddy proxies /webhook/* → Flask on port 5111
     const UPLOAD_URL = "http://194.13.80.183/webhook/outremer-upload";
@@ -244,6 +357,7 @@
       const fd = new FormData();
       fd.append("file",               selectedFile);
       fd.append("rights_acknowledged","true");
+      fd.append("doi",     normaliseDoi(document.getElementById("metaDoi").value));
       fd.append("title",   document.getElementById("metaTitle").value.trim());
       fd.append("author",  document.getElementById("metaAuthor").value.trim());
       fd.append("year",    document.getElementById("metaYear").value.trim());
