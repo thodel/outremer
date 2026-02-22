@@ -18,6 +18,7 @@ import argparse
 import hashlib
 import json
 import logging
+import os
 import re
 import sys
 import unicodedata
@@ -62,12 +63,54 @@ def read_text_file(path: Path) -> str:
 
 
 def read_pdf_file(path: Path) -> str:
+    """Extract text from PDF. Falls back to Mistral OCR for image-only PDFs."""
     from pypdf import PdfReader
     reader = PdfReader(str(path))
     parts: List[str] = []
     for page in reader.pages:
         parts.append(page.extract_text() or "")
-    return "\n".join(parts).strip()
+    text = "\n".join(parts).strip()
+
+    # Heuristic: if we got very little text, it's probably a scanned/image PDF
+    if len(text) < 200:
+        logger.info("Low text yield from pypdf (%d chars) — trying Mistral OCR…", len(text))
+        ocr_text = _mistral_ocr(path)
+        if ocr_text:
+            logger.info("Mistral OCR returned %d chars.", len(ocr_text))
+            return ocr_text
+        logger.warning("Mistral OCR also failed; proceeding with minimal text.")
+
+    return text
+
+
+def _mistral_ocr(path: Path) -> str:
+    """Use Mistral OCR to extract text from a scanned PDF."""
+    import base64
+    api_key = os.environ.get("MISTRAL_API_KEY", "").strip()
+    if not api_key:
+        logger.warning("MISTRAL_API_KEY not set — cannot run OCR fallback.")
+        return ""
+    try:
+        from mistralai import Mistral
+    except ImportError:
+        logger.warning("mistralai not installed — cannot run OCR fallback.")
+        return ""
+
+    try:
+        client = Mistral(api_key=api_key)
+        b64 = base64.b64encode(path.read_bytes()).decode()
+        resp = client.ocr.process(
+            model="mistral-ocr-latest",
+            document={
+                "type": "document_url",
+                "document_url": f"data:application/pdf;base64,{b64}",
+            },
+        )
+        pages = resp.pages if hasattr(resp, "pages") else []
+        return "\n\n".join(p.markdown for p in pages if p.markdown).strip()
+    except Exception as exc:
+        logger.error("Mistral OCR error: %s", exc)
+        return ""
 
 
 def read_input(path: Path) -> str:
@@ -283,6 +326,7 @@ def process_file(
     site_bib_dir: Path,
     authority_lookup: List[Dict[str, Any]],
     use_genai_metadata: bool,
+    language: Optional[str] = None,
 ) -> Tuple[Path, Path, Path]:
     logger.info("Processing %s …", in_path.name)
     text = read_input(in_path)
@@ -291,7 +335,7 @@ def process_file(
     doc_hash = sha256_text(text)[:12]
     doc_id = f"{base}-{doc_hash}"
 
-    result = extract_persons_and_metadata(text, use_genai_metadata=use_genai_metadata)
+    result = extract_persons_and_metadata(text, use_genai_metadata=use_genai_metadata, language=language)
     persons: List[Dict[str, Any]] = result.get("persons") or []
     metadata: Dict[str, Any] = result.get("metadata") or {}
     bibtex: str = result.get("bibtex") or ""
@@ -306,7 +350,8 @@ def process_file(
         "persons": persons,
         "links": links,
         "text_sha256": sha256_text(text),
-        "extraction_mode": "gemini" if __import__("os").environ.get("GOOGLE_API_KEY") else "fallback",
+        "extraction_mode": "gemini" if os.environ.get("GOOGLE_API_KEY") else "fallback",
+        "language_hint": language,
     }
 
     json_path = site_data_dir / f"{doc_id}.json"
@@ -350,6 +395,7 @@ def main() -> int:
     ap.add_argument("--bib-dir", default="bib", help="Repo-level BibTeX output folder")
     ap.add_argument("--outremer-index", default="scripts/outremer_index.json")
     ap.add_argument("--genai-metadata", action="store_true", help="Extract metadata + BibTeX via GenAI")
+    ap.add_argument("--language", default=None, help="ISO 639 language hint (la, fro, ar, el, de, en…)")
     args = ap.parse_args()
 
     in_dir = Path(args.input_dir)
@@ -380,6 +426,7 @@ def main() -> int:
                 site_bib_dir=site_bib_dir,
                 authority_lookup=authority_lookup,
                 use_genai_metadata=args.genai_metadata,
+                language=args.language,
             )
             print(f"Wrote {json_path}")
             print(f"Wrote {bib_repo}")

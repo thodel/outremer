@@ -8,13 +8,18 @@
 </head>
 <body>
   <header>
-    <div class="header-inner">
-      <h1>Voyagers → Outremer</h1>
-      <p class="subtitle">
-        <a href="./index.html" style="color:rgba(255,255,255,.7);text-decoration:none;">← Project</a>
-        &nbsp;·&nbsp; Explorer &amp; H-i-t-L Review &nbsp;·&nbsp;
-        <a href="./stats.html" style="color:rgba(255,255,255,.7);text-decoration:none;">📊 Stats</a>
-      </p>
+    <div class="header-inner" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;">
+      <div>
+        <h1>Voyagers → Outremer</h1>
+        <p class="subtitle">
+          <a href="./index.html" style="color:rgba(255,255,255,.7);text-decoration:none;">← Project</a>
+          &nbsp;·&nbsp; Explorer &amp; H-i-t-L Review &nbsp;·&nbsp;
+          <a href="./stats.html" style="color:rgba(255,255,255,.7);text-decoration:none;">📊 Stats</a>
+        </p>
+      </div>
+      <div id="scholarBadge" style="font-size:.82rem;color:rgba(255,255,255,.8);cursor:pointer;" title="Click to change your display name">
+        👤 <span id="scholarNameDisplay">Anonymous</span>
+      </div>
     </div>
   </header>
 
@@ -40,6 +45,14 @@
       <h2>Links: Voyagers → Outremer</h2>
 
       <!-- Stats bar -->
+      <!-- Scholar name prompt (shown once on first visit) -->
+      <div id="namePrompt" class="name-prompt hidden">
+        👤 You're contributing anonymously. Add your name so your decisions are credited.
+        <input id="nameInput" type="text" placeholder="Your name or initials" maxlength="60" />
+        <button id="nameSaveBtn" class="btn-small">Save</button>
+        <button id="nameDismissBtn" class="btn-small">Stay anonymous</button>
+      </div>
+
       <div id="statsBar" class="stats-bar hidden">
         <span id="statReviewed"></span>
         <span class="sep">·</span>
@@ -48,7 +61,9 @@
         <span id="statRejected" class="stat-rejected">❌ <span id="statRejectedN">0</span> rejected</span>
         <span class="sep">·</span>
         <span id="statFlagged" class="stat-flagged">🚩 <span id="statFlaggedN">0</span> flagged</span>
-        <button id="exportBtn" class="btn-small">Export decisions</button>
+        <button id="exportBtn"      class="btn-small">Export decisions (JSON)</button>
+        <button id="exportTeiBtn"   class="btn-small">Export TEI-XML</button>
+        <button id="exportJsonLdBtn"class="btn-small">Export JSON-LD</button>
       </div>
 
       <!-- Filter bar -->

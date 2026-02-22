@@ -59,14 +59,49 @@ _GEMINI_MODEL = "gemini-2.0-flash"
 _CHUNK_SIZE = 5_500   # smaller = shorter Gemini response = less truncation
 _CHUNK_OVERLAP = 800
 
-_JSON_PROMPT = """\
-You are a historical NLP assistant specialising in the medieval Levant (Crusades era, 11th–14th centuries).
+_LANGUAGE_HINTS: Dict[str, str] = {
+    "la": """\
+LANGUAGE NOTE: This is a Latin medieval text. Key patterns to recognise:
+- Titles/offices: rex, regina, comes, episcopus, archiepiscopus, patriarcha, dux, princeps, imperator, papa, miles, dominus, frater, magister, abbas, prior, constabularius, senescallus
+- Naming: Latin genitive constructions (e.g. "Godefridus de Bullonio"), toponymic epithets (de + place), filial (filius/filia + parent)
+- Collectives: milites, peregrini, Franci, Saraceni, Graeci, Armeni, pagani, fideles, crucesignati
+- Uncertainty: treat "quidam", "nescio quis" as unnamed/uncertain individuals
+""",
+    "fro": """\
+LANGUAGE NOTE: This is an Old French (Anglo-Norman or continental) medieval text. Key patterns:
+- Titles: rei, conte, duc, prince, evesque, arcevesque, mestre, seigneur, dame, chevalier, connestable
+- Naming: de + toponym for family/origin, le/la + epithet (e.g. "le Lion", "la Blanche")
+- Collectives: pelerins, croisez, Francs, Sarrazins, Grecs, Armeniens
+""",
+    "ar": """\
+LANGUAGE NOTE: This is an Arabic medieval text. Key patterns:
+- Name chains: ism (given name), nasab (ibn/bint + father), nisba (al- + place/tribe), laqab (honorific title)
+- Titles: sultan, malik (king), amir (emir/prince), khalifa (caliph), qadi (judge), shaykh, wazir, atabeg
+- Collectives: Franj (Franks/Crusaders), Muslimun, Rum (Byzantine Greeks), Arman (Armenians)
+- Note: transliterated Arabic names may appear in multiple variant spellings
+""",
+    "el": """\
+LANGUAGE NOTE: This is a Byzantine Greek medieval text. Key patterns:
+- Titles: basileus/basilissa (emperor/empress), megas doux, sebastokrator, kaisar, despotes, strategos, doux, protokuropalates
+- Names often Hellenised versions of Latin or Frankish originals
+- Collectives: Latinoi (Latins/Crusaders), Persai (Turks), Armenioi
+""",
+    "de": """\
+LANGUAGE NOTE: This is a Middle High German medieval text. Key patterns:
+- Titles: König, Königin, Graf, Bischof, Erzbischof, Fürst, Herzog, Ritter, Herr, Meister
+- Naming: von + place name; Beiname (epithet) often follows given name
+- Collectives: Pilger, Kreuzfahrer, Franken, Sarazenen, Griechen
+""",
+}
 
+_JSON_PROMPT_BASE = """\
+You are a historical NLP assistant specialising in the medieval Levant (Crusades era, 11th–14th centuries).
+{language_hint}
 Extract ALL person mentions from the text below — including individuals, collectives (ethnic groups, armies, unnamed people), and ambiguous references.
 
 For each person/group return a JSON object with these exact fields:
-  name          (string)   : normalised name or label
-  raw_mention   (string)   : exact text span as it appears
+  name          (string)   : normalised name or label (use the most common English form if known)
+  raw_mention   (string)   : exact text span as it appears in the source
   title         (string|null) : e.g. "Count", "Bishop", "Sultan"
   epithet       (string|null) : e.g. "the Lion", "the Bold"
   toponym       (string|null) : place associated with the person, e.g. "Flanders"
@@ -80,17 +115,22 @@ Also extract document metadata with these fields:
   title    (string|null)
   author   (string|null)
   year     (string|null)
-  language (string|null)
+  language (string|null) : ISO 639 code if detectable
   doc_type (string|null) : "chronicle", "charter", "narrative", "letter", "list", or "other"
 
 Respond ONLY with valid JSON — no markdown fences, no commentary — matching this schema:
-{
+{{
   "persons": [...],
-  "metadata": { "title": ..., "author": ..., "year": ..., "language": ..., "doc_type": ... }
-}
+  "metadata": {{ "title": ..., "author": ..., "year": ..., "language": ..., "doc_type": ... }}
+}}
 
 TEXT:
 """
+
+
+def _build_prompt(language_code: Optional[str] = None) -> str:
+    hint = _LANGUAGE_HINTS.get(language_code or "", "")
+    return _JSON_PROMPT_BASE.format(language_hint=f"\n{hint}" if hint else "")
 
 # ──────────────────────────────────────────────
 # Helpers
@@ -397,10 +437,10 @@ def _extract_fallback(text: str) -> Dict[str, Any]:
 # Gemini extraction
 # ──────────────────────────────────────────────
 
-def _extract_gemini_chunk(client: Any, chunk: str) -> Dict[str, Any]:
+def _extract_gemini_chunk(client: Any, chunk: str, language: Optional[str] = None) -> Dict[str, Any]:
     """Call Gemini on a single chunk. Returns raw dict or raises."""
     clean_chunk = _sanitise_text(chunk)
-    prompt = _JSON_PROMPT + clean_chunk
+    prompt = _build_prompt(language) + clean_chunk
     response = client.models.generate_content(
         model=_GEMINI_MODEL,
         contents=prompt,
@@ -426,7 +466,7 @@ def _extract_gemini_chunk(client: Any, chunk: str) -> Dict[str, Any]:
     raise ValueError(f"Unrecoverable JSON from Gemini (length={len(raw_text)})")
 
 
-def _extract_gemini(text: str, use_genai_metadata: bool) -> Dict[str, Any]:
+def _extract_gemini(text: str, use_genai_metadata: bool, language: Optional[str] = None) -> Dict[str, Any]:
     """Full Gemini extraction with chunking."""
     try:
         from google import genai  # type: ignore
@@ -451,10 +491,9 @@ def _extract_gemini(text: str, use_genai_metadata: bool) -> Dict[str, Any]:
 
     for offset, chunk in chunks:
         try:
-            result = _extract_gemini_chunk(client, chunk)
+            result = _extract_gemini_chunk(client, chunk, language=language)
         except Exception as exc:
             logger.warning("Gemini chunk failed (offset=%d): %s", offset, exc)
-            # Fall back to heuristics for this chunk
             result = _extract_fallback(chunk)
 
         for p in result.get("persons") or []:
@@ -488,6 +527,7 @@ def extract_persons_and_metadata(
     text: str,
     *,
     use_genai_metadata: bool = True,
+    language: Optional[str] = None,
 ) -> Dict[str, Any]:
     """
     Extract person mentions and document metadata from *text*.
@@ -513,7 +553,7 @@ def extract_persons_and_metadata(
 
     api_key = os.environ.get("GOOGLE_API_KEY", "").strip()
     if api_key:
-        return _extract_gemini(text, use_genai_metadata)
+        return _extract_gemini(text, use_genai_metadata, language=language)
     else:
         result = _extract_fallback(text)
         if use_genai_metadata:

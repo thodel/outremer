@@ -3,9 +3,23 @@ name: Pipeline (extract persons + build site data)
 on:
   push:
     branches: ["main"]
+    # Don't re-run when the bot itself pushes data
+    paths-ignore:
+      - "site/data/**"
+      - "site/bib/**"
+      - "site/index.json"
+      - "bib/**"
+      - "data/staging/**"
+      - "data/decisions.json"
+      - "data/wikidata_matches.json"
   workflow_dispatch:
   schedule:
-    - cron: "0 2 * * *" # nightly (optional)
+    - cron: "0 2 * * *"   # nightly 02:00 UTC
+
+# Only one pipeline run at a time; cancel in-progress on new push
+concurrency:
+  group: pipeline
+  cancel-in-progress: true
 
 permissions:
   contents: write
@@ -17,6 +31,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # full history needed for rebase
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -30,23 +46,24 @@ jobs:
 
       - name: Run pipeline
         env:
-          # Put your secrets in:
-          # Settings -> Secrets and variables -> Actions
-          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          GOOGLE_API_KEY:   ${{ secrets.GOOGLE_API_KEY }}
+          MISTRAL_API_KEY:  ${{ secrets.MISTRAL_API_KEY }}
         run: |
           python scripts/run_pipeline.py --genai-metadata
 
       - name: Commit generated artifacts
         run: |
-          git config user.name "github-actions[bot]"
+          git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          # We commit the data the site needs:
-          git add site/index.json site/data site/bib bib
+          git add site/index.json site/data site/bib bib data/wikidata_matches.json
 
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
-            git commit -m "Update extracted site data"
+            # Pull remote changes before pushing to avoid conflicts
+            git pull --rebase origin main
+            # [skip ci] prevents this commit from triggering another pipeline run
+            git commit -m "chore: update extracted site data [skip ci]"
             git push
           fi

@@ -28,6 +28,57 @@ function getClientId() {
 
 const CLIENT_ID = getClientId();
 
+// ── Scholar display name ────────────────────────────────────────────────────
+
+const SCHOLAR_NAME_KEY = "outremer_scholar_name";
+const NAME_PROMPTED_KEY = "outremer_name_prompted";
+
+function getScholarName() {
+  return localStorage.getItem(SCHOLAR_NAME_KEY) || "";
+}
+
+function setScholarName(name) {
+  localStorage.setItem(SCHOLAR_NAME_KEY, name.trim());
+  localStorage.setItem(NAME_PROMPTED_KEY, "1");
+  updateScholarBadge();
+}
+
+function updateScholarBadge() {
+  const name = getScholarName();
+  const el = document.getElementById("scholarNameDisplay");
+  if (el) el.textContent = name || "Anonymous";
+}
+
+function initScholarName() {
+  updateScholarBadge();
+
+  // Show prompt once if name not set and not previously dismissed
+  if (!getScholarName() && !localStorage.getItem(NAME_PROMPTED_KEY)) {
+    const prompt = document.getElementById("namePrompt");
+    if (prompt) prompt.classList.remove("hidden");
+  }
+
+  document.getElementById("nameSaveBtn")?.addEventListener("click", () => {
+    const val = document.getElementById("nameInput").value.trim();
+    if (val) { setScholarName(val); document.getElementById("namePrompt").classList.add("hidden"); }
+  });
+
+  document.getElementById("nameDismissBtn")?.addEventListener("click", () => {
+    localStorage.setItem(NAME_PROMPTED_KEY, "1");
+    document.getElementById("namePrompt").classList.add("hidden");
+  });
+
+  document.getElementById("nameInput")?.addEventListener("keydown", e => {
+    if (e.key === "Enter") document.getElementById("nameSaveBtn").click();
+  });
+
+  document.getElementById("scholarBadge")?.addEventListener("click", () => {
+    const current = getScholarName();
+    const val = prompt("Enter your display name (or leave blank for anonymous):", current);
+    if (val !== null) { setScholarName(val); }
+  });
+}
+
 // ── Local decision store ───────────────────────────────────────────────────
 
 function loadDecisions() {
@@ -70,8 +121,10 @@ function buildCommunityIndex(serverDecisions) {
   const idx = {};
   for (const d of serverDecisions) {
     const k = decisionKey(d.doc_id, d.person, d.outremer_id);
-    if (!idx[k]) idx[k] = { accept: 0, reject: 0, flag: 0 };
+    if (!idx[k]) idx[k] = { accept: 0, reject: 0, flag: 0, names: { accept: [], reject: [], flag: [] } };
     idx[k][d.decision] = (idx[k][d.decision] || 0) + 1;
+    const label = d.scholar_name || "Anon";
+    if (!idx[k].names[d.decision].includes(label)) idx[k].names[d.decision].push(label);
   }
   return idx;
 }
@@ -103,7 +156,11 @@ async function fetchCommunityVotes(docId) {
 // ── Server sync ────────────────────────────────────────────────────────────
 
 async function syncDecisionToServer(docId, person, outremer_id, decision, comment) {
-  const payload = { doc_id: docId, person, outremer_id, decision, comment, client_id: CLIENT_ID };
+  const payload = {
+    doc_id: docId, person, outremer_id, decision, comment,
+    client_id: CLIENT_ID,
+    scholar_name: getScholarName() || null,
+  };
   const res = await fetch(`${API_BASE}/outremer-decision`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -245,9 +302,19 @@ function communityBadgeHtml(key) {
   const v = communityVotes[key];
   if (!v) return '<span class="community-votes muted">no votes yet</span>';
   const parts = [];
-  if (v.accept) parts.push(`<span class="cv-accept">✅ ${v.accept}</span>`);
-  if (v.reject) parts.push(`<span class="cv-reject">❌ ${v.reject}</span>`);
-  if (v.flag)   parts.push(`<span class="cv-flag">🚩 ${v.flag}</span>`);
+  const names = v.names || {};
+  if (v.accept) {
+    const tip = names.accept?.join(", ") || "";
+    parts.push(`<span class="cv-accept" title="${tip}">✅ ${v.accept}</span>`);
+  }
+  if (v.reject) {
+    const tip = names.reject?.join(", ") || "";
+    parts.push(`<span class="cv-reject" title="${tip}">❌ ${v.reject}</span>`);
+  }
+  if (v.flag) {
+    const tip = names.flag?.join(", ") || "";
+    parts.push(`<span class="cv-flag" title="${tip}">🚩 ${v.flag}</span>`);
+  }
   if (!parts.length) return '<span class="community-votes muted">no votes yet</span>';
   const conflict = v.accept > 0 && v.reject > 0
     ? `<span class="cv-conflict" title="Conflict: reviewers disagree">⚠️</span>` : "";
@@ -495,7 +562,155 @@ async function loadIndex() {
   }
 }
 
-// ── Export ─────────────────────────────────────────────────────────────────
+// ── TEI-XML export ─────────────────────────────────────────────────────────
+
+function exportTei() {
+  if (!currentDoc) return;
+  const doc     = currentDoc;
+  const docId   = doc.doc_id;
+  const meta    = doc.metadata || {};
+  const persons = doc.persons  || [];
+  const links   = doc.links    || [];
+  const decisions = loadDecisions();
+
+  // Build accepted person refs
+  const acceptedLinks = links.filter(l => {
+    if (!l.top_candidate) return false;
+    const k = decisionKey(docId, l.person, l.top_candidate.outremer_id);
+    return decisions[k]?.decision === "accept"
+        || (communityVotes[k]?.accept || 0) >= 2;
+  });
+
+  const persNameMap = {};
+  for (const l of acceptedLinks) {
+    persNameMap[l.person] = l.top_candidate.outremer_id;
+  }
+
+  const persListItems = [...new Set(acceptedLinks.map(l =>
+    `    <person xml:id="${l.top_candidate.outremer_id.replace(/:/g,"-")}">` +
+    `\n      <persName>${escXml(l.top_candidate.outremer_name)}</persName>` +
+    `\n      <note type="outremer_id">${escXml(l.top_candidate.outremer_id)}</note>` +
+    (wikidataCandidatesFor(l.person)[0]?.qid
+      ? `\n      <idno type="wikidata">https://www.wikidata.org/wiki/${escXml(wikidataCandidatesFor(l.person)[0].qid)}</idno>`
+      : "") +
+    `\n    </person>`
+  ))].join("\n");
+
+  // Tag person mentions in a simplified body
+  let bodyText = persons.map(p => {
+    const ref = persNameMap[p.name];
+    const ctx = escXml(p.context || p.name);
+    if (ref) {
+      const cert = (links.find(l=>l.person===p.name)?.status) === "high" ? "high" : "medium";
+      return `<persName ref="#${ref.replace(/:/g,"-")}" cert="${cert}">${escXml(p.raw_mention || p.name)}</persName>`;
+    }
+    return `<persName>${escXml(p.raw_mention || p.name)}</persName>`;
+  }).join("\n    ");
+
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>${escXml(meta.title || docId)}</title>
+        ${meta.author ? `<author>${escXml(meta.author)}</author>` : ""}
+      </titleStmt>
+      <publicationStmt>
+        <p>Generated by the Outremer PoC pipeline · ${new Date().toISOString()}</p>
+        <p>Source: ${escXml(doc.source_file || "")}</p>
+      </publicationStmt>
+    </fileDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <listPerson>
+${persListItems}
+      </listPerson>
+      <div type="extracted_persons">
+    ${bodyText}
+      </div>
+    </body>
+  </text>
+</TEI>`;
+
+  downloadText(xml, `${docId}.tei.xml`, "application/xml");
+}
+
+function escXml(s) {
+  return String(s ?? "").replaceAll("&","&amp;").replaceAll("<","&lt;")
+    .replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&apos;");
+}
+
+// ── JSON-LD export ─────────────────────────────────────────────────────────
+
+function exportJsonLd() {
+  if (!currentDoc) return;
+  const doc   = currentDoc;
+  const docId = doc.doc_id;
+  const meta  = doc.metadata || {};
+  const links = doc.links    || [];
+  const decisions = loadDecisions();
+
+  const entities = [];
+  for (const link of links) {
+    if (!link.top_candidate) continue;
+    const k = decisionKey(docId, link.person, link.top_candidate.outremer_id);
+    const d = decisions[k];
+    const communityAccepts = (communityVotes[k]?.accept || 0);
+    if (!d && communityAccepts < 2) continue;   // only export reviewed/agreed
+
+    const wdCands = wikidataCandidatesFor(link.person);
+    const entity = {
+      "@type":        "schema:Person",
+      "@id":          `outremer:${link.top_candidate.outremer_id}`,
+      "schema:name":  link.top_candidate.outremer_name,
+      "rdfs:label":   link.person,
+      "outremer:confidence":   link.confidence,
+      "outremer:matchStatus":  link.status,
+      "outremer:authorityId":  link.top_candidate.outremer_id,
+    };
+    if (wdCands.length && wdCands[0].score >= 0.4) {
+      entity["owl:sameAs"] = `http://www.wikidata.org/entity/${wdCands[0].qid}`;
+    }
+    if (d?.decision) {
+      entity["outremer:humanDecision"] = d.decision;
+      entity["outremer:reviewer"] = d.scholar_name || "anonymous";
+    }
+    entities.push(entity);
+  }
+
+  const jsonld = {
+    "@context": {
+      "schema":    "https://schema.org/",
+      "owl":       "http://www.w3.org/2002/07/owl#",
+      "rdfs":      "http://www.w3.org/2000/01/rdf-schema#",
+      "outremer":  "https://thodel.github.io/outremer/vocab#",
+      "crm":       "http://www.cidoc-crm.org/cidoc-crm/",
+    },
+    "@id":         `outremer:doc/${docId}`,
+    "@type":       "schema:Dataset",
+    "schema:name": meta.title || docId,
+    "schema:author": meta.author || null,
+    "schema:dateCreated": meta.year || null,
+    "schema:description": `Outremer PoC extraction — ${new Date().toISOString()}`,
+    "schema:hasPart": entities,
+  };
+
+  downloadText(JSON.stringify(jsonld, null, 2), `${docId}.jsonld`, "application/ld+json");
+}
+
+// ── Download helper ─────────────────────────────────────────────────────────
+
+function downloadText(content, filename, mimeType) {
+  const blob = new Blob([content], { type: mimeType });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+// ── Export decisions ────────────────────────────────────────────────────────
 
 function exportDecisions() {
   const d = loadDecisions();
@@ -512,7 +727,11 @@ function exportDecisions() {
 document.getElementById("loadBtn").addEventListener("click", () =>
   loadDoc(document.getElementById("docSelect").value));
 
-document.getElementById("exportBtn").addEventListener("click", exportDecisions);
+document.getElementById("exportBtn")?.addEventListener("click", exportDecisions);
+document.getElementById("exportTeiBtn")?.addEventListener("click", exportTei);
+document.getElementById("exportJsonLdBtn")?.addEventListener("click", exportJsonLd);
+
+initScholarName();
 
 document.getElementById("toggleRaw").addEventListener("click", function () {
   const raw = document.getElementById("raw");

@@ -114,10 +114,12 @@ def cmd_process(item_id: str) -> None:
     py = str(VENV_PY) if VENV_PY.exists() else sys.executable
 
     # Run pipeline
-    api_key = os.environ.get("GOOGLE_API_KEY", "")
+    api_key         = os.environ.get("GOOGLE_API_KEY", "")
+    mistral_api_key = os.environ.get("MISTRAL_API_KEY", "***REDACTED***")
     env = os.environ.copy()
     if api_key:
         env["GOOGLE_API_KEY"] = api_key
+    env["MISTRAL_API_KEY"] = mistral_api_key
 
     print(f"\nRunning pipeline (GOOGLE_API_KEY {'set' if api_key else 'NOT SET — fallback mode'})…")
     result = subprocess.run(
