@@ -231,7 +231,24 @@ function updateStats() {
         else if (d.decision === "flag") flagged++;
       }
     }
-    if (!link.candidates?.length) total++;
+
+    // Count Wikidata candidates for no_match persons
+    if (!link.candidates?.length) {
+      const wdCands = wikidataCandidatesFor(link.person);
+      if (wdCands.length) {
+        for (const c of wdCands) {
+          total++;
+          const d = decisions[decisionKey(docId, link.person, `wikidata:${c.qid}`)];
+          if (d) {
+            reviewed++;
+            if (d.decision === "accept")  accepted++;
+            else if (d.decision === "reject") rejected++;
+          }
+        }
+      } else {
+        total++;  // unresolvable no_match still counts as a slot
+      }
+    }
 
     // Count entity-level flags
     if (decisions[decisionKey(docId, link.person, "_not_a_person")]?.decision === "not_a_person") notAPerson++;
@@ -444,6 +461,84 @@ function setSyncPending(el) { el.textContent = "⟳"; el.className = "sync-indic
 function setSyncOk(el)      { el.textContent = "✓"; el.className = "sync-indicator sync-ok";      el.title = "Synced to server"; }
 function setSyncErr(el)     { el.textContent = "✗"; el.className = "sync-indicator sync-err";     el.title = "Sync failed — decision saved locally"; }
 
+// ── Wikidata candidate row (with adjudication buttons) ─────────────────────
+
+function renderWikidataCandidateRow(link, c, docId, decisions) {
+  const oId      = `wikidata:${c.qid}`;   // e.g. "wikidata:Q8581"
+  const k        = decisionKey(docId, link.person, oId);
+  const stored   = decisions[k];
+  const decision = stored?.decision || null;
+  const scorePct = Math.round((c.score || 0) * 100);
+  const relevantCls = c.score >= 0.4 ? "wd-relevant" : "wd-weak";
+
+  const row = el("div", `wd-row ${relevantCls} wd-adj-row`);
+  row.dataset.key = k;
+  if (decision) row.dataset.decision = decision;
+
+  row.innerHTML = `
+    <div class="wd-info">
+      <a class="wd-name" href="${esc(c.url)}" target="_blank" rel="noopener">
+        ${esc(c.label)} <span class="wd-qid">${esc(c.qid)}</span>
+      </a>
+      <span class="score-badge status-none">${scorePct}%</span>
+      <span class="wd-desc muted">${esc(c.description)}</span>
+      ${communityBadgeHtml(k)}
+    </div>
+    <div class="adjudication">
+      <button class="adj-btn accept ${decision==="accept"?"active":""}"
+              data-action="accept" title="Accept: this Wikidata entry matches the person">✅</button>
+      <button class="adj-btn reject ${decision==="reject"?"active":""}"
+              data-action="reject" title="Reject: wrong match">❌</button>
+      <span class="sync-indicator" title="Sync status"></span>
+    </div>
+  `;
+
+  const syncEl = row.querySelector(".sync-indicator");
+
+  row.querySelectorAll(".adj-btn").forEach(btn => {
+    btn.addEventListener("click", async () => {
+      const action = btn.dataset.action;
+      const d      = loadDecisions();
+      const prev   = d[k]?.decision;
+
+      if (prev === action) {
+        // Toggle off
+        delete d[k];
+        row.querySelectorAll(".adj-btn").forEach(b => b.classList.remove("active"));
+        row.removeAttribute("data-decision");
+        saveDecisions(d);
+        updateStats();
+        setSyncPending(syncEl);
+        try {
+          await deleteDecisionFromServer(docId, link.person, oId);
+          setSyncOk(syncEl);
+        } catch { setSyncErr(syncEl); }
+      } else {
+        d[k] = { decision: action, ts: new Date().toISOString() };
+        row.querySelectorAll(".adj-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        row.dataset.decision = action;
+        saveDecisions(d);
+        updateStats();
+        setSyncPending(syncEl);
+        try {
+          await syncDecisionToServer(docId, link.person, oId, action);
+          setSyncOk(syncEl);
+          // Optimistic community update
+          if (!communityVotes[k]) communityVotes[k] = { accept: 0, reject: 0, flag: 0 };
+          if (prev) communityVotes[k][prev] = Math.max(0, (communityVotes[k][prev] || 0) - 1);
+          communityVotes[k][action] = (communityVotes[k][action] || 0) + 1;
+          const cvEl = row.querySelector(".community-votes, .community-votes.muted");
+          if (cvEl) cvEl.outerHTML = communityBadgeHtml(k);
+          else row.querySelector(".wd-info").insertAdjacentHTML("beforeend", communityBadgeHtml(k));
+        } catch { setSyncErr(syncEl); }
+      }
+    });
+  });
+
+  return row;
+}
+
 // ── Links rendering ────────────────────────────────────────────────────────
 
 function renderLinks(doc) {
@@ -518,19 +613,9 @@ function renderLinks(doc) {
       const wdCands = wikidataCandidatesFor(link.person);
       if (wdCands.length) {
         const wdEl = el("div", "wikidata-section");
-        wdEl.innerHTML = `<div class="wd-label">Not in authority file — Wikidata candidates:</div>`;
+        wdEl.innerHTML = `<div class="wd-label">Not in authority file — Wikidata candidates (humans only):</div>`;
         for (const c of wdCands) {
-          const scorePct = Math.round((c.score || 0) * 100);
-          const relevantCls = c.score >= 0.4 ? "wd-relevant" : "wd-weak";
-          const row = el("div", `wd-row ${relevantCls}`);
-          row.innerHTML = `
-            <a class="wd-name" href="${esc(c.url)}" target="_blank" rel="noopener">
-              ${esc(c.label)} <span class="wd-qid">${esc(c.qid)}</span>
-            </a>
-            <span class="score-badge status-none">${scorePct}%</span>
-            <span class="wd-desc muted">${esc(c.description)}</span>
-          `;
-          wdEl.appendChild(row);
+          wdEl.appendChild(renderWikidataCandidateRow(link, c, docId, decisions));
         }
         card.appendChild(wdEl);
       } else {

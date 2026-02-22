@@ -385,20 +385,31 @@ select {
 }
 .wd-row {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: .5rem;
-  flex-wrap: wrap;
-  padding: .3rem .4rem;
+  padding: .35rem .5rem;
   border-radius: var(--radius);
-  margin-bottom: .25rem;
+  margin-bottom: .3rem;
   font-size: .83rem;
 }
+/* Adjudication-enabled Wikidata row: info left, buttons right */
+.wd-adj-row {
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+.wd-info {
+  display: flex;
+  align-items: center;
+  gap: .45rem;
+  flex-wrap: wrap;
+  min-width: 0;
+}
 .wd-relevant { background: #f0f6ff; }
-.wd-weak     { background: #fafafa; opacity: .75; }
-.wd-name     { color: var(--accent); text-decoration: none; font-weight: bold; }
+.wd-weak     { background: #fafafa; opacity: .8; }
+.wd-name     { color: var(--accent); text-decoration: none; font-weight: bold; white-space: nowrap; }
 .wd-name:hover { text-decoration: underline; }
 .wd-qid      { font-family: var(--mono); font-size: .72rem; font-weight: normal; color: var(--muted); }
-.wd-desc     { font-size: .78rem; }
+.wd-desc     { font-size: .78rem; color: var(--muted); }
 
 /* ── Raw JSON ────────────────────────────────────────────────────────── */
 #raw {
