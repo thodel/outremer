@@ -51,29 +51,25 @@ jobs:
         run: |
           python scripts/run_pipeline.py --genai-metadata
 
-      - name: Commit generated artifacts
-        id: commit
-        continue-on-error: true
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "chore: update extracted site data [skip ci]"
-          file_pattern: >-
-            site/index.json
-            site/data/**
-            site/bib/**
-            bib/**
-            data/wikidata_matches.json
-
-      - name: Debug commit failure
-        if: steps.commit.outcome == 'failure'
+      - name: Configure SSH for push
+        env:
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
         run: |
-          echo "## Commit step failed — debug info" >> $GITHUB_STEP_SUMMARY
-          echo '```' >> $GITHUB_STEP_SUMMARY
-          git status >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          git remote -v >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          git log --oneline -5 >> $GITHUB_STEP_SUMMARY
-          echo '```' >> $GITHUB_STEP_SUMMARY
-          echo "Git version: $(git --version)" >> $GITHUB_STEP_SUMMARY
-          exit 1
+          mkdir -p ~/.ssh
+          echo "$DEPLOY_KEY" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          git remote set-url origin git@github.com:thodel/outremer.git
+
+      - name: Commit generated artifacts
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add site/index.json site/data site/bib bib data/wikidata_matches.json
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "chore: update extracted site data [skip ci]"
+            git pull --rebase origin main
+            git push
+          fi
