@@ -52,17 +52,19 @@ jobs:
           python scripts/run_pipeline.py --genai-metadata
 
       - name: Commit generated artifacts
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          # Ensure GITHUB_TOKEN is used for push authentication
+          git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/thodel/outremer.git"
 
           git add site/index.json site/data site/bib bib data/wikidata_matches.json
 
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
-            # Commit first (clean tree), then rebase on top of any remote commits
-            # that landed while the pipeline was running, then push.
             git commit -m "chore: update extracted site data [skip ci]"
             git pull --rebase origin main
             git push
