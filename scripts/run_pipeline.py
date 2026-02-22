@@ -375,7 +375,8 @@ def process_file(
 
 
 def build_site_index(site_data_dir: Path, site_dir: Path) -> None:
-    files = sorted(site_data_dir.glob("*.json"))
+    _EXCLUDE = {"wikidata_matches.json", "authority.json"}
+    files = sorted(f for f in site_data_dir.glob("*.json") if f.name not in _EXCLUDE)
     index = {
         "generated_from": "run_pipeline.py",
         "count": len(files),
@@ -434,6 +435,14 @@ def main() -> int:
 
     build_site_index(site_data_dir=site_data_dir, site_dir=site_dir)
     print(f"Wrote {site_dir / 'index.json'}")
+
+    # Keep authority file in sync for the People Lookup page
+    import shutil
+    authority_src = Path(__file__).parent / "outremer_index.json"
+    authority_dst = site_data_dir / "authority.json"
+    if authority_src.exists():
+        shutil.copy2(authority_src, authority_dst)
+        print(f"Copied authority file → {authority_dst}")
 
     # Optional: Wikidata reconciliation for no_match persons
     wikidata_script = Path(__file__).parent / "wikidata_reconcile.py"

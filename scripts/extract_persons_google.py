@@ -97,28 +97,58 @@ LANGUAGE NOTE: This is a Middle High German medieval text. Key patterns:
 _JSON_PROMPT_BASE = """\
 You are a historical NLP assistant specialising in the medieval Levant (Crusades era, 11th–14th centuries).
 {language_hint}
-Extract ALL person mentions from the text below — including individuals, collectives (ethnic groups, armies, unnamed people), and ambiguous references.
+Extract ALL person mentions from the text below — individuals, collectives (armies, ethnic groups, unnamed crowds), and ambiguous references.
 
-For each person/group return a JSON object with these exact fields:
-  name          (string)   : normalised name or label (use the most common English form if known)
+━━ CRITICAL RULES FOR NAME EXTRACTION ━━
+
+1. KEEP TITLES AND NAMES TOGETHER.
+   A person's title is part of their identity — never split them.
+   "Bishop Odo", "Count Raymond of Tripoli", "Sultan Saladin", "Pope Urban",
+   "Professor Mildred", "King Louis" are each ONE entity, not two.
+   The `name` field must include the title: "Bishop Odo", not just "Odo".
+
+2. USE THE FULLEST NAME FORM seen in the text.
+   Prefer "Raymond IV of Toulouse" over "Raymond" if the longer form appears.
+   Use the most common English spelling for medieval persons.
+
+3. MODERN AUTHORS / SCHOLARS are NOT medieval persons.
+   If the text is a modern academic work (article, monograph, book chapter) and
+   mentions the author's name, a cited scholar (e.g. "Mayer argues", "cf. Cahen"),
+   or a modern institution — set confidence ≤ 0.15 and role = "modern author".
+   Do NOT conflate them with medieval persons.
+
+4. TITLES to recognise (include in `name` AND set in `title` field):
+   Medieval: King, Queen, Emperor, Empress, Prince, Princess, Duke, Duchess,
+   Count, Countess, Lord, Lady, Sir, Baron, Knight, Pope, Patriarch, Archbishop,
+   Bishop, Abbot, Prior, Deacon, Priest, Sultan, Caliph, Emir, Vizier, Atabeg,
+   Constable, Marshal, Seneschal, Regent, Viceroy, Doge, Master (of military orders).
+   Modern (low confidence): Professor, Prof., Dr., Mr., Mrs., Rev.
+
+5. COLLECTIVE GROUPS: set group=true for armies, ethnic/religious groups,
+   unnamed crowds (e.g. "the Franks", "the garrison", "pilgrims").
+
+━━ OUTPUT SCHEMA ━━
+
+For each person/group return:
+  name          (string)   : full name including title — most complete English form
   raw_mention   (string)   : exact text span as it appears in the source
-  title         (string|null) : e.g. "Count", "Bishop", "Sultan"
-  epithet       (string|null) : e.g. "the Lion", "the Bold"
-  toponym       (string|null) : place associated with the person, e.g. "Flanders"
-  role          (string|null) : e.g. "pilgrim", "knight", "merchant", "refugee"
+  title         (string|null) : title only, e.g. "Count", "Bishop", "Sultan"
+  epithet       (string|null) : e.g. "the Lionheart", "the Bold"
+  toponym       (string|null) : place associated with the person, e.g. "Tripoli"
+  role          (string|null) : e.g. "pilgrim", "knight", "merchant", "modern author"
   gender        (string)   : "m", "f", or "unknown"
-  group         (boolean)  : true if collective (army, ethnic group, unnamed crowd)
+  group         (boolean)  : true if collective
   context       (string)   : surrounding ~100 characters of text
-  confidence    (number)   : 0.0–1.0, your certainty this is a real person/group mention
+  confidence    (number)   : 0.0–1.0; use ≤ 0.15 for modern authors/scholars
 
-Also extract document metadata with these fields:
+Also extract document metadata:
   title    (string|null)
   author   (string|null)
   year     (string|null)
-  language (string|null) : ISO 639 code if detectable
+  language (string|null) : ISO 639 code
   doc_type (string|null) : "chronicle", "charter", "narrative", "letter", "list", or "other"
 
-Respond ONLY with valid JSON — no markdown fences, no commentary — matching this schema:
+Respond ONLY with valid JSON — no markdown fences, no commentary:
 {{
   "persons": [...],
   "metadata": {{ "title": ..., "author": ..., "year": ..., "language": ..., "doc_type": ... }}

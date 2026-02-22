@@ -3,9 +3,103 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Explorer — People of the Medieval Levant</title>
+  <title>Contribute your Knowledge — People of the Medieval Levant</title>
   <link rel="icon" type="image/png" href="./assets/logo.png" />
   <link rel="stylesheet" href="./style.css" />
+  <style>
+    /* ── Intro panel ── */
+    .intro-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius);
+      margin: 1.2rem auto;
+      max-width: 960px;
+      overflow: hidden;
+    }
+    .intro-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: .85rem 1.2rem;
+      cursor: pointer;
+      user-select: none;
+    }
+    .intro-header h2 { margin: 0; font-size: 1rem; color: var(--accent); }
+    .intro-toggle { font-size: .78rem; color: var(--muted); background: none; border: none; cursor: pointer; padding: .2rem .5rem; }
+    .intro-body { padding: 0 1.2rem 1.2rem; }
+
+    .intro-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: .9rem;
+      margin-bottom: 1.1rem;
+    }
+    .intro-step {
+      display: flex; gap: .65rem; align-items: flex-start;
+      background: var(--bg); border-radius: var(--radius);
+      padding: .75rem .9rem; border: 1px solid var(--border);
+    }
+    .step-num {
+      flex-shrink: 0;
+      width: 1.6rem; height: 1.6rem;
+      background: var(--accent); color: #fff;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .8rem; font-weight: 700;
+    }
+    .intro-step p { margin: 0; font-size: .85rem; color: var(--text); line-height: 1.6; }
+
+    /* ── Scholar name entry ── */
+    .scholar-entry {
+      display: flex; align-items: center; gap: .65rem;
+      background: color-mix(in srgb, var(--accent) 6%, var(--surface));
+      border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--border));
+      border-radius: var(--radius);
+      padding: .75rem 1rem;
+      flex-wrap: wrap;
+    }
+    .scholar-entry label { font-size: .88rem; font-weight: 600; color: var(--accent); white-space: nowrap; }
+    .scholar-entry input {
+      flex: 1; min-width: 160px;
+      padding: .45rem .75rem; font-size: .9rem;
+      font-family: var(--font); border: 1px solid var(--border);
+      border-radius: var(--radius); background: var(--surface); color: var(--text);
+    }
+    .scholar-entry input:focus { outline: none; border-color: var(--accent); }
+    .scholar-saved { font-size: .8rem; color: #166534; margin-left: .3rem; display: none; }
+
+    /* ── Document selector ── */
+    .doc-selector-row {
+      display: flex; gap: .6rem; align-items: center; flex-wrap: wrap;
+    }
+    #docSelect {
+      flex: 1; min-width: 200px;
+      padding: .55rem .8rem; font-size: .9rem;
+      font-family: var(--font); border: 1px solid var(--border);
+      border-radius: var(--radius); background: var(--surface); color: var(--text);
+      cursor: pointer;
+    }
+    #docSelect:focus { outline: none; border-color: var(--accent); }
+
+    /* ── Entity-level flag buttons ── */
+    .entity-flags {
+      display: flex; gap: .4rem; align-items: center;
+      padding: .35rem 0 .5rem;
+      border-bottom: 1px dashed var(--border);
+      margin-bottom: .5rem;
+      font-size: .78rem; color: var(--muted);
+    }
+    .entity-flags span { margin-right: .2rem; }
+    .flag-entity-btn {
+      padding: .25rem .65rem; font-size: .76rem;
+      border: 1px solid var(--border); border-radius: 20px;
+      background: var(--surface); cursor: pointer;
+      transition: background .12s, border-color .12s, color .12s;
+      font-family: var(--font);
+    }
+    .flag-entity-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .flag-entity-btn.active-not-person { background: #fee2e2; border-color: #dc2626; color: #dc2626; }
+    .flag-entity-btn.active-wrong-era  { background: #fef3c7; border-color: #d97706; color: #d97706; }
+  </style>
 </head>
 <body>
   <header>
@@ -15,62 +109,83 @@
         <h1>Voyagers → Outremer</h1>
         <p class="subtitle">
           <a href="./index.html" style="color:rgba(255,255,255,.7);text-decoration:none;">← Project</a>
-          &nbsp;·&nbsp; Explorer
+          &nbsp;·&nbsp; Contribute your Knowledge
           &nbsp;·&nbsp; <a href="./people.html" style="color:rgba(255,255,255,.7);text-decoration:none;">👤 People</a>
           &nbsp;·&nbsp; <a href="./stats.html" style="color:rgba(255,255,255,.7);text-decoration:none;">📊 Stats</a>
           &nbsp;·&nbsp; <a href="./upload.html" style="color:rgba(255,255,255,.7);text-decoration:none;">Contribute a Source</a>
         </p>
       </div>
-      <div id="scholarBadge" style="font-size:.82rem;color:rgba(255,255,255,.8);cursor:pointer;" title="Click to change your display name">
-        👤 <span id="scholarNameDisplay">Anonymous</span>
-      </div>
     </div>
   </header>
 
   <main>
-    <!-- Document selector -->
-    <section class="panel" id="panel-docs">
-      <h2>Documents</h2>
-      <div class="row gap">
-        <select id="docSelect"></select>
-        <button id="loadBtn" class="btn-primary">Load</button>
+
+    <!-- ── Intro / How-to panel ── -->
+    <div class="intro-panel" id="introPanel">
+      <div class="intro-header" onclick="toggleIntro()">
+        <h2>📖 How to Contribute your Knowledge</h2>
+        <button class="intro-toggle" id="introToggleBtn">Minimise ▲</button>
       </div>
-      <div id="docMeta" class="meta-block mono"></div>
+      <div class="intro-body" id="introBody">
+        <div class="intro-steps">
+          <div class="intro-step">
+            <span class="step-num">1</span>
+            <p><strong>Choose a source document</strong> below. The AI has extracted person mentions from each text and proposed links to our authority file of medieval Levant persons.</p>
+          </div>
+          <div class="intro-step">
+            <span class="step-num">2</span>
+            <p><strong>Review each link.</strong> Accept (✅) if the extracted person matches the authority entry. Reject (❌) if it's wrong. Flag (🚩) if you're unsure.</p>
+          </div>
+          <div class="intro-step">
+            <span class="step-num">3</span>
+            <p><strong>Flag bad extractions.</strong> If an extracted entry is not a person at all, or is a modern scholar rather than a medieval figure, use the flag buttons on each card.</p>
+          </div>
+        </div>
+        <!-- Scholar name entry -->
+        <div class="scholar-entry">
+          <label>👤 Your name (credited in the dataset):</label>
+          <input type="text" id="scholarNameInput" placeholder="e.g. Jane Smith or J.S." maxlength="60" />
+          <button class="btn-primary" id="scholarSaveBtn" onclick="saveScholarName()">Save name</button>
+          <span class="scholar-saved" id="scholarSaved">✓ Saved</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Document selector ── -->
+    <section class="panel" id="panel-docs">
+      <h2>Source Documents</h2>
+      <div class="doc-selector-row">
+        <select id="docSelect" title="Choose a source document"></select>
+        <button id="loadBtn" class="btn-primary">Load document</button>
+      </div>
+      <div id="docMeta" class="meta-block" style="margin-top:.6rem;font-size:.88rem;"></div>
     </section>
 
-    <!-- Extracted persons -->
+    <!-- ── Extracted persons ── -->
     <section class="panel" id="panel-persons">
       <h2>Extracted Persons <span id="personCount" class="badge"></span></h2>
       <div id="persons" class="card-grid"></div>
     </section>
 
-    <!-- Links + adjudication -->
+    <!-- ── Links + adjudication ── -->
     <section class="panel" id="panel-links">
       <h2>Links: Voyagers → Outremer</h2>
-
-      <!-- Stats bar -->
-      <!-- Scholar name prompt (shown once on first visit) -->
-      <div id="namePrompt" class="name-prompt hidden">
-        👤 You're contributing anonymously. Add your name so your decisions are credited.
-        <input id="nameInput" type="text" placeholder="Your name or initials" maxlength="60" />
-        <button id="nameSaveBtn" class="btn-small">Save</button>
-        <button id="nameDismissBtn" class="btn-small">Stay anonymous</button>
-      </div>
 
       <div id="statsBar" class="stats-bar hidden">
         <span id="statReviewed"></span>
         <span class="sep">·</span>
-        <span id="statAccepted" class="stat-accepted">✅ <span id="statAcceptedN">0</span> accepted</span>
+        <span id="statAccepted"  class="stat-accepted">✅ <span id="statAcceptedN">0</span> accepted</span>
         <span class="sep">·</span>
-        <span id="statRejected" class="stat-rejected">❌ <span id="statRejectedN">0</span> rejected</span>
+        <span id="statRejected"  class="stat-rejected">❌ <span id="statRejectedN">0</span> rejected</span>
         <span class="sep">·</span>
-        <span id="statFlagged" class="stat-flagged">🚩 <span id="statFlaggedN">0</span> flagged</span>
-        <button id="exportBtn"      class="btn-small">Export decisions (JSON)</button>
-        <button id="exportTeiBtn"   class="btn-small">Export TEI-XML</button>
-        <button id="exportJsonLdBtn"class="btn-small">Export JSON-LD</button>
+        <span id="statFlagged"   class="stat-flagged">🚩 <span id="statFlaggedN">0</span> flagged</span>
+        <span class="sep">·</span>
+        <span style="color:#d97706;">⊘ <span id="statEntityFlagsN">0</span> entity flags</span>
+        <button id="exportBtn"       class="btn-small">Export decisions (JSON)</button>
+        <button id="exportTeiBtn"    class="btn-small">Export TEI-XML</button>
+        <button id="exportJsonLdBtn" class="btn-small">Export JSON-LD</button>
       </div>
 
-      <!-- Filter bar -->
       <div id="filterBar" class="filter-bar hidden">
         <span class="filter-label">Show:</span>
         <button class="filter-btn active" data-filter="all">All</button>
@@ -85,7 +200,7 @@
       <div id="links" class="card-grid"></div>
     </section>
 
-    <!-- Raw JSON -->
+    <!-- ── Raw JSON ── -->
     <section class="panel" id="panel-raw">
       <h2>Raw JSON <button id="toggleRaw" class="btn-small">show</button></h2>
       <pre id="raw" class="mono hidden"></pre>
@@ -93,5 +208,42 @@
   </main>
 
   <script type="module" src="./app.js"></script>
+  <script>
+    // ── Intro panel toggle ──
+    const INTRO_KEY = "outremer_intro_collapsed";
+    function toggleIntro() {
+      const body = document.getElementById("introBody");
+      const btn  = document.getElementById("introToggleBtn");
+      const collapsed = body.style.display === "none";
+      body.style.display = collapsed ? "" : "none";
+      btn.textContent = collapsed ? "Minimise ▲" : "Expand ▼";
+      localStorage.setItem(INTRO_KEY, collapsed ? "0" : "1");
+    }
+    // Restore collapsed state
+    if (localStorage.getItem(INTRO_KEY) === "1") {
+      document.getElementById("introBody").style.display = "none";
+      document.getElementById("introToggleBtn").textContent = "Expand ▼";
+    }
+
+    // ── Scholar name (managed here + synced into app.js via module) ──
+    const SCHOLAR_KEY = "outremer_scholar_name";
+    function loadScholarName() {
+      const v = localStorage.getItem(SCHOLAR_KEY) || "";
+      document.getElementById("scholarNameInput").value = v;
+      return v;
+    }
+    function saveScholarName() {
+      const v = document.getElementById("scholarNameInput").value.trim();
+      localStorage.setItem(SCHOLAR_KEY, v);
+      const s = document.getElementById("scholarSaved");
+      s.style.display = "inline";
+      setTimeout(() => s.style.display = "none", 2000);
+    }
+    // Save on Enter
+    document.getElementById("scholarNameInput").addEventListener("keydown", e => {
+      if (e.key === "Enter") saveScholarName();
+    });
+    loadScholarName();
+  </script>
 </body>
 </html>

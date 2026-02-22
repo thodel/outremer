@@ -50,33 +50,35 @@ function updateScholarBadge() {
 }
 
 function initScholarName() {
-  updateScholarBadge();
+  // Scholar name entry is handled by inline script in explorer.html.
+  // This function is a no-op now but kept for any future use.
+}
 
-  // Show prompt once if name not set and not previously dismissed
-  if (!getScholarName() && !localStorage.getItem(NAME_PROMPTED_KEY)) {
-    const prompt = document.getElementById("namePrompt");
-    if (prompt) prompt.classList.remove("hidden");
+// ── Entity-level flag toggle ────────────────────────────────────────────────
+
+async function toggleEntityFlag(flagType, person, docId) {
+  const key = decisionKey(docId, person, `_${flagType}`);
+  const d   = loadDecisions();
+
+  if (d[key]?.decision === flagType) {
+    // Toggle off
+    delete d[key];
+    saveDecisions(d);
+    // Remove from server
+    await fetch(`${API_BASE}/outremer-decision`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ doc_id: docId, person, outremer_id: `_${flagType}`,
+                             client_id: CLIENT_ID }),
+    }).catch(() => {});
+  } else {
+    d[key] = { decision: flagType, ts: Date.now() };
+    saveDecisions(d);
+    await syncDecisionToServer(docId, person, `_${flagType}`, flagType);
   }
 
-  document.getElementById("nameSaveBtn")?.addEventListener("click", () => {
-    const val = document.getElementById("nameInput").value.trim();
-    if (val) { setScholarName(val); document.getElementById("namePrompt").classList.add("hidden"); }
-  });
-
-  document.getElementById("nameDismissBtn")?.addEventListener("click", () => {
-    localStorage.setItem(NAME_PROMPTED_KEY, "1");
-    document.getElementById("namePrompt").classList.add("hidden");
-  });
-
-  document.getElementById("nameInput")?.addEventListener("keydown", e => {
-    if (e.key === "Enter") document.getElementById("nameSaveBtn").click();
-  });
-
-  document.getElementById("scholarBadge")?.addEventListener("click", () => {
-    const current = getScholarName();
-    const val = prompt("Enter your display name (or leave blank for anonymous):", current);
-    if (val !== null) { setScholarName(val); }
-  });
+  renderLinks(currentDoc);
+  updateStats();
 }
 
 // ── Local decision store ───────────────────────────────────────────────────
@@ -215,6 +217,8 @@ function updateStats() {
   const docId = currentDoc.doc_id;
 
   let total = 0, reviewed = 0, accepted = 0, rejected = 0, flagged = 0;
+  let notAPerson = 0, wrongEra = 0;
+
   for (const link of links) {
     for (const c of link.candidates || []) {
       total++;
@@ -227,12 +231,18 @@ function updateStats() {
       }
     }
     if (!link.candidates?.length) total++;
+
+    // Count entity-level flags
+    if (decisions[decisionKey(docId, link.person, "_not_a_person")]?.decision === "not_a_person") notAPerson++;
+    if (decisions[decisionKey(docId, link.person, "_wrong_era")]?.decision  === "wrong_era")  wrongEra++;
   }
 
-  document.getElementById("statReviewed").textContent = `${reviewed} / ${total} reviewed`;
-  document.getElementById("statAcceptedN").textContent = accepted;
-  document.getElementById("statRejectedN").textContent = rejected;
-  document.getElementById("statFlaggedN").textContent  = flagged;
+  document.getElementById("statReviewed").textContent  = `${reviewed} / ${total} reviewed`;
+  document.getElementById("statAcceptedN").textContent  = accepted;
+  document.getElementById("statRejectedN").textContent  = rejected;
+  document.getElementById("statFlaggedN").textContent   = flagged;
+  const efEl = document.getElementById("statEntityFlagsN");
+  if (efEl) efEl.textContent = notAPerson + wrongEra;
   document.getElementById("statsBar").classList.remove("hidden");
   document.getElementById("filterBar").classList.remove("hidden");
 }
@@ -483,6 +493,25 @@ function renderLinks(doc) {
       </div>
     `;
 
+    // ── Entity-level feedback (per person, not per candidate) ──────────────
+    const notPersonKey = decisionKey(docId, link.person, "_not_a_person");
+    const wrongEraKey  = decisionKey(docId, link.person, "_wrong_era");
+    const isNotPerson  = decisions[notPersonKey]?.decision === "not_a_person";
+    const isWrongEra   = decisions[wrongEraKey]?.decision  === "wrong_era";
+
+    const flagsEl = el("div", "entity-flags");
+    flagsEl.innerHTML = `
+      <span>Flag as:</span>
+      <button class="flag-entity-btn ${isNotPerson ? "active-not-person" : ""}"
+              data-eflag="not_a_person">⊘ Not a person</button>
+      <button class="flag-entity-btn ${isWrongEra ? "active-wrong-era" : ""}"
+              data-eflag="wrong_era">🕰 Wrong era (modern)</button>
+    `;
+    flagsEl.querySelectorAll(".flag-entity-btn").forEach(btn => {
+      btn.addEventListener("click", () => toggleEntityFlag(btn.dataset.eflag, link.person, docId));
+    });
+    card.appendChild(flagsEl);
+
     if (!link.candidates?.length) {
       // Try Wikidata candidates
       const wdCands = wikidataCandidatesFor(link.person);
@@ -523,13 +552,15 @@ async function loadDoc(filename) {
   const doc = await fetchJson(`./data/${filename}`);
   currentDoc = doc;
 
-  document.getElementById("docMeta").textContent = JSON.stringify({
-    doc_id: doc.doc_id,
-    source_file: doc.source_file,
-    input_type: doc.input_type,
-    extraction_mode: doc.extraction_mode || "unknown",
-    metadata: doc.metadata,
-  }, null, 2);
+  const meta = doc.metadata || {};
+  const metaParts = [
+    meta.author ? `<strong>${esc(meta.author)}</strong>` : null,
+    meta.year   ? `${esc(meta.year)}` : null,
+    meta.title  ? `<em>${esc(meta.title)}</em>` : null,
+    meta.doc_type ? `[${esc(meta.doc_type)}]` : null,
+    `<span class="muted">· extraction: ${esc(doc.extraction_mode || "unknown")} · ${(doc.links||[]).length} persons</span>`,
+  ].filter(Boolean);
+  document.getElementById("docMeta").innerHTML = metaParts.join(" · ");
 
   // Fetch community votes + Wikidata matches before rendering links
   await Promise.all([
@@ -548,14 +579,38 @@ async function loadIndex() {
   const idx = await fetchJson("./index.json");
   const sel = document.getElementById("docSelect");
   sel.innerHTML = "";
-  for (const name of (idx.documents || [])) {
+
+  // Filter out non-document files
+  const docs = (idx.documents || []).filter(n =>
+    !n.includes("wikidata") && !n.includes("authority")
+  );
+
+  // Fetch metadata for each doc to build readable labels
+  const metas = await Promise.all(docs.map(async name => {
+    try {
+      const d = await fetchJson(`./data/${name}`);
+      return { name, meta: d.metadata || {} };
+    } catch {
+      return { name, meta: {} };
+    }
+  }));
+
+  for (const { name, meta } of metas) {
     const opt = document.createElement("option");
     opt.value = name;
-    opt.textContent = name;
+    // Format: "Author (Year) — Title" or fall back to slug
+    const parts = [];
+    if (meta.author) parts.push(meta.author);
+    if (meta.year)   parts.push(`(${meta.year})`);
+    const label = parts.length
+      ? `${parts.join(" ")}${meta.title ? " — " + meta.title : ""}`
+      : name.replace(".json", "").replace(/-/g, " ");
+    opt.textContent = label;
     sel.appendChild(opt);
   }
-  if ((idx.documents || []).length) {
-    await loadDoc(idx.documents[0]);
+
+  if (docs.length) {
+    await loadDoc(docs[0]);
   } else {
     document.getElementById("docMeta").textContent =
       "No documents found. Add .txt/.pdf files to data/raw and run the pipeline.";
