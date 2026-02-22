@@ -25,13 +25,12 @@ from urllib.request import Request, urlopen
 
 # ── Config ─────────────────────────────────────────────────────────────────
 
-WD_SEARCH    = "https://www.wikidata.org/w/api.php"
+WD_SPARQL    = "https://query.wikidata.org/sparql"
 WD_ENTITY    = "https://www.wikidata.org/wiki/{qid}"
-WD_API_DELAY = 0.35   # seconds between requests (be polite)
+WD_API_DELAY = 0.5    # seconds between requests (be polite to SPARQL endpoint)
 USER_AGENT   = "outremer-poc/1.0 (https://github.com/thodel/outremer; tobias.hodel@unibe.ch)"
 
-# Medieval Levant-relevant instance types (Q5=human, Q215627=person)
-# We also whitelist known Wikidata subclasses via description filtering
+# Medieval Levant-relevant keywords for scoring
 DESCRIPTION_WHITELIST_RE = re.compile(
     r"\b(crusad|knight|king|queen|count|bishop|pope|sultan|emir|patriarch|"
     r"noble|pilgrim|merchant|historian|chronicler|medieval|middle age|"
@@ -46,20 +45,50 @@ def normalise(s: str) -> str:
     return re.sub(r"\s+", " ", s).lower().strip()
 
 
-def wd_search(name: str, lang: str = "en", limit: int = 5) -> list[dict[str, Any]]:
-    """Call Wikidata wbsearchentities API. Returns list of candidate dicts."""
-    params = {
-        "action":   "wbsearchentities",
-        "search":   name,
-        "language": lang,
-        "type":     "item",
-        "limit":    limit,
-        "format":   "json",
-    }
-    url = f"{WD_SEARCH}?{urlencode(params)}"
-    req = Request(url, headers={"User-Agent": USER_AGENT})
-    with urlopen(req, timeout=10) as r:
-        return json.loads(r.read()).get("search", [])
+def wd_search_humans(name: str, lang: str = "en", limit: int = 5) -> list[dict[str, Any]]:
+    """
+    Query Wikidata SPARQL endpoint for persons matching `name` that are
+    instance-of human (P31=Q5). Returns list of dicts with keys:
+    id, label, description.
+    Places, geographical features, and other non-human entities are excluded.
+    We cast a wide inner search (20 candidates) and then apply P31=Q5 filter,
+    so that lower-ranked persons aren't lost to non-human items near the top.
+    """
+    safe_name = name.replace('"', '').replace('\\', '')
+    sparql = f"""
+SELECT ?item ?itemLabel ?itemDescription WHERE {{
+  SERVICE wikibase:mwapi {{
+    bd:serviceParam wikibase:endpoint "www.wikidata.org" ;
+                    wikibase:api "EntitySearch" ;
+                    mwapi:search "{safe_name}" ;
+                    mwapi:language "{lang}" ;
+                    mwapi:limit "20" .
+    ?item wikibase:apiOutputItem mwapi:item .
+  }}
+  ?item wdt:P31 wd:Q5 .
+  SERVICE wikibase:label {{ bd:serviceParam wikibase:language "{lang},en" . }}
+}}
+LIMIT {limit}
+"""
+    params = urlencode({"query": sparql, "format": "json"})
+    url = f"{WD_SPARQL}?{params}"
+    req = Request(url, headers={
+        "User-Agent": USER_AGENT,
+        "Accept": "application/sparql-results+json",
+    })
+    with urlopen(req, timeout=15) as r:
+        data = json.loads(r.read())
+    bindings = data.get("results", {}).get("bindings", [])
+    results = []
+    for b in bindings:
+        qid   = b["item"]["value"].rsplit("/", 1)[-1]
+        label = b.get("itemLabel", {}).get("value", "")
+        desc  = b.get("itemDescription", {}).get("value", "")
+        # Skip if label is just the QID (no useful label)
+        if label == qid:
+            continue
+        results.append({"id": qid, "label": label, "description": desc})
+    return results
 
 
 def score_candidate(name: str, cand: dict) -> float:
@@ -86,9 +115,9 @@ def score_candidate(name: str, cand: dict) -> float:
 
 
 def reconcile_person(name: str, limit: int = 3) -> list[dict[str, Any]]:
-    """Return top Wikidata candidates for a person name."""
+    """Return top Wikidata human candidates for a person name (P31=Q5 only)."""
     try:
-        results = wd_search(name, limit=limit + 3)
+        results = wd_search_humans(name, limit=limit + 5)
     except Exception as e:
         print(f"  Wikidata error for '{name}': {e}")
         return []

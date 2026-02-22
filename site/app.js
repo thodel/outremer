@@ -56,27 +56,28 @@ function initScholarName() {
 
 // ── Entity-level flag toggle ────────────────────────────────────────────────
 
-async function toggleEntityFlag(flagType, person, docId) {
+function toggleEntityFlag(flagType, person, docId) {
   const key = decisionKey(docId, person, `_${flagType}`);
   const d   = loadDecisions();
 
   if (d[key]?.decision === flagType) {
-    // Toggle off
+    // Toggle off — update local state first, then fire-and-forget server call
     delete d[key];
     saveDecisions(d);
-    // Remove from server
-    await fetch(`${API_BASE}/outremer-decision`, {
+    fetch(`${API_BASE}/outremer-decision`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ doc_id: docId, person, outremer_id: `_${flagType}`,
                              client_id: CLIENT_ID }),
     }).catch(() => {});
   } else {
+    // Toggle on — update local state first, then fire-and-forget server call
     d[key] = { decision: flagType, ts: Date.now() };
     saveDecisions(d);
-    await syncDecisionToServer(docId, person, `_${flagType}`, flagType);
+    syncDecisionToServer(docId, person, `_${flagType}`, flagType).catch(() => {});
   }
 
+  // Always re-render immediately from local state (no await)
   renderLinks(currentDoc);
   updateStats();
 }
