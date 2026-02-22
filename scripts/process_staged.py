@@ -115,7 +115,7 @@ def cmd_process(item_id: str) -> None:
 
     # Run pipeline
     api_key         = os.environ.get("GOOGLE_API_KEY", "")
-    mistral_api_key = os.environ.get("MISTRAL_API_KEY", "***REDACTED***")
+    mistral_api_key = os.environ.get("MISTRAL_API_KEY", "")
     env = os.environ.copy()
     if api_key:
         env["GOOGLE_API_KEY"] = api_key
