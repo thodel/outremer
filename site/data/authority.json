@@ -1,0 +1,4634 @@
+{
+  "schema_version": "gold-person-authority-v1",
+  "generated_at": "2025-12-28",
+  "record_count": 126,
+  "persons": [
+    {
+      "authority_id": "AUTH:CR1",
+      "preferred_label": "Conrad III of Germany",
+      "identifiers": {
+        "project_identifier": "CR1",
+        "omeka_item_id": 149
+      },
+      "name": {
+        "raw": "Conrad III of Germany",
+        "name": "Conrad",
+        "regnal": "III",
+        "toponym": "Germany",
+        "pattern": "regnal_of"
+      },
+      "variants": [
+        "Conrad",
+        "Conrad (Germany)",
+        "Conrad 3",
+        "Conrad 3 of Germany",
+        "Conrad III",
+        "Conrad III of Germany",
+        "Conrad, Germany",
+        "Germany's Conrad"
+      ],
+      "normalized": {
+        "preferred": "conrad iii of germany",
+        "variants": [
+          "conrad",
+          "conrad 3",
+          "conrad 3 of germany",
+          "conrad germany",
+          "conrad iii",
+          "conrad iii of germany",
+          "germany s conrad"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_149.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR2",
+      "preferred_label": "Fulk V of Anjou",
+      "identifiers": {
+        "project_identifier": "CR2",
+        "omeka_item_id": 150
+      },
+      "name": {
+        "raw": "Fulk V of Anjou",
+        "name": "Fulk",
+        "regnal": "V",
+        "toponym": "Anjou",
+        "pattern": "regnal_of"
+      },
+      "variants": [
+        "Anjou's Fulk",
+        "Fulk",
+        "Fulk (Anjou)",
+        "Fulk 5",
+        "Fulk 5 of Anjou",
+        "Fulk V",
+        "Fulk V of Anjou",
+        "Fulk, Anjou"
+      ],
+      "normalized": {
+        "preferred": "fulk v of anjou",
+        "variants": [
+          "anjou s fulk",
+          "fulk",
+          "fulk 5",
+          "fulk 5 of anjou",
+          "fulk anjou",
+          "fulk v",
+          "fulk v of anjou"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_150.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR3",
+      "preferred_label": "Baldwin of Vern d'Anjou",
+      "identifiers": {
+        "project_identifier": "CR3",
+        "omeka_item_id": 151
+      },
+      "name": {
+        "raw": "Baldwin of Vern d'Anjou",
+        "name": "Baldwin",
+        "toponym": "Vern d'Anjou",
+        "pattern": "of"
+      },
+      "variants": [
+        "Baldwin",
+        "Baldwin (Vern d'Anjou)",
+        "Baldwin of Vern d'Anjou",
+        "Baldwin, Vern d'Anjou",
+        "Vern d'Anjou's Baldwin"
+      ],
+      "normalized": {
+        "preferred": "baldwin of vern d anjou",
+        "variants": [
+          "baldwin",
+          "baldwin of vern d anjou",
+          "baldwin vern d anjou",
+          "vern d anjou s baldwin"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_151.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR4",
+      "preferred_label": "Berlay II of Montreuil",
+      "identifiers": {
+        "project_identifier": "CR4",
+        "omeka_item_id": 152
+      },
+      "name": {
+        "raw": "Berlay II of Montreuil",
+        "name": "Berlay",
+        "regnal": "II",
+        "toponym": "Montreuil",
+        "pattern": "regnal_of"
+      },
+      "variants": [
+        "Berlay",
+        "Berlay (Montreuil)",
+        "Berlay 2",
+        "Berlay 2 of Montreuil",
+        "Berlay II",
+        "Berlay II of Montreuil",
+        "Berlay, Montreuil",
+        "Montreuil's Berlay"
+      ],
+      "normalized": {
+        "preferred": "berlay ii of montreuil",
+        "variants": [
+          "berlay",
+          "berlay 2",
+          "berlay 2 of montreuil",
+          "berlay ii",
+          "berlay ii of montreuil",
+          "berlay montreuil",
+          "montreuil s berlay"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_152.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR5",
+      "preferred_label": "Berlay III of Montreuil",
+      "identifiers": {
+        "project_identifier": "CR5",
+        "omeka_item_id": 153
+      },
+      "name": {
+        "raw": "Berlay III of Montreuil",
+        "name": "Berlay",
+        "regnal": "III",
+        "toponym": "Montreuil",
+        "pattern": "regnal_of"
+      },
+      "variants": [
+        "Berlay",
+        "Berlay (Montreuil)",
+        "Berlay 3",
+        "Berlay 3 of Montreuil",
+        "Berlay III",
+        "Berlay III of Montreuil",
+        "Berlay, Montreuil",
+        "Montreuil's Berlay"
+      ],
+      "normalized": {
+        "preferred": "berlay iii of montreuil",
+        "variants": [
+          "berlay",
+          "berlay 3",
+          "berlay 3 of montreuil",
+          "berlay iii",
+          "berlay iii of montreuil",
+          "berlay montreuil",
+          "montreuil s berlay"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_153.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR6",
+      "preferred_label": "Fulk of Plessis-Macé",
+      "identifiers": {
+        "project_identifier": "CR6",
+        "omeka_item_id": 154
+      },
+      "name": {
+        "raw": "Fulk of Plessis-Macé",
+        "name": "Fulk",
+        "toponym": "Plessis-Macé",
+        "pattern": "of"
+      },
+      "variants": [
+        "Fulk",
+        "Fulk (Plessis-Macé)",
+        "Fulk of Plessis-Mace",
+        "Fulk of Plessis-Macé",
+        "Fulk, Plessis-Macé",
+        "Plessis-Macé's Fulk"
+      ],
+      "normalized": {
+        "preferred": "fulk of plessis mace",
+        "variants": [
+          "fulk",
+          "fulk of plessis mace",
+          "fulk plessis mace",
+          "plessis mace s fulk"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_154.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR8",
+      "preferred_label": "Guy Tortus of Rochefort",
+      "identifiers": {
+        "project_identifier": "CR8",
+        "omeka_item_id": 156
+      },
+      "name": {
+        "raw": "Guy Tortus of Rochefort",
+        "name": "Guy Tortus",
+        "toponym": "Rochefort",
+        "pattern": "of"
+      },
+      "variants": [
+        "Guy Tortus",
+        "Guy Tortus (Rochefort)",
+        "Guy Tortus of Rochefort",
+        "Guy Tortus, Rochefort",
+        "Rochefort's Guy Tortus"
+      ],
+      "normalized": {
+        "preferred": "guy tortus of rochefort",
+        "variants": [
+          "guy tortus",
+          "guy tortus of rochefort",
+          "guy tortus rochefort",
+          "rochefort s guy tortus"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_156.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR9",
+      "preferred_label": "R. Gabard",
+      "identifiers": {
+        "project_identifier": "CR9",
+        "omeka_item_id": 157
+      },
+      "name": {
+        "raw": "R. Gabard",
+        "given": "R.",
+        "rest": "Gabard",
+        "pattern": "space"
+      },
+      "variants": [
+        "R. Gabard"
+      ],
+      "normalized": {
+        "preferred": "r gabard",
+        "variants": [
+          "r gabard"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_157.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR10",
+      "preferred_label": "Rainald of Martigné",
+      "identifiers": {
+        "project_identifier": "CR10",
+        "omeka_item_id": 158
+      },
+      "name": {
+        "raw": "Rainald of Martigné",
+        "name": "Rainald",
+        "toponym": "Martigné",
+        "pattern": "of"
+      },
+      "variants": [
+        "Martigné's Rainald",
+        "Rainald",
+        "Rainald (Martigné)",
+        "Rainald of Martigne",
+        "Rainald of Martigné",
+        "Rainald, Martigné"
+      ],
+      "normalized": {
+        "preferred": "rainald of martigne",
+        "variants": [
+          "martigne s rainald",
+          "rainald",
+          "rainald martigne",
+          "rainald of martigne"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_158.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR11",
+      "preferred_label": "William the Huntsman",
+      "identifiers": {
+        "project_identifier": "CR11",
+        "omeka_item_id": 159
+      },
+      "name": {
+        "raw": "William the Huntsman",
+        "name": "William",
+        "epithet": "Huntsman",
+        "pattern": "the"
+      },
+      "variants": [
+        "William",
+        "William (Huntsman)",
+        "William the Huntsman"
+      ],
+      "normalized": {
+        "preferred": "william the huntsman",
+        "variants": [
+          "william",
+          "william huntsman",
+          "william the huntsman"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_159.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR12",
+      "preferred_label": "Henry I of Troyes, count of Champagne",
+      "identifiers": {
+        "project_identifier": "CR12",
+        "omeka_item_id": 160
+      },
+      "name": {
+        "raw": "Henry I of Troyes, count of Champagne",
+        "name": "Henry",
+        "regnal": "I",
+        "toponym": "Troyes, count of Champagne",
+        "pattern": "regnal_of"
+      },
+      "variants": [
+        "Henry",
+        "Henry (Troyes, count of Champagne)",
+        "Henry 1",
+        "Henry 1 of Troyes, count of Champagne",
+        "Henry I",
+        "Henry I of Troyes, count of Champagne",
+        "Henry, Troyes, count of Champagne",
+        "Troyes, count of Champagne's Henry"
+      ],
+      "normalized": {
+        "preferred": "henry i of troyes count of champagne",
+        "variants": [
+          "henry",
+          "henry 1",
+          "henry 1 of troyes count of champagne",
+          "henry i",
+          "henry i of troyes count of champagne",
+          "henry troyes count of champagne",
+          "troyes count of champagne s henry"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_160.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR13",
+      "preferred_label": "Hugh of Troyes",
+      "identifiers": {
+        "project_identifier": "CR13",
+        "omeka_item_id": 161
+      },
+      "name": {
+        "raw": "Hugh of Troyes",
+        "name": "Hugh",
+        "toponym": "Troyes",
+        "pattern": "of"
+      },
+      "variants": [
+        "Hugh",
+        "Hugh (Troyes)",
+        "Hugh of Troyes",
+        "Hugh, Troyes",
+        "Troyes's Hugh"
+      ],
+      "normalized": {
+        "preferred": "hugh of troyes",
+        "variants": [
+          "hugh",
+          "hugh of troyes",
+          "hugh troyes",
+          "troyes s hugh"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_161.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR14",
+      "preferred_label": "Erard I of Brienne",
+      "identifiers": {
+        "project_identifier": "CR14",
+        "omeka_item_id": 162
+      },
+      "name": {
+        "raw": "Erard I of Brienne",
+        "name": "Erard",
+        "regnal": "I",
+        "toponym": "Brienne",
+        "pattern": "regnal_of"
+      },
+      "variants": [
+        "Brienne's Erard",
+        "Erard",
+        "Erard (Brienne)",
+        "Erard 1",
+        "Erard 1 of Brienne",
+        "Erard I",
+        "Erard I of Brienne",
+        "Erard, Brienne"
+      ],
+      "normalized": {
+        "preferred": "erard i of brienne",
+        "variants": [
+          "brienne s erard",
+          "erard",
+          "erard 1",
+          "erard 1 of brienne",
+          "erard brienne",
+          "erard i",
+          "erard i of brienne"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_162.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR15",
+      "preferred_label": "Sigurd Magnússon",
+      "identifiers": {
+        "project_identifier": "CR15",
+        "omeka_item_id": 163
+      },
+      "name": {
+        "raw": "Sigurd Magnússon",
+        "given": "Sigurd",
+        "rest": "Magnússon",
+        "pattern": "space"
+      },
+      "variants": [
+        "Sigurd Magnusson",
+        "Sigurd Magnússon"
+      ],
+      "normalized": {
+        "preferred": "sigurd magnusson",
+        "variants": [
+          "sigurd magnusson"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_163.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR16",
+      "preferred_label": "Thierry of Flanders",
+      "identifiers": {
+        "project_identifier": "CR16",
+        "omeka_item_id": 164
+      },
+      "name": {
+        "raw": "Thierry of Flanders",
+        "name": "Thierry",
+        "toponym": "Flanders",
+        "pattern": "of"
+      },
+      "variants": [
+        "Flanders's Thierry",
+        "Thierry",
+        "Thierry (Flanders)",
+        "Thierry of Flanders",
+        "Thierry, Flanders"
+      ],
+      "normalized": {
+        "preferred": "thierry of flanders",
+        "variants": [
+          "flanders s thierry",
+          "thierry",
+          "thierry flanders",
+          "thierry of flanders"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_164.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR17",
+      "preferred_label": "Walter of Hereford",
+      "identifiers": {
+        "project_identifier": "CR17",
+        "omeka_item_id": 165
+      },
+      "name": {
+        "raw": "Walter of Hereford",
+        "name": "Walter",
+        "toponym": "Hereford",
+        "pattern": "of"
+      },
+      "variants": [
+        "Hereford's Walter",
+        "Walter",
+        "Walter (Hereford)",
+        "Walter of Hereford",
+        "Walter, Hereford"
+      ],
+      "normalized": {
+        "preferred": "walter of hereford",
+        "variants": [
+          "hereford s walter",
+          "walter",
+          "walter hereford",
+          "walter of hereford"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_165.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR18",
+      "preferred_label": "Hugh of Chaumont-sur-Loire",
+      "identifiers": {
+        "project_identifier": "CR18",
+        "omeka_item_id": 166
+      },
+      "name": {
+        "raw": "Hugh of Chaumont-sur-Loire",
+        "name": "Hugh",
+        "toponym": "Chaumont-sur-Loire",
+        "pattern": "of"
+      },
+      "variants": [
+        "Chaumont-sur-Loire's Hugh",
+        "Hugh",
+        "Hugh (Chaumont-sur-Loire)",
+        "Hugh of Chaumont-sur-Loire",
+        "Hugh, Chaumont-sur-Loire"
+      ],
+      "normalized": {
+        "preferred": "hugh of chaumont sur loire",
+        "variants": [
+          "chaumont sur loire s hugh",
+          "hugh",
+          "hugh chaumont sur loire",
+          "hugh of chaumont sur loire"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_166.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR19",
+      "preferred_label": "Chalo the Red",
+      "identifiers": {
+        "project_identifier": "CR19",
+        "omeka_item_id": 167
+      },
+      "name": {
+        "raw": "Chalo the Red",
+        "name": "Chalo",
+        "epithet": "Red",
+        "pattern": "the"
+      },
+      "variants": [
+        "Chalo",
+        "Chalo (Red)",
+        "Chalo the Red"
+      ],
+      "normalized": {
+        "preferred": "chalo the red",
+        "variants": [
+          "chalo",
+          "chalo red",
+          "chalo the red"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_167.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR20",
+      "preferred_label": "Manasses of Hierges",
+      "identifiers": {
+        "project_identifier": "CR20",
+        "omeka_item_id": 168
+      },
+      "name": {
+        "raw": "Manasses of Hierges",
+        "name": "Manasses",
+        "toponym": "Hierges",
+        "pattern": "of"
+      },
+      "variants": [
+        "Hierges's Manasses",
+        "Manasses",
+        "Manasses (Hierges)",
+        "Manasses of Hierges",
+        "Manasses, Hierges"
+      ],
+      "normalized": {
+        "preferred": "manasses of hierges",
+        "variants": [
+          "hierges s manasses",
+          "manasses",
+          "manasses hierges",
+          "manasses of hierges"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_168.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR21",
+      "preferred_label": "Hugh III of Le Puisset",
+      "identifiers": {
+        "project_identifier": "CR21",
+        "omeka_item_id": 169
+      },
+      "name": {
+        "raw": "Hugh III of Le Puisset",
+        "name": "Hugh",
+        "regnal": "III",
+        "toponym": "Le Puisset",
+        "pattern": "regnal_of"
+      },
+      "variants": [
+        "Hugh",
+        "Hugh (Le Puisset)",
+        "Hugh 3",
+        "Hugh 3 of Le Puisset",
+        "Hugh III",
+        "Hugh III of Le Puisset",
+        "Hugh, Le Puisset",
+        "Le Puisset's Hugh"
+      ],
+      "normalized": {
+        "preferred": "hugh iii of le puisset",
+        "variants": [
+          "hugh",
+          "hugh 3",
+          "hugh 3 of le puisset",
+          "hugh iii",
+          "hugh iii of le puisset",
+          "hugh le puisset",
+          "le puisset s hugh"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_169.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR22",
+      "preferred_label": "Ansculf of Senots",
+      "identifiers": {
+        "project_identifier": "CR22",
+        "omeka_item_id": 170
+      },
+      "name": {
+        "raw": "Ansculf of Senots",
+        "name": "Ansculf",
+        "toponym": "Senots",
+        "pattern": "of"
+      },
+      "variants": [
+        "Ansculf",
+        "Ansculf (Senots)",
+        "Ansculf of Senots",
+        "Ansculf, Senots",
+        "Senots's Ansculf"
+      ],
+      "normalized": {
+        "preferred": "ansculf of senots",
+        "variants": [
+          "ansculf",
+          "ansculf of senots",
+          "ansculf senots",
+          "senots s ansculf"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_170.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR23",
+      "preferred_label": "Ralph the Dog",
+      "identifiers": {
+        "project_identifier": "CR23",
+        "omeka_item_id": 171
+      },
+      "name": {
+        "raw": "Ralph the Dog",
+        "name": "Ralph",
+        "epithet": "Dog",
+        "pattern": "the"
+      },
+      "variants": [
+        "Ralph",
+        "Ralph (Dog)",
+        "Ralph the Dog"
+      ],
+      "normalized": {
+        "preferred": "ralph the dog",
+        "variants": [
+          "ralph",
+          "ralph dog",
+          "ralph the dog"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_171.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR24",
+      "preferred_label": "Ralph of Dury",
+      "identifiers": {
+        "project_identifier": "CR24",
+        "omeka_item_id": 172
+      },
+      "name": {
+        "raw": "Ralph of Dury",
+        "name": "Ralph",
+        "toponym": "Dury",
+        "pattern": "of"
+      },
+      "variants": [
+        "Dury's Ralph",
+        "Ralph",
+        "Ralph (Dury)",
+        "Ralph of Dury",
+        "Ralph, Dury"
+      ],
+      "normalized": {
+        "preferred": "ralph of dury",
+        "variants": [
+          "dury s ralph",
+          "ralph",
+          "ralph dury",
+          "ralph of dury"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_172.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR25",
+      "preferred_label": "Enguerran II of Coucy",
+      "identifiers": {
+        "project_identifier": "CR25",
+        "omeka_item_id": 173
+      },
+      "name": {
+        "raw": "Enguerran II of Coucy",
+        "name": "Enguerran",
+        "regnal": "II",
+        "toponym": "Coucy",
+        "pattern": "regnal_of"
+      },
+      "variants": [
+        "Coucy's Enguerran",
+        "Enguerran",
+        "Enguerran (Coucy)",
+        "Enguerran 2",
+        "Enguerran 2 of Coucy",
+        "Enguerran II",
+        "Enguerran II of Coucy",
+        "Enguerran, Coucy"
+      ],
+      "normalized": {
+        "preferred": "enguerran ii of coucy",
+        "variants": [
+          "coucy s enguerran",
+          "enguerran",
+          "enguerran 2",
+          "enguerran 2 of coucy",
+          "enguerran coucy",
+          "enguerran ii",
+          "enguerran ii of coucy"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_173.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR26",
+      "preferred_label": "Henry the Lion",
+      "identifiers": {
+        "project_identifier": "CR26",
+        "omeka_item_id": 174
+      },
+      "name": {
+        "raw": "Henry the Lion",
+        "name": "Henry",
+        "epithet": "Lion",
+        "pattern": "the"
+      },
+      "variants": [
+        "Henry",
+        "Henry (Lion)",
+        "Henry the Lion"
+      ],
+      "normalized": {
+        "preferred": "henry the lion",
+        "variants": [
+          "henry",
+          "henry lion",
+          "henry the lion"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_174.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR27",
+      "preferred_label": "Philip of Flanders",
+      "identifiers": {
+        "project_identifier": "CR27",
+        "omeka_item_id": 175
+      },
+      "name": {
+        "raw": "Philip of Flanders",
+        "name": "Philip",
+        "toponym": "Flanders",
+        "pattern": "of"
+      },
+      "variants": [
+        "Flanders's Philip",
+        "Philip",
+        "Philip (Flanders)",
+        "Philip of Flanders",
+        "Philip, Flanders"
+      ],
+      "normalized": {
+        "preferred": "philip of flanders",
+        "variants": [
+          "flanders s philip",
+          "philip",
+          "philip flanders",
+          "philip of flanders"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_175.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR28",
+      "preferred_label": "Rudolf of Pfullendorf",
+      "identifiers": {
+        "project_identifier": "CR28",
+        "omeka_item_id": 176
+      },
+      "name": {
+        "raw": "Rudolf of Pfullendorf",
+        "name": "Rudolf",
+        "toponym": "Pfullendorf",
+        "pattern": "of"
+      },
+      "variants": [
+        "Pfullendorf's Rudolf",
+        "Rudolf",
+        "Rudolf (Pfullendorf)",
+        "Rudolf of Pfullendorf",
+        "Rudolf, Pfullendorf"
+      ],
+      "normalized": {
+        "preferred": "rudolf of pfullendorf",
+        "variants": [
+          "pfullendorf s rudolf",
+          "rudolf",
+          "rudolf of pfullendorf",
+          "rudolf pfullendorf"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_176.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR30",
+      "preferred_label": "Rognvald of Orkney",
+      "identifiers": {
+        "project_identifier": "CR30",
+        "omeka_item_id": 178
+      },
+      "name": {
+        "raw": "Rognvald of Orkney",
+        "name": "Rognvald",
+        "toponym": "Orkney",
+        "pattern": "of"
+      },
+      "variants": [
+        "Orkney's Rognvald",
+        "Rognvald",
+        "Rognvald (Orkney)",
+        "Rognvald of Orkney",
+        "Rognvald, Orkney"
+      ],
+      "normalized": {
+        "preferred": "rognvald of orkney",
+        "variants": [
+          "orkney s rognvald",
+          "rognvald",
+          "rognvald of orkney",
+          "rognvald orkney"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_178.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR32",
+      "preferred_label": "William of Tortosa",
+      "identifiers": {
+        "project_identifier": "CR32",
+        "omeka_item_id": 180
+      },
+      "name": {
+        "raw": "William of Tortosa",
+        "name": "William",
+        "toponym": "Tortosa",
+        "pattern": "of"
+      },
+      "variants": [
+        "Tortosa's William",
+        "William",
+        "William (Tortosa)",
+        "William of Tortosa",
+        "William, Tortosa"
+      ],
+      "normalized": {
+        "preferred": "william of tortosa",
+        "variants": [
+          "tortosa s william",
+          "william",
+          "william of tortosa",
+          "william tortosa"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_180.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR33",
+      "preferred_label": "Charles of Denmark",
+      "identifiers": {
+        "project_identifier": "CR33",
+        "omeka_item_id": 181
+      },
+      "name": {
+        "raw": "Charles of Denmark",
+        "name": "Charles",
+        "toponym": "Denmark",
+        "pattern": "of"
+      },
+      "variants": [
+        "Charles",
+        "Charles (Denmark)",
+        "Charles of Denmark",
+        "Charles, Denmark",
+        "Denmark's Charles"
+      ],
+      "normalized": {
+        "preferred": "charles of denmark",
+        "variants": [
+          "charles",
+          "charles denmark",
+          "charles of denmark",
+          "denmark s charles"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_181.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR34",
+      "preferred_label": "William Marshal",
+      "identifiers": {
+        "project_identifier": "CR34",
+        "omeka_item_id": 182
+      },
+      "name": {
+        "raw": "William Marshal",
+        "given": "William",
+        "rest": "Marshal",
+        "pattern": "space"
+      },
+      "variants": [
+        "William Marshal"
+      ],
+      "normalized": {
+        "preferred": "william marshal",
+        "variants": [
+          "william marshal"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_182.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR36",
+      "preferred_label": "Sancho Martin",
+      "identifiers": {
+        "project_identifier": "CR36",
+        "omeka_item_id": 183
+      },
+      "name": {
+        "raw": "Sancho Martin",
+        "given": "Sancho",
+        "rest": "Martin",
+        "pattern": "space"
+      },
+      "variants": [
+        "Sancho Martin"
+      ],
+      "normalized": {
+        "preferred": "sancho martin",
+        "variants": [
+          "sancho martin"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_183.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR37",
+      "preferred_label": "Conrad of Montferrat",
+      "identifiers": {
+        "project_identifier": "CR37",
+        "omeka_item_id": 184
+      },
+      "name": {
+        "raw": "Conrad of Montferrat",
+        "name": "Conrad",
+        "toponym": "Montferrat",
+        "pattern": "of"
+      },
+      "variants": [
+        "Conrad",
+        "Conrad (Montferrat)",
+        "Conrad of Montferrat",
+        "Conrad, Montferrat",
+        "Montferrat's Conrad"
+      ],
+      "normalized": {
+        "preferred": "conrad of montferrat",
+        "variants": [
+          "conrad",
+          "conrad montferrat",
+          "conrad of montferrat",
+          "montferrat s conrad"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_184.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR39",
+      "preferred_label": "Hugh of Payns",
+      "identifiers": {
+        "project_identifier": "CR39",
+        "omeka_item_id": 186
+      },
+      "name": {
+        "raw": "Hugh of Payns",
+        "name": "Hugh",
+        "toponym": "Payns",
+        "pattern": "of"
+      },
+      "variants": [
+        "Hugh",
+        "Hugh (Payns)",
+        "Hugh of Payns",
+        "Hugh, Payns",
+        "Payns's Hugh"
+      ],
+      "normalized": {
+        "preferred": "hugh of payns",
+        "variants": [
+          "hugh",
+          "hugh of payns",
+          "hugh payns",
+          "payns s hugh"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_186.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR40",
+      "preferred_label": "Arni Fjöruskeiv",
+      "identifiers": {
+        "project_identifier": "CR40",
+        "omeka_item_id": 187
+      },
+      "name": {
+        "raw": "Arni Fjöruskeiv",
+        "given": "Arni",
+        "rest": "Fjöruskeiv",
+        "pattern": "space"
+      },
+      "variants": [
+        "Arni Fjoruskeiv",
+        "Arni Fjöruskeiv"
+      ],
+      "normalized": {
+        "preferred": "arni fjoruskeiv",
+        "variants": [
+          "arni fjoruskeiv"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_187.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR41",
+      "preferred_label": "Áláskr Hani",
+      "identifiers": {
+        "project_identifier": "CR41",
+        "omeka_item_id": 188
+      },
+      "name": {
+        "raw": "Áláskr Hani",
+        "given": "Áláskr",
+        "rest": "Hani",
+        "pattern": "space"
+      },
+      "variants": [
+        "Alaskr Hani",
+        "Áláskr Hani"
+      ],
+      "normalized": {
+        "preferred": "alaskr hani",
+        "variants": [
+          "alaskr hani"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_188.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR42",
+      "preferred_label": "Hámundr Thorvaldsson of Vatnsfjord",
+      "identifiers": {
+        "project_identifier": "CR42",
+        "omeka_item_id": 189
+      },
+      "name": {
+        "raw": "Hámundr Thorvaldsson of Vatnsfjord",
+        "name": "Hámundr Thorvaldsson",
+        "toponym": "Vatnsfjord",
+        "pattern": "of"
+      },
+      "variants": [
+        "Hamundr Thorvaldsson of Vatnsfjord",
+        "Hámundr Thorvaldsson",
+        "Hámundr Thorvaldsson (Vatnsfjord)",
+        "Hámundr Thorvaldsson of Vatnsfjord",
+        "Hámundr Thorvaldsson, Vatnsfjord",
+        "Vatnsfjord's Hámundr Thorvaldsson"
+      ],
+      "normalized": {
+        "preferred": "hamundr thorvaldsson of vatnsfjord",
+        "variants": [
+          "hamundr thorvaldsson",
+          "hamundr thorvaldsson of vatnsfjord",
+          "hamundr thorvaldsson vatnsfjord",
+          "vatnsfjord s hamundr thorvaldsson"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_189.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR43",
+      "preferred_label": "Rainald of St Valéry",
+      "identifiers": {
+        "project_identifier": "CR43",
+        "omeka_item_id": 190
+      },
+      "name": {
+        "raw": "Rainald of St Valéry",
+        "name": "Rainald",
+        "toponym": "St Valéry",
+        "pattern": "of"
+      },
+      "variants": [
+        "Rainald",
+        "Rainald (St Valéry)",
+        "Rainald of St Valery",
+        "Rainald of St Valéry",
+        "Rainald, St Valéry",
+        "St Valéry's Rainald"
+      ],
+      "normalized": {
+        "preferred": "rainald of st valery",
+        "variants": [
+          "rainald",
+          "rainald of st valery",
+          "rainald st valery",
+          "st valery s rainald"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_190.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR44",
+      "preferred_label": "William of Orkney",
+      "identifiers": {
+        "project_identifier": "CR44",
+        "omeka_item_id": 191
+      },
+      "name": {
+        "raw": "William of Orkney",
+        "name": "William",
+        "toponym": "Orkney",
+        "pattern": "of"
+      },
+      "variants": [
+        "Orkney's William",
+        "William",
+        "William (Orkney)",
+        "William of Orkney",
+        "William, Orkney"
+      ],
+      "normalized": {
+        "preferred": "william of orkney",
+        "variants": [
+          "orkney s william",
+          "william",
+          "william of orkney",
+          "william orkney"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_191.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR45",
+      "preferred_label": "Eindridi the Young",
+      "identifiers": {
+        "project_identifier": "CR45",
+        "omeka_item_id": 192
+      },
+      "name": {
+        "raw": "Eindridi the Young",
+        "name": "Eindridi",
+        "epithet": "Young",
+        "pattern": "the"
+      },
+      "variants": [
+        "Eindridi",
+        "Eindridi (Young)",
+        "Eindridi the Young"
+      ],
+      "normalized": {
+        "preferred": "eindridi the young",
+        "variants": [
+          "eindridi",
+          "eindridi the young",
+          "eindridi young"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_192.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR46",
+      "preferred_label": "Armod",
+      "identifiers": {
+        "project_identifier": "CR46",
+        "omeka_item_id": 193
+      },
+      "name": {
+        "raw": "Armod"
+      },
+      "variants": [
+        "Armod"
+      ],
+      "normalized": {
+        "preferred": "armod",
+        "variants": [
+          "armod"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_193.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR47",
+      "preferred_label": "Erling Wry-neck",
+      "identifiers": {
+        "project_identifier": "CR47",
+        "omeka_item_id": 194
+      },
+      "name": {
+        "raw": "Erling Wry-neck",
+        "given": "Erling",
+        "rest": "Wry-neck",
+        "pattern": "space"
+      },
+      "variants": [
+        "Erling Wry-neck"
+      ],
+      "normalized": {
+        "preferred": "erling wry neck",
+        "variants": [
+          "erling wry neck"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_194.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR48",
+      "preferred_label": "William de Mandeville",
+      "identifiers": {
+        "project_identifier": "CR48",
+        "omeka_item_id": 195
+      },
+      "name": {
+        "raw": "William de Mandeville",
+        "given": "William",
+        "rest": "de Mandeville",
+        "pattern": "space"
+      },
+      "variants": [
+        "William de Mandeville"
+      ],
+      "normalized": {
+        "preferred": "william de mandeville",
+        "variants": [
+          "william de mandeville"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_195.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR49",
+      "preferred_label": "William Rex",
+      "identifiers": {
+        "project_identifier": "CR49",
+        "omeka_item_id": 196
+      },
+      "name": {
+        "raw": "William Rex",
+        "given": "William",
+        "rest": "Rex",
+        "pattern": "space"
+      },
+      "variants": [
+        "William Rex"
+      ],
+      "normalized": {
+        "preferred": "william rex",
+        "variants": [
+          "william rex"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_196.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR50",
+      "preferred_label": "Artaud the Chamberlain",
+      "identifiers": {
+        "project_identifier": "CR50",
+        "omeka_item_id": 197
+      },
+      "name": {
+        "raw": "Artaud the Chamberlain",
+        "name": "Artaud",
+        "epithet": "Chamberlain",
+        "pattern": "the"
+      },
+      "variants": [
+        "Artaud",
+        "Artaud (Chamberlain)",
+        "Artaud the Chamberlain"
+      ],
+      "normalized": {
+        "preferred": "artaud the chamberlain",
+        "variants": [
+          "artaud",
+          "artaud chamberlain",
+          "artaud the chamberlain"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_197.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR51",
+      "preferred_label": "Thibaud of Fismes",
+      "identifiers": {
+        "project_identifier": "CR51",
+        "omeka_item_id": 198
+      },
+      "name": {
+        "raw": "Thibaud of Fismes",
+        "name": "Thibaud",
+        "toponym": "Fismes",
+        "pattern": "of"
+      },
+      "variants": [
+        "Fismes's Thibaud",
+        "Thibaud",
+        "Thibaud (Fismes)",
+        "Thibaud of Fismes",
+        "Thibaud, Fismes"
+      ],
+      "normalized": {
+        "preferred": "thibaud of fismes",
+        "variants": [
+          "fismes s thibaud",
+          "thibaud",
+          "thibaud fismes",
+          "thibaud of fismes"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_198.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR52",
+      "preferred_label": "Philip of Sézanne",
+      "identifiers": {
+        "project_identifier": "CR52",
+        "omeka_item_id": 199
+      },
+      "name": {
+        "raw": "Philip of Sézanne",
+        "name": "Philip",
+        "toponym": "Sézanne",
+        "pattern": "of"
+      },
+      "variants": [
+        "Philip",
+        "Philip (Sézanne)",
+        "Philip of Sezanne",
+        "Philip of Sézanne",
+        "Philip, Sézanne",
+        "Sézanne's Philip"
+      ],
+      "normalized": {
+        "preferred": "philip of sezanne",
+        "variants": [
+          "philip",
+          "philip of sezanne",
+          "philip sezanne",
+          "sezanne s philip"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_199.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR53",
+      "preferred_label": "Peter of Langres",
+      "identifiers": {
+        "project_identifier": "CR53",
+        "omeka_item_id": 200
+      },
+      "name": {
+        "raw": "Peter of Langres",
+        "name": "Peter",
+        "toponym": "Langres",
+        "pattern": "of"
+      },
+      "variants": [
+        "Langres's Peter",
+        "Peter",
+        "Peter (Langres)",
+        "Peter of Langres",
+        "Peter, Langres"
+      ],
+      "normalized": {
+        "preferred": "peter of langres",
+        "variants": [
+          "langres s peter",
+          "peter",
+          "peter langres",
+          "peter of langres"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_200.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR54",
+      "preferred_label": "Henry of Grandpré",
+      "identifiers": {
+        "project_identifier": "CR54",
+        "omeka_item_id": 201
+      },
+      "name": {
+        "raw": "Henry of Grandpré",
+        "name": "Henry",
+        "toponym": "Grandpré",
+        "pattern": "of"
+      },
+      "variants": [
+        "Grandpré's Henry",
+        "Henry",
+        "Henry (Grandpré)",
+        "Henry of Grandpre",
+        "Henry of Grandpré",
+        "Henry, Grandpré"
+      ],
+      "normalized": {
+        "preferred": "henry of grandpre",
+        "variants": [
+          "grandpre s henry",
+          "henry",
+          "henry grandpre",
+          "henry of grandpre"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_201.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR55",
+      "preferred_label": "Geoffrey of Grandpré",
+      "identifiers": {
+        "project_identifier": "CR55",
+        "omeka_item_id": 202
+      },
+      "name": {
+        "raw": "Geoffrey of Grandpré",
+        "name": "Geoffrey",
+        "toponym": "Grandpré",
+        "pattern": "of"
+      },
+      "variants": [
+        "Geoffrey",
+        "Geoffrey (Grandpré)",
+        "Geoffrey of Grandpre",
+        "Geoffrey of Grandpré",
+        "Geoffrey, Grandpré",
+        "Grandpré's Geoffrey"
+      ],
+      "normalized": {
+        "preferred": "geoffrey of grandpre",
+        "variants": [
+          "geoffrey",
+          "geoffrey grandpre",
+          "geoffrey of grandpre",
+          "grandpre s geoffrey"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_202.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR56",
+      "preferred_label": "Robert of Milly",
+      "identifiers": {
+        "project_identifier": "CR56",
+        "omeka_item_id": 203
+      },
+      "name": {
+        "raw": "Robert of Milly",
+        "name": "Robert",
+        "toponym": "Milly",
+        "pattern": "of"
+      },
+      "variants": [
+        "Milly's Robert",
+        "Robert",
+        "Robert (Milly)",
+        "Robert of Milly",
+        "Robert, Milly"
+      ],
+      "normalized": {
+        "preferred": "robert of milly",
+        "variants": [
+          "milly s robert",
+          "robert",
+          "robert milly",
+          "robert of milly"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_203.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR57",
+      "preferred_label": "Milo I Breban of Provins",
+      "identifiers": {
+        "project_identifier": "CR57",
+        "omeka_item_id": 204
+      },
+      "name": {
+        "raw": "Milo I Breban of Provins",
+        "name": "Milo I Breban",
+        "toponym": "Provins",
+        "pattern": "of"
+      },
+      "variants": [
+        "Milo I Breban",
+        "Milo I Breban (Provins)",
+        "Milo I Breban of Provins",
+        "Milo I Breban, Provins",
+        "Provins's Milo I Breban"
+      ],
+      "normalized": {
+        "preferred": "milo i breban of provins",
+        "variants": [
+          "milo i breban",
+          "milo i breban of provins",
+          "milo i breban provins",
+          "provins s milo i breban"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_204.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR58",
+      "preferred_label": "William of Sainte-Maure",
+      "identifiers": {
+        "project_identifier": "CR58",
+        "omeka_item_id": 205
+      },
+      "name": {
+        "raw": "William of Sainte-Maure",
+        "name": "William",
+        "toponym": "Sainte-Maure",
+        "pattern": "of"
+      },
+      "variants": [
+        "Sainte-Maure's William",
+        "William",
+        "William (Sainte-Maure)",
+        "William of Sainte-Maure",
+        "William, Sainte-Maure"
+      ],
+      "normalized": {
+        "preferred": "william of sainte maure",
+        "variants": [
+          "sainte maure s william",
+          "william",
+          "william of sainte maure",
+          "william sainte maure"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_205.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR59",
+      "preferred_label": "Hugh of Lizy",
+      "identifiers": {
+        "project_identifier": "CR59",
+        "omeka_item_id": 206
+      },
+      "name": {
+        "raw": "Hugh of Lizy",
+        "name": "Hugh",
+        "toponym": "Lizy",
+        "pattern": "of"
+      },
+      "variants": [
+        "Hugh",
+        "Hugh (Lizy)",
+        "Hugh of Lizy",
+        "Hugh, Lizy",
+        "Lizy's Hugh"
+      ],
+      "normalized": {
+        "preferred": "hugh of lizy",
+        "variants": [
+          "hugh",
+          "hugh lizy",
+          "hugh of lizy",
+          "lizy s hugh"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_206.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR60",
+      "preferred_label": "Nicholas of Montiéramey",
+      "identifiers": {
+        "project_identifier": "CR60",
+        "omeka_item_id": 207
+      },
+      "name": {
+        "raw": "Nicholas of Montiéramey",
+        "name": "Nicholas",
+        "toponym": "Montiéramey",
+        "pattern": "of"
+      },
+      "variants": [
+        "Montiéramey's Nicholas",
+        "Nicholas",
+        "Nicholas (Montiéramey)",
+        "Nicholas of Montieramey",
+        "Nicholas of Montiéramey",
+        "Nicholas, Montiéramey"
+      ],
+      "normalized": {
+        "preferred": "nicholas of montieramey",
+        "variants": [
+          "montieramey s nicholas",
+          "nicholas",
+          "nicholas montieramey",
+          "nicholas of montieramey"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_207.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR61",
+      "preferred_label": "Peter Britaud",
+      "identifiers": {
+        "project_identifier": "CR61",
+        "omeka_item_id": 208
+      },
+      "name": {
+        "raw": "Peter Britaud",
+        "given": "Peter",
+        "rest": "Britaud",
+        "pattern": "space"
+      },
+      "variants": [
+        "Peter Britaud"
+      ],
+      "normalized": {
+        "preferred": "peter britaud",
+        "variants": [
+          "peter britaud"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_208.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR62",
+      "preferred_label": "Peter I of Courtenay",
+      "identifiers": {
+        "project_identifier": "CR62",
+        "omeka_item_id": 209
+      },
+      "name": {
+        "raw": "Peter I of Courtenay",
+        "name": "Peter",
+        "regnal": "I",
+        "toponym": "Courtenay",
+        "pattern": "regnal_of"
+      },
+      "variants": [
+        "Courtenay's Peter",
+        "Peter",
+        "Peter (Courtenay)",
+        "Peter 1",
+        "Peter 1 of Courtenay",
+        "Peter I",
+        "Peter I of Courtenay",
+        "Peter, Courtenay"
+      ],
+      "normalized": {
+        "preferred": "peter i of courtenay",
+        "variants": [
+          "courtenay s peter",
+          "peter",
+          "peter 1",
+          "peter 1 of courtenay",
+          "peter courtenay",
+          "peter i",
+          "peter i of courtenay"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_209.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR63",
+      "preferred_label": "Philip of Dreux, bishop of Beavais",
+      "identifiers": {
+        "project_identifier": "CR63",
+        "omeka_item_id": 210
+      },
+      "name": {
+        "raw": "Philip of Dreux, bishop of Beavais",
+        "name": "Philip",
+        "toponym": "Dreux, bishop of Beavais",
+        "pattern": "of"
+      },
+      "variants": [
+        "Dreux, bishop of Beavais's Philip",
+        "Philip",
+        "Philip (Dreux, bishop of Beavais)",
+        "Philip of Dreux, bishop of Beavais",
+        "Philip, Dreux, bishop of Beavais"
+      ],
+      "normalized": {
+        "preferred": "philip of dreux bishop of beavais",
+        "variants": [
+          "dreux bishop of beavais s philip",
+          "philip",
+          "philip dreux bishop of beavais",
+          "philip of dreux bishop of beavais"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_210.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR64",
+      "preferred_label": "Aslak Erlendsson",
+      "identifiers": {
+        "project_identifier": "CR64",
+        "omeka_item_id": 211
+      },
+      "name": {
+        "raw": "Aslak Erlendsson",
+        "given": "Aslak",
+        "rest": "Erlendsson",
+        "pattern": "space"
+      },
+      "variants": [
+        "Aslak Erlendsson"
+      ],
+      "normalized": {
+        "preferred": "aslak erlendsson",
+        "variants": [
+          "aslak erlendsson"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_211.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR65",
+      "preferred_label": "Guthorm Mjolukoll",
+      "identifiers": {
+        "project_identifier": "CR65",
+        "omeka_item_id": 212
+      },
+      "name": {
+        "raw": "Guthorm Mjolukoll",
+        "given": "Guthorm",
+        "rest": "Mjolukoll",
+        "pattern": "space"
+      },
+      "variants": [
+        "Guthorm Mjolukoll"
+      ],
+      "normalized": {
+        "preferred": "guthorm mjolukoll",
+        "variants": [
+          "guthorm mjolukoll"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_212.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR66",
+      "preferred_label": "Magnus Havardsson",
+      "identifiers": {
+        "project_identifier": "CR66",
+        "omeka_item_id": 213
+      },
+      "name": {
+        "raw": "Magnus Havardsson",
+        "given": "Magnus",
+        "rest": "Havardsson",
+        "pattern": "space"
+      },
+      "variants": [
+        "Magnus Havardsson"
+      ],
+      "normalized": {
+        "preferred": "magnus havardsson",
+        "variants": [
+          "magnus havardsson"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_213.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR67",
+      "preferred_label": "Svein Hroaldsson",
+      "identifiers": {
+        "project_identifier": "CR67",
+        "omeka_item_id": 214
+      },
+      "name": {
+        "raw": "Svein Hroaldsson",
+        "given": "Svein",
+        "rest": "Hroaldsson",
+        "pattern": "space"
+      },
+      "variants": [
+        "Svein Hroaldsson"
+      ],
+      "normalized": {
+        "preferred": "svein hroaldsson",
+        "variants": [
+          "svein hroaldsson"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_214.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR68",
+      "preferred_label": "Oddi the Little",
+      "identifiers": {
+        "project_identifier": "CR68",
+        "omeka_item_id": 215
+      },
+      "name": {
+        "raw": "Oddi the Little",
+        "name": "Oddi",
+        "epithet": "Little",
+        "pattern": "the"
+      },
+      "variants": [
+        "Oddi",
+        "Oddi (Little)",
+        "Oddi the Little"
+      ],
+      "normalized": {
+        "preferred": "oddi the little",
+        "variants": [
+          "oddi",
+          "oddi little",
+          "oddi the little"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_215.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR69",
+      "preferred_label": "Sigmund Fish-Hook",
+      "identifiers": {
+        "project_identifier": "CR69",
+        "omeka_item_id": 216
+      },
+      "name": {
+        "raw": "Sigmund Fish-Hook",
+        "given": "Sigmund",
+        "rest": "Fish-Hook",
+        "pattern": "space"
+      },
+      "variants": [
+        "Sigmund Fish-Hook"
+      ],
+      "normalized": {
+        "preferred": "sigmund fish hook",
+        "variants": [
+          "sigmund fish hook"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_216.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR70",
+      "preferred_label": "Thorbjorn the Black",
+      "identifiers": {
+        "project_identifier": "CR70",
+        "omeka_item_id": 217
+      },
+      "name": {
+        "raw": "Thorbjorn the Black",
+        "name": "Thorbjorn",
+        "epithet": "Black",
+        "pattern": "the"
+      },
+      "variants": [
+        "Thorbjorn",
+        "Thorbjorn (Black)",
+        "Thorbjorn the Black"
+      ],
+      "normalized": {
+        "preferred": "thorbjorn the black",
+        "variants": [
+          "thorbjorn",
+          "thorbjorn black",
+          "thorbjorn the black"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_217.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR71",
+      "preferred_label": "James of Chacenay",
+      "identifiers": {
+        "project_identifier": "CR71",
+        "omeka_item_id": 218
+      },
+      "name": {
+        "raw": "James of Chacenay",
+        "name": "James",
+        "toponym": "Chacenay",
+        "pattern": "of"
+      },
+      "variants": [
+        "Chacenay's James",
+        "James",
+        "James (Chacenay)",
+        "James of Chacenay",
+        "James, Chacenay"
+      ],
+      "normalized": {
+        "preferred": "james of chacenay",
+        "variants": [
+          "chacenay s james",
+          "james",
+          "james chacenay",
+          "james of chacenay"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_218.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR72",
+      "preferred_label": "Anseric II of Chacenay",
+      "identifiers": {
+        "project_identifier": "CR72",
+        "omeka_item_id": 219
+      },
+      "name": {
+        "raw": "Anseric II of Chacenay",
+        "name": "Anseric",
+        "regnal": "II",
+        "toponym": "Chacenay",
+        "pattern": "regnal_of"
+      },
+      "variants": [
+        "Anseric",
+        "Anseric (Chacenay)",
+        "Anseric 2",
+        "Anseric 2 of Chacenay",
+        "Anseric II",
+        "Anseric II of Chacenay",
+        "Anseric, Chacenay",
+        "Chacenay's Anseric"
+      ],
+      "normalized": {
+        "preferred": "anseric ii of chacenay",
+        "variants": [
+          "anseric",
+          "anseric 2",
+          "anseric 2 of chacenay",
+          "anseric chacenay",
+          "anseric ii",
+          "anseric ii of chacenay",
+          "chacenay s anseric"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_219.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR73",
+      "preferred_label": "William of Biron",
+      "identifiers": {
+        "project_identifier": "CR73",
+        "omeka_item_id": 220
+      },
+      "name": {
+        "raw": "William of Biron",
+        "name": "William",
+        "toponym": "Biron",
+        "pattern": "of"
+      },
+      "variants": [
+        "Biron's William",
+        "William",
+        "William (Biron)",
+        "William of Biron",
+        "William, Biron"
+      ],
+      "normalized": {
+        "preferred": "william of biron",
+        "variants": [
+          "biron s william",
+          "william",
+          "william biron",
+          "william of biron"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_220.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR74",
+      "preferred_label": "Grimoard of St. Germain",
+      "identifiers": {
+        "project_identifier": "CR74",
+        "omeka_item_id": 221
+      },
+      "name": {
+        "raw": "Grimoard of St. Germain",
+        "name": "Grimoard",
+        "toponym": "St. Germain",
+        "pattern": "of"
+      },
+      "variants": [
+        "Grimoard",
+        "Grimoard (St. Germain)",
+        "Grimoard of St. Germain",
+        "Grimoard, St. Germain",
+        "St. Germain's Grimoard"
+      ],
+      "normalized": {
+        "preferred": "grimoard of st germain",
+        "variants": [
+          "grimoard",
+          "grimoard of st germain",
+          "grimoard st germain",
+          "st germain s grimoard"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_221.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR75",
+      "preferred_label": "Hugh de Beauchamp",
+      "identifiers": {
+        "project_identifier": "CR75",
+        "omeka_item_id": 2327
+      },
+      "name": {
+        "raw": "Hugh de Beauchamp",
+        "given": "Hugh",
+        "rest": "de Beauchamp",
+        "pattern": "space"
+      },
+      "variants": [
+        "Hugh de Beauchamp"
+      ],
+      "normalized": {
+        "preferred": "hugh de beauchamp",
+        "variants": [
+          "hugh de beauchamp"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2327.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR76",
+      "preferred_label": "Roger de Mowbray",
+      "identifiers": {
+        "project_identifier": "CR76",
+        "omeka_item_id": 2328
+      },
+      "name": {
+        "raw": "Roger de Mowbray",
+        "given": "Roger",
+        "rest": "de Mowbray",
+        "pattern": "space"
+      },
+      "variants": [
+        "Roger de Mowbray"
+      ],
+      "normalized": {
+        "preferred": "roger de mowbray",
+        "variants": [
+          "roger de mowbray"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2328.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR77",
+      "preferred_label": "Jon Petersson",
+      "identifiers": {
+        "project_identifier": "CR77",
+        "omeka_item_id": 2337
+      },
+      "name": {
+        "raw": "Jon Petersson",
+        "given": "Jon",
+        "rest": "Petersson",
+        "pattern": "space"
+      },
+      "variants": [
+        "Jon Petersson"
+      ],
+      "normalized": {
+        "preferred": "jon petersson",
+        "variants": [
+          "jon petersson"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2337.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR78",
+      "preferred_label": "Godfrey III of Louvain",
+      "identifiers": {
+        "project_identifier": "CR78",
+        "omeka_item_id": 2339
+      },
+      "name": {
+        "raw": "Godfrey III of Louvain",
+        "name": "Godfrey",
+        "regnal": "III",
+        "toponym": "Louvain",
+        "pattern": "regnal_of"
+      },
+      "variants": [
+        "Godfrey",
+        "Godfrey (Louvain)",
+        "Godfrey 3",
+        "Godfrey 3 of Louvain",
+        "Godfrey III",
+        "Godfrey III of Louvain",
+        "Godfrey, Louvain",
+        "Louvain's Godfrey"
+      ],
+      "normalized": {
+        "preferred": "godfrey iii of louvain",
+        "variants": [
+          "godfrey",
+          "godfrey 3",
+          "godfrey 3 of louvain",
+          "godfrey iii",
+          "godfrey iii of louvain",
+          "godfrey louvain",
+          "louvain s godfrey"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2339.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR119",
+      "preferred_label": "Gilles of Chimay",
+      "identifiers": {
+        "project_identifier": "CR119",
+        "omeka_item_id": 2340
+      },
+      "name": {
+        "raw": "Gilles of Chimay",
+        "name": "Gilles",
+        "toponym": "Chimay",
+        "pattern": "of"
+      },
+      "variants": [
+        "Chimay's Gilles",
+        "Gilles",
+        "Gilles (Chimay)",
+        "Gilles of Chimay",
+        "Gilles, Chimay"
+      ],
+      "normalized": {
+        "preferred": "gilles of chimay",
+        "variants": [
+          "chimay s gilles",
+          "gilles",
+          "gilles chimay",
+          "gilles of chimay"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2340.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR120",
+      "preferred_label": "Gerard II of Looz",
+      "identifiers": {
+        "project_identifier": "CR120",
+        "omeka_item_id": 2341
+      },
+      "name": {
+        "raw": "Gerard II of Looz",
+        "name": "Gerard",
+        "regnal": "II",
+        "toponym": "Looz",
+        "pattern": "regnal_of"
+      },
+      "variants": [
+        "Gerard",
+        "Gerard (Looz)",
+        "Gerard 2",
+        "Gerard 2 of Looz",
+        "Gerard II",
+        "Gerard II of Looz",
+        "Gerard, Looz",
+        "Looz's Gerard"
+      ],
+      "normalized": {
+        "preferred": "gerard ii of looz",
+        "variants": [
+          "gerard",
+          "gerard 2",
+          "gerard 2 of looz",
+          "gerard ii",
+          "gerard ii of looz",
+          "gerard looz",
+          "looz s gerard"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2341.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR118",
+      "preferred_label": "Rodrigo Álvarez de Sarria",
+      "identifiers": {
+        "project_identifier": "CR118",
+        "omeka_item_id": 2344
+      },
+      "name": {
+        "raw": "Rodrigo Álvarez de Sarria",
+        "given": "Rodrigo",
+        "rest": "Álvarez de Sarria",
+        "pattern": "space"
+      },
+      "variants": [
+        "Rodrigo Alvarez de Sarria",
+        "Rodrigo Álvarez de Sarria"
+      ],
+      "normalized": {
+        "preferred": "rodrigo alvarez de sarria",
+        "variants": [
+          "rodrigo alvarez de sarria"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2344.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR117",
+      "preferred_label": "Henry of Portugal",
+      "identifiers": {
+        "project_identifier": "CR117",
+        "omeka_item_id": 2345
+      },
+      "name": {
+        "raw": "Henry of Portugal",
+        "name": "Henry",
+        "toponym": "Portugal",
+        "pattern": "of"
+      },
+      "variants": [
+        "Henry",
+        "Henry (Portugal)",
+        "Henry of Portugal",
+        "Henry, Portugal",
+        "Portugal's Henry"
+      ],
+      "normalized": {
+        "preferred": "henry of portugal",
+        "variants": [
+          "henry",
+          "henry of portugal",
+          "henry portugal",
+          "portugal s henry"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2345.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR115",
+      "preferred_label": "Maurice II of Craon",
+      "identifiers": {
+        "project_identifier": "CR115",
+        "omeka_item_id": 2350
+      },
+      "name": {
+        "raw": "Maurice II of Craon",
+        "name": "Maurice",
+        "regnal": "II",
+        "toponym": "Craon",
+        "pattern": "regnal_of"
+      },
+      "variants": [
+        "Craon's Maurice",
+        "Maurice",
+        "Maurice (Craon)",
+        "Maurice 2",
+        "Maurice 2 of Craon",
+        "Maurice II",
+        "Maurice II of Craon",
+        "Maurice, Craon"
+      ],
+      "normalized": {
+        "preferred": "maurice ii of craon",
+        "variants": [
+          "craon s maurice",
+          "maurice",
+          "maurice 2",
+          "maurice 2 of craon",
+          "maurice craon",
+          "maurice ii",
+          "maurice ii of craon"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2350.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR113",
+      "preferred_label": "Margaret of Beverley",
+      "identifiers": {
+        "project_identifier": "CR113",
+        "omeka_item_id": 2353
+      },
+      "name": {
+        "raw": "Margaret of Beverley",
+        "name": "Margaret",
+        "toponym": "Beverley",
+        "pattern": "of"
+      },
+      "variants": [
+        "Beverley's Margaret",
+        "Margaret",
+        "Margaret (Beverley)",
+        "Margaret of Beverley",
+        "Margaret, Beverley"
+      ],
+      "normalized": {
+        "preferred": "margaret of beverley",
+        "variants": [
+          "beverley s margaret",
+          "margaret",
+          "margaret beverley",
+          "margaret of beverley"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2353.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR112",
+      "preferred_label": "William III of Mâcon",
+      "identifiers": {
+        "project_identifier": "CR112",
+        "omeka_item_id": 2355
+      },
+      "name": {
+        "raw": "William III of Mâcon",
+        "name": "William",
+        "regnal": "III",
+        "toponym": "Mâcon",
+        "pattern": "regnal_of"
+      },
+      "variants": [
+        "Mâcon's William",
+        "William",
+        "William (Mâcon)",
+        "William 3",
+        "William 3 of Mâcon",
+        "William III",
+        "William III of Macon",
+        "William III of Mâcon",
+        "William, Mâcon"
+      ],
+      "normalized": {
+        "preferred": "william iii of macon",
+        "variants": [
+          "macon s william",
+          "william",
+          "william 3",
+          "william 3 of macon",
+          "william iii",
+          "william iii of macon",
+          "william macon"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2355.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR111",
+      "preferred_label": "Andrew II of Vitré",
+      "identifiers": {
+        "project_identifier": "CR111",
+        "omeka_item_id": 2356
+      },
+      "name": {
+        "raw": "Andrew II of Vitré",
+        "name": "Andrew",
+        "regnal": "II",
+        "toponym": "Vitré",
+        "pattern": "regnal_of"
+      },
+      "variants": [
+        "Andrew",
+        "Andrew (Vitré)",
+        "Andrew 2",
+        "Andrew 2 of Vitré",
+        "Andrew II",
+        "Andrew II of Vitre",
+        "Andrew II of Vitré",
+        "Andrew, Vitré",
+        "Vitré's Andrew"
+      ],
+      "normalized": {
+        "preferred": "andrew ii of vitre",
+        "variants": [
+          "andrew",
+          "andrew 2",
+          "andrew 2 of vitre",
+          "andrew ii",
+          "andrew ii of vitre",
+          "andrew vitre",
+          "vitre s andrew"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2356.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR110",
+      "preferred_label": "Walter of St. Omer",
+      "identifiers": {
+        "project_identifier": "CR110",
+        "omeka_item_id": 2358
+      },
+      "name": {
+        "raw": "Walter of St. Omer",
+        "name": "Walter",
+        "toponym": "St. Omer",
+        "pattern": "of"
+      },
+      "variants": [
+        "St. Omer's Walter",
+        "Walter",
+        "Walter (St. Omer)",
+        "Walter of St. Omer",
+        "Walter, St. Omer"
+      ],
+      "normalized": {
+        "preferred": "walter of st omer",
+        "variants": [
+          "st omer s walter",
+          "walter",
+          "walter of st omer",
+          "walter st omer"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2358.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR109",
+      "preferred_label": "Audebert IV of La Marche",
+      "identifiers": {
+        "project_identifier": "CR109",
+        "omeka_item_id": 2359
+      },
+      "name": {
+        "raw": "Audebert IV of La Marche",
+        "name": "Audebert",
+        "regnal": "IV",
+        "toponym": "La Marche",
+        "pattern": "regnal_of"
+      },
+      "variants": [
+        "Audebert",
+        "Audebert (La Marche)",
+        "Audebert 4",
+        "Audebert 4 of La Marche",
+        "Audebert IV",
+        "Audebert IV of La Marche",
+        "Audebert, La Marche",
+        "La Marche's Audebert"
+      ],
+      "normalized": {
+        "preferred": "audebert iv of la marche",
+        "variants": [
+          "audebert",
+          "audebert 4",
+          "audebert 4 of la marche",
+          "audebert iv",
+          "audebert iv of la marche",
+          "audebert la marche",
+          "la marche s audebert"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2359.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR108",
+      "preferred_label": "William IV of Nevers",
+      "identifiers": {
+        "project_identifier": "CR108",
+        "omeka_item_id": 2360
+      },
+      "name": {
+        "raw": "William IV of Nevers",
+        "name": "William",
+        "regnal": "IV",
+        "toponym": "Nevers",
+        "pattern": "regnal_of"
+      },
+      "variants": [
+        "Nevers's William",
+        "William",
+        "William (Nevers)",
+        "William 4",
+        "William 4 of Nevers",
+        "William IV",
+        "William IV of Nevers",
+        "William, Nevers"
+      ],
+      "normalized": {
+        "preferred": "william iv of nevers",
+        "variants": [
+          "nevers s william",
+          "william",
+          "william 4",
+          "william 4 of nevers",
+          "william iv",
+          "william iv of nevers",
+          "william nevers"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2360.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR107",
+      "preferred_label": "Ralph II of Fougères",
+      "identifiers": {
+        "project_identifier": "CR107",
+        "omeka_item_id": 2361
+      },
+      "name": {
+        "raw": "Ralph II of Fougères",
+        "name": "Ralph",
+        "regnal": "II",
+        "toponym": "Fougères",
+        "pattern": "regnal_of"
+      },
+      "variants": [
+        "Fougères's Ralph",
+        "Ralph",
+        "Ralph (Fougères)",
+        "Ralph 2",
+        "Ralph 2 of Fougères",
+        "Ralph II",
+        "Ralph II of Fougeres",
+        "Ralph II of Fougères",
+        "Ralph, Fougères"
+      ],
+      "normalized": {
+        "preferred": "ralph ii of fougeres",
+        "variants": [
+          "fougeres s ralph",
+          "ralph",
+          "ralph 2",
+          "ralph 2 of fougeres",
+          "ralph fougeres",
+          "ralph ii",
+          "ralph ii of fougeres"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2361.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR106",
+      "preferred_label": "Peire Bremon lo Tort",
+      "identifiers": {
+        "project_identifier": "CR106",
+        "omeka_item_id": 2362
+      },
+      "name": {
+        "raw": "Peire Bremon lo Tort",
+        "given": "Peire",
+        "rest": "Bremon lo Tort",
+        "pattern": "space"
+      },
+      "variants": [
+        "Peire Bremon lo Tort"
+      ],
+      "normalized": {
+        "preferred": "peire bremon lo tort",
+        "variants": [
+          "peire bremon lo tort"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2362.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR105",
+      "preferred_label": "Giraut de Borneil",
+      "identifiers": {
+        "project_identifier": "CR105",
+        "omeka_item_id": 2363
+      },
+      "name": {
+        "raw": "Giraut de Borneil",
+        "given": "Giraut",
+        "rest": "de Borneil",
+        "pattern": "space"
+      },
+      "variants": [
+        "Giraut de Borneil"
+      ],
+      "normalized": {
+        "preferred": "giraut de borneil",
+        "variants": [
+          "giraut de borneil"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2363.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR104",
+      "preferred_label": "Peire Vidal",
+      "identifiers": {
+        "project_identifier": "CR104",
+        "omeka_item_id": 2364
+      },
+      "name": {
+        "raw": "Peire Vidal",
+        "given": "Peire",
+        "rest": "Vidal",
+        "pattern": "space"
+      },
+      "variants": [
+        "Peire Vidal"
+      ],
+      "normalized": {
+        "preferred": "peire vidal",
+        "variants": [
+          "peire vidal"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2364.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR126",
+      "preferred_label": "Arnold of Wezemaal",
+      "identifiers": {
+        "project_identifier": "CR126",
+        "omeka_item_id": 2365
+      },
+      "name": {
+        "raw": "Arnold of Wezemaal",
+        "name": "Arnold",
+        "toponym": "Wezemaal",
+        "pattern": "of"
+      },
+      "variants": [
+        "Arnold",
+        "Arnold (Wezemaal)",
+        "Arnold of Wezemaal",
+        "Arnold, Wezemaal",
+        "Wezemaal's Arnold"
+      ],
+      "normalized": {
+        "preferred": "arnold of wezemaal",
+        "variants": [
+          "arnold",
+          "arnold of wezemaal",
+          "arnold wezemaal",
+          "wezemaal s arnold"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2365.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR125",
+      "preferred_label": "Louis of Hesbaye",
+      "identifiers": {
+        "project_identifier": "CR125",
+        "omeka_item_id": 2366
+      },
+      "name": {
+        "raw": "Louis of Hesbaye",
+        "name": "Louis",
+        "toponym": "Hesbaye",
+        "pattern": "of"
+      },
+      "variants": [
+        "Hesbaye's Louis",
+        "Louis",
+        "Louis (Hesbaye)",
+        "Louis of Hesbaye",
+        "Louis, Hesbaye"
+      ],
+      "normalized": {
+        "preferred": "louis of hesbaye",
+        "variants": [
+          "hesbaye s louis",
+          "louis",
+          "louis hesbaye",
+          "louis of hesbaye"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2366.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR124",
+      "preferred_label": "Henry of Limal",
+      "identifiers": {
+        "project_identifier": "CR124",
+        "omeka_item_id": 2367
+      },
+      "name": {
+        "raw": "Henry of Limal",
+        "name": "Henry",
+        "toponym": "Limal",
+        "pattern": "of"
+      },
+      "variants": [
+        "Henry",
+        "Henry (Limal)",
+        "Henry of Limal",
+        "Henry, Limal",
+        "Limal's Henry"
+      ],
+      "normalized": {
+        "preferred": "henry of limal",
+        "variants": [
+          "henry",
+          "henry limal",
+          "henry of limal",
+          "limal s henry"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2367.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR123",
+      "preferred_label": "Benedict of Zandhoven",
+      "identifiers": {
+        "project_identifier": "CR123",
+        "omeka_item_id": 2368
+      },
+      "name": {
+        "raw": "Benedict of Zandhoven",
+        "name": "Benedict",
+        "toponym": "Zandhoven",
+        "pattern": "of"
+      },
+      "variants": [
+        "Benedict",
+        "Benedict (Zandhoven)",
+        "Benedict of Zandhoven",
+        "Benedict, Zandhoven",
+        "Zandhoven's Benedict"
+      ],
+      "normalized": {
+        "preferred": "benedict of zandhoven",
+        "variants": [
+          "benedict",
+          "benedict of zandhoven",
+          "benedict zandhoven",
+          "zandhoven s benedict"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2368.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR122",
+      "preferred_label": "Gosuin the Goat",
+      "identifiers": {
+        "project_identifier": "CR122",
+        "omeka_item_id": 2369
+      },
+      "name": {
+        "raw": "Gosuin the Goat",
+        "name": "Gosuin",
+        "epithet": "Goat",
+        "pattern": "the"
+      },
+      "variants": [
+        "Gosuin",
+        "Gosuin (Goat)",
+        "Gosuin the Goat"
+      ],
+      "normalized": {
+        "preferred": "gosuin the goat",
+        "variants": [
+          "gosuin",
+          "gosuin goat",
+          "gosuin the goat"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2369.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR121",
+      "preferred_label": "Frizo of Glabbeek",
+      "identifiers": {
+        "project_identifier": "CR121",
+        "omeka_item_id": 2370
+      },
+      "name": {
+        "raw": "Frizo of Glabbeek",
+        "name": "Frizo",
+        "toponym": "Glabbeek",
+        "pattern": "of"
+      },
+      "variants": [
+        "Frizo",
+        "Frizo (Glabbeek)",
+        "Frizo of Glabbeek",
+        "Frizo, Glabbeek",
+        "Glabbeek's Frizo"
+      ],
+      "normalized": {
+        "preferred": "frizo of glabbeek",
+        "variants": [
+          "frizo",
+          "frizo glabbeek",
+          "frizo of glabbeek",
+          "glabbeek s frizo"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2370.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR103",
+      "preferred_label": "Matthew of Bellenoue",
+      "identifiers": {
+        "project_identifier": "CR103",
+        "omeka_item_id": 2371
+      },
+      "name": {
+        "raw": "Matthew of Bellenoue",
+        "name": "Matthew",
+        "toponym": "Bellenoue",
+        "pattern": "of"
+      },
+      "variants": [
+        "Bellenoue's Matthew",
+        "Matthew",
+        "Matthew (Bellenoue)",
+        "Matthew of Bellenoue",
+        "Matthew, Bellenoue"
+      ],
+      "normalized": {
+        "preferred": "matthew of bellenoue",
+        "variants": [
+          "bellenoue s matthew",
+          "matthew",
+          "matthew bellenoue",
+          "matthew of bellenoue"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2371.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR100",
+      "preferred_label": "Robert of Buzançais",
+      "identifiers": {
+        "project_identifier": "CR100",
+        "omeka_item_id": 2374
+      },
+      "name": {
+        "raw": "Robert of Buzançais",
+        "name": "Robert",
+        "toponym": "Buzançais",
+        "pattern": "of"
+      },
+      "variants": [
+        "Buzançais's Robert",
+        "Robert",
+        "Robert (Buzançais)",
+        "Robert of Buzancais",
+        "Robert of Buzançais",
+        "Robert, Buzançais"
+      ],
+      "normalized": {
+        "preferred": "robert of buzancais",
+        "variants": [
+          "buzancais s robert",
+          "robert",
+          "robert buzancais",
+          "robert of buzancais"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2374.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR99",
+      "preferred_label": "Berthold of Sperberseck",
+      "identifiers": {
+        "project_identifier": "CR99",
+        "omeka_item_id": 2375
+      },
+      "name": {
+        "raw": "Berthold of Sperberseck",
+        "name": "Berthold",
+        "toponym": "Sperberseck",
+        "pattern": "of"
+      },
+      "variants": [
+        "Berthold",
+        "Berthold (Sperberseck)",
+        "Berthold of Sperberseck",
+        "Berthold, Sperberseck",
+        "Sperberseck's Berthold"
+      ],
+      "normalized": {
+        "preferred": "berthold of sperberseck",
+        "variants": [
+          "berthold",
+          "berthold of sperberseck",
+          "berthold sperberseck",
+          "sperberseck s berthold"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2375.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR98",
+      "preferred_label": "William V of Montferrat",
+      "identifiers": {
+        "project_identifier": "CR98",
+        "omeka_item_id": 2376
+      },
+      "name": {
+        "raw": "William V of Montferrat",
+        "name": "William",
+        "regnal": "V",
+        "toponym": "Montferrat",
+        "pattern": "regnal_of"
+      },
+      "variants": [
+        "Montferrat's William",
+        "William",
+        "William (Montferrat)",
+        "William 5",
+        "William 5 of Montferrat",
+        "William V",
+        "William V of Montferrat",
+        "William, Montferrat"
+      ],
+      "normalized": {
+        "preferred": "william v of montferrat",
+        "variants": [
+          "montferrat s william",
+          "william",
+          "william 5",
+          "william 5 of montferrat",
+          "william montferrat",
+          "william v",
+          "william v of montferrat"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2376.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR97",
+      "preferred_label": "Rainald the Proud",
+      "identifiers": {
+        "project_identifier": "CR97",
+        "omeka_item_id": 2377
+      },
+      "name": {
+        "raw": "Rainald the Proud",
+        "name": "Rainald",
+        "epithet": "Proud",
+        "pattern": "the"
+      },
+      "variants": [
+        "Rainald",
+        "Rainald (Proud)",
+        "Rainald the Proud"
+      ],
+      "normalized": {
+        "preferred": "rainald the proud",
+        "variants": [
+          "rainald",
+          "rainald proud",
+          "rainald the proud"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2377.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR96",
+      "preferred_label": "Hugh of Matheflon",
+      "identifiers": {
+        "project_identifier": "CR96",
+        "omeka_item_id": 2378
+      },
+      "name": {
+        "raw": "Hugh of Matheflon",
+        "name": "Hugh",
+        "toponym": "Matheflon",
+        "pattern": "of"
+      },
+      "variants": [
+        "Hugh",
+        "Hugh (Matheflon)",
+        "Hugh of Matheflon",
+        "Hugh, Matheflon",
+        "Matheflon's Hugh"
+      ],
+      "normalized": {
+        "preferred": "hugh of matheflon",
+        "variants": [
+          "hugh",
+          "hugh matheflon",
+          "hugh of matheflon",
+          "matheflon s hugh"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2378.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR95",
+      "preferred_label": "Sibylla of Anjou",
+      "identifiers": {
+        "project_identifier": "CR95",
+        "omeka_item_id": 2379
+      },
+      "name": {
+        "raw": "Sibylla of Anjou",
+        "name": "Sibylla",
+        "toponym": "Anjou",
+        "pattern": "of"
+      },
+      "variants": [
+        "Anjou's Sibylla",
+        "Sibylla",
+        "Sibylla (Anjou)",
+        "Sibylla of Anjou",
+        "Sibylla, Anjou"
+      ],
+      "normalized": {
+        "preferred": "sibylla of anjou",
+        "variants": [
+          "anjou s sibylla",
+          "sibylla",
+          "sibylla anjou",
+          "sibylla of anjou"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2379.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR94",
+      "preferred_label": "Stephen I of Sancerre",
+      "identifiers": {
+        "project_identifier": "CR94",
+        "omeka_item_id": 2380
+      },
+      "name": {
+        "raw": "Stephen I of Sancerre",
+        "name": "Stephen",
+        "regnal": "I",
+        "toponym": "Sancerre",
+        "pattern": "regnal_of"
+      },
+      "variants": [
+        "Sancerre's Stephen",
+        "Stephen",
+        "Stephen (Sancerre)",
+        "Stephen 1",
+        "Stephen 1 of Sancerre",
+        "Stephen I",
+        "Stephen I of Sancerre",
+        "Stephen, Sancerre"
+      ],
+      "normalized": {
+        "preferred": "stephen i of sancerre",
+        "variants": [
+          "sancerre s stephen",
+          "stephen",
+          "stephen 1",
+          "stephen 1 of sancerre",
+          "stephen i",
+          "stephen i of sancerre",
+          "stephen sancerre"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2380.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR93",
+      "preferred_label": "Stephen II of Auxonne",
+      "identifiers": {
+        "project_identifier": "CR93",
+        "omeka_item_id": 2381
+      },
+      "name": {
+        "raw": "Stephen II of Auxonne",
+        "name": "Stephen",
+        "regnal": "II",
+        "toponym": "Auxonne",
+        "pattern": "regnal_of"
+      },
+      "variants": [
+        "Auxonne's Stephen",
+        "Stephen",
+        "Stephen (Auxonne)",
+        "Stephen 2",
+        "Stephen 2 of Auxonne",
+        "Stephen II",
+        "Stephen II of Auxonne",
+        "Stephen, Auxonne"
+      ],
+      "normalized": {
+        "preferred": "stephen ii of auxonne",
+        "variants": [
+          "auxonne s stephen",
+          "stephen",
+          "stephen 2",
+          "stephen 2 of auxonne",
+          "stephen auxonne",
+          "stephen ii",
+          "stephen ii of auxonne"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2381.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR92",
+      "preferred_label": "Hugh III of Burgundy",
+      "identifiers": {
+        "project_identifier": "CR92",
+        "omeka_item_id": 2382
+      },
+      "name": {
+        "raw": "Hugh III of Burgundy",
+        "name": "Hugh",
+        "regnal": "III",
+        "toponym": "Burgundy",
+        "pattern": "regnal_of"
+      },
+      "variants": [
+        "Burgundy's Hugh",
+        "Hugh",
+        "Hugh (Burgundy)",
+        "Hugh 3",
+        "Hugh 3 of Burgundy",
+        "Hugh III",
+        "Hugh III of Burgundy",
+        "Hugh, Burgundy"
+      ],
+      "normalized": {
+        "preferred": "hugh iii of burgundy",
+        "variants": [
+          "burgundy s hugh",
+          "hugh",
+          "hugh 3",
+          "hugh 3 of burgundy",
+          "hugh burgundy",
+          "hugh iii",
+          "hugh iii of burgundy"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2382.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR91",
+      "preferred_label": "Adhémar V of Limoges",
+      "identifiers": {
+        "project_identifier": "CR91",
+        "omeka_item_id": 2383
+      },
+      "name": {
+        "raw": "Adhémar V of Limoges",
+        "name": "Adhémar",
+        "regnal": "V",
+        "toponym": "Limoges",
+        "pattern": "regnal_of"
+      },
+      "variants": [
+        "Adhemar V of Limoges",
+        "Adhémar",
+        "Adhémar (Limoges)",
+        "Adhémar 5",
+        "Adhémar 5 of Limoges",
+        "Adhémar V",
+        "Adhémar V of Limoges",
+        "Adhémar, Limoges",
+        "Limoges's Adhémar"
+      ],
+      "normalized": {
+        "preferred": "adhemar v of limoges",
+        "variants": [
+          "adhemar",
+          "adhemar 5",
+          "adhemar 5 of limoges",
+          "adhemar limoges",
+          "adhemar v",
+          "adhemar v of limoges",
+          "limoges s adhemar"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2383.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR90",
+      "preferred_label": "Dedo IV of Wettin",
+      "identifiers": {
+        "project_identifier": "CR90",
+        "omeka_item_id": 2384
+      },
+      "name": {
+        "raw": "Dedo IV of Wettin",
+        "name": "Dedo",
+        "regnal": "IV",
+        "toponym": "Wettin",
+        "pattern": "regnal_of"
+      },
+      "variants": [
+        "Dedo",
+        "Dedo (Wettin)",
+        "Dedo 4",
+        "Dedo 4 of Wettin",
+        "Dedo IV",
+        "Dedo IV of Wettin",
+        "Dedo, Wettin",
+        "Wettin's Dedo"
+      ],
+      "normalized": {
+        "preferred": "dedo iv of wettin",
+        "variants": [
+          "dedo",
+          "dedo 4",
+          "dedo 4 of wettin",
+          "dedo iv",
+          "dedo iv of wettin",
+          "dedo wettin",
+          "wettin s dedo"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2384.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR89",
+      "preferred_label": "William VI, count of Angoulême",
+      "identifiers": {
+        "project_identifier": "CR89",
+        "omeka_item_id": 2385
+      },
+      "name": {
+        "raw": "William VI, count of Angoulême",
+        "name": "William VI, count",
+        "toponym": "Angoulême",
+        "pattern": "of"
+      },
+      "variants": [
+        "Angoulême's William VI, count",
+        "William VI, count",
+        "William VI, count (Angoulême)",
+        "William VI, count of Angouleme",
+        "William VI, count of Angoulême",
+        "William VI, count, Angoulême"
+      ],
+      "normalized": {
+        "preferred": "william vi count of angouleme",
+        "variants": [
+          "angouleme s william vi count",
+          "william vi count",
+          "william vi count angouleme",
+          "william vi count of angouleme"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2385.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR88",
+      "preferred_label": "Robert V of Béthune",
+      "identifiers": {
+        "project_identifier": "CR88",
+        "omeka_item_id": 2387
+      },
+      "name": {
+        "raw": "Robert V of Béthune",
+        "name": "Robert",
+        "regnal": "V",
+        "toponym": "Béthune",
+        "pattern": "regnal_of"
+      },
+      "variants": [
+        "Béthune's Robert",
+        "Robert",
+        "Robert (Béthune)",
+        "Robert 5",
+        "Robert 5 of Béthune",
+        "Robert V",
+        "Robert V of Bethune",
+        "Robert V of Béthune",
+        "Robert, Béthune"
+      ],
+      "normalized": {
+        "preferred": "robert v of bethune",
+        "variants": [
+          "bethune s robert",
+          "robert",
+          "robert 5",
+          "robert 5 of bethune",
+          "robert bethune",
+          "robert v",
+          "robert v of bethune"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2387.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR87",
+      "preferred_label": "Ermengarde of Anjou",
+      "identifiers": {
+        "project_identifier": "CR87",
+        "omeka_item_id": 2388
+      },
+      "name": {
+        "raw": "Ermengarde of Anjou",
+        "name": "Ermengarde",
+        "toponym": "Anjou",
+        "pattern": "of"
+      },
+      "variants": [
+        "Anjou's Ermengarde",
+        "Ermengarde",
+        "Ermengarde (Anjou)",
+        "Ermengarde of Anjou",
+        "Ermengarde, Anjou"
+      ],
+      "normalized": {
+        "preferred": "ermengarde of anjou",
+        "variants": [
+          "anjou s ermengarde",
+          "ermengarde",
+          "ermengarde anjou",
+          "ermengarde of anjou"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2388.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR86",
+      "preferred_label": "Constance of Toulouse",
+      "identifiers": {
+        "project_identifier": "CR86",
+        "omeka_item_id": 2389
+      },
+      "name": {
+        "raw": "Constance of Toulouse",
+        "name": "Constance",
+        "toponym": "Toulouse",
+        "pattern": "of"
+      },
+      "variants": [
+        "Constance",
+        "Constance (Toulouse)",
+        "Constance of Toulouse",
+        "Constance, Toulouse",
+        "Toulouse's Constance"
+      ],
+      "normalized": {
+        "preferred": "constance of toulouse",
+        "variants": [
+          "constance",
+          "constance of toulouse",
+          "constance toulouse",
+          "toulouse s constance"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2389.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR85",
+      "preferred_label": "Fernando Pérez",
+      "identifiers": {
+        "project_identifier": "CR85",
+        "omeka_item_id": 2390
+      },
+      "name": {
+        "raw": "Fernando Pérez",
+        "given": "Fernando",
+        "rest": "Pérez",
+        "pattern": "space"
+      },
+      "variants": [
+        "Fernando Perez",
+        "Fernando Pérez"
+      ],
+      "normalized": {
+        "preferred": "fernando perez",
+        "variants": [
+          "fernando perez"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2390.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR84",
+      "preferred_label": "Elvira Ramírez",
+      "identifiers": {
+        "project_identifier": "CR84",
+        "omeka_item_id": 2391
+      },
+      "name": {
+        "raw": "Elvira Ramírez",
+        "given": "Elvira",
+        "rest": "Ramírez",
+        "pattern": "space"
+      },
+      "variants": [
+        "Elvira Ramirez",
+        "Elvira Ramírez"
+      ],
+      "normalized": {
+        "preferred": "elvira ramirez",
+        "variants": [
+          "elvira ramirez"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2391.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR83",
+      "preferred_label": "Henry de Lacy",
+      "identifiers": {
+        "project_identifier": "CR83",
+        "omeka_item_id": 2392
+      },
+      "name": {
+        "raw": "Henry de Lacy",
+        "given": "Henry",
+        "rest": "de Lacy",
+        "pattern": "space"
+      },
+      "variants": [
+        "Henry de Lacy"
+      ],
+      "normalized": {
+        "preferred": "henry de lacy",
+        "variants": [
+          "henry de lacy"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2392.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR127",
+      "preferred_label": "Hugh of Lacerta",
+      "identifiers": {
+        "project_identifier": "CR127",
+        "omeka_item_id": 2397
+      },
+      "name": {
+        "raw": "Hugh of Lacerta",
+        "name": "Hugh",
+        "toponym": "Lacerta",
+        "pattern": "of"
+      },
+      "variants": [
+        "Hugh",
+        "Hugh (Lacerta)",
+        "Hugh of Lacerta",
+        "Hugh, Lacerta",
+        "Lacerta's Hugh"
+      ],
+      "normalized": {
+        "preferred": "hugh of lacerta",
+        "variants": [
+          "hugh",
+          "hugh lacerta",
+          "hugh of lacerta",
+          "lacerta s hugh"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2397.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR 145",
+      "preferred_label": "Rodrigo González de Lara",
+      "identifiers": {
+        "project_identifier": "CR 145",
+        "omeka_item_id": 2401
+      },
+      "name": {
+        "raw": "Rodrigo González de Lara",
+        "given": "Rodrigo",
+        "rest": "González de Lara",
+        "pattern": "space"
+      },
+      "variants": [
+        "Rodrigo Gonzalez de Lara",
+        "Rodrigo González de Lara"
+      ],
+      "normalized": {
+        "preferred": "rodrigo gonzalez de lara",
+        "variants": [
+          "rodrigo gonzalez de lara"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2401.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR 165",
+      "preferred_label": "Albert the Bear",
+      "identifiers": {
+        "project_identifier": "CR 165",
+        "omeka_item_id": 2402
+      },
+      "name": {
+        "raw": "Albert the Bear",
+        "name": "Albert",
+        "epithet": "Bear",
+        "pattern": "the"
+      },
+      "variants": [
+        "Albert",
+        "Albert (Bear)",
+        "Albert the Bear"
+      ],
+      "normalized": {
+        "preferred": "albert the bear",
+        "variants": [
+          "albert",
+          "albert bear",
+          "albert the bear"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2402.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR166",
+      "preferred_label": "Sophie of Winzenburg",
+      "identifiers": {
+        "project_identifier": "CR166",
+        "omeka_item_id": 2403
+      },
+      "name": {
+        "raw": "Sophie of Winzenburg",
+        "name": "Sophie",
+        "toponym": "Winzenburg",
+        "pattern": "of"
+      },
+      "variants": [
+        "Sophie",
+        "Sophie (Winzenburg)",
+        "Sophie of Winzenburg",
+        "Sophie, Winzenburg",
+        "Winzenburg's Sophie"
+      ],
+      "normalized": {
+        "preferred": "sophie of winzenburg",
+        "variants": [
+          "sophie",
+          "sophie of winzenburg",
+          "sophie winzenburg",
+          "winzenburg s sophie"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2403.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR164",
+      "preferred_label": "Hroznata, son of Herman",
+      "identifiers": {
+        "project_identifier": "CR164",
+        "omeka_item_id": 2404
+      },
+      "name": {
+        "raw": "Hroznata, son of Herman",
+        "name": "Hroznata, son",
+        "toponym": "Herman",
+        "pattern": "of"
+      },
+      "variants": [
+        "Herman's Hroznata, son",
+        "Hroznata, son",
+        "Hroznata, son (Herman)",
+        "Hroznata, son of Herman",
+        "Hroznata, son, Herman"
+      ],
+      "normalized": {
+        "preferred": "hroznata son of herman",
+        "variants": [
+          "herman s hroznata son",
+          "hroznata son",
+          "hroznata son herman",
+          "hroznata son of herman"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2404.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR167",
+      "preferred_label": "Dietrich von Burgwerben",
+      "identifiers": {
+        "project_identifier": "CR167",
+        "omeka_item_id": 2405
+      },
+      "name": {
+        "raw": "Dietrich von Burgwerben",
+        "given": "Dietrich",
+        "rest": "von Burgwerben",
+        "pattern": "space"
+      },
+      "variants": [
+        "Dietrich von Burgwerben"
+      ],
+      "normalized": {
+        "preferred": "dietrich von burgwerben",
+        "variants": [
+          "dietrich von burgwerben"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2405.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR168",
+      "preferred_label": "Uta of Tarasp",
+      "identifiers": {
+        "project_identifier": "CR168",
+        "omeka_item_id": 2406
+      },
+      "name": {
+        "raw": "Uta of Tarasp",
+        "name": "Uta",
+        "toponym": "Tarasp",
+        "pattern": "of"
+      },
+      "variants": [
+        "Tarasp's Uta",
+        "Uta",
+        "Uta (Tarasp)",
+        "Uta of Tarasp",
+        "Uta, Tarasp"
+      ],
+      "normalized": {
+        "preferred": "uta of tarasp",
+        "variants": [
+          "tarasp s uta",
+          "uta",
+          "uta of tarasp",
+          "uta tarasp"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2406.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR170",
+      "preferred_label": "Leopold V of Austria",
+      "identifiers": {
+        "project_identifier": "CR170",
+        "omeka_item_id": 2408
+      },
+      "name": {
+        "raw": "Leopold V of Austria",
+        "name": "Leopold",
+        "regnal": "V",
+        "toponym": "Austria",
+        "pattern": "regnal_of"
+      },
+      "variants": [
+        "Austria's Leopold",
+        "Leopold",
+        "Leopold (Austria)",
+        "Leopold 5",
+        "Leopold 5 of Austria",
+        "Leopold V",
+        "Leopold V of Austria",
+        "Leopold, Austria"
+      ],
+      "normalized": {
+        "preferred": "leopold v of austria",
+        "variants": [
+          "austria s leopold",
+          "leopold",
+          "leopold 5",
+          "leopold 5 of austria",
+          "leopold austria",
+          "leopold v",
+          "leopold v of austria"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2408.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR175",
+      "preferred_label": "Conrad of Meissen",
+      "identifiers": {
+        "project_identifier": "CR175",
+        "omeka_item_id": 2409
+      },
+      "name": {
+        "raw": "Conrad of Meissen",
+        "name": "Conrad",
+        "toponym": "Meissen",
+        "pattern": "of"
+      },
+      "variants": [
+        "Conrad",
+        "Conrad (Meissen)",
+        "Conrad of Meissen",
+        "Conrad, Meissen",
+        "Meissen's Conrad"
+      ],
+      "normalized": {
+        "preferred": "conrad of meissen",
+        "variants": [
+          "conrad",
+          "conrad meissen",
+          "conrad of meissen",
+          "meissen s conrad"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2409.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR176",
+      "preferred_label": "Stephen of Perche",
+      "identifiers": {
+        "project_identifier": "CR176",
+        "omeka_item_id": 2410
+      },
+      "name": {
+        "raw": "Stephen of Perche",
+        "name": "Stephen",
+        "toponym": "Perche",
+        "pattern": "of"
+      },
+      "variants": [
+        "Perche's Stephen",
+        "Stephen",
+        "Stephen (Perche)",
+        "Stephen of Perche",
+        "Stephen, Perche"
+      ],
+      "normalized": {
+        "preferred": "stephen of perche",
+        "variants": [
+          "perche s stephen",
+          "stephen",
+          "stephen of perche",
+          "stephen perche"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2410.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR178",
+      "preferred_label": "William Gouet",
+      "identifiers": {
+        "project_identifier": "CR178",
+        "omeka_item_id": 2411
+      },
+      "name": {
+        "raw": "William Gouet",
+        "given": "William",
+        "rest": "Gouet",
+        "pattern": "space"
+      },
+      "variants": [
+        "William Gouet"
+      ],
+      "normalized": {
+        "preferred": "william gouet",
+        "variants": [
+          "william gouet"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2411.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR181",
+      "preferred_label": "Seguin of Lastours",
+      "identifiers": {
+        "project_identifier": "CR181",
+        "omeka_item_id": 2412
+      },
+      "name": {
+        "raw": "Seguin of Lastours",
+        "name": "Seguin",
+        "toponym": "Lastours",
+        "pattern": "of"
+      },
+      "variants": [
+        "Lastours's Seguin",
+        "Seguin",
+        "Seguin (Lastours)",
+        "Seguin of Lastours",
+        "Seguin, Lastours"
+      ],
+      "normalized": {
+        "preferred": "seguin of lastours",
+        "variants": [
+          "lastours s seguin",
+          "seguin",
+          "seguin lastours",
+          "seguin of lastours"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2412.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR183",
+      "preferred_label": "Bernard of Dorat",
+      "identifiers": {
+        "project_identifier": "CR183",
+        "omeka_item_id": 2413
+      },
+      "name": {
+        "raw": "Bernard of Dorat",
+        "name": "Bernard",
+        "toponym": "Dorat",
+        "pattern": "of"
+      },
+      "variants": [
+        "Bernard",
+        "Bernard (Dorat)",
+        "Bernard of Dorat",
+        "Bernard, Dorat",
+        "Dorat's Bernard"
+      ],
+      "normalized": {
+        "preferred": "bernard of dorat",
+        "variants": [
+          "bernard",
+          "bernard dorat",
+          "bernard of dorat",
+          "dorat s bernard"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [
+          "person/item_2413.xml"
+        ],
+        "source_system": "omeka-xml"
+      }
+    }
+  ]
+}

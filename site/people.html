@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>People Lookup — People of the Medieval Levant</title>
+  <link rel="icon" type="image/png" href="./assets/logo.png" />
+  <link rel="stylesheet" href="./style.css" />
+  <style>
+    .lookup-wrap { max-width: 940px; margin: 0 auto; padding: 1.5rem 1.5rem 4rem; }
+
+    /* ── search ── */
+    .search-row { display: flex; gap: .6rem; margin-bottom: .75rem; align-items: center; }
+    .search-input {
+      flex: 1; padding: .75rem 1rem; font-size: 1rem;
+      font-family: var(--font); border: 1px solid var(--border);
+      border-radius: var(--radius); background: var(--surface);
+      color: var(--text); transition: border-color .15s;
+    }
+    .search-input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 2px rgba(42,74,102,.12); }
+    .search-clear {
+      padding: .5rem .85rem; border: 1px solid var(--border);
+      border-radius: var(--radius); background: var(--surface);
+      color: var(--muted); cursor: pointer; font-size: .88rem;
+      transition: background .15s;
+    }
+    .search-clear:hover { background: var(--border); }
+
+    /* ── stats ── */
+    .lookup-stats { font-size: .8rem; color: var(--muted); margin-bottom: 1.1rem; }
+    .lookup-stats strong { color: var(--text); }
+
+    /* ── layout ── */
+    .lookup-cols {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 1.2rem;
+      align-items: start;
+    }
+    @media (max-width: 720px) {
+      .lookup-cols { grid-template-columns: 1fr; }
+    }
+
+    /* ── results list ── */
+    .results-list { list-style: none; padding: 0; margin: 0; max-height: 72vh; overflow-y: auto; }
+    .person-item {
+      border: 1px solid var(--border); border-radius: var(--radius);
+      padding: .75rem .9rem; margin-bottom: .4rem;
+      background: var(--surface); cursor: pointer;
+      transition: border-color .12s, background .12s;
+    }
+    .person-item:hover { border-color: var(--accent); }
+    .person-item.active { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 5%, var(--surface)); }
+    .pi-name { font-weight: 600; font-size: .92rem; color: var(--text); }
+    .pi-meta { font-size: .76rem; color: var(--muted); margin-top: .18rem; display: flex; gap: .5rem; flex-wrap: wrap; }
+    .pi-badge {
+      display: inline-block; padding: .1rem .45rem;
+      border-radius: 10px; font-size: .7rem; font-weight: 600;
+      background: var(--border); color: var(--muted);
+    }
+    .pi-badge.authority  { background: #dbeafe; color: #1d4ed8; }
+    .pi-badge.mentions   { background: #dcfce7; color: #166534; }
+    .pi-badge.no-mention { background: var(--border); color: var(--muted); }
+
+    .no-results { text-align: center; color: var(--muted); padding: 2.5rem 1rem; font-size: .9rem; }
+
+    /* ── profile panel ── */
+    .profile-panel {
+      border: 1px solid var(--border); border-radius: var(--radius);
+      background: var(--surface); padding: 1.3rem 1.5rem;
+      position: sticky; top: 1rem;
+    }
+    .profile-empty { text-align: center; color: var(--muted); padding: 3rem 1rem; font-size: .88rem; }
+    .profile-title { font-size: 1.1rem; font-weight: 700; color: var(--accent); margin-bottom: .2rem; }
+    .profile-auth  { font-size: .75rem; color: var(--muted); font-family: monospace; margin-bottom: .9rem; }
+
+    .profile-section { margin-top: .9rem; }
+    .profile-section h4 {
+      font-size: .72rem; text-transform: uppercase; letter-spacing: .07em;
+      color: var(--muted); margin-bottom: .5rem; border-bottom: 1px solid var(--border); padding-bottom: .3rem;
+    }
+
+    /* doc mentions */
+    .mention-row {
+      display: flex; align-items: flex-start; gap: .6rem;
+      padding: .4rem 0; border-bottom: 1px solid var(--border);
+      font-size: .84rem;
+    }
+    .mention-row:last-child { border-bottom: none; }
+    .mention-doc { flex: 1; color: var(--text); line-height: 1.4; }
+    .mention-doc small { color: var(--muted); display: block; font-size: .74rem; }
+
+    /* external links */
+    .ext-links { display: flex; gap: .5rem; flex-wrap: wrap; }
+    .ext-link {
+      font-size: .78rem; padding: .28rem .7rem;
+      border: 1px solid var(--border); border-radius: 20px;
+      color: var(--accent); text-decoration: none; transition: background .12s;
+    }
+    .ext-link:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+    /* variants */
+    .variants-wrap { font-size: .8rem; color: var(--muted); line-height: 1.85; }
+    .variant-chip {
+      display: inline-block; background: var(--border); border-radius: 10px;
+      padding: .1rem .55rem; margin: .1rem .15rem; font-size: .75rem;
+    }
+
+    /* confidence reuse from style.css */
+    .status-high { color: #166534; }
+    .status-med  { color: #854d0e; }
+    .status-low  { color: var(--muted); }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner" style="display:flex;align-items:center;gap:.85rem;">
+      <a href="./index.html" style="display:inline-flex;flex-shrink:0;"><img src="./assets/logo.png" alt="Outremer" style="width:44px;height:44px;object-fit:contain;border-radius:8px;" /></a>
+      <div>
+        <h1>Voyagers → Outremer</h1>
+        <p class="subtitle">
+          <a href="./index.html" style="color:rgba(255,255,255,.7);text-decoration:none;">← Project</a>
+          &nbsp;·&nbsp; <a href="./explorer.html" style="color:rgba(255,255,255,.7);text-decoration:none;">Explorer</a>
+          &nbsp;·&nbsp; 👤 People
+          &nbsp;·&nbsp; <a href="./stats.html" style="color:rgba(255,255,255,.7);text-decoration:none;">📊 Stats</a>
+          &nbsp;·&nbsp; <a href="./upload.html" style="color:rgba(255,255,255,.7);text-decoration:none;">Contribute a Source</a>
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <div class="lookup-wrap">
+    <div class="search-row">
+      <input id="searchInput" class="search-input" type="search"
+             placeholder="Search people — e.g. Godfrey, Fulk, Raymond…"
+             autocomplete="off" autofocus />
+      <button class="search-clear" id="clearBtn" onclick="clearSearch()">✕ Clear</button>
+    </div>
+    <div class="lookup-stats" id="statsBar">Loading…</div>
+
+    <div class="lookup-cols">
+      <ul class="results-list" id="resultsList"></ul>
+      <div class="profile-panel" id="profilePanel">
+        <div class="profile-empty">← Select a person to view their profile</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  // ── State ──────────────────────────────────────────────────────────────
+  let authority = [];        // 126 persons from authority file
+  let docIndex  = {};        // doc_id → {title, author, year}
+  let personIndex = {};      // norm_name → {preferred, authority_id?, docs: [{doc_id, as_name, confidence, status}]}
+  let wikidataIndex = {};    // norm_name → [{label, qid, score}]
+  let activeId  = null;
+
+  const norm = s => s.toLowerCase().replace(/[^a-z0-9 ]/g, ' ').replace(/\s+/g, ' ').trim();
+
+  // ── Boot ──────────────────────────────────────────────────────────────
+  async function boot() {
+    const [authorityData, indexData, wikidataData] = await Promise.all([
+      fetchJSON('./data/authority.json'),
+      fetchJSON('./index.json'),
+      fetchJSON('./data/wikidata_matches.json').catch(() => ({}))
+    ]);
+
+    authority = authorityData.persons || [];
+
+    // Build wikidata index: norm_name → best candidate
+    for (const [, persons] of Object.entries(wikidataData)) {
+      for (const [personName, data] of Object.entries(persons)) {
+        const key = norm(personName);
+        const cands = (data.candidates || []).filter(c => c.score >= 0.4);
+        if (cands.length && !wikidataIndex[key]) {
+          wikidataIndex[key] = cands[0];
+        }
+      }
+    }
+
+    // Build doc metadata index
+    const docs = (indexData.documents || []).filter(d => !d.includes('wikidata') && !d.includes('authority'));
+    for (const fname of docs) {
+      const docId = fname.replace('.json', '');
+      docIndex[docId] = { title: docId, author: '', year: '' };
+    }
+
+    // Load each doc and build person → doc index
+    await Promise.all(docs.map(fname => loadDoc(fname)));
+
+    renderStats();
+    renderResults('');
+  }
+
+  async function loadDoc(fname) {
+    const docId = fname.replace('.json', '');
+    let data;
+    try { data = await fetchJSON(`./data/${fname}`); } catch { return; }
+
+    // Enrich doc metadata
+    const meta = data.metadata || {};
+    docIndex[docId] = {
+      title:  meta.title  || docId,
+      author: meta.author || '',
+      year:   meta.year   || ''
+    };
+
+    // Index each link
+    for (const link of (data.links || [])) {
+      const personName = link.person;
+      if (!personName || link.person_group) continue;
+
+      const key = norm(personName);
+      if (!personIndex[key]) {
+        personIndex[key] = {
+          preferred: personName,
+          authority_id: null,
+          docs: []
+        };
+      }
+
+      // Set authority_id from top_candidate if available
+      if (link.top_candidate && !personIndex[key].authority_id) {
+        personIndex[key].authority_id = link.top_candidate;
+      }
+
+      personIndex[key].docs.push({
+        doc_id:     docId,
+        as_name:    personName,
+        confidence: link.confidence || 0,
+        status:     link.status || 'no_match',
+        outremer_id: link.top_candidate || null
+      });
+    }
+  }
+
+  // ── Search ─────────────────────────────────────────────────────────────
+  let debounce;
+  document.getElementById('searchInput').addEventListener('input', e => {
+    clearTimeout(debounce);
+    debounce = setTimeout(() => renderResults(e.target.value.trim()), 120);
+  });
+
+  function clearSearch() {
+    document.getElementById('searchInput').value = '';
+    renderResults('');
+    document.getElementById('searchInput').focus();
+  }
+
+  function renderResults(query) {
+    const q = norm(query);
+    const list = document.getElementById('resultsList');
+
+    // Score authority persons
+    const scored = authority.map(p => {
+      const pn = norm(p.preferred_label);
+      const variants = (p.normalized?.variants || []);
+      let score = 0;
+      if (!q) {
+        score = 1;
+      } else if (pn === q) {
+        score = 100;
+      } else if (pn.startsWith(q)) {
+        score = 80;
+      } else if (pn.includes(q)) {
+        score = 60;
+      } else if (variants.some(v => v.includes(q))) {
+        score = 40;
+      } else if (pn.split(' ').some(w => w.startsWith(q))) {
+        score = 30;
+      } else {
+        return null;
+      }
+
+      // Boost by mention count
+      const mentionCount = getMentions(p.authority_id, norm(p.preferred_label)).length;
+      score += Math.min(mentionCount * 2, 10);
+
+      return { type: 'authority', person: p, score, mentionCount };
+    }).filter(Boolean);
+
+    // Sort by score desc, then alpha
+    scored.sort((a, b) => b.score - a.score || a.person.preferred_label.localeCompare(b.person.preferred_label));
+
+    // Also find unlinked extracted persons matching query
+    const unlinked = [];
+    if (q) {
+      for (const [key, data] of Object.entries(personIndex)) {
+        if (data.authority_id) continue; // already covered via authority
+        if (!key.includes(q) && !q.split(' ').every(w => key.includes(w))) continue;
+        unlinked.push({ type: 'extracted', data, key });
+      }
+      unlinked.sort((a, b) => b.data.docs.length - a.data.docs.length);
+    }
+
+    list.innerHTML = '';
+
+    if (!scored.length && !unlinked.length) {
+      list.innerHTML = '<li class="no-results">No people found matching your search.</li>';
+      return;
+    }
+
+    // Render authority persons
+    for (const item of scored.slice(0, 60)) {
+      const p = item.person;
+      const li = document.createElement('li');
+      li.className = 'person-item' + (activeId === p.authority_id ? ' active' : '');
+      li.dataset.id = p.authority_id;
+
+      const mentionBadge = item.mentionCount > 0
+        ? `<span class="pi-badge mentions">📄 ${item.mentionCount} mention${item.mentionCount > 1 ? 's' : ''}</span>`
+        : `<span class="pi-badge no-mention">not yet extracted</span>`;
+
+      li.innerHTML = `
+        <div class="pi-name">${esc(p.preferred_label)}</div>
+        <div class="pi-meta">
+          <span class="pi-badge authority">${esc(p.authority_id)}</span>
+          ${mentionBadge}
+        </div>`;
+      li.addEventListener('click', () => showProfile(p.authority_id));
+      list.appendChild(li);
+    }
+
+    // Render unlinked extracted persons (if any)
+    if (unlinked.length) {
+      const sep = document.createElement('li');
+      sep.style.cssText = 'font-size:.75rem;color:var(--muted);padding:.4rem .2rem;text-transform:uppercase;letter-spacing:.06em;';
+      sep.textContent = 'Also found in documents (not yet in authority)';
+      list.appendChild(sep);
+
+      for (const item of unlinked.slice(0, 20)) {
+        const li = document.createElement('li');
+        li.className = 'person-item';
+        const cnt = item.data.docs.length;
+        li.innerHTML = `
+          <div class="pi-name">${esc(item.data.preferred)}</div>
+          <div class="pi-meta">
+            <span class="pi-badge mentions">📄 ${cnt} mention${cnt > 1 ? 's' : ''}</span>
+            <span class="pi-badge">extracted only</span>
+          </div>`;
+        li.addEventListener('click', () => showExtractedProfile(item.data));
+        list.appendChild(li);
+      }
+    }
+
+    // Re-highlight active
+    document.querySelectorAll('.person-item').forEach(el => {
+      el.classList.toggle('active', el.dataset.id === activeId);
+    });
+
+    updateCount(scored.length + unlinked.length, q);
+  }
+
+  // ── Profile: Authority person ──────────────────────────────────────────
+  function showProfile(authId) {
+    activeId = authId;
+    document.querySelectorAll('.person-item').forEach(el =>
+      el.classList.toggle('active', el.dataset.id === authId));
+
+    const p = authority.find(a => a.authority_id === authId);
+    if (!p) return;
+
+    const mentions = getMentions(authId, norm(p.preferred_label));
+    const wd = wikidataIndex[norm(p.preferred_label)];
+
+    const panel = document.getElementById('profilePanel');
+    panel.innerHTML = `
+      <div class="profile-title">${esc(p.preferred_label)}</div>
+      <div class="profile-auth">${esc(p.authority_id)}</div>
+
+      ${mentions.length ? `
+        <div class="profile-section">
+          <h4>📄 Document mentions (${mentions.length})</h4>
+          ${mentions.map(m => `
+            <div class="mention-row">
+              <div class="mention-doc">
+                <span class="conf-badge status-${confClass(m.confidence)}">${confLabel(m.status, m.confidence)}</span>
+                &nbsp;${esc(m.as_name !== p.preferred_label ? m.as_name + ' →' : '')}
+                <strong>${esc(docIndex[m.doc_id]?.title || m.doc_id)}</strong>
+                <small>${esc(docIndex[m.doc_id]?.author || '')}${docIndex[m.doc_id]?.year ? ' · ' + docIndex[m.doc_id].year : ''}</small>
+              </div>
+            </div>`).join('')}
+        </div>` : `
+        <div class="profile-section">
+          <h4>📄 Document mentions</h4>
+          <p style="font-size:.84rem;color:var(--muted);">Not yet found in processed documents.</p>
+        </div>`}
+
+      ${wd ? `
+        <div class="profile-section">
+          <h4>🌐 External links</h4>
+          <div class="ext-links">
+            <a class="ext-link" href="https://www.wikidata.org/wiki/${esc(wd.qid)}" target="_blank" rel="noopener">
+              Wikidata ${esc(wd.qid)}
+            </a>
+          </div>
+        </div>` : ''}
+
+      ${p.identifiers?.omeka_item_id ? `
+        <div class="profile-section" style="margin-top:${wd ? '.5rem' : '.9rem'}">
+          ${wd ? '' : '<h4>🌐 External links</h4><div class="ext-links">'}
+          <a class="ext-link" href="https://omeka.org/items/${p.identifiers.omeka_item_id}" target="_blank" rel="noopener">
+            Omeka #${p.identifiers.omeka_item_id}
+          </a>
+          ${wd ? '' : '</div>'}
+        </div>` : ''}
+
+      <div class="profile-section">
+        <h4>📛 Name variants (${p.variants?.length || 0})</h4>
+        <div class="variants-wrap">
+          ${(p.variants || []).map(v => `<span class="variant-chip">${esc(v)}</span>`).join('')}
+        </div>
+      </div>`;
+  }
+
+  // ── Profile: Extracted-only person ────────────────────────────────────
+  function showExtractedProfile(data) {
+    activeId = null;
+    const panel = document.getElementById('profilePanel');
+    const wd = wikidataIndex[norm(data.preferred)];
+    const docs = data.docs || [];
+
+    panel.innerHTML = `
+      <div class="profile-title">${esc(data.preferred)}</div>
+      <div class="profile-auth" style="color:#b45309;">Extracted · not yet in authority file</div>
+
+      <div class="profile-section">
+        <h4>📄 Document mentions (${docs.length})</h4>
+        ${docs.map(m => `
+          <div class="mention-row">
+            <div class="mention-doc">
+              <span class="conf-badge status-${confClass(m.confidence)}">${confLabel(m.status, m.confidence)}</span>
+              &nbsp;<strong>${esc(docIndex[m.doc_id]?.title || m.doc_id)}</strong>
+              <small>${esc(docIndex[m.doc_id]?.author || '')}${docIndex[m.doc_id]?.year ? ' · ' + docIndex[m.doc_id].year : ''}</small>
+            </div>
+          </div>`).join('')}
+      </div>
+
+      ${wd ? `
+        <div class="profile-section">
+          <h4>🌐 Wikidata candidate</h4>
+          <div class="ext-links">
+            <a class="ext-link" href="https://www.wikidata.org/wiki/${esc(wd.qid)}" target="_blank" rel="noopener">
+              ${esc(wd.label)} (${esc(wd.qid)})
+            </a>
+          </div>
+          <p style="font-size:.75rem;color:var(--muted);margin-top:.4rem;">Score: ${(wd.score * 100).toFixed(0)}% — not yet verified</p>
+        </div>` : ''}`;
+  }
+
+  // ── Helpers ────────────────────────────────────────────────────────────
+  function getMentions(authId, prefNorm) {
+    const mentions = [];
+    const seen = new Set();
+    for (const [key, data] of Object.entries(personIndex)) {
+      const matchesId = data.authority_id === authId;
+      const matchesName = key === prefNorm || key.includes(prefNorm.split(' ')[0]);
+      if (!matchesId && !matchesName) continue;
+      for (const doc of data.docs) {
+        const dedupeKey = `${doc.doc_id}::${doc.as_name}`;
+        if (seen.has(dedupeKey)) continue;
+        seen.add(dedupeKey);
+        mentions.push(doc);
+      }
+    }
+    mentions.sort((a, b) => b.confidence - a.confidence);
+    return mentions;
+  }
+
+  function confClass(conf) {
+    if (conf >= 0.8) return 'high';
+    if (conf >= 0.5) return 'med';
+    return 'low';
+  }
+
+  function confLabel(status, conf) {
+    if (status === 'no_match') return 'no link';
+    if (status === 'high_match') return 'high';
+    if (status === 'med_match')  return 'med';
+    if (status === 'low_match')  return 'low';
+    return conf >= 0.8 ? 'high' : conf >= 0.5 ? 'med' : 'low';
+  }
+
+  function renderStats() {
+    const totalDocs = Object.keys(docIndex).length;
+    const totalAuth = authority.length;
+    const totalExtracted = Object.keys(personIndex).length;
+    const withMentions = authority.filter(p =>
+      getMentions(p.authority_id, norm(p.preferred_label)).length > 0
+    ).length;
+
+    document.getElementById('statsBar').innerHTML =
+      `<strong>${totalAuth}</strong> authority persons &nbsp;·&nbsp; ` +
+      `<strong>${withMentions}</strong> found in documents &nbsp;·&nbsp; ` +
+      `<strong>${totalExtracted}</strong> unique extractions &nbsp;·&nbsp; ` +
+      `<strong>${totalDocs}</strong> source document${totalDocs !== 1 ? 's' : ''}`;
+  }
+
+  function updateCount(n, q) {
+    if (!q) return;
+    const bar = document.getElementById('statsBar');
+    const base = bar.dataset.base || bar.innerHTML;
+    bar.dataset.base = base;
+    bar.innerHTML = `${n} result${n !== 1 ? 's' : ''} for "<strong>${esc(q)}</strong>"  &nbsp;<span style="color:var(--muted)">·</span>&nbsp; ${base}`;
+  }
+
+  function fetchJSON(url) {
+    return fetch(url).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); });
+  }
+
+  function esc(s) {
+    if (!s) return '';
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  boot();
+  </script>
+</body>
+</html>
