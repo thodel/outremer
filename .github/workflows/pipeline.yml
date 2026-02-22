@@ -56,13 +56,14 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
+          # Rebase first on clean tree, before staging anything
+          git pull --rebase origin main
+
           git add site/index.json site/data site/bib bib data/wikidata_matches.json
 
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
-            # Pull remote changes before pushing to avoid conflicts
-            git pull --rebase origin main
             # [skip ci] prevents this commit from triggering another pipeline run
             git commit -m "chore: update extracted site data [skip ci]"
             git push
