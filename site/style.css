@@ -251,6 +251,21 @@ select {
 .candidate-row[data-decision="accept"] { background: var(--accept-bg); border-color: #9ed0b0; }
 .candidate-row[data-decision="reject"] { background: var(--reject-bg); border-color: #e8bfb0; }
 .candidate-row[data-decision="flag"]   { background: var(--flag-bg);   border-color: #e8d88a; }
+.candidate-row[data-conflict="true"]   { border-left: 3px solid var(--low); }
+
+.conflict-banner {
+  background: var(--low-bg);
+  border: 1px solid #e8bfb0;
+  border-radius: var(--radius);
+  padding: .6rem 1rem;
+  font-size: .85rem;
+  margin-bottom: .75rem;
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+}
+.filter-btn.conflict-btn { border-color: #e8bfb0; color: var(--low); }
+.filter-btn.conflict-btn.active { background: var(--low); color: #fff; border-color: var(--low); }
 
 .candidate-info {
   display: flex;
@@ -314,9 +329,10 @@ select {
   margin-left: .3rem;
 }
 .community-votes.muted { color: var(--border); font-style: italic; }
-.cv-accept { color: var(--high); }
-.cv-reject { color: var(--low); }
-.cv-flag   { color: #8b6f00; }
+.cv-accept   { color: var(--high); }
+.cv-reject   { color: var(--low); }
+.cv-flag     { color: #8b6f00; }
+.cv-conflict { color: var(--low); margin-right: .2rem; }
 
 /* ── Sync indicator ──────────────────────────────────────────────────── */
 .sync-indicator {
@@ -329,6 +345,37 @@ select {
 .sync-ok      { color: var(--high); }
 .sync-err     { color: var(--low); }
 @keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Wikidata section ────────────────────────────────────────────────── */
+.wikidata-section {
+  margin-top: .5rem;
+  border-top: 1px dashed var(--border);
+  padding-top: .5rem;
+}
+.wd-label {
+  font-size: .75rem;
+  font-weight: bold;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  margin-bottom: .4rem;
+}
+.wd-row {
+  display: flex;
+  align-items: baseline;
+  gap: .5rem;
+  flex-wrap: wrap;
+  padding: .3rem .4rem;
+  border-radius: var(--radius);
+  margin-bottom: .25rem;
+  font-size: .83rem;
+}
+.wd-relevant { background: #f0f6ff; }
+.wd-weak     { background: #fafafa; opacity: .75; }
+.wd-name     { color: var(--accent); text-decoration: none; font-weight: bold; }
+.wd-name:hover { text-decoration: underline; }
+.wd-qid      { font-family: var(--mono); font-size: .72rem; font-weight: normal; color: var(--muted); }
+.wd-desc     { font-size: .78rem; }
 
 /* ── Raw JSON ────────────────────────────────────────────────────────── */
 #raw {

@@ -40,6 +40,28 @@ function decisionKey(docId, person, outremer_id) {
   return `${docId}::${person}::${outremer_id}`;
 }
 
+// ── Wikidata matches (loaded from site/data/wikidata_matches.json) ─────────
+
+let wikidataMatches = {};   // doc_id → { normalised_name → { person, candidates } }
+
+async function fetchWikidataMatches(docId) {
+  try {
+    const all = await fetchJson("./data/wikidata_matches.json");
+    wikidataMatches = all[docId] || {};
+  } catch {
+    wikidataMatches = {};
+  }
+}
+
+function normalise(s) {
+  return s.toLowerCase().replace(/[^\w\s]/g,"").replace(/\s+/g," ").trim();
+}
+
+function wikidataCandidatesFor(personName) {
+  const key = normalise(personName);
+  return wikidataMatches[key]?.candidates || [];
+}
+
 // ── Community vote store (fetched from server) ─────────────────────────────
 
 let communityVotes = {};   // key → { accept: n, reject: n, flag: n }
@@ -52,6 +74,18 @@ function buildCommunityIndex(serverDecisions) {
     idx[k][d.decision] = (idx[k][d.decision] || 0) + 1;
   }
   return idx;
+}
+
+function isConflict(key) {
+  const v = communityVotes[key];
+  return v && v.accept > 0 && v.reject > 0;
+}
+
+function hasConflictInLink(link, docId) {
+  for (const c of link.candidates || []) {
+    if (isConflict(decisionKey(docId, link.person, c.outremer_id))) return true;
+  }
+  return false;
 }
 
 async function fetchCommunityVotes(docId) {
@@ -156,8 +190,9 @@ function setFilter(f) {
 }
 
 function linkMatchesFilter(link, decisions, docId) {
-  if (currentFilter === "all") return true;
+  if (currentFilter === "all")      return true;
   if (currentFilter === "no_match") return link.status === "no_match";
+  if (currentFilter === "conflict") return hasConflictInLink(link, docId);
   const candidates = link.candidates || [];
   for (const c of candidates) {
     const d = decisions[decisionKey(docId, link.person, c.outremer_id)];
@@ -208,13 +243,15 @@ function renderPersons(doc) {
 
 function communityBadgeHtml(key) {
   const v = communityVotes[key];
-  if (!v) return '<span class="community-votes muted">no community votes yet</span>';
+  if (!v) return '<span class="community-votes muted">no votes yet</span>';
   const parts = [];
   if (v.accept) parts.push(`<span class="cv-accept">✅ ${v.accept}</span>`);
   if (v.reject) parts.push(`<span class="cv-reject">❌ ${v.reject}</span>`);
   if (v.flag)   parts.push(`<span class="cv-flag">🚩 ${v.flag}</span>`);
-  if (!parts.length) return '<span class="community-votes muted">no community votes yet</span>';
-  return `<span class="community-votes">${parts.join(" ")}</span>`;
+  if (!parts.length) return '<span class="community-votes muted">no votes yet</span>';
+  const conflict = v.accept > 0 && v.reject > 0
+    ? `<span class="cv-conflict" title="Conflict: reviewers disagree">⚠️</span>` : "";
+  return `<span class="community-votes">${conflict}${parts.join(" ")}</span>`;
 }
 
 // ── Candidate rows ─────────────────────────────────────────────────────────
@@ -233,6 +270,7 @@ function renderCandidateRow(link, candidate, docId, decisions) {
   const row = el("div", "candidate-row");
   row.dataset.key = k;
   if (decision) row.dataset.decision = decision;
+  if (isConflict(k)) row.dataset.conflict = "true";
 
   row.innerHTML = `
     <div class="candidate-info">
@@ -345,6 +383,18 @@ function renderLinks(doc) {
     return;
   }
 
+  // Conflict alert banner
+  const conflictCount = links.filter(l => hasConflictInLink(l, docId)).length;
+  if (conflictCount > 0 && currentFilter !== "conflict") {
+    const banner = el("div", "conflict-banner");
+    banner.innerHTML = `⚠️ <strong>${conflictCount} link${conflictCount!==1?"s":""}</strong>
+      with reviewer disagreement.
+      <button class="btn-small" id="showConflictsBtn">Show conflicts</button>`;
+    container.appendChild(banner);
+    document.getElementById("showConflictsBtn")
+      ?.addEventListener("click", () => setFilter("conflict"));
+  }
+
   for (const link of visible) {
     const card = el("div", "card link-card");
     card.dataset.status = link.status;
@@ -367,7 +417,28 @@ function renderLinks(doc) {
     `;
 
     if (!link.candidates?.length) {
-      card.innerHTML += `<div class="no-match-note muted">No authority match found.</div>`;
+      // Try Wikidata candidates
+      const wdCands = wikidataCandidatesFor(link.person);
+      if (wdCands.length) {
+        const wdEl = el("div", "wikidata-section");
+        wdEl.innerHTML = `<div class="wd-label">Not in authority file — Wikidata candidates:</div>`;
+        for (const c of wdCands) {
+          const scorePct = Math.round((c.score || 0) * 100);
+          const relevantCls = c.score >= 0.4 ? "wd-relevant" : "wd-weak";
+          const row = el("div", `wd-row ${relevantCls}`);
+          row.innerHTML = `
+            <a class="wd-name" href="${esc(c.url)}" target="_blank" rel="noopener">
+              ${esc(c.label)} <span class="wd-qid">${esc(c.qid)}</span>
+            </a>
+            <span class="score-badge status-none">${scorePct}%</span>
+            <span class="wd-desc muted">${esc(c.description)}</span>
+          `;
+          wdEl.appendChild(row);
+        }
+        card.appendChild(wdEl);
+      } else {
+        card.innerHTML += `<div class="no-match-note muted">No authority match · no Wikidata candidates.</div>`;
+      }
     } else {
       const candidatesEl = el("div", "candidates");
       for (const c of link.candidates) {
@@ -393,8 +464,11 @@ async function loadDoc(filename) {
     metadata: doc.metadata,
   }, null, 2);
 
-  // Fetch community votes before rendering links
-  await fetchCommunityVotes(doc.doc_id);
+  // Fetch community votes + Wikidata matches before rendering links
+  await Promise.all([
+    fetchCommunityVotes(doc.doc_id),
+    fetchWikidataMatches(doc.doc_id),
+  ]);
 
   renderPersons(doc);
   renderLinks(doc);

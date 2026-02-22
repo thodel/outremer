@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Stats — People of the Medieval Levant</title>
+  <link rel="stylesheet" href="./style.css" />
+  <style>
+    .stats-wrap { max-width: 900px; margin: 0 auto; padding: 1.5rem 1.5rem 4rem; }
+
+    .back-link { font-size:.85rem; color:var(--muted); text-decoration:none; display:inline-block; margin-bottom:1.25rem; }
+    .back-link:hover { color:var(--accent); }
+
+    .page-title { font-size:1.3rem; color:var(--accent); margin-bottom:.3rem; }
+    .page-sub   { font-size:.85rem; color:var(--muted); margin-bottom:1.5rem; }
+
+    /* ── KPI grid ── */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: .85rem;
+      margin-bottom: 1.5rem;
+    }
+    .kpi {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1.1rem;
+      text-align: center;
+    }
+    .kpi .kpi-val  { font-size: 2rem; font-weight: bold; color: var(--accent); line-height: 1.1; font-family: var(--mono); }
+    .kpi .kpi-lab  { font-size: .75rem; color: var(--muted); margin-top: .3rem; }
+    .kpi.accent-hi { border-left: 3px solid var(--high); }
+    .kpi.accent-me { border-left: 3px solid var(--med); }
+    .kpi.accent-lo { border-left: 3px solid var(--low); }
+    .kpi.accent-ac { border-left: 3px solid var(--accent); }
+
+    /* ── Section panels ── */
+    .stat-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.1rem 1.3rem;
+      margin-bottom: 1rem;
+    }
+    .stat-panel h2 { font-size:.95rem; color:var(--accent); margin-bottom:.9rem; }
+
+    /* ── Bar chart ── */
+    .bar-row { display:flex; align-items:center; gap:.6rem; margin-bottom:.5rem; font-size:.83rem; }
+    .bar-label { width: 130px; text-align:right; color:var(--muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; flex-shrink:0; }
+    .bar-track { flex:1; background:#f0ebe0; border-radius:3px; height:14px; overflow:hidden; }
+    .bar-fill  { height:100%; border-radius:3px; transition: width .4s; }
+    .bar-count { width:36px; text-align:right; font-family:var(--mono); color:var(--text); flex-shrink:0; }
+    .fill-high   { background: var(--high); }
+    .fill-med    { background: var(--med);  }
+    .fill-low    { background: var(--low);  }
+    .fill-none   { background: var(--border); }
+    .fill-accept { background: var(--high); }
+    .fill-reject { background: var(--low);  }
+    .fill-flag   { background: #c89a00; }
+
+    /* ── Conflict list ── */
+    .conflict-item {
+      border-left: 3px solid var(--low);
+      padding: .5rem .75rem;
+      margin-bottom: .5rem;
+      background: var(--low-bg);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      font-size: .84rem;
+    }
+    .conflict-item .ci-person  { font-weight:bold; }
+    .conflict-item .ci-link    { color:var(--muted); font-family:var(--mono); font-size:.76rem; }
+    .conflict-item .ci-votes   { margin-top:.25rem; display:flex; gap:.6rem; }
+
+    /* ── Top persons table ── */
+    .top-table { width:100%; border-collapse:collapse; font-size:.84rem; }
+    .top-table th { text-align:left; padding:.4rem .5rem; border-bottom:2px solid var(--border); color:var(--muted); font-size:.75rem; }
+    .top-table td { padding:.4rem .5rem; border-bottom:1px solid var(--border); }
+    .top-table tr:last-child td { border-bottom:none; }
+    .top-table .wd-link { font-size:.75rem; font-family:var(--mono); }
+
+    /* ── Empty / loading ── */
+    .empty { color:var(--muted); font-size:.88rem; font-style:italic; padding:.5rem 0; }
+    .loading-msg { color:var(--muted); font-size:.88rem; padding:1rem 0; text-align:center; }
+
+    .refresh-btn { float:right; margin-top:-.15rem; }
+    .last-updated { font-size:.75rem; color:var(--muted); margin-bottom:1rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <h1>Voyagers → Outremer</h1>
+      <p class="subtitle">
+        <a href="./index.html" style="color:rgba(255,255,255,.7);text-decoration:none;">← Project</a>
+        &nbsp;·&nbsp; Statistics
+      </p>
+    </div>
+  </header>
+
+  <div class="stats-wrap">
+    <p class="page-sub" id="lastUpdated">Loading…</p>
+
+    <!-- KPI row -->
+    <div class="kpi-grid" id="kpiGrid">
+      <div class="kpi accent-ac"><div class="kpi-val" id="kpiDocs">—</div><div class="kpi-lab">Documents</div></div>
+      <div class="kpi accent-ac"><div class="kpi-val" id="kpiPersons">—</div><div class="kpi-lab">Persons extracted</div></div>
+      <div class="kpi accent-hi"><div class="kpi-val" id="kpiHigh">—</div><div class="kpi-lab">High-confidence links</div></div>
+      <div class="kpi accent-me"><div class="kpi-val" id="kpiMed">—</div><div class="kpi-lab">Medium-confidence links</div></div>
+      <div class="kpi accent-ac"><div class="kpi-val" id="kpiDecisions">—</div><div class="kpi-lab">Scholar decisions</div></div>
+      <div class="kpi accent-lo"><div class="kpi-val" id="kpiConflicts">—</div><div class="kpi-lab">Conflicts</div></div>
+    </div>
+
+    <!-- Link confidence distribution -->
+    <div class="stat-panel">
+      <h2>Link confidence distribution <button class="btn-small refresh-btn" id="refreshBtn">↺ Refresh</button></h2>
+      <div id="confBars"><div class="loading-msg">Loading…</div></div>
+    </div>
+
+    <!-- Decision breakdown -->
+    <div class="stat-panel">
+      <h2>Scholar decisions</h2>
+      <div id="decisionBars"><div class="loading-msg">Loading…</div></div>
+    </div>
+
+    <!-- Conflicts -->
+    <div class="stat-panel">
+      <h2>⚠️ Conflicts <span id="conflictCount" class="badge status-low" style="font-size:.72rem"></span></h2>
+      <p style="font-size:.82rem;color:var(--muted);margin-bottom:.75rem;">
+        Links where different contributors disagree (accept + reject on the same candidate).
+      </p>
+      <div id="conflictList"><div class="loading-msg">Loading…</div></div>
+    </div>
+
+    <!-- Top matched persons -->
+    <div class="stat-panel">
+      <h2>Most accepted links</h2>
+      <div id="topPersons"><div class="loading-msg">Loading…</div></div>
+    </div>
+
+    <!-- Per-document breakdown -->
+    <div class="stat-panel">
+      <h2>Per-document breakdown</h2>
+      <div id="docBreakdown"><div class="loading-msg">Loading…</div></div>
+    </div>
+  </div>
+
+  <script>
+    const API      = "http://194.13.80.183/webhook";
+    const SITE_ROOT = "./";
+
+    function esc(s) {
+      return String(s??"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;");
+    }
+
+    // ── Data loading ────────────────────────────────────────────────────────
+
+    async function fetchJson(url) {
+      const r = await fetch(url, { cache: "no-store" });
+      if (!r.ok) throw new Error(`${url}: ${r.status}`);
+      return r.json();
+    }
+
+    async function loadAll() {
+      const [idx, allDecisions] = await Promise.all([
+        fetchJson(`${SITE_ROOT}index.json`),
+        fetchJson(`${API}/outremer-decisions`).catch(() => []),
+      ]);
+
+      const docs = await Promise.all(
+        (idx.documents || []).map(f => fetchJson(`${SITE_ROOT}data/${f}`).catch(() => null))
+      );
+
+      return { docs: docs.filter(Boolean), decisions: allDecisions };
+    }
+
+    // ── Aggregation ─────────────────────────────────────────────────────────
+
+    function aggregate({ docs, decisions }) {
+      let totalPersons = 0, totalLinks = 0;
+      let high = 0, med = 0, low = 0, none = 0;
+      const personAccepts = {};   // outremer_id → { name, count }
+      const docStats = [];
+
+      for (const doc of docs) {
+        const persons = doc.persons || [];
+        const links   = doc.links   || [];
+        totalPersons += persons.length;
+        totalLinks   += links.length;
+
+        let dHigh=0, dMed=0, dLow=0, dNone=0;
+        for (const l of links) {
+          if (l.status==="high")     { high++; dHigh++; }
+          else if (l.status==="medium") { med++;  dMed++;  }
+          else if (l.status==="low")    { low++;  dLow++;  }
+          else                          { none++; dNone++; }
+
+          if (l.top_candidate && l.status==="high") {
+            const oid = l.top_candidate.outremer_id;
+            if (!personAccepts[oid])
+              personAccepts[oid] = { name: l.top_candidate.outremer_name, count: 0 };
+          }
+        }
+        docStats.push({
+          id: doc.doc_id,
+          title: doc.metadata?.title || doc.doc_id,
+          author: doc.metadata?.author || "—",
+          persons: persons.length,
+          links: links.length,
+          high: dHigh, med: dMed, low: dLow, none: dNone,
+          mode: doc.extraction_mode || "unknown",
+        });
+      }
+
+      // Decision aggregates
+      const decByKey = {};  // "doc::person::oid" → { accept:n, reject:n, flag:n }
+      let accept=0, reject=0, flag=0;
+      for (const d of decisions) {
+        const k = `${d.doc_id}::${d.person}::${d.outremer_id}`;
+        if (!decByKey[k]) decByKey[k] = { doc_id:d.doc_id, person:d.person, outremer_id:d.outremer_id, accept:0, reject:0, flag:0 };
+        decByKey[k][d.decision]++;
+        if (d.decision==="accept") accept++;
+        else if (d.decision==="reject") reject++;
+        else flag++;
+        // credit accepts toward top persons
+        if (d.decision==="accept" && personAccepts[d.outremer_id])
+          personAccepts[d.outremer_id].count++;
+      }
+
+      // Conflicts: any key with accept>0 AND reject>0
+      const conflicts = Object.values(decByKey).filter(v => v.accept > 0 && v.reject > 0);
+
+      // Top persons by accept count (community-verified)
+      const topPersons = Object.entries(personAccepts)
+        .filter(([,v]) => v.count > 0)
+        .sort(([,a],[,b]) => b.count - a.count)
+        .slice(0, 10);
+
+      return {
+        totalDocs: docs.length,
+        totalPersons,
+        totalLinks,
+        high, med, low, none,
+        accept, reject, flag,
+        totalDecisions: decisions.length,
+        conflicts,
+        topPersons,
+        docStats,
+        decByKey,
+      };
+    }
+
+    // ── Render helpers ──────────────────────────────────────────────────────
+
+    function barRow(label, count, max, fillClass, tooltip="") {
+      const pct = max ? Math.round((count / max) * 100) : 0;
+      return `
+        <div class="bar-row" title="${esc(tooltip)}">
+          <div class="bar-label">${esc(label)}</div>
+          <div class="bar-track"><div class="bar-fill ${fillClass}" style="width:${pct}%"></div></div>
+          <div class="bar-count">${count}</div>
+        </div>`;
+    }
+
+    // ── Render ──────────────────────────────────────────────────────────────
+
+    function render(data) {
+      const { totalDocs, totalPersons, totalLinks, high, med, low, none,
+              accept, reject, flag, totalDecisions, conflicts, topPersons, docStats } = data;
+
+      // KPIs
+      document.getElementById("kpiDocs").textContent      = totalDocs;
+      document.getElementById("kpiPersons").textContent   = totalPersons.toLocaleString();
+      document.getElementById("kpiHigh").textContent      = high;
+      document.getElementById("kpiMed").textContent       = med;
+      document.getElementById("kpiDecisions").textContent = totalDecisions;
+      document.getElementById("kpiConflicts").textContent = conflicts.length;
+      document.getElementById("conflictCount").textContent = conflicts.length;
+      document.getElementById("lastUpdated").textContent  =
+        `Last loaded: ${new Date().toLocaleString()} · ${totalDocs} document(s) in corpus`;
+
+      // Confidence bars
+      const maxLinks = Math.max(high, med, low, none, 1);
+      document.getElementById("confBars").innerHTML = [
+        barRow("High (≥90%)",   high, maxLinks, "fill-high",   `${Math.round(high/Math.max(totalLinks,1)*100)}% of all links`),
+        barRow("Medium (75–90%)", med, maxLinks, "fill-med",   `${Math.round(med/Math.max(totalLinks,1)*100)}% of all links`),
+        barRow("Low (60–75%)",  low,  maxLinks, "fill-low",   `${Math.round(low/Math.max(totalLinks,1)*100)}% of all links`),
+        barRow("No match",      none, maxLinks, "fill-none",  `${Math.round(none/Math.max(totalLinks,1)*100)}% of all links — candidates for Wikidata reconciliation`),
+      ].join("");
+
+      // Decision bars
+      const maxDec = Math.max(accept, reject, flag, 1);
+      document.getElementById("decisionBars").innerHTML = totalDecisions === 0
+        ? `<p class="empty">No decisions recorded yet. Open the <a href="./explorer.html">Explorer</a> to start reviewing.</p>`
+        : [
+            barRow("Accepted", accept, maxDec, "fill-accept"),
+            barRow("Rejected", reject, maxDec, "fill-reject"),
+            barRow("Flagged",  flag,   maxDec, "fill-flag"),
+          ].join("");
+
+      // Conflict list
+      const conflictEl = document.getElementById("conflictList");
+      if (!conflicts.length) {
+        conflictEl.innerHTML = `<p class="empty">No conflicts yet — all reviewers agree on current decisions.</p>`;
+      } else {
+        conflictEl.innerHTML = conflicts.map(c => `
+          <div class="conflict-item">
+            <div class="ci-person">${esc(c.person)}</div>
+            <div class="ci-link">→ ${esc(c.outremer_id)} · ${esc(c.doc_id)}</div>
+            <div class="ci-votes">
+              <span style="color:var(--high)">✅ ${c.accept} accepted</span>
+              <span style="color:var(--low)">❌ ${c.reject} rejected</span>
+              ${c.flag ? `<span style="color:#8b6f00">🚩 ${c.flag} flagged</span>` : ""}
+            </div>
+          </div>`).join("");
+      }
+
+      // Top persons
+      const topEl = document.getElementById("topPersons");
+      if (!topPersons.length) {
+        topEl.innerHTML = `<p class="empty">No accepted links yet.</p>`;
+      } else {
+        topEl.innerHTML = `<table class="top-table">
+          <thead><tr><th>#</th><th>Person</th><th>Authority ID</th><th>Accepted by</th></tr></thead>
+          <tbody>${topPersons.map(([oid, v], i) => `
+            <tr>
+              <td class="muted">${i+1}</td>
+              <td><strong>${esc(v.name)}</strong></td>
+              <td class="wd-link">${esc(oid)}</td>
+              <td>${v.count} reviewer${v.count!==1?"s":""}</td>
+            </tr>`).join("")}
+          </tbody></table>`;
+      }
+
+      // Per-document breakdown
+      document.getElementById("docBreakdown").innerHTML = `
+        <table class="top-table">
+          <thead><tr>
+            <th>Document</th><th>Mode</th><th>Persons</th>
+            <th style="color:var(--high)">High</th>
+            <th style="color:var(--med)">Med</th>
+            <th style="color:var(--low)">Low</th>
+            <th>No match</th>
+          </tr></thead>
+          <tbody>${docStats.map(d => `
+            <tr>
+              <td><strong>${esc(d.title)}</strong><br>
+                  <span class="muted" style="font-size:.75rem">${esc(d.author)}</span></td>
+              <td><span class="badge ${d.mode==="gemini"?"status-high":"status-none"}">${esc(d.mode)}</span></td>
+              <td>${d.persons}</td>
+              <td style="color:var(--high)">${d.high}</td>
+              <td style="color:var(--med)">${d.med}</td>
+              <td style="color:var(--low)">${d.low}</td>
+              <td class="muted">${d.none}</td>
+            </tr>`).join("")}
+          </tbody>
+        </table>`;
+    }
+
+    // ── Init ────────────────────────────────────────────────────────────────
+
+    async function refresh() {
+      try {
+        const raw = await loadAll();
+        const data = aggregate(raw);
+        render(data);
+      } catch(e) {
+        document.getElementById("lastUpdated").textContent = "Error loading data: " + e.message;
+      }
+    }
+
+    document.getElementById("refreshBtn").addEventListener("click", refresh);
+    refresh();
+  </script>
+</body>
+</html>

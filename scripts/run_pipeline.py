@@ -19,6 +19,7 @@ import hashlib
 import json
 import logging
 import re
+import sys
 import unicodedata
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
@@ -386,6 +387,17 @@ def main() -> int:
 
     build_site_index(site_data_dir=site_data_dir, site_dir=site_dir)
     print(f"Wrote {site_dir / 'index.json'}")
+
+    # Optional: Wikidata reconciliation for no_match persons
+    wikidata_script = Path(__file__).parent / "wikidata_reconcile.py"
+    if wikidata_script.exists():
+        logger.info("Running Wikidata reconciliation…")
+        import subprocess
+        subprocess.run(
+            [sys.executable, str(wikidata_script), "--site-dir", str(site_dir)],
+            cwd=str(Path(__file__).parent.parent),
+        )
+
     return 0
 
 
