@@ -94,6 +94,26 @@ function decisionKey(docId, person, outremer_id) {
   return `${docId}::${person}::${outremer_id}`;
 }
 
+// ── Authority file cache ───────────────────────────────────────────────────
+
+let authorityCache = {};   // outremer_id → { bio, roles, places, etc. }
+
+async function fetchAuthorityFile() {
+  try {
+    const auth = await fetchJson("./data/authority.json");
+    for (const person of auth) {
+      const id = person.outremer_id || `AUTH:${person.id}`;
+      authorityCache[id] = person;
+    }
+  } catch {
+    authorityCache = {};
+  }
+}
+
+function loadAuthorityData(outremer_id) {
+  return authorityCache[outremer_id] || {};
+}
+
 // ── Wikidata matches (loaded from site/data/wikidata_matches.json) ─────────
 
 let wikidataMatches = {};   // doc_id → { normalised_name → { person, candidates } }
@@ -114,6 +134,119 @@ function normalise(s) {
 function wikidataCandidatesFor(personName) {
   const key = normalise(personName);
   return wikidataMatches[key]?.candidates || [];
+}
+
+// ── Context comparison helper ──────────────────────────────────────────────
+
+function buildContextComparison(link, candidate, authData) {
+  const parts = [];
+  
+  // Extract contextual info from the link (extracted person)
+  const extractedInfo = {
+    date: link.date_mention || link.context_date || null,
+    place: link.place_mention || link.toponym || null,
+    role: link.role || link.title || null,
+  };
+  
+  // Extract contextual info from authority/Wikidata candidate
+  const candidateInfo = {
+    date: authData?.birth?.date || authData?.death?.date || authData?.floruit?.start || null,
+    place: authData?.birth?.place || authData?.title_seat?.label || null,
+    role: authData?.roles?.[0]?.label || authData?.title || null,
+  };
+  
+  // Build comparison rows
+  const comparisons = [
+    { label: "📅 Date", extracted: extractedInfo.date, candidate: candidateInfo.date },
+    { label: "📍 Place", extracted: extractedInfo.place, candidate: candidateInfo.place },
+    { label: "👤 Role/Title", extracted: extractedInfo.role, candidate: candidateInfo.role },
+  ];
+  
+  let html = '<div class="context-comparison">';
+  for (const comp of comparisons) {
+    if (comp.extracted || comp.candidate) {
+      const match = comp.extracted && comp.candidate && 
+                    normalizeForComparison(comp.extracted) === normalizeForComparison(comp.candidate);
+      const matchClass = match ? "context-match" : comp.extracted && comp.candidate ? "context-mismatch" : "context-partial";
+      
+      html += `<div class="context-row ${matchClass}">`;
+      html += `<span class="context-label">${comp.label}</span>`;
+      if (comp.extracted) {
+        html += `<span class="context-extracted" title="Extracted from text">${esc(comp.extracted)}</span>`;
+      } else {
+        html += `<span class="context-extracted context-empty">—</span>`;
+      }
+      html += `<span class="context-arrow">→</span>`;
+      if (comp.candidate) {
+        html += `<span class="context-candidate" title="From authority file">${esc(comp.candidate)}</span>`;
+      } else {
+        html += `<span class="context-candidate context-empty">—</span>`;
+      }
+      html += `</div>`;
+    }
+  }
+  html += '</div>';
+  
+  return html;
+}
+
+function normalizeForComparison(s) {
+  if (!s) return "";
+  return String(s).toLowerCase().replace(/[^\w\s]/g, "").trim();
+}
+
+// ── Wikidata context comparison ────────────────────────────────────────────
+
+function buildWikidataContext(link, wdCandidate) {
+  const parts = [];
+  
+  // Extract contextual info from the link (extracted person)
+  const extractedInfo = {
+    date: link.date_mention || link.context_date || null,
+    place: link.place_mention || link.toponym || null,
+    role: link.role || link.title || null,
+  };
+  
+  // Extract contextual info from Wikidata candidate
+  const wdInfo = {
+    date: wdCandidate.birth_date || wdCandidate.death_date || wdCandidate.floruit || null,
+    place: wdCandidate.birth_place || wdCandidate.location || null,
+    role: wdCandidate.occupation || wdCandidate.title || null,
+  };
+  
+  // Build comparison rows
+  const comparisons = [
+    { label: "📅 Date", extracted: extractedInfo.date, candidate: wdInfo.date },
+    { label: "📍 Place", extracted: extractedInfo.place, candidate: wdInfo.place },
+    { label: "👤 Role/Title", extracted: extractedInfo.role, candidate: wdInfo.role },
+  ];
+  
+  let html = '<div class="context-comparison wd-context">';
+  for (const comp of comparisons) {
+    if (comp.extracted || comp.candidate) {
+      const match = comp.extracted && comp.candidate && 
+                    normalizeForComparison(comp.extracted) === normalizeForComparison(comp.candidate);
+      const matchClass = match ? "context-match" : comp.extracted && comp.candidate ? "context-mismatch" : "context-partial";
+      
+      html += `<div class="context-row ${matchClass}">`;
+      html += `<span class="context-label">${comp.label}</span>`;
+      if (comp.extracted) {
+        html += `<span class="context-extracted" title="Extracted from text">${esc(comp.extracted)}</span>`;
+      } else {
+        html += `<span class="context-extracted context-empty">—</span>`;
+      }
+      html += `<span class="context-arrow">→</span>`;
+      if (comp.candidate) {
+        html += `<span class="context-candidate" title="From Wikidata">${esc(comp.candidate)}</span>`;
+      } else {
+        html += `<span class="context-candidate context-empty">—</span>`;
+      }
+      html += `</div>`;
+    }
+  }
+  html += '</div>';
+  
+  return html;
 }
 
 // ── Community vote store (fetched from server) ─────────────────────────────
@@ -362,6 +495,12 @@ function renderCandidateRow(link, candidate, docId, decisions) {
                   : candidate.score >= 0.75 ? "status-med"
                   :                           "status-low";
 
+  // Load authority file data for this candidate
+  const authData = loadAuthorityData(candidate.outremer_id);
+  
+  // Build context comparison HTML
+  const contextHtml = buildContextComparison(link, candidate, authData);
+
   const row = el("div", "candidate-row");
   row.dataset.key = k;
   if (decision) row.dataset.decision = decision;
@@ -374,6 +513,7 @@ function renderCandidateRow(link, candidate, docId, decisions) {
       <span class="match-type">${esc(candidate.match_type)}</span>
       <span class="candidate-type muted">${esc(candidate.type)}</span>
       <span class="outremer-id muted">${esc(candidate.outremer_id)}</span>
+      ${contextHtml}
       ${communityBadgeHtml(k)}
     </div>
     <div class="adjudication">
@@ -471,6 +611,9 @@ function renderWikidataCandidateRow(link, c, docId, decisions) {
   const scorePct = Math.round((c.score || 0) * 100);
   const relevantCls = c.score >= 0.4 ? "wd-relevant" : "wd-weak";
 
+  // Build Wikidata context HTML
+  const wdContextHtml = buildWikidataContext(link, c);
+
   const row = el("div", `wd-row ${relevantCls} wd-adj-row`);
   row.dataset.key = k;
   if (decision) row.dataset.decision = decision;
@@ -482,6 +625,7 @@ function renderWikidataCandidateRow(link, c, docId, decisions) {
       </a>
       <span class="score-badge status-none">${scorePct}%</span>
       <span class="wd-desc muted">${esc(c.description)}</span>
+      ${wdContextHtml}
       ${communityBadgeHtml(k)}
     </div>
     <div class="adjudication">
@@ -648,10 +792,11 @@ async function loadDoc(filename) {
   ].filter(Boolean);
   document.getElementById("docMeta").innerHTML = metaParts.join(" · ");
 
-  // Fetch community votes + Wikidata matches before rendering links
+  // Fetch community votes + Wikidata matches + authority file before rendering links
   await Promise.all([
     fetchCommunityVotes(doc.doc_id),
     fetchWikidataMatches(doc.doc_id),
+    fetchAuthorityFile(),
   ]);
 
   renderPersons(doc);

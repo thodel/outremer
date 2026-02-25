@@ -104,28 +104,46 @@ Extract ALL person mentions from the text below — individuals, collectives (ar
 1. KEEP TITLES AND NAMES TOGETHER.
    A person's title is part of their identity — never split them.
    "Bishop Odo", "Count Raymond of Tripoli", "Sultan Saladin", "Pope Urban",
-   "Professor Mildred", "King Louis" are each ONE entity, not two.
+   "King Louis" are each ONE entity, not two.
    The `name` field must include the title: "Bishop Odo", not just "Odo".
 
 2. USE THE FULLEST NAME FORM seen in the text.
    Prefer "Raymond IV of Toulouse" over "Raymond" if the longer form appears.
    Use the most common English spelling for medieval persons.
 
-3. MODERN AUTHORS / SCHOLARS are NOT medieval persons.
+3. ⚠️ DO NOT EXTRACT BIBLIOGRAPHIC METADATA ⚠️
+   NEVER extract these as persons:
+   - Journal names: "Proceedings of", "Philosophical Society", "Journal of", "Review"
+   - Publisher info: "University Press", "Oxford University", "Cambridge"
+   - Volume/issue: "Vol", "Volume", "No", "Number", "pp", "Pages"
+   - Publication status: "Published", "Publication", "Copyright", "All rights reserved"
+   - Identifiers: "ISBN", "DOI", "ISSN", "JSTOR", "Stable URL"
+   - Document structure: "Author", "Editor", "Translator", "Introduction", "Chapter", "Section"
+   - Citation markers: "see", "cf", "ibid", "op. cit.", "ed.", "trans."
+   
+   These are NOT persons — they are library catalog metadata. Set confidence = 0.0 if accidentally captured.
+
+4. MODERN AUTHORS / SCHOLARS are NOT medieval persons.
    If the text is a modern academic work (article, monograph, book chapter) and
    mentions the author's name, a cited scholar (e.g. "Mayer argues", "cf. Cahen"),
    or a modern institution — set confidence ≤ 0.15 and role = "modern author".
-   Do NOT conflate them with medieval persons.
+   Examples: "Riley-Smith", "Mayer", "Tyerman", "Asbridge", "France" when referring to scholars.
 
-4. TITLES to recognise (include in `name` AND set in `title` field):
+5. TITLES to recognise (include in `name` AND set in `title` field):
    Medieval: King, Queen, Emperor, Empress, Prince, Princess, Duke, Duchess,
    Count, Countess, Lord, Lady, Sir, Baron, Knight, Pope, Patriarch, Archbishop,
    Bishop, Abbot, Prior, Deacon, Priest, Sultan, Caliph, Emir, Vizier, Atabeg,
    Constable, Marshal, Seneschal, Regent, Viceroy, Doge, Master (of military orders).
    Modern (low confidence): Professor, Prof., Dr., Mr., Mrs., Rev.
 
-5. COLLECTIVE GROUPS: set group=true for armies, ethnic/religious groups,
+6. COLLECTIVE GROUPS: set group=true for armies, ethnic/religious groups,
    unnamed crowds (e.g. "the Franks", "the garrison", "pilgrims").
+
+7. CONTEXTUAL VALIDATION:
+   Before extracting a name, ask: "Is this a real person mentioned in the historical narrative?"
+   - Names appearing ONLY in headers, footers, or bibliographic sections → SKIP
+   - Names appearing with actions, relationships, or medieval titles → EXTRACT
+   - Single-word extracts like "Source", "Title", "Language" → ALWAYS SKIP
 
 ━━ OUTPUT SCHEMA ━━
 
@@ -139,7 +157,7 @@ For each person/group return:
   gender        (string)   : "m", "f", or "unknown"
   group         (boolean)  : true if collective
   context       (string)   : surrounding ~100 characters of text
-  confidence    (number)   : 0.0–1.0; use ≤ 0.15 for modern authors/scholars
+  confidence    (number)   : 0.0–1.0; use ≤ 0.15 for modern authors/scholars, 0.0 for bibliographic noise
 
 Also extract document metadata:
   title    (string|null)

@@ -99,6 +99,82 @@
     .flag-entity-btn:hover { border-color: var(--accent); color: var(--accent); }
     .flag-entity-btn.active-not-person { background: #fee2e2; border-color: #dc2626; color: #dc2626; }
     .flag-entity-btn.active-wrong-era  { background: #fef3c7; border-color: #d97706; color: #d97706; }
+
+    /* ── Context comparison (date/place/role) ── */
+    .context-comparison {
+      margin-top: .5rem;
+      padding: .5rem .65rem;
+      background: color-mix(in srgb, var(--accent) 4%, var(--bg));
+      border-radius: calc(var(--radius) - 2px);
+      font-size: .78rem;
+      border: 1px solid color-mix(in srgb, var(--accent) 15%, var(--border));
+    }
+    .context-comparison.wd-context {
+      background: color-mix(in srgb, #7c3aed 5%, var(--bg));
+      border-color: color-mix(in srgb, #7c3aed 20%, var(--border));
+    }
+    .context-row {
+      display: grid;
+      grid-template-columns: 70px 1fr 20px 1fr;
+      gap: .35rem;
+      align-items: center;
+      padding: .2rem 0;
+      border-bottom: 1px dashed color-mix(in srgb, var(--accent) 10%, var(--border));
+    }
+    .context-row:last-child { border-bottom: none; }
+    .context-label {
+      font-size: .72rem;
+      color: var(--muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .03em;
+    }
+    .context-extracted,
+    .context-candidate {
+      font-size: .78rem;
+      padding: .15rem .4rem;
+      border-radius: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .context-extracted {
+      background: color-mix(in srgb, var(--accent) 10%, var(--surface));
+      color: var(--text);
+    }
+    .context-candidate {
+      background: color-mix(in srgb, #7c3aed 10%, var(--surface));
+      color: var(--text);
+    }
+    .context-empty {
+      color: var(--muted);
+      font-style: italic;
+    }
+    .context-arrow {
+      text-align: center;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+    .context-match {
+      background: color-mix(in srgb, #16a34a 8%, transparent);
+    }
+    .context-match .context-extracted,
+    .context-match .context-candidate {
+      background: color-mix(in srgb, #16a34a 15%, var(--surface));
+      color: #166534;
+      font-weight: 600;
+    }
+    .context-mismatch {
+      background: color-mix(in srgb, #dc2626 6%, transparent);
+    }
+    .context-mismatch .context-extracted,
+    .context-mismatch .context-candidate {
+      background: color-mix(in srgb, #dc2626 12%, var(--surface));
+      color: #991b1b;
+    }
+    .context-partial {
+      /* One side has data, other doesn't */
+    }
   </style>
 </head>
 <body>
