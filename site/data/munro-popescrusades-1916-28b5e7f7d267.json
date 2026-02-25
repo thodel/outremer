@@ -2928,10 +2928,26 @@
     {
       "person": "God",
       "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
+      "candidates": [
+        {
+          "outremer_id": "AUTH:CR78",
+          "outremer_name": "Godfrey III of Louvain",
+          "type": "person",
+          "score": 0.6,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'god' ↔ 'Godfrey III of Louvain'"
+        }
+      ],
+      "top_candidate": {
+        "outremer_id": "AUTH:CR78",
+        "outremer_name": "Godfrey III of Louvain",
+        "type": "person",
+        "score": 0.6,
+        "match_type": "fuzzy",
+        "evidence": "fuzzy match: 'god' ↔ 'Godfrey III of Louvain'"
+      },
+      "confidence": 0.6,
+      "status": "low"
     },
     {
       "person": "His",
@@ -4008,6 +4024,14 @@
           "score": 0.6667,
           "match_type": "fuzzy",
           "evidence": "fuzzy match: 'german' ↔ 'Gerard II of Looz'"
+        },
+        {
+          "outremer_id": "AUTH:CR1",
+          "outremer_name": "Conrad III of Germany",
+          "type": "person",
+          "score": 0.6,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'german' ↔ 'Conrad III of Germany'"
         }
       ],
       "top_candidate": {
@@ -5162,6 +5186,14 @@
       "person_group": false,
       "candidates": [
         {
+          "outremer_id": "AUTH:CR1",
+          "outremer_name": "Conrad III of Germany",
+          "type": "person",
+          "score": 0.6667,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'germany' ↔ 'Conrad III of Germany'"
+        },
+        {
           "outremer_id": "AUTH:CR25",
           "outremer_name": "Enguerran II of Coucy",
           "type": "person",
@@ -5176,25 +5208,17 @@
           "score": 0.6154,
           "match_type": "fuzzy",
           "evidence": "fuzzy match: 'germany' ↔ 'Berlay II of Montreuil'"
-        },
-        {
-          "outremer_id": "AUTH:CR5",
-          "outremer_name": "Berlay III of Montreuil",
-          "type": "person",
-          "score": 0.6154,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'germany' ↔ 'Berlay III of Montreuil'"
         }
       ],
       "top_candidate": {
-        "outremer_id": "AUTH:CR25",
-        "outremer_name": "Enguerran II of Coucy",
+        "outremer_id": "AUTH:CR1",
+        "outremer_name": "Conrad III of Germany",
         "type": "person",
-        "score": 0.625,
+        "score": 0.6667,
         "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'germany' ↔ 'Enguerran II of Coucy'"
+        "evidence": "fuzzy match: 'germany' ↔ 'Conrad III of Germany'"
       },
-      "confidence": 0.625,
+      "confidence": 0.6667,
       "status": "low"
     },
     {
@@ -5338,32 +5362,32 @@
       "person_group": false,
       "candidates": [
         {
-          "outremer_id": "AUTH:CR110",
-          "outremer_name": "Walter of St. Omer",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'walter von' ↔ 'Walter of St. Omer'"
-        },
-        {
           "outremer_id": "AUTH:CR17",
           "outremer_name": "Walter of Hereford",
           "type": "person",
-          "score": 0.64,
+          "score": 0.75,
           "match_type": "fuzzy",
           "evidence": "fuzzy match: 'walter von' ↔ 'Walter of Hereford'"
+        },
+        {
+          "outremer_id": "AUTH:CR110",
+          "outremer_name": "Walter of St. Omer",
+          "type": "person",
+          "score": 0.75,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'walter von' ↔ 'Walter of St. Omer'"
         }
       ],
       "top_candidate": {
-        "outremer_id": "AUTH:CR110",
-        "outremer_name": "Walter of St. Omer",
+        "outremer_id": "AUTH:CR17",
+        "outremer_name": "Walter of Hereford",
         "type": "person",
-        "score": 0.6667,
+        "score": 0.75,
         "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'walter von' ↔ 'Walter of St. Omer'"
+        "evidence": "fuzzy match: 'walter von' ↔ 'Walter of Hereford'"
       },
-      "confidence": 0.6667,
-      "status": "low"
+      "confidence": 0.75,
+      "status": "medium"
     },
     {
       "person": "Vogelweide",
@@ -5376,10 +5400,26 @@
     {
       "person": "Little",
       "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
+      "candidates": [
+        {
+          "outremer_id": "AUTH:CR68",
+          "outremer_name": "Oddi the Little",
+          "type": "person",
+          "score": 0.7059,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'little' ↔ 'Oddi the Little'"
+        }
+      ],
+      "top_candidate": {
+        "outremer_id": "AUTH:CR68",
+        "outremer_name": "Oddi the Little",
+        "type": "person",
+        "score": 0.7059,
+        "match_type": "fuzzy",
+        "evidence": "fuzzy match: 'little' ↔ 'Oddi the Little'"
+      },
+      "confidence": 0.7059,
+      "status": "low"
     },
     {
       "person": "Walter",

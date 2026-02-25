@@ -8084,10 +8084,26 @@
     {
       "person": "God",
       "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
+      "candidates": [
+        {
+          "outremer_id": "AUTH:CR78",
+          "outremer_name": "Godfrey III of Louvain",
+          "type": "person",
+          "score": 0.6,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'god' ↔ 'Godfrey III of Louvain'"
+        }
+      ],
+      "top_candidate": {
+        "outremer_id": "AUTH:CR78",
+        "outremer_name": "Godfrey III of Louvain",
+        "type": "person",
+        "score": 0.6,
+        "match_type": "fuzzy",
+        "evidence": "fuzzy match: 'god' ↔ 'Godfrey III of Louvain'"
+      },
+      "confidence": 0.6,
+      "status": "low"
     },
     {
       "person": "Lord Jesus",
@@ -8372,6 +8388,14 @@
           "score": 0.6667,
           "match_type": "fuzzy",
           "evidence": "fuzzy match: 'german' ↔ 'Gerard II of Looz'"
+        },
+        {
+          "outremer_id": "AUTH:CR1",
+          "outremer_name": "Conrad III of Germany",
+          "type": "person",
+          "score": 0.6,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'german' ↔ 'Conrad III of Germany'"
         }
       ],
       "top_candidate": {
@@ -10657,9 +10681,9 @@
           "outremer_id": "AUTH:CR55",
           "outremer_name": "Geoffrey of Grandpré",
           "type": "person",
-          "score": 0.8889,
-          "match_type": "alias",
-          "evidence": "alias match: 'geoffreyl' ↔ 'Geoffrey of Grandpré'"
+          "score": 0.9412,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'geoffreyl' ↔ 'Geoffrey of Grandpré'"
         },
         {
           "outremer_id": "AUTH:CR78",
@@ -10674,12 +10698,12 @@
         "outremer_id": "AUTH:CR55",
         "outremer_name": "Geoffrey of Grandpré",
         "type": "person",
-        "score": 0.8889,
-        "match_type": "alias",
-        "evidence": "alias match: 'geoffreyl' ↔ 'Geoffrey of Grandpré'"
+        "score": 0.9412,
+        "match_type": "fuzzy",
+        "evidence": "fuzzy match: 'geoffreyl' ↔ 'Geoffrey of Grandpré'"
       },
-      "confidence": 0.8889,
-      "status": "medium"
+      "confidence": 0.9412,
+      "status": "high"
     },
     {
       "person": "Stabelo",
@@ -11377,9 +11401,9 @@
           "outremer_id": "AUTH:CR14",
           "outremer_name": "Erard I of Brienne",
           "type": "person",
-          "score": 0.8333,
-          "match_type": "alias",
-          "evidence": "alias match: 'gerard' ↔ 'Erard I of Brienne'"
+          "score": 0.9091,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'gerard' ↔ 'Erard I of Brienne'"
         },
         {
           "outremer_id": "AUTH:CR183",
@@ -12580,6 +12604,14 @@
           "score": 0.6154,
           "match_type": "fuzzy",
           "evidence": "fuzzy match: 'toulouse' ↔ 'Louis of Hesbaye'"
+        },
+        {
+          "outremer_id": "AUTH:CR86",
+          "outremer_name": "Constance of Toulouse",
+          "type": "person",
+          "score": 0.6154,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'toulouse' ↔ 'Constance of Toulouse'"
         }
       ],
       "top_candidate": {
@@ -12604,10 +12636,26 @@
     {
       "person": "King Baldwin",
       "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
+      "candidates": [
+        {
+          "outremer_id": "AUTH:CR3",
+          "outremer_name": "Baldwin of Vern d'Anjou",
+          "type": "person",
+          "score": 0.7368,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'king baldwin' ↔ 'Baldwin of Vern d'Anjou'"
+        }
+      ],
+      "top_candidate": {
+        "outremer_id": "AUTH:CR3",
+        "outremer_name": "Baldwin of Vern d'Anjou",
+        "type": "person",
+        "score": 0.7368,
+        "match_type": "fuzzy",
+        "evidence": "fuzzy match: 'king baldwin' ↔ 'Baldwin of Vern d'Anjou'"
+      },
+      "confidence": 0.7368,
+      "status": "low"
     },
     {
       "person": "Raymond",
@@ -12764,10 +12812,34 @@
     {
       "person": "Flanders",
       "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
+      "candidates": [
+        {
+          "outremer_id": "AUTH:CR27",
+          "outremer_name": "Philip of Flanders",
+          "type": "person",
+          "score": 0.6957,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'flanders' ↔ 'Philip of Flanders'"
+        },
+        {
+          "outremer_id": "AUTH:CR16",
+          "outremer_name": "Thierry of Flanders",
+          "type": "person",
+          "score": 0.6667,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'flanders' ↔ 'Thierry of Flanders'"
+        }
+      ],
+      "top_candidate": {
+        "outremer_id": "AUTH:CR27",
+        "outremer_name": "Philip of Flanders",
+        "type": "person",
+        "score": 0.6957,
+        "match_type": "fuzzy",
+        "evidence": "fuzzy match: 'flanders' ↔ 'Philip of Flanders'"
+      },
+      "confidence": 0.6957,
+      "status": "low"
     },
     {
       "person": "Ado of Quiersy",
@@ -12924,10 +12996,26 @@
     {
       "person": "Anjou",
       "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
+      "candidates": [
+        {
+          "outremer_id": "AUTH:CR2",
+          "outremer_name": "Fulk V of Anjou",
+          "type": "person",
+          "score": 0.6667,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'anjou' ↔ 'Fulk V of Anjou'"
+        }
+      ],
+      "top_candidate": {
+        "outremer_id": "AUTH:CR2",
+        "outremer_name": "Fulk V of Anjou",
+        "type": "person",
+        "score": 0.6667,
+        "match_type": "fuzzy",
+        "evidence": "fuzzy match: 'anjou' ↔ 'Fulk V of Anjou'"
+      },
+      "confidence": 0.6667,
+      "status": "low"
     },
     {
       "person": "Angevin",
@@ -12961,7 +13049,7 @@
           "outremer_id": "AUTH:CR176",
           "outremer_name": "Stephen of Perche",
           "type": "person",
-          "score": 0.6061,
+          "score": 0.6087,
           "match_type": "fuzzy",
           "evidence": "fuzzy match: 'stephen of blois' ↔ 'Stephen of Perche'"
         }
@@ -14404,10 +14492,26 @@
     {
       "person": "Tortosa",
       "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
+      "candidates": [
+        {
+          "outremer_id": "AUTH:CR32",
+          "outremer_name": "William of Tortosa",
+          "type": "person",
+          "score": 0.6364,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'tortosa' ↔ 'William of Tortosa'"
+        }
+      ],
+      "top_candidate": {
+        "outremer_id": "AUTH:CR32",
+        "outremer_name": "William of Tortosa",
+        "type": "person",
+        "score": 0.6364,
+        "match_type": "fuzzy",
+        "evidence": "fuzzy match: 'tortosa' ↔ 'William of Tortosa'"
+      },
+      "confidence": 0.6364,
+      "status": "low"
     },
     {
       "person": "Hisn",
@@ -14769,9 +14873,9 @@
           "outremer_id": "AUTH:CR33",
           "outremer_name": "Charles of Denmark",
           "type": "person",
-          "score": 0.7143,
-          "match_type": "alias",
-          "evidence": "alias match: 'arles' ↔ 'Charles of Denmark'"
+          "score": 0.8333,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'arles' ↔ 'Charles of Denmark'"
         },
         {
           "outremer_id": "AUTH:CR71",
@@ -14786,12 +14890,12 @@
         "outremer_id": "AUTH:CR33",
         "outremer_name": "Charles of Denmark",
         "type": "person",
-        "score": 0.7143,
-        "match_type": "alias",
-        "evidence": "alias match: 'arles' ↔ 'Charles of Denmark'"
+        "score": 0.8333,
+        "match_type": "fuzzy",
+        "evidence": "fuzzy match: 'arles' ↔ 'Charles of Denmark'"
       },
-      "confidence": 0.7143,
-      "status": "low"
+      "confidence": 0.8333,
+      "status": "medium"
     },
     {
       "person": "Artusie",
@@ -14868,10 +14972,42 @@
     {
       "person": "Ste",
       "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
+      "candidates": [
+        {
+          "outremer_id": "AUTH:CR94",
+          "outremer_name": "Stephen I of Sancerre",
+          "type": "person",
+          "score": 0.6,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'ste' ↔ 'Stephen I of Sancerre'"
+        },
+        {
+          "outremer_id": "AUTH:CR93",
+          "outremer_name": "Stephen II of Auxonne",
+          "type": "person",
+          "score": 0.6,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'ste' ↔ 'Stephen II of Auxonne'"
+        },
+        {
+          "outremer_id": "AUTH:CR176",
+          "outremer_name": "Stephen of Perche",
+          "type": "person",
+          "score": 0.6,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'ste' ↔ 'Stephen of Perche'"
+        }
+      ],
+      "top_candidate": {
+        "outremer_id": "AUTH:CR94",
+        "outremer_name": "Stephen I of Sancerre",
+        "type": "person",
+        "score": 0.6,
+        "match_type": "fuzzy",
+        "evidence": "fuzzy match: 'ste' ↔ 'Stephen I of Sancerre'"
+      },
+      "confidence": 0.6,
+      "status": "low"
     },
     {
       "person": "Marie",
@@ -15993,36 +16129,36 @@
           "outremer_id": "AUTH:CR13",
           "outremer_name": "Hugh of Troyes",
           "type": "person",
-          "score": 0.6667,
+          "score": 0.7273,
           "match_type": "fuzzy",
           "evidence": "fuzzy match: 'hugh of' ↔ 'Hugh of Troyes'"
+        },
+        {
+          "outremer_id": "AUTH:CR18",
+          "outremer_name": "Hugh of Chaumont-sur-Loire",
+          "type": "person",
+          "score": 0.7273,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'hugh of' ↔ 'Hugh of Chaumont-sur-Loire'"
         },
         {
           "outremer_id": "AUTH:CR21",
           "outremer_name": "Hugh III of Le Puisset",
           "type": "person",
-          "score": 0.6667,
+          "score": 0.7273,
           "match_type": "fuzzy",
           "evidence": "fuzzy match: 'hugh of' ↔ 'Hugh III of Le Puisset'"
-        },
-        {
-          "outremer_id": "AUTH:CR92",
-          "outremer_name": "Hugh III of Burgundy",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'hugh of' ↔ 'Hugh III of Burgundy'"
         }
       ],
       "top_candidate": {
         "outremer_id": "AUTH:CR13",
         "outremer_name": "Hugh of Troyes",
         "type": "person",
-        "score": 0.6667,
+        "score": 0.7273,
         "match_type": "fuzzy",
         "evidence": "fuzzy match: 'hugh of' ↔ 'Hugh of Troyes'"
       },
-      "confidence": 0.6667,
+      "confidence": 0.7273,
       "status": "low"
     },
     {
@@ -16628,10 +16764,34 @@
     {
       "person": "Les",
       "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
+      "candidates": [
+        {
+          "outremer_id": "AUTH:CR119",
+          "outremer_name": "Gilles of Chimay",
+          "type": "person",
+          "score": 0.6667,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'les' ↔ 'Gilles of Chimay'"
+        },
+        {
+          "outremer_id": "AUTH:CR33",
+          "outremer_name": "Charles of Denmark",
+          "type": "person",
+          "score": 0.6,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'les' ↔ 'Charles of Denmark'"
+        }
+      ],
+      "top_candidate": {
+        "outremer_id": "AUTH:CR119",
+        "outremer_name": "Gilles of Chimay",
+        "type": "person",
+        "score": 0.6667,
+        "match_type": "fuzzy",
+        "evidence": "fuzzy match: 'les' ↔ 'Gilles of Chimay'"
+      },
+      "confidence": 0.6667,
+      "status": "low"
     },
     {
       "person": "Rudt de Collenberg",
