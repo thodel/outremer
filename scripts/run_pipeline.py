@@ -64,7 +64,12 @@ def read_text_file(path: Path) -> str:
 
 def read_pdf_file(path: Path) -> str:
     """Extract text from PDF. Falls back to Mistral OCR for image-only PDFs."""
-    from pypdf import PdfReader
+    try:
+        from pypdf import PdfReader
+    except ImportError as exc:
+        raise RuntimeError(
+            "pypdf is required to read PDFs. Install with: pip install pypdf"
+        ) from exc
     reader = PdfReader(str(path))
     parts: List[str] = []
     for page in reader.pages:
@@ -122,10 +127,17 @@ def read_input(path: Path) -> str:
     raise ValueError(f"Unsupported input type: {path}")
 
 
-def load_outremer_index(path: Path) -> Dict[str, Any]:
+def load_outremer_index(path: Path, *, require: bool = False) -> Dict[str, Any]:
     if not path.exists():
+        msg = f"Outremer index not found at {path}. Linking will be skipped."
+        if require:
+            raise FileNotFoundError(msg)
+        logger.warning(msg)
         return {"entities": [], "persons": []}
-    data = json.loads(path.read_text(encoding="utf-8"))
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        raise ValueError(f"Outremer index is not valid JSON: {path}") from exc
     # The index uses "persons" key (authority file format)
     return data
 
@@ -238,6 +250,7 @@ def link_voyagers_to_outremer(
         if not pname:
             continue
         pnorm = normalise(pname)
+        p_tokens = pnorm.split()
 
         # Score every authority entry
         scored: List[Tuple[float, str, Dict[str, Any]]] = []  # (score, match_type, entry)
@@ -246,19 +259,23 @@ def link_voyagers_to_outremer(
             best_match_type = "fuzzy"
 
             for variant_norm in entry["all_norms"]:
+                v_tokens = variant_norm.split()
                 # Exact match
                 if pnorm == variant_norm:
                     best_score = 1.0
                     best_match_type = "exact"
                     break
-                # Substring containment
-                elif pnorm in variant_norm or variant_norm in pnorm:
-                    s = max(len(pnorm), len(variant_norm))
-                    m = min(len(pnorm), len(variant_norm))
-                    sub_score = m / s if s > 0 else 0.0
+                # Token containment (reduces false positives from naive substrings)
+                elif len(p_tokens) >= 2 and all(t in v_tokens for t in p_tokens):
+                    sub_score = len(p_tokens) / max(len(v_tokens), 1)
                     if sub_score > best_score:
                         best_score = sub_score
-                        best_match_type = "alias"
+                        best_match_type = "token_subset"
+                elif len(v_tokens) >= 2 and all(t in p_tokens for t in v_tokens):
+                    sub_score = len(v_tokens) / max(len(p_tokens), 1)
+                    if sub_score > best_score:
+                        best_score = sub_score
+                        best_match_type = "token_subset"
                 # Fuzzy
                 else:
                     fs = _fuzzy_score(pnorm, variant_norm)
@@ -395,6 +412,11 @@ def main() -> int:
     ap.add_argument("--site-dir", default="site", help="Static site folder")
     ap.add_argument("--bib-dir", default="bib", help="Repo-level BibTeX output folder")
     ap.add_argument("--outremer-index", default="scripts/outremer_index.json")
+    ap.add_argument(
+        "--require-outremer-index",
+        action="store_true",
+        help="Fail if the Outremer index file is missing",
+    )
     ap.add_argument("--genai-metadata", action="store_true", help="Extract metadata + BibTeX via GenAI")
     ap.add_argument("--language", default=None, help="ISO 639 language hint (la, fro, ar, el, de, en…)")
     args = ap.parse_args()
@@ -410,28 +432,39 @@ def main() -> int:
     for d in (site_dir, site_data_dir, site_bib_dir, bib_dir):
         d.mkdir(parents=True, exist_ok=True)
 
-    outremer_index = load_outremer_index(outremer_path)
+    try:
+        outremer_index = load_outremer_index(
+            outremer_path, require=args.require_outremer_index
+        )
+    except Exception as exc:
+        logger.error("%s", exc)
+        return 1
     authority_lookup = build_authority_lookup(outremer_index)
     logger.info("Loaded %d authority entries.", len(authority_lookup))
 
     inputs: List[Path] = sorted(set(list(in_dir.rglob("*.txt")) + list(in_dir.rglob("*.pdf"))))
 
+    errors: List[Tuple[Path, Exception]] = []
     if not inputs:
         logger.warning("No .txt or .pdf files found in %s", in_dir)
     else:
         for p in inputs:
-            json_path, bib_repo, bib_site = process_file(
-                p,
-                site_data_dir=site_data_dir,
-                bib_dir=bib_dir,
-                site_bib_dir=site_bib_dir,
-                authority_lookup=authority_lookup,
-                use_genai_metadata=args.genai_metadata,
-                language=args.language,
-            )
-            print(f"Wrote {json_path}")
-            print(f"Wrote {bib_repo}")
-            print(f"Wrote {bib_site}")
+            try:
+                json_path, bib_repo, bib_site = process_file(
+                    p,
+                    site_data_dir=site_data_dir,
+                    bib_dir=bib_dir,
+                    site_bib_dir=site_bib_dir,
+                    authority_lookup=authority_lookup,
+                    use_genai_metadata=args.genai_metadata,
+                    language=args.language,
+                )
+                print(f"Wrote {json_path}")
+                print(f"Wrote {bib_repo}")
+                print(f"Wrote {bib_site}")
+            except Exception as exc:
+                errors.append((p, exc))
+                logger.error("Failed processing %s: %s", p, exc)
 
     build_site_index(site_data_dir=site_data_dir, site_dir=site_dir)
     print(f"Wrote {site_dir / 'index.json'}")
@@ -454,6 +487,9 @@ def main() -> int:
             cwd=str(Path(__file__).parent.parent),
         )
 
+    if errors:
+        logger.error("Completed with %d error(s).", len(errors))
+        return 1
     return 0
 
 

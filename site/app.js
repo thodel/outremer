@@ -321,6 +321,10 @@ function esc(s) {
     .replaceAll("&","&amp;").replaceAll("<","&lt;")
     .replaceAll(">","&gt;").replaceAll('"',"&quot;");
 }
+function safeUrl(url) {
+  const s = String(url ?? "").trim();
+  return /^https?:\/\//i.test(s) ? s : "#";
+}
 function el(tag, cls, html) {
   const e = document.createElement(tag);
   if (cls) e.className = cls;
@@ -465,15 +469,15 @@ function communityBadgeHtml(key) {
   const parts = [];
   const names = v.names || {};
   if (v.accept) {
-    const tip = names.accept?.join(", ") || "";
+    const tip = esc(names.accept?.join(", ") || "");
     parts.push(`<span class="cv-accept" title="${tip}">✅ ${v.accept}</span>`);
   }
   if (v.reject) {
-    const tip = names.reject?.join(", ") || "";
+    const tip = esc(names.reject?.join(", ") || "");
     parts.push(`<span class="cv-reject" title="${tip}">❌ ${v.reject}</span>`);
   }
   if (v.flag) {
-    const tip = names.flag?.join(", ") || "";
+    const tip = esc(names.flag?.join(", ") || "");
     parts.push(`<span class="cv-flag" title="${tip}">🚩 ${v.flag}</span>`);
   }
   if (!parts.length) return '<span class="community-votes muted">no votes yet</span>';
@@ -620,7 +624,7 @@ function renderWikidataCandidateRow(link, c, docId, decisions) {
 
   row.innerHTML = `
     <div class="wd-info">
-      <a class="wd-name" href="${esc(c.url)}" target="_blank" rel="noopener">
+      <a class="wd-name" href="${esc(safeUrl(c.url))}" target="_blank" rel="noopener">
         ${esc(c.label)} <span class="wd-qid">${esc(c.qid)}</span>
       </a>
       <span class="score-badge status-none">${scorePct}%</span>
