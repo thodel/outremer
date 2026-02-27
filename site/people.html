@@ -64,6 +64,107 @@
 
     .no-results { text-align: center; color: var(--muted); padding: 2.5rem 1rem; font-size: .9rem; }
 
+    /* ── KG search (expandable) ── */
+    .kg-search-panel {
+      margin-bottom: 1.2rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      overflow: hidden;
+    }
+    .kg-search-header {
+      padding: 0.65rem 1rem;
+      background: var(--accent-lt);
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--accent);
+      transition: background 0.15s;
+    }
+    .kg-search-header:hover { background: #e8dfc8; }
+    .kg-search-header .toggle-icon {
+      font-size: 0.9rem;
+      transition: transform 0.2s;
+    }
+    .kg-search-header.open .toggle-icon {
+      transform: rotate(180deg);
+    }
+    .kg-search-content {
+      display: none;
+      padding: 1rem;
+    }
+    .kg-search-content.open { display: block; }
+    
+    .kg-search-filters {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .kg-filter-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.35rem 0.65rem;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      font-size: 0.76rem;
+      cursor: pointer;
+      transition: all 0.15s;
+      background: var(--surface);
+      color: var(--text);
+    }
+    .kg-filter-chip:hover { border-color: var(--accent); }
+    .kg-filter-chip.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #1a1a18;
+    }
+    .kg-filter-chip input { display: none; }
+    
+    .kg-search-results {
+      max-height: 400px;
+      overflow-y: auto;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+    .kg-result-item {
+      padding: 0.65rem 0.85rem;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      transition: background 0.12s;
+    }
+    .kg-result-item:last-child { border-bottom: none; }
+    .kg-result-item:hover { background: var(--accent-lt); }
+    .kg-result-name {
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--text);
+    }
+    .kg-result-meta {
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-top: 0.2rem;
+    }
+    .kg-type-badge {
+      display: inline-block;
+      padding: 0.1rem 0.4rem;
+      border-radius: 8px;
+      font-size: 0.68rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-right: 0.4rem;
+    }
+    .kg-type-badge.person { background: #dbeafe; color: #1d4ed8; }
+    .kg-type-badge.group { background: #fef3c7; color: #92400e; }
+    .kg-type-badge.event { background: #fce7f3; color: #9d174d; }
+    .kg-type-badge.place { background: #d1fae5; color: #047857; }
+
     /* ── profile panel ── */
     .profile-panel {
       border: 1px solid var(--border); border-radius: var(--radius);
@@ -190,6 +291,38 @@
     </div>
     <div class="lookup-stats" id="statsBar">Loading…</div>
 
+    <!-- Knowledge Graph Search (Expandable) -->
+    <div class="kg-search-panel">
+      <div class="kg-search-header" onclick="toggleKGSearch()">
+        <span>🔍 Search Knowledge Graph (Persons, Groups, Events)</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="kg-search-content" id="kgSearchContent">
+        <div class="kg-search-filters">
+          <label class="kg-filter-chip active">
+            <input type="checkbox" value="person" checked onchange="toggleKGFilter(this)" />
+            👤 Persons
+          </label>
+          <label class="kg-filter-chip">
+            <input type="checkbox" value="group" onchange="toggleKGFilter(this)" />
+            👥 Groups
+          </label>
+          <label class="kg-filter-chip">
+            <input type="checkbox" value="event" onchange="toggleKGFilter(this)" />
+            📅 Events
+          </label>
+          <label class="kg-filter-chip">
+            <input type="checkbox" value="place" onchange="toggleKGFilter(this)" />
+            📍 Places
+          </label>
+        </div>
+        <input id="kgSearchInput" class="search-input" type="search"
+               placeholder="Search knowledge graph — e.g. First Crusade, Templars, Jerusalem…"
+               autocomplete="off" oninput="searchKG()" />
+        <div class="kg-search-results" id="kgSearchResults" style="display:none;"></div>
+      </div>
+    </div>
+
     <div class="lookup-cols">
       <ul class="results-list" id="resultsList"></ul>
       <div class="profile-panel" id="profilePanel">
@@ -204,9 +337,176 @@
   let docIndex  = {};        // doc_id → {title, author, year}
   let personIndex = {};      // norm_name → {preferred, authority_id?, docs: [{doc_id, as_name, confidence, status}]}
   let wikidataIndex = {};    // norm_name → [{label, qid, score}]
+  let kgData = {};           // Knowledge graph data (unified_kg.json)
+  let kgFilterTypes = ['person'];  // Active entity type filters
   let activeId  = null;
 
   const norm = s => s.toLowerCase().replace(/[^a-z0-9 ]/g, ' ').replace(/\s+/g, ' ').trim();
+
+  // ── KG Search Functions ────────────────────────────────────────────────
+  function toggleKGSearch() {
+    const header = document.querySelector('.kg-search-header');
+    const content = document.getElementById('kgSearchContent');
+    header.classList.toggle('open');
+    content.classList.toggle('open');
+    // Focus input when opened
+    if (content.classList.contains('open')) {
+      setTimeout(() => document.getElementById('kgSearchInput').focus(), 200);
+    }
+  }
+
+  function toggleKGFilter(checkbox) {
+    const chip = checkbox.closest('.kg-filter-chip');
+    chip.classList.toggle('active');
+    
+    // Update filter types array
+    kgFilterTypes = Array.from(document.querySelectorAll('.kg-filter-chip input:checked'))
+                         .map(cb => cb.value);
+    
+    // Re-run search if there's text
+    const query = document.getElementById('kgSearchInput').value.trim();
+    if (query) searchKG();
+  }
+
+  async function loadKGData() {
+    try {
+      kgData = await fetchJSON('./data/unified_kg.json');
+      console.log('Loaded KG:', Object.keys(kgData).length, 'entities');
+    } catch (e) {
+      console.warn('KG data not available:', e);
+      kgData = {};
+    }
+  }
+
+  function searchKG() {
+    const query = document.getElementById('kgSearchInput').value.trim().toLowerCase();
+    const resultsEl = document.getElementById('kgSearchResults');
+    
+    if (!query || query.length < 2) {
+      resultsEl.style.display = 'none';
+      resultsEl.innerHTML = '';
+      return;
+    }
+
+    const results = [];
+    for (const [id, entity] of Object.entries(kgData)) {
+      // Check if entity type matches filter
+      const entityType = entity.type || 'person';
+      if (!kgFilterTypes.includes(entityType)) continue;
+      
+      // Search in preferred label and variants
+      const preferred = (entity.preferred_label || '').toLowerCase();
+      const variants = (entity.names?.variants || []).map(v => v.toLowerCase());
+      const allNames = [preferred, ...variants];
+      
+      // Check if query matches any name
+      if (allNames.some(name => name.includes(query))) {
+        results.push({
+          id,
+          name: entity.preferred_label || 'Unknown',
+          type: entityType,
+          entity
+        });
+      }
+      
+      // Limit results
+      if (results.length >= 50) break;
+    }
+
+    // Render results
+    resultsEl.innerHTML = results.map(r => `
+      <div class="kg-result-item" onclick="selectKGEntity('${r.id}')">
+        <div class="kg-result-name">
+          <span class="kg-type-badge ${r.type}">${r.type}</span>
+          ${esc(r.name)}
+        </div>
+        <div class="kg-result-meta">${esc(r.id)}</div>
+      </div>
+    `).join('');
+    
+    resultsEl.style.display = results.length ? 'block' : 'none';
+    
+    if (!results.length) {
+      resultsEl.innerHTML = '<div class="kg-result-item" style="cursor:default;color:var(--muted);">No results found</div>';
+      resultsEl.style.display = 'block';
+    }
+  }
+
+  function selectKGEntity(entityId) {
+    const entity = kgData[entityId];
+    if (!entity) return;
+    
+    // Build profile HTML
+    const profileEl = document.getElementById('profilePanel');
+    const entityType = entity.type || 'person';
+    const variants = entity.names?.variants || [];
+    const roles = entity.roles || [];
+    const relationships = entity.relationships || [];
+    const places = entity.places || [];
+    
+    profileEl.innerHTML = `
+      <div class="profile-title">${esc(entity.preferred_label || 'Unknown')}</div>
+      <div class="profile-auth">${esc(entityId)}</div>
+      
+      ${variants.length ? `
+        <div class="profile-section">
+          <h4>🏷️ Variants</h4>
+          <div style="font-size:.82rem;line-height:1.7;">${variants.map(v => esc(v)).join(', ')}</div>
+        </div>
+      ` : ''}
+      
+      ${Object.keys(entity.bio || {}).length ? `
+        <div class="profile-section">
+          <h4>📋 Biography</h4>
+          <div style="font-size:.82rem;line-height:1.7;">
+            ${entity.bio.birth ? `Born: ${esc(entity.bio.birth)}<br/>` : ''}
+            ${entity.bio.death ? `Died: ${esc(entity.bio.death)}<br/>` : ''}
+            ${entity.bio.gender ? `Gender: ${esc(entity.bio.gender)}<br/>` : ''}
+          </div>
+        </div>
+      ` : ''}
+      
+      ${roles.length ? `
+        <div class="profile-section">
+          <h4>💼 Roles</h4>
+          <ul style="font-size:.82rem;line-height:1.8;margin:.4rem 0 .4rem 1.2rem;">
+            ${roles.map(r => `<li>${esc(r.label || r.type || 'Unknown')}</li>`).join('')}
+          </ul>
+        </div>
+      ` : ''}
+      
+      ${relationships.length ? `
+        <div class="profile-section">
+          <h4>🔗 Relationships</h4>
+          <ul style="font-size:.82rem;line-height:1.8;margin:.4rem 0 .4rem 1.2rem;">
+            ${relationships.map(r => `<li>${esc(r.type || 'Related to')} → ${esc(r.target_label || r.target || 'Unknown')}</li>`).join('')}
+          </ul>
+        </div>
+      ` : ''}
+      
+      ${places.length ? `
+        <div class="profile-section">
+          <h4>📍 Places</h4>
+          <ul style="font-size:.82rem;line-height:1.8;margin:.4rem 0 .4rem 1.2rem;">
+            ${places.map(p => `<li>${esc(p.type || 'Associated with')} → ${esc(p.label || 'Unknown')}</li>`).join('')}
+          </ul>
+        </div>
+      ` : ''}
+      
+      ${entity.identifiers?.wikidata_qid ? `
+        <div class="profile-section">
+          <h4>🌐 External Links</h4>
+          <a href="https://www.wikidata.org/wiki/${entity.identifiers.wikidata_qid}" target="_blank" rel="noopener"
+             style="font-size:.82rem;color:var(--accent);">Wikidata: ${entity.identifiers.wikidata_qid}</a>
+        </div>
+      ` : ''}
+    `;
+    
+    // Scroll to profile on mobile
+    if (window.innerWidth < 720) {
+      profileEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
 
   // ── Boot ──────────────────────────────────────────────────────────────
   async function boot() {
@@ -215,6 +515,9 @@
       fetchJSON('./index.json'),
       fetchJSON('./data/wikidata_matches.json').catch(() => ({}))
     ]);
+
+    // Load knowledge graph data (parallel)
+    loadKGData();
 
     authority = authorityData.persons || [];
 
