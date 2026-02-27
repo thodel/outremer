@@ -99,80 +99,109 @@ You are a historical NLP assistant specialising in the medieval Levant (Crusades
 {language_hint}
 Extract ALL person mentions from the text below — individuals, collectives (armies, ethnic groups, unnamed crowds), and ambiguous references.
 
-━━ CRITICAL RULES FOR NAME EXTRACTION ━━
+═══════════════════════════════════════════════════════════
+🚫 ABSOLUTE EXCLUSION RULES — NEVER EXTRACT THESE 🚫
+═══════════════════════════════════════════════════════════
 
-1. KEEP TITLES AND NAMES TOGETHER.
-   A person's title is part of their identity — never split them.
-   "Bishop Odo", "Count Raymond of Tripoli", "Sultan Saladin", "Pope Urban",
-   "King Louis" are each ONE entity, not two.
-   The `name` field must include the title: "Bishop Odo", not just "Odo".
+DO NOT EXTRACT — these are NEVER persons (confidence = 0.0):
 
-2. USE THE FULLEST NAME FORM seen in the text.
-   Prefer "Raymond IV of Toulouse" over "Raymond" if the longer form appears.
-   Use the most common English spelling for medieval persons.
+❌ BIBLIOGRAPHIC / PUBLISHER INFO:
+   "Vol", "Volume", "No", "Number", "pp", "Pages", "p.", "pp."
+   "Published", "Publication", "Copyright", "All rights reserved"
+   "ISBN", "DOI", "ISSN", "JSTOR", "Stable URL", "Accessed"
+   "University Press", "Oxford", "Cambridge", "Press", "Publisher"
+   "Journal", "Review", "Proceedings", "Transactions", "Bulletin"
+   "Series", "Volume", "Issue", "Edition", "Reprint"
 
-3. ⚠️ DO NOT EXTRACT BIBLIOGRAPHIC METADATA ⚠️
-   NEVER extract these as persons:
-   - Journal names: "Proceedings of", "Philosophical Society", "Journal of", "Review"
-   - Publisher info: "University Press", "Oxford University", "Cambridge"
-   - Volume/issue: "Vol", "Volume", "No", "Number", "pp", "Pages"
-   - Publication status: "Published", "Publication", "Copyright", "All rights reserved"
-   - Identifiers: "ISBN", "DOI", "ISSN", "JSTOR", "Stable URL"
-   - Document structure: "Author", "Editor", "Translator", "Introduction", "Chapter", "Section"
-   - Citation markers: "see", "cf", "ibid", "op. cit.", "ed.", "trans."
-   
-   These are NOT persons — they are library catalog metadata. Set confidence = 0.0 if accidentally captured.
+❌ DOCUMENT STRUCTURE MARKERS:
+   "Author", "Editor", "Translator", "Introduction", "Chapter"
+   "Section", "Part", "Book", "Article", "Abstract", "Keywords"
+   "Bibliography", "References", "Notes", "Appendix", "Index"
+   "Source", "Title", "Language", "Date", "Type"
 
-4. MODERN AUTHORS / SCHOLARS are NOT medieval persons.
-   If the text is a modern academic work (article, monograph, book chapter) and
-   mentions the author's name, a cited scholar (e.g. "Mayer argues", "cf. Cahen"),
-   or a modern institution — set confidence ≤ 0.15 and role = "modern author".
-   Examples: "Riley-Smith", "Mayer", "Tyerman", "Asbridge", "France" when referring to scholars.
+❌ CITATION MARKERS:
+   "see", "cf", "ibid", "op. cit.", "loc. cit.", "passim"
+   "ed.", "eds.", "trans.", "tr.", "rev.", "repr."
+   "n.", "nn.", "fn", "footnote"
 
-5. TITLES to recognise (include in `name` AND set in `title` field):
-   Medieval: King, Queen, Emperor, Empress, Prince, Princess, Duke, Duchess,
-   Count, Countess, Lord, Lady, Sir, Baron, Knight, Pope, Patriarch, Archbishop,
-   Bishop, Abbot, Prior, Deacon, Priest, Sultan, Caliph, Emir, Vizier, Atabeg,
-   Constable, Marshal, Seneschal, Regent, Viceroy, Doge, Master (of military orders).
-   Modern (low confidence): Professor, Prof., Dr., Mr., Mrs., Rev.
+❌ MODERN SCHOLARS (confidence ≤ 0.10, role = "modern scholar"):
+   Academic names appearing in citations, footnotes, or bibliography
+   Examples: "Riley-Smith", "Mayer", "Tyerman", "Asbridge", "France"
+   "Cahen", "Runciman", "Grousset", "Kedar", "Prawer", "Hamilton"
+   If followed by "argues", "writes", "notes", "cf", "see" → modern scholar
 
-6. COLLECTIVE GROUPS: set group=true for armies, ethnic/religious groups,
-   unnamed crowds (e.g. "the Franks", "the garrison", "pilgrims").
+❌ SINGLE COMMON NOUNS (confidence = 0.0):
+   "Source", "Title", "Language", "Type", "Date", "Author"
+   "Editor", "Review", "Press", "Vol", "Published", "Copyright"
 
-7. CONTEXTUAL VALIDATION:
-   Before extracting a name, ask: "Is this a real person mentioned in the historical narrative?"
-   - Names appearing ONLY in headers, footers, or bibliographic sections → SKIP
-   - Names appearing with actions, relationships, or medieval titles → EXTRACT
-   - Single-word extracts like "Source", "Title", "Language" → ALWAYS SKIP
+═══════════════════════════════════════════════════════════
+✅ WHAT TO EXTRACT — MEDIEVAL PERSONS ONLY ✅
+═══════════════════════════════════════════════════════════
 
-━━ OUTPUT SCHEMA ━━
+EXTRACT with HIGH confidence (0.7–1.0):
 
-For each person/group return:
-  name          (string)   : full name including title — most complete English form
-  raw_mention   (string)   : exact text span as it appears in the source
-  title         (string|null) : title only, e.g. "Count", "Bishop", "Sultan"
-  epithet       (string|null) : e.g. "the Lionheart", "the Bold"
-  toponym       (string|null) : place associated with the person, e.g. "Tripoli"
-  role          (string|null) : e.g. "pilgrim", "knight", "merchant", "modern author"
-  gender        (string)   : "m", "f", or "unknown"
-  group         (boolean)  : true if collective
-  context       (string)   : surrounding ~100 characters of text
-  confidence    (number)   : 0.0–1.0; use ≤ 0.15 for modern authors/scholars, 0.0 for bibliographic noise
+✓ Named individuals with medieval titles:
+  "King Baldwin", "Count Raymond of Tripoli", "Sultan Saladin"
+  "Pope Urban II", "Patriarch William", "Bishop Odo"
+  "Duke Godfrey", "Prince Bohemond", "Emperor Alexios"
 
-Also extract document metadata:
-  title    (string|null)
-  author   (string|null)
-  year     (string|null)
-  language (string|null) : ISO 639 code
-  doc_type (string|null) : "chronicle", "charter", "narrative", "letter", "list", or "other"
+✓ Named individuals without titles (if context is medieval narrative):
+  "Tancred", "Fulcher of Chartres", "Ibn al-Qalanisi"
 
-Respond ONLY with valid JSON — no markdown fences, no commentary:
+✓ Collective groups (group = true):
+  "the Franks", "the Crusaders", "the Saracens", "pilgrims"
+  "the garrison", "the army", "knights", "Templars"
+  "Muslims", "Christians", "Greeks", "Armenians"
+
+✓ Unnamed but specific individuals:
+  "a certain knight", "one of the princes", "a Turkish emir"
+  (set name = descriptive phrase, confidence = 0.4–0.6)
+
+═══════════════════════════════════════════════════════════
+📋 OUTPUT FORMAT — STRICT JSON ONLY 📋
+═══════════════════════════════════════════════════════════
+
+Respond with EXACTLY this JSON structure — NO markdown, NO commentary:
+
 {{
-  "persons": [...],
-  "metadata": {{ "title": ..., "author": ..., "year": ..., "language": ..., "doc_type": ... }}
+  "persons": [
+    {{
+      "name": "Full name WITH title (e.g., 'Count Raymond')",
+      "raw_mention": "Exact text span from source",
+      "title": "Title only (e.g., 'Count') or null",
+      "epithet": "Epithet if present (e.g., 'the Lion') or null",
+      "toponym": "Place name if present (e.g., 'Tripoli') or null",
+      "role": "Role (e.g., 'crusader', 'knight') or null",
+      "gender": "m | f | unknown",
+      "group": true/false,
+      "context": "~100 chars of surrounding text",
+      "confidence": 0.0–1.0
+    }}
+  ],
+  "metadata": {{
+    "title": "Document title or null",
+    "author": "Author name or null",
+    "year": "Year (4 digits) or null",
+    "language": "ISO 639 code (e.g., 'la', 'en', 'fro')",
+    "doc_type": "chronicle | charter | narrative | letter | list | modern_study | other"
+  }}
 }}
 
-TEXT:
+CONFIDENCE GUIDELINES:
+  0.8–1.0 : Clear medieval person with title/name in narrative context
+  0.5–0.7 : Likely medieval person, some uncertainty
+  0.3–0.4 : Uncertain — possibly medieval, possibly noise
+  0.1–0.2 : Modern scholar/author mentioned in citation
+  0.0     : Bibliographic metadata, document structure, common nouns
+
+BEFORE YOU OUTPUT, ASK:
+  "Would this person appear in a medieval chronicle or charter?"
+  If NO → confidence = 0.0, do not extract.
+
+═══════════════════════════════════════════════════════════
+TEXT TO ANALYZE:
+═══════════════════════════════════════════════════════════
+
 """
 
 
@@ -320,8 +349,102 @@ def _chunk_text(text: str, size: int = _CHUNK_SIZE, overlap: int = _CHUNK_OVERLA
     return chunks
 
 
+# Bibliographic noise patterns — catch false positives that slip through
+_BIB_NOISE_PATTERNS = re.compile(
+    r"\b(vol(ume)?|no\.?|number|pp\.?|pages?|published|publication|copyright|"
+    r"isbn|doi|issn|jstor|url|accessed|retrieved|available|press|publisher|"
+    r"journal|review|proceedings|transactions|bulletin|series|edition|"
+    r"author|editor|translator|introduction|chapter|section|part|book|"
+    r"article|abstract|keywords|bibliography|references|notes|appendix|"
+    r"index|source|title|language|date|type|all rights reserved)\b",
+    re.I
+)
+
+_MODERN_SCHOLAR_PATTERNS = re.compile(
+    r"\b(argues|writes|notes|observes|suggests|claims|states|according to|"
+    r"cf\.?|see|ibid|op\. cit\.|loc\. cit\.|passim|ed\.|eds\.|trans\.|tr\.|rev\.|repr\.)\b",
+    re.I
+)
+
+
+def _is_bibliographic_noise(name: str, context: str = "") -> bool:
+    """Check if a name is likely bibliographic metadata."""
+    name_lower = name.lower().strip()
+    
+    # Single-word common nouns that are never persons
+    if name_lower in {"source", "title", "language", "type", "date", "author",
+                      "editor", "review", "press", "vol", "published", "copyright",
+                      "volume", "number", "pages", "pp", "no", "isbn", "doi"}:
+        return True
+    
+    # Publisher/journal patterns
+    if any(x in name_lower for x in ["university press", "oxford university",
+                                      "cambridge university", "journal of",
+                                      "proceedings of", "review of"]):
+        return True
+    
+    # Check context for bibliographic markers
+    if _BIB_NOISE_PATTERNS.search(name) or _BIB_NOISE_PATTERNS.search(context):
+        return True
+    
+    return False
+
+
+def _is_modern_scholar(name: str, context: str = "") -> bool:
+    """Check if a name is likely a modern scholar (not medieval person)."""
+    # Common crusades scholar names
+    scholar_surnames = {"riley", "smith", "mayer", "tyerman", "asbridge", "france",
+                        "cahen", "runciman", "grousset", "kedar", "prawer", "hamilton",
+                        "edgington", "jotischky", "barber", "boas", "folda", "rodenberg"}
+    
+    name_lower = name.lower()
+    if any(surname in name_lower for surname in scholar_surnames):
+        return True
+    
+    # Check context for citation markers
+    if _MODERN_SCHOLAR_PATTERNS.search(context):
+        return True
+    
+    return False
+
+
+def _filter_and_reweight_persons(persons: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    """Filter out bibliographic noise and reweight modern scholars."""
+    filtered: List[Dict[str, Any]] = []
+    
+    for p in persons:
+        name = p.get("name", "")
+        context = p.get("context", "")
+        confidence = p.get("confidence", 0.5)
+        
+        # Hard filter: bibliographic noise → skip entirely
+        if _is_bibliographic_noise(name, context):
+            logger.debug(f"Filtered bibliographic noise: {name}")
+            continue
+        
+        # Soft filter: modern scholar → reduce confidence
+        if _is_modern_scholar(name, context):
+            p["confidence"] = min(confidence, 0.10)
+            p["role"] = "modern scholar"
+            logger.debug(f"Downweighted modern scholar: {name}")
+        
+        # Additional sanity checks
+        # Single-word extracts without title/context are suspicious
+        if len(name.split()) == 1 and not p.get("title") and confidence < 0.5:
+            # Check if it's a common word
+            if name_lower := name.lower() in {"the", "and", "but", "for", "with", "from", "into"}:
+                continue
+        
+        filtered.append(p)
+    
+    return filtered
+
+
 def _dedup_persons(all_persons: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     """Deduplicate persons across chunks by normalised name — keep highest confidence."""
+    # First filter out noise
+    all_persons = _filter_and_reweight_persons(all_persons)
+    
     seen: Dict[str, Dict[str, Any]] = {}
     for p in all_persons:
         key = _normalise(p.get("name") or p.get("raw_mention") or "")
