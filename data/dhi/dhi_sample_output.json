@@ -1,0 +1,211 @@
+{
+  "schema": "outremer-unified-kg-v1",
+  "source": "DHI Crusaders Database (sample - scraped before bot protection)",
+  "note": "This is a sample showing how DHI data maps to Outremer KG. Full scraping blocked by 403 bot protection.",
+  "sample_records": [
+    {
+      "id": "DHI:1",
+      "preferred_label": "Achard unmarried of Marseilles",
+      "identifiers": {
+        "dhi_id": "1",
+        "dhi_url": "https://www.dhi.ac.uk/crusaders/person/?id=1",
+        "outremer_auth": null
+      },
+      "names": {
+        "preferred": "Achard unmarried of Marseilles",
+        "variants": [
+          "Achard",
+          "Achard of Marseilles",
+          "Achard, Marseilles",
+          "Achard (Marseilles)",
+          "Achard unmarried",
+          "Achard unmarried of Marseilles",
+          "Marseilles's Achard"
+        ],
+        "normalized": [
+          "achard",
+          "achard marseilles",
+          "achard unmarried",
+          "achard unmarried of marseilles",
+          "achard unmarried marseilles",
+          "marseilles s achard"
+        ],
+        "parsed": {
+          "given": "Achard",
+          "descriptor": "unmarried",
+          "toponym": "Marseilles",
+          "pattern": "given_of_toponym"
+        }
+      },
+      "bio": {
+        "gender": "Male"
+      },
+      "roles": [
+        {
+          "role": "Archbishop",
+          "type": "cleric"
+        }
+      ],
+      "relationships": [],
+      "places": [
+        {
+          "type": "origin",
+          "label": "France",
+          "region": "Provence-Alpes-Côte-d'Azur",
+          "department": "Bouches-du-Rhône"
+        },
+        {
+          "type": "title",
+          "label": "Archbishop of Arles"
+        }
+      ],
+      "expeditions": [
+        {
+          "name": "1st Crusade (1096-1099)",
+          "probability": "Certain",
+          "outcome": "Survived",
+          "actions": "Achard may have departed for the crusade as an excommunicate",
+          "sources": [
+            "Cartulaire de l'abbaye de Saint-Victor de Marseille, ed. M. Guérard, vol. 2 (Paris, 1857), pp. 151-152",
+            "J. Poly, La Provence et la société féodale: 879-1166 (Paris, 1976), p. 268"
+          ]
+        }
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "type": "external_database",
+            "source_url": "https://www.dhi.ac.uk/crusaders/person/?id=1",
+            "confidence": 0.95
+          }
+        ],
+        "created_at": "2026-02-26T14:00:00",
+        "updated_at": "2026-02-26T14:00:00"
+      },
+      "flags": {
+        "source": "dhi_crusaders_db",
+        "participation_confirmed": true,
+        "excommunicate": true
+      }
+    },
+    {
+      "id": "DHI:2",
+      "preferred_label": "Achard unknown of Montmerle",
+      "identifiers": {
+        "dhi_id": "2",
+        "dhi_url": "https://www.dhi.ac.uk/crusaders/person/?id=2",
+        "outremer_auth": null
+      },
+      "names": {
+        "preferred": "Achard unknown of Montmerle",
+        "variants": [
+          "Achard",
+          "Achard of Montmerle",
+          "Achard, Montmerle",
+          "Achard (Montmerle)",
+          "Achard unknown",
+          "Achard unknown of Montmerle",
+          "Montmerle's Achard"
+        ],
+        "normalized": [
+          "achard",
+          "achard montmerle",
+          "achard unknown",
+          "achard unknown of montmerle",
+          "montmerle s achard"
+        ],
+        "parsed": {
+          "given": "Achard",
+          "descriptor": "unknown",
+          "toponym": "Montmerle",
+          "pattern": "given_of_toponym"
+        }
+      },
+      "bio": {
+        "gender": "Male"
+      },
+      "roles": [
+        {
+          "role": "Castellan",
+          "type": "lay"
+        }
+      ],
+      "relationships": [
+        {
+          "type": "brother",
+          "name": "Fulk of Sollies",
+          "description": "First Crusader"
+        },
+        {
+          "type": "brother",
+          "name": "Bertrand of Marseilles",
+          "description": "First Crusader"
+        }
+      ],
+      "places": [
+        {
+          "type": "origin",
+          "label": "France",
+          "region": "Rhône-Alpes",
+          "department": "Ain"
+        },
+        {
+          "type": "title",
+          "label": "Castellan of Montmerle"
+        }
+      ],
+      "expeditions": [
+        {
+          "name": "1st Crusade (1096-1099)",
+          "probability": "Certain",
+          "leader": "Raymond of Saint-Gilles",
+          "outcome": "Died",
+          "actions": "Achard was killed in an ambush during the siege of Jerusalem",
+          "finance": "He mortgaged lands to Cluny in return for 20,000 solidi of Lyons and 4 mules. He mentioned that he might wish to remain in the Levant, in which case the lands would pass to Cluny.",
+          "sources": [
+            "Cluny, vol. 5, nos. 51-53",
+            "GF, pp. 88-89",
+            "PT, p. 135",
+            "RA, p. 141",
+            "AA, pp. 100-101, 408-409, 410-411",
+            "BB, pp. 98-99",
+            "RR, p. 865",
+            "Gilo, pp. 238-241",
+            "OV, vol. 5, pp. 160-162",
+            "WT, p. 398"
+          ]
+        }
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "type": "external_database",
+            "source_url": "https://www.dhi.ac.uk/crusaders/person/?id=2",
+            "confidence": 0.95
+          }
+        ],
+        "created_at": "2026-02-26T14:00:00",
+        "updated_at": "2026-02-26T14:00:00"
+      },
+      "flags": {
+        "source": "dhi_crusaders_db",
+        "participation_confirmed": true,
+        "killed_in_action": true,
+        "siege_of_jerusalem": true
+      }
+    }
+  ],
+  "data_model_notes": {
+    "name_parsing": "Names follow pattern 'Given [descriptor] of Toponym' - descriptor indicates marital status or epithet",
+    "relationships": "Family relationships explicitly stated with crusader status notes",
+    "expeditions": "Single expedition per person in this period (1095-1149), with detailed participation data",
+    "probability": "Three levels: Certain, Probable, Possible - based on source evidence",
+    "sources": "Abbreviated citations (full bibliography on DHI website)",
+    "geography": "Modern country/region/department structure (not medieval boundaries)"
+  },
+  "integration_notes": {
+    "matching": "Match DHI records to Outremer AUTH:CR* by name variants and expedition participation",
+    "enrichment": "DHI provides: gender, family relationships, financial arrangements, participation probability",
+    "gaps": "DHI covers 1095-1149 only (First and Second Crusades), Outremer extends to 1291"
+  }
+}
