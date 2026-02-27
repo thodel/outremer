@@ -415,6 +415,27 @@ select {
 .adj-btn.reject.active { background: var(--low-bg); }
 .adj-btn.flag.active   { background: var(--flag-bg); }
 
+.group-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius);
+  transition: background 0.15s, color 0.15s;
+  user-select: none;
+}
+.group-toggle:hover {
+  background: var(--accent-lt);
+  color: var(--accent);
+}
+.group-toggle input {
+  cursor: pointer;
+  accent-color: var(--accent);
+}
+
 .comment-input {
   font-family: var(--font);
   font-size: .78rem;

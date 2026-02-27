@@ -527,6 +527,10 @@ function renderCandidateRow(link, candidate, docId, decisions) {
               data-action="reject" data-key="${esc(k)}" title="Reject">❌</button>
       <button class="adj-btn flag   ${decision==="flag"  ?"active":""}"
               data-action="flag"   data-key="${esc(k)}" title="Flag">🚩</button>
+      <label class="group-toggle" title="Mark as group/collective entity">
+        <input type="checkbox" data-key="${esc(k)}" ${link.person_group ? "checked" : ""} />
+        👥 Group
+      </label>
       <span class="sync-indicator" title="Sync status"></span>
       <input class="comment-input" type="text"
              placeholder="Comment…" data-key="${esc(k)}" value="${esc(comment)}" />
@@ -572,6 +576,18 @@ function renderCandidateRow(link, candidate, docId, decisions) {
         communityVotes[key][action] = (communityVotes[key][action] || 0) + 1;
         row.querySelector(".community-votes, .community-votes.muted")?.remove?.();
         row.querySelector(".candidate-info").insertAdjacentHTML("beforeend", communityBadgeHtml(key));
+        // Auto-hide row if scholar name is saved (user is tracking their reviews)
+        const scholarName = getScholarName();
+        if (scholarName && scholarName.trim()) {
+          row.style.transition = "opacity .25s, transform .25s";
+          row.style.opacity = "0";
+          row.style.transform = "translateX(-10px)";
+          setTimeout(() => {
+            row.style.display = "none";
+            // Update filter counts
+            updateStats();
+          }, 250);
+        }
       } catch { setSyncErr(syncEl); }
     }
   }
@@ -595,6 +611,56 @@ function renderCandidateRow(link, candidate, docId, decisions) {
     try {
       await syncDecisionToServer(dId, person, oId, d[key].decision, d[key].comment);
       setSyncOk(syncEl);
+    } catch { setSyncErr(syncEl); }
+  });
+
+  // ── Group toggle handler ─────────────────────────────────────────────────
+  const groupToggle = row.querySelector(".group-toggle input");
+  groupToggle.addEventListener("change", async () => {
+    const key = groupToggle.dataset.key;
+    const isGroup = groupToggle.checked;
+    
+    // Update the link data locally
+    link.person_group = isGroup;
+    
+    // Save to decisions
+    const d = loadDecisions();
+    if (!d[key]) {
+      d[key] = { decision: null, comment: "", ts: new Date().toISOString(), is_group: isGroup };
+    } else {
+      d[key].is_group = isGroup;
+      d[key].ts = new Date().toISOString();
+    }
+    saveDecisions(d);
+    
+    const [dId, person, oId] = key.split("::");
+    setSyncPending(syncEl);
+    try {
+      // Sync group flag to server
+      const payload = {
+        doc_id: dId, person, outremer_id: oId,
+        is_group: isGroup,
+        client_id: CLIENT_ID,
+        scholar_name: getScholarName() || null,
+      };
+      const res = await fetch(`${API_BASE}/outremer-decision`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error(`Server ${res.status}`);
+      setSyncOk(syncEl);
+      // Auto-hide if scholar name is saved
+      const scholarName = getScholarName();
+      if (scholarName && scholarName.trim()) {
+        row.style.transition = "opacity .25s, transform .25s";
+        row.style.opacity = "0";
+        row.style.transform = "translateX(-10px)";
+        setTimeout(() => {
+          row.style.display = "none";
+          updateStats();
+        }, 250);
+      }
     } catch { setSyncErr(syncEl); }
   });
 
@@ -637,6 +703,10 @@ function renderWikidataCandidateRow(link, c, docId, decisions) {
               data-action="accept" title="Accept: this Wikidata entry matches the person">✅</button>
       <button class="adj-btn reject ${decision==="reject"?"active":""}"
               data-action="reject" title="Reject: wrong match">❌</button>
+      <label class="group-toggle" title="Mark as group/collective entity">
+        <input type="checkbox" data-key="${esc(k)}" ${link.person_group ? "checked" : ""} />
+        👥 Group
+      </label>
       <span class="sync-indicator" title="Sync status"></span>
     </div>
   `;
@@ -682,6 +752,50 @@ function renderWikidataCandidateRow(link, c, docId, decisions) {
         } catch { setSyncErr(syncEl); }
       }
     });
+  });
+
+  // ── Group toggle handler ─────────────────────────────────────────────────
+  const groupToggle = row.querySelector(".group-toggle input");
+  groupToggle.addEventListener("change", async () => {
+    const isGroup = groupToggle.checked;
+    link.person_group = isGroup;
+    
+    const d = loadDecisions();
+    if (!d[k]) {
+      d[k] = { decision: null, ts: new Date().toISOString(), is_group: isGroup };
+    } else {
+      d[k].is_group = isGroup;
+      d[k].ts = new Date().toISOString();
+    }
+    saveDecisions(d);
+    
+    setSyncPending(syncEl);
+    try {
+      const payload = {
+        doc_id: docId, person: link.person, outremer_id: oId,
+        is_group: isGroup,
+        client_id: CLIENT_ID,
+        scholar_name: getScholarName() || null,
+      };
+      const res = await fetch(`${API_BASE}/outremer-decision`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error(`Server ${res.status}`);
+      setSyncOk(syncEl);
+      // Auto-hide if scholar name is saved
+      const scholarName = getScholarName();
+      if (scholarName && scholarName.trim()) {
+        row.style.transition = "opacity .25s, transform .25s";
+        row.style.opacity = "0";
+        row.style.transform = "translateX(-10px)";
+        setTimeout(() => {
+          row.style.display = "none";
+          updateStats();
+        }, 250);
+      }
+    } catch { setSyncErr(syncEl); }
   });
 
   return row;
