@@ -146,19 +146,7 @@
   </header>
 
   <div class="upload-wrap">
-    <div id="mixedContentWarning" style="display:none;background:#fff3cd;border:1px solid #f0c040;border-radius:6px;padding:.9rem 1.1rem;margin-bottom:1.2rem;font-size:.88rem;line-height:1.6;">
-      ⚠️ <strong>Upload may be blocked by your browser.</strong><br>
-      This page is loaded over <strong>HTTPS</strong>, but the upload server runs on <strong>HTTP</strong>.
-      Browsers block this (mixed content policy).<br>
-      <strong>Use the direct link instead:</strong>
-      <a href="http://194.13.80.183/outremer/upload.html" style="color:#7a5800;font-weight:bold;">http://194.13.80.183/outremer/upload.html</a>
-    </div>
-    <script>
-      if (location.protocol === "https:" && "http://194.13.80.183/webhook/outremer-upload".startsWith("http:")) {
-        document.getElementById("mixedContentWarning").style.display = "block";
-      }
-    </script>
-    <h1>Contribute a Source</h1>
+      <h1>Contribute a Source</h1>
     <p class="intro">
       Submit a historical source document for inclusion in the pipeline.
       Uploaded files are reviewed by the project team before processing.
@@ -332,7 +320,7 @@
 
     // ── Upload endpoint ──────────────────────────────────────────────────────
     // Caddy proxies /webhook/* → Flask on port 5111
-    const UPLOAD_URL = "http://194.13.80.183/webhook/outremer-upload";
+    const UPLOAD_URL = "https://hodelweb.ch/webhook/outremer-upload";
 
     // ── File drop zone ───────────────────────────────────────────────────────
     const fileDrop  = document.getElementById("fileDrop");
@@ -405,7 +393,7 @@
         if (isMixedContent) {
           msg += `Your browser blocked the request because this page is served over <strong>HTTPS</strong> but the upload endpoint is <strong>HTTP</strong> (mixed content).<br><br>`;
           msg += `<strong>Workaround:</strong> Open the upload page directly over HTTP: `;
-          msg += `<a href="http://194.13.80.183/outremer/upload.html" style="color:var(--accent)">http://194.13.80.183/outremer/upload.html</a>`;
+          msg += `Try again in a few moments, or contact the project team directly.`;
         } else {
           msg += `The server may be temporarily unavailable. `;
           msg += `<details style="margin-top:.5rem"><summary style="cursor:pointer;font-size:.85rem">Technical details</summary>`;

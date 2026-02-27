@@ -110,6 +110,55 @@
     .status-high { color: #166534; }
     .status-med  { color: #854d0e; }
     .status-low  { color: var(--muted); }
+
+    /* context snippets */
+    .context-section { margin-top: 1rem; }
+    .context-toggle {
+      background: var(--accent-lt);
+      color: var(--accent);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.4rem 0.75rem;
+      font-size: 0.8rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: background 0.15s;
+    }
+    .context-toggle:hover { background: #e8dfc8; }
+    .context-list {
+      margin-top: 0.6rem;
+      display: none;
+    }
+    .context-list.open { display: block; }
+    .context-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 0.65rem 0.85rem;
+      margin-bottom: 0.5rem;
+      font-size: 0.82rem;
+      line-height: 1.5;
+    }
+    .context-item code {
+      display: block;
+      margin-top: 0.35rem;
+      padding: 0.4rem 0.55rem;
+      background: var(--accent-lt);
+      border-radius: 4px;
+      font-family: var(--mono);
+      font-size: 0.76rem;
+      color: var(--text);
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    .context-meta {
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+    }
   </style>
 </head>
 <body>
@@ -231,7 +280,9 @@
         as_name:    personName,
         confidence: link.confidence || 0,
         status:     link.status || 'no_match',
-        outremer_id: link.top_candidate || null
+        outremer_id: link.top_candidate || null,
+        context:    link.context || null,
+        raw_mention: link.raw_mention || null
       });
     }
   }
@@ -382,6 +433,19 @@
                 <small>${esc(docIndex[m.doc_id]?.author || '')}${docIndex[m.doc_id]?.year ? ' · ' + docIndex[m.doc_id].year : ''}</small>
               </div>
             </div>`).join('')}
+        </div>
+        <div class="context-section">
+          <button class="context-toggle" onclick="toggleContext('${esc(authId)}')">
+            📜 Show text snippets (${mentions.filter(m => m.context).length})
+          </button>
+          <div class="context-list" id="context-${esc(authId)}">
+            ${mentions.filter(m => m.context).map(m => `
+              <div class="context-item">
+                <div class="context-meta">${esc(docIndex[m.doc_id]?.title || m.doc_id)} · <strong>${esc(m.as_name)}</strong></div>
+                <code>${esc(m.context)}</code>
+              </div>
+            `).join('')}
+          </div>
         </div>` : `
         <div class="profile-section">
           <h4>📄 Document mentions</h4>
@@ -437,6 +501,20 @@
             </div>
           </div>`).join('')}
       </div>
+      ${docs.filter(m => m.context).length ? `
+        <div class="context-section">
+          <button class="context-toggle" onclick="toggleContext('extracted-${esc(data.preferred.replace(/'/g, "\\'"))}')">
+            📜 Show text snippets (${docs.filter(m => m.context).length})
+          </button>
+          <div class="context-list" id="context-extracted-${esc(data.preferred.replace(/'/g, "\\'"))}">
+            ${docs.filter(m => m.context).map(m => `
+              <div class="context-item">
+                <div class="context-meta">${esc(docIndex[m.doc_id]?.title || m.doc_id)} · <strong>${esc(m.as_name)}</strong></div>
+                <code>${esc(m.context)}</code>
+              </div>
+            `).join('')}
+          </div>
+        </div>` : ''}
 
       ${wd ? `
         <div class="profile-section">
@@ -481,6 +559,19 @@
     if (status === 'med_match')  return 'med';
     if (status === 'low_match')  return 'low';
     return conf >= 0.8 ? 'high' : conf >= 0.5 ? 'med' : 'low';
+  }
+
+  function toggleContext(id) {
+    const list = document.getElementById(`context-${id.replace(/'/g, "\\'")}`);
+    if (list) {
+      list.classList.toggle('open');
+      const btn = list.previousElementSibling;
+      if (btn && btn.classList.contains('context-toggle')) {
+        btn.textContent = list.classList.contains('open')
+          ? '📜 Hide text snippets'
+          : '📜 Show text snippets';
+      }
+    }
   }
 
   function renderStats() {
