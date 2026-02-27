@@ -523,8 +523,17 @@ function renderCandidateRow(link, candidate, docId, decisions) {
     <div class="adjudication">
       <button class="adj-btn accept ${decision==="accept"?"active":""}"
               data-action="accept" data-key="${esc(k)}" title="Accept">✅</button>
-      <button class="adj-btn reject ${decision==="reject"?"active":""}"
-              data-action="reject" data-key="${esc(k)}" title="Reject">❌</button>
+      <div class="reject-group">
+        <button class="adj-btn reject ${decision?.startsWith("reject")?"active":""}"
+                data-action="reject" data-key="${esc(k)}" title="Reject">❌</button>
+        <select class="reject-reason" data-key="${esc(k)}" title="Rejection reason">
+          <option value="">Reason…</option>
+          <option value="reject:wrong_entity" ${decision==="reject:wrong_entity"?"selected":""}>🚫 Not a person</option>
+          <option value="reject:wrong_era" ${decision==="reject:wrong_era"?"selected":""}>⏳ Wrong era</option>
+          <option value="reject:wrong_match" ${decision==="reject:wrong_match"?"selected":""}>❌ Wrong match</option>
+          <option value="reject:other" ${decision==="reject:other"?"selected":""}>⚠️ Other</option>
+        </select>
+      </div>
       <button class="adj-btn flag   ${decision==="flag"  ?"active":""}"
               data-action="flag"   data-key="${esc(k)}" title="Flag">🚩</button>
       <label class="group-toggle" title="Mark as group/collective entity">
@@ -539,19 +548,22 @@ function renderCandidateRow(link, candidate, docId, decisions) {
 
   // ── Adjudication button handler ──────────────────────────────────────────
   const syncEl = row.querySelector(".sync-indicator");
+  const rejectReasonSelect = row.querySelector(".reject-reason");
 
-  async function handleDecision(action, key) {
+  async function handleDecision(action, key, reason = null) {
     const d = loadDecisions();
     const prev = d[key]?.decision;
+    const finalAction = reason || action;
 
     // Parse doc/person/outremer_id from key
     const [dId, person, oId] = key.split("::");
 
-    if (prev === action) {
+    if (prev === finalAction) {
       // Toggle off
       delete d[key];
       row.querySelectorAll(".adj-btn").forEach(b => b.classList.remove("active"));
       row.removeAttribute("data-decision");
+      if (rejectReasonSelect) rejectReasonSelect.value = "";
       saveDecisions(d);
       updateStats();
       setSyncPending(syncEl);
@@ -560,20 +572,20 @@ function renderCandidateRow(link, candidate, docId, decisions) {
         setSyncOk(syncEl);
       } catch { setSyncErr(syncEl); }
     } else {
-      d[key] = { decision: action, comment: d[key]?.comment || "", ts: new Date().toISOString() };
+      d[key] = { decision: finalAction, comment: d[key]?.comment || "", ts: new Date().toISOString() };
       row.querySelectorAll(".adj-btn").forEach(b => b.classList.remove("active"));
       row.querySelector(`[data-action="${action}"]`).classList.add("active");
-      row.dataset.decision = action;
+      row.dataset.decision = finalAction;
       saveDecisions(d);
       updateStats();
       setSyncPending(syncEl);
       try {
-        await syncDecisionToServer(dId, person, oId, action, d[key].comment);
+        await syncDecisionToServer(dId, person, oId, finalAction, d[key].comment);
         setSyncOk(syncEl);
         // Update community vote display locally (optimistic)
         if (!communityVotes[key]) communityVotes[key] = { accept: 0, reject: 0, flag: 0 };
         if (prev) communityVotes[key][prev] = Math.max(0, (communityVotes[key][prev] || 0) - 1);
-        communityVotes[key][action] = (communityVotes[key][action] || 0) + 1;
+        communityVotes[key][finalAction] = (communityVotes[key][finalAction] || 0) + 1;
         row.querySelector(".community-votes, .community-votes.muted")?.remove?.();
         row.querySelector(".candidate-info").insertAdjacentHTML("beforeend", communityBadgeHtml(key));
         // Auto-hide row if scholar name is saved (user is tracking their reviews)
@@ -593,8 +605,46 @@ function renderCandidateRow(link, candidate, docId, decisions) {
   }
 
   row.querySelectorAll(".adj-btn").forEach(btn => {
-    btn.addEventListener("click", () => handleDecision(btn.dataset.action, btn.dataset.key));
+    btn.addEventListener("click", () => {
+      const action = btn.dataset.action;
+      const key = btn.dataset.key;
+      const reason = action === "reject" && rejectReasonSelect?.value ? rejectReasonSelect.value : null;
+      handleDecision(action, key, reason);
+    });
   });
+
+  // Sync reject reason when changed
+  if (rejectReasonSelect) {
+    rejectReasonSelect.addEventListener("change", async () => {
+      const reason = rejectReasonSelect.value;
+      if (reason && reason.startsWith("reject:")) {
+        const key = rejectReasonSelect.dataset.key;
+        const d = loadDecisions();
+        if (d[key]) {
+          d[key].decision = reason;
+          d[key].ts = new Date().toISOString();
+          saveDecisions(d);
+          const [dId, person, oId] = key.split("::");
+          setSyncPending(syncEl);
+          try {
+            await syncDecisionToServer(dId, person, oId, reason, d[key].comment);
+            setSyncOk(syncEl);
+            // Auto-hide if scholar name saved
+            const scholarName = getScholarName();
+            if (scholarName && scholarName.trim()) {
+              row.style.transition = "opacity .25s, transform .25s";
+              row.style.opacity = "0";
+              row.style.transform = "translateX(-10px)";
+              setTimeout(() => {
+                row.style.display = "none";
+                updateStats();
+              }, 250);
+            }
+          } catch { setSyncErr(syncEl); }
+        }
+      }
+    });
+  }
 
   // ── Comment handler ──────────────────────────────────────────────────────
   const commentInput = row.querySelector(".comment-input");
@@ -699,10 +749,19 @@ function renderWikidataCandidateRow(link, c, docId, decisions) {
       ${communityBadgeHtml(k)}
     </div>
     <div class="adjudication">
-      <button class="adj-btn accept ${decision==="accept"?"active":""}"
+      <button class="adj-btn accept ${decision?.startsWith("accept")?"active":""}"
               data-action="accept" title="Accept: this Wikidata entry matches the person">✅</button>
-      <button class="adj-btn reject ${decision==="reject"?"active":""}"
-              data-action="reject" title="Reject: wrong match">❌</button>
+      <div class="reject-group">
+        <button class="adj-btn reject ${decision?.startsWith("reject")?"active":""}"
+                data-action="reject" title="Reject">❌</button>
+        <select class="reject-reason" data-key="${esc(k)}" title="Rejection reason">
+          <option value="">Reason…</option>
+          <option value="reject:wrong_entity" ${decision==="reject:wrong_entity"?"selected":""}>🚫 Not a person</option>
+          <option value="reject:wrong_era" ${decision==="reject:wrong_era"?"selected":""}>⏳ Wrong era</option>
+          <option value="reject:wrong_match" ${decision==="reject:wrong_match"?"selected":""}>❌ Wrong match</option>
+          <option value="reject:other" ${decision==="reject:other"?"selected":""}>⚠️ Other</option>
+        </select>
+      </div>
       <label class="group-toggle" title="Mark as group/collective entity">
         <input type="checkbox" data-key="${esc(k)}" ${link.person_group ? "checked" : ""} />
         👥 Group
@@ -712,47 +771,93 @@ function renderWikidataCandidateRow(link, c, docId, decisions) {
   `;
 
   const syncEl = row.querySelector(".sync-indicator");
+  const rejectReasonSelect = row.querySelector(".reject-reason");
+
+  async function handleWDDecision(action, key, reason = null) {
+    const d = loadDecisions();
+    const prev = d[k]?.decision;
+    const finalAction = reason || action;
+
+    if (prev === finalAction) {
+      delete d[k];
+      row.querySelectorAll(".adj-btn").forEach(b => b.classList.remove("active"));
+      row.removeAttribute("data-decision");
+      if (rejectReasonSelect) rejectReasonSelect.value = "";
+      saveDecisions(d);
+      updateStats();
+      setSyncPending(syncEl);
+      try {
+        await deleteDecisionFromServer(docId, link.person, oId);
+        setSyncOk(syncEl);
+      } catch { setSyncErr(syncEl); }
+    } else {
+      d[k] = { decision: finalAction, ts: new Date().toISOString() };
+      row.querySelectorAll(".adj-btn").forEach(b => b.classList.remove("active"));
+      row.querySelector(`[data-action="${action}"]`).classList.add("active");
+      row.dataset.decision = finalAction;
+      saveDecisions(d);
+      updateStats();
+      setSyncPending(syncEl);
+      try {
+        await syncDecisionToServer(docId, link.person, oId, finalAction);
+        setSyncOk(syncEl);
+        if (!communityVotes[k]) communityVotes[k] = { accept: 0, reject: 0, flag: 0 };
+        if (prev) communityVotes[k][prev] = Math.max(0, (communityVotes[k][prev] || 0) - 1);
+        communityVotes[k][finalAction] = (communityVotes[k][finalAction] || 0) + 1;
+        const cvEl = row.querySelector(".community-votes, .community-votes.muted");
+        if (cvEl) cvEl.outerHTML = communityBadgeHtml(k);
+        else row.querySelector(".wd-info").insertAdjacentHTML("beforeend", communityBadgeHtml(k));
+        // Auto-hide if scholar name saved
+        const scholarName = getScholarName();
+        if (scholarName && scholarName.trim()) {
+          row.style.transition = "opacity .25s, transform .25s";
+          row.style.opacity = "0";
+          row.style.transform = "translateX(-10px)";
+          setTimeout(() => {
+            row.style.display = "none";
+            updateStats();
+          }, 250);
+        }
+      } catch { setSyncErr(syncEl); }
+    }
+  }
 
   row.querySelectorAll(".adj-btn").forEach(btn => {
-    btn.addEventListener("click", async () => {
+    btn.addEventListener("click", () => {
       const action = btn.dataset.action;
-      const d      = loadDecisions();
-      const prev   = d[k]?.decision;
-
-      if (prev === action) {
-        // Toggle off
-        delete d[k];
-        row.querySelectorAll(".adj-btn").forEach(b => b.classList.remove("active"));
-        row.removeAttribute("data-decision");
-        saveDecisions(d);
-        updateStats();
-        setSyncPending(syncEl);
-        try {
-          await deleteDecisionFromServer(docId, link.person, oId);
-          setSyncOk(syncEl);
-        } catch { setSyncErr(syncEl); }
-      } else {
-        d[k] = { decision: action, ts: new Date().toISOString() };
-        row.querySelectorAll(".adj-btn").forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-        row.dataset.decision = action;
-        saveDecisions(d);
-        updateStats();
-        setSyncPending(syncEl);
-        try {
-          await syncDecisionToServer(docId, link.person, oId, action);
-          setSyncOk(syncEl);
-          // Optimistic community update
-          if (!communityVotes[k]) communityVotes[k] = { accept: 0, reject: 0, flag: 0 };
-          if (prev) communityVotes[k][prev] = Math.max(0, (communityVotes[k][prev] || 0) - 1);
-          communityVotes[k][action] = (communityVotes[k][action] || 0) + 1;
-          const cvEl = row.querySelector(".community-votes, .community-votes.muted");
-          if (cvEl) cvEl.outerHTML = communityBadgeHtml(k);
-          else row.querySelector(".wd-info").insertAdjacentHTML("beforeend", communityBadgeHtml(k));
-        } catch { setSyncErr(syncEl); }
-      }
+      const reason = action === "reject" && rejectReasonSelect?.value ? rejectReasonSelect.value : null;
+      handleWDDecision(action, k, reason);
     });
   });
+
+  if (rejectReasonSelect) {
+    rejectReasonSelect.addEventListener("change", async () => {
+      const reason = rejectReasonSelect.value;
+      if (reason && reason.startsWith("reject:")) {
+        const d = loadDecisions();
+        if (d[k]) {
+          d[k].decision = reason;
+          d[k].ts = new Date().toISOString();
+          saveDecisions(d);
+          setSyncPending(syncEl);
+          try {
+            await syncDecisionToServer(docId, link.person, oId, reason);
+            setSyncOk(syncEl);
+            const scholarName = getScholarName();
+            if (scholarName && scholarName.trim()) {
+              row.style.transition = "opacity .25s, transform .25s";
+              row.style.opacity = "0";
+              row.style.transform = "translateX(-10px)";
+              setTimeout(() => {
+                row.style.display = "none";
+                updateStats();
+              }, 250);
+            }
+          } catch { setSyncErr(syncEl); }
+        }
+      }
+    });
+  }
 
   // ── Group toggle handler ─────────────────────────────────────────────────
   const groupToggle = row.querySelector(".group-toggle input");

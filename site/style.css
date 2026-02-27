@@ -415,6 +415,34 @@ select {
 .adj-btn.reject.active { background: var(--low-bg); }
 .adj-btn.flag.active   { background: var(--flag-bg); }
 
+.reject-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.reject-reason {
+  font-family: var(--font);
+  font-size: 0.75rem;
+  padding: 0.25rem 0.4rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+  min-width: 140px;
+  transition: border-color 0.15s, background 0.15s;
+}
+.reject-reason:hover {
+  border-color: var(--accent);
+  background: var(--accent-lt);
+}
+.reject-reason:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(92, 74, 42, 0.15);
+}
+
 .group-toggle {
   display: inline-flex;
   align-items: center;
