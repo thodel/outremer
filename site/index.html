@@ -91,8 +91,13 @@
 <body>
 
   <div class="hero">
-    <img src="./assets/logo.png" alt="People of the Levante project logo" class="hero-logo" />
-    <h1>People of the Levante</h1>
+    <div style="display:flex;justify-content:space-between;align-items:center;max-width:600px;margin:0 auto 1.5rem;">
+      <div style="display:flex;align-items:center;gap:1rem;margin:0 auto;">
+        <img src="./assets/logo.png" alt="People of the Levante project logo" class="hero-logo" style="margin:0;" />
+        <h1 style="margin:0;">People of the Levante</h1>
+      </div>
+      <button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark/light mode" style="background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.4);color:#f9f7f4;">🌙</button>
+    </div>
     <p class="tagline">
       An AI-assisted prosopography of the Crusades era — making visible the full population
       of the medieval Levant, beyond the traditional focus on elites.
@@ -230,5 +235,25 @@
     </section>
   </main>
 
+  <script>
+    // Theme toggle with localStorage persistence
+    function toggleTheme() {
+      const html = document.documentElement;
+      const current = html.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      const btn = document.querySelector('.theme-toggle');
+      if (btn) btn.textContent = next === 'dark' ? '☀️' : '🌙';
+    }
+    (function() {
+      const saved = localStorage.getItem('theme');
+      if (saved) {
+        document.documentElement.setAttribute('data-theme', saved);
+        const btn = document.querySelector('.theme-toggle');
+        if (btn) btn.textContent = saved === 'dark' ? '☀️' : '🌙';
+      }
+    })();
+  </script>
 </body>
 </html>

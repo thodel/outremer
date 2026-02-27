@@ -27,6 +27,90 @@
   --radius: 6px;
 }
 
+/* ── Dark Mode ─────────────────────────────────────────────────────── */
+[data-theme="dark"] {
+  --bg:        #1a1a18;
+  --surface:   #252523;
+  --border:    #3a3a38;
+  --text:      #f0f0f0;
+  --muted:     #a0a0a0;
+  --accent:    #c9b896;
+  --accent-lt: #3d3426;
+
+  --high:   #4ade80;
+  --high-bg:#1a3d2a;
+  --med:    #fbbf24;
+  --med-bg: #3d341a;
+  --low:    #f87171;
+  --low-bg: #3d1a1a;
+  --none-bg:#2a2a28;
+
+  --accept-bg: #1a3d2a;
+  --reject-bg: #3d1a1a;
+  --flag-bg:   #3d341a;
+}
+
+[data-theme="dark"] header {
+  background: #2d2a26;
+}
+
+[data-theme="dark"] header a {
+  color: #d0c8b8;
+}
+[data-theme="dark"] header a:hover {
+  color: #fff;
+}
+
+[data-theme="dark"] .hero {
+  background: #2d2a26;
+  color: #f0f0f0;
+}
+[data-theme="dark"] .hero .tagline {
+  opacity: 0.85;
+}
+
+[data-theme="dark"] .feature-card {
+  background: var(--surface);
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .workflow-steps li::before {
+  background: var(--accent);
+  color: #1a1a18;
+}
+
+[data-theme="dark"] .team-person strong {
+  color: var(--text);
+}
+
+[data-theme="dark"] .hero-btn.primary {
+  background: var(--accent);
+  color: #1a1a18;
+}
+[data-theme="dark"] .hero-btn.secondary {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Dark mode toggle button */
+.theme-toggle {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.3);
+  color: inherit;
+  padding: 0.3rem 0.6rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 0.85rem;
+  margin-left: 0.5rem;
+}
+.theme-toggle:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+[data-theme="dark"] .theme-toggle {
+  border-color: rgba(255,255,255,0.2);
+}
+
 body {
   font-family: var(--font);
   background: var(--bg);

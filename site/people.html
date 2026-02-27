@@ -119,6 +119,7 @@
         <img src="./assets/logo.png" alt="People of the Levante" style="width:44px;height:44px;object-fit:contain;border-radius:8px;" />
         <h1 style="margin:0;font-size:1.3rem;font-weight:normal;">People of the Levante</h1>
       </div>
+      <button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark/light mode">🌙</button>
       <div>
         <p class="subtitle">
           <a href="./index.html" style="color:rgba(255,255,255,.7);text-decoration:none;">← Project</a>
@@ -515,6 +516,25 @@
   }
 
   boot();
+  
+  // Theme toggle with localStorage persistence
+  function toggleTheme() {
+    const html = document.documentElement;
+    const current = html.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    const btn = document.querySelector('.theme-toggle');
+    if (btn) btn.textContent = next === 'dark' ? '☀️' : '🌙';
+  }
+  (function() {
+    const saved = localStorage.getItem('theme');
+    if (saved) {
+      document.documentElement.setAttribute('data-theme', saved);
+      const btn = document.querySelector('.theme-toggle');
+      if (btn) btn.textContent = saved === 'dark' ? '☀️' : '🌙';
+    }
+  })();
   </script>
 </body>
 </html>
