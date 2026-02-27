@@ -74,7 +74,7 @@ def entity_to_uri(entity_id: str) -> str:
         qid = entity_id.replace("WIKIDATA:", "")
         return f"wd:{qid}"
     else:
-        local = entity_id.replace(":", "_").replace("-", "_")
+        local = entity_id.replace(":", "_").replace("-", "_").replace(" ", "_")
         return f"outremer:{local}"
 
 
