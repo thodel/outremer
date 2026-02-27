@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import logging
 import re
 import time
 import unicodedata
@@ -22,6 +23,9 @@ from pathlib import Path
 from typing import Any
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
+
+logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
+logger = logging.getLogger(__name__)
 
 # ── Config ─────────────────────────────────────────────────────────────────
 
@@ -38,11 +42,89 @@ DESCRIPTION_WHITELIST_RE = re.compile(
     re.I,
 )
 
+# Cutoff: exclude persons who lived entirely after 1500 CE
+MEDIEVAL_CUTOFF_YEAR = 1500
+
 
 def normalise(s: str) -> str:
     s = unicodedata.normalize("NFKD", s)
     s = "".join(c for c in s if not unicodedata.combining(c))
     return re.sub(r"\s+", " ", s).lower().strip()
+
+
+def get_person_dates(qid: str) -> tuple[int | None, int | None]:
+    """
+    Fetch birth (P569) and death (P570) years for a Wikidata entity.
+    Returns (birth_year, death_year) or (None, None) if unavailable.
+    """
+    sparql = f"""
+SELECT ?birth ?death WHERE {{
+  wd:{qid} wdt:P569 ?birth .
+  OPTIONAL {{ wd:{qid} wdt:P570 ?death . }}
+}}
+"""
+    params = urlencode({"query": sparql, "format": "json"})
+    url = f"{WD_SPARQL}?{params}"
+    req = Request(url, headers={
+        "User-Agent": USER_AGENT,
+        "Accept": "application/sparql-results+json",
+    })
+    try:
+        with urlopen(req, timeout=10) as r:
+            data = json.loads(r.read())
+        bindings = data.get("results", {}).get("bindings", [])
+        if not bindings:
+            return None, None
+        
+        birth_year = None
+        death_year = None
+        
+        for b in bindings:
+            birth_val = b.get("birth", {}).get("value", "")
+            death_val = b.get("death", {}).get("value", "")
+            
+            # Parse ISO dates (e.g., "1145-01-01T00:00:00Z")
+            if birth_val and not birth_year:
+                match = re.match(r'(\d{4})', birth_val)
+                if match:
+                    birth_year = int(match.group(1))
+            if death_val and not death_year:
+                match = re.match(r'(\d{4})', death_val)
+                if match:
+                    death_year = int(match.group(1))
+        
+        return birth_year, death_year
+    except Exception as e:
+        logger.debug(f"Failed to fetch dates for {qid}: {e}")
+        return None, None
+
+
+def is_medieval_person(birth_year: int | None, death_year: int | None) -> bool:
+    """
+    Check if a person is medieval (not entirely post-1500).
+    
+    Returns True if:
+    - No dates available (we can't filter, so include by default)
+    - Birth year <= 1500
+    - Death year <= 1500
+    
+    Returns False if:
+    - Both birth AND death years are > 1500
+    """
+    if birth_year is None and death_year is None:
+        return True  # No dates, include by default
+    
+    if birth_year and birth_year <= MEDIEVAL_CUTOFF_YEAR:
+        return True
+    
+    if death_year and death_year <= MEDIEVAL_CUTOFF_YEAR:
+        return True
+    
+    # Both dates are after 1500
+    if birth_year and death_year and birth_year > MEDIEVAL_CUTOFF_YEAR:
+        return False
+    
+    return True
 
 
 def wd_search_humans(name: str, lang: str = "en", limit: int = 5) -> list[dict[str, Any]]:
@@ -114,8 +196,17 @@ def score_candidate(name: str, cand: dict) -> float:
     return max(0.0, min(1.0, score))
 
 
+# ── Logging ─────────────────────────────────────────────────────────────────
+import logging
+logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
+logger = logging.getLogger(__name__)
+
+
 def reconcile_person(name: str, limit: int = 3) -> list[dict[str, Any]]:
-    """Return top Wikidata human candidates for a person name (P31=Q5 only)."""
+    """Return top Wikidata human candidates for a person name (P31=Q5 only).
+    
+    Filters out post-medieval persons (born after 1500) when dates are available.
+    """
     try:
         results = wd_search_humans(name, limit=limit + 5)
     except Exception as e:
@@ -123,21 +214,38 @@ def reconcile_person(name: str, limit: int = 3) -> list[dict[str, Any]]:
         return []
 
     candidates = []
+    filtered_count = 0
+    
     for r in results:
         qid = r.get("id", "")
         if not qid.startswith("Q"):
             continue
+        
+        # Check birth/death dates to filter post-medieval persons
+        birth_year, death_year = get_person_dates(qid)
+        if not is_medieval_person(birth_year, death_year):
+            logger.debug(f"  Filtered post-medieval: {r.get('label', qid)} (b.{birth_year}, d.{death_year})")
+            filtered_count += 1
+            continue
+        
         sc = score_candidate(name, r)
-        candidates.append({
+        candidate = {
             "qid":         qid,
             "label":       r.get("label", ""),
             "description": r.get("description", ""),
             "url":         WD_ENTITY.format(qid=qid),
             "score":       round(sc, 3),
-        })
+            "birth_year":  birth_year,
+            "death_year":  death_year,
+        }
+        candidates.append(candidate)
 
     # Sort by score desc; keep top `limit`
     candidates.sort(key=lambda x: x["score"], reverse=True)
+    
+    if filtered_count > 0:
+        logger.info(f"  {name}: filtered {filtered_count} post-medieval candidates")
+    
     return candidates[:limit]
 
 

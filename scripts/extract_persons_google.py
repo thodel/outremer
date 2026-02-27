@@ -408,8 +408,34 @@ def _is_modern_scholar(name: str, context: str = "") -> bool:
     return False
 
 
+def _is_post_medieval_name(name: str, context: str = "") -> bool:
+    """Check if a name is likely post-medieval (after 1500)."""
+    name_lower = name.lower()
+    
+    # Modern titles/honorifics
+    modern_titles = {"professor", "prof.", "dr.", "mr.", "mrs.", "ms.", "ph.d.", "m.d.",
+                     "ceo", "president", "minister", "ambassador", "senator", "governor"}
+    if any(t in name_lower for t in modern_titles):
+        return True
+    
+    # Modern institutional affiliations
+    modern_inst = {"university", "institute", "foundation", "museum", "archive",
+                   "library", "department", "faculty", "research center"}
+    if any(i in name_lower for i in modern_inst):
+        return True
+    
+    # Check context for modern date references
+    modern_dates = re.findall(r'\b(1[5-9]\d{2}|20\d{2})\b', context)
+    if modern_dates:
+        # If only modern dates (1500+) appear, likely post-medieval
+        if all(int(d) > 1500 for d in modern_dates):
+            return True
+    
+    return False
+
+
 def _filter_and_reweight_persons(persons: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-    """Filter out bibliographic noise and reweight modern scholars."""
+    """Filter out bibliographic noise, modern scholars, and post-medieval persons."""
     filtered: List[Dict[str, Any]] = []
     
     for p in persons:
@@ -420,6 +446,11 @@ def _filter_and_reweight_persons(persons: List[Dict[str, Any]]) -> List[Dict[str
         # Hard filter: bibliographic noise → skip entirely
         if _is_bibliographic_noise(name, context):
             logger.debug(f"Filtered bibliographic noise: {name}")
+            continue
+        
+        # Hard filter: post-medieval persons (after 1500) → skip
+        if _is_post_medieval_name(name, context):
+            logger.debug(f"Filtered post-medieval person: {name}")
             continue
         
         # Soft filter: modern scholar → reduce confidence
