@@ -67,9 +67,12 @@ function toggleEntityFlag(flagType, person, docId, link) {
     deleteDecisionFromServer(docId, person, `_${flagType}`).catch(() => {});
   } else {
     // Toggle on
-    d[key] = { decision: flagType === "not_a_person" ? "not_a_person" : "wrong_era", ts: Date.now(), scholar_name: getScholarName() || null };
+    const decisionValue = flagType === "not_a_person" ? "not_a_person" 
+                        : flagType === "wrong_era"    ? "wrong_era"
+                        :                               "is_group";
+    d[key] = { decision: decisionValue, ts: Date.now(), scholar_name: getScholarName() || null };
     saveDecisions(d);
-    syncDecisionToServer(docId, person, `_${flagType}`, flagType === "not_a_person" ? "not_a_person" : "wrong_era").catch(() => {});
+    syncDecisionToServer(docId, person, `_${flagType}`, decisionValue).catch(() => {});
   }
 
   // Re-render: card will auto-hide if resolved (see isLinkResolved)
@@ -350,7 +353,7 @@ function updateStats() {
   const docId = currentDoc.doc_id;
 
   let total = 0, reviewed = 0, accepted = 0, rejected = 0, flagged = 0;
-  let notAPerson = 0, wrongEra = 0;
+  let notAPerson = 0, wrongEra = 0, isGroup = 0;
 
   for (const link of links) {
     for (const c of link.candidates || []) {
@@ -385,6 +388,7 @@ function updateStats() {
     // Count entity-level flags
     if (decisions[decisionKey(docId, link.person, "_not_a_person")]?.decision === "not_a_person") notAPerson++;
     if (decisions[decisionKey(docId, link.person, "_wrong_era")]?.decision  === "wrong_era")  wrongEra++;
+    if (decisions[decisionKey(docId, link.person, "_is_group")]?.decision   === "is_group")   isGroup++;
   }
 
   document.getElementById("statReviewed").textContent  = `${reviewed} / ${total} reviewed`;
@@ -392,7 +396,7 @@ function updateStats() {
   document.getElementById("statRejectedN").textContent  = rejected;
   document.getElementById("statFlaggedN").textContent   = flagged;
   const efEl = document.getElementById("statEntityFlagsN");
-  if (efEl) efEl.textContent = notAPerson + wrongEra;
+  if (efEl) efEl.textContent = notAPerson + wrongEra + isGroup;
   document.getElementById("statsBar").classList.remove("hidden");
   document.getElementById("filterBar").classList.remove("hidden");
 }
@@ -410,15 +414,17 @@ function setFilter(f) {
  * Check if a link (person entry) should be shown based on filter and decisions.
  * A link is considered "resolved" if:
  * - Any candidate has been accepted
- * - Entity-level flag (not_a_person / wrong_era) has been set
+ * - Entity-level flag (not_a_person / wrong_era / is_group) has been set
  * - All candidates have been rejected
  */
 function isLinkResolved(link, decisions, docId) {
   // Check entity-level flags first
   const notPersonKey = decisionKey(docId, link.person, "_not_a_person");
   const wrongEraKey  = decisionKey(docId, link.person, "_wrong_era");
+  const isGroupKey   = decisionKey(docId, link.person, "_is_group");
   if (decisions[notPersonKey]?.decision === "not_a_person") return true;
   if (decisions[wrongEraKey]?.decision  === "wrong_era")  return true;
+  if (decisions[isGroupKey]?.decision   === "is_group")   return true;
   
   const candidates = link.candidates || [];
   
@@ -969,8 +975,10 @@ function renderLinks(doc) {
     // ── Entity-level feedback (per person, not per candidate) ──────────────
     const notPersonKey = decisionKey(docId, link.person, "_not_a_person");
     const wrongEraKey  = decisionKey(docId, link.person, "_wrong_era");
+    const isGroupKey   = decisionKey(docId, link.person, "_is_group");
     const isNotPerson  = decisions[notPersonKey]?.decision === "not_a_person";
     const isWrongEra   = decisions[wrongEraKey]?.decision  === "wrong_era";
+    const isGroup      = decisions[isGroupKey]?.decision   === "is_group";
 
     const flagsEl = el("div", "entity-flags");
     flagsEl.innerHTML = `
@@ -979,6 +987,8 @@ function renderLinks(doc) {
               data-eflag="not_a_person">⊘ Not a person</button>
       <button class="flag-entity-btn ${isWrongEra ? "active-wrong-era" : ""}"
               data-eflag="wrong_era">🕰 Wrong era (modern)</button>
+      <button class="flag-entity-btn ${isGroup ? "active-is-group" : ""}"
+              data-eflag="is_group">👥 Name of a group</button>
     `;
     flagsEl.querySelectorAll(".flag-entity-btn").forEach(btn => {
       btn.addEventListener("click", () => toggleEntityFlag(btn.dataset.eflag, link.person, docId, link));
