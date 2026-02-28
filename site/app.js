@@ -676,11 +676,10 @@ function renderCandidateRow(link, candidate, docId, decisions) {
       } catch { setSyncErr(syncEl); }
     } else {
       d[key] = { decision: finalAction, comment: d[key]?.comment || "", ts: new Date().toISOString() };
-      row.querySelectorAll(".adj-btn").forEach(b => b.classList.remove("active"));
-      row.querySelector(`[data-action="${action}"]`).classList.add("active");
-      row.dataset.decision = finalAction;
       saveDecisions(d);
       updateStats();
+      // Re-render entire links section to apply filter (hides resolved cards from unreviewed view)
+      renderLinks(currentDoc);
       setSyncPending(syncEl);
       try {
         await syncDecisionToServer(dId, person, oId, finalAction, d[key].comment);
@@ -689,20 +688,6 @@ function renderCandidateRow(link, candidate, docId, decisions) {
         if (!communityVotes[key]) communityVotes[key] = { accept: 0, reject: 0, flag: 0 };
         if (prev) communityVotes[key][prev] = Math.max(0, (communityVotes[key][prev] || 0) - 1);
         communityVotes[key][finalAction] = (communityVotes[key][finalAction] || 0) + 1;
-        row.querySelector(".community-votes, .community-votes.muted")?.remove?.();
-        row.querySelector(".candidate-info").insertAdjacentHTML("beforeend", communityBadgeHtml(key));
-        // Auto-hide row if scholar name is saved (user is tracking their reviews)
-        const scholarName = getScholarName();
-        if (scholarName && scholarName.trim()) {
-          row.style.transition = "opacity .25s, transform .25s";
-          row.style.opacity = "0";
-          row.style.transform = "translateX(-10px)";
-          setTimeout(() => {
-            row.style.display = "none";
-            // Update filter counts
-            updateStats();
-          }, 250);
-        }
       } catch { setSyncErr(syncEl); }
     }
   }
@@ -727,22 +712,14 @@ function renderCandidateRow(link, candidate, docId, decisions) {
           d[key].decision = reason;
           d[key].ts = new Date().toISOString();
           saveDecisions(d);
+          updateStats();
+          // Re-render to apply filter
+          renderLinks(currentDoc);
           const [dId, person, oId] = key.split("::");
           setSyncPending(syncEl);
           try {
             await syncDecisionToServer(dId, person, oId, reason, d[key].comment);
             setSyncOk(syncEl);
-            // Auto-hide if scholar name saved
-            const scholarName = getScholarName();
-            if (scholarName && scholarName.trim()) {
-              row.style.transition = "opacity .25s, transform .25s";
-              row.style.opacity = "0";
-              row.style.transform = "translateX(-10px)";
-              setTimeout(() => {
-                row.style.display = "none";
-                updateStats();
-              }, 250);
-            }
           } catch { setSyncErr(syncEl); }
         }
       }
@@ -870,11 +847,10 @@ function renderWikidataCandidateRow(link, c, docId, decisions) {
       } catch { setSyncErr(syncEl); }
     } else {
       d[k] = { decision: finalAction, ts: new Date().toISOString() };
-      row.querySelectorAll(".adj-btn").forEach(b => b.classList.remove("active"));
-      row.querySelector(`[data-action="${action}"]`).classList.add("active");
-      row.dataset.decision = finalAction;
       saveDecisions(d);
       updateStats();
+      // Re-render to apply filter
+      renderLinks(currentDoc);
       setSyncPending(syncEl);
       try {
         await syncDecisionToServer(docId, link.person, oId, finalAction);
@@ -882,20 +858,6 @@ function renderWikidataCandidateRow(link, c, docId, decisions) {
         if (!communityVotes[k]) communityVotes[k] = { accept: 0, reject: 0, flag: 0 };
         if (prev) communityVotes[k][prev] = Math.max(0, (communityVotes[k][prev] || 0) - 1);
         communityVotes[k][finalAction] = (communityVotes[k][finalAction] || 0) + 1;
-        const cvEl = row.querySelector(".community-votes, .community-votes.muted");
-        if (cvEl) cvEl.outerHTML = communityBadgeHtml(k);
-        else row.querySelector(".wd-info").insertAdjacentHTML("beforeend", communityBadgeHtml(k));
-        // Auto-hide if scholar name saved
-        const scholarName = getScholarName();
-        if (scholarName && scholarName.trim()) {
-          row.style.transition = "opacity .25s, transform .25s";
-          row.style.opacity = "0";
-          row.style.transform = "translateX(-10px)";
-          setTimeout(() => {
-            row.style.display = "none";
-            updateStats();
-          }, 250);
-        }
       } catch { setSyncErr(syncEl); }
     }
   }
@@ -917,20 +879,13 @@ function renderWikidataCandidateRow(link, c, docId, decisions) {
           d[k].decision = reason;
           d[k].ts = new Date().toISOString();
           saveDecisions(d);
+          updateStats();
+          // Re-render to apply filter
+          renderLinks(currentDoc);
           setSyncPending(syncEl);
           try {
             await syncDecisionToServer(docId, link.person, oId, reason);
             setSyncOk(syncEl);
-            const scholarName = getScholarName();
-            if (scholarName && scholarName.trim()) {
-              row.style.transition = "opacity .25s, transform .25s";
-              row.style.opacity = "0";
-              row.style.transform = "translateX(-10px)";
-              setTimeout(() => {
-                row.style.display = "none";
-                updateStats();
-              }, 250);
-            }
           } catch { setSyncErr(syncEl); }
         }
       }
