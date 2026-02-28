@@ -424,22 +424,25 @@ function isLinkResolved(link, decisions, docId) {
   
   // If any candidate is accepted, the link is resolved
   for (const c of candidates) {
-    const d = decisions[decisionKey(docId, link.person, c.outremer_id)];
-    if (d?.decision?.startsWith("accept")) return true;
+    const key = decisionKey(docId, link.person, c.outremer_id);
+    const d = decisions[key];
+    if (d && d.decision === "accept") return true;
   }
   
   // If no candidates (Wikidata-only), check Wikidata decisions
   if (!candidates.length) {
     const wdCands = wikidataCandidatesFor(link.person);
     for (const c of wdCands) {
-      const d = decisions[decisionKey(docId, link.person, `wikidata:${c.qid}`)];
-      if (d?.decision?.startsWith("accept")) return true;
+      const key = decisionKey(docId, link.person, `wikidata:${c.qid}`);
+      const d = decisions[key];
+      if (d && d.decision === "accept") return true;
     }
     // If all Wikidata candidates rejected, also resolved
     if (wdCands.length > 0) {
       const allRejected = wdCands.every(c => {
-        const d = decisions[decisionKey(docId, link.person, `wikidata:${c.qid}`)];
-        return d?.decision?.startsWith("reject");
+        const key = decisionKey(docId, link.person, `wikidata:${c.qid}`);
+        const d = decisions[key];
+        return d && d.decision && d.decision.startsWith("reject");
       });
       if (allRejected) return true;
     }
@@ -448,8 +451,9 @@ function isLinkResolved(link, decisions, docId) {
   
   // If all authority candidates are rejected, resolved
   const allRejected = candidates.every(c => {
-    const d = decisions[decisionKey(docId, link.person, c.outremer_id)];
-    return d?.decision?.startsWith("reject");
+    const key = decisionKey(docId, link.person, c.outremer_id);
+    const d = decisions[key];
+    return d && d.decision && d.decision.startsWith("reject");
   });
   if (allRejected && candidates.length > 0) return true;
   
@@ -459,7 +463,7 @@ function isLinkResolved(link, decisions, docId) {
 function linkMatchesFilter(link, decisions, docId) {
   const resolved = isLinkResolved(link, decisions, docId);
   
-  // Hide resolved links in most filters (except when explicitly viewing accepted/rejected)
+  // Hide resolved links in most filters (except when explicitly viewing accepted/rejected/flagged)
   if (resolved && currentFilter !== "accepted" && currentFilter !== "rejected" && currentFilter !== "flagged") {
     return false;
   }
@@ -480,11 +484,18 @@ function linkMatchesFilter(link, decisions, docId) {
   const candidates = link.candidates || [];
   for (const c of candidates) {
     const d = decisions[decisionKey(docId, link.person, c.outremer_id)];
-    if (currentFilter === "accepted"  && d?.decision?.startsWith("accept")) return true;
+    if (currentFilter === "accepted"  && d?.decision === "accept") return true;
     if (currentFilter === "rejected"  && d?.decision?.startsWith("reject")) return true;
     if (currentFilter === "flagged"   && d?.decision === "flag")   return true;
   }
-  if (currentFilter === "unreviewed" && !candidates.length) return true;
+  // For no_match persons with Wikidata candidates
+  if (!candidates.length && currentFilter === "accepted") {
+    const wdCands = wikidataCandidatesFor(link.person);
+    for (const c of wdCands) {
+      const d = decisions[decisionKey(docId, link.person, `wikidata:${c.qid}`)];
+      if (d?.decision === "accept") return true;
+    }
+  }
   return false;
 }
 
