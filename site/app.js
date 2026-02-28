@@ -56,28 +56,23 @@ function initScholarName() {
 
 // ── Entity-level flag toggle ────────────────────────────────────────────────
 
-function toggleEntityFlag(flagType, person, docId) {
+function toggleEntityFlag(flagType, person, docId, link) {
   const key = decisionKey(docId, person, `_${flagType}`);
   const d   = loadDecisions();
 
   if (d[key]?.decision === flagType) {
-    // Toggle off — update local state first, then fire-and-forget server call
+    // Toggle off
     delete d[key];
     saveDecisions(d);
-    fetch(`${API_BASE}/outremer-decision`, {
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ doc_id: docId, person, outremer_id: `_${flagType}`,
-                             client_id: CLIENT_ID }),
-    }).catch(() => {});
+    deleteDecisionFromServer(docId, person, `_${flagType}`).catch(() => {});
   } else {
-    // Toggle on — update local state first, then fire-and-forget server call
-    d[key] = { decision: flagType, ts: Date.now() };
+    // Toggle on
+    d[key] = { decision: flagType === "not_a_person" ? "not_a_person" : "wrong_era", ts: Date.now(), scholar_name: getScholarName() || null };
     saveDecisions(d);
-    syncDecisionToServer(docId, person, `_${flagType}`, flagType).catch(() => {});
+    syncDecisionToServer(docId, person, `_${flagType}`, flagType === "not_a_person" ? "not_a_person" : "wrong_era").catch(() => {});
   }
 
-  // Always re-render immediately from local state (no await)
+  // Re-render: card will auto-hide if resolved (see isLinkResolved)
   renderLinks(currentDoc);
   updateStats();
 }
@@ -411,16 +406,82 @@ function setFilter(f) {
   renderLinks(currentDoc);
 }
 
+/**
+ * Check if a link (person entry) should be shown based on filter and decisions.
+ * A link is considered "resolved" if:
+ * - Any candidate has been accepted
+ * - Entity-level flag (not_a_person / wrong_era) has been set
+ * - All candidates have been rejected
+ */
+function isLinkResolved(link, decisions, docId) {
+  // Check entity-level flags first
+  const notPersonKey = decisionKey(docId, link.person, "_not_a_person");
+  const wrongEraKey  = decisionKey(docId, link.person, "_wrong_era");
+  if (decisions[notPersonKey]?.decision === "not_a_person") return true;
+  if (decisions[wrongEraKey]?.decision  === "wrong_era")  return true;
+  
+  const candidates = link.candidates || [];
+  
+  // If any candidate is accepted, the link is resolved
+  for (const c of candidates) {
+    const d = decisions[decisionKey(docId, link.person, c.outremer_id)];
+    if (d?.decision?.startsWith("accept")) return true;
+  }
+  
+  // If no candidates (Wikidata-only), check Wikidata decisions
+  if (!candidates.length) {
+    const wdCands = wikidataCandidatesFor(link.person);
+    for (const c of wdCands) {
+      const d = decisions[decisionKey(docId, link.person, `wikidata:${c.qid}`)];
+      if (d?.decision?.startsWith("accept")) return true;
+    }
+    // If all Wikidata candidates rejected, also resolved
+    if (wdCands.length > 0) {
+      const allRejected = wdCands.every(c => {
+        const d = decisions[decisionKey(docId, link.person, `wikidata:${c.qid}`)];
+        return d?.decision?.startsWith("reject");
+      });
+      if (allRejected) return true;
+    }
+    return false;
+  }
+  
+  // If all authority candidates are rejected, resolved
+  const allRejected = candidates.every(c => {
+    const d = decisions[decisionKey(docId, link.person, c.outremer_id)];
+    return d?.decision?.startsWith("reject");
+  });
+  if (allRejected && candidates.length > 0) return true;
+  
+  return false;
+}
+
 function linkMatchesFilter(link, decisions, docId) {
+  const resolved = isLinkResolved(link, decisions, docId);
+  
+  // Hide resolved links in most filters (except when explicitly viewing accepted/rejected)
+  if (resolved && currentFilter !== "accepted" && currentFilter !== "rejected" && currentFilter !== "flagged") {
+    return false;
+  }
+  
   if (currentFilter === "all")      return true;
   if (currentFilter === "no_match") return link.status === "no_match";
   if (currentFilter === "conflict") return hasConflictInLink(link, docId);
+  if (currentFilter === "unreviewed") {
+    // Show only if NOT resolved and has unreviewed candidates
+    if (resolved) return false;
+    const candidates = link.candidates || [];
+    for (const c of candidates) {
+      if (!decisions[decisionKey(docId, link.person, c.outremer_id)]) return true;
+    }
+    if (!candidates.length) return true;
+    return false;
+  }
   const candidates = link.candidates || [];
   for (const c of candidates) {
     const d = decisions[decisionKey(docId, link.person, c.outremer_id)];
-    if (currentFilter === "unreviewed" && !d) return true;
-    if (currentFilter === "accepted"  && d?.decision === "accept") return true;
-    if (currentFilter === "rejected"  && d?.decision === "reject") return true;
+    if (currentFilter === "accepted"  && d?.decision?.startsWith("accept")) return true;
+    if (currentFilter === "rejected"  && d?.decision?.startsWith("reject")) return true;
     if (currentFilter === "flagged"   && d?.decision === "flag")   return true;
   }
   if (currentFilter === "unreviewed" && !candidates.length) return true;
@@ -670,7 +731,7 @@ function renderCandidateRow(link, candidate, docId, decisions) {
     const key = groupToggle.dataset.key;
     const isGroup = groupToggle.checked;
     
-    // Update the link data locally
+    // Update the link data locally (group flag is per-person, not per-candidate)
     link.person_group = isGroup;
     
     // Save to decisions
@@ -683,35 +744,10 @@ function renderCandidateRow(link, candidate, docId, decisions) {
     }
     saveDecisions(d);
     
-    const [dId, person, oId] = key.split("::");
-    setSyncPending(syncEl);
-    try {
-      // Sync group flag to server
-      const payload = {
-        doc_id: dId, person, outremer_id: oId,
-        is_group: isGroup,
-        client_id: CLIENT_ID,
-        scholar_name: getScholarName() || null,
-      };
-      const res = await fetch(`${API_BASE}/outremer-decision`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-      if (!res.ok) throw new Error(`Server ${res.status}`);
-      setSyncOk(syncEl);
-      // Auto-hide if scholar name is saved
-      const scholarName = getScholarName();
-      if (scholarName && scholarName.trim()) {
-        row.style.transition = "opacity .25s, transform .25s";
-        row.style.opacity = "0";
-        row.style.transform = "translateX(-10px)";
-        setTimeout(() => {
-          row.style.display = "none";
-          updateStats();
-        }, 250);
-      }
-    } catch { setSyncErr(syncEl); }
+    // Note: Group flag is metadata only, NOT a resolution - don't auto-hide
+    // Re-render to update the group icon in the card header
+    renderLinks(currentDoc);
+    updateStats();
   });
 
   return row;
@@ -874,33 +910,10 @@ function renderWikidataCandidateRow(link, c, docId, decisions) {
     }
     saveDecisions(d);
     
-    setSyncPending(syncEl);
-    try {
-      const payload = {
-        doc_id: docId, person: link.person, outremer_id: oId,
-        is_group: isGroup,
-        client_id: CLIENT_ID,
-        scholar_name: getScholarName() || null,
-      };
-      const res = await fetch(`${API_BASE}/outremer-decision`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-      if (!res.ok) throw new Error(`Server ${res.status}`);
-      setSyncOk(syncEl);
-      // Auto-hide if scholar name is saved
-      const scholarName = getScholarName();
-      if (scholarName && scholarName.trim()) {
-        row.style.transition = "opacity .25s, transform .25s";
-        row.style.opacity = "0";
-        row.style.transform = "translateX(-10px)";
-        setTimeout(() => {
-          row.style.display = "none";
-          updateStats();
-        }, 250);
-      }
-    } catch { setSyncErr(syncEl); }
+    // Note: Group flag is metadata only, NOT a resolution - don't auto-hide
+    // Re-render to update the group icon in the card header
+    renderLinks(currentDoc);
+    updateStats();
   });
 
   return row;
@@ -971,7 +984,7 @@ function renderLinks(doc) {
               data-eflag="wrong_era">🕰 Wrong era (modern)</button>
     `;
     flagsEl.querySelectorAll(".flag-entity-btn").forEach(btn => {
-      btn.addEventListener("click", () => toggleEntityFlag(btn.dataset.eflag, link.person, docId));
+      btn.addEventListener("click", () => toggleEntityFlag(btn.dataset.eflag, link.person, docId, link));
     });
     card.appendChild(flagsEl);
 
