@@ -339,7 +339,7 @@ async function fetchJson(url) {
 // ── State ──────────────────────────────────────────────────────────────────
 
 let currentDoc    = null;
-let currentFilter = "all";
+let currentFilter = "unreviewed";
 
 // ── Stats bar ──────────────────────────────────────────────────────────────
 
@@ -461,41 +461,72 @@ function isLinkResolved(link, decisions, docId) {
 }
 
 function linkMatchesFilter(link, decisions, docId) {
+  // "All" filter: show EVERY entry regardless of resolution status
+  if (currentFilter === "all") return true;
+  
   const resolved = isLinkResolved(link, decisions, docId);
+  const candidates = link.candidates || [];
   
-  // Hide resolved links in most filters (except when explicitly viewing accepted/rejected/flagged)
-  if (resolved && currentFilter !== "accepted" && currentFilter !== "rejected" && currentFilter !== "flagged") {
-    return false;
-  }
-  
-  if (currentFilter === "all")      return true;
-  if (currentFilter === "no_match") return link.status === "no_match";
-  if (currentFilter === "conflict") return hasConflictInLink(link, docId);
+  // "Unreviewed" filter: show only entries with no decisions yet
   if (currentFilter === "unreviewed") {
-    // Show only if NOT resolved and has unreviewed candidates
     if (resolved) return false;
-    const candidates = link.candidates || [];
+    // Check if any candidate has no decision
     for (const c of candidates) {
       if (!decisions[decisionKey(docId, link.person, c.outremer_id)]) return true;
     }
+    // For no_match persons without Wikidata candidates
     if (!candidates.length) return true;
     return false;
   }
-  const candidates = link.candidates || [];
-  for (const c of candidates) {
-    const d = decisions[decisionKey(docId, link.person, c.outremer_id)];
-    if (currentFilter === "accepted"  && d?.decision === "accept") return true;
-    if (currentFilter === "rejected"  && d?.decision?.startsWith("reject")) return true;
-    if (currentFilter === "flagged"   && d?.decision === "flag")   return true;
-  }
-  // For no_match persons with Wikidata candidates
-  if (!candidates.length && currentFilter === "accepted") {
-    const wdCands = wikidataCandidatesFor(link.person);
-    for (const c of wdCands) {
-      const d = decisions[decisionKey(docId, link.person, `wikidata:${c.qid}`)];
+  
+  // "no_match" filter: show only persons with no authority matches
+  if (currentFilter === "no_match") return link.status === "no_match";
+  
+  // "conflict" filter: show only entries with reviewer disagreement
+  if (currentFilter === "conflict") return hasConflictInLink(link, docId);
+  
+  // "accepted" filter: show entries where at least one candidate was accepted
+  if (currentFilter === "accepted") {
+    for (const c of candidates) {
+      const d = decisions[decisionKey(docId, link.person, c.outremer_id)];
       if (d?.decision === "accept") return true;
     }
+    // Also check Wikidata candidates for no_match persons
+    if (!candidates.length) {
+      const wdCands = wikidataCandidatesFor(link.person);
+      for (const c of wdCands) {
+        const d = decisions[decisionKey(docId, link.person, `wikidata:${c.qid}`)];
+        if (d?.decision === "accept") return true;
+      }
+    }
+    return false;
   }
+  
+  // "rejected" filter: show entries where at least one candidate was rejected
+  if (currentFilter === "rejected") {
+    for (const c of candidates) {
+      const d = decisions[decisionKey(docId, link.person, c.outremer_id)];
+      if (d?.decision?.startsWith("reject")) return true;
+    }
+    if (!candidates.length) {
+      const wdCands = wikidataCandidatesFor(link.person);
+      for (const c of wdCands) {
+        const d = decisions[decisionKey(docId, link.person, `wikidata:${c.qid}`)];
+        if (d?.decision?.startsWith("reject")) return true;
+      }
+    }
+    return false;
+  }
+  
+  // "flagged" filter: show entries where at least one candidate was flagged
+  if (currentFilter === "flagged") {
+    for (const c of candidates) {
+      const d = decisions[decisionKey(docId, link.person, c.outremer_id)];
+      if (d?.decision === "flag") return true;
+    }
+    return false;
+  }
+  
   return false;
 }
 
@@ -1274,6 +1305,9 @@ document.getElementById("toggleRaw").addEventListener("click", function () {
 
 document.querySelectorAll(".filter-btn").forEach(btn =>
   btn.addEventListener("click", () => setFilter(btn.dataset.filter)));
+
+// Initialize filter buttons to match default (unreviewed)
+setFilter("unreviewed");
 
 loadIndex().catch(err => {
   document.getElementById("docMeta").textContent = String(err);
