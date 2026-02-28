@@ -5,9 +5,13 @@ process_staged.py
 Move a staged upload into data/raw/ and run the pipeline on it.
 
 Usage (from repo root):
-    python scripts/process_staged.py <item_id>
+    python scripts/process_staged.py <item_id>     # process only this file
     python scripts/process_staged.py --list        # show pending queue
     python scripts/process_staged.py --reject <id> # reject and delete
+    python scripts/process_staged.py --reprocess-all <id>  # reprocess entire corpus after adding
+
+By default, ONLY the new file is processed (existing documents are untouched).
+Use --reprocess-all to re-run extraction on the entire corpus.
 
 The item_id is the 8-char UUID prefix shown in the Discord notification.
 """
@@ -77,7 +81,7 @@ def cmd_reject(item_id: str) -> None:
     print(f"Item {item_id} marked as rejected.")
 
 
-def cmd_process(item_id: str) -> None:
+def cmd_process(item_id: str, reprocess_all: bool = False) -> None:
     q = load_queue()
     item = find_item(q, item_id)
     if not item:
@@ -121,12 +125,20 @@ def cmd_process(item_id: str) -> None:
         env["GOOGLE_API_KEY"] = api_key
     env["MISTRAL_API_KEY"] = mistral_api_key
 
-    print(f"\nRunning pipeline (GOOGLE_API_KEY {'set' if api_key else 'NOT SET — fallback mode'})…")
-    result = subprocess.run(
-        [py, str(PIPELINE), "--input-dir", str(RAW), "--genai-metadata"],
-        cwd=str(REPO),
-        env=env,
-    )
+    if reprocess_all:
+        print(f"\nRunning pipeline on ENTIRE corpus (GOOGLE_API_KEY {'set' if api_key else 'NOT SET — fallback mode'})…")
+        result = subprocess.run(
+            [py, str(PIPELINE), "--input-dir", str(RAW), "--genai-metadata"],
+            cwd=str(REPO),
+            env=env,
+        )
+    else:
+        print(f"\nRunning pipeline for '{dest.name}' only (GOOGLE_API_KEY {'set' if api_key else 'NOT SET — fallback mode'})…")
+        result = subprocess.run(
+            [py, str(PIPELINE), "--file", str(dest), "--genai-metadata"],
+            cwd=str(REPO),
+            env=env,
+        )
     if result.returncode != 0:
         print("Pipeline failed.")
         sys.exit(result.returncode)
@@ -155,14 +167,17 @@ def main() -> None:
     ap = argparse.ArgumentParser(description="Manage staged Outremer uploads.")
     grp = ap.add_mutually_exclusive_group(required=True)
     grp.add_argument("item_id", nargs="?", help="Process the item with this ID")
-    grp.add_argument("--list",   action="store_true", help="List pending uploads")
-    grp.add_argument("--reject", metavar="ID",        help="Reject and delete a staged item")
+    grp.add_argument("--list",        action="store_true", help="List pending uploads")
+    grp.add_argument("--reject",      metavar="ID",        help="Reject and delete a staged item")
+    grp.add_argument("--reprocess-all", metavar="ID",      help="Process item AND reprocess entire corpus")
     args = ap.parse_args()
 
     if args.list:
         cmd_list()
     elif args.reject:
         cmd_reject(args.reject)
+    elif args.reprocess_all:
+        cmd_process(args.reprocess_all, reprocess_all=True)
     else:
         cmd_process(args.item_id)
 

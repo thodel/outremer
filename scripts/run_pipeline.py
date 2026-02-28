@@ -409,6 +409,7 @@ def build_site_index(site_data_dir: Path, site_dir: Path) -> None:
 def main() -> int:
     ap = argparse.ArgumentParser(description="Outremer NER + KG linking pipeline.")
     ap.add_argument("--input-dir", default="data/raw", help="Folder with .txt/.pdf files")
+    ap.add_argument("--file", action="append", dest="files", metavar="FILE", help="Process specific file(s) only (can be repeated)")
     ap.add_argument("--site-dir", default="site", help="Static site folder")
     ap.add_argument("--bib-dir", default="bib", help="Repo-level BibTeX output folder")
     ap.add_argument("--outremer-index", default="scripts/outremer_index.json")
@@ -442,7 +443,12 @@ def main() -> int:
     authority_lookup = build_authority_lookup(outremer_index)
     logger.info("Loaded %d authority entries.", len(authority_lookup))
 
-    inputs: List[Path] = sorted(set(list(in_dir.rglob("*.txt")) + list(in_dir.rglob("*.pdf"))))
+    # Specific files or all files in directory
+    if args.files:
+        inputs: List[Path] = [Path(f) for f in args.files]
+        logger.info("Processing %d specified file(s).", len(inputs))
+    else:
+        inputs: List[Path] = sorted(set(list(in_dir.rglob("*.txt")) + list(in_dir.rglob("*.pdf"))))
 
     errors: List[Tuple[Path, Exception]] = []
     if not inputs:
