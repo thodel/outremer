@@ -22,6 +22,7 @@ import os
 import re
 import sys
 import unicodedata
+from collections import Counter
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
@@ -140,6 +141,149 @@ def load_outremer_index(path: Path, *, require: bool = False) -> Dict[str, Any]:
         raise ValueError(f"Outremer index is not valid JSON: {path}") from exc
     # The index uses "persons" key (authority file format)
     return data
+
+
+def _load_json_file(path: Path, default: Any) -> Any:
+    if not path.exists():
+        return default
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except Exception as exc:
+        logger.warning("Could not parse JSON file %s: %s", path, exc)
+        return default
+
+
+def _canonical_person_name(name: str) -> str:
+    return re.sub(r"\s+", " ", str(name or "").replace("\n", " ").strip())
+
+
+def _load_human_review_decisions(path: Path) -> List[Dict[str, Any]]:
+    """
+    Supports:
+    - server-style list: [{doc_id, person, decision, ...}, ...]
+    - explorer export map: {"doc::person::id": {decision, ...}, ...}
+    """
+    raw = _load_json_file(path, default=[])
+    if isinstance(raw, list):
+        return [x for x in raw if isinstance(x, dict)]
+    if isinstance(raw, dict):
+        out: List[Dict[str, Any]] = []
+        for key, value in raw.items():
+            if not isinstance(value, dict):
+                continue
+            if not isinstance(key, str):
+                continue
+            parts = key.split("::")
+            person = parts[1] if len(parts) >= 2 else ""
+            out.append(
+                {
+                    "doc_id": parts[0] if len(parts) >= 1 else None,
+                    "person": person,
+                    "outremer_id": parts[2] if len(parts) >= 3 else None,
+                    "decision": value.get("decision"),
+                    "comment": value.get("comment"),
+                    "submitted_at": value.get("ts"),
+                }
+            )
+        return out
+    return []
+
+
+def sync_feedback_from_human_review(
+    feedback_path: Path,
+    decisions_path: Path,
+    *,
+    min_reject_votes: int = 2,
+    min_accept_votes: int = 1,
+) -> Dict[str, int]:
+    """
+    Sync blocked/allow lists from review decisions:
+    - Reject/not_a_person/wrong_era votes push a name toward blocked_terms.
+    - Accept votes push a name toward allow_terms and can un-block.
+    """
+    decisions = _load_human_review_decisions(decisions_path)
+    if not decisions:
+        return {"processed": 0, "blocked_added": 0, "allowed_added": 0, "blocked_removed": 0}
+
+    feedback = _load_json_file(
+        feedback_path,
+        default={"schema_version": 1, "blocked_terms": [], "allow_terms": [], "auto_flagged": {}},
+    )
+    if not isinstance(feedback, dict):
+        feedback = {"schema_version": 1, "blocked_terms": [], "allow_terms": [], "auto_flagged": {}}
+
+    blocked_terms = [str(x).strip() for x in (feedback.get("blocked_terms") or []) if str(x).strip()]
+    allow_terms = [str(x).strip() for x in (feedback.get("allow_terms") or []) if str(x).strip()]
+
+    name_by_norm: Dict[str, str] = {}
+    reject_counts: Counter[str] = Counter()
+    accept_counts: Counter[str] = Counter()
+
+    reject_labels = {"reject", "not_a_person", "wrong_era"}
+    for d in decisions:
+        decision = str(d.get("decision") or "").strip().lower()
+        person = _canonical_person_name(str(d.get("person") or ""))
+        if not person:
+            continue
+        norm = normalise(person)
+        if not norm:
+            continue
+        name_by_norm[norm] = person
+        if decision in reject_labels:
+            reject_counts[norm] += 1
+        elif decision == "accept":
+            accept_counts[norm] += 1
+
+    blocked_norms = {normalise(x): x for x in blocked_terms}
+    allow_norms = {normalise(x): x for x in allow_terms}
+
+    blocked_added = 0
+    allowed_added = 0
+    blocked_removed = 0
+
+    for norm, name in name_by_norm.items():
+        rejects = reject_counts[norm]
+        accepts = accept_counts[norm]
+
+        should_allow = accepts >= min_accept_votes and accepts >= rejects
+        should_block = rejects >= min_reject_votes and rejects > accepts
+
+        if should_allow:
+            if norm in blocked_norms:
+                del blocked_norms[norm]
+                blocked_removed += 1
+            if norm not in allow_norms:
+                allow_norms[norm] = name
+                allowed_added += 1
+        elif should_block:
+            if norm not in blocked_norms:
+                blocked_norms[norm] = name
+                blocked_added += 1
+            if norm in allow_norms:
+                del allow_norms[norm]
+        else:
+            # Keep human-review-derived blocked terms aligned with current thresholds.
+            if norm in blocked_norms and (accepts > 0 or rejects > 0):
+                del blocked_norms[norm]
+                blocked_removed += 1
+
+    feedback["blocked_terms"] = sorted(blocked_norms.values(), key=lambda x: x.lower())
+    feedback["allow_terms"] = sorted(allow_norms.values(), key=lambda x: x.lower())
+    feedback["human_review"] = {
+        "source_file": str(decisions_path),
+        "processed_decisions": len(decisions),
+        "min_reject_votes": min_reject_votes,
+        "min_accept_votes": min_accept_votes,
+    }
+    feedback_path.parent.mkdir(parents=True, exist_ok=True)
+    feedback_path.write_text(json.dumps(feedback, ensure_ascii=False, indent=2), encoding="utf-8")
+
+    return {
+        "processed": len(decisions),
+        "blocked_added": blocked_added,
+        "allowed_added": allowed_added,
+        "blocked_removed": blocked_removed,
+    }
 
 
 # ──────────────────────────────────────────────
@@ -344,6 +488,7 @@ def process_file(
     authority_lookup: List[Dict[str, Any]],
     use_genai_metadata: bool,
     language: Optional[str] = None,
+    entity_feedback_path: Optional[Path] = None,
 ) -> Tuple[Path, Path, Path]:
     logger.info("Processing %s …", in_path.name)
     text = read_input(in_path)
@@ -352,7 +497,13 @@ def process_file(
     doc_hash = sha256_text(text)[:12]
     doc_id = f"{base}-{doc_hash}"
 
-    result = extract_persons_and_metadata(text, use_genai_metadata=use_genai_metadata, language=language)
+    result = extract_persons_and_metadata(
+        text,
+        use_genai_metadata=use_genai_metadata,
+        language=language,
+        feedback_path=str(entity_feedback_path) if entity_feedback_path else None,
+        source_id=str(in_path.as_posix()),
+    )
     persons: List[Dict[str, Any]] = result.get("persons") or []
     metadata: Dict[str, Any] = result.get("metadata") or {}
     bibtex: str = result.get("bibtex") or ""
@@ -369,6 +520,7 @@ def process_file(
         "text_sha256": sha256_text(text),
         "extraction_mode": "gemini" if os.environ.get("GOOGLE_API_KEY") else "fallback",
         "language_hint": language,
+        "quality": result.get("quality") or {},
     }
 
     json_path = site_data_dir / f"{doc_id}.json"
@@ -420,12 +572,36 @@ def main() -> int:
     )
     ap.add_argument("--genai-metadata", action="store_true", help="Extract metadata + BibTeX via GenAI")
     ap.add_argument("--language", default=None, help="ISO 639 language hint (la, fro, ar, el, de, en…)")
+    ap.add_argument(
+        "--entity-feedback-path",
+        default="data/entity_feedback.json",
+        help="JSON store for problematic entities used as Gemini negative memory",
+    )
+    ap.add_argument(
+        "--review-decisions-path",
+        default=None,
+        help="Optional JSON with human review decisions to sync into blocked/allow terms",
+    )
+    ap.add_argument(
+        "--review-min-reject-votes",
+        type=int,
+        default=2,
+        help="Min reject/not_a_person/wrong_era votes required to add a term to blocked_terms",
+    )
+    ap.add_argument(
+        "--review-min-accept-votes",
+        type=int,
+        default=1,
+        help="Min accept votes required to add a term to allow_terms",
+    )
     args = ap.parse_args()
 
     in_dir = Path(args.input_dir)
     site_dir = Path(args.site_dir)
     bib_dir = Path(args.bib_dir)
     outremer_path = Path(args.outremer_index)
+    entity_feedback_path = Path(args.entity_feedback_path) if args.entity_feedback_path else None
+    review_decisions_path = Path(args.review_decisions_path) if args.review_decisions_path else None
 
     site_data_dir = site_dir / "data"
     site_bib_dir = site_dir / "bib"
@@ -443,12 +619,27 @@ def main() -> int:
     authority_lookup = build_authority_lookup(outremer_index)
     logger.info("Loaded %d authority entries.", len(authority_lookup))
 
+    if entity_feedback_path and review_decisions_path:
+        stats = sync_feedback_from_human_review(
+            entity_feedback_path,
+            review_decisions_path,
+            min_reject_votes=max(1, args.review_min_reject_votes),
+            min_accept_votes=max(1, args.review_min_accept_votes),
+        )
+        logger.info(
+            "Synced review feedback: %d decisions, +%d blocked, +%d allowed, -%d blocked",
+            stats["processed"],
+            stats["blocked_added"],
+            stats["allowed_added"],
+            stats["blocked_removed"],
+        )
+
     # Specific files or all files in directory
     if args.files:
         inputs: List[Path] = [Path(f) for f in args.files]
         logger.info("Processing %d specified file(s).", len(inputs))
     else:
-        inputs: List[Path] = sorted(set(list(in_dir.rglob("*.txt")) + list(in_dir.rglob("*.pdf"))))
+        inputs = sorted(set(list(in_dir.rglob("*.txt")) + list(in_dir.rglob("*.pdf"))))
 
     errors: List[Tuple[Path, Exception]] = []
     if not inputs:
@@ -464,6 +655,7 @@ def main() -> int:
                     authority_lookup=authority_lookup,
                     use_genai_metadata=args.genai_metadata,
                     language=args.language,
+                    entity_feedback_path=entity_feedback_path,
                 )
                 print(f"Wrote {json_path}")
                 print(f"Wrote {bib_repo}")

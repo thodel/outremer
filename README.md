@@ -26,6 +26,7 @@ Results are published as a static GitHub Pages site with a **Human-in-the-Loop r
 ```
 outremer/
 ├── data/raw/           Source texts (.pdf, .txt) to process
+├── data/entity_feedback.json  Auto-collected problematic entities (Gemini negative memory)
 ├── bib/                BibTeX output (repo copy)
 ├── scripts/
 │   ├── run_pipeline.py         Main pipeline entry point
@@ -41,6 +42,7 @@ outremer/
 │   ├── pipeline.yml    Runs extraction + linking on push / nightly
 │   └── pages.yml       Deploys site/ to GitHub Pages
 ├── requirements.txt
+├── requirements.lock.txt
 └── README.md
 ```
 
@@ -55,6 +57,9 @@ cd outremer
 python3 -m venv .venv
 source .venv/bin/activate        # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
+
+# For fully pinned, reproducible installs:
+pip install -r requirements.lock.txt
 ```
 
 ---
@@ -90,9 +95,19 @@ python scripts/run_pipeline.py --input-dir data/raw --genai-metadata --language 
 # Without API keys (heuristic fallback, no OCR)
 python scripts/run_pipeline.py --input-dir data/raw
 
+# Sync human adjudication into feedback memory (rejects -> blocked_terms, accepts -> allow_terms)
+python scripts/run_pipeline.py --input-dir data/raw --genai-metadata \
+  --entity-feedback-path data/entity_feedback.json \
+  --review-decisions-path data/decisions.json
+
 # All options
 python scripts/run_pipeline.py --help
 ```
+
+`--entity-feedback-path` (default: `data/entity_feedback.json`) stores noisy/non-person entities filtered from extraction results.  
+On later runs, frequent offenders from this file are injected into the Gemini prompt as a do-not-extract list.
+`--review-decisions-path` (optional) imports human accept/reject decisions into this feedback store:
+rejected names are added to `blocked_terms` and accepted names are added to `allow_terms`.
 
 Output is written to `site/data/*.json`, `site/bib/*.bib`, and `bib/*.bib`.
 

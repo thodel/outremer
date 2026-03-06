@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "blocked_terms": [
+    "Miles of Clermont",
+    "See"
+  ],
+  "allow_terms": [
+    "Caesar of Heisterbach",
+    "Fulk of Neuilly",
+    "Pope Urban II"
+  ],
+  "auto_flagged": {},
+  "human_review": {
+    "source_file": "data/decisions.json",
+    "processed_decisions": 11,
+    "min_reject_votes": 2,
+    "min_accept_votes": 1
+  }
+}
