@@ -261,11 +261,6 @@ def sync_feedback_from_human_review(
                 blocked_added += 1
             if norm in allow_norms:
                 del allow_norms[norm]
-        else:
-            # Keep human-review-derived blocked terms aligned with current thresholds.
-            if norm in blocked_norms and (accepts > 0 or rejects > 0):
-                del blocked_norms[norm]
-                blocked_removed += 1
 
     feedback["blocked_terms"] = sorted(blocked_norms.values(), key=lambda x: x.lower())
     feedback["allow_terms"] = sorted(allow_norms.values(), key=lambda x: x.lower())

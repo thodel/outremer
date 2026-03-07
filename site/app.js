@@ -251,14 +251,34 @@ function buildWikidataContext(link, wdCandidate) {
 
 let communityVotes = {};   // key → { accept: n, reject: n, flag: n }
 
+function canonicalDecision(decision) {
+  const d = String(decision || "").trim().toLowerCase();
+  if (d.startsWith("reject")) return "reject";
+  if (d.startsWith("accept")) return "accept";
+  if (d === "flag") return "flag";
+  return d || "other";
+}
+
+function ensureCommunityBucket(store, key) {
+  if (!store[key]) {
+    store[key] = { accept: 0, reject: 0, flag: 0, names: { accept: [], reject: [], flag: [] } };
+  }
+  if (!store[key].names) {
+    store[key].names = { accept: [], reject: [], flag: [] };
+  }
+  return store[key];
+}
+
 function buildCommunityIndex(serverDecisions) {
   const idx = {};
   for (const d of serverDecisions) {
     const k = decisionKey(d.doc_id, d.person, d.outremer_id);
-    if (!idx[k]) idx[k] = { accept: 0, reject: 0, flag: 0, names: { accept: [], reject: [], flag: [] } };
-    idx[k][d.decision] = (idx[k][d.decision] || 0) + 1;
+    const bucket = ensureCommunityBucket(idx, k);
+    const decision = canonicalDecision(d.decision);
+    bucket[decision] = (bucket[decision] || 0) + 1;
     const label = d.scholar_name || "Anon";
-    if (!idx[k].names[d.decision].includes(label)) idx[k].names[d.decision].push(label);
+    if (!bucket.names[decision]) bucket.names[decision] = [];
+    if (!bucket.names[decision].includes(label)) bucket.names[decision].push(label);
   }
   return idx;
 }
@@ -691,9 +711,13 @@ function renderCandidateRow(link, candidate, docId, decisions) {
         await syncDecisionToServer(dId, person, oId, finalAction, d[key].comment);
         setSyncOk(syncEl);
         // Update community vote display locally (optimistic)
-        if (!communityVotes[key]) communityVotes[key] = { accept: 0, reject: 0, flag: 0 };
-        if (prev) communityVotes[key][prev] = Math.max(0, (communityVotes[key][prev] || 0) - 1);
-        communityVotes[key][finalAction] = (communityVotes[key][finalAction] || 0) + 1;
+        const bucket = ensureCommunityBucket(communityVotes, key);
+        if (prev) {
+          const prevCanon = canonicalDecision(prev);
+          bucket[prevCanon] = Math.max(0, (bucket[prevCanon] || 0) - 1);
+        }
+        const nextCanon = canonicalDecision(finalAction);
+        bucket[nextCanon] = (bucket[nextCanon] || 0) + 1;
       } catch { setSyncErr(syncEl); }
     }
   }
@@ -861,9 +885,13 @@ function renderWikidataCandidateRow(link, c, docId, decisions) {
       try {
         await syncDecisionToServer(docId, link.person, oId, finalAction);
         setSyncOk(syncEl);
-        if (!communityVotes[k]) communityVotes[k] = { accept: 0, reject: 0, flag: 0 };
-        if (prev) communityVotes[k][prev] = Math.max(0, (communityVotes[k][prev] || 0) - 1);
-        communityVotes[k][finalAction] = (communityVotes[k][finalAction] || 0) + 1;
+        const bucket = ensureCommunityBucket(communityVotes, k);
+        if (prev) {
+          const prevCanon = canonicalDecision(prev);
+          bucket[prevCanon] = Math.max(0, (bucket[prevCanon] || 0) - 1);
+        }
+        const nextCanon = canonicalDecision(finalAction);
+        bucket[nextCanon] = (bucket[nextCanon] || 0) + 1;
       } catch { setSyncErr(syncEl); }
     }
   }

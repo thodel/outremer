@@ -208,10 +208,25 @@ TEXT TO ANALYZE:
 """
 
 
+def _sanitise_feedback_term(term: str) -> str:
+    t = str(term or "").strip()
+    t = re.sub(r"[\x00-\x1f\x7f]", " ", t)
+    t = re.sub(r"\s+", " ", t).strip()
+    t = t.replace('"', "'")
+    return t[:120]
+
+
 def _build_feedback_hint(terms: List[str]) -> str:
     if not terms:
         return ""
-    lines = "\n".join(f'   - "{t}"' for t in terms[:40])
+    clean_terms: List[str] = []
+    for term in terms:
+        cleaned = _sanitise_feedback_term(term)
+        if cleaned and cleaned not in clean_terms:
+            clean_terms.append(cleaned)
+    if not clean_terms:
+        return ""
+    lines = "\n".join(f'   - "{t}"' for t in clean_terms[:40])
     return (
         "PROJECT-SPECIFIC BAD ENTITY MEMORY (from previous extractions):\n"
         "Treat these as known false positives. Do not return them as persons.\n"
