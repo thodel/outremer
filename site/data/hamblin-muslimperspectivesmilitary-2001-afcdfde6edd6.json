@@ -37,19 +37,6 @@
       "source_offset": 700
     },
     {
-      "name": "This",
-      "raw_mention": "This",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "extend access to Brigham Young University Studies This content downloaded from              31.10.141.16",
-      "confidence": 0.3,
-      "source_offset": 867
-    },
-    {
       "name": "July",
       "raw_mention": "July",
       "title": null,
@@ -2947,19 +2934,6 @@
       "context": " sanctity of Jerusalem are well summarized by Ibn Zaki: \"I praise [God] ... for his cleansing of His Hol",
       "confidence": 0.3,
       "source_offset": 29674
-    },
-    {
-      "name": "His",
-      "raw_mention": "His",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "bn Zaki: \"I praise [God] ... for his cleansing of His Holy House from the filth of polytheism and its p",
-      "confidence": 0.3,
-      "source_offset": 29721
     },
     {
       "name": "House",
@@ -5919,14 +5893,6 @@
       },
       "confidence": 0.6316,
       "status": "low"
-    },
-    {
-      "person": "This",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
     },
     {
       "person": "July",
@@ -8994,14 +8960,6 @@
     },
     {
       "person": "Zaki",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "His",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -12125,7 +12083,7 @@
   "extraction_mode": "fallback",
   "language_hint": null,
   "quality": {
-    "filtered_problem_entities": 291,
+    "filtered_problem_entities": 293,
     "feedback_store": "data/entity_feedback.json"
   }
 }

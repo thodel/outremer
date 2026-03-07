@@ -193,19 +193,6 @@
       "source_offset": 2649
     },
     {
-      "name": "History of",
-      "raw_mention": "History of",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "the prejudice of the writer. Thomas Fuller in his History of the   Holy War said :   \" Though the pretences wer",
-      "confidence": 0.3,
-      "source_offset": 2663
-    },
-    {
       "name": "Holy",
       "raw_mention": "Holy",
       "title": null,
@@ -217,19 +204,6 @@
       "context": "the writer. Thomas Fuller in his History of the   Holy War said :   \" Though the pretences were pious an",
       "confidence": 0.3,
       "source_offset": 2680
-    },
-    {
-      "name": "War",
-      "raw_mention": "War",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "riter. Thomas Fuller in his History of the   Holy War said :   \" Though the pretences were pious and pl",
-      "confidence": 0.3,
-      "source_offset": 2685
     },
     {
       "name": "Grecians",
@@ -466,19 +440,6 @@
       "source_offset": 4889
     },
     {
-      "name": "Some of",
-      "raw_mention": "Some of",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "  added to their dowries from his own resources.\" Some of the   preachers had many qualities of the modern e",
-      "confidence": 0.3,
-      "source_offset": 5126
-    },
-    {
       "name": "Fulk of Neuilly",
       "raw_mention": "Fulk of Neuilly",
       "title": null,
@@ -713,19 +674,6 @@
       "source_offset": 8735
     },
     {
-      "name": "Philip",
-      "raw_mention": "Philip",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "the monarchs   should take steps to enforce this. Philip Augustus actually followed   the mandate, by an o",
-      "confidence": 0.3,
-      "source_offset": 9050
-    },
-    {
       "name": "Augustus",
       "raw_mention": "Augustus",
       "title": null,
@@ -906,19 +854,6 @@
       "context": "entury also saw the temporary union of almost all Chris-  tian lands under the authority of the Pope and ",
       "confidence": 0.3,
       "source_offset": 12093
-    },
-    {
-      "name": "Latin",
-      "raw_mention": "Latin",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": " of Constantinople led to the  establishment of a Latin patriarchate there. Bishops of heretical  churche",
-      "confidence": 0.3,
-      "source_offset": 12249
     },
     {
       "name": "Bishops of",
@@ -1324,19 +1259,6 @@
       "source_offset": 16845
     },
     {
-      "name": "West",
-      "raw_mention": "West",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": " viewed askance the bands of crusaders   from the West who might interfere with their commerce by pro-  ",
-      "confidence": 0.3,
-      "source_offset": 17217
-    },
-    {
       "name": "Even",
       "raw_mention": "Even",
       "title": null,
@@ -1738,19 +1660,6 @@
       "context": "ejudiced. But the same idea was   common ; e. g., Matthew Paris, the historiographer of the monastery   of ",
       "confidence": 0.3,
       "source_offset": 21732
-    },
-    {
-      "name": "Paris",
-      "raw_mention": "Paris",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": ". But the same idea was   common ; e. g., Matthew Paris, the historiographer of the monastery   of St. Al",
-      "confidence": 0.3,
-      "source_offset": 21740
     },
     {
       "name": "Islam",
@@ -2155,52 +2064,12 @@
       "status": "low"
     },
     {
-      "person": "History of",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
       "person": "Holy",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
       "confidence": 0.0,
       "status": "no_match"
-    },
-    {
-      "person": "War",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR17",
-          "outremer_name": "Walter of Hereford",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'war' ↔ 'Walter of Hereford'"
-        },
-        {
-          "outremer_id": "AUTH:CR110",
-          "outremer_name": "Walter of St. Omer",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'war' ↔ 'Walter of St. Omer'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR17",
-        "outremer_name": "Walter of Hereford",
-        "type": "person",
-        "score": 0.6667,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'war' ↔ 'Walter of Hereford'"
-      },
-      "confidence": 0.6667,
-      "status": "low"
     },
     {
       "person": "Grecians",
@@ -2505,14 +2374,6 @@
       },
       "confidence": 0.6452,
       "status": "low"
-    },
-    {
-      "person": "Some of",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
     },
     {
       "person": "Fulk of Neuilly",
@@ -2891,46 +2752,6 @@
       "status": "no_match"
     },
     {
-      "person": "Philip",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR27",
-          "outremer_name": "Philip of Flanders",
-          "type": "person",
-          "score": 1.0,
-          "match_type": "exact",
-          "evidence": "exact match: 'philip' ↔ 'Philip of Flanders'"
-        },
-        {
-          "outremer_id": "AUTH:CR52",
-          "outremer_name": "Philip of Sézanne",
-          "type": "person",
-          "score": 1.0,
-          "match_type": "exact",
-          "evidence": "exact match: 'philip' ↔ 'Philip of Sézanne'"
-        },
-        {
-          "outremer_id": "AUTH:CR63",
-          "outremer_name": "Philip of Dreux, bishop of Beavais",
-          "type": "person",
-          "score": 1.0,
-          "match_type": "exact",
-          "evidence": "exact match: 'philip' ↔ 'Philip of Dreux, bishop of Beavais'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR27",
-        "outremer_name": "Philip of Flanders",
-        "type": "person",
-        "score": 1.0,
-        "match_type": "exact",
-        "evidence": "exact match: 'philip' ↔ 'Philip of Flanders'"
-      },
-      "confidence": 1.0,
-      "status": "high"
-    },
-    {
       "person": "Augustus",
       "person_group": false,
       "candidates": [],
@@ -3185,14 +3006,6 @@
       },
       "confidence": 0.6667,
       "status": "low"
-    },
-    {
-      "person": "Latin",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
     },
     {
       "person": "Bishops of",
@@ -3620,14 +3433,6 @@
     },
     {
       "person": "King",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "West",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -4155,14 +3960,6 @@
       "status": "high"
     },
     {
-      "person": "Paris",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
       "person": "Islam",
       "person_group": false,
       "candidates": [
@@ -4295,7 +4092,7 @@
   "extraction_mode": "fallback",
   "language_hint": null,
   "quality": {
-    "filtered_problem_entities": 47,
+    "filtered_problem_entities": 54,
     "feedback_store": "data/entity_feedback.json"
   }
 }
