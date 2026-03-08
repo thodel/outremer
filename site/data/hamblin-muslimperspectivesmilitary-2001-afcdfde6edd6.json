@@ -4756,19 +4756,6 @@
       "source_offset": 53690
     },
     {
-      "name": "Society",
-      "raw_mention": "Society",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "ranslation Movement in Baghdad and Early 'Abbasid Society (Second-Fourth/Eighth-Tenth Cen- turies) (London:",
-      "confidence": 0.3,
-      "source_offset": 53698
-    },
-    {
       "name": "Fourth",
       "raw_mention": "Fourth",
       "title": null,
@@ -11055,30 +11042,6 @@
       "status": "no_match"
     },
     {
-      "person": "Society",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR166",
-          "outremer_name": "Sophie of Winzenburg",
-          "type": "person",
-          "score": 0.6154,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'society' ↔ 'Sophie of Winzenburg'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR166",
-        "outremer_name": "Sophie of Winzenburg",
-        "type": "person",
-        "score": 0.6154,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'society' ↔ 'Sophie of Winzenburg'"
-      },
-      "confidence": 0.6154,
-      "status": "low"
-    },
-    {
       "person": "Fourth",
       "person_group": false,
       "candidates": [],
@@ -12083,7 +12046,7 @@
   "extraction_mode": "fallback",
   "language_hint": null,
   "quality": {
-    "filtered_problem_entities": 293,
+    "filtered_problem_entities": 294,
     "feedback_store": "data/entity_feedback.json"
   }
 }
