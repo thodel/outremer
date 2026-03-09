@@ -11,7 +11,7 @@
 
 // ── Config ─────────────────────────────────────────────────────────────────
 
-const API_BASE    = "https://hodelweb.ch/webhook";
+const API_BASE    = "https://www.hodelweb.ch/webhook";
 const STORAGE_KEY = "outremer_decisions_v1";
 const CLIENT_KEY  = "outremer_client_id";
 

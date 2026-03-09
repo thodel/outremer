@@ -1,0 +1,75 @@
+name: KG rebuild + Fuseki reload
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "data/unified_kg.json"       # re-run when KG data changes
+      - "scripts/kg/export_sdhss.py" # re-run when mapping script changes
+  workflow_dispatch:
+
+concurrency:
+  group: "kg-reload"
+  cancel-in-progress: true
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install rdflib
+
+      - name: Generate SDHSS/CRM Turtle
+        run: python scripts/kg/export_sdhss.py
+
+      - name: Reload Fuseki via SSH
+        env:
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+          VM_HOST:    ${{ secrets.VM_HOST || '194.13.80.183' }}
+          VM_USER:    ${{ secrets.VM_USER || 'th' }}
+        run: |
+          # Set up SSH
+          mkdir -p ~/.ssh
+          echo "$DEPLOY_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H ${VM_HOST} >> ~/.ssh/known_hosts 2>/dev/null
+
+          # Copy new TTL to VM
+          scp -i ~/.ssh/deploy_key \
+              data/unified_kg_sdhss.ttl \
+              ${VM_USER}@${VM_HOST}:/home/th/repos/outremer/data/unified_kg_sdhss.ttl
+
+          # Reload into Fuseki: drop dataset, recreate, reload TTL
+          ssh -i ~/.ssh/deploy_key ${VM_USER}@${VM_HOST} '
+            set -e
+            curl -sf -X DELETE http://localhost:3030/$/datasets/outremer
+            curl -sf -X POST http://localhost:3030/$/datasets \
+              -H "Content-Type: application/x-www-form-urlencoded" \
+              -d "dbName=outremer&dbType=tdb2"
+            curl -sf -X POST http://localhost:3030/outremer/data \
+              -H "Content-Type: text/turtle" \
+              --data-binary @/home/th/repos/outremer/data/unified_kg_sdhss.ttl
+            echo "Fuseki reload complete"
+          '
+
+      - name: Verify triple count
+        env:
+          VM_HOST: ${{ secrets.VM_HOST || '194.13.80.183' }}
+          VM_USER: ${{ secrets.VM_USER || 'th' }}
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+        run: |
+          ssh -i ~/.ssh/deploy_key ${VM_USER}@${VM_HOST} '
+            COUNT=$(curl -sf "http://localhost:3030/outremer/query" \
+              --data-urlencode "query=SELECT (COUNT(*) as ?n) WHERE { ?s ?p ?o }" \
+              -H "Accept: application/json" | python3 -c "import json,sys; print(json.load(sys.stdin)[\"results\"][\"bindings\"][0][\"n\"][\"value\"])")
+            echo "Fuseki triple count: $COUNT"
+          '

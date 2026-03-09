@@ -295,6 +295,7 @@
     <div class="kg-search-panel">
       <div class="kg-search-header" onclick="toggleKGSearch()">
         <span>🔍 Search Knowledge Graph (Persons, Groups, Events)</span>
+        <a href="https://fuseki.hodelweb.ch/outremer/query" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="font-size:.72rem;color:var(--accent);text-decoration:none;opacity:.8;" title="Open SPARQL endpoint">SPARQL ↗</a>
         <span class="toggle-icon">▼</span>
       </div>
       <div class="kg-search-content" id="kgSearchContent">
@@ -415,6 +416,9 @@ SELECT DISTINCT ?person ?label ?by ?dy ?wd WHERE {
   UNION
   { ?person rdfs:label ?label . ?person skos:altLabel ?alt .
     FILTER(CONTAINS(LCASE(STR(?alt)), "${escaped.toLowerCase()}")) }
+  UNION
+  { ?person skos:hiddenLabel ?hl . FILTER(CONTAINS(LCASE(STR(?hl)), "${escaped.toLowerCase()}"))
+    ?person rdfs:label ?label . }
   OPTIONAL { ?b crm:P98_brought_into_life ?person ; crm:P4_has_time-span ?bts . ?bts crm:P82a_begin_of_the_begin ?by }
   OPTIONAL { ?d crm:P100_was_death_of ?person ; crm:P4_has_time-span ?dts . ?dts crm:P82a_begin_of_the_begin ?dy }
   OPTIONAL { ?person owl:sameAs ?wd . FILTER(STRSTARTS(STR(?wd), "http://www.wikidata.org/")) }
@@ -465,6 +469,9 @@ SELECT * WHERE {
   OPTIONAL { ?child crm:P152_has_parent ?p ; rdfs:label ?childLabel }
   OPTIONAL { ?p crm:P152_has_parent ?parent . ?parent rdfs:label ?parentLabel }
   OPTIONAL { ?p crm:P1_is_identified_by ?idNode . ?idNode rdf:value ?authId }
+  OPTIONAL { ?joining crm:P143_joined ?p ; crm:P144_joined_with ?fgrp .
+             ?joining2 crm:P143_joined ?spouse ; crm:P144_joined_with ?fgrp .
+             FILTER(?spouse != ?p) ?spouse rdfs:label ?spouseLabel }
 } LIMIT 200`;
 
     try {
@@ -485,6 +492,7 @@ SELECT * WHERE {
       const gender    = first.gender?.value || '';
       const alts      = [...new Set(rows.filter(r=>r.alt).map(r=>r.alt.value))].filter(v=>v!==label);
       const children  = [...new Set(rows.filter(r=>r.childLabel).map(r=>r.childLabel.value))];
+      const spouses   = [...new Set(rows.filter(r=>r.spouseLabel).map(r=>r.spouseLabel.value))];
       const parents   = [...new Set(rows.filter(r=>r.parentLabel).map(r=>r.parentLabel.value))];
 
       const isAuth = authId.startsWith('CR');
@@ -523,6 +531,14 @@ SELECT * WHERE {
             <ul style="font-size:.82rem;line-height:1.8;margin:.3rem 0 .3rem 1.2rem;">
               ${children.slice(0,20).map(v=>`<li>${esc(v)}</li>`).join('')}
               ${children.length > 20 ? `<li style="color:var(--muted)">… and ${children.length-20} more</li>` : ''}
+            </ul>
+          </div>` : ''}
+
+        ${spouses.length ? `
+          <div class="profile-section">
+            <h4>💍 Spouses</h4>
+            <ul style="font-size:.82rem;line-height:1.8;margin:.3rem 0 .3rem 1.2rem;">
+              ${spouses.slice(0,10).map(v=>\`<li>\${esc(v)}</li>\`).join('')}
             </ul>
           </div>` : ''}
 
