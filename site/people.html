@@ -368,143 +368,185 @@
     if (query) searchKG();
   }
 
-  async function loadKGData() {
-    try {
-      kgData = await fetchJSON('./data/unified_kg.json');
-      console.log('Loaded KG:', Object.keys(kgData).length, 'entities');
-    } catch (e) {
-      console.warn('KG data not available:', e);
-      kgData = {};
-    }
+  const SPARQL_ENDPOINT = 'https://fuseki.hodelweb.ch/outremer/query';
+
+  async function sparqlQuery(query) {
+    const url = `${SPARQL_ENDPOINT}?query=${encodeURIComponent(query)}&format=json`;
+    const res = await fetch(url, { headers: { Accept: 'application/sparql-results+json' } });
+    if (!res.ok) throw new Error(`SPARQL error: ${res.status}`);
+    return res.json();
   }
 
+  // loadKGData is now a no-op; data comes from SPARQL on demand
+  async function loadKGData() {
+    console.log('KG: live SPARQL at', SPARQL_ENDPOINT);
+  }
+
+  let _kgSearchTimer = null;
   function searchKG() {
-    const query = document.getElementById('kgSearchInput').value.trim().toLowerCase();
+    const query = document.getElementById('kgSearchInput').value.trim();
     const resultsEl = document.getElementById('kgSearchResults');
-    
     if (!query || query.length < 2) {
       resultsEl.style.display = 'none';
       resultsEl.innerHTML = '';
       return;
     }
+    clearTimeout(_kgSearchTimer);
+    _kgSearchTimer = setTimeout(() => _doSparqlSearch(query), 300);
+  }
 
-    const results = [];
-    for (const [id, entity] of Object.entries(kgData)) {
-      // Check if entity type matches filter
-      const entityType = entity.type || 'person';
-      if (!kgFilterTypes.includes(entityType)) continue;
-      
-      // Search in preferred label and variants
-      const preferred = (entity.preferred_label || '').toLowerCase();
-      const variants = (entity.names?.variants || []).map(v => v.toLowerCase());
-      const allNames = [preferred, ...variants];
-      
-      // Check if query matches any name
-      if (allNames.some(name => name.includes(query))) {
-        results.push({
-          id,
-          name: entity.preferred_label || 'Unknown',
-          type: entityType,
-          entity
-        });
+  async function _doSparqlSearch(query) {
+    const resultsEl = document.getElementById('kgSearchResults');
+    resultsEl.style.display = 'block';
+    resultsEl.innerHTML = '<div class="kg-result-item" style="cursor:default;color:var(--muted);">Searching…</div>';
+
+    const escaped = query.replace(/"/g, '').replace(/[\\]/g, '');
+    const sparql = `
+PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+SELECT DISTINCT ?person ?label ?by ?dy ?wd WHERE {
+  ?person a crm:E21_Person .
+  { ?person rdfs:label ?label . FILTER(CONTAINS(LCASE(STR(?label)), "${escaped.toLowerCase()}")) }
+  UNION
+  { ?person skos:altLabel ?label . FILTER(CONTAINS(LCASE(STR(?label)), "${escaped.toLowerCase()}"))
+    ?person rdfs:label ?label . }
+  UNION
+  { ?person rdfs:label ?label . ?person skos:altLabel ?alt .
+    FILTER(CONTAINS(LCASE(STR(?alt)), "${escaped.toLowerCase()}")) }
+  OPTIONAL { ?b crm:P98_brought_into_life ?person ; crm:P4_has_time-span ?bts . ?bts crm:P82a_begin_of_the_begin ?by }
+  OPTIONAL { ?d crm:P100_was_death_of ?person ; crm:P4_has_time-span ?dts . ?dts crm:P82a_begin_of_the_begin ?dy }
+  OPTIONAL { ?person owl:sameAs ?wd . FILTER(STRSTARTS(STR(?wd), "http://www.wikidata.org/")) }
+} ORDER BY ?label LIMIT 30`;
+
+    try {
+      const data = await sparqlQuery(sparql);
+      const bindings = data.results.bindings;
+      if (!bindings.length) {
+        resultsEl.innerHTML = '<div class="kg-result-item" style="cursor:default;color:var(--muted);">No results found</div>';
+        return;
       }
-      
-      // Limit results
-      if (results.length >= 50) break;
-    }
-
-    // Render results
-    resultsEl.innerHTML = results.map(r => `
-      <div class="kg-result-item" onclick="selectKGEntity('${r.id}')">
-        <div class="kg-result-name">
-          <span class="kg-type-badge ${r.type}">${r.type}</span>
-          ${esc(r.name)}
-        </div>
-        <div class="kg-result-meta">${esc(r.id)}</div>
-      </div>
-    `).join('');
-    
-    resultsEl.style.display = results.length ? 'block' : 'none';
-    
-    if (!results.length) {
-      resultsEl.innerHTML = '<div class="kg-result-item" style="cursor:default;color:var(--muted);">No results found</div>';
-      resultsEl.style.display = 'block';
+      resultsEl.innerHTML = bindings.map(r => {
+        const label = r.label?.value || 'Unknown';
+        const by = r.by?.value || '';
+        const dy = r.dy?.value || '';
+        const dates = by || dy ? `<span style="color:var(--muted);font-size:.76rem;">${by}${by&&dy?'–':''}${dy}</span>` : '';
+        const uri   = r.person?.value || '';
+        return `<div class="kg-result-item" onclick="selectKGEntity('${encodeURIComponent(uri)}','${esc(label)}')">
+          <div class="kg-result-name"><span class="kg-type-badge person">person</span> ${esc(label)}</div>
+          <div class="kg-result-meta">${dates}</div>
+        </div>`;
+      }).join('');
+    } catch(e) {
+      resultsEl.innerHTML = `<div class="kg-result-item" style="cursor:default;color:var(--muted);">Error: ${esc(e.message)}</div>`;
     }
   }
 
-  function selectKGEntity(entityId) {
-    const entity = kgData[entityId];
-    if (!entity) return;
-    
-    // Build profile HTML
+  async function selectKGEntity(encodedUri, fallbackLabel) {
+    const uri = decodeURIComponent(encodedUri);
     const profileEl = document.getElementById('profilePanel');
-    const entityType = entity.type || 'person';
-    const variants = entity.names?.variants || [];
-    const roles = entity.roles || [];
-    const relationships = entity.relationships || [];
-    const places = entity.places || [];
-    
-    profileEl.innerHTML = `
-      <div class="profile-title">${esc(entity.preferred_label || 'Unknown')}</div>
-      <div class="profile-auth">${esc(entityId)}</div>
-      
-      ${variants.length ? `
-        <div class="profile-section">
-          <h4>🏷️ Variants</h4>
-          <div style="font-size:.82rem;line-height:1.7;">${variants.map(v => esc(v)).join(', ')}</div>
-        </div>
-      ` : ''}
-      
-      ${Object.keys(entity.bio || {}).length ? `
-        <div class="profile-section">
-          <h4>📋 Biography</h4>
-          <div style="font-size:.82rem;line-height:1.7;">
-            ${entity.bio.birth ? `Born: ${esc(entity.bio.birth)}<br/>` : ''}
-            ${entity.bio.death ? `Died: ${esc(entity.bio.death)}<br/>` : ''}
-            ${entity.bio.gender ? `Gender: ${esc(entity.bio.gender)}<br/>` : ''}
-          </div>
-        </div>
-      ` : ''}
-      
-      ${roles.length ? `
-        <div class="profile-section">
-          <h4>💼 Roles</h4>
-          <ul style="font-size:.82rem;line-height:1.8;margin:.4rem 0 .4rem 1.2rem;">
-            ${roles.map(r => `<li>${esc(r.label || r.type || 'Unknown')}</li>`).join('')}
-          </ul>
-        </div>
-      ` : ''}
-      
-      ${relationships.length ? `
-        <div class="profile-section">
-          <h4>🔗 Relationships</h4>
-          <ul style="font-size:.82rem;line-height:1.8;margin:.4rem 0 .4rem 1.2rem;">
-            ${relationships.map(r => `<li>${esc(r.type || 'Related to')} → ${esc(r.target_label || r.target || 'Unknown')}</li>`).join('')}
-          </ul>
-        </div>
-      ` : ''}
-      
-      ${places.length ? `
-        <div class="profile-section">
-          <h4>📍 Places</h4>
-          <ul style="font-size:.82rem;line-height:1.8;margin:.4rem 0 .4rem 1.2rem;">
-            ${places.map(p => `<li>${esc(p.type || 'Associated with')} → ${esc(p.label || 'Unknown')}</li>`).join('')}
-          </ul>
-        </div>
-      ` : ''}
-      
-      ${entity.identifiers?.wikidata_qid ? `
-        <div class="profile-section">
-          <h4>🌐 External Links</h4>
-          <a href="https://www.wikidata.org/wiki/${entity.identifiers.wikidata_qid}" target="_blank" rel="noopener"
-             style="font-size:.82rem;color:var(--accent);">Wikidata: ${entity.identifiers.wikidata_qid}</a>
-        </div>
-      ` : ''}
-    `;
-    
-    // Scroll to profile on mobile
-    if (window.innerWidth < 720) {
-      profileEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    profileEl.innerHTML = '<div class="profile-empty">Loading…</div>';
+
+    const sparql = `
+PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+SELECT * WHERE {
+  BIND(<${uri}> AS ?p)
+  OPTIONAL { ?p rdfs:label ?label }
+  OPTIONAL { ?p skos:altLabel ?alt }
+  OPTIONAL { ?b crm:P98_brought_into_life ?p ; crm:P4_has_time-span ?bts . ?bts crm:P82a_begin_of_the_begin ?by }
+  OPTIONAL { ?d crm:P100_was_death_of ?p ; crm:P4_has_time-span ?dts . ?dts crm:P82a_begin_of_the_begin ?dy }
+  OPTIONAL { ?p owl:sameAs ?wd . FILTER(STRSTARTS(STR(?wd), "http://www.wikidata.org/")) }
+  OPTIONAL { ?p crm:P2_has_type ?genderType . ?genderType rdfs:label ?gender }
+  OPTIONAL { ?child crm:P152_has_parent ?p ; rdfs:label ?childLabel }
+  OPTIONAL { ?p crm:P152_has_parent ?parent . ?parent rdfs:label ?parentLabel }
+  OPTIONAL { ?p crm:P1_is_identified_by ?idNode . ?idNode rdf:value ?authId }
+} LIMIT 200`;
+
+    try {
+      const data = await sparqlQuery(sparql);
+      const rows = data.results.bindings;
+      if (!rows.length) {
+        profileEl.innerHTML = '<div class="profile-empty">No data found</div>';
+        return;
+      }
+
+      const first = rows[0];
+      const label     = first.label?.value  || fallbackLabel || 'Unknown';
+      const by        = first.by?.value     || '';
+      const dy        = first.dy?.value     || '';
+      const wdUri     = first.wd?.value     || '';
+      const wdQid     = wdUri.split('/').pop();
+      const authId    = first.authId?.value || '';
+      const gender    = first.gender?.value || '';
+      const alts      = [...new Set(rows.filter(r=>r.alt).map(r=>r.alt.value))].filter(v=>v!==label);
+      const children  = [...new Set(rows.filter(r=>r.childLabel).map(r=>r.childLabel.value))];
+      const parents   = [...new Set(rows.filter(r=>r.parentLabel).map(r=>r.parentLabel.value))];
+
+      const isAuth = authId.startsWith('CR');
+
+      profileEl.innerHTML = `
+        <div class="profile-title">${esc(label)}</div>
+        <div class="profile-auth">${isAuth ? '⭐ Authority record' : 'Wikidata'}${authId ? ` · ${esc(authId)}` : ''}</div>
+
+        ${by || dy || gender ? `
+          <div class="profile-section">
+            <h4>📋 Biography</h4>
+            <div style="font-size:.82rem;line-height:1.8;">
+              ${by ? `Born: <strong>${esc(by)}</strong><br/>` : ''}
+              ${dy ? `Died: <strong>${esc(dy)}</strong><br/>` : ''}
+              ${gender ? `Gender: ${esc(gender)}<br/>` : ''}
+            </div>
+          </div>` : ''}
+
+        ${alts.length ? `
+          <div class="profile-section">
+            <h4>🏷️ Name variants</h4>
+            <div style="font-size:.82rem;line-height:1.7;">${alts.map(v=>esc(v)).join(', ')}</div>
+          </div>` : ''}
+
+        ${parents.length ? `
+          <div class="profile-section">
+            <h4>👨‍👩‍👦 Parents</h4>
+            <ul style="font-size:.82rem;line-height:1.8;margin:.3rem 0 .3rem 1.2rem;">
+              ${parents.slice(0,10).map(v=>`<li>${esc(v)}</li>`).join('')}
+            </ul>
+          </div>` : ''}
+
+        ${children.length ? `
+          <div class="profile-section">
+            <h4>👶 Children</h4>
+            <ul style="font-size:.82rem;line-height:1.8;margin:.3rem 0 .3rem 1.2rem;">
+              ${children.slice(0,20).map(v=>`<li>${esc(v)}</li>`).join('')}
+              ${children.length > 20 ? `<li style="color:var(--muted)">… and ${children.length-20} more</li>` : ''}
+            </ul>
+          </div>` : ''}
+
+        ${wdUri ? `
+          <div class="profile-section">
+            <h4>🌐 External links</h4>
+            <a href="${wdUri}" target="_blank" rel="noopener"
+               style="font-size:.82rem;color:var(--accent);">
+              Wikidata: ${wdQid}
+            </a>
+            &nbsp;·&nbsp;
+            <a href="https://tools.wmflabs.org/reasonator/?q=${wdQid}" target="_blank" rel="noopener"
+               style="font-size:.82rem;color:var(--accent);">Reasonator</a>
+          </div>` : ''}
+
+        <div class="profile-section" style="margin-top:1rem;font-size:.72rem;color:var(--muted);">
+          Source: SDHSS/CIDOC-CRM Knowledge Graph ·
+          <a href="${uri}" target="_blank" rel="noopener" style="color:var(--muted);">${uri.split('/').pop()}</a>
+        </div>`;
+
+      if (window.innerWidth < 720) profileEl.scrollIntoView({ behavior:'smooth', block:'start' });
+
+    } catch(e) {
+      profileEl.innerHTML = `<div class="profile-empty">Error loading: ${esc(e.message)}</div>`;
     }
   }
 
