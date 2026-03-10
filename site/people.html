@@ -372,8 +372,12 @@
   const SPARQL_ENDPOINT = 'https://fuseki.hodelweb.ch/outremer/query';
 
   async function sparqlQuery(query) {
-    const url = `${SPARQL_ENDPOINT}?query=${encodeURIComponent(query)}&format=json`;
-    const res = await fetch(url, { headers: { Accept: 'application/sparql-results+json' } });
+    const body = new URLSearchParams({ query });
+    const res = await fetch(SPARQL_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Accept': 'application/sparql-results+json', 'Content-Type': 'application/x-www-form-urlencoded' },
+      body
+    });
     if (!res.ok) throw new Error(`SPARQL error: ${res.status}`);
     return res.json();
   }
@@ -407,12 +411,9 @@ PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
-SELECT DISTINCT ?person ?label ?by ?dy ?wd WHERE {
+SELECT DISTINCT ?person ?label ?by ?dy ?wd ?authId WHERE {
   ?person a crm:E21_Person .
   { ?person rdfs:label ?label . FILTER(CONTAINS(LCASE(STR(?label)), "${escaped.toLowerCase()}")) }
-  UNION
-  { ?person skos:altLabel ?label . FILTER(CONTAINS(LCASE(STR(?label)), "${escaped.toLowerCase()}"))
-    ?person rdfs:label ?label . }
   UNION
   { ?person rdfs:label ?label . ?person skos:altLabel ?alt .
     FILTER(CONTAINS(LCASE(STR(?alt)), "${escaped.toLowerCase()}")) }
@@ -422,7 +423,9 @@ SELECT DISTINCT ?person ?label ?by ?dy ?wd WHERE {
   OPTIONAL { ?b crm:P98_brought_into_life ?person ; crm:P4_has_time-span ?bts . ?bts crm:P82a_begin_of_the_begin ?by }
   OPTIONAL { ?d crm:P100_was_death_of ?person ; crm:P4_has_time-span ?dts . ?dts crm:P82a_begin_of_the_begin ?dy }
   OPTIONAL { ?person owl:sameAs ?wd . FILTER(STRSTARTS(STR(?wd), "http://www.wikidata.org/")) }
-} ORDER BY ?label LIMIT 30`;
+  OPTIONAL { ?person <http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by> ?idNode .
+             ?idNode <http://www.w3.org/1999/02/22-rdf-syntax-ns#value> ?authId }
+} LIMIT 50`;
 
     try {
       const data = await sparqlQuery(sparql);
@@ -431,7 +434,36 @@ SELECT DISTINCT ?person ?label ?by ?dy ?wd WHERE {
         resultsEl.innerHTML = '<div class="kg-result-item" style="cursor:default;color:var(--muted);">No results found</div>';
         return;
       }
-      resultsEl.innerHTML = bindings.map(r => {
+
+      // Deduplicate by person URI, keeping the row with authId if available
+      const byUri = new Map();
+      for (const r of bindings) {
+        const uri = r.person?.value || '';
+        if (!byUri.has(uri) || r.authId) byUri.set(uri, r);
+      }
+      const deduped = [...byUri.values()];
+
+      // Rank: exact+auth=0, exact=1, startsWith+auth=2, startsWith=3, auth=4, contains=5
+      const qLower = escaped.toLowerCase();
+      const scored = deduped.map(r => {
+        const label = r.label?.value || '';
+        const ll = label.toLowerCase();
+        const uri = r.person?.value || '';
+        const isAuth = uri.includes('outremer.hodelweb.ch/entity/AUTH_');
+        const exact = ll === qLower;
+        const starts = ll.startsWith(qLower);
+        let score;
+        if (exact && isAuth) score = 0;
+        else if (exact) score = 1;
+        else if (starts && isAuth) score = 2;
+        else if (starts) score = 3;
+        else if (isAuth) score = 4;
+        else score = 5;
+        return { r, score };
+      });
+      scored.sort((a, b) => a.score - b.score || (a.r.label?.value || '').localeCompare(b.r.label?.value || ''));
+
+      resultsEl.innerHTML = scored.map(({ r }) => {
         const label = r.label?.value || 'Unknown';
         const by = r.by?.value || '';
         const dy = r.dy?.value || '';
@@ -449,6 +481,11 @@ SELECT DISTINCT ?person ?label ?by ?dy ?wd WHERE {
 
   async function selectKGEntity(encodedUri, fallbackLabel) {
     const uri = decodeURIComponent(encodedUri);
+    // Update URL hash for bookmarkable links
+    const newHash = `person=${encodeURIComponent(uri)}`;
+    if (window.location.hash !== `#${newHash}`) {
+      history.pushState(null, '', `#${newHash}`);
+    }
     const profileEl = document.getElementById('profilePanel');
     profileEl.innerHTML = '<div class="profile-empty">Loading…</div>';
 
@@ -491,9 +528,18 @@ SELECT * WHERE {
       const authId    = first.authId?.value || '';
       const gender    = first.gender?.value || '';
       const alts      = [...new Set(rows.filter(r=>r.alt).map(r=>r.alt.value))].filter(v=>v!==label);
-      const children  = [...new Set(rows.filter(r=>r.childLabel).map(r=>r.childLabel.value))];
-      const spouses   = [...new Set(rows.filter(r=>r.spouseLabel).map(r=>r.spouseLabel.value))];
-      const parents   = [...new Set(rows.filter(r=>r.parentLabel).map(r=>r.parentLabel.value))];
+
+      const childMap = new Map();
+      rows.filter(r=>r.child && r.childLabel).forEach(r => childMap.set(r.child.value, r.childLabel.value));
+      const children = [...childMap.entries()].map(([uri, label]) => ({uri, label}));
+
+      const parentMap = new Map();
+      rows.filter(r=>r.parent && r.parentLabel).forEach(r => parentMap.set(r.parent.value, r.parentLabel.value));
+      const parents = [...parentMap.entries()].map(([uri, label]) => ({uri, label}));
+
+      const spouseMap = new Map();
+      rows.filter(r=>r.spouse && r.spouseLabel).forEach(r => spouseMap.set(r.spouse.value, r.spouseLabel.value));
+      const spouses = [...spouseMap.entries()].map(([uri, label]) => ({uri, label}));
 
       const isAuth = authId.startsWith('CR');
 
@@ -521,7 +567,7 @@ SELECT * WHERE {
           <div class="profile-section">
             <h4>👨‍👩‍👦 Parents</h4>
             <ul style="font-size:.82rem;line-height:1.8;margin:.3rem 0 .3rem 1.2rem;">
-              ${parents.slice(0,10).map(v=>`<li>${esc(v)}</li>`).join('')}
+              ${parents.slice(0,10).map(({uri: pUri, label: pLabel})=>`<li><a href="#" onclick="selectKGEntity('${encodeURIComponent(pUri)}','${esc(pLabel)}');return false;">${esc(pLabel)}</a></li>`).join('')}
             </ul>
           </div>` : ''}
 
@@ -529,7 +575,7 @@ SELECT * WHERE {
           <div class="profile-section">
             <h4>👶 Children</h4>
             <ul style="font-size:.82rem;line-height:1.8;margin:.3rem 0 .3rem 1.2rem;">
-              ${children.slice(0,20).map(v=>`<li>${esc(v)}</li>`).join('')}
+              ${children.slice(0,20).map(({uri: cUri, label: cLabel})=>`<li><a href="#" onclick="selectKGEntity('${encodeURIComponent(cUri)}','${esc(cLabel)}');return false;">${esc(cLabel)}</a></li>`).join('')}
               ${children.length > 20 ? `<li style="color:var(--muted)">… and ${children.length-20} more</li>` : ''}
             </ul>
           </div>` : ''}
@@ -538,7 +584,7 @@ SELECT * WHERE {
           <div class="profile-section">
             <h4>💍 Spouses</h4>
             <ul style="font-size:.82rem;line-height:1.8;margin:.3rem 0 .3rem 1.2rem;">
-              ${spouses.slice(0,10).map(v=>\`<li>\${esc(v)}</li>\`).join('')}
+              ${spouses.slice(0,10).map(({uri: sUri, label: sLabel})=>`<li><a href="#" onclick="selectKGEntity('${encodeURIComponent(sUri)}','${esc(sLabel)}');return false;">${esc(sLabel)}</a></li>`).join('')}
             </ul>
           </div>` : ''}
 
@@ -967,8 +1013,19 @@ SELECT * WHERE {
     return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
 
-  boot();
-  
+  boot().then(() => {
+    // URL hash routing: auto-select person from #person=<encoded-uri>
+    function handleHash() {
+      const hash = window.location.hash;
+      if (hash.startsWith('#person=')) {
+        const encodedUri = hash.slice('#person='.length);
+        selectKGEntity(encodedUri, '');
+      }
+    }
+    handleHash();
+    window.addEventListener('hashchange', handleHash);
+  });
+
   // Theme toggle with localStorage persistence
   function toggleTheme() {
     const html = document.documentElement;
