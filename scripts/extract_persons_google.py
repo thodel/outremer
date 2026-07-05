@@ -3,12 +3,12 @@ extract_persons_google.py
 ─────────────────────────
 Person + metadata extraction for the Outremer pipeline.
 
-Primary path  : Google Gemini (gemini-2.0-flash) — requires GOOGLE_API_KEY env var.
+Primary path  : GPUStack Qwen3 (tei.dh.unibe.ch) — requires .env.gpustack.
 Fallback path : regex / heuristic NER — runs without any API key.
 
 Public API
 ──────────
-    extract_persons_and_metadata(text, *, use_genai_metadata=True) -> Dict[str, Any]
+    extract_persons_and_metadata(text, *, use_genai_metadata=True) -> Dict[str, Any]  # noqa: E501
 
 Returns
 ───────
@@ -48,6 +48,9 @@ import os
 import re
 import unicodedata
 from datetime import datetime, timezone
+
+# GPUStack LLM client
+from scripts.llm_client import generate as _llm_generate
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
@@ -57,8 +60,9 @@ logger = logging.getLogger(__name__)
 # Constants
 # ──────────────────────────────────────────────
 
-_GEMINI_MODEL = "gemini-2.0-flash"
-_CHUNK_SIZE = 5_500   # smaller = shorter Gemini response = less truncation
+# GPUStack model — see scripts/config.py / .env.gpustack
+_EXTRACTION_MODEL = "qwen3-30b-a3b-instruct"  # from config.EXTRACTION_MODEL at runtime
+_CHUNK_SIZE = 5_500   # chunk size for GPUStack extraction
 _CHUNK_OVERLAP = 800
 
 _LANGUAGE_HINTS: Dict[str, str] = {
@@ -103,12 +107,12 @@ You are a historical NLP assistant specialising in the medieval Levant (Crusades
 Extract ALL person mentions from the text below — individuals, collectives (armies, ethnic groups, unnamed crowds), and ambiguous references.
 
 ═══════════════════════════════════════════════════════════
-🚫 ABSOLUTE EXCLUSION RULES — NEVER EXTRACT THESE 🚫
+[EXCLUDE] ABSOLUTE EXCLUSION RULES — NEVER EXTRACT THESE [EXCLUDE]
 ═══════════════════════════════════════════════════════════
 
 DO NOT EXTRACT — these are NEVER persons (confidence = 0.0):
 
-❌ BIBLIOGRAPHIC / PUBLISHER INFO:
+[NO] BIBLIOGRAPHIC / PUBLISHER INFO:
    "Vol", "Volume", "No", "Number", "pp", "Pages", "p.", "pp."
    "Published", "Publication", "Copyright", "All rights reserved"
    "ISBN", "DOI", "ISSN", "JSTOR", "Stable URL", "Accessed"
@@ -116,29 +120,29 @@ DO NOT EXTRACT — these are NEVER persons (confidence = 0.0):
    "Journal", "Review", "Proceedings", "Transactions", "Bulletin"
    "Series", "Volume", "Issue", "Edition", "Reprint"
 
-❌ DOCUMENT STRUCTURE MARKERS:
+[NO] DOCUMENT STRUCTURE MARKERS:
    "Author", "Editor", "Translator", "Introduction", "Chapter"
    "Section", "Part", "Book", "Article", "Abstract", "Keywords"
    "Bibliography", "References", "Notes", "Appendix", "Index"
    "Source", "Title", "Language", "Date", "Type"
 
-❌ CITATION MARKERS:
+[NO] CITATION MARKERS:
    "see", "cf", "ibid", "op. cit.", "loc. cit.", "passim"
    "ed.", "eds.", "trans.", "tr.", "rev.", "repr."
    "n.", "nn.", "fn", "footnote"
 
-❌ MODERN SCHOLARS (confidence ≤ 0.10, role = "modern scholar"):
+[NO] MODERN SCHOLARS (confidence ≤ 0.10, role = "modern scholar"):
    Academic names appearing in citations, footnotes, or bibliography
    Examples: "Riley-Smith", "Mayer", "Tyerman", "Asbridge", "France"
    "Cahen", "Runciman", "Grousset", "Kedar", "Prawer", "Hamilton"
    If followed by "argues", "writes", "notes", "cf", "see" → modern scholar
 
-❌ SINGLE COMMON NOUNS (confidence = 0.0):
+[NO] SINGLE COMMON NOUNS (confidence = 0.0):
    "Source", "Title", "Language", "Type", "Date", "Author"
    "Editor", "Review", "Press", "Vol", "Published", "Copyright"
 
 ═══════════════════════════════════════════════════════════
-✅ WHAT TO EXTRACT — MEDIEVAL PERSONS ONLY ✅
+[INCLUDE] WHAT TO EXTRACT — MEDIEVAL PERSONS ONLY [INCLUDE]
 ═══════════════════════════════════════════════════════════
 
 EXTRACT with HIGH confidence (0.7–1.0):
@@ -161,10 +165,12 @@ EXTRACT with HIGH confidence (0.7–1.0):
   (set name = descriptive phrase, confidence = 0.4–0.6)
 
 ═══════════════════════════════════════════════════════════
-📋 OUTPUT FORMAT — STRICT JSON ONLY 📋
+[FORMAT] OUTPUT FORMAT — STRICT JSON ONLY [FORMAT]
 ═══════════════════════════════════════════════════════════
 
-Respond with EXACTLY this JSON structure — NO markdown, NO commentary:
+Output valid JSON only. No markdown fences, no commentary.
+
+Respond with this exact structure:
 
 {{
   "persons": [
@@ -284,7 +290,7 @@ def _build_bibtex(metadata: Dict[str, Any]) -> str:
 
 
 def _sanitise_text(text: str) -> str:
-    """Strip control characters that break JSON when embedded in Gemini responses."""
+    """Strip control characters that break JSON when embedded in LLM responses."""
     # Keep: tab (\x09), newline (\x0a), carriage return (\x0d), and all printable
     return re.sub(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]", " ", text)
 
@@ -396,7 +402,7 @@ def _record_problem_entities(
 
 
 def _repair_json(raw: str) -> str:
-    """Best-effort repair of common Gemini JSON issues before parsing."""
+    """Best-effort repair of common LLM JSON issues before parsing."""
     # Strip markdown fences
     raw = re.sub(r"^```(?:json)?\s*", "", raw.strip())
     raw = re.sub(r"\s*```$", "", raw.strip())
@@ -407,7 +413,7 @@ def _repair_json(raw: str) -> str:
 
 def _recover_truncated_json(raw: str) -> Dict[str, Any]:
     """
-    Attempt to salvage persons from a truncated Gemini JSON response.
+    Attempt to salvage persons from a truncated LLM JSON response.
     Finds the last complete person object (ending in '}') inside the persons array
     and reconstructs a valid minimal JSON document from it.
     """
@@ -681,7 +687,7 @@ def _safe_float(v: Any, default: float = 0.5) -> float:
 
 
 def _coerce_person(raw: Any) -> Optional[Dict[str, Any]]:
-    """Coerce a raw dict from Gemini into the expected person schema."""
+    """Coerce a raw dict from LLM output into the expected person schema."""
     if not isinstance(raw, dict):
         return None
     name = raw.get("name") or raw.get("raw_mention") or ""
@@ -823,24 +829,23 @@ def _extract_fallback(text: str) -> Dict[str, Any]:
 
 
 # ──────────────────────────────────────────────
-# Gemini extraction
+# GPUStack extraction
 # ──────────────────────────────────────────────
 
-def _extract_gemini_chunk(
-    client: Any,
+def _extract_gpustack_chunk(
     chunk: str,
     language: Optional[str] = None,
     blocked_terms: Optional[List[str]] = None,
 ) -> Dict[str, Any]:
-    """Call Gemini on a single chunk. Returns raw dict or raises."""
+    """Call GPUStack on a single chunk. Returns parsed JSON or raises."""
     clean_chunk = _sanitise_text(chunk)
     prompt = _build_prompt(language, blocked_terms=blocked_terms) + clean_chunk
-    response = client.models.generate_content(
-        model=_GEMINI_MODEL,
-        contents=prompt,
-        config={"response_mime_type": "application/json"},
+    raw_text = _llm_generate(
+        prompt,
+        model=_EXTRACTION_MODEL,
+        max_tokens=4096,
+        temperature=0.1,
     )
-    raw_text = response.text or "{}"
     raw_text = _repair_json(raw_text)
 
     # First try clean parse
@@ -857,31 +862,20 @@ def _extract_gemini_chunk(
         return recovered
 
     # Nothing salvageable — let caller handle fallback
-    raise ValueError(f"Unrecoverable JSON from Gemini (length={len(raw_text)})")
+    raise ValueError(f"Unrecoverable JSON from GPUStack (length={len(raw_text)})")
 
 
-def _extract_gemini(
+def _extract_gpustack(
     text: str,
     use_genai_metadata: bool,
     language: Optional[str] = None,
     blocked_terms: Optional[List[str]] = None,
 ) -> Dict[str, Any]:
-    """Full Gemini extraction with chunking."""
-    try:
-        from google import genai  # type: ignore
-    except ImportError:
-        logger.warning("google-genai not installed; using fallback.")
-        return _extract_fallback(text)
+    """Full GPUStack extraction with chunking."""
+    from config import GPUSTACK_BASE_URL, EXTRACTION_MODEL
 
-    api_key = os.environ.get("GOOGLE_API_KEY", "").strip()
-    if not api_key:
-        logger.warning("GOOGLE_API_KEY not set; using fallback extraction.")
-        return _extract_fallback(text)
-
-    try:
-        client = genai.Client(api_key=api_key)
-    except Exception as exc:
-        logger.error("Failed to init Gemini client: %s", exc)
+    if not GPUSTACK_BASE_URL:
+        logger.warning("GPUSTACK_BASE_URL not set; using fallback extraction.")
         return _extract_fallback(text)
 
     chunks = _chunk_text(text)
@@ -890,14 +884,13 @@ def _extract_gemini(
 
     for offset, chunk in chunks:
         try:
-            result = _extract_gemini_chunk(
-                client,
+            result = _extract_gpustack_chunk(
                 chunk,
                 language=language,
                 blocked_terms=blocked_terms,
             )
         except Exception as exc:
-            logger.warning("Gemini chunk failed (offset=%d): %s", offset, exc)
+            logger.warning("GPUStack chunk failed (offset=%d): %s", offset, exc)
             result = _extract_fallback(chunk)
 
         for p in result.get("persons") or []:
@@ -938,7 +931,7 @@ def extract_persons_and_metadata(
     """
     Extract person mentions and document metadata from *text*.
 
-    Uses Google Gemini (gemini-2.0-flash) when GOOGLE_API_KEY is set;
+    Uses GPUStack Qwen3 when GPUSTACK_BASE_URL is set in .env.gpustack;
     falls back to heuristic regex NER otherwise.
 
     Parameters
@@ -959,9 +952,10 @@ def extract_persons_and_metadata(
     feedback_store = _load_entity_feedback(feedback_path)
     feedback_terms = _feedback_terms_for_prompt(feedback_store)
 
-    api_key = os.environ.get("GOOGLE_API_KEY", "").strip()
-    if api_key:
-        result = _extract_gemini(
+    from config import GPUSTACK_BASE_URL
+
+    if GPUSTACK_BASE_URL:
+        result = _extract_gpustack(
             text,
             use_genai_metadata,
             language=language,

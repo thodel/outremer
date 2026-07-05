@@ -1,183 +1,355 @@
-# OUTREMER — Project Improvement Plan
+# OUTREMER — GPUStack Adaptation Plan
 
 **Author:** DH bot (via OpenClaw)  
 **Date:** 2026-07-05  
-**Status:** Draft — for review
+**Status:** Draft  
+**Scope:** `github.com/thodel/outremer` only — no other projects, no MCP servers.
 
 ---
 
 ## Executive Summary
 
-The current pipeline depends on two proprietary APIs: **Google Gemini** (person extraction) and **Mistral** (OCR). This plan covers:
+Replace the two proprietary API dependencies in the pipeline:
 
-1. **Replacing both with local/open models** (Ollama, LM Studio, vLLM, or MiniMax self-hosted)
-2. **Improving the overall project** across KG quality, pipeline reliability, scrapers, and UI
+| Current | Replacement | Endpoint |
+|---------|-------------|----------|
+| `google-genai` (Gemini 2.0-flash) | GPUStack Qwen3 model | `https://tei.dh.unibe.ch/v1` |
+| `mistralai` (Mistral OCR) | GPUStack MiniMax-M2.7 or EasyOCR | same endpoint or local |
+
+**Key constraint:** All LLM calls run on `tei.dh.unibe.ch` — no external calls to Google, Mistral, or any other third-party LLM provider.
+
+**Implementation model:** Mirror the pattern already proven in `thodel/agentic_historian`:
+- `scripts/config.py` — env-var config for GPUStack
+- `scripts/llm_client.py` — thin wrapper around `openai.OpenAI` with GPUStack base URL
+- Rewire the two existing LLM call-sites (`extract_persons_google.py`, `run_pipeline.py`)
+
+**What does NOT change:**
+- `wikidata_reconcile.py` — uses Wikidata SPARQL API (not an LLM call), no changes needed
+- `build_unified_kg.py` — offline KG builder, no LLM calls
+- All scrapers — no LLM calls
 
 ---
 
-## EPIC 1 — LLM Provider Abstraction  ⚠️ HIGH PRIORITY
-
-**Goal:** Replace `google-genai` and `mistralai` hardcoded calls with a swappable config layer, so the pipeline runs entirely offline on locally hosted models.
-
-### Rationale
-
-- Proprietary APIs cost money and require internet access
-- MiniMax, Qwen3, and GPT-OSS models now match or exceed Gemini 2.0-flash on medieval multilingual tasks
-- The pipeline should work on a laptop in a archive basement
+## Epic 1 — GPUStack Integration ⚠️ HIGH PRIORITY
 
 ### MILESTONE 1.1 — Config Layer
 
-**Files:** `scripts/config.py`, `.env.example`
+**Files:** `scripts/config.py` (new), `.env.gpustack` (new, git-ignored), `.gitignore` (update)
 
-Add a provider switch:
+Create `scripts/config.py`:
 
-```env
-# LLM provider for person extraction (gemini | openai | ollama | lmstudio | vllm)
-EXTRACTION_PROVIDER=ollama
-EXTRACTION_MODEL=qwen3:latest
-EXTRACTION_BASE_URL=http://localhost:11434/v1
-EXTRACTION_API_KEY=   # empty for local
+```python
+# scripts/config.py
+"""GPUStack configuration for the OUTREMER pipeline."""
+from __future__ import annotations
 
-# OCR engine (mistral | easyocr | tesseract)
-OCR_ENGINE=tesseract
-MISTRAL_API_KEY=   # only needed if OCR_ENGINE=mistral
+import os
+from pathlib import Path
+
+_REPO_ROOT = Path(__file__).parent.parent
+
+def _get(key: str, default=None):
+    return os.environ.get(key, default)
+
+# ── GPUStack ────────────────────────────────────────────────────────────────
+GPUSTACK_BASE_URL    = _get("GPUSTACK_BASE_URL",  "https://tei.dh.unibe.ch/v1")
+GPUSTACK_API_KEY     = _get("GPUSTACK_API_KEY",   "")
+GPUSTACK_TIMEOUT     = int(_get("GPUSTACK_TIMEOUT", "120"))
+
+# Model names (must match names registered in GPUStack)
+EXTRACTION_MODEL     = _get("EXTRACTION_MODEL",   "qwen3-30b-a3b-instruct")
+ORCHESTRATOR_MODEL   = _get("ORCHESTRATOR_MODEL", "minimax-m2.7")
+
+# ── OCR ─────────────────────────────────────────────────────────────────────
+# "gpustack" → use GPUStack MiniMax-M2.7 for OCR
+# "easyocr"  → local EasyOCR (no API call, CPU/GPU)
+OCR_ENGINE           = _get("OCR_ENGINE",         "easyocr")
 ```
 
-**Acceptance:** Provider + model + base URL configurable via env vars only; no code changes needed to switch providers.
+Create `.env.gpustack` (git-ignored automatically since `.env*` is in `.gitignore`):
+
+```env
+# GPUStack (all LLM calls — tei.dh.unibe.ch)
+GPUSTACK_BASE_URL=https://tei.dh.unibe.ch/v1
+GPUSTACK_API_KEY=your-token-here
+
+# Model names (check GPUStack dashboard for exact names)
+EXTRACTION_MODEL=qwen3-30b-a3b-instruct
+ORCHESTRATOR_MODEL=minimax-m2.7
+
+# OCR engine: easyocr (local, no API) or gpustack (MiniMax-M2.7)
+OCR_ENGINE=easyocr
+```
+
+Add to `.gitignore`:
+```
+.env.gpustack
+```
+
+**Acceptance:** Pipeline reads GPUStack config from `.env.gpustack` with no code changes.
 
 ---
 
-### MILESTONE 1.2 — LLMClient ABC + Ollama Implementation
+### MILESTONE 1.2 — GPUStack Client (`llm_client.py`)
 
 **File:** `scripts/llm_client.py` (new)
 
+Mirrors the pattern from `thodel/agentic_historian/utils/gpustack_client.py`.
+
 ```python
-from abc import ABC, abstractmethod
+# scripts/llm_client.py
+"""Thin GPUStack client — wraps openai.OpenAI with GPUStack base URL."""
+from __future__ import annotations
 
-class LLMClient(ABC):
-    @abstractmethod
-    def generate(self, prompt: str, *, system: str | None = None) -> str:
-        """Send prompt to LLM, return raw string response."""
-        ...
+import logging
+from typing import Any
 
-    @abstractmethod
-    def name(self) -> str:
-        ...
+import openai
 
-class OllamaClient(LLMClient):
-    def __init__(self, model: str, base_url: str = "http://localhost:11434/v1"):
-        ...
+from config import GPUSTACK_BASE_URL, GPUSTACK_API_KEY, GPUSTACK_TIMEOUT
 
-class LMStudioClient(LLMClient):
-    # OpenAI-compatible endpoint
-    ...
+logger = logging.getLogger(__name__)
 
-class VLLMClient(LLMClient):
-    # OpenAI-compatible endpoint (supports Qwen, Llama, Mistral)
-    ...
+# Reusable client (singleton per process)
+_client: openai.OpenAI | None = None
 
-class GoogleClient(LLMClient):
-    # Current: google.genai
-    ...
+def get_client() -> openai.OpenAI:
+    """Return a shared OpenAI client pointed at GPUSTACK_BASE_URL."""
+    global _client
+    if _client is None:
+        _client = openai.OpenAI(
+            base_url=GPUSTACK_BASE_URL,
+            api_key=GPUSTACK_API_KEY or "dummy",   # GPUStack may not require a key
+            timeout=GPUSTACK_TIMEOUT,
+        )
+    return _client
+
+def generate(prompt: str, *, system: str | None = None,
+             model: str | None = None, **kwargs: Any) -> str:
+    """
+    Send a chat completion to GPUStack.
+
+    Args:
+        prompt     — user message
+        system     — optional system prompt
+        model      — override EXTRACTION_MODEL (None = use config default)
+        **kwargs  — passed through to the API (temperature, max_tokens, …)
+
+    Returns:
+        The raw ``content`` string from the first assistant message.
+    """
+    messages = []
+    if system:
+        messages.append({"role": "system", "content": system})
+    messages.append({"role": "user", "content": prompt})
+
+    client = get_client()
+    resp = client.chat.completions.create(
+        model=model or EXTRACTION_MODEL,
+        messages=messages,
+        **kwargs,
+    )
+    return resp.choices[0].message.content or ""
 ```
 
-**Decision:** All local implementations use the **OpenAI-compatible `/v1/chat/completions` interface**. Ollama, LM Studio, and vLLM all expose this. MiniMax and GPT-OSS also expose OpenAI-compatible endpoints. One `openai.OpenAI` client handles all of them.
-
-**Acceptance:** `llm_client.get_client()` returns a client for the configured `EXTRACTION_PROVIDER`. All existing `extract_persons_google.py` calls replaced with this.
+**Acceptance:** `python -c "from scripts.llm_client import generate; print(generate('Say hello in one word'))"` → a response from `tei.dh.unibe.ch`.
 
 ---
 
-### MILESTONE 1.3 — Mistral OCR → Local OCR Fallback
+### MILESTONE 1.3 — Port Person Extraction to GPUStack
 
-**File:** `scripts/run_pipeline.py` — refactor `_mistral_ocr()`
+**File:** `scripts/extract_persons_google.py` — replace `google.genai` calls
+
+**Step 1:** Update the imports and client init (keep `use_genai_metadata` param name for compat):
+
+```python
+# Near line 871 — replace genai block
+# BEFORE:
+from google import genai
+client = genai.Client(api_key=api_key)
+resp = client.models.generate_content(
+    model="gemini-2.0-flash",
+    contents=[prompt],
+    config=genai.types.GenerateContentConfig(thinking_config=...)
+)
+
+# AFTER:
+from scripts.llm_client import generate
+raw = generate(
+    prompt,
+    system=SYSTEM_PROMPT,
+    model=EXTRACTION_MODEL,
+    max_tokens=_max_tokens,
+    temperature=0.1,
+)
+```
+
+**Step 2:** Adjust prompt for GPUStack models (ASCII delimiters, no emoji):
+
+```python
+# Replace emoji in SYSTEM_PROMPT section:
+#   🚫 → [EXCLUDE]   ✅ → [INCLUDE]   📋 → [FORMAT]
+# Remove Gemini-specific framing: "Respond with EXACTLY this JSON"
+# Add instead: "Output valid JSON only. No markdown fences."
+```
+
+**Step 3:** Update `requirements.txt`:
+- Remove: `google-genai`
+- Add: `openai` (already implied by `mistralai` dep, but make explicit)
+
+**Step 4:** In `run_pipeline.py` — remove `GOOGLE_API_KEY` from env-check messages.
+
+**Acceptance:** `python scripts/run_pipeline.py --input-dir data/raw --genai-metadata` extracts persons using GPUStack (qwen3) with <10% quality delta vs Gemini baseline on benchmark documents.
+
+---
+
+### MILESTONE 1.4 — Port Mistral OCR to GPUStack + EasyOCR
+
+**File:** `scripts/run_pipeline.py` — replace `_mistral_ocr()` with GPUStack MiniMax-M2.7 or EasyOCR
 
 ```python
 def _ocr_image(path: Path) -> str:
-    engine = os.environ.get("OCR_ENGINE", "easyocr")
+    """
+    OCR for image-only PDFs.
+   优先级: EasyOCR (local, no API) > GPUStack MiniMax-M2.7 > Mistral > fallback
+    """
+    engine = os.environ.get("OCR_ENGINE", "easyocr").lower()
+
     if engine == "easyocr":
-        return _easyocr(path)
-    elif engine == "tesseract":
-        return _tesseract_ocr(path)
-    elif engine == "mistral":
-        return _mistral_ocr(path)   # existing
-    else:
-        raise ValueError(f"Unknown OCR_ENGINE: {engine}")
+        result = _easyocr(path)
+        if result:
+            return result
+        logger.warning("EasyOCR returned empty; falling back to GPUStack OCR")
+
+    if engine in ("gpustack", "minimax"):
+        result = _gpustack_ocr(path)
+        if result:
+            return result
+        logger.warning("GPUStack OCR failed; falling back to Mistral")
+        # fall through to mistral
+
+    return _mistral_ocr(path)  # existing, keep as final fallback
+
+
+def _gpustack_ocr(path: Path) -> str:
+    """Use GPUStack MiniMax-M2.7 for document OCR."""
+    import base64, json
+    from scripts.llm_client import generate
+
+    b64 = base64.b64encode(path.read_bytes()).decode()
+
+    prompt = (
+        "You are an OCR system. Given an image of a document page, transcribe ALL text "
+        "exactly as it appears. Preserve line breaks, capitalization, and unusual characters. "
+        "If the image is not a document page, say: [NOT_A_PAGE]\n\n"
+        f"Image data: data:application/pdf;base64,{b64}"
+    )
+    try:
+        text = generate(
+            prompt,
+            model=ORCHESTRATOR_MODEL,  # MiniMax-M2.7 for vision/OCR tasks
+            max_tokens=8192,
+            temperature=0.0,
+        )
+        if text == "[NOT_A_PAGE]":
+            return ""
+        return text.strip()
+    except Exception as exc:
+        logger.error("GPUStack OCR error: %s", exc)
+        return ""
+
+
+def _easyocr(path: Path) -> str:
+    """Local EasyOCR on CPU/GPU — no API call, no API key needed."""
+    try:
+        import easyocr
+    except ImportError:
+        logger.debug("easyocr not installed")
+        return ""
+
+    # Cache the reader (init is expensive)
+    if not hasattr(_easyocr, "_reader"):
+        _easyocr._reader = easyocr.Reader(
+            ["la", "en", "fr", "de", "it", "es"], gpu=True, verbose=False
+        )
+
+    results = _easyocr._reader.readtext(path.read_bytes())
+    lines = [r[1] for r in results if r[2] > 0.25]
+    return " ".join(lines).strip()
 ```
 
-**EasyOCR setup:**
-```python
-import easyocr
-reader = easyocr.Reader(['la', 'en', 'fr', 'de', 'it', 'es'], gpu=True)
-results = reader.readtext(path.read_bytes())
-text = " ".join(r[1] for r in results)
-```
-
-**Acceptance:** Switching `OCR_ENGINE=easyocr` produces comparable text quality to Mistral on medieval Latin/Old French charters. Measured by person extraction recall on a benchmark document.
+**Acceptance:** Switching `OCR_ENGINE=easyocr` produces comparable text on medieval Latin/Old French charters with no API call.
 
 ---
 
-### MILESTONE 1.4 — Prompt Tuning for Local Models
-
-**File:** `scripts/extract_persons_google.py`
-
-Changes needed for Qwen3 / local models:
-
-| Issue | Fix |
-|---|---|
-| Emoji in prompt (🚫 ✅ 📋) confuse some models | Replace with ASCII: `[EXCLUDE]`, `[INCLUDE]`, `[FORMAT]` |
-| Gemini-specific JSON framing | Remove `Respond with EXACTLY this JSON`; use `Output valid JSON only. No markdown fences.` |
-| Very large `_CHUNK_SIZE` (5,500) | Tune per model: test at 3k, 5k, 8k chars; measure truncation rate |
-| `gemini-2.0-flash` hardcoded | Remove; use config-driven model name |
-
-**Test document:** One Latin charter and one Old French chronicle. Run extraction with Ollama Qwen3 and compare:
-- Person count
-- Metadata completeness
-- BibTeX quality
-
-**Acceptance:** Delta < 10% on all three metrics vs Gemini baseline on same documents.
-
----
-
-### MILESTONE 1.5 — Smoke Test Suite
+### MILESTONE 1.5 — Smoke Test
 
 **File:** `scripts/test_llm_client.py` (new)
 
-```bash
-# Test all providers
-python scripts/test_llm_client.py --provider ollama --model qwen3:latest
-python scripts/test_llm_client.py --provider lmstudio --model qwen3
-python scripts/test_llm_client.py --provider openai --model minimax-m2.7
+```python
+#!/usr/bin/env python3
+"""Smoke test for GPUStack integration."""
+import sys, json
+from scripts.llm_client import generate
+from config import EXTRACTION_MODEL, ORCHESTRATOR_MODEL
 
-# Run full pipeline with each
-python scripts/run_pipeline.py --input-dir data/raw --provider ollama
+def main():
+    # Test extraction model
+    print(f"Testing EXTRACTION_MODEL={EXTRACTION_MODEL}…")
+    out = generate(
+        "List 3 crusader kings of Jerusalem (Baldwin I–V) as JSON: "
+        "[{\"name\": \"…\", \"title\": \"…\", \"years\": \"…\"}]",
+        max_tokens=256,
+    )
+    print("Extraction model:", out[:200])
+
+    # Test OCR instruction
+    print(f"\nTesting ORCHESTRATOR_MODEL={ORCHESTRATOR_MODEL}…")
+    out2 = generate(
+        "Say 'OCR OK' if you can read this.", max_tokens=32
+    )
+    print("Orchestrator model:", out2)
+
+    # Test JSON parsing
+    try:
+        data = json.loads(out)
+        print(f"\n✅ JSON parsed: {len(data)} items")
+    except json.JSONDecodeError as e:
+        print(f"\n⚠️  JSON parse error: {e}")
+        print("Raw output:", out)
+
+if __name__ == "__main__":
+    main()
 ```
 
-**Acceptance:** All three providers produce valid output on the benchmark document set.
+Run: `python scripts/test_llm_client.py`
+
+**Acceptance:** Both models respond, JSON parses correctly.
 
 ---
 
-## EPIC 2 — Pipeline Reliability
+## Epic 2 — Pipeline Reliability ⚠️ HIGH PRIORITY
 
-### MILESTONE 2.1 — JSON Recovery on Malformed LLM Output
+*(Does not require GPUStack access — offline improvements)*
 
-**Problem:** Local models sometimes output markdown fences or extra text around JSON. Current parser dies.
+### MILESTONE 2.1 — JSON Recovery
 
-**Fix in `scripts/extract_persons_google.py`:**
+**File:** `scripts/extract_persons_google.py` — add `_parse_llm_json()`
 
 ```python
 def _parse_llm_json(raw: str) -> dict | None:
-    """Extract JSON from LLM output, even with markdown fences or extra text."""
-    # Try direct parse first
+    """Parse JSON from LLM output, handling markdown fences and extra text."""
+    raw = raw.strip()
+    # Direct parse
     try:
-        return json.loads(raw.strip())
+        return json.loads(raw)
     except json.JSONDecodeError:
         pass
     # Strip markdown fences
     raw = re.sub(r'^```json\s*', '', raw, flags=re.MULTILINE)
     raw = re.sub(r'```\s*$', '', raw, flags=re.MULTILINE)
-    # Find first { and last }
-    start = raw.find('{')
-    end = raw.rfind('}') + 1
+    # Find first { ... last }
+    start, end = raw.find('{'), raw.rfind('}') + 1
     if start >= 0 and end > start:
         try:
             return json.loads(raw[start:end])
@@ -186,32 +358,15 @@ def _parse_llm_json(raw: str) -> dict | None:
     return None
 ```
 
-**Acceptance:** 95% of LLM outputs parse successfully after recovery attempts.
+Apply to: `extract_persons_and_metadata()` return value, `extract_persons()` return value.
 
 ---
 
 ### MILESTONE 2.2 — Chunk Boundary Respect
 
-**Problem:** `_chunk_text()` splits mid-sentence, losing context for the LLM.
+**File:** `scripts/extract_persons_google.py` — improve `_chunk_text()`
 
-**Fix:** Split only on double newlines or sentence boundaries:
-
-```python
-def _chunk_text(text: str, size: int = 5500) -> list[tuple[int, str]]:
-    """Split on paragraph/sentence boundaries, not mid-word."""
-    paragraphs = text.split('\n\n')
-    chunks, current = [], ""
-    for para in paragraphs:
-        if len(current) + len(para) <= size:
-            current += para + '\n\n'
-        else:
-            if current:
-                chunks.append((text.index(current), current.strip()))
-            current = para + '\n\n'
-    if current:
-        chunks.append((text.index(current), current.strip()))
-    return chunks
-```
+Split on `\n\n` (paragraph boundaries) not mid-sentence. Prevents splitting person mentions across chunks.
 
 ---
 
@@ -220,27 +375,29 @@ def _chunk_text(text: str, size: int = 5500) -> list[tuple[int, str]]:
 ```python
 import time, functools
 
-def with_retry(fn, max_attempts=3, base_delay=2.0):
+def with_retry(fn, max_attempts=3, base_delay=2.0, logger=None):
     @functools.wraps(fn)
     def wrapper(*args, **kwargs):
         for attempt in range(max_attempts):
             try:
                 return fn(*args, **kwargs)
-            except Exception as e:
+            except Exception as exc:
                 if attempt == max_attempts - 1:
                     raise
-                time.sleep(base_delay * (2 ** attempt))
-                logger.warning(f"Retry {attempt+1}/{max_attempts}: {e}")
+                delay = base_delay * (2 ** attempt)
+                if logger:
+                    logger.warning("Retry %d/%d after %.1fs: %s", attempt+1, max_attempts, delay, exc)
+                time.sleep(delay)
     return wrapper
 ```
 
-Apply to: LLM calls, Wikidata SPARQL queries, Mistral OCR.
+Apply to: `generate()` call in `extract_persons_google.py`, `_gpustack_ocr()`, Wikidata SPARQL calls.
 
 ---
 
 ### MILESTONE 2.4 — Pipeline Run Reports
 
-**File:** `scripts/run_pipeline.py` — after each run, write `data/staging/run_report.json`:
+**File:** `scripts/run_pipeline.py` — write `data/staging/run_report.json` after each run:
 
 ```json
 {
@@ -249,242 +406,106 @@ Apply to: LLM calls, Wikidata SPARQL queries, Mistral OCR.
   "docs_ok": 10,
   "docs_failed": 2,
   "total_persons": 347,
-  "llm_provider": "ollama",
-  "model": "qwen3:latest",
+  "llm_provider": "gpustack",
+  "extraction_model": "qwen3-30b-a3b-instruct",
   "ocr_engine": "easyocr",
-  "failures": [
-    {"doc": "henri1_charter", "error": "LLM timeout", "retry": 3}
-  ]
+  "failures": [{"doc": "henri1_charter", "error": "timeout", "retry": 3}]
 }
 ```
 
 ---
 
-## EPIC 3 — KG Enrichment & Authority Quality
+## Epic 3 — KG Enrichment & Authority Quality
 
-### MILESTONE 3.1 — Wikidata QID Enrichment (0 → 19k links)
+*(No LLM changes — focuses on Wikidata linking and data quality)*
 
-**Current state:** 0 Wikidata links in `unified_kg.json` despite 23k+ Wikidata persons being in the peerage export.
+### MILESTONE 3.1 — Fuzzy Wikidata Matching (0 → 10k+ QID links)
 
-**Root cause:** `build_unified_kg.py` does exact normalized name matching only. Most names don't match exactly across sources.
-
-**Fix — fuzzy matching + occupation filter:**
+**File:** `scripts/build_unified_kg.py` — replace exact match with RapidFuzz
 
 ```python
 from rapidfuzz import fuzz
 
 def match_wikidata_to_authority(auth_persons, wikidata_persons, threshold=85):
-    """Match authority persons to Wikidata using fuzzy string matching."""
     for auth_id, person in auth_persons.items():
         name = person["preferred_label"]
-        for qid, wd_person in wikidata_persons.items():
-            score = fuzz.token_sort_ratio(name, wd_person["preferred_label"])
-            if score >= threshold:
-                person["identifiers"]["wikidata_qid"] = qid
-                break
+        best_score, best_qid = 0, None
+        for qid, wd in wikidata_persons.items():
+            score = fuzz.token_sort_ratio(name, wd["preferred_label"])
+            if score > best_score:
+                best_score, best_qid = score, qid
+        if best_score >= threshold:
+            person["identifiers"]["wikidata_qid"] = best_qid
 ```
 
-**Acceptance:** ≥50% of the 126 authority persons get a `wikidata_qid` link.
+**Acceptance:** ≥50% of 126 authority persons get a `wikidata_qid`.
 
 ---
 
-### MILESTONE 3.2 — Gender字段 Completion
+### MILESTONE 3.2 — Gender Field Fix
 
-**Current:** Most Wikidata persons have `gender: unknown`.
+**File:** `scripts/build_unified_kg.py` — fix `load_wikidata_peerage()`
 
-**Fix:** Parse P21 (sex or gender) from Wikidata CSV data in `build_unified_kg.py` — it's already being parsed in `load_wikidata_peerage()` but not populating the field correctly.
-
----
-
-### MILESTONE 3.3 — Relationship Cleanup
-
-**Problem:** Wikidata relationship parsing (P22, P25, P26, P40) creates duplicate or malformed entries.
-
-**Fix:** Add deduplication and canonicalization step after loading Wikidata:
-
-```python
-def clean_relationships(person: dict) -> dict:
-    seen = set()
-    cleaned = []
-    for rel in person.get("relationships", []):
-        key = (rel.get("type"), rel.get("person_label", "").lower())
-        if key not in seen:
-            seen.add(key)
-            cleaned.append(rel)
-    person["relationships"] = cleaned
-    return person
-```
-
----
-
-### MILESTONE 3.4 — Arabic / Latin Source Coverage
-
-**Goal:** Expand beyond the current ~126-person SDHSS authority to include:
-- Muslim elites (Saladin's court, Ayyubid dynasty, Mamluk sultans)
-- Byzantine figures
-- Local Levantine Christians (Melkite, Syrian Orthodox, Armenian)
-
-**Action:** Create `scripts/authority_arabul.json` with 200+ Arabic-source persons. Sources: Ibn Khallikān, al-Dhahabī, Ibn al-Athīr. Use bilingual name fields (`latin_name`, `arabic_name`, `transliteration`).
-
----
-
-## EPIC 4 — H-i-t-L UI Improvements
-
-### MILESTONE 4.1 — Bulk Accept / Reject
-
-**Problem:** Current UI requires one-click-per-decision for entity linking.
-
-**Fix:** Add "Accept all top candidates" and "Reject all" buttons per document. Keyboard shortcuts: `a` = accept top, `x` = reject all, `n` = next document.
-
----
-
-### MILESTONE 4.2 — Document Filter & Search
-
-Add sidebar filters:
-- By language (Latin / Old French / Arabic / Greek)
-- By doc_type (chronicle / charter / narrative / letter)
-- By extraction date (last 7d / 30d / all)
-- By unresolved person count (0 / 1-5 / 6+)
-
----
-
-### MILESTONE 4.3 — Extraction Confidence Overlay
-
-Show a heat map in the text view: highlight person mentions by extraction confidence (green = high, yellow = medium, red = low). Helps identify where the model is uncertain.
-
----
-
-### MILESTONE 4.4 — Relationship Graph Preview
-
-In the person detail panel, show a mini-graph of relationships before saving:
-
-```html
-<div id="relationship-graph" data-person-id="AUTH:CR1"></div>
-<script type="module" src="/js/graph-preview.js"></script>
-```
-
-Use D3.js force-directed layout. Clicking a node navigates to that person.
-
----
-
-## EPIC 5 — CI/CD & Deployment
-
-### MILESTONE 5.1 — Run Pipeline via SSH Deploy Key (not GitHub Actions secrets)
-
-**Problem:** `GOOGLE_API_KEY` and `MISTRAL_API_KEY` live in GitHub Actions secrets. Rotation is cumbersome.
-
-**Fix:** Move to a `secrets.yaml` file encrypted with `git-crypt` or SOPS:
-
-```bash
-# .github/workflows/pipeline.yml — replace secrets injection with:
-- name: Pull secrets
-  env:
-    SOPS_AGE_KEY: ${{ secrets.SOPS_AGE_KEY }}
-  run: |
-    pip install sops
-    sops --decrypt secrets.yaml.enc > secrets.yaml
-    # secrets.yaml contains: GOOGLE_API_KEY, MISTRAL_API_KEY
-```
-
----
-
-### MILESTONE 5.2 — Per-Branch Preview Deployments
-
-**Fix:** Extend `.github/workflows/pages.yml` to deploy PR previews:
-
-```yaml
-on:
-  pull_request:
-    branches: [main]
-
-jobs:
-  preview:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Build site
-        run: pip install -r requirements.txt && python scripts/run_pipeline.py
-      - name: Deploy preview
-        uses: nwtgck/actions-netlify@v3
-        with:
-          publish_dir: ./site
-          productionBranch: main
-          productionDeploy: false  # it's a preview
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-```
-
-**Acceptance:** Every PR gets a `https://pr-{n}--outremer-preview.netlify.app` URL.
-
----
-
-### MILESTONE 5.3 — nightly Run with Result Notification
-
-```yaml
-schedule:
-  - cron: "0 3 * * *"   # 03:00 UTC nightly
-
-jobs:
-  run:
-    ...
-  notify:
-    needs: run
-    if: always()
-    steps:
-      - name: Notify failure
-        if: needs.run.result == 'failure'
-        run: |
-          curl -X POST https://api.github.com/repos/thodel/outremer/issues \
-            -H "Authorization: token ${{ secrets.GH_TOKEN }}" \
-            -d '{"title": "Nightly pipeline failed", "body": "Check Actions log"}'
-```
-
----
-
-## MILESTONE 5.4 — Local Dev Container
-
-**File:** `Dockerfile` + `docker-compose.yml`
-
-```dockerfile
-FROM python:3.12-slim
-RUN apt-get update && apt-get install -y tesseract-ocr poppler-utils
-RUN pip install easyocr  # GPU image separately
-COPY requirements.txt .
-RUN pip install -r requirements.txt
-WORKDIR /repo
-CMD ["python", "scripts/run_pipeline.py"]
-```
-
-Developers: `docker compose up` → pipeline runs locally, no API keys needed.
+The P21 parsing already exists but populates `bio.gender` instead of `bio.sex`. Fix the field name. Verify 1,000 random Wikidata persons have gender populated.
 
 ---
 
 ## Epic Summary
 
-| Epic | Milestones | Priority | Effort |
-|------|-----------|----------|--------|
-| **1. LLM Abstraction** | 1.1 Config layer → 1.5 Smoke test | ⚠️ HIGH | Medium |
-| **2. Pipeline Reliability** | 2.1 JSON recovery → 2.4 Run reports | ⚠️ HIGH | Low |
-| **3. KG Enrichment** | 3.1 Wikidata links → 3.4 Arabic sources | MEDIUM | Medium |
-| **4. H-i-t-L UI** | 4.1 Bulk actions → 4.4 Graph preview | MEDIUM | Medium |
-| **5. CI/CD** | 5.1 SOPS secrets → 5.4 Dev container | LOW | Low |
+| Epic | Milestones | Priority | GPUStack |
+|------|-----------|----------|----------|
+| **1. GPUStack Integration** | 1.1 Config → 1.5 Smoke test | ⚠️ HIGH | Yes |
+| **2. Pipeline Reliability** | 2.1 JSON recovery → 2.4 Run reports | ⚠️ HIGH | No |
+| **3. KG Enrichment** | 3.1 Fuzzy Wikidata matching → 3.2 Gender fix | MEDIUM | No |
 
 ---
 
-## Recommended First Steps (Next 2 Weeks)
+## Recommended Implementation Order
 
-1. **Day 1–2:** Create `scripts/config.py` + `scripts/llm_client.py` (Epic 1, M1.1–M1.2)
-2. **Day 3–4:** Port extraction to Ollama + Qwen3, verify output quality (Epic 1, M1.4)
-3. **Day 5:** Add JSON recovery + retry logic (Epic 2, M2.1 + M2.3)
-4. **Day 6–7:** Add Wikidata fuzzy matching to `build_unified_kg.py` (Epic 3, M3.1)
-5. **Day 8+:** EasyOCR fallback for OCR (Epic 1, M1.3), then UI improvements (Epic 4)
+```
+Week 1
+  Day 1  — M1.1: scripts/config.py + .env.gpustack + .gitignore
+  Day 2  — M1.2: scripts/llm_client.py + smoke test
+  Day 3  — M1.3: Port extract_persons_google.py to GPUStack (rm google-genai)
+  Day 4  — M1.4: Port run_pipeline.py OCR to EasyOCR + GPUStack fallback
+  Day 5  — M1.5: Run smoke test + verify extraction quality
+
+Week 2
+  Day 6  — M2.1: JSON recovery + chunk boundary fix
+  Day 7  — M2.3: Retry decorator on all LLM calls
+  Day 8  — M2.4: Run report JSON
+  Day 9  — M3.1: Fuzzy Wikidata matching in build_unified_kg.py
+  Day 10 — M3.2: Gender field fix + commit
+```
+
+---
+
+## What Stays the Same
+
+| File / Component | Reason |
+|-----------------|--------|
+| `wikidata_reconcile.py` | Uses Wikidata SPARQL API, not an LLM — no changes needed |
+| `build_unified_kg.py` | Offline KG builder — no LLM, no API calls |
+| All scrapers in `scrapers/` | No LLM calls |
+| `scripts/process_staged.py` | Orchestration only — passes env vars through |
+| `requirements.txt` core deps | RapidFuzz, pypdf stay; remove `google-genai` |
+
+---
+
+## Dependencies Removed
+
+| Package | Where used | Replacement |
+|---------|-----------|-------------|
+| `google-genai` | `extract_persons_google.py` | `openai` + GPUStack |
+| `mistralai` | `run_pipeline.py` | EasyOCR or GPUStack MiniMax |
+
+Both can be removed from `requirements.txt` after migration is complete.
 
 ---
 
 ## Open Questions for Tobias
 
-1. Which local model provider do you want to target first — **Ollama** (easiest setup), **LM Studio** (better UI), or **vLLM** (higher throughput)?
-2. Do you have a GPU available for EasyOCR or vLLM, or is this CPU-only?
-3. Should the Arabic/Levantine authority expansion be a priority, or focus on completeness of existing Western crusader data first?
-4. Should the GitHub Pages H-i-t-L UI be moved to a separate repo or stay in `site/`?
-5. What is the target environment — your local machine, a lab server, or cloud VMs?
+1. **GPUStack model names:** What are the exact model names registered in GPUStack for `tei.dh.unibe.ch`? I see `minimax-m2.7` and `qwen3-vl-30b-a3b-instruct` in `agentic_historian` config — are these the same names, or different registrations?
+2. **OCR quality bar:** Is EasyOCR quality on medieval Latin charters acceptable, or is GPUStack MiniMax-M2.7 OCR preferred as primary path?
+3. **Wikidata SPARQL:** Should `wikidata_reconcile.py` also use GPUStack for candidate scoring (instead of the current heuristic scorer)? That would be a later enhancement.
+4. **API key:** Does GPUStack on `tei.dh.unibe.ch` require an API key, or is it open to the internal network?

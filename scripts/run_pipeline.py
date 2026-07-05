@@ -10,7 +10,8 @@ Usage
         [--bib-dir bib] [--outremer-index scripts/outremer_index.json] \
         [--genai-metadata]
 
-GOOGLE_API_KEY env var activates Gemini extraction; falls back to heuristics if absent.
+GPUSTACK_BASE_URL (from .env.gpustack) activates GPUStack extraction;
+falls back to heuristic NER if absent.
 """
 from __future__ import annotations
 
@@ -27,6 +28,8 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
 from extract_persons_google import extract_persons_and_metadata
+from config import OCR_ENGINE
+from scripts.llm_client import generate as _llm_generate
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 logger = logging.getLogger(__name__)
@@ -79,18 +82,107 @@ def read_pdf_file(path: Path) -> str:
 
     # Heuristic: if we got very little text, it's probably a scanned/image PDF
     if len(text) < 200:
-        logger.info("Low text yield from pypdf (%d chars) — trying Mistral OCR…", len(text))
-        ocr_text = _mistral_ocr(path)
+        logger.info("Low text yield from pypdf (%d chars) — trying OCR…", len(text))
+        ocr_text = _ocr_image(path)
         if ocr_text:
             logger.info("Mistral OCR returned %d chars.", len(ocr_text))
             return ocr_text
-        logger.warning("Mistral OCR also failed; proceeding with minimal text.")
+        logger.warning("OCR also failed; proceeding with minimal text.")
 
     return text
 
 
+def _ocr_image(path: Path) -> str:
+    """
+    OCR dispatcher — tries engines in priority order per OCR_ENGINE setting.
+
+    Priority chain:
+      easyocr  → local EasyOCR (no API call)
+               → GPUStack MiniMax-M2.7
+               → Mistral (legacy fallback)
+      gpustack → GPUStack MiniMax-M2.7
+               → Mistral
+      mistral  → Mistral only (legacy)
+    """
+    engine = OCR_ENGINE.lower()
+
+    if engine == "easyocr":
+        result = _easyocr(path)
+        if result:
+            return result
+        logger.info("EasyOCR returned empty — trying GPUStack OCR next.")
+        result = _gpustack_ocr(path)
+        if result:
+            return result
+        logger.info("GPUStack OCR also returned empty — trying Mistral as last resort.")
+        return _mistral_ocr(path)
+
+    if engine == "gpustack":
+        result = _gpustack_ocr(path)
+        if result:
+            return result
+        logger.info("GPUStack OCR failed — trying Mistral as last resort.")
+        return _mistral_ocr(path)
+
+    # mistral or unknown
+    return _mistral_ocr(path)
+
+
+def _easyocr(path: Path) -> str:
+    """Local EasyOCR — no API call, no API key needed."""
+    try:
+        import easyocr
+    except ImportError:
+        logger.debug("easyocr not installed — skipping.")
+        return ""
+
+    if not hasattr(_easyocr, "_reader"):
+        _easyocr._reader = easyocr.Reader(
+            ["la", "en", "fr", "de", "it", "es"], gpu=True, verbose=False
+        )
+
+    try:
+        results = _easyocr._reader.readtext(path.read_bytes())
+        lines = [r[1] for r in results if r[2] > 0.25]
+        text = " ".join(lines).strip()
+        if text:
+            logger.info("EasyOCR returned %d chars.", len(text))
+        return text
+    except Exception as exc:
+        logger.error("EasyOCR error: %s", exc)
+        return ""
+
+
+def _gpustack_ocr(path: Path) -> str:
+    """GPUStack MiniMax-M2.7 for document OCR."""
+    import base64
+    from config import ORCHESTRATOR_MODEL
+
+    b64 = base64.b64encode(path.read_bytes()).decode()
+    prompt = (
+        "You are an OCR system. Given an image of a document page, transcribe ALL text "
+        "exactly as it appears. Preserve line breaks, capitalization, and unusual characters. "
+        "If the image is not a document page, respond with: [NOT_A_PAGE]\n\n"
+        f"Image data: data:application/pdf;base64,{b64}"
+    )
+    try:
+        text = _llm_generate(
+            prompt,
+            model=ORCHESTRATOR_MODEL,
+            max_tokens=8192,
+            temperature=0.0,
+        )
+        if text == "[NOT_A_PAGE]" or not text.strip():
+            return ""
+        logger.info("GPUStack OCR returned %d chars.", len(text))
+        return text.strip()
+    except Exception as exc:
+        logger.error("GPUStack OCR error: %s", exc)
+        return ""
+
+
 def _mistral_ocr(path: Path) -> str:
-    """Use Mistral OCR to extract text from a scanned PDF."""
+    """Use Mistral OCR to extract text from a scanned PDF. Legacy fallback."""
     import base64
     api_key = os.environ.get("MISTRAL_API_KEY", "").strip()
     if not api_key:
@@ -113,7 +205,10 @@ def _mistral_ocr(path: Path) -> str:
             },
         )
         pages = resp.pages if hasattr(resp, "pages") else []
-        return "\n\n".join(p.markdown for p in pages if p.markdown).strip()
+        text = "\n\n".join(p.markdown for p in pages if p.markdown).strip()
+        if text:
+            logger.info("Mistral OCR returned %d chars.", len(text))
+        return text
     except Exception as exc:
         logger.error("Mistral OCR error: %s", exc)
         return ""
