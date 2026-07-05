@@ -24,7 +24,7 @@ def _get(key: str, default=None):
 
 
 # ── GPUStack ────────────────────────────────────────────────────────────────
-GPUSTACK_BASE_URL  = _get("GPUSTACK_BASE_URL",  "https://tei.dh.unibe.ch/v1")
+GPUSTACK_BASE_URL  = _get("GPUSTACK_BASE_URL",  "https://gpustack.unibe.ch/v1")
 GPUSTACK_API_KEY   = os.environ.get("GPUSTACK_API_KEY", "")
 GPUSTACK_TIMEOUT   = int(_get("GPUSTACK_TIMEOUT", "120"))
 
