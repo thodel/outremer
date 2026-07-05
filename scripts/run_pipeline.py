@@ -127,8 +127,8 @@ def _ocr_image(path: Path) -> str:
     """
     OCR dispatcher — tries engines in priority order per OCR_ENGINE setting.
 
-    Priority chain:
-      easyocr  → local EasyOCR (no API call)
+    # Priority chain:
+      qwen3-vl → GPUStack Qwen3 VL 30B (primary, GPU)
                → GPUStack MiniMax-M2.7
                → Mistral (legacy fallback)
       gpustack → GPUStack MiniMax-M2.7
@@ -137,57 +137,23 @@ def _ocr_image(path: Path) -> str:
     """
     engine = OCR_ENGINE.lower()
 
-    if engine == "easyocr":
-        result = _easyocr(path)
-        if result:
-            return result
-        logger.info("EasyOCR returned empty — trying GPUStack OCR next.")
-        result = _gpustack_ocr(path)
-        if result:
-            return result
-        logger.info("GPUStack OCR also returned empty — trying Mistral as last resort.")
-        return _mistral_ocr(path)
-
-    if engine == "gpustack":
-        result = _gpustack_ocr(path)
-        if result:
-            return result
-        logger.info("GPUStack OCR failed — trying Mistral as last resort.")
-        return _mistral_ocr(path)
-
-    # mistral or unknown
-    return _mistral_ocr(path)
+    # qwen3-vl (default): Qwen3 VL 30B primary → MiniMax fallback → Mistral final
+    result = _qwen3vl_ocr(path)
+    if result:
+        return result
+    logger.info("Qwen3 VL OCR empty — trying MiniMax-M2.7.")
+    result = _minimax_ocr(path)
+    if result:
+        return result
+    logger.info("MiniMax OCR also empty — trying Mistral as last resort.")
+    return _minimax_ocr(path)
 
 
-def _easyocr(path: Path) -> str:
-    """Local EasyOCR — no API call, no API key needed."""
-    try:
-        import easyocr
-    except ImportError:
-        logger.debug("easyocr not installed — skipping.")
-        return ""
 
-    if not hasattr(_easyocr, "_reader"):
-        _easyocr._reader = easyocr.Reader(
-            ["la", "en", "fr", "de", "it", "es"], gpu=True, verbose=False
-        )
-
-    try:
-        results = _easyocr._reader.readtext(path.read_bytes())
-        lines = [r[1] for r in results if r[2] > 0.25]
-        text = " ".join(lines).strip()
-        if text:
-            logger.info("EasyOCR returned %d chars.", len(text))
-        return text
-    except Exception as exc:
-        logger.error("EasyOCR error: %s", exc)
-        return ""
-
-
-def _gpustack_ocr(path: Path) -> str:
-    """GPUStack MiniMax-M2.7 for document OCR."""
+def _qwen3vl_ocr(path: Path) -> str:
+    """GPUStack Qwen3 VL 30B for primary document OCR."""
     import base64
-    from config import ORCHESTRATOR_MODEL
+    from config import ORCHESTRATOR_MODEL, QWEN3_VL_MODEL
 
     b64 = base64.b64encode(path.read_bytes()).decode()
     prompt = (
@@ -199,7 +165,7 @@ def _gpustack_ocr(path: Path) -> str:
     try:
         text = _llm_generate(
             prompt,
-            model=ORCHESTRATOR_MODEL,
+            model=QWEN3_VL_MODEL,
             max_tokens=8192,
             temperature=0.0,
         )
@@ -212,8 +178,8 @@ def _gpustack_ocr(path: Path) -> str:
         return ""
 
 
-def _mistral_ocr(path: Path) -> str:
-    """Use Mistral OCR to extract text from a scanned PDF. Legacy fallback."""
+def _minimax_ocr(path: Path) -> str:  # secondary GPUStack fallback
+    """GPUStack MiniMax-M2.7 secondary → Mistral final fallback."""
     import base64
     api_key = os.environ.get("MISTRAL_API_KEY", "").strip()
     if not api_key:
