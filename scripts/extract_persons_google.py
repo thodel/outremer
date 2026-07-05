@@ -402,12 +402,25 @@ def _record_problem_entities(
 
 
 def _repair_json(raw: str) -> str:
-    """Best-effort repair of common LLM JSON issues before parsing."""
+    """
+    Best-effort repair of common LLM JSON issues before parsing.
+
+    1. Strip markdown fences
+    2. Strip control characters
+    3. Extract the first '{' → last '}' window (handles extra text around JSON)
+    """
     # Strip markdown fences
     raw = re.sub(r"^```(?:json)?\s*", "", raw.strip())
     raw = re.sub(r"\s*```$", "", raw.strip())
-    # Strip control characters from the response itself
-    raw = re.sub(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]", " ", raw)
+    # Strip control characters
+    raw = re.sub(r"[--]", " ", raw)
+
+    # First { to last } window
+    first_brace = raw.find("{")
+    last_brace = raw.rfind("}")
+    if first_brace >= 0 and last_brace > first_brace:
+        raw = raw[first_brace:last_brace + 1]
+
     return raw
 
 
@@ -480,17 +493,73 @@ def _recover_truncated_json(raw: str) -> Dict[str, Any]:
 
 
 def _chunk_text(text: str, size: int = _CHUNK_SIZE, overlap: int = _CHUNK_OVERLAP) -> List[Tuple[int, str]]:
-    """Split text into overlapping chunks. Returns list of (offset, chunk)."""
+    """
+    Split text into overlapping chunks at paragraph boundaries.
+
+    Strategy:
+      1. Split on \n\n (paragraph breaks)
+      2. If a paragraph exceeds chunk size, split mid-paragraph on sentence boundaries
+      3. Never split mid-sentence — a sentence that would exceed chunk size is included whole
+    """
     if len(text) <= size:
         return [(0, text)]
+
+    # Split into paragraphs
+    paragraphs = re.split(r"\n\n+", text)
     chunks: List[Tuple[int, str]] = []
     start = 0
-    while start < len(text):
-        end = min(start + size, len(text))
-        chunks.append((start, text[start:end]))
-        if end == len(text):
-            break
-        start += size - overlap
+    current: List[str] = []
+    current_len = 0
+
+    for para in paragraphs:
+        para_len = len(para)
+        # Does this paragraph fit in the current chunk?
+        if current_len + para_len + 2 <= size:
+            current.append(para)
+            current_len += para_len + 2
+        else:
+            # Flush current chunk (may be multiple paragraphs)
+            if current:
+                chunk_text = "\n\n".join(current)
+                chunks.append((start, chunk_text))
+                # Advance with overlap
+                overlap_text = "\n\n".join(current)[-overlap:] if current else ""
+                start += len(chunk_text) - overlap
+                start = max(start, 0)
+
+            if para_len <= size:
+                # Fits as-is — start new chunk with this paragraph
+                current = [para]
+                current_len = para_len + 2
+            else:
+                # Too large — split on sentence boundaries
+                sentences = re.split(r"(?<=[.!?])\s+", para)
+                current = []
+                current_len = 0
+                for sent in sentences:
+                    sent_len = len(sent)
+                    if current_len + sent_len + 1 <= size:
+                        current.append(sent)
+                        current_len += sent_len + 1
+                    else:
+                        if current:
+                            chunk_text = " ".join(current)
+                            chunks.append((start, chunk_text))
+                            overlap_text = chunk_text[-overlap:] if chunk_text else ""
+                            start += len(chunk_text) - overlap
+                            start = max(start, 0)
+                        # Single sentence that exceeds size — include it whole anyway
+                        if sent_len > size:
+                            chunks.append((start, sent[:size]))
+                            start += size
+                        current = [sent]
+                        current_len = sent_len + 1
+
+    # Flush remainder
+    if current:
+        chunk_text = "\n\n".join(current) if len(current) > 1 else current[0]
+        chunks.append((start, chunk_text))
+
     return chunks
 
 

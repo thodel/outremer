@@ -3,16 +3,17 @@
 llm_client.py
 ─────────────
 Thin GPUStack client — wraps openai.OpenAI with GPUStack base URL.
+Includes exponential-backoff retry on transient failures.
 
 Usage:
     from scripts.llm_client import generate
     text = generate("Extract persons from: ...", system="You are an expert...")
-
-All calls go to tei.dh.unibe.ch via the GPUStack proxy.
 """
 from __future__ import annotations
 
 import logging
+import time
+import functools
 from typing import Any
 
 import openai
@@ -42,6 +43,33 @@ def get_client() -> openai.OpenAI:
     return _client
 
 
+def with_retry(max_attempts: int = 3, base_delay: float = 2.0):
+    """
+    Decorator: retry a function with exponential backoff on exception.
+
+    Retries on all exceptions; logs each attempt.
+    """
+    def decorator(fn):
+        @functools.wraps(fn)
+        def wrapper(*args, **kwargs):
+            for attempt in range(max_attempts):
+                try:
+                    return fn(*args, **kwargs)
+                except Exception as exc:
+                    if attempt == max_attempts - 1:
+                        raise
+                    delay = base_delay * (2 ** attempt)
+                    logger.warning(
+                        "Retry %d/%d for %s after %.1fs: %s",
+                        attempt + 1, max_attempts, fn.__name__, delay, exc
+                    )
+                    time.sleep(delay)
+            raise RuntimeError("Unreachable")
+        return wrapper
+    return decorator
+
+
+@with_retry(max_attempts=3, base_delay=2.0)
 def generate(
     prompt: str,
     *,
@@ -50,7 +78,7 @@ def generate(
     **kwargs: Any,
 ) -> str:
     """
-    Send a chat completion to GPUStack.
+    Send a chat completion to GPUStack with automatic retry.
 
     Args:
         prompt   — user message

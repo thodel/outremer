@@ -39,6 +39,37 @@ logger = logging.getLogger(__name__)
 # Utilities
 # ──────────────────────────────────────────────
 
+def _write_run_report(
+    *,
+    run_at: str,
+    docs_total: int,
+    docs_ok: int,
+    docs_failed: int,
+    total_persons: int,
+    extraction_model: str,
+    ocr_engine: str,
+    failures: list[dict],
+) -> None:
+    """Write run report JSON to data/staging/run_report.json."""
+    report = {
+        "run_at": run_at,
+        "docs_total": docs_total,
+        "docs_ok": docs_ok,
+        "docs_failed": docs_failed,
+        "total_persons": total_persons,
+        "llm_provider": "gpustack",
+        "extraction_model": extraction_model,
+        "ocr_engine": ocr_engine,
+        "failures": failures,
+    }
+    staging_dir = Path("data/staging")
+    staging_dir.mkdir(parents=True, exist_ok=True)
+    report_path = staging_dir / "run_report.json"
+    report_path.write_text(json.dumps(report, indent=2, ensure_ascii=False))
+    logger.info("Run report written to %s", report_path)
+
+
+
 def slugify(name: str) -> str:
     s = name.lower().strip()
     s = re.sub(r"[^a-z0-9]+", "-", s)
@@ -82,7 +113,7 @@ def read_pdf_file(path: Path) -> str:
 
     # Heuristic: if we got very little text, it's probably a scanned/image PDF
     if len(text) < 200:
-        logger.info("Low text yield from pypdf (%d chars) — trying OCR…", len(text))
+        logger.info("Low text yield from pypdf (%d chars) — trying OCR (engine=%s)…", len(text), OCR_ENGINE)
         ocr_text = _ocr_image(path)
         if ocr_text:
             logger.info("Mistral OCR returned %d chars.", len(ocr_text))
@@ -774,6 +805,17 @@ def main() -> int:
             [sys.executable, str(wikidata_script), "--site-dir", str(site_dir)],
             cwd=str(Path(__file__).parent.parent),
         )
+
+    _write_run_report(
+        run_at=datetime.now(timezone.utc).isoformat(),
+        docs_total=len(inputs),
+        docs_ok=len(inputs) - len(errors),
+        docs_failed=len(errors),
+        total_persons=0,
+        extraction_model=EXTRACTION_MODEL,
+        ocr_engine=OCR_ENGINE,
+        failures=[{"file": str(p), "error": str(e)} for p, e in errors],
+    )
 
     if errors:
         logger.error("Completed with %d error(s).", len(errors))
