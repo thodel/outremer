@@ -401,6 +401,12 @@ def _record_problem_entities(
             entry["last_context"] = item["context"][:300]
 
 
+
+def _nfc(s: str) -> str:
+    """NFC-normalise a string to ensure consistent Unicode representation."""
+    return unicodedata.normalize("NFC", s) if s else s
+
+
 def _repair_json(raw: str) -> str:
     """
     Best-effort repair of common LLM JSON issues before parsing.
@@ -907,7 +913,7 @@ def _extract_gpustack_chunk(
     blocked_terms: Optional[List[str]] = None,
 ) -> Dict[str, Any]:
     """Call GPUStack on a single chunk. Returns parsed JSON or raises."""
-    clean_chunk = _sanitise_text(chunk)
+    clean_chunk = _sanitise_text(_nfc(chunk))
     prompt = _build_prompt(language, blocked_terms=blocked_terms) + clean_chunk
     raw_text = _llm_generate(
         prompt,
