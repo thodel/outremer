@@ -557,30 +557,45 @@ def _is_modern_scholar(name: str, context: str = "") -> bool:
     return False
 
 
-def _is_post_medieval_name(name: str, context: str = "") -> bool:
-    """Check if a name is likely post-medieval (after 1500)."""
+def _post_medieval_signal_profile(name: str, context: str = "") -> Dict[str, Any]:
+    """
+    Return post-medieval signal strengths.
+    Strong signals are used for hard filtering only when multiple are present.
+    Weak signals contribute to confidence penalties.
+    """
     name_lower = name.lower()
-    
-    # Modern titles/honorifics
-    modern_titles = {"professor", "prof.", "dr.", "mr.", "mrs.", "ms.", "ph.d.", "m.d.",
-                     "ceo", "president", "minister", "ambassador", "senator", "governor"}
+    context_lower = context.lower()
+    haystack = f"{name_lower} {context_lower}"
+    reasons: List[str] = []
+    strong = 0
+    weak = 0
+
+    modern_titles = {
+        "professor", "prof.", "dr.", "mr.", "mrs.", "ms.", "ph.d.", "m.d.",
+        "ceo", "president", "minister", "ambassador", "senator", "governor",
+    }
     if any(t in name_lower for t in modern_titles):
-        return True
-    
-    # Modern institutional affiliations
-    modern_inst = {"university", "institute", "foundation", "museum", "archive",
-                   "library", "department", "faculty", "research center"}
-    if any(i in name_lower for i in modern_inst):
-        return True
-    
-    # Check context for modern date references
-    modern_dates = re.findall(r'\b(1[5-9]\d{2}|20\d{2})\b', context)
+        strong += 1
+        reasons.append("modern_title")
+
+    modern_inst = {
+        "university", "institute", "foundation", "museum", "archive",
+        "library", "department", "faculty", "research center",
+    }
+    if any(i in haystack for i in modern_inst):
+        strong += 1
+        reasons.append("modern_institution")
+
+    modern_dates = [int(d) for d in re.findall(r"\b(1[5-9]\d{2}|20\d{2})\b", context)]
     if modern_dates:
-        # If only modern dates (1500+) appear, likely post-medieval
-        if all(int(d) > 1500 for d in modern_dates):
-            return True
-    
-    return False
+        if any(d >= 1800 for d in modern_dates):
+            strong += 1
+            reasons.append("modern_date_1800_plus")
+        elif all(d > 1500 for d in modern_dates):
+            weak += 1
+            reasons.append("post_1500_date_context")
+
+    return {"strong": strong, "weak": weak, "reasons": reasons}
 
 
 def _problem_reason(
@@ -598,8 +613,10 @@ def _problem_reason(
         return "known_bad_entity"
     if _is_bibliographic_noise(name, context):
         return "bibliographic_noise"
-    if _is_post_medieval_name(name, context) and not group:
-        return "post_medieval"
+    if not group:
+        pm = _post_medieval_signal_profile(name, context)
+        if pm["strong"] >= 2:
+            return "post_medieval"
     if len(name.split()) > 8:
         return "name_too_long"
     if re.search(r"\d", name):
@@ -656,6 +673,26 @@ def _filter_and_reweight_persons(
                     }
                 )
                 continue
+
+        # Use post-medieval signals as a soft penalty unless multiple strong signals exist
+        # (those are handled in _problem_reason as hard filters).
+        if not p.get("group"):
+            pm = _post_medieval_signal_profile(str(name), str(context))
+            if pm["strong"] or pm["weak"]:
+                base_conf = _safe_float(p.get("confidence"), 0.5)
+                penalty = 0.0
+                if pm["strong"] == 1:
+                    penalty = 0.30
+                elif pm["weak"] >= 1:
+                    penalty = 0.15
+                if penalty > 0:
+                    p["confidence"] = max(0.0, round(base_conf - penalty, 4))
+                    p["post_medieval_penalty"] = {
+                        "applied": True,
+                        "strong_signals": pm["strong"],
+                        "weak_signals": pm["weak"],
+                        "reasons": pm["reasons"][:4],
+                    }
         filtered.append(p)
 
     return filtered, flagged

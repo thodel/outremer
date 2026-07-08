@@ -157,6 +157,17 @@ def _canonical_person_name(name: str) -> str:
     return re.sub(r"\s+", " ", str(name or "").replace("\n", " ").strip())
 
 
+def _canonical_review_decision(decision: Any) -> str:
+    d = str(decision or "").strip().lower()
+    if d.startswith("reject"):
+        return "reject"
+    if d in {"not_a_person", "wrong_era"}:
+        return "reject"
+    if d.startswith("accept"):
+        return "accept"
+    return d
+
+
 def _load_human_review_decisions(path: Path) -> List[Dict[str, Any]]:
     """
     Supports:
@@ -221,7 +232,7 @@ def sync_feedback_from_human_review(
 
     reject_labels = {"reject", "not_a_person", "wrong_era"}
     for d in decisions:
-        decision = str(d.get("decision") or "").strip().lower()
+        decision = _canonical_review_decision(d.get("decision"))
         person = _canonical_person_name(str(d.get("person") or ""))
         if not person:
             continue

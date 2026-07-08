@@ -111,6 +111,13 @@ rejected names are added to `blocked_terms` and accepted names are added to `all
 
 Output is written to `site/data/*.json`, `site/bib/*.bib`, and `bib/*.bib`.
 
+## Tests
+
+```bash
+pip install -r requirements-dev.txt
+pytest tests -q
+```
+
 ---
 
 ## Reviewing results
