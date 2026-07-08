@@ -14,7 +14,7 @@ The pipeline implements a two-layer architecture:
 
 | Layer | What it does |
 |---|---|
-| **Layer 1 — LLM extraction** | Reads historical texts (PDF or plain text) and extracts *person-like signals*: names, titles, epithets, roles, collective groups. Uses Google Gemini (`gemini-2.0-flash`) with a structured JSON prompt; falls back to heuristic regex NER when no API key is set. |
+| **Layer 1 — LLM extraction** | Reads historical texts (PDF or plain text) and extracts *person-like signals*: names, titles, epithets, roles, collective groups. Routes through GPUStack (Qwen3-30B-A3B-Instruct); falls back to heuristic regex NER when GPUStack is unconfigured. |
 | **Layer 2 — KG linking** | Fuzzy-matches extracted mentions against a curated authority file of 126 known crusader persons (sourced from an Omeka database). Returns ranked candidates with confidence scores and flags ambiguous or multi-candidate matches. |
 
 Results are published as a static GitHub Pages site with a **Human-in-the-Loop review UI** — scholars can accept, reject, or flag individual candidate links and export their decisions as JSON.
@@ -30,8 +30,8 @@ outremer/
 ├── bib/                BibTeX output (repo copy)
 ├── scripts/
 │   ├── run_pipeline.py         Main pipeline entry point
-│   ├── extract_persons_google.py  Layer 1: Gemini + fallback extraction
-│   └── outremer_index.json     Authority file (126 crusader persons)
+│   ├── extract_persons_google.py  Layer 1: GPUStack + heuristic fallback
+│   └── outremer_index.json     Authority file (known crusader-era persons)
 ├── site/               Static site (deployed to GitHub Pages)
 │   ├── index.html
 │   ├── app.js          Explorer + H-i-t-L adjudication UI
@@ -58,6 +58,9 @@ python3 -m venv .venv
 source .venv/bin/activate        # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 
+# Copy and edit the GPUStack credentials file:
+cp .env.gpustack .env.gpustack   # (already gitignored — fill in GPUSTACK_API_KEY)
+
 # For fully pinned, reproducible installs:
 pip install -r requirements.lock.txt
 ```
@@ -66,13 +69,18 @@ pip install -r requirements.lock.txt
 
 ## Configuration
 
-| Variable | Where | Purpose |
+| Variable | Default | Purpose |
 |---|---|---|
-| `GOOGLE_API_KEY` | env var or `.env` file | Activates Gemini extraction. Without it, the pipeline falls back to heuristic regex NER. |
-| `MISTRAL_API_KEY` | env var or `.env` file | Activates Mistral OCR for image-only / scanned PDFs. Without it, scanned PDFs yield empty text. |
+| `GPUSTACK_BASE_URL` | `https://gpustack.unibe.ch/v1` | GPUStack server endpoint |
+| `GPUSTACK_API_KEY` | *(set in `.env.gpustack`)* | Activates GPUStack extraction + OCR |
+| `EXTRACTION_MODEL` | `qwen3-30b-a3b-instruct` | Model for person extraction |
+| `ORCHESTRATOR_MODEL` | `minimax-m2.7` | Model for pipeline orchestration + OCR routing |
+| `QWEN3_VL_MODEL` | `qwen3-vl-30b-instruct` | Vision model for document-level OCR |
+| `OCR_ENGINE` | `easyocr` | Which OCR engine to use — `easyocr`, `gpustack`, or `mistral` |
+| `GPUSTACK_TIMEOUT` | `120` | Request timeout in seconds |
 
-For GitHub Actions, add both under **Settings → Secrets and variables → Actions**:
-`GOOGLE_API_KEY` and `MISTRAL_API_KEY`.
+**Setup:** copy `.env.gpustack` (gitignored) and fill in your GPUStack credentials.
+The pipeline loads `.env.gpustack` automatically on every run — no need to `source` it manually.
 
 ---
 
@@ -92,7 +100,7 @@ python scripts/run_pipeline.py --input-dir data/raw --genai-metadata --language 
 python scripts/run_pipeline.py --input-dir data/raw --genai-metadata --language ar   # Arabic
 # Supported: la, fro (Old French), ar, el (Greek), de (Middle High German)
 
-# Without API keys (heuristic fallback, no OCR)
+# Without GPUSTACK_API_KEY (heuristic fallback, no OCR)
 python scripts/run_pipeline.py --input-dir data/raw
 
 # Sync human adjudication into feedback memory (rejects -> blocked_terms, accepts -> allow_terms)

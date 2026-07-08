@@ -1,10 +1,22 @@
-# LLM / OCR
-openai>=1.0
-mistralai>=0.3  # legacy OCR fallback — set OCR_ENGINE=mistral to use
+# ── Core ──────────────────────────────────────────────────────────────────────
+# All of these are required regardless of which engine is used.
+openai>=1.0              # GPUStack-compatible OpenAI client (llm_client.py)
+pypdf>=4.0               # PDF text extraction (run_pipeline.py)
+rapidfuzz>=3.0           # Fuzzy name matching for KG linking
+python-dotenv>=1.0       # Loads .env.gpustack / .env at startup
+requests>=2.31           # HTTP calls (export_peerage_pre1500.py)
 
-# Core pipeline
-rapidfuzz>=3.0
-pypdf>=4.0
+# ── Optional OCR engines ─────────────────────────────────────────────────────
+# Uncomment exactly ONE of the following to match your OCR_ENGINE setting.
 
-# Optional: local OCR (set OCR_ENGINE=easyocr to use)
+# Recommended (GPUStack — no extra install needed beyond core):
+#   OCR_ENGINE=gpustack  (set in .env.gpustack)
+#   GPUStack handles OCR internally via MiniMax-M2.7.
 
+# Legacy Mistral OCR (requires API key):
+#   OCR_ENGINE=mistral
+#   pip install -r requirements-ocr-mistral.txt
+
+# Local EasyOCR (runs entirely offline, no API needed):
+#   OCR_ENGINE=easyocr
+#   pip install -r requirements-ocr-easyocr.txt

@@ -27,8 +27,9 @@ from collections import Counter
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
+from config import OCR_ENGINE, gpustack_enabled, log_active_engines
 from extract_persons_google import extract_persons_and_metadata
-from config import OCR_ENGINE
+
 from scripts.llm_client import generate as _llm_generate
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
@@ -641,11 +642,14 @@ def process_file(
     return json_path, bib_path_repo, bib_path_site
 
 
-def build_site_index(site_data_dir: Path, site_dir: Path) -> None:
+def build_site_index(site_data_dir: Path, site_dir: Path, *, extraction_engine: str = "unknown", ocr_engine: str = "unknown") -> None:
     _EXCLUDE = {"wikidata_matches.json", "authority.json"}
     files = sorted(f for f in site_data_dir.glob("*.json") if f.name not in _EXCLUDE)
     index = {
         "generated_from": "run_pipeline.py",
+        "pipeline_version": 1,
+        "extraction_engine": extraction_engine,
+        "ocr_engine": ocr_engine,
         "count": len(files),
         "documents": [f.name for f in files],
     }
@@ -657,6 +661,7 @@ def build_site_index(site_data_dir: Path, site_dir: Path) -> None:
 # ──────────────────────────────────────────────
 
 def main() -> int:
+    log_active_engines()
     ap = argparse.ArgumentParser(description="Outremer NER + KG linking pipeline.")
     ap.add_argument("--input-dir", default="data/raw", help="Folder with .txt/.pdf files")
     ap.add_argument("--file", action="append", dest="files", metavar="FILE", help="Process specific file(s) only (can be repeated)")
@@ -762,7 +767,7 @@ def main() -> int:
                 errors.append((p, exc))
                 logger.error("Failed processing %s: %s", p, exc)
 
-    build_site_index(site_data_dir=site_data_dir, site_dir=site_dir)
+    build_site_index(site_data_dir=site_data_dir, site_dir=site_dir, extraction_engine=gpustack_enabled() and 'gpustack' or 'heuristic', ocr_engine=OCR_ENGINE)
     print(f"Wrote {site_dir / 'index.json'}")
 
     # Keep authority file in sync for the People Lookup page
