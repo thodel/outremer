@@ -37,19 +37,6 @@
       "source_offset": 700
     },
     {
-      "name": "This",
-      "raw_mention": "This",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "extend access to Brigham Young University Studies This content downloaded from              31.10.141.16",
-      "confidence": 0.3,
-      "source_offset": 867
-    },
-    {
       "name": "July",
       "raw_mention": "July",
       "title": null,
@@ -61,19 +48,6 @@
       "context": "y Orders during the Crusades William J.Hamblin On July 4, 1187, the armies of Saladin, sultan of Egypt a",
       "confidence": 0.3,
       "source_offset": 1102
-    },
-    {
-      "name": "Saladin",
-      "raw_mention": "Saladin",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": " William J.Hamblin On July 4, 1187, the armies of Saladin, sultan of Egypt and Syria, sur- rounded thousand",
-      "confidence": 0.3,
-      "source_offset": 1130
     },
     {
       "name": "Egypt",
@@ -230,19 +204,6 @@
       "context": "of the Mili- tary Orders faced a different fate.2 After his triumphant victory, Saladin singled out the c",
       "confidence": 0.3,
       "source_offset": 1645
-    },
-    {
-      "name": "Templars",
-      "raw_mention": "Templars",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "iumphant victory, Saladin singled out the captive Templars and Hospitallers for execution. Of course, such a",
-      "confidence": 0.3,
-      "source_offset": 1707
     },
     {
       "name": "Hospitallers",
@@ -581,19 +542,6 @@
       "context": "ple near- although not fully to- the path of God: You will find that the most implacable of men in thei",
       "confidence": 0.3,
       "source_offset": 4011
-    },
-    {
-      "name": "Muslims",
-      "raw_mention": "Muslims",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "mplacable of men in their enmity to the faithful [Muslims] are the Jewsand the pagans, and that the nearest",
-      "confidence": 0.3,
-      "source_offset": 4090
     },
     {
       "name": "Jewsand the",
@@ -2221,19 +2169,6 @@
       "source_offset": 19260
     },
     {
-      "name": "Crusader",
-      "raw_mention": "Crusader",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "n of crossbowmen and Muslim apostates who were in Crusader service, it seems that the Templars themselves we",
-      "confidence": 0.3,
-      "source_offset": 19359
-    },
-    {
       "name": "Apparently",
       "raw_mention": "Apparently",
       "title": null,
@@ -2947,19 +2882,6 @@
       "context": " sanctity of Jerusalem are well summarized by Ibn Zaki: \"I praise [God] ... for his cleansing of His Hol",
       "confidence": 0.3,
       "source_offset": 29674
-    },
-    {
-      "name": "His",
-      "raw_mention": "His",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "bn Zaki: \"I praise [God] ... for his cleansing of His Holy House from the filth of polytheism and its p",
-      "confidence": 0.3,
-      "source_offset": 29721
     },
     {
       "name": "House",
@@ -5921,44 +5843,12 @@
       "status": "low"
     },
     {
-      "person": "This",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
       "person": "July",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
       "confidence": 0.0,
       "status": "no_match"
-    },
-    {
-      "person": "Saladin",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR3",
-          "outremer_name": "Baldwin of Vern d'Anjou",
-          "type": "person",
-          "score": 0.7143,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'saladin' ↔ 'Baldwin of Vern d'Anjou'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR3",
-        "outremer_name": "Baldwin of Vern d'Anjou",
-        "type": "person",
-        "score": 0.7143,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'saladin' ↔ 'Baldwin of Vern d'Anjou'"
-      },
-      "confidence": 0.7143,
-      "status": "low"
     },
     {
       "person": "Egypt",
@@ -6103,14 +5993,6 @@
       },
       "confidence": 0.7273,
       "status": "low"
-    },
-    {
-      "person": "Templars",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
     },
     {
       "person": "Hospitallers",
@@ -6498,14 +6380,6 @@
     },
     {
       "person": "You",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Muslims",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -8353,14 +8227,6 @@
       "status": "no_match"
     },
     {
-      "person": "Crusader",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
       "person": "Apparently",
       "person_group": false,
       "candidates": [],
@@ -8994,14 +8860,6 @@
     },
     {
       "person": "Zaki",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "His",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -12125,7 +11983,7 @@
   "extraction_mode": "fallback",
   "language_hint": null,
   "quality": {
-    "filtered_problem_entities": 291,
+    "filtered_problem_entities": 297,
     "feedback_store": "data/entity_feedback.json"
   }
 }

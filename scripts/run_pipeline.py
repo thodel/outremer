@@ -10,7 +10,8 @@ Usage
         [--bib-dir bib] [--outremer-index scripts/outremer_index.json] \
         [--genai-metadata]
 
-GOOGLE_API_KEY env var activates Gemini extraction; falls back to heuristics if absent.
+GPUSTACK_BASE_URL (from .env.gpustack) activates GPUStack extraction;
+falls back to heuristic NER if absent.
 """
 from __future__ import annotations
 
@@ -27,6 +28,8 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
 from extract_persons_google import extract_persons_and_metadata
+from config import OCR_ENGINE
+from scripts.llm_client import generate as _llm_generate
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 logger = logging.getLogger(__name__)
@@ -35,6 +38,37 @@ logger = logging.getLogger(__name__)
 # ──────────────────────────────────────────────
 # Utilities
 # ──────────────────────────────────────────────
+
+def _write_run_report(
+    *,
+    run_at: str,
+    docs_total: int,
+    docs_ok: int,
+    docs_failed: int,
+    total_persons: int,
+    extraction_model: str,
+    ocr_engine: str,
+    failures: list[dict],
+) -> None:
+    """Write run report JSON to data/staging/run_report.json."""
+    report = {
+        "run_at": run_at,
+        "docs_total": docs_total,
+        "docs_ok": docs_ok,
+        "docs_failed": docs_failed,
+        "total_persons": total_persons,
+        "llm_provider": "gpustack",
+        "extraction_model": extraction_model,
+        "ocr_engine": ocr_engine,
+        "failures": failures,
+    }
+    staging_dir = Path("data/staging")
+    staging_dir.mkdir(parents=True, exist_ok=True)
+    report_path = staging_dir / "run_report.json"
+    report_path.write_text(json.dumps(report, indent=2, ensure_ascii=False))
+    logger.info("Run report written to %s", report_path)
+
+
 
 def slugify(name: str) -> str:
     s = name.lower().strip()
@@ -79,18 +113,73 @@ def read_pdf_file(path: Path) -> str:
 
     # Heuristic: if we got very little text, it's probably a scanned/image PDF
     if len(text) < 200:
-        logger.info("Low text yield from pypdf (%d chars) — trying Mistral OCR…", len(text))
-        ocr_text = _mistral_ocr(path)
+        logger.info("Low text yield from pypdf (%d chars) — trying OCR (engine=%s)…", len(text), OCR_ENGINE)
+        ocr_text = _ocr_image(path)
         if ocr_text:
             logger.info("Mistral OCR returned %d chars.", len(ocr_text))
             return ocr_text
-        logger.warning("Mistral OCR also failed; proceeding with minimal text.")
+        logger.warning("OCR also failed; proceeding with minimal text.")
 
     return text
 
 
-def _mistral_ocr(path: Path) -> str:
-    """Use Mistral OCR to extract text from a scanned PDF."""
+def _ocr_image(path: Path) -> str:
+    """
+    OCR dispatcher — tries engines in priority order per OCR_ENGINE setting.
+
+    # Priority chain:
+      qwen3-vl → GPUStack Qwen3 VL 30B (primary, GPU)
+               → GPUStack MiniMax-M2.7
+               → Mistral (legacy fallback)
+      gpustack → GPUStack MiniMax-M2.7
+               → Mistral
+      mistral  → Mistral only (legacy)
+    """
+    engine = OCR_ENGINE.lower()
+
+    # qwen3-vl (default): Qwen3 VL 30B primary → MiniMax fallback → Mistral final
+    result = _qwen3vl_ocr(path)
+    if result:
+        return result
+    logger.info("Qwen3 VL OCR empty — trying MiniMax-M2.7.")
+    result = _minimax_ocr(path)
+    if result:
+        return result
+    logger.info("MiniMax OCR also empty — trying Mistral as last resort.")
+    return _minimax_ocr(path)
+
+
+
+def _qwen3vl_ocr(path: Path) -> str:
+    """GPUStack Qwen3 VL 30B for primary document OCR."""
+    import base64
+    from config import ORCHESTRATOR_MODEL, QWEN3_VL_MODEL
+
+    b64 = base64.b64encode(path.read_bytes()).decode()
+    prompt = (
+        "You are an OCR system. Given an image of a document page, transcribe ALL text "
+        "exactly as it appears. Preserve line breaks, capitalization, and unusual characters. "
+        "If the image is not a document page, respond with: [NOT_A_PAGE]\n\n"
+        f"Image data: data:application/pdf;base64,{b64}"
+    )
+    try:
+        text = _llm_generate(
+            prompt,
+            model=QWEN3_VL_MODEL,
+            max_tokens=8192,
+            temperature=0.0,
+        )
+        if text == "[NOT_A_PAGE]" or not text.strip():
+            return ""
+        logger.info("GPUStack OCR returned %d chars.", len(text))
+        return text.strip()
+    except Exception as exc:
+        logger.error("GPUStack OCR error: %s", exc)
+        return ""
+
+
+def _minimax_ocr(path: Path) -> str:  # secondary GPUStack fallback
+    """GPUStack MiniMax-M2.7 secondary → Mistral final fallback."""
     import base64
     api_key = os.environ.get("MISTRAL_API_KEY", "").strip()
     if not api_key:
@@ -113,7 +202,10 @@ def _mistral_ocr(path: Path) -> str:
             },
         )
         pages = resp.pages if hasattr(resp, "pages") else []
-        return "\n\n".join(p.markdown for p in pages if p.markdown).strip()
+        text = "\n\n".join(p.markdown for p in pages if p.markdown).strip()
+        if text:
+            logger.info("Mistral OCR returned %d chars.", len(text))
+        return text
     except Exception as exc:
         logger.error("Mistral OCR error: %s", exc)
         return ""
@@ -690,6 +782,17 @@ def main() -> int:
             [sys.executable, str(wikidata_script), "--site-dir", str(site_dir)],
             cwd=str(Path(__file__).parent.parent),
         )
+
+    _write_run_report(
+        run_at=datetime.now(timezone.utc).isoformat(),
+        docs_total=len(inputs),
+        docs_ok=len(inputs) - len(errors),
+        docs_failed=len(errors),
+        total_persons=0,
+        extraction_model=EXTRACTION_MODEL,
+        ocr_engine=OCR_ENGINE,
+        failures=[{"file": str(p), "error": str(e)} for p, e in errors],
+    )
 
     if errors:
         logger.error("Completed with %d error(s).", len(errors))
