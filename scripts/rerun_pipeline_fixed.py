@@ -22,20 +22,18 @@ Usage:
 from __future__ import annotations
 
 import argparse
-import json
 import subprocess
 import sys
 from pathlib import Path
-from typing import List, Optional
 
 
-def run_command(cmd: List[str], description: str) -> bool:
+def run_command(cmd: list[str], description: str) -> bool:
     """Run a shell command and report status."""
     print(f"\n{'='*60}")
     print(f"📌 {description}")
     print(f"   Command: {' '.join(cmd)}")
     print('='*60)
-    
+
     result = subprocess.run(cmd, capture_output=False)
     return result.returncode == 0
 
@@ -43,47 +41,47 @@ def run_command(cmd: List[str], description: str) -> bool:
 def filter_existing_extractions(site_data_dir: Path, strict: bool = False):
     """Apply noise filter to all existing extraction outputs."""
     filter_script = site_data_dir.parent.parent / "scripts" / "filter_ner_noise.py"
-    
+
     if not filter_script.exists():
         print(f"❌ Filter script not found: {filter_script}")
         return False
-    
+
     output_dir = site_data_dir / "filtered"
     output_dir.mkdir(exist_ok=True)
-    
+
     cmd = [
         sys.executable, str(filter_script),
         "--input", str(site_data_dir),
         "--output", str(output_dir)
     ]
-    
+
     if strict:
         cmd.append("--strict")
-    
+
     return run_command(cmd, "Filtering NER noise from existing extractions")
 
 
 def build_unified_kg(repo_root: Path):
     """Build unified knowledge graph from all sources."""
     kg_script = repo_root / "scripts" / "build_unified_kg.py"
-    
+
     if not kg_script.exists():
         print(f"❌ KG builder not found: {kg_script}")
         return False
-    
+
     return run_command([sys.executable, str(kg_script)], "Building unified knowledge graph")
 
 
 def rerun_extraction(raw_file: Path, output_dir: Path, use_gemini: bool = True):
     """Re-run extraction on a single file using the pipeline."""
     pipeline_script = output_dir.parent.parent / "scripts" / "run_pipeline.py"
-    
+
     if not pipeline_script.exists():
         print(f"❌ Pipeline script not found: {pipeline_script}")
         return False
-    
+
     cmd = [sys.executable, str(pipeline_script)]
-    
+
     if raw_file.suffix.lower() in ('.pdf',):
         cmd.extend(["--pdf", str(raw_file)])
     elif raw_file.suffix.lower() in ('.txt', '.md', '.xml', '.tei'):
@@ -91,12 +89,12 @@ def rerun_extraction(raw_file: Path, output_dir: Path, use_gemini: bool = True):
     else:
         print(f"⚠️  Unknown file type: {raw_file}")
         return False
-    
+
     cmd.extend(["--output-dir", str(output_dir)])
-    
+
     if not use_gemini:
         cmd.append("--fallback")
-    
+
     return run_command(cmd, f"Extracting persons from {raw_file.name}")
 
 
@@ -108,15 +106,15 @@ def main():
     parser.add_argument("--strict", action="store_true", help="Strict filtering mode")
     parser.add_argument("--no-gemini", action="store_true", help="Use fallback extraction (no Gemini API)")
     parser.add_argument("--build-kg", action="store_true", help="Build unified KG after processing")
-    
+
     args = parser.parse_args()
-    
+
     repo_root = Path(__file__).parent.parent
     site_data_dir = repo_root / "site" / "data"
-    
+
     success_count = 0
     total_count = 0
-    
+
     # Step 1: Filter existing extractions
     if args.docs or args.filter_only:
         if args.filter_only:
@@ -138,11 +136,11 @@ def main():
                     if run_command(cmd, f"Filtering {p.name}"):
                         success_count += 1
                     total_count += 1
-    
+
     # Step 2: Re-extract from raw files
     if args.raw_dir and not args.filter_only:
         print(f"\n📁 Processing raw files in {args.raw_dir}...")
-        
+
         pipeline_script = repo_root / "scripts" / "run_pipeline.py"
         cmd = [
             sys.executable, str(pipeline_script),
@@ -150,28 +148,28 @@ def main():
             "--site-dir", str(repo_root / "site"),
             "--genai-metadata"
         ]
-        
+
         if args.no_gemini:
             # If no-gemini is requested, we just omit the env var in the subprocess?
             # Or we rely on run_pipeline's internal check.
             # But here we just run the command.
             pass
-            
+
         if run_command(cmd, f"Running extraction pipeline on {args.raw_dir}"):
             success_count += 1
         total_count += 1
-    
+
     # Step 3: Build unified KG
     if args.build_kg or (success_count > 0 and not args.filter_only):
         if build_unified_kg(repo_root):
             success_count += 1
         total_count += 1
-    
+
     # Summary
     print(f"\n{'='*60}")
     print(f"✅ Pipeline complete: {success_count}/{total_count} steps succeeded")
     print('='*60)
-    
+
     if success_count == total_count:
         print("\n🎉 All steps completed successfully!")
         print("\nNext steps:")

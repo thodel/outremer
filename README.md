@@ -1,4 +1,6 @@
 # People of the Medieval Levant — Outremer PoC
+[![CI](https://github.com/thodel/outremer/actions/workflows/test.yml/badge.svg)](https://github.com/thodel/outremer/actions/workflows/test.yml) [![Lint](https://github.com/thodel/outremer/actions/workflows/lint.yml/badge.svg)](https://github.com/thodel/outremer/actions/workflows/lint.yml) [![Docker](https://img.shields.io/badge/docker-ghcr.io%2Fthodel%2Foutremer-blue?logo=docker)](https://github.com/thodel/outremer/pkgs/container/outremer) [![Python](https://img.shields.io/badge/python-3.12+-blue?logo=python)](https://www.python.org/downloads/)
+
 
 A proof-of-concept pipeline for AI-assisted prosopography of the medieval Levant (Crusades era, 11th–14th centuries). Part of a collaborative research project by Jochen Burgtorf (Cal State Fullerton), Tobias Hodel (University of Bern), and Laura Morreale (Harvard / independent scholar).
 

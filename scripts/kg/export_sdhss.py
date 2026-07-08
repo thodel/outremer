@@ -2,9 +2,10 @@
 """
 export_sdhss.py  –  Outremer → SDHSS/CIDOC-CRM RDF/Turtle
 """
-import json, re, sys
+import json
+import re
+from datetime import UTC, datetime
 from pathlib import Path
-from datetime import datetime, timezone
 
 ROOT   = Path(__file__).resolve().parents[2]
 INPUT  = ROOT / "data" / "unified_kg.json"
@@ -175,7 +176,7 @@ def main():
     print(f"Writing {OUTPUT} …", flush=True)
     with OUTPUT.open("w", encoding="utf-8") as out:
         out.write(PREFIXES)
-        out.write(f"\n# Generated {datetime.now(timezone.utc).isoformat()}\n# {total:,} persons\n\n")
+        out.write(f"\n# Generated {datetime.now(UTC).isoformat()}\n# {total:,} persons\n\n")
         emit_vocab(out)
         for i,(pid,person) in enumerate(data.items()):
             emit_person(pid, person, out)

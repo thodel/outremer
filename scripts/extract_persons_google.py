@@ -44,15 +44,14 @@ from __future__ import annotations
 import hashlib
 import json
 import logging
-import os
 import re
 import unicodedata
-from datetime import datetime, timezone
+from datetime import UTC, datetime
+from pathlib import Path
+from typing import Any
 
 # GPUStack LLM client
 from scripts.llm_client import generate as _llm_generate
-from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple
 
 logger = logging.getLogger(__name__)
 
@@ -65,7 +64,7 @@ _EXTRACTION_MODEL = "qwen3-30b-a3b-instruct"  # from config.EXTRACTION_MODEL at 
 _CHUNK_SIZE = 5_500   # chunk size for GPUStack extraction
 _CHUNK_OVERLAP = 800
 
-_LANGUAGE_HINTS: Dict[str, str] = {
+_LANGUAGE_HINTS: dict[str, str] = {
     "la": """\
 LANGUAGE NOTE: This is a Latin medieval text. Key patterns to recognise:
 - Titles/offices: rex, regina, comes, episcopus, archiepiscopus, patriarcha, dux, princeps, imperator, papa, miles, dominus, frater, magister, abbas, prior, constabularius, senescallus
@@ -222,10 +221,10 @@ def _sanitise_feedback_term(term: str) -> str:
     return t[:120]
 
 
-def _build_feedback_hint(terms: List[str]) -> str:
+def _build_feedback_hint(terms: list[str]) -> str:
     if not terms:
         return ""
-    clean_terms: List[str] = []
+    clean_terms: list[str] = []
     for term in terms:
         cleaned = _sanitise_feedback_term(term)
         if cleaned and cleaned not in clean_terms:
@@ -240,7 +239,7 @@ def _build_feedback_hint(terms: List[str]) -> str:
     )
 
 
-def _build_prompt(language_code: Optional[str] = None, blocked_terms: Optional[List[str]] = None) -> str:
+def _build_prompt(language_code: str | None = None, blocked_terms: list[str] | None = None) -> str:
     hint = _LANGUAGE_HINTS.get(language_code or "", "")
     feedback_hint = _build_feedback_hint(blocked_terms or [])
     return _JSON_PROMPT_BASE.format(
@@ -259,14 +258,14 @@ def _normalise(s: str) -> str:
     return re.sub(r"\s+", " ", s).lower().strip()
 
 
-def _citekey(title: str, year: Optional[str]) -> str:
+def _citekey(title: str, year: str | None) -> str:
     slug = re.sub(r"[^a-z0-9]", "", _normalise(title))[:20]
     yr = year or "0000"
     h = hashlib.md5(title.encode()).hexdigest()[:4]
     return f"{slug}{yr}{h}"
 
 
-def _build_bibtex(metadata: Dict[str, Any]) -> str:
+def _build_bibtex(metadata: dict[str, Any]) -> str:
     """Build a BibTeX entry from metadata dict. Returns '' if too sparse."""
     t = metadata.get("title") or ""
     a = metadata.get("author") or ""
@@ -296,10 +295,10 @@ def _sanitise_text(text: str) -> str:
 
 
 def _utc_now_iso() -> str:
-    return datetime.now(timezone.utc).isoformat()
+    return datetime.now(UTC).isoformat()
 
 
-def _default_feedback_store() -> Dict[str, Any]:
+def _default_feedback_store() -> dict[str, Any]:
     return {
         "schema_version": 1,
         "blocked_terms": [],
@@ -308,7 +307,7 @@ def _default_feedback_store() -> Dict[str, Any]:
     }
 
 
-def _load_entity_feedback(path: Optional[str]) -> Dict[str, Any]:
+def _load_entity_feedback(path: str | None) -> dict[str, Any]:
     if not path:
         return _default_feedback_store()
     p = Path(path)
@@ -329,7 +328,7 @@ def _load_entity_feedback(path: Optional[str]) -> Dict[str, Any]:
     return out
 
 
-def _save_entity_feedback(path: Optional[str], data: Dict[str, Any]) -> None:
+def _save_entity_feedback(path: str | None, data: dict[str, Any]) -> None:
     if not path:
         return
     p = Path(path)
@@ -337,8 +336,8 @@ def _save_entity_feedback(path: Optional[str], data: Dict[str, Any]) -> None:
     p.write_text(json.dumps(data, ensure_ascii=False, indent=2, sort_keys=True), encoding="utf-8")
 
 
-def _feedback_terms_for_prompt(data: Dict[str, Any], min_auto_count: int = 2) -> List[str]:
-    terms: List[str] = []
+def _feedback_terms_for_prompt(data: dict[str, Any], min_auto_count: int = 2) -> list[str]:
+    terms: list[str] = []
     allow_norms = {_normalise(str(x)) for x in (data.get("allow_terms") or []) if str(x).strip()}
     for x in data.get("blocked_terms") or []:
         label = str(x).strip()
@@ -347,7 +346,7 @@ def _feedback_terms_for_prompt(data: Dict[str, Any], min_auto_count: int = 2) ->
 
     auto = data.get("auto_flagged") or {}
     if isinstance(auto, dict):
-        ranked: List[Tuple[int, str]] = []
+        ranked: list[tuple[int, str]] = []
         for _, entry in auto.items():
             if not isinstance(entry, dict):
                 continue
@@ -362,8 +361,8 @@ def _feedback_terms_for_prompt(data: Dict[str, Any], min_auto_count: int = 2) ->
 
 
 def _record_problem_entities(
-    feedback_store: Dict[str, Any],
-    flagged: List[Dict[str, str]],
+    feedback_store: dict[str, Any],
+    flagged: list[dict[str, str]],
 ) -> None:
     auto = feedback_store.setdefault("auto_flagged", {})
     if not isinstance(auto, dict):
@@ -430,15 +429,15 @@ def _repair_json(raw: str) -> str:
     return raw
 
 
-def _recover_truncated_json(raw: str) -> Dict[str, Any]:
+def _recover_truncated_json(raw: str) -> dict[str, Any]:
     """
     Attempt to salvage persons from a truncated LLM JSON response.
     Finds the last complete person object (ending in '}') inside the persons array
     and reconstructs a valid minimal JSON document from it.
     """
     # Try to extract whatever complete person objects we can
-    persons: List[Dict[str, Any]] = []
-    metadata: Dict[str, Any] = {}
+    persons: list[dict[str, Any]] = []
+    metadata: dict[str, Any] = {}
 
     # Find the persons array start
     persons_start = raw.find('"persons"')
@@ -498,7 +497,7 @@ def _recover_truncated_json(raw: str) -> Dict[str, Any]:
     return {"persons": persons, "metadata": metadata}
 
 
-def _chunk_text(text: str, size: int = _CHUNK_SIZE, overlap: int = _CHUNK_OVERLAP) -> List[Tuple[int, str]]:
+def _chunk_text(text: str, size: int = _CHUNK_SIZE, overlap: int = _CHUNK_OVERLAP) -> list[tuple[int, str]]:
     """
     Split text into overlapping chunks at paragraph boundaries.
 
@@ -512,9 +511,9 @@ def _chunk_text(text: str, size: int = _CHUNK_SIZE, overlap: int = _CHUNK_OVERLA
 
     # Split into paragraphs
     paragraphs = re.split(r"\n\n+", text)
-    chunks: List[Tuple[int, str]] = []
+    chunks: list[tuple[int, str]] = []
     start = 0
-    current: List[str] = []
+    current: list[str] = []
     current_len = 0
 
     for para in paragraphs:
@@ -590,19 +589,19 @@ _MODERN_SCHOLAR_PATTERNS = re.compile(
 def _is_bibliographic_noise(name: str, context: str = "") -> bool:
     """Check if a name is likely bibliographic metadata."""
     name_lower = name.lower().strip()
-    
+
     # Single-word common nouns that are never persons
     if name_lower in {"source", "title", "language", "type", "date", "author",
                       "editor", "review", "press", "vol", "published", "copyright",
                       "volume", "number", "pages", "pp", "no", "isbn", "doi"}:
         return True
-    
+
     # Publisher/journal patterns
     if any(x in name_lower for x in ["university press", "oxford university",
                                       "cambridge university", "journal of",
                                       "proceedings of", "review of"]):
         return True
-    
+
     if _BIB_NOISE_PATTERNS.search(name):
         return True
 
@@ -626,19 +625,19 @@ def _is_modern_scholar(name: str, context: str = "") -> bool:
     scholar_surnames = {"riley", "smith", "mayer", "tyerman", "asbridge", "france",
                         "cahen", "runciman", "grousset", "kedar", "prawer", "hamilton",
                         "edgington", "jotischky", "barber", "boas", "folda", "rodenberg"}
-    
+
     name_lower = name.lower()
     if any(surname in name_lower for surname in scholar_surnames):
         return True
-    
+
     # Check context for citation markers
     if _MODERN_SCHOLAR_PATTERNS.search(context):
         return True
-    
+
     return False
 
 
-def _post_medieval_signal_profile(name: str, context: str = "") -> Dict[str, Any]:
+def _post_medieval_signal_profile(name: str, context: str = "") -> dict[str, Any]:
     """
     Return post-medieval signal strengths.
     Strong signals are used for hard filtering only when multiple are present.
@@ -647,7 +646,7 @@ def _post_medieval_signal_profile(name: str, context: str = "") -> Dict[str, Any
     name_lower = name.lower()
     context_lower = context.lower()
     haystack = f"{name_lower} {context_lower}"
-    reasons: List[str] = []
+    reasons: list[str] = []
     strong = 0
     weak = 0
 
@@ -680,9 +679,9 @@ def _post_medieval_signal_profile(name: str, context: str = "") -> Dict[str, Any
 
 
 def _problem_reason(
-    person: Dict[str, Any],
+    person: dict[str, Any],
     blocked_norms: set,
-) -> Optional[str]:
+) -> str | None:
     name = str(person.get("name") or "").strip()
     context = str(person.get("context") or "")
     group = bool(person.get("group"))
@@ -713,14 +712,14 @@ def _problem_reason(
 
 
 def _filter_and_reweight_persons(
-    persons: List[Dict[str, Any]],
+    persons: list[dict[str, Any]],
     *,
-    blocked_terms: Optional[List[str]] = None,
-    source_id: Optional[str] = None,
-) -> Tuple[List[Dict[str, Any]], List[Dict[str, str]]]:
+    blocked_terms: list[str] | None = None,
+    source_id: str | None = None,
+) -> tuple[list[dict[str, Any]], list[dict[str, str]]]:
     """Filter noisy entities and emit machine-readable diagnostics."""
-    filtered: List[Dict[str, Any]] = []
-    flagged: List[Dict[str, str]] = []
+    filtered: list[dict[str, Any]] = []
+    flagged: list[dict[str, str]] = []
     blocked_norms = {_normalise(x) for x in (blocked_terms or []) if x}
 
     for p in persons:
@@ -779,9 +778,9 @@ def _filter_and_reweight_persons(
     return filtered, flagged
 
 
-def _dedup_persons(all_persons: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+def _dedup_persons(all_persons: list[dict[str, Any]]) -> list[dict[str, Any]]:
     """Deduplicate persons across chunks by normalised name and keep best confidence."""
-    seen: Dict[str, Dict[str, Any]] = {}
+    seen: dict[str, dict[str, Any]] = {}
     for p in all_persons:
         key = _normalise(p.get("name") or p.get("raw_mention") or "")
         if not key:
@@ -798,7 +797,7 @@ def _safe_float(v: Any, default: float = 0.5) -> float:
         return default
 
 
-def _coerce_person(raw: Any) -> Optional[Dict[str, Any]]:
+def _coerce_person(raw: Any) -> dict[str, Any] | None:
     """Coerce a raw dict from LLM output into the expected person schema."""
     if not isinstance(raw, dict):
         return None
@@ -820,7 +819,7 @@ def _coerce_person(raw: Any) -> Optional[Dict[str, Any]]:
     }
 
 
-def _coerce_metadata(raw: Any) -> Dict[str, Any]:
+def _coerce_metadata(raw: Any) -> dict[str, Any]:
     if not isinstance(raw, dict):
         return {}
     return {
@@ -864,9 +863,9 @@ _GROUP_PATTERN = re.compile(
 )
 
 
-def _extract_fallback(text: str) -> Dict[str, Any]:
+def _extract_fallback(text: str) -> dict[str, Any]:
     """Heuristic extraction when no API key is available."""
-    persons: List[Dict[str, Any]] = []
+    persons: list[dict[str, Any]] = []
     seen_names: set = set()
 
     # Individual persons
@@ -924,7 +923,7 @@ def _extract_fallback(text: str) -> Dict[str, Any]:
     # Metadata: try to guess from first 500 chars
     header = text[:500]
     year_m = re.search(r"\b(1[0-9]{3})\b", header)
-    metadata: Dict[str, Any] = {
+    metadata: dict[str, Any] = {
         "title": None,
         "author": None,
         "year": year_m.group(1) if year_m else None,
@@ -946,9 +945,9 @@ def _extract_fallback(text: str) -> Dict[str, Any]:
 
 def _extract_gpustack_chunk(
     chunk: str,
-    language: Optional[str] = None,
-    blocked_terms: Optional[List[str]] = None,
-) -> Dict[str, Any]:
+    language: str | None = None,
+    blocked_terms: list[str] | None = None,
+) -> dict[str, Any]:
     """Call GPUStack on a single chunk. Returns parsed JSON or raises."""
     clean_chunk = _sanitise_text(_nfc(chunk))
     prompt = _build_prompt(language, blocked_terms=blocked_terms) + clean_chunk
@@ -980,19 +979,19 @@ def _extract_gpustack_chunk(
 def _extract_gpustack(
     text: str,
     use_genai_metadata: bool,
-    language: Optional[str] = None,
-    blocked_terms: Optional[List[str]] = None,
-) -> Dict[str, Any]:
+    language: str | None = None,
+    blocked_terms: list[str] | None = None,
+) -> dict[str, Any]:
     """Full GPUStack extraction with chunking."""
-    from config import GPUSTACK_BASE_URL, EXTRACTION_MODEL
+    from config import GPUSTACK_BASE_URL
 
     if not GPUSTACK_BASE_URL:
         logger.warning("GPUSTACK_BASE_URL not set; using fallback extraction.")
         return _extract_fallback(text)
 
     chunks = _chunk_text(text)
-    all_persons: List[Dict[str, Any]] = []
-    merged_metadata: Dict[str, Any] = {}
+    all_persons: list[dict[str, Any]] = []
+    merged_metadata: dict[str, Any] = {}
 
     for offset, chunk in chunks:
         try:
@@ -1036,10 +1035,10 @@ def extract_persons_and_metadata(
     text: str,
     *,
     use_genai_metadata: bool = True,
-    language: Optional[str] = None,
-    feedback_path: Optional[str] = None,
-    source_id: Optional[str] = None,
-) -> Dict[str, Any]:
+    language: str | None = None,
+    feedback_path: str | None = None,
+    source_id: str | None = None,
+) -> dict[str, Any]:
     """
     Extract person mentions and document metadata from *text*.
 

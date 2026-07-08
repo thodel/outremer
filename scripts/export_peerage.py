@@ -1,9 +1,8 @@
 import csv
-import math
 import os
 import time
 import zipfile
-from typing import List
+
 import requests
 
 ENDPOINT = "https://query.wikidata.org/sparql"
@@ -65,7 +64,7 @@ def sparql_csv(query: str, timeout_s: int = 180) -> str:
     r.raise_for_status()
     return r.text
 
-def extract_qids(qid_csv_text: str) -> List[str]:
+def extract_qids(qid_csv_text: str) -> list[str]:
     # CSV has header "item"
     rows = list(csv.DictReader(qid_csv_text.splitlines()))
     qids = []
@@ -77,7 +76,7 @@ def extract_qids(qid_csv_text: str) -> List[str]:
             qids.append(qid)
     return qids
 
-def chunk(lst: List[str], n: int) -> List[List[str]]:
+def chunk(lst: list[str], n: int) -> list[list[str]]:
     return [lst[i:i+n] for i in range(0, len(lst), n)]
 
 def main(out_dir="peerage_pre1500_export", chunk_size=1000, sleep_s=1.0):

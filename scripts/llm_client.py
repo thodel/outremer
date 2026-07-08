@@ -11,18 +11,17 @@ Usage:
 """
 from __future__ import annotations
 
+import functools
 import logging
 import time
-import functools
 from typing import Any
 
 import openai
-
 from config import (
+    EXTRACTION_MODEL,
     GPUSTACK_API_KEY,
     GPUSTACK_BASE_URL,
     GPUSTACK_TIMEOUT,
-    EXTRACTION_MODEL,
 )
 
 logger = logging.getLogger(__name__)

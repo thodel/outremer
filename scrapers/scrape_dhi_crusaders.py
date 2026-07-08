@@ -8,19 +8,19 @@ Source: https://www.dhi.ac.uk/crusaders/
 Output: data/dhi/dhi_crusaders_raw.json (raw scraped data)
         data/dhi/dhi_crusaders_unified.json (mapped to Outremer KG schema)
 
-The database contains ~1100 records of crusaders from First Crusade (1096-1099) 
+The database contains ~1100 records of crusaders from First Crusade (1096-1099)
 to Second Crusade (1145-1149).
 """
 
-import requests
-from bs4 import BeautifulSoup
 import json
+import random
 import re
 import time
-import random
 from datetime import datetime
 from pathlib import Path
-from urllib.parse import urljoin
+
+import requests
+from bs4 import BeautifulSoup
 
 BASE_URL = "https://www.dhi.ac.uk/crusaders/"
 PERSON_URL = "https://www.dhi.ac.uk/crusaders/person/"
@@ -38,13 +38,13 @@ OUTPUT_DIR = Path(__file__).parent.parent / "data" / "dhi"
 def fetch_person_page(person_id, session=None):
     """Fetch a single person page."""
     url = f"{PERSON_URL}?id={person_id}"
-    
+
     # Use session if provided for cookie persistence
     req_session = session if session else requests.Session()
-    
+
     try:
         resp = req_session.get(url, headers=HEADERS, timeout=10, allow_redirects=True)
-        
+
         if resp.status_code == 200:
             # Check if we got actual content vs. block page
             if 'Database of Crusaders' in resp.text or '<h1>' in resp.text:
@@ -70,41 +70,41 @@ def parse_person_html(html, person_id):
     page_div = soup.find('div', class_='page')
     if not page_div:
         return None
-    
+
     data = {
         "source_id": f"DHI:{person_id}",
         "source_url": f"{PERSON_URL}?id={person_id}",
         "scraped_at": datetime.now().isoformat(),
         "fields": {}
     }
-    
+
     # Extract name (h1)
     h1 = page_div.find('h1')
     if h1:
         data["fields"]["name"] = h1.get_text(strip=True)
-    
+
     # Extract all label/value pairs
     for row in page_div.find_all('div', class_='row'):
         label_div = row.find('div', class_='label')
         value_div = row.find('div', class_='value')
-        
+
         if label_div and value_div:
             label = label_div.get_text(strip=True)
             # Get text content but preserve structure
             value = value_div.get_text(strip=True)
             # Remove the glyphicon list icon text if present
             value = re.sub(r'\s*\ue056\s*', '', value)
-            
+
             # Normalize label to snake_case key
             key = label.lower().replace(' ', '_').replace('(', '').replace(')', '')
             key = re.sub(r'_+', '_', key).strip('_')
-            
+
             data["fields"][key] = value
-    
+
     # Extract family relationships (special handling)
     if 'family' in data["fields"]:
         data["relationships"] = parse_family(data["fields"]["family"])
-    
+
     # Extract crusade data (under <h2>Crusades</h2>)
     crusades_section = page_div.find('h2', string='Crusades')
     if crusades_section:
@@ -122,7 +122,7 @@ def parse_person_html(html, person_id):
                     current_crusade[key] = value
         if current_crusade:
             data["crusades"].append(current_crusade)
-    
+
     return data
 
 def parse_family(family_text):
@@ -140,7 +140,7 @@ def parse_family(family_text):
         (r'husband[s]?:\s*([^,(]+)(?:\s*\(([^)]+)\))?', 'spouse'),
         (r'uncle[s]?:\s*([^,(]+)(?:\s*\(([^)]+)\))?', 'uncle'),
     ]
-    
+
     for pattern, rel_type in rel_patterns:
         matches = re.findall(pattern, family_text, re.IGNORECASE)
         for match in matches:
@@ -154,16 +154,16 @@ def parse_family(family_text):
                 if description:
                     rel["description"] = description
                 relationships.append(rel)
-    
+
     return relationships
 
 def map_to_unified_kg(raw_data):
     """Map scraped DHI data to Outremer unified KG schema."""
     fields = raw_data.get("fields", {})
-    
+
     # Extract name components
     full_name = fields.get("name", "Unknown")
-    
+
     # Try to parse name pattern (e.g., "Achard unmarried of Marseilles")
     name_parts = {
         "preferred": full_name,
@@ -171,7 +171,7 @@ def map_to_unified_kg(raw_data):
         "toponym": None,
         "pattern": None
     }
-    
+
     # Pattern: "Name [descriptor] of Place"
     match = re.match(r'^([A-Z][a-z]+)(?:\s+([^o]+))?\s+of\s+(.+)$', full_name)
     if match:
@@ -183,10 +183,10 @@ def map_to_unified_kg(raw_data):
     else:
         # Just use the full name
         name_parts["given"] = full_name.split()[0] if full_name else None
-    
+
     # Generate variants
     variants = generate_name_variants(name_parts)
-    
+
     # Extract roles
     roles = []
     role_text = fields.get("role", "")
@@ -198,7 +198,7 @@ def map_to_unified_kg(raw_data):
                 "role": match.group(1).strip(),
                 "type": match.group(2).strip() if match.group(2) else "unknown"
             })
-    
+
     # Extract places
     places = []
     country = fields.get("country_and_region_of_origin", "")
@@ -210,19 +210,19 @@ def map_to_unified_kg(raw_data):
                 "type": "origin",
                 "label": country_clean
             })
-    
+
     title = fields.get("specific_title", "")
     if title:
         places.append({
             "type": "title",
             "label": title
         })
-    
+
     # Extract bio info
     bio = {}
     if fields.get("gender_and_marital_statusa"):
         bio["gender"] = fields.get("gender_and_marital_statusa")
-    
+
     # Extract crusade participation
     crusades = raw_data.get("crusades", [])
     expeditions = []
@@ -242,7 +242,7 @@ def map_to_unified_kg(raw_data):
             exp["finance"] = crusade.get("financial_arrangements")
         if exp:
             expeditions.append(exp)
-    
+
     # Extract sources
     sources = []
     source_text = fields.get("sources", "")
@@ -255,7 +255,7 @@ def map_to_unified_kg(raw_data):
                     "type": "primary_source",
                     "citation": citation.rstrip('.')
                 })
-    
+
     # Build unified record
     unified = {
         "id": raw_data["source_id"],
@@ -295,7 +295,7 @@ def map_to_unified_kg(raw_data):
             )
         }
     }
-    
+
     return unified
 
 def generate_name_variants(name_parts):
@@ -304,28 +304,28 @@ def generate_name_variants(name_parts):
     given = name_parts.get("given", "")
     toponym = name_parts.get("toponym", "")
     descriptor = name_parts.get("descriptor", "")
-    
+
     if given:
         variants.add(given)
-    
+
     if given and toponym:
         variants.add(f"{given} of {toponym}")
         variants.add(f"{given}, {toponym}")
         variants.add(f"{given} ({toponym})")
         variants.add(f"{toponym}'s {given}")
-    
+
     if descriptor:
         variants.add(f"{given} {descriptor}")
         if toponym:
             variants.add(f"{given} {descriptor} of {toponym}")
-    
+
     return sorted(list(variants))
 
 def discover_person_ids(max_id=2000):
     """Discover valid person IDs by probing sequential IDs."""
     valid_ids = []
     print(f"Discovering person IDs (1-{max_id})...")
-    
+
     for i in range(1, max_id + 1):
         html = fetch_person_page(i)
         if html:
@@ -333,14 +333,14 @@ def discover_person_ids(max_id=2000):
             if len(valid_ids) % 100 == 0:
                 print(f"  Found {len(valid_ids)} persons so far...")
         time.sleep(0.2)  # Rate limiting
-    
+
     print(f"Found {len(valid_ids)} valid person IDs")
     return valid_ids
 
 def scrape_all(output_raw=True, output_unified=True):
     """Main scraping function."""
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    
+
     # Discover or load person IDs
     id_cache = OUTPUT_DIR / "dhi_person_ids.json"
     if id_cache.exists():
@@ -351,30 +351,30 @@ def scrape_all(output_raw=True, output_unified=True):
         person_ids = discover_person_ids(1500)
         with open(id_cache, 'w') as f:
             json.dump(person_ids, f, indent=2)
-    
+
     # Scrape all persons
     raw_records = []
     unified_records = {}
-    
+
     for i, person_id in enumerate(person_ids):
         print(f"[{i+1}/{len(person_ids)}] Fetching person ID {person_id}...")
-        
+
         html = fetch_person_page(person_id)
         if not html:
-            print(f"  Skipped (no page)")
+            print("  Skipped (no page)")
             continue
-        
+
         raw = parse_person_html(html, person_id)
         if raw:
             raw_records.append(raw)
-            
+
             # Map to unified schema
             unified = map_to_unified_kg(raw)
             unified_records[unified["id"]] = unified
-        
+
         # Rate limiting
         time.sleep(0.3 + random.uniform(0, 0.2))
-    
+
     # Save outputs
     if output_raw:
         raw_file = OUTPUT_DIR / "dhi_crusaders_raw.json"
@@ -387,7 +387,7 @@ def scrape_all(output_raw=True, output_unified=True):
                 "records": raw_records
             }, f, indent=2, ensure_ascii=False)
         print(f"\nSaved raw data: {raw_file}")
-    
+
     if output_unified:
         unified_file = OUTPUT_DIR / "dhi_crusaders_unified.json"
         with open(unified_file, 'w', encoding='utf-8') as f:
@@ -399,34 +399,34 @@ def scrape_all(output_raw=True, output_unified=True):
                 "persons": unified_records
             }, f, indent=2, ensure_ascii=False)
         print(f"Saved unified KG: {unified_file}")
-    
+
     return raw_records, unified_records
 
 def scrape_single(person_id):
     """Scrape a single person for testing."""
     print(f"Fetching person ID {person_id}...")
     html = fetch_person_page(person_id)
-    
+
     if not html:
         print("Person not found or error fetching")
         return None
-    
+
     raw = parse_person_html(html, person_id)
     if raw:
         print("\n=== Raw Data ===")
         print(json.dumps(raw, indent=2, ensure_ascii=False))
-        
+
         unified = map_to_unified_kg(raw)
         print("\n=== Unified KG ===")
         print(json.dumps(unified, indent=2, ensure_ascii=False))
-        
+
         return unified
-    
+
     return None
 
 if __name__ == "__main__":
     import sys
-    
+
     if len(sys.argv) > 1:
         if sys.argv[1] == "--single":
             person_id = int(sys.argv[2]) if len(sys.argv) > 2 else 1

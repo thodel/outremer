@@ -19,7 +19,6 @@ import sys
 import time
 import zipfile
 from string import Template
-from typing import List
 
 import requests
 
@@ -95,7 +94,7 @@ def parse_single_value(csv_text: str, field: str) -> str:
         raise ValueError("No rows returned")
     return rows[0][field]
 
-def extract_qids_from_item_csv(csv_text: str) -> List[str]:
+def extract_qids_from_item_csv(csv_text: str) -> list[str]:
     rows = list(csv.DictReader(csv_text.splitlines()))
     qids = []
     for row in rows:
@@ -167,7 +166,7 @@ def main():
 
         # Fetch QID page (or reuse existing)
         if os.path.exists(qid_page_path) and os.path.getsize(qid_page_path) > 0:
-            with open(qid_page_path, "r", encoding="utf-8") as f:
+            with open(qid_page_path, encoding="utf-8") as f:
                 qid_page_csv = f.read()
             qids = extract_qids_from_item_csv(qid_page_csv)
             print(f"   QID page {page_index:04d}: exists ({len(qids)} qids), skipping fetch")

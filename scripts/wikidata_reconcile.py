@@ -75,14 +75,14 @@ SELECT ?birth ?death WHERE {{
         bindings = data.get("results", {}).get("bindings", [])
         if not bindings:
             return None, None
-        
+
         birth_year = None
         death_year = None
-        
+
         for b in bindings:
             birth_val = b.get("birth", {}).get("value", "")
             death_val = b.get("death", {}).get("value", "")
-            
+
             # Parse ISO dates (e.g., "1145-01-01T00:00:00Z")
             if birth_val and not birth_year:
                 match = re.match(r'(\d{4})', birth_val)
@@ -92,7 +92,7 @@ SELECT ?birth ?death WHERE {{
                 match = re.match(r'(\d{4})', death_val)
                 if match:
                     death_year = int(match.group(1))
-        
+
         return birth_year, death_year
     except Exception as e:
         logger.debug(f"Failed to fetch dates for {qid}: {e}")
@@ -113,17 +113,17 @@ def is_medieval_person(birth_year: int | None, death_year: int | None) -> bool:
     """
     if birth_year is None and death_year is None:
         return True  # No dates, include by default
-    
+
     if birth_year and birth_year <= MEDIEVAL_CUTOFF_YEAR:
         return True
-    
+
     if death_year and death_year <= MEDIEVAL_CUTOFF_YEAR:
         return True
-    
+
     # Both dates are after 1500
     if birth_year and death_year and birth_year > MEDIEVAL_CUTOFF_YEAR:
         return False
-    
+
     return True
 
 
@@ -198,6 +198,7 @@ def score_candidate(name: str, cand: dict) -> float:
 
 # ── Logging ─────────────────────────────────────────────────────────────────
 import logging
+
 logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 logger = logging.getLogger(__name__)
 
@@ -215,19 +216,19 @@ def reconcile_person(name: str, limit: int = 3) -> list[dict[str, Any]]:
 
     candidates = []
     filtered_count = 0
-    
+
     for r in results:
         qid = r.get("id", "")
         if not qid.startswith("Q"):
             continue
-        
+
         # Check birth/death dates to filter post-medieval persons
         birth_year, death_year = get_person_dates(qid)
         if not is_medieval_person(birth_year, death_year):
             logger.debug(f"  Filtered post-medieval: {r.get('label', qid)} (b.{birth_year}, d.{death_year})")
             filtered_count += 1
             continue
-        
+
         sc = score_candidate(name, r)
         candidate = {
             "qid":         qid,
@@ -242,10 +243,10 @@ def reconcile_person(name: str, limit: int = 3) -> list[dict[str, Any]]:
 
     # Sort by score desc; keep top `limit`
     candidates.sort(key=lambda x: x["score"], reverse=True)
-    
+
     if filtered_count > 0:
         logger.info(f"  {name}: filtered {filtered_count} post-medieval candidates")
-    
+
     return candidates[:limit]
 
 
