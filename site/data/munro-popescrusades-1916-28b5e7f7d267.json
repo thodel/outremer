@@ -5,7 +5,7 @@
   "metadata": {
     "title": null,
     "author": null,
-    "year": "1916",
+    "year": null,
     "language": "en",
     "doc_type": "other"
   },
@@ -20,8 +20,92 @@
       "gender": "unknown",
       "group": false,
       "context": " archive indicates your acceptance of the Terms & Conditions of Use, available at  https://about.jstor.org/terms Amer",
+      "confidence": 0.0,
+      "source_offset": 664,
+      "post_medieval_penalty": {
+        "applied": true,
+        "strong_signals": 1,
+        "weak_signals": 0,
+        "reasons": [
+          "modern_institution"
+        ]
+      }
+    },
+    {
+      "name": "Read",
+      "raw_mention": "Read",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "POPES AND THE CRUSADES. By DANA C. MUNRO, L.H.D. (Read April 13, 1916.)   The First Crusade was the work",
+      "confidence": 0.0,
+      "source_offset": 1089,
+      "post_medieval_penalty": {
+        "applied": true,
+        "strong_signals": 1,
+        "weak_signals": 0,
+        "reasons": [
+          "modern_date_1800_plus"
+        ]
+      }
+    },
+    {
+      "name": "April",
+      "raw_mention": "April",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": " AND THE CRUSADES. By DANA C. MUNRO, L.H.D. (Read April 13, 1916.)   The First Crusade was the work of Po",
+      "confidence": 0.0,
+      "source_offset": 1094,
+      "post_medieval_penalty": {
+        "applied": true,
+        "strong_signals": 1,
+        "weak_signals": 0,
+        "reasons": [
+          "modern_date_1800_plus"
+        ]
+      }
+    },
+    {
+      "name": "Crusade",
+      "raw_mention": "Crusade",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "rst of religious enthusiasm led to the Children's Crusade, which   was to be a missionary movement, not a m",
       "confidence": 0.3,
-      "source_offset": 667
+      "source_offset": 6240
+    },
+    {
+      "name": "Pope Urban",
+      "raw_mention": "Pope Urban",
+      "title": "Pope",
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "il 13, 1916.)   The First Crusade was the work of Pope Urban IL, whose won-   derful speech at the Council of ",
+      "confidence": 0.0,
+      "source_offset": 1147,
+      "post_medieval_penalty": {
+        "applied": true,
+        "strong_signals": 1,
+        "weak_signals": 0,
+        "reasons": [
+          "modern_date_1800_plus"
+        ]
+      }
     },
     {
       "name": "Council of Clermont",
@@ -34,7 +118,7 @@
       "group": false,
       "context": " Pope Urban IL, whose won-   derful speech at the Council of Clermont led thousands to take the   cross. From that time",
       "confidence": 0.3,
-      "source_offset": 1203
+      "source_offset": 1196
     },
     {
       "name": "Constantinople",
@@ -47,7 +131,7 @@
       "group": false,
       "context": "f some of   the expeditions, like the one against Constantinople, escaped from   their direction. For they believe",
       "confidence": 0.3,
-      "source_offset": 1427
+      "source_offset": 1420
     },
     {
       "name": "God",
@@ -60,7 +144,7 @@
       "group": false,
       "context": "rection. For they believed that the crusades were God's   work and that they were His agents. According",
       "confidence": 0.3,
-      "source_offset": 1516
+      "source_offset": 1509
     },
     {
       "name": "Christ",
@@ -73,7 +157,7 @@
       "group": false,
       "context": "t, I shall proclaim it to the absent, but   it is Christ who commands. Moreover, if those who set out thit",
       "confidence": 0.3,
-      "source_offset": 1722
+      "source_offset": 1715
     },
     {
       "name": "Moreover",
@@ -86,7 +170,7 @@
       "group": false,
       "context": "t to the absent, but   it is Christ who commands. Moreover, if those who set out thither lose their   lives ",
       "confidence": 0.3,
-      "source_offset": 1743
+      "source_offset": 1736
     },
     {
       "name": "Why",
@@ -97,9 +181,9 @@
       "role": null,
       "gender": "unknown",
       "group": false,
-      "context": "ed their   preeminent concern in the holy wars.   Why did the Popes enter upon this undertaking? What d",
+      "context": "ized their   preeminent concern in the holy wars. Why did the Popes enter upon this undertaking? What d",
       "confidence": 0.3,
-      "source_offset": 2352
+      "source_offset": 2343
     },
     {
       "name": "What",
@@ -110,9 +194,9 @@
       "role": null,
       "gender": "unknown",
       "group": false,
-      "context": "   Why did the Popes enter upon this undertaking? What did   they hope to gain for the Church and for Ch",
+      "context": "s. Why did the Popes enter upon this undertaking? What did   they hope to gain for the Church and for Ch",
       "confidence": 0.3,
-      "source_offset": 2399
+      "source_offset": 2390
     },
     {
       "name": "Church",
@@ -125,7 +209,7 @@
       "group": false,
       "context": "undertaking? What did   they hope to gain for the Church and for Christendom from these   crusades ? Many ",
       "confidence": 0.3,
-      "source_offset": 2436
+      "source_offset": 2427
     },
     {
       "name": "Christendom",
@@ -138,7 +222,7 @@
       "group": false,
       "context": "at did   they hope to gain for the Church and for Christendom from these   crusades ? Many have attempted to an",
       "confidence": 0.3,
-      "source_offset": 2451
+      "source_offset": 2442
     },
     {
       "name": "Many",
@@ -151,7 +235,7 @@
       "group": false,
       "context": "hurch and for Christendom from these   crusades ? Many have attempted to answer these questions and thei",
       "confidence": 0.3,
-      "source_offset": 2487
+      "source_offset": 2478
     },
     {
       "name": "Thomas",
@@ -164,7 +248,7 @@
       "group": false,
       "context": " reflecting merely   the prejudice of the writer. Thomas Fuller in his History of the   Holy War said :   ",
       "confidence": 0.3,
-      "source_offset": 2642
+      "source_offset": 2633
     },
     {
       "name": "Fuller",
@@ -177,7 +261,7 @@
       "group": false,
       "context": "ting merely   the prejudice of the writer. Thomas Fuller in his History of the   Holy War said :   \" Thoug",
       "confidence": 0.3,
-      "source_offset": 2649
+      "source_offset": 2640
     },
     {
       "name": "Holy",
@@ -190,7 +274,7 @@
       "group": false,
       "context": "the writer. Thomas Fuller in his History of the   Holy War said :   \" Though the pretences were pious an",
       "confidence": 0.3,
-      "source_offset": 2680
+      "source_offset": 2671
     },
     {
       "name": "Grecians",
@@ -203,7 +287,7 @@
       "group": false,
       "context": "   beyond the public design: First, to reduce the Grecians into subjection to   himself, with their three pa",
       "confidence": 0.3,
-      "source_offset": 2898
+      "source_offset": 2889
     },
     {
       "name": "Jerusalem",
@@ -216,7 +300,7 @@
       "group": false,
       "context": "tion to   himself, with their three patriarchs of Jerusalem, Antioch, and Constanti-   nople; and to make the",
       "confidence": 0.3,
-      "source_offset": 2968
+      "source_offset": 2959
     },
     {
       "name": "Antioch",
@@ -229,7 +313,7 @@
       "group": false,
       "context": "imself, with their three patriarchs of Jerusalem, Antioch, and Constanti-   nople; and to make the Eastern ",
       "confidence": 0.3,
-      "source_offset": 2979
+      "source_offset": 2970
     },
     {
       "name": "Constanti",
@@ -242,7 +326,7 @@
       "group": false,
       "context": "their three patriarchs of Jerusalem, Antioch, and Constanti-   nople; and to make the Eastern Church a chapel",
       "confidence": 0.3,
-      "source_offset": 2992
+      "source_offset": 2983
     },
     {
       "name": "Eastern",
@@ -255,7 +339,7 @@
       "group": false,
       "context": " Antioch, and Constanti-   nople; and to make the Eastern Church a chapel of ease to the mother church   of",
       "confidence": 0.3,
-      "source_offset": 3028
+      "source_offset": 3019
     },
     {
       "name": "Rome",
@@ -268,7 +352,7 @@
       "group": false,
       "context": "Church a chapel of ease to the mother church   of Rome.\"   348 This content downloaded from             ",
       "confidence": 0.3,
-      "source_offset": 3086
+      "source_offset": 3077
     },
     {
       "name": "Without",
@@ -281,7 +365,7 @@
       "group": false,
       "context": "rg/terms  MUNRO?THE POPES AND THE CRUSADES. 349   Without quoting farther from Fuller we may note that many",
       "confidence": 0.3,
-      "source_offset": 3293
+      "source_offset": 3284
     },
     {
       "name": "Greek",
@@ -294,7 +378,7 @@
       "group": false,
       "context": "f the Popes'   action was the desire to bring the Greek Church under the Roman   curia. The most notable ",
       "confidence": 0.3,
-      "source_offset": 3456
+      "source_offset": 3447
     },
     {
       "name": "Roman",
@@ -307,7 +391,7 @@
       "group": false,
       "context": "as the desire to bring the Greek Church under the Roman   curia. The most notable exponent of this idea i",
       "confidence": 0.3,
-      "source_offset": 3479
+      "source_offset": 3470
     },
     {
       "name": "Documents",
@@ -320,7 +404,7 @@
       "group": false,
       "context": " the Revue de VOrient latin and of the   Armenian Documents in the Recueil des Historiens des Croisades,   an",
       "confidence": 0.3,
-      "source_offset": 3628
+      "source_offset": 3619
     },
     {
       "name": "Recueil",
@@ -333,7 +417,7 @@
       "group": false,
       "context": "ient latin and of the   Armenian Documents in the Recueil des Historiens des Croisades,   and one of the be",
       "confidence": 0.3,
-      "source_offset": 3645
+      "source_offset": 3636
     },
     {
       "name": "Historiens",
@@ -346,7 +430,7 @@
       "group": false,
       "context": "nd of the   Armenian Documents in the Recueil des Historiens des Croisades,   and one of the best informed sch",
       "confidence": 0.3,
-      "source_offset": 3657
+      "source_offset": 3648
     },
     {
       "name": "Croisades",
@@ -359,7 +443,7 @@
       "group": false,
       "context": "enian Documents in the Recueil des Historiens des Croisades,   and one of the best informed scholars in this ",
       "confidence": 0.3,
-      "source_offset": 3672
+      "source_offset": 3663
     },
     {
       "name": "Others",
@@ -370,9 +454,9 @@
       "role": null,
       "gender": "unknown",
       "group": false,
-      "context": " of the best informed scholars in this subject.   Others have thought that Urban was moved by the appeal f",
+      "context": "ne of the best informed scholars in this subject. Others have thought that Urban was moved by the appeal f",
       "confidence": 0.3,
-      "source_offset": 3742
+      "source_offset": 3731
     },
     {
       "name": "Emperor",
@@ -385,7 +469,7 @@
       "group": false,
       "context": " Urban was moved by the appeal for aid   from the Emperor at Constantinople, and with the bread view of a  ",
       "confidence": 0.3,
-      "source_offset": 3816
+      "source_offset": 3805
     },
     {
       "name": "Europe",
@@ -398,7 +482,7 @@
       "group": false,
       "context": "   statesman realized the necessity of protecting Europe most effectively   by carrying the war into the e",
       "confidence": 0.3,
-      "source_offset": 3921
+      "source_offset": 3910
     },
     {
       "name": "In the",
@@ -409,9 +493,9 @@
       "role": null,
       "gender": "unknown",
       "group": false,
-      "context": "ringing   such important results to the Church.   In the first place the preaching of the crusades aroused ",
+      "context": " bringing   such important results to the Church. In the first place the preaching of the crusades aroused ",
       "confidence": 0.3,
-      "source_offset": 4745
+      "source_offset": 4728
     },
     {
       "name": "Peter the Hermit",
@@ -424,7 +508,7 @@
       "group": false,
       "context": "many sinners to reform, at least tem-   porarily. Peter the Hermit preached right living as well as the   Crusade; a",
       "confidence": 0.3,
-      "source_offset": 4889
+      "source_offset": 4872
     },
     {
       "name": "Fulk of Neuilly",
@@ -435,9 +519,9 @@
       "role": null,
       "gender": "unknown",
       "group": false,
-      "context": "y ; some   were accused of evil-living and greed. Fulk of Neuilly, who   claimed that he had given out 200,000 cros",
+      "context": "Fulk of Neuilly, who   claimed that he had given out 200,000 cros",
       "confidence": 0.3,
-      "source_offset": 5322
+      "source_offset": null
     },
     {
       "name": "Richard the Lion-",
@@ -450,7 +534,7 @@
       "group": false,
       "context": "crusades. He bandied jests equally   readily with Richard the Lion-Hearted and with the mob. When   the crowd pressed",
       "confidence": 0.3,
-      "source_offset": 5559
+      "source_offset": 4741
     },
     {
       "name": "Hearted",
@@ -463,7 +547,7 @@
       "group": false,
       "context": "ied jests equally   readily with Richard the Lion-Hearted and with the mob. When   the crowd pressed too cl",
       "confidence": 0.3,
-      "source_offset": 5576
+      "source_offset": 4758
     },
     {
       "name": "When \n the",
@@ -476,7 +560,7 @@
       "group": false,
       "context": "y with Richard the Lion-Hearted and with the mob. When   the crowd pressed too closely upon him he would lay ab",
       "confidence": 0.3,
-      "source_offset": 5602
+      "source_offset": 4784
     },
     {
       "name": "Such",
@@ -489,7 +573,7 @@
       "group": false,
       "context": "om his body, in bits to   be preserved as relics. Such preachers naturally appealed to the   common peop",
       "confidence": 0.3,
-      "source_offset": 6294
+      "source_offset": 5474
     },
     {
       "name": "Cross",
@@ -502,7 +586,7 @@
       "group": false,
       "context": " to expiate their sins, in-   stead of taking the Cross. Caesar of Heisterbach tells of the   marvelous e",
       "confidence": 0.3,
-      "source_offset": 6560
+      "source_offset": 5740
     },
     {
       "name": "Caesar of Heisterbach",
@@ -515,7 +599,7 @@
       "group": false,
       "context": "iate their sins, in-   stead of taking the Cross. Caesar of Heisterbach tells of the   marvelous effect of Bernard of Cla",
       "confidence": 0.3,
-      "source_offset": 6567
+      "source_offset": 5747
     },
     {
       "name": "After the",
@@ -528,7 +612,7 @@
       "group": false,
       "context": "o monasteries; to the others he   gave the Cross. After the fall of Jerusalem such a wave of piety   spread ov",
       "confidence": 0.3,
-      "source_offset": 6756
+      "source_offset": 5936
     },
     {
       "name": "City",
@@ -541,7 +625,7 @@
       "group": false,
       "context": "e cardinals took a vow to go afoot until the Holy City was   rescued from the infidel. In the next centu",
       "confidence": 0.3,
-      "source_offset": 6928
+      "source_offset": 6108
     },
     {
       "name": "Children",
@@ -554,7 +638,7 @@
       "group": false,
       "context": "g out-   burst of religious enthusiasm led to the Children's Crusade, which   was to be a missionary movemen",
       "confidence": 0.3,
-      "source_offset": 7049
+      "source_offset": 6229
     },
     {
       "name": "Thus",
@@ -567,7 +651,7 @@
       "group": false,
       "context": "e a missionary movement, not a military campaign. Thus,   undoubtedly, through the preaching of the crus",
       "confidence": 0.3,
-      "source_offset": 7135
+      "source_offset": 6315
     },
     {
       "name": "Land",
@@ -580,7 +664,20 @@
       "group": false,
       "context": "   in manners, and a greater interest in the Holy Land and all con-   nected with it. This would redound",
       "confidence": 0.3,
-      "source_offset": 7323
+      "source_offset": 6503
+    },
+    {
+      "name": "Popes",
+      "raw_mention": "Popes",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": " Church and increase his influence and power. The Popes offered privileges, both spiritual and temporal, ",
+      "confidence": 0.3,
+      "source_offset": 6642
     },
     {
       "name": "Because of",
@@ -593,7 +690,7 @@
       "group": false,
       "context": "ritual and temporal, to   all who took the Cross. Because of the intense enthusiasm for the   crusades and also",
       "confidence": 0.3,
-      "source_offset": 7548
+      "source_offset": 6726
     },
     {
       "name": "Western",
@@ -606,7 +703,7 @@
       "group": false,
       "context": "ause of the weakness of most of the monarchs   in Western Europe during the first half of the twelfth centu",
       "confidence": 0.3,
-      "source_offset": 7663
+      "source_offset": 6841
     },
     {
       "name": "Second",
@@ -619,7 +716,7 @@
       "group": false,
       "context": "rom the feudal courts. In his privilege   for the Second Crusade Eugene III. gave vassals who took the   C",
       "confidence": 0.3,
-      "source_offset": 8229
+      "source_offset": 7407
     },
     {
       "name": "Eugene",
@@ -632,7 +729,7 @@
       "group": false,
       "context": "courts. In his privilege   for the Second Crusade Eugene III. gave vassals who took the   Cross, the right",
       "confidence": 0.3,
-      "source_offset": 8244
+      "source_offset": 7422
     },
     {
       "name": "German",
@@ -645,7 +742,7 @@
       "group": false,
       "context": "nse enthusiasm for a   movement in which both the German emperor and the French king   participated this u",
       "confidence": 0.3,
-      "source_offset": 8712
+      "source_offset": 7890
     },
     {
       "name": "French",
@@ -658,7 +755,7 @@
       "group": false,
       "context": "movement in which both the German emperor and the French king   participated this usurpation passed withou",
       "confidence": 0.3,
-      "source_offset": 8735
+      "source_offset": 7913
     },
     {
       "name": "Augustus",
@@ -671,7 +768,7 @@
       "group": false,
       "context": "archs   should take steps to enforce this. Philip Augustus actually followed   the mandate, by an ordinance ",
       "confidence": 0.3,
-      "source_offset": 9057
+      "source_offset": 8235
     },
     {
       "name": "Jews",
@@ -684,7 +781,7 @@
       "group": false,
       "context": "pposition because the creditors were   frequently Jews. As each crusader was under the protection of the",
       "confidence": 0.3,
-      "source_offset": 9302
+      "source_offset": 8480
     },
     {
       "name": "Church the Popes",
@@ -697,7 +794,7 @@
       "group": false,
       "context": "s each crusader was under the protection of the   Church the Popes interfered in case of capture of individual   cru",
       "confidence": 0.3,
-      "source_offset": 9359
+      "source_offset": 8537
     },
     {
       "name": "They",
@@ -710,7 +807,7 @@
       "group": false,
       "context": "ch would   hinder men from fulfilling their vows. They used the censures of   the Church freely for this",
       "confidence": 0.3,
-      "source_offset": 9530
+      "source_offset": 8708
     },
     {
       "name": "Other",
@@ -723,7 +820,7 @@
       "group": false,
       "context": "hreatening to ex-   communicate all participants. Other instances might be cited to   show the manner in ",
       "confidence": 0.3,
-      "source_offset": 9786
+      "source_offset": 8964
     },
     {
       "name": "Innocent",
@@ -734,9 +831,9 @@
       "role": null,
       "gender": "unknown",
       "group": false,
-      "context": "ad reached   so great an extension by the time of Innocent III.   In the thirteenth century the influence of",
+      "context": "ad reached   so great an extension by the time of Innocent III. In the thirteenth century the influence of t",
       "confidence": 0.3,
-      "source_offset": 10330
+      "source_offset": 9508
     },
     {
       "name": "Frederic",
@@ -747,139 +844,9 @@
       "role": null,
       "gender": "unknown",
       "group": false,
-      "context": "e Pope's power can be illustrated in many ways.   Frederic II., in a burst of enthusiasm caused by his unexp",
+      "context": "the Pope's power can be illustrated in many ways. Frederic II., in a burst of enthusiasm caused by his unexp",
       "confidence": 0.3,
-      "source_offset": 10481
-    },
-    {
-      "name": "When",
-      "raw_mention": "When",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": " to obtain permission to delay its fulfillment.   When an energetic pontiff, Gregory IX., was elected, F",
-      "confidence": 0.3,
-      "source_offset": 10819
-    },
-    {
-      "name": "Gregory",
-      "raw_mention": "Gregory",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "lay its fulfillment.   When an energetic pontiff, Gregory IX., was elected, Frederic was   obliged to start",
-      "confidence": 0.3,
-      "source_offset": 10846
-    },
-    {
-      "name": "Sicilian",
-      "raw_mention": "Sicilian",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "-   iasm. The Pope preached a crusade against his Sicilian kingdom ;   and this illustrates another means by",
-      "confidence": 0.3,
-      "source_offset": 11397
-    },
-    {
-      "name": "Moslems",
-      "raw_mention": "Moslems",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "en to those who   went on expeditions against the Moslems. These holy wars were   sometimes directed agains",
-      "confidence": 0.3,
-      "source_offset": 11722
-    },
-    {
-      "name": "These",
-      "raw_mention": "These",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "se who   went on expeditions against the Moslems. These holy wars were   sometimes directed against monar",
-      "confidence": 0.3,
-      "source_offset": 11731
-    },
-    {
-      "name": "Albigenses",
-      "raw_mention": "Albigenses",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": " cities, at other times against heretics like the Albigenses, or   against the heathen in the north and northe",
-      "confidence": 0.3,
-      "source_offset": 11877
-    },
-    {
-      "name": "Chris",
-      "raw_mention": "Chris",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "entury also saw the temporary union of almost all Chris-  tian lands under the authority of the Pope and ",
-      "confidence": 0.3,
-      "source_offset": 12093
-    },
-    {
-      "name": "Bishops of",
-      "raw_mention": "Bishops of",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "the  establishment of a Latin patriarchate there. Bishops of heretical  churches in Syria acknowledged the supr",
-      "confidence": 0.3,
-      "source_offset": 12275
-    },
-    {
-      "name": "Syria",
-      "raw_mention": "Syria",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "iarchate there. Bishops of heretical  churches in Syria acknowledged the supremacy of the Latin Church.  ",
-      "confidence": 0.3,
-      "source_offset": 12309
-    },
-    {
-      "name": "Catholic",
-      "raw_mention": "Catholic",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "ossibility that  there might be one all-inclusive Catholic Church, under the authority  of the Pope.  The cr",
-      "confidence": 0.3,
-      "source_offset": 12595
+      "source_offset": 9655
     },
     {
       "name": "Crusaders",
@@ -892,774 +859,7 @@
       "group": false,
       "context": "and to the Popes an  enormous increase in wealth. Crusaders gave freely to the Church  before starting for th",
       "confidence": 0.3,
-      "source_offset": 12737
-    },
-    {
-      "name": "East",
-      "raw_mention": "East",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "ave freely to the Church  before starting for the East; they also mortgaged or sold their  property to e",
-      "confidence": 0.3,
-      "source_offset": 12798
-    },
-    {
-      "name": "Orders of",
-      "raw_mention": "Orders of",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "onditions very ad-  vantageous to the latter. The Orders of the Temple and Hospital  received great endowments",
-      "confidence": 0.3,
-      "source_offset": 12935
-    },
-    {
-      "name": "Temple",
-      "raw_mention": "Temple",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": " ad-  vantageous to the latter. The Orders of the Temple and Hospital  received great endowments and becam",
-      "confidence": 0.3,
-      "source_offset": 12949
-    },
-    {
-      "name": "Hospital",
-      "raw_mention": "Hospital",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "geous to the latter. The Orders of the Temple and Hospital  received great endowments and became very wealth",
-      "confidence": 0.3,
-      "source_offset": 12960
-    },
-    {
-      "name": "Men",
-      "raw_mention": "Men",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "eceived great endowments and became very wealthy. Men who  had taken the Cross and were unable to go, p",
-      "confidence": 0.3,
-      "source_offset": 13021
-    },
-    {
-      "name": "Taxes",
-      "raw_mention": "Taxes",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "nable to go, purchased exemption  from their vow. Taxes for the crusades were frequently collected  and h",
-      "confidence": 0.3,
-      "source_offset": 13110
-    },
-    {
-      "name": "Consequently the Popes",
-      "raw_mention": "Consequently the Popes",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "eived through the crusades,  but it was enormous. Consequently the Popes became much more  powerful, especially through th",
-      "confidence": 0.3,
-      "source_offset": 13318
-    },
-    {
-      "name": "While the Popes",
-      "raw_mention": "While the Popes",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "rg/terms  MUNRO?THE POPES AND THE CRUSADES. 353   While the Popes and the Church gained so much in so many   differ",
-      "confidence": 0.3,
-      "source_offset": 13664
-    },
-    {
-      "name": "Crusade of Richard",
-      "raw_mention": "Crusade of Richard",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "lure of the movement which   he had preached. The Crusade of Richard the Lion-Hearted and   Philip Augustus had not re",
-      "confidence": 0.3,
-      "source_offset": 14073
-    },
-    {
-      "name": "Lion",
-      "raw_mention": "Lion",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "ich   he had preached. The Crusade of Richard the Lion-Hearted and   Philip Augustus had not rescued Jer",
-      "confidence": 0.3,
-      "source_offset": 14096
-    },
-    {
-      "name": "Fourth",
-      "raw_mention": "Fourth",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "   Philip Augustus had not rescued Jerusalem; the Fourth Crusade   had been shamelessly diverted against a",
-      "confidence": 0.3,
-      "source_offset": 14162
-    },
-    {
-      "name": "Christian",
-      "raw_mention": "Christian",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "Crusade   had been shamelessly diverted against a Christian Empire; the Fifth   had secured a diplomatic triu",
-      "confidence": 0.3,
-      "source_offset": 14219
-    },
-    {
-      "name": "Empire",
-      "raw_mention": "Empire",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "had been shamelessly diverted against a Christian Empire; the Fifth   had secured a diplomatic triumph whi",
-      "confidence": 0.3,
-      "source_offset": 14229
-    },
-    {
-      "name": "Fifth",
-      "raw_mention": "Fifth",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "melessly diverted against a Christian Empire; the Fifth   had secured a diplomatic triumph which the Pope",
-      "confidence": 0.3,
-      "source_offset": 14241
-    },
-    {
-      "name": "Louis",
-      "raw_mention": "Louis",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": " had achieved   little or nothing; the heroic St. Louis had been obliged to ransom   himself from captivi",
-      "confidence": 0.3,
-      "source_offset": 14415
-    },
-    {
-      "name": "For the First",
-      "raw_mention": "For the First",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "itary operations only to   a very limited extent. For the First Crusade Urban II. had ap-   pointed a papal legat",
-      "confidence": 0.3,
-      "source_offset": 14678
-    },
-    {
-      "name": "Ademar of Puy",
-      "raw_mention": "Ademar of Puy",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "usade Urban II. had ap-   pointed a papal legate, Ademar of Puy, who proved of great assist-   ance to the expedi",
-      "confidence": 0.3,
-      "source_offset": 14744
-    },
-    {
-      "name": "Although",
-      "raw_mention": "Although",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": " and   his loss was keenly felt by the crusaders. Although other legates   were sent with the various expedi",
-      "confidence": 0.3,
-      "source_offset": 14903
-    },
-    {
-      "name": "Damietta",
-      "raw_mention": "Damietta",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "ponsible for the failure of the Crusade against   Damietta. The leaders of the various crusades to the Orien",
-      "confidence": 0.3,
-      "source_offset": 15137
-    },
-    {
-      "name": "With the",
-      "raw_mention": "With the",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "to the Orient were   not designated by the Popes. With the exceptions of Urban II.   and Innocent III., the P",
-      "confidence": 0.3,
-      "source_offset": 15233
-    },
-    {
-      "name": "Saviour",
-      "raw_mention": "Saviour",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "monarch   ought to wear a crown of gold where our Saviour had worn a  This content downloaded from         ",
-      "confidence": 0.3,
-      "source_offset": 15993
-    },
-    {
-      "name": "For the",
-      "raw_mention": "For the",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "RO?THE POPES AND THE CRUSADES.   crown of thorns. For the moment the nobles yielded; after the   capture of ",
-      "confidence": 0.3,
-      "source_offset": 16224
-    },
-    {
-      "name": "Dagobert",
-      "raw_mention": "Dagobert",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": " point   of view held by the clerical party. When Dagobert was elected   Patriarch of Jerusalem and demanded",
-      "confidence": 0.3,
-      "source_offset": 16443
-    },
-    {
-      "name": "Patriarch of Jerusalem",
-      "raw_mention": "Patriarch of Jerusalem",
-      "title": "Patriarch",
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "y the clerical party. When Dagobert was elected   Patriarch of Jerusalem and demanded that Godfrey should give up   the Ho",
-      "confidence": 0.3,
-      "source_offset": 16466
-    },
-    {
-      "name": "Patriarch",
-      "raw_mention": "Patriarch",
-      "title": "Patriarch",
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "mising that he would hand   over Jerusalem to the Patriarch when he had secured other con-   quests. But afte",
-      "confidence": 0.3,
-      "source_offset": 16623
-    },
-    {
-      "name": "King",
-      "raw_mention": "King",
-      "title": "King",
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "ch   the Patriarch was clearly subordinate to the King, and the latter   was wholly independent of the P",
-      "confidence": 0.3,
-      "source_offset": 16845
-    },
-    {
-      "name": "Even",
-      "raw_mention": "Even",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "with their commerce by pro-   voking hostilities. Even members of the military Orders, whose   main purp",
-      "confidence": 0.3,
-      "source_offset": 17292
-    },
-    {
-      "name": "Orders",
-      "raw_mention": "Orders",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": " voking hostilities. Even members of the military Orders, whose   main purpose was supposed to be the defe",
-      "confidence": 0.3,
-      "source_offset": 17321
-    },
-    {
-      "name": "Allah",
-      "raw_mention": "Allah",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "rtained in   their castles and allowed to pray to Allah in their chapels. The   direction of the great Cr",
-      "confidence": 0.3,
-      "source_offset": 17502
-    },
-    {
-      "name": "Venetians",
-      "raw_mention": "Venetians",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "ds and repeated excommunications the French   and Venetians persisted in going to Zara and Constantinople and",
-      "confidence": 0.3,
-      "source_offset": 17673
-    },
-    {
-      "name": "Zara",
-      "raw_mention": "Zara",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": " the French   and Venetians persisted in going to Zara and Constantinople and in   sacking those Christi",
-      "confidence": 0.3,
-      "source_offset": 17705
-    },
-    {
-      "name": "Despite the",
-      "raw_mention": "Despite the",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "mmunicated again for   going while excommunicate. Despite the efforts of the Pope and   of the leading churchmen",
-      "confidence": 0.3,
-      "source_offset": 17895
-    },
-    {
-      "name": "Mohammedans",
-      "raw_mention": "Mohammedans",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "urchmen in the Holy Land he made peace with the   Mohammedans and secured Jerusalem by diplomacy. The crusaders",
-      "confidence": 0.3,
-      "source_offset": 18000
-    },
-    {
-      "name": "Even the Templars",
-      "raw_mention": "Even the Templars",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "f their wives, and   some of their superstitions. Even the Templars were generally   believed to be contaminated by t",
-      "confidence": 0.3,
-      "source_offset": 18301
-    },
-    {
-      "name": "Mohammedan",
-      "raw_mention": "Mohammedan",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "re generally   believed to be contaminated by the Mohammedan beliefs. The   monastic chroniclers, especially t",
-      "confidence": 0.3,
-      "source_offset": 18371
-    },
-    {
-      "name": "Christians of",
-      "raw_mention": "Christians of",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "ery out-   spoken about the evil lives led by the Christians of all ranks, even   the patriarchs, in the Kingdom o",
-      "confidence": 0.3,
-      "source_offset": 18506
-    },
-    {
-      "name": "Kingdom of Jerusalem",
-      "raw_mention": "Kingdom of Jerusalem",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "tians of all ranks, even   the patriarchs, in the Kingdom of Jerusalem. From the East these  This content downloaded fro",
-      "confidence": 0.3,
-      "source_offset": 18561
-    },
-    {
-      "name": "From the East",
-      "raw_mention": "From the East",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "en   the patriarchs, in the Kingdom of Jerusalem. From the East these  This content downloaded from              ",
-      "confidence": 0.3,
-      "source_offset": 18583
-    },
-    {
-      "name": "Oriental",
-      "raw_mention": "Oriental",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "e Church.   The merchants carried back not merely Oriental wares, but also   Oriental heresies, which spread",
-      "confidence": 0.3,
-      "source_offset": 18907
-    },
-    {
-      "name": "Soon",
-      "raw_mention": "Soon",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "ly in the West along the com-   mercial highways. Soon crusades had to be preached against the   heresie",
-      "confidence": 0.3,
-      "source_offset": 19021
-    },
-    {
-      "name": "All of",
-      "raw_mention": "All of",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "  heresies which were mainly due to the crusades. All of these   factors detracted from the power of the Po",
-      "confidence": 0.3,
-      "source_offset": 19116
-    },
-    {
-      "name": "Germany",
-      "raw_mention": "Germany",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": " to many causes, e. g., all teaching in France,   Germany and England had been done by the clerics and the ",
-      "confidence": 0.3,
-      "source_offset": 19323
-    },
-    {
-      "name": "England",
-      "raw_mention": "England",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "ses, e. g., all teaching in France,   Germany and England had been done by the clerics and the   crusaders ",
-      "confidence": 0.3,
-      "source_offset": 19335
-    },
-    {
-      "name": "One",
-      "raw_mention": "One",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": " things which they had been taught were   untrue. One chronicler of the First Crusade naively expressed",
-      "confidence": 0.3,
-      "source_offset": 19457
-    },
-    {
-      "name": "Turks",
-      "raw_mention": "Turks",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "ly expressed his   surprise at the bravery of the Turks who he had been taught to   believe were cowards.",
-      "confidence": 0.3,
-      "source_offset": 19548
-    },
-    {
-      "name": "Possibly",
-      "raw_mention": "Possibly",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "who he had been taught to   believe were cowards. Possibly this idea was due to Urban's speech   at Clermont",
-      "confidence": 0.3,
-      "source_offset": 19604
-    },
-    {
-      "name": "For the Turk",
-      "raw_mention": "For the Turk",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "close encounter, love   a flying mode of warfare. For the Turk never ventures upon close fight;   but, when driv",
-      "confidence": 0.3,
-      "source_offset": 19837
-    },
-    {
-      "name": "Whatever",
-      "raw_mention": "Whatever",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": " not valor, inflicts death on the man he strikes. Whatever he effects,   then, I attribute to fortune, not t",
-      "confidence": 0.3,
-      "source_offset": 20089
-    },
-    {
-      "name": "Many of",
-      "raw_mention": "Many of",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "ope that some might be led to take the   Cross.   Many of the preachers were charged with misappropriation o",
-      "confidence": 0.3,
-      "source_offset": 21090
-    },
-    {
-      "name": "Walter von",
-      "raw_mention": "Walter von",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "f   the funds which they raised for the crusades. Walter von der   Vogelweide voices this feeling in his verses",
-      "confidence": 0.3,
-      "source_offset": 21198
-    },
-    {
-      "name": "Vogelweide",
-      "raw_mention": "Vogelweide",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "ch they raised for the crusades. Walter von der   Vogelweide voices this feeling in his verses :  This content",
-      "confidence": 0.3,
-      "source_offset": 21215
-    },
-    {
-      "name": "Little",
-      "raw_mention": "Little",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "/terms  356 MUNRO?THE POPES AND THE CRUSADES.   \" Little, methinks, of all this silver in God's cause is s",
-      "confidence": 0.3,
-      "source_offset": 21459
-    },
-    {
-      "name": "Walter",
-      "raw_mention": "Walter",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": " a great treasure priests are ill-content.,,   As Walter was a partisan of the Hohenstaufens and opposed t",
-      "confidence": 0.3,
-      "source_offset": 21586
-    },
-    {
-      "name": "Hohenstaufens",
-      "raw_mention": "Hohenstaufens",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": " ill-content.,,   As Walter was a partisan of the Hohenstaufens and opposed to the   papacy he might be considere",
-      "confidence": 0.3,
-      "source_offset": 21615
-    },
-    {
-      "name": "But the",
-      "raw_mention": "But the",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "o the   papacy he might be considered prejudiced. But the same idea was   common ; e. g., Matthew Paris, the",
-      "confidence": 0.3,
-      "source_offset": 21692
-    },
-    {
-      "name": "Matthew",
-      "raw_mention": "Matthew",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "ejudiced. But the same idea was   common ; e. g., Matthew Paris, the historiographer of the monastery   of ",
-      "confidence": 0.3,
-      "source_offset": 21732
-    },
-    {
-      "name": "Islam",
-      "raw_mention": "Islam",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": " much longer be \"the   bulwark of Europe\" against Islam. The fall of the Latin Empire   of Constantinople",
-      "confidence": 0.3,
-      "source_offset": 22576
-    },
-    {
-      "name": "Empire \n of Constantinople",
-      "raw_mention": "Empire \n of Constantinople",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "k of Europe\" against Islam. The fall of the Latin Empire   of Constantinople led to the return of the Greek patriarch. Heresy ",
-      "confidence": 0.3,
-      "source_offset": 22605
-    },
-    {
-      "name": "Heresy",
-      "raw_mention": "Heresy",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "tinople led to the return of the Greek patriarch. Heresy   and opposition to the Church spread in the West",
-      "confidence": 0.3,
-      "source_offset": 22674
+      "source_offset": 11103
     },
     {
       "name": "clergy",
@@ -1672,7 +872,878 @@
       "group": true,
       "context": "nd control over those who were not members of the clergy, so   that after a century of crusading activity ",
       "confidence": 0.25,
-      "source_offset": 9940
+      "source_offset": 9118
+    },
+    {
+      "name": "When",
+      "raw_mention": "When",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "When an energetic pontiff, Gregory IX., was elected, F",
+      "confidence": 0.3,
+      "source_offset": null
+    },
+    {
+      "name": "Gregory",
+      "raw_mention": "Gregory",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "When an energetic pontiff, Gregory IX., was elected, Frederic was   obliged to start",
+      "confidence": 0.3,
+      "source_offset": 9217
+    },
+    {
+      "name": "Sicilian",
+      "raw_mention": "Sicilian",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "-   iasm. The Pope preached a crusade against his Sicilian kingdom ;   and this illustrates another means by",
+      "confidence": 0.3,
+      "source_offset": 9766
+    },
+    {
+      "name": "Moslems",
+      "raw_mention": "Moslems",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "en to those who   went on expeditions against the Moslems. These holy wars were   sometimes directed agains",
+      "confidence": 0.3,
+      "source_offset": 10091
+    },
+    {
+      "name": "These",
+      "raw_mention": "These",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "se who   went on expeditions against the Moslems. These holy wars were   sometimes directed against monar",
+      "confidence": 0.3,
+      "source_offset": 10100
+    },
+    {
+      "name": "Albigenses",
+      "raw_mention": "Albigenses",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": " cities, at other times against heretics like the Albigenses, or   against the heathen in the north and northe",
+      "confidence": 0.3,
+      "source_offset": 10246
+    },
+    {
+      "name": "Chris",
+      "raw_mention": "Chris",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "entury also saw the temporary union of almost all Chris-  tian lands under the authority of the Pope and ",
+      "confidence": 0.3,
+      "source_offset": 10461
+    },
+    {
+      "name": "Bishops of",
+      "raw_mention": "Bishops of",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "the  establishment of a Latin patriarchate there. Bishops of heretical  churches in Syria acknowledged the supr",
+      "confidence": 0.3,
+      "source_offset": 10643
+    },
+    {
+      "name": "Syria",
+      "raw_mention": "Syria",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "iarchate there. Bishops of heretical  churches in Syria acknowledged the supremacy of the Latin Church. T",
+      "confidence": 0.3,
+      "source_offset": 10677
+    },
+    {
+      "name": "Armenian",
+      "raw_mention": "Armenian",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "m by the Pope and promised in return to bring the Armenian  Church under the Pope. For a time there seemed a",
+      "confidence": 0.3,
+      "source_offset": 10852
+    },
+    {
+      "name": "Catholic",
+      "raw_mention": "Catholic",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "ossibility that  there might be one all-inclusive Catholic Church, under the authority  of the Pope. The cru",
+      "confidence": 0.3,
+      "source_offset": 10962
+    },
+    {
+      "name": "East",
+      "raw_mention": "East",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "ave freely to the Church  before starting for the East; they also mortgaged or sold their  property to e",
+      "confidence": 0.3,
+      "source_offset": 11164
+    },
+    {
+      "name": "Orders of",
+      "raw_mention": "Orders of",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "onditions very ad-  vantageous to the latter. The Orders of the Temple and Hospital  received great endowments",
+      "confidence": 0.3,
+      "source_offset": 11301
+    },
+    {
+      "name": "Temple",
+      "raw_mention": "Temple",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": " ad-  vantageous to the latter. The Orders of the Temple and Hospital  received great endowments and becam",
+      "confidence": 0.3,
+      "source_offset": 11315
+    },
+    {
+      "name": "Hospital",
+      "raw_mention": "Hospital",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "geous to the latter. The Orders of the Temple and Hospital  received great endowments and became very wealth",
+      "confidence": 0.3,
+      "source_offset": 11326
+    },
+    {
+      "name": "Men",
+      "raw_mention": "Men",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "eceived great endowments and became very wealthy. Men who  had taken the Cross and were unable to go, p",
+      "confidence": 0.3,
+      "source_offset": 11387
+    },
+    {
+      "name": "Taxes",
+      "raw_mention": "Taxes",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "nable to go, purchased exemption  from their vow. Taxes for the crusades were frequently collected  and h",
+      "confidence": 0.3,
+      "source_offset": 11476
+    },
+    {
+      "name": "Consequently the Popes",
+      "raw_mention": "Consequently the Popes",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "eived through the crusades,  but it was enormous. Consequently the Popes became much more  powerful, especially through th",
+      "confidence": 0.3,
+      "source_offset": 11684
+    },
+    {
+      "name": "While the Popes",
+      "raw_mention": "While the Popes",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "rg/terms  MUNRO?THE POPES AND THE CRUSADES. 353   While the Popes and the Church gained so much in so many   differ",
+      "confidence": 0.3,
+      "source_offset": 12030
+    },
+    {
+      "name": "Bernard of \n Clairvaux",
+      "raw_mention": "Bernard of \n Clairvaux",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "  home ignominiously from the Second Crusade even Bernard of   Clairvaux felt sick at heart over the failure of the moveme",
+      "confidence": 0.3,
+      "source_offset": 12335
+    },
+    {
+      "name": "Crusade of Richard",
+      "raw_mention": "Crusade of Richard",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "lure of the movement which   he had preached. The Crusade of Richard the Lion-Hearted and   Philip Augustus had not re",
+      "confidence": 0.3,
+      "source_offset": 12439
+    },
+    {
+      "name": "Lion",
+      "raw_mention": "Lion",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "ich   he had preached. The Crusade of Richard the Lion-Hearted and   Philip Augustus had not rescued Jer",
+      "confidence": 0.3,
+      "source_offset": 12462
+    },
+    {
+      "name": "Fourth",
+      "raw_mention": "Fourth",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "   Philip Augustus had not rescued Jerusalem; the Fourth Crusade   had been shamelessly diverted against a",
+      "confidence": 0.3,
+      "source_offset": 12528
+    },
+    {
+      "name": "Empire",
+      "raw_mention": "Empire",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "had been shamelessly diverted against a Christian Empire; the Fifth   had secured a diplomatic triumph whi",
+      "confidence": 0.3,
+      "source_offset": 12595
+    },
+    {
+      "name": "Fifth",
+      "raw_mention": "Fifth",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "melessly diverted against a Christian Empire; the Fifth   had secured a diplomatic triumph which the Pope",
+      "confidence": 0.3,
+      "source_offset": 12607
+    },
+    {
+      "name": "Louis",
+      "raw_mention": "Louis",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": " had achieved   little or nothing; the heroic St. Louis had been obliged to ransom   himself from captivi",
+      "confidence": 0.3,
+      "source_offset": 12781
+    },
+    {
+      "name": "For the First",
+      "raw_mention": "For the First",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "itary operations only to   a very limited extent. For the First Crusade Urban II. had ap-   pointed a papal legat",
+      "confidence": 0.3,
+      "source_offset": 13044
+    },
+    {
+      "name": "Ademar of Puy",
+      "raw_mention": "Ademar of Puy",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "usade Urban II. had ap-   pointed a papal legate, Ademar of Puy, who proved of great assist-   ance to the expedi",
+      "confidence": 0.3,
+      "source_offset": 13110
+    },
+    {
+      "name": "Although",
+      "raw_mention": "Although",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": " and   his loss was keenly felt by the crusaders. Although other legates   were sent with the various expedi",
+      "confidence": 0.3,
+      "source_offset": 13269
+    },
+    {
+      "name": "Damietta",
+      "raw_mention": "Damietta",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "ponsible for the failure of the Crusade against   Damietta. The leaders of the various crusades to the Orien",
+      "confidence": 0.3,
+      "source_offset": 13503
+    },
+    {
+      "name": "Orient",
+      "raw_mention": "Orient",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "ietta. The leaders of the various crusades to the Orient were   not designated by the Popes. With the exce",
+      "confidence": 0.3,
+      "source_offset": 13556
+    },
+    {
+      "name": "With the",
+      "raw_mention": "With the",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "to the Orient were   not designated by the Popes. With the exceptions of Urban II. and Innocent III., the Pop",
+      "confidence": 0.3,
+      "source_offset": 13599
+    },
+    {
+      "name": "Saviour",
+      "raw_mention": "Saviour",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "monarch   ought to wear a crown of gold where our Saviour had worn a  This content downloaded from         ",
+      "confidence": 0.3,
+      "source_offset": 14355
+    },
+    {
+      "name": "For the",
+      "raw_mention": "For the",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "For the moment the nobles yielded; after the   capture of ",
+      "confidence": 0.3,
+      "source_offset": null
+    },
+    {
+      "name": "Dagobert",
+      "raw_mention": "Dagobert",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": " point   of view held by the clerical party. When Dagobert was elected   Patriarch of Jerusalem and demanded",
+      "confidence": 0.3,
+      "source_offset": 14002
+    },
+    {
+      "name": "Patriarch of Jerusalem",
+      "raw_mention": "Patriarch of Jerusalem",
+      "title": "Patriarch",
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "y the clerical party. When Dagobert was elected   Patriarch of Jerusalem and demanded that Godfrey should give up   the Ho",
+      "confidence": 0.3,
+      "source_offset": 14025
+    },
+    {
+      "name": "Patriarch",
+      "raw_mention": "Patriarch",
+      "title": "Patriarch",
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "mising that he would hand   over Jerusalem to the Patriarch when he had secured other con-   quests. But afte",
+      "confidence": 0.3,
+      "source_offset": 14182
+    },
+    {
+      "name": "King",
+      "raw_mention": "King",
+      "title": "King",
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "ch   the Patriarch was clearly subordinate to the King, and the latter   was wholly independent of the P",
+      "confidence": 0.3,
+      "source_offset": 14404
+    },
+    {
+      "name": "Even",
+      "raw_mention": "Even",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "with their commerce by pro-   voking hostilities. Even members of the military Orders, whose   main purp",
+      "confidence": 0.3,
+      "source_offset": 14851
+    },
+    {
+      "name": "Allah",
+      "raw_mention": "Allah",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "rtained in   their castles and allowed to pray to Allah in their chapels. The   direction of the great Cr",
+      "confidence": 0.3,
+      "source_offset": 15061
+    },
+    {
+      "name": "Venetians",
+      "raw_mention": "Venetians",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "ds and repeated excommunications the French   and Venetians persisted in going to Zara and Constantinople and",
+      "confidence": 0.3,
+      "source_offset": 15232
+    },
+    {
+      "name": "Zara",
+      "raw_mention": "Zara",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": " the French   and Venetians persisted in going to Zara and Constantinople and in   sacking those Christi",
+      "confidence": 0.3,
+      "source_offset": 15264
+    },
+    {
+      "name": "Despite the",
+      "raw_mention": "Despite the",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "mmunicated again for   going while excommunicate. Despite the efforts of the Pope and   of the leading churchmen",
+      "confidence": 0.3,
+      "source_offset": 15454
+    },
+    {
+      "name": "Mohammedans",
+      "raw_mention": "Mohammedans",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "urchmen in the Holy Land he made peace with the   Mohammedans and secured Jerusalem by diplomacy. The crusaders",
+      "confidence": 0.3,
+      "source_offset": 15559
+    },
+    {
+      "name": "Even the Templars",
+      "raw_mention": "Even the Templars",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "f their wives, and   some of their superstitions. Even the Templars were generally   believed to be contaminated by t",
+      "confidence": 0.3,
+      "source_offset": 15860
+    },
+    {
+      "name": "Mohammedan",
+      "raw_mention": "Mohammedan",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "re generally   believed to be contaminated by the Mohammedan beliefs. The   monastic chroniclers, especially t",
+      "confidence": 0.3,
+      "source_offset": 15930
+    },
+    {
+      "name": "Christians of",
+      "raw_mention": "Christians of",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "ery out-   spoken about the evil lives led by the Christians of all ranks, even   the patriarchs, in the Kingdom o",
+      "confidence": 0.3,
+      "source_offset": 16065
+    },
+    {
+      "name": "Kingdom of Jerusalem",
+      "raw_mention": "Kingdom of Jerusalem",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "tians of all ranks, even   the patriarchs, in the Kingdom of Jerusalem. From the East these  This content downloaded fro",
+      "confidence": 0.3,
+      "source_offset": 16120
+    },
+    {
+      "name": "From the East",
+      "raw_mention": "From the East",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "en   the patriarchs, in the Kingdom of Jerusalem. From the East these  This content downloaded from              ",
+      "confidence": 0.3,
+      "source_offset": 16142
+    },
+    {
+      "name": "Oriental",
+      "raw_mention": "Oriental",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "the Church. The merchants carried back not merely Oriental wares, but also   Oriental heresies, which spread",
+      "confidence": 0.3,
+      "source_offset": 16464
+    },
+    {
+      "name": "Soon",
+      "raw_mention": "Soon",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "ly in the West along the com-   mercial highways. Soon crusades had to be preached against the   heresie",
+      "confidence": 0.3,
+      "source_offset": 16578
+    },
+    {
+      "name": "All of",
+      "raw_mention": "All of",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "  heresies which were mainly due to the crusades. All of these   factors detracted from the power of the Po",
+      "confidence": 0.3,
+      "source_offset": 16673
+    },
+    {
+      "name": "Germany",
+      "raw_mention": "Germany",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": " to many causes, e. g., all teaching in France,   Germany and England had been done by the clerics and the ",
+      "confidence": 0.3,
+      "source_offset": 16878
+    },
+    {
+      "name": "England",
+      "raw_mention": "England",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "ses, e. g., all teaching in France,   Germany and England had been done by the clerics and the   crusaders ",
+      "confidence": 0.3,
+      "source_offset": 16890
+    },
+    {
+      "name": "One",
+      "raw_mention": "One",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": " things which they had been taught were   untrue. One chronicler of the First Crusade naively expressed",
+      "confidence": 0.3,
+      "source_offset": 17012
+    },
+    {
+      "name": "Turks",
+      "raw_mention": "Turks",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "ly expressed his   surprise at the bravery of the Turks who he had been taught to   believe were cowards.",
+      "confidence": 0.3,
+      "source_offset": 17103
+    },
+    {
+      "name": "Possibly",
+      "raw_mention": "Possibly",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "who he had been taught to   believe were cowards. Possibly this idea was due to Urban's speech   at Clermont",
+      "confidence": 0.3,
+      "source_offset": 17159
+    },
+    {
+      "name": "Clermont",
+      "raw_mention": "Clermont",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "Possibly this idea was due to Urban's speech   at Clermont, for William of Malmesbury reports that the Pope ",
+      "confidence": 0.3,
+      "source_offset": 17209
+    },
+    {
+      "name": "For the Turk",
+      "raw_mention": "For the Turk",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "close encounter, love   a flying mode of warfare. For the Turk never ventures upon close fight;   but, when driv",
+      "confidence": 0.3,
+      "source_offset": 17392
+    },
+    {
+      "name": "Whatever",
+      "raw_mention": "Whatever",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": " not valor, inflicts death on the man he strikes. Whatever he effects,   then, I attribute to fortune, not t",
+      "confidence": 0.3,
+      "source_offset": 17644
+    },
+    {
+      "name": "Many of",
+      "raw_mention": "Many of",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": " hope that some might be led to take the   Cross. Many of the preachers were charged with misappropriation o",
+      "confidence": 0.3,
+      "source_offset": 18643
+    },
+    {
+      "name": "Walter von",
+      "raw_mention": "Walter von",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "f   the funds which they raised for the crusades. Walter von der   Vogelweide voices this feeling in his verses",
+      "confidence": 0.3,
+      "source_offset": 18751
+    },
+    {
+      "name": "Vogelweide",
+      "raw_mention": "Vogelweide",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "ch they raised for the crusades. Walter von der   Vogelweide voices this feeling in his verses :  This content",
+      "confidence": 0.3,
+      "source_offset": 18768
+    },
+    {
+      "name": "Little",
+      "raw_mention": "Little",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "rg/terms  356 MUNRO?THE POPES AND THE CRUSADES. \" Little, methinks, of all this silver in God's cause is s",
+      "confidence": 0.3,
+      "source_offset": 19010
+    },
+    {
+      "name": "Walter",
+      "raw_mention": "Walter",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": " a great treasure priests are ill-content.,,   As Walter was a partisan of the Hohenstaufens and opposed t",
+      "confidence": 0.3,
+      "source_offset": 19137
+    },
+    {
+      "name": "Hohenstaufens",
+      "raw_mention": "Hohenstaufens",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": " ill-content.,,   As Walter was a partisan of the Hohenstaufens and opposed to the   papacy he might be considere",
+      "confidence": 0.3,
+      "source_offset": 19166
+    },
+    {
+      "name": "But the",
+      "raw_mention": "But the",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "o the   papacy he might be considered prejudiced. But the same idea was   common ; e.",
+      "confidence": 0.3,
+      "source_offset": 19243
     },
     {
       "name": "Christians",
@@ -1685,7 +1756,7 @@
       "group": true,
       "context": "ery out-   spoken about the evil lives led by the Christians of all ranks, even   the patriarchs, in the Kingd",
       "confidence": 0.25,
-      "source_offset": 18506
+      "source_offset": 16065
     },
     {
       "name": "merchants",
@@ -1696,9 +1767,48 @@
       "role": "collective",
       "gender": "unknown",
       "group": true,
-      "context": "West, to the great detriment of the Church.   The merchants carried back not merely Oriental wares, but also ",
+      "context": "e West, to the great detriment of the Church. The merchants carried back not merely Oriental wares, but also ",
       "confidence": 0.25,
-      "source_offset": 18873
+      "source_offset": 16430
+    },
+    {
+      "name": "Matthew",
+      "raw_mention": "Matthew",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "g., Matthew Paris, the historiographer of the monastery   of ",
+      "confidence": 0.3,
+      "source_offset": 18482
+    },
+    {
+      "name": "Empire \n of Constantinople",
+      "raw_mention": "Empire \n of Constantinople",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": " of Europe\" against Islam.  The fall of the Latin Empire   of Constantinople led to the return of the Greek patriarch.  Heresy",
+      "confidence": 0.3,
+      "source_offset": 19357
+    },
+    {
+      "name": "Heresy",
+      "raw_mention": "Heresy",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "inople led to the return of the Greek patriarch.  Heresy   and opposition to the Church spread in the West",
+      "confidence": 0.3,
+      "source_offset": 19427
     }
   ],
   "links": [
@@ -1725,6 +1835,102 @@
       },
       "confidence": 0.6316,
       "status": "low"
+    },
+    {
+      "person": "Read",
+      "person_group": false,
+      "candidates": [
+        {
+          "outremer_id": "AUTH:CR14",
+          "outremer_name": "Erard I of Brienne",
+          "type": "person",
+          "score": 0.6667,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'read' ↔ 'Erard I of Brienne'"
+        },
+        {
+          "outremer_id": "AUTH:CR1",
+          "outremer_name": "Conrad III of Germany",
+          "type": "person",
+          "score": 0.6,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'read' ↔ 'Conrad III of Germany'"
+        },
+        {
+          "outremer_id": "AUTH:CR37",
+          "outremer_name": "Conrad of Montferrat",
+          "type": "person",
+          "score": 0.6,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'read' ↔ 'Conrad of Montferrat'"
+        }
+      ],
+      "top_candidate": {
+        "outremer_id": "AUTH:CR14",
+        "outremer_name": "Erard I of Brienne",
+        "type": "person",
+        "score": 0.6667,
+        "match_type": "fuzzy",
+        "evidence": "fuzzy match: 'read' ↔ 'Erard I of Brienne'"
+      },
+      "confidence": 0.6667,
+      "status": "low"
+    },
+    {
+      "person": "April",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "Crusade",
+      "person_group": false,
+      "candidates": [
+        {
+          "outremer_id": "AUTH:CR1",
+          "outremer_name": "Conrad III of Germany",
+          "type": "person",
+          "score": 0.6154,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'crusade' ↔ 'Conrad III of Germany'"
+        },
+        {
+          "outremer_id": "AUTH:CR37",
+          "outremer_name": "Conrad of Montferrat",
+          "type": "person",
+          "score": 0.6154,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'crusade' ↔ 'Conrad of Montferrat'"
+        },
+        {
+          "outremer_id": "AUTH:CR175",
+          "outremer_name": "Conrad of Meissen",
+          "type": "person",
+          "score": 0.6154,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'crusade' ↔ 'Conrad of Meissen'"
+        }
+      ],
+      "top_candidate": {
+        "outremer_id": "AUTH:CR1",
+        "outremer_name": "Conrad III of Germany",
+        "type": "person",
+        "score": 0.6154,
+        "match_type": "fuzzy",
+        "evidence": "fuzzy match: 'crusade' ↔ 'Conrad III of Germany'"
+      },
+      "confidence": 0.6154,
+      "status": "low"
+    },
+    {
+      "person": "Pope Urban",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
     },
     {
       "person": "Council of Clermont",
@@ -2519,6 +2725,14 @@
       "status": "low"
     },
     {
+      "person": "Popes",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
       "person": "Because of",
       "person_group": false,
       "candidates": [],
@@ -2799,6 +3013,22 @@
       "status": "no_match"
     },
     {
+      "person": "Crusaders",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "clergy",
+      "person_group": true,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
       "person": "When",
       "person_group": false,
       "candidates": [
@@ -2935,7 +3165,7 @@
       "status": "no_match"
     },
     {
-      "person": "Catholic",
+      "person": "Armenian",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -2943,7 +3173,7 @@
       "status": "no_match"
     },
     {
-      "person": "Crusaders",
+      "person": "Catholic",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -3063,6 +3293,30 @@
       "status": "no_match"
     },
     {
+      "person": "Bernard of \n Clairvaux",
+      "person_group": false,
+      "candidates": [
+        {
+          "outremer_id": "AUTH:CR183",
+          "outremer_name": "Bernard of Dorat",
+          "type": "person",
+          "score": 0.7222,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'bernard of clairvaux' ↔ 'Bernard of Dorat'"
+        }
+      ],
+      "top_candidate": {
+        "outremer_id": "AUTH:CR183",
+        "outremer_name": "Bernard of Dorat",
+        "type": "person",
+        "score": 0.7222,
+        "match_type": "fuzzy",
+        "evidence": "fuzzy match: 'bernard of clairvaux' ↔ 'Bernard of Dorat'"
+      },
+      "confidence": 0.7222,
+      "status": "low"
+    },
+    {
       "person": "Crusade of Richard",
       "person_group": false,
       "candidates": [],
@@ -3080,14 +3334,6 @@
     },
     {
       "person": "Fourth",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Christian",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -3215,6 +3461,14 @@
       "status": "no_match"
     },
     {
+      "person": "Orient",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
       "person": "With the",
       "person_group": false,
       "candidates": [],
@@ -3328,14 +3582,6 @@
     },
     {
       "person": "Even",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Orders",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -3615,6 +3861,14 @@
       "status": "no_match"
     },
     {
+      "person": "Clermont",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
       "person": "For the Turk",
       "person_group": false,
       "candidates": [],
@@ -3783,6 +4037,22 @@
       "status": "no_match"
     },
     {
+      "person": "Christians",
+      "person_group": true,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "merchants",
+      "person_group": true,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
       "person": "Matthew",
       "person_group": false,
       "candidates": [
@@ -3805,46 +4075,6 @@
       },
       "confidence": 1.0,
       "status": "high"
-    },
-    {
-      "person": "Islam",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR11",
-          "outremer_name": "William the Huntsman",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'islam' ↔ 'William the Huntsman'"
-        },
-        {
-          "outremer_id": "AUTH:CR32",
-          "outremer_name": "William of Tortosa",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'islam' ↔ 'William of Tortosa'"
-        },
-        {
-          "outremer_id": "AUTH:CR44",
-          "outremer_name": "William of Orkney",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'islam' ↔ 'William of Orkney'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR11",
-        "outremer_name": "William the Huntsman",
-        "type": "person",
-        "score": 0.6667,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'islam' ↔ 'William the Huntsman'"
-      },
-      "confidence": 0.6667,
-      "status": "low"
     },
     {
       "person": "Empire \n of Constantinople",
@@ -3893,37 +4123,13 @@
       },
       "confidence": 0.7273,
       "status": "low"
-    },
-    {
-      "person": "clergy",
-      "person_group": true,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Christians",
-      "person_group": true,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "merchants",
-      "person_group": true,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
     }
   ],
   "text_sha256": "28b5e7f7d267c7053cea13ed28ba90b3c67af1d49c0cc99e70602c4724054560",
   "extraction_mode": "fallback",
   "language_hint": null,
   "quality": {
-    "filtered_problem_entities": 59,
+    "filtered_problem_entities": 98,
     "feedback_store": "data/entity_feedback.json"
   }
 }
