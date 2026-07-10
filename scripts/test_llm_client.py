@@ -4,10 +4,12 @@ scripts/test_llm_client.py
 Smoke test for GPUStack integration.
 Run: python scripts/test_llm_client.py
 """
-import sys
 import json
-from scripts.llm_client import generate
+import sys
+
 from config import EXTRACTION_MODEL, ORCHESTRATOR_MODEL
+
+from scripts.llm_client import generate
 
 
 def main():
@@ -39,7 +41,7 @@ def main():
         print(f"    ERROR: {e}")
 
     # Test 3: JSON output parses
-    print(f"\n[3/4] Testing JSON output from EXTRACTION_MODEL…")
+    print("\n[3/4] Testing JSON output from EXTRACTION_MODEL…")
     try:
         out3 = generate(
             'Return valid JSON: [{"king": "Baldwin I", "years": "1100-1118"}]',
@@ -53,7 +55,7 @@ def main():
         print(f"    Raw: {out3[:200]}")
 
     # Test 4: Credentials check (not 401/403)
-    print(f"\n[4/4] Checking credentials (not 401/403)…")
+    print("\n[4/4] Checking credentials (not 401/403)…")
     try:
         generate("Reply OK", max_tokens=8)
         print("    Credentials OK")

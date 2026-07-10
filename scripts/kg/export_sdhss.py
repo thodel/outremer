@@ -2,9 +2,10 @@
 """
 export_sdhss.py  –  Outremer → SDHSS/CIDOC-CRM RDF/Turtle
 """
-import json, re, sys
-from pathlib import Path
+import json
+import re
 from datetime import datetime, timezone
+from pathlib import Path
 
 ROOT   = Path(__file__).resolve().parents[2]
 INPUT  = ROOT / "data" / "unified_kg.json"
@@ -144,7 +145,7 @@ def emit_person(pid, p, out):
                 if ids in seen_couples: continue
                 seen_couples.add(ids)
                 gl    = re.sub(r'[^A-Za-z0-9_]', '_', "_".join(ids))
-                su    = f"wd:{ref}" if not str(ref).startswith("AUTH") else uri(ref)
+                _su = f"wd:{ref}" if not str(ref).startswith("AUTH") else uri(ref)
                 triples(f"outremer:FamilyGroup_{gl}", [
                     ("a", "crm:E74_Group"),
                     ("crm:P2_has_type", "outremer:Type_MaritalGroup"),

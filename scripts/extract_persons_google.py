@@ -529,7 +529,7 @@ def _chunk_text(text: str, size: int = _CHUNK_SIZE, overlap: int = _CHUNK_OVERLA
                 chunk_text = "\n\n".join(current)
                 chunks.append((start, chunk_text))
                 # Advance with overlap
-                overlap_text = "\n\n".join(current)[-overlap:] if current else ""
+                _overlap_text = "\n\n".join(current)[-overlap:] if current else ""
                 start += len(chunk_text) - overlap
                 start = max(start, 0)
 
@@ -551,7 +551,7 @@ def _chunk_text(text: str, size: int = _CHUNK_SIZE, overlap: int = _CHUNK_OVERLA
                         if current:
                             chunk_text = " ".join(current)
                             chunks.append((start, chunk_text))
-                            overlap_text = chunk_text[-overlap:] if chunk_text else ""
+                            _overlap_text = chunk_text[-overlap:] if chunk_text else ""
                             start += len(chunk_text) - overlap
                             start = max(start, 0)
                         # Single sentence that exceeds size — include it whole anyway

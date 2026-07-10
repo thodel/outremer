@@ -14,8 +14,6 @@ import argparse
 import json
 import re
 from pathlib import Path
-from typing import List, Set
-
 
 # === BLACKLIST: Terms that should NEVER be extracted as persons ===
 BIBLIOGRAPHIC_NOISE = {
@@ -26,21 +24,21 @@ BIBLIOGRAPHIC_NOISE = {
     "vol", "volume", "issue", "no", "number", "pp", "pages",
     "published", "publication", "publisher", "copyright", "all rights reserved",
     "isbn", "doi", "issn",
-    
+
     # Modern academic terms
     "author", "editor", "translator", "introduction", "preface", "foreword",
     "bibliography", "references", "works cited", "index", "appendix",
     "chapter", "section", "part", "book", "article", "thesis", "dissertation",
     "professor", "prof", "dr", "mr", "mrs", "ms", "phd", "ma", "ba",
-    
+
     # Library/catalog metadata
     "stable url", "jstor", "accessed", "downloaded", "terms of use",
     "pdf", "text", "preview", "abstract",
-    
+
     # Common false positives
     "source", "title", "language", "doc type", "extracted", "extraction",
     "person", "persons", "people", "group", "collective",
-    
+
     # Medieval text noise (headers, incipits)
     "incipit", "explicit", "folio", "manuscript", "ms", "mss",
     "recto", "verso", "column", "line",
@@ -79,21 +77,21 @@ MEDIEVAL_PATTERNS = [
 def is_bibliographic_noise(name: str) -> bool:
     """Check if name is likely bibliographic metadata."""
     name_lower = name.lower().strip()
-    
+
     # Exact blacklist match
     if name_lower in BIBLIOGRAPHIC_NOISE:
         return True
-    
+
     # Partial matches for multi-word terms
     for term in BIBLIOGRAPHIC_NOISE:
         if ' ' in term and term in name_lower:
             return True
-    
+
     # Regex patterns
     for pattern in NOISE_PATTERNS:
         if re.match(pattern, name_lower):
             return True
-    
+
     return False
 
 
@@ -107,18 +105,17 @@ def has_medieval_pattern(name: str) -> bool:
 
 def is_likely_modern_scholar(person: dict, context: str = "") -> bool:
     """Detect modern scholars based on context and metadata."""
-    name = person.get("name", "")
     role = person.get("role", "")
     confidence = person.get("confidence", 1.0)
-    
+
     # Explicitly marked as modern author
     if role == "modern author":
         return True
-    
+
     # Low confidence + academic context
     if confidence <= 0.15:
         return True
-    
+
     # Context clues
     context_lower = context.lower()
     modern_indicators = [
@@ -126,11 +123,11 @@ def is_likely_modern_scholar(person: dict, context: str = "") -> bool:
         "according to", "cf.", "see", "edition", "translation",
         "trans.", "ed.", "intro", "footnote", "citation"
     ]
-    
+
     for indicator in modern_indicators:
         if indicator in context_lower:
             return True
-    
+
     return False
 
 
@@ -148,45 +145,45 @@ def filter_persons(doc: dict, *, strict: bool = False) -> dict:
     original_count = len(doc.get("persons", []))
     filtered_persons = []
     filtered_links = []
-    
+
     for person in doc.get("persons", []):
         name = person.get("name", "")
-        
+
         # Skip empty or too short
         if not name or len(name.strip()) < 2:
             continue
-        
+
         # Check blacklist
         if is_bibliographic_noise(name):
             continue
-        
+
         # Check for modern scholar markers
         context = person.get("context", "")
         if is_likely_modern_scholar(person, context):
             continue
-        
+
         # In strict mode, require medieval patterns or high confidence
         if strict:
             confidence = person.get("confidence", 0.0)
             if confidence < 0.5 and not has_medieval_pattern(name):
                 continue
-        
+
         filtered_persons.append(person)
-    
+
     # Also filter links section
     for link in doc.get("links", []):
         person_name = link.get("person", "")
-        
+
         if is_bibliographic_noise(person_name):
             continue
-        
+
         # Keep link if it has candidates or high confidence
         if link.get("status") in ("high", "medium") or link.get("candidates"):
             filtered_links.append(link)
         elif link.get("status") == "low" and link.get("top_candidate"):
             # Keep low confidence only if there's a candidate
             filtered_links.append(link)
-    
+
     # Update document
     doc["persons"] = filtered_persons
     doc["links"] = filtered_links
@@ -197,7 +194,7 @@ def filter_persons(doc: dict, *, strict: bool = False) -> dict:
         "original_links": len(doc.get("links", [])),
         "filtered_links": len(filtered_links)
     }
-    
+
     return doc
 
 
@@ -207,7 +204,7 @@ def process_file(input_path: Path, output_path: Path, strict: bool = False):
     filtered = filter_persons(doc, strict=strict)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(json.dumps(filtered, ensure_ascii=False, indent=2))
-    
+
     meta = filtered.get("_filter_metadata", {})
     print(f"  {input_path.name}: {meta.get('original_persons', 0)} → {meta.get('filtered_persons', 0)} persons ({meta.get('removed', 0)} removed)")
 
@@ -217,12 +214,12 @@ def main():
     parser.add_argument("--input", "-i", required=True, help="Input file or directory")
     parser.add_argument("--output", "-o", required=True, help="Output file or directory")
     parser.add_argument("--strict", action="store_true", help="Strict mode: require medieval patterns or high confidence")
-    
+
     args = parser.parse_args()
-    
+
     input_path = Path(args.input)
     output_path = Path(args.output)
-    
+
     if input_path.is_file():
         if output_path.suffix:
             process_file(input_path, output_path, args.strict)

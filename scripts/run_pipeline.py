@@ -24,11 +24,13 @@ import re
 import sys
 import unicodedata
 from collections import Counter
+from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any
 
+from config import EXTRACTION_MODEL, OCR_ENGINE
 from extract_persons_google import extract_persons_and_metadata
-from config import OCR_ENGINE
+
 from scripts.llm_client import generate as _llm_generate
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
@@ -106,7 +108,7 @@ def read_pdf_file(path: Path) -> str:
             "pypdf is required to read PDFs. Install with: pip install pypdf"
         ) from exc
     reader = PdfReader(str(path))
-    parts: List[str] = []
+    parts: list[str] = []
     for page in reader.pages:
         parts.append(page.extract_text() or "")
     text = "\n".join(parts).strip()
@@ -135,8 +137,6 @@ def _ocr_image(path: Path) -> str:
                → Mistral
       mistral  → Mistral only (legacy)
     """
-    engine = OCR_ENGINE.lower()
-
     # qwen3-vl (default): Qwen3 VL 30B primary → MiniMax fallback → Mistral final
     result = _qwen3vl_ocr(path)
     if result:
@@ -153,7 +153,8 @@ def _ocr_image(path: Path) -> str:
 def _qwen3vl_ocr(path: Path) -> str:
     """GPUStack Qwen3 VL 30B for primary document OCR."""
     import base64
-    from config import ORCHESTRATOR_MODEL, QWEN3_VL_MODEL
+
+    from config import QWEN3_VL_MODEL
 
     b64 = base64.b64encode(path.read_bytes()).decode()
     prompt = (
@@ -220,7 +221,7 @@ def read_input(path: Path) -> str:
     raise ValueError(f"Unsupported input type: {path}")
 
 
-def load_outremer_index(path: Path, *, require: bool = False) -> Dict[str, Any]:
+def load_outremer_index(path: Path, *, require: bool = False) -> dict[str, Any]:
     if not path.exists():
         msg = f"Outremer index not found at {path}. Linking will be skipped."
         if require:
@@ -260,7 +261,7 @@ def _canonical_review_decision(decision: Any) -> str:
     return d
 
 
-def _load_human_review_decisions(path: Path) -> List[Dict[str, Any]]:
+def _load_human_review_decisions(path: Path) -> list[dict[str, Any]]:
     """
     Supports:
     - server-style list: [{doc_id, person, decision, ...}, ...]
@@ -270,7 +271,7 @@ def _load_human_review_decisions(path: Path) -> List[Dict[str, Any]]:
     if isinstance(raw, list):
         return [x for x in raw if isinstance(x, dict)]
     if isinstance(raw, dict):
-        out: List[Dict[str, Any]] = []
+        out: list[dict[str, Any]] = []
         for key, value in raw.items():
             if not isinstance(value, dict):
                 continue
@@ -298,7 +299,7 @@ def sync_feedback_from_human_review(
     *,
     min_reject_votes: int = 2,
     min_accept_votes: int = 1,
-) -> Dict[str, int]:
+) -> dict[str, int]:
     """
     Sync blocked/allow lists from review decisions:
     - Reject/not_a_person/wrong_era votes push a name toward blocked_terms.
@@ -318,7 +319,7 @@ def sync_feedback_from_human_review(
     blocked_terms = [str(x).strip() for x in (feedback.get("blocked_terms") or []) if str(x).strip()]
     allow_terms = [str(x).strip() for x in (feedback.get("allow_terms") or []) if str(x).strip()]
 
-    name_by_norm: Dict[str, str] = {}
+    name_by_norm: dict[str, str] = {}
     reject_counts: Counter[str] = Counter()
     accept_counts: Counter[str] = Counter()
 
@@ -388,7 +389,7 @@ def sync_feedback_from_human_review(
 # Authority index preprocessing
 # ──────────────────────────────────────────────
 
-def build_authority_lookup(outremer: Dict[str, Any]) -> List[Dict[str, Any]]:
+def build_authority_lookup(outremer: dict[str, Any]) -> list[dict[str, Any]]:
     """
     Pre-process the authority index into a flat list of
     { authority_id, preferred_label, type, all_norms: [str] }
@@ -396,7 +397,7 @@ def build_authority_lookup(outremer: Dict[str, Any]) -> List[Dict[str, Any]]:
     """
     # Support both old ("entities") and new ("persons") top-level keys
     entries = outremer.get("persons") or outremer.get("entities") or []
-    lookup: List[Dict[str, Any]] = []
+    lookup: list[dict[str, Any]] = []
 
     for e in entries:
         auth_id = (e.get("authority_id") or "").strip()
@@ -404,7 +405,7 @@ def build_authority_lookup(outremer: Dict[str, Any]) -> List[Dict[str, Any]]:
         etype = e.get("type", "person")
 
         # Collect all name variants to match against
-        raw_variants: List[str] = [label]
+        raw_variants: list[str] = [label]
 
         # From variants list
         for v in e.get("variants") or []:
@@ -427,7 +428,7 @@ def build_authority_lookup(outremer: Dict[str, Any]) -> List[Dict[str, Any]]:
 
         # Deduplicate normalised forms
         seen: set = set()
-        all_norms: List[str] = []
+        all_norms: list[str] = []
         for v in raw_variants:
             n = normalise(v)
             if n and n not in seen:
@@ -475,17 +476,17 @@ def _status(score: float) -> str:
 
 
 def link_voyagers_to_outremer(
-    persons: List[Dict[str, Any]],
-    authority_lookup: List[Dict[str, Any]],
+    persons: list[dict[str, Any]],
+    authority_lookup: list[dict[str, Any]],
     top_k: int = 3,
     min_score: float = 0.60,
-) -> List[Dict[str, Any]]:
+) -> list[dict[str, Any]]:
     """
     Link extracted person mentions to Outremer authority entries using fuzzy matching.
 
     Returns one link object per person mention, each containing ranked candidates.
     """
-    links: List[Dict[str, Any]] = []
+    links: list[dict[str, Any]] = []
 
     for p in persons:
         pname = (p.get("name") or "").strip()
@@ -495,7 +496,7 @@ def link_voyagers_to_outremer(
         p_tokens = pnorm.split()
 
         # Score every authority entry
-        scored: List[Tuple[float, str, Dict[str, Any]]] = []  # (score, match_type, entry)
+        scored: list[tuple[float, str, dict[str, Any]]] = []  # (score, match_type, entry)
         for entry in authority_lookup:
             best_score = 0.0
             best_match_type = "fuzzy"
@@ -558,8 +559,8 @@ def link_voyagers_to_outremer(
         })
 
     # De-duplicate: if same (person, outremer_id) appears multiple times, keep highest score
-    seen: Dict[Tuple[str, str], int] = {}  # key → index in links
-    deduped: List[Dict[str, Any]] = []
+    seen: dict[tuple[str, str], int] = {}  # key → index in links
+    deduped: list[dict[str, Any]] = []
     for link in links:
         top = link.get("top_candidate")
         key = (link["person"], top["outremer_id"] if top else "__none__")
@@ -583,11 +584,11 @@ def process_file(
     site_data_dir: Path,
     bib_dir: Path,
     site_bib_dir: Path,
-    authority_lookup: List[Dict[str, Any]],
+    authority_lookup: list[dict[str, Any]],
     use_genai_metadata: bool,
-    language: Optional[str] = None,
-    entity_feedback_path: Optional[Path] = None,
-) -> Tuple[Path, Path, Path]:
+    language: str | None = None,
+    entity_feedback_path: Path | None = None,
+) -> tuple[Path, Path, Path]:
     logger.info("Processing %s …", in_path.name)
     text = read_input(in_path)
 
@@ -602,13 +603,13 @@ def process_file(
         feedback_path=str(entity_feedback_path) if entity_feedback_path else None,
         source_id=str(in_path.as_posix()),
     )
-    persons: List[Dict[str, Any]] = result.get("persons") or []
-    metadata: Dict[str, Any] = result.get("metadata") or {}
+    persons: list[dict[str, Any]] = result.get("persons") or []
+    metadata: dict[str, Any] = result.get("metadata") or {}
     bibtex: str = result.get("bibtex") or ""
 
     links = link_voyagers_to_outremer(persons, authority_lookup)
 
-    payload: Dict[str, Any] = {
+    payload: dict[str, Any] = {
         "doc_id": doc_id,
         "source_file": str(in_path.as_posix()),
         "input_type": in_path.suffix.lower().lstrip("."),
@@ -633,10 +634,10 @@ def process_file(
         "  → %d persons, %d links (%d high / %d medium / %d low / %d no_match)",
         len(persons),
         len(links),
-        sum(1 for l in links if l["status"] == "high"),
-        sum(1 for l in links if l["status"] == "medium"),
-        sum(1 for l in links if l["status"] == "low"),
-        sum(1 for l in links if l["status"] == "no_match"),
+        sum(1 for _l in links if _l["status"] == "high"),
+        sum(1 for _l in links if _l["status"] == "medium"),
+        sum(1 for _l in links if _l["status"] == "low"),
+        sum(1 for _l in links if _l["status"] == "no_match"),
     )
     return json_path, bib_path_repo, bib_path_site
 
@@ -734,12 +735,12 @@ def main() -> int:
 
     # Specific files or all files in directory
     if args.files:
-        inputs: List[Path] = [Path(f) for f in args.files]
+        inputs: list[Path] = [Path(f) for f in args.files]
         logger.info("Processing %d specified file(s).", len(inputs))
     else:
         inputs = sorted(set(list(in_dir.rglob("*.txt")) + list(in_dir.rglob("*.pdf"))))
 
-    errors: List[Tuple[Path, Exception]] = []
+    errors: list[tuple[Path, Exception]] = []
     if not inputs:
         logger.warning("No .txt or .pdf files found in %s", in_dir)
     else:

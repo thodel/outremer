@@ -159,7 +159,7 @@ def cmd_process(item_id: str, reprocess_all: bool = False) -> None:
     subprocess.run(["git", "commit", "-m", msg], cwd=str(REPO), check=True)
     subprocess.run(["git", "push", "origin", "main"], cwd=str(REPO), check=True)
 
-    print(f"\nDone. Results pushed to GitHub. Explorer will update after Pages deploy.")
+    print("\nDone. Results pushed to GitHub. Explorer will update after Pages deploy.")
     print(f"Source file: data/raw/{dest.name}")
 
 
