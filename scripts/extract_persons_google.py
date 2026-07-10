@@ -50,7 +50,7 @@ import unicodedata
 from datetime import datetime, timezone
 
 # GPUStack LLM client
-from scripts.llm_client import generate as _llm_generate
+from llm_client import generate as _llm_generate
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 

@@ -6,7 +6,7 @@ Thin GPUStack client — wraps openai.OpenAI with GPUStack base URL.
 Includes exponential-backoff retry on transient failures.
 
 Usage:
-    from scripts.llm_client import generate
+    from llm_client import generate
     text = generate("Extract persons from: ...", system="You are an expert...")
 """
 from __future__ import annotations

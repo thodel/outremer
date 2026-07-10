@@ -8,8 +8,7 @@ import json
 import sys
 
 from config import EXTRACTION_MODEL, ORCHESTRATOR_MODEL
-
-from scripts.llm_client import generate
+from llm_client import generate
 
 
 def main():

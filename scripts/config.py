@@ -16,19 +16,28 @@ from __future__ import annotations
 import os
 from pathlib import Path
 
-# Load .env.gpustack so env vars are available before config reads them.
-_env_path = Path(__file__).parent.parent / ".env.gpustack"
-if _env_path.exists():
-    with open(_env_path) as _f:
-        for line in _f:
-            line = line.strip()
-            if line and not line.startswith("#") and "=" in line:
-                k, v = line.split("=", 1)
-                os.environ.setdefault(k.strip(), v.strip())
-
-del _env_path, _f, line, k, v
-
 _REPO_ROOT = Path(__file__).parent.parent
+
+
+def _load_env_file(path: Path) -> None:
+    """Load KEY=VALUE lines from an .env-style file into os.environ.
+
+    Existing environment variables take precedence (setdefault), so an
+    explicit export or CI secret always wins over the file. Missing file,
+    blank lines, and ``#`` comments are ignored.
+    """
+    if not path.exists():
+        return
+    for raw_line in path.read_text().splitlines():
+        line = raw_line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        key, value = line.split("=", 1)
+        os.environ.setdefault(key.strip(), value.strip())
+
+
+# Load .env.gpustack so env vars are available before config reads them.
+_load_env_file(_REPO_ROOT / ".env.gpustack")
 
 
 def _get(key: str, default=None):

@@ -22,5 +22,5 @@ COPY scripts/ ./scripts/
 COPY data/ ./data/
 COPY pyproject.toml .
 
-# Default: run pipeline on data/raw/ → data/ner/
-ENTRYPOINT ["python3", "scripts/run_pipeline.py", "--raw-dir", "data/raw/"]
+# Default: run pipeline on data/raw/
+ENTRYPOINT ["python3", "scripts/run_pipeline.py", "--input-dir", "data/raw/"]

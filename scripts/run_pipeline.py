@@ -32,7 +32,7 @@ from config import EXTRACTION_MODEL, OCR_ENGINE
 from validate_decisions import validate_decisions_file, format_validation_report
 from extract_persons_google import extract_persons_and_metadata
 
-from scripts.llm_client import generate as _llm_generate
+from llm_client import generate as _llm_generate
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 logger = logging.getLogger(__name__)
