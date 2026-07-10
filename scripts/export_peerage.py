@@ -80,7 +80,7 @@ def extract_qids(qid_csv_text: str) -> List[str]:
 def chunk(lst: List[str], n: int) -> List[List[str]]:
     return [lst[i:i+n] for i in range(0, len(lst), n)]
 
-def main(out_dir="peerage_pre1500_export", chunk_size=1000, sleep_s=1.0):
+def main(out_dir="data/peerage_pre1500_export", chunk_size=1000, sleep_s=1.0):
     os.makedirs(out_dir, exist_ok=True)
 
     # 1) Get QIDs once

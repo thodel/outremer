@@ -129,7 +129,7 @@ def zip_csvs(base_dir: str, zip_name: str) -> str:
 
 def main():
     # Tunables (override via env vars)
-    out_dir = os.environ.get("OUT_DIR", "peerage_pre1500_export")
+    out_dir = os.environ.get("OUT_DIR", "data/peerage_pre1500_export")
     qid_page_size = int(os.environ.get("QID_PAGE_SIZE", "500"))   # QIDs per QID page query
     values_chunk_size = int(os.environ.get("VALUES_SIZE", "200")) # QIDs per VALUES in data query
     sleep_s = float(os.environ.get("SLEEP_S", "1.0"))
