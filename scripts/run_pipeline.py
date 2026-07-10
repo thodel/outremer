@@ -29,6 +29,7 @@ from pathlib import Path
 from typing import Any
 
 from config import EXTRACTION_MODEL, OCR_ENGINE
+from validate_decisions import validate_decisions_file, format_validation_report
 from extract_persons_google import extract_persons_and_metadata
 
 from scripts.llm_client import generate as _llm_generate
@@ -51,6 +52,7 @@ def _write_run_report(
     extraction_model: str,
     ocr_engine: str,
     failures: list[dict],
+    feedback_applied: dict[str, int] | None = None,
 ) -> None:
     """Write run report JSON to data/staging/run_report.json."""
     report = {
@@ -64,6 +66,14 @@ def _write_run_report(
         "ocr_engine": ocr_engine,
         "failures": failures,
     }
+    if feedback_applied:
+        report["feedback_applied"] = {
+            "source_file": str(feedback_applied.get("source_file", "")),
+            "processed_decisions": feedback_applied.get("processed", 0),
+            "blocked_added": feedback_applied.get("blocked_added", 0),
+            "allowed_added": feedback_applied.get("allowed_added", 0),
+            "blocked_removed": feedback_applied.get("blocked_removed", 0),
+        }
     staging_dir = Path("data/staging")
     staging_dir.mkdir(parents=True, exist_ok=True)
     report_path = staging_dir / "run_report.json"
@@ -718,8 +728,33 @@ def main() -> int:
     authority_lookup = build_authority_lookup(outremer_index)
     logger.info("Loaded %d authority entries.", len(authority_lookup))
 
+    # ── Validate review decisions before processing ────────────────────────
+    if review_decisions_path:
+        from pathlib import Path as _P
+        _dp = _P(review_decisions_path) if not isinstance(review_decisions_path, _P) else review_decisions_path
+        logger.info("Validating decisions file: %s", _dp)
+        vr = validate_decisions_file(_dp)
+        if vr.errors:
+            logger.error("Decision file has %d validation error(s):", len(vr.errors))
+            for e in vr.errors[:10]:
+                logger.error("  [%s] %s: %s",
+                    f"index {e.entry_index}" if e.entry_index >= 0 else "file",
+                    e.field or "", e.message)
+            logger.error("Fix the errors above before re-running. Pipeline aborting.")
+            return 1
+        logger.info(
+            "Validated: %d/%d decisions OK, %d conflict(s)",
+            len(vr.records), vr.total_entries, len(vr.conflicts))
+        if vr.conflicts:
+            for c in vr.conflicts[:5]:
+                logger.warning(
+                    "  %s::%s::%s: accepts=%s rejects=%s → %s",
+                    c.doc_id, c.person, c.id,
+                    c.accepts, c.rejects, c.final_decision)
+
+    feedback_stats: dict[str, int] | None = None
     if entity_feedback_path and review_decisions_path:
-        stats = sync_feedback_from_human_review(
+        feedback_stats = sync_feedback_from_human_review(
             entity_feedback_path,
             review_decisions_path,
             min_reject_votes=max(1, args.review_min_reject_votes),
@@ -727,10 +762,10 @@ def main() -> int:
         )
         logger.info(
             "Synced review feedback: %d decisions, +%d blocked, +%d allowed, -%d blocked",
-            stats["processed"],
-            stats["blocked_added"],
-            stats["allowed_added"],
-            stats["blocked_removed"],
+            feedback_stats["processed"],
+            feedback_stats["blocked_added"],
+            feedback_stats["allowed_added"],
+            feedback_stats["blocked_removed"],
         )
 
     # Specific files or all files in directory
@@ -793,6 +828,7 @@ def main() -> int:
         extraction_model=EXTRACTION_MODEL,
         ocr_engine=OCR_ENGINE,
         failures=[{"file": str(p), "error": str(e)} for p, e in errors],
+        feedback_applied=feedback_stats,
     )
 
     if errors:

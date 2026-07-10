@@ -149,9 +149,67 @@ cd site && python3 -m http.server 8080
 3. **Links** panel shows candidate matches ranked by fuzzy score (green = high, yellow = medium, red = low).
 4. Click **✅ Accept**, **❌ Reject**, or **🚩 Flag** for each candidate.
 5. Filter bar focuses on unreviewed or flagged items.
-6. **Export decisions** downloads adjudications as JSON.
+6. **Export decisions** downloads adjudications as `outremer-decisions-YYYY-MM-DD.json`.
 
 Decisions are persisted in browser `localStorage` — survive page refreshes, scoped per-document.
+
+**From export to pipeline impact — the feedback round-trip:**
+
+Scholar decisions flow back into the pipeline via a JSON file that the pipeline reads on the next run:
+
+```
+Explorer review → [Export decisions JSON] → data/decisions.json → pipeline run → entity_feedback.json
+```
+
+**Steps to close the loop:**
+
+1. In the Explorer, click **Export decisions** — a file like `outremer-decisions-2026-07-10.json` downloads.
+2. Save it to the repo as `data/decisions.json` (or any path you pass with `--review-decisions-path`).
+3. Run the pipeline with both flags:
+
+   ```bash
+   python scripts/run_pipeline.py --input-dir data/raw \
+     --entity-feedback-path data/entity_feedback.json \
+     --review-decisions-path data/decisions.json
+   ```
+
+4. The pipeline will:
+   - Validate the decisions file (aborts with a clear error report if the schema is invalid).
+   - Tally accept/reject votes per name (cross-reviewer deduplication is automatic).
+   - Move names with ≥2 reject votes from different reviewers into `blocked_terms`.
+   - Move names with ≥1 accept vote (and accept ≥ reject) into `allow_terms`.
+   - Write the updated `data/entity_feedback.json`.
+
+**Validation before running:**
+
+Catch schema errors before the pipeline runs:
+
+```bash
+python3 -m scripts.validate_decisions data/decisions.json
+```
+
+Valid decisions show `✅  N entries, N valid, 0 errors`. Invalid files abort with a line-by-line error report.
+
+**Conflict detection:**
+
+If two different reviewers disagree on the same person in the same document (one accept, one reject), the pipeline logs a conflict warning. Conflicts do not block processing — the vote threshold determines the outcome.
+
+**Schema for decisions.json:**
+
+```json
+[
+  {
+    "doc_id":     "rileysmith-motivesearliestcrusaders-1983-92cc17aaccd3",
+    "person":     "Baldwin I",
+    "decision":   "accept",          // accept | reject | not_a_person | wrong_era | is_group
+    "client_id":  "anon-abc123xyz",  // optional, auto-generated per browser
+    "comment":    "confirmed match", // optional
+    "submitted_at": "2026-07-10T09:00:00Z"  // optional, ISO 8601
+  }
+]
+```
+
+Accept/reject votes are aggregated **per normalised name** across all entries with the same `doc_id + person`. The canonical name stored in `entity_feedback.json` is taken from the first occurrence.
 
 ---
 
