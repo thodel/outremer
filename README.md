@@ -1,5 +1,8 @@
 # People of the Medieval Levant — OUTREMER
 
+[![CI](https://github.com/thodel/outremer/actions/workflows/Epic5-CI.yml/badge.svg?branch=main)](https://github.com/thodel/outremer/actions/workflows/Epic5-CI.yml)
+[![Docker](https://img.shields.io/docker/v/thodel/outremer?label=docker&sort=semver)](https://hub.docker.com/r/thodel/outremer)
+
 A proof-of-concept pipeline for AI-assisted prosopography of the medieval Levant (Crusades era, 11th–14th centuries). Part of a collaborative research project by Jochen Burgtorf (Cal State Fullerton), Tobias Hodel (University of Bern), and Laura Morreale (Harvard / independent scholar).
 
 > **Status:** proof of concept. The pipeline runs end-to-end. All LLM calls route through the local GPUStack instance at `tei.dh.unibe.ch` — no external API calls to Google, Mistral, or third-party LLM providers.
