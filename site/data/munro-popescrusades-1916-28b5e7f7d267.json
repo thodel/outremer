@@ -1304,19 +1304,6 @@
       "source_offset": 14355
     },
     {
-      "name": "For the",
-      "raw_mention": "For the",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "For the moment the nobles yielded; after the   capture of ",
-      "confidence": 0.3,
-      "source_offset": null
-    },
-    {
       "name": "Dagobert",
       "raw_mention": "Dagobert",
       "title": null,
@@ -3485,38 +3472,6 @@
       "status": "no_match"
     },
     {
-      "person": "For the",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR19",
-          "outremer_name": "Chalo the Red",
-          "type": "person",
-          "score": 0.6,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'for the' ↔ 'Chalo the Red'"
-        },
-        {
-          "outremer_id": "AUTH:CR23",
-          "outremer_name": "Ralph the Dog",
-          "type": "person",
-          "score": 0.6,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'for the' ↔ 'Ralph the Dog'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR19",
-        "outremer_name": "Chalo the Red",
-        "type": "person",
-        "score": 0.6,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'for the' ↔ 'Chalo the Red'"
-      },
-      "confidence": 0.6,
-      "status": "low"
-    },
-    {
       "person": "Dagobert",
       "person_group": false,
       "candidates": [
@@ -4129,7 +4084,7 @@
   "extraction_mode": "fallback",
   "language_hint": null,
   "quality": {
-    "filtered_problem_entities": 98,
+    "filtered_problem_entities": 99,
     "feedback_store": "data/entity_feedback.json"
   }
 }
