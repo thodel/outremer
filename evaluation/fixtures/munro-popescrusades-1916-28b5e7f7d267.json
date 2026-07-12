@@ -1,6 +1,6 @@
 {
   "doc_id": "munro-popescrusades-1916-28b5e7f7d267",
-  "mode": "adjudicated",
+  "mode": "full",
   "accepted": [
     [
       "Caesar of Heisterbach",
@@ -1293,5 +1293,30 @@
         ]
       }
     ]
-  }
+  },
+  "gold_persons": [
+    "Pope Urban II",
+    "Fulk of Chartres",
+    "Thomas Fuller",
+    "Peter the Hermit",
+    "Fulk of Neuilly",
+    "Richard the Lion-Hearted",
+    "Caesar of Heisterbach",
+    "Bernard of Clairvaux",
+    "Eugene III",
+    "Philip Augustus",
+    "Innocent III",
+    "Frederic II",
+    "Gregory IX",
+    "St. Louis",
+    "Ademar of Puy",
+    "Cardinal Pelagius",
+    "Godfrey",
+    "Dagobert",
+    "Baldwin",
+    "William of Malmesbury",
+    "Walter von der Vogelweide",
+    "Matthew Paris"
+  ],
+  "gold_provenance": "DRAFT (machine-curated 2026-07-12 from the article text, issue #35) — needs scholar validation before being treated as authoritative. Scope: named individual historical persons mentioned in Munro 1916. Excluded by design: modern scholars (D. C. Munro, M. Köhler — the pipeline's noise policy filters them), deities, and collective groups (Templars, Albigenses, Turks etc. — group mentions need their own gold treatment)."
 }

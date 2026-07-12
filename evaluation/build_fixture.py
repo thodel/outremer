@@ -151,6 +151,16 @@ def main(argv: list[str] | None = None) -> int:
     out_dir.mkdir(parents=True, exist_ok=True)
     for fx in fixtures:
         out = out_dir / f"{fx['doc_id']}.json"
+        # Preserve hand-curated gold across regenerations (M9.1): full-mode
+        # gold_persons and provenance notes are scholar/manual work that the
+        # decisions file does not contain.
+        if out.exists():
+            existing = json.loads(out.read_text())
+            for key in ("gold_persons", "gold_provenance"):
+                if key in existing and key not in fx:
+                    fx[key] = existing[key]
+            if existing.get("mode") == "full":
+                fx["mode"] = "full"
         out.write_text(json.dumps(fx, indent=2, ensure_ascii=False) + "\n")
         print(
             f"wrote {out.name}: {len(fx['accepted'])} accepted, "
