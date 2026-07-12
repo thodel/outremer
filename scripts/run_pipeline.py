@@ -53,6 +53,7 @@ def _write_run_report(
     failures: list[dict],
     feedback_applied: dict[str, int] | None = None,
     llm_provider: str = "unknown",
+    noise: dict[str, int] | None = None,
 ) -> None:
     """Write run report JSON to data/staging/run_report.json."""
     report = {
@@ -66,6 +67,11 @@ def _write_run_report(
         "ocr_engine": ocr_engine,
         "failures": failures,
     }
+    if noise and noise.get("extracted_total"):
+        report["noise"] = {
+            **noise,
+            "noise_share": round(noise["filtered"] / noise["extracted_total"], 4),
+        }
     if feedback_applied:
         report["feedback_applied"] = {
             "source_file": str(feedback_applied.get("source_file", "")),
@@ -651,7 +657,11 @@ def process_file(
         sum(1 for _l in links if _l["status"] == "low"),
         sum(1 for _l in links if _l["status"] == "no_match"),
     )
-    return json_path, bib_path_repo, bib_path_site
+    doc_stats = {
+        "persons": len(persons),
+        "noise": (result.get("quality") or {}).get("noise") or {},
+    }
+    return json_path, bib_path_repo, bib_path_site, doc_stats
 
 
 def build_site_index(site_data_dir: Path, site_dir: Path) -> None:
@@ -778,12 +788,14 @@ def main() -> int:
         inputs = sorted(set(list(in_dir.rglob("*.txt")) + list(in_dir.rglob("*.pdf"))))
 
     errors: list[tuple[Path, Exception]] = []
+    total_persons = 0
+    noise_agg = {"extracted_total": 0, "filtered": 0}
     if not inputs:
         logger.warning("No .txt or .pdf files found in %s", in_dir)
     else:
         for p in inputs:
             try:
-                json_path, bib_repo, bib_site = process_file(
+                json_path, bib_repo, bib_site, doc_stats = process_file(
                     p,
                     site_data_dir=site_data_dir,
                     bib_dir=bib_dir,
@@ -796,6 +808,9 @@ def main() -> int:
                 print(f"Wrote {json_path}")
                 print(f"Wrote {bib_repo}")
                 print(f"Wrote {bib_site}")
+                total_persons += doc_stats["persons"]
+                for k in noise_agg:
+                    noise_agg[k] += (doc_stats.get("noise") or {}).get(k, 0)
             except Exception as exc:
                 errors.append((p, exc))
                 logger.error("Failed processing %s: %s", p, exc)
@@ -826,12 +841,13 @@ def main() -> int:
         docs_total=len(inputs),
         docs_ok=len(inputs) - len(errors),
         docs_failed=len(errors),
-        total_persons=0,
+        total_persons=total_persons,
         extraction_model=EXTRACTION_MODEL,
         ocr_engine=OCR_ENGINE,
         failures=[{"file": str(p), "error": str(e)} for p, e in errors],
         feedback_applied=feedback_stats,
         llm_provider="gpustack" if GPUSTACK_BASE_URL else "heuristic",
+        noise=noise_agg,
     )
 
     if errors:

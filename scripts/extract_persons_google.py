@@ -1097,8 +1097,28 @@ def extract_persons_and_metadata(
             _record_problem_entities(feedback_store, flagged)
         _save_entity_feedback(feedback_path, feedback_store)
 
+    kept = result["persons"]
+    extracted_total = len(kept) + len(flagged)
+    reason_counts: dict[str, int] = {}
+    for f in flagged:
+        r = f.get("reason", "unknown")
+        reason_counts[r] = reason_counts.get(r, 0) + 1
     result["quality"] = {
         "filtered_problem_entities": len(flagged),
         "feedback_store": feedback_path,
+        # M9.3: per-document extraction-noise breakdown — a prompt change
+        # that floods the output with fragments must be visible as a number
+        "noise": {
+            "extracted_total": extracted_total,
+            "kept": len(kept),
+            "filtered": len(flagged),
+            "filtered_by_reason": reason_counts,
+            "low_confidence_kept": sum(
+                1 for p in kept if _safe_float(p.get("confidence"), 0.5) < 0.5
+            ),
+            "noise_share": round(len(flagged) / extracted_total, 4)
+            if extracted_total
+            else 0.0,
+        },
     }
     return result

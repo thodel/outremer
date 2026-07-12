@@ -89,6 +89,64 @@ def evaluate_fixture(fixture: dict, *, live: bool = False) -> dict:
     return result
 
 
+def _append_history(
+    path: Path,
+    doc_results: dict[str, dict],
+    aggregate: float | None,
+    seg_totals: dict[str, list[int]],
+) -> None:
+    """Append one eval-history entry (M9.4) and warn on a noise jump (M9.3).
+
+    Extraction noise comes from the latest pipeline run report if present;
+    the >10-point jump check compares against the previous history entry and
+    emits a GitHub Actions ::warning:: (never a failure).
+    """
+    from datetime import datetime, timezone
+
+    noise_share = None
+    report_path = REPO_ROOT / "data" / "staging" / "run_report.json"
+    if report_path.exists():
+        noise = (json.loads(report_path.read_text()).get("noise")) or {}
+        noise_share = noise.get("noise_share")
+
+    prev = None
+    if path.exists():
+        lines = [ln for ln in path.read_text().splitlines() if ln.strip()]
+        if lines:
+            prev = json.loads(lines[-1])
+
+    entry = {
+        "run_at": datetime.now(timezone.utc).isoformat(),
+        "combined_agreement": aggregate,
+        "segments": {
+            seg: {"pairs": t, "good": g} for seg, (t, g) in seg_totals.items()
+        },
+        "per_document": {
+            doc: {
+                k: v.get("agreement")
+                for k, v in res.items()
+                if isinstance(v, dict) and "agreement" in v
+            }
+            for doc, res in doc_results.items()
+        },
+        "noise_share": noise_share,
+    }
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("a") as fh:
+        fh.write(json.dumps(entry, ensure_ascii=False) + "\n")
+
+    if (
+        noise_share is not None
+        and prev is not None
+        and prev.get("noise_share") is not None
+        and noise_share - prev["noise_share"] > 0.10
+    ):
+        print(
+            f"::warning::extraction noise share jumped "
+            f"{prev['noise_share']:.2f} → {noise_share:.2f} (>10 points)"
+        )
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     ap.add_argument("--fixtures", default=str(FIXTURES_DIR))
@@ -107,6 +165,13 @@ def main(argv: list[str] | None = None) -> int:
         type=float,
         default=None,
         help="exit 1 if aggregate linking agreement falls below this value",
+    )
+    ap.add_argument(
+        "--append-history",
+        default=None,
+        metavar="JSONL",
+        help="append this run's results to a JSONL history file (M9.4); "
+        "warns when extraction noise jumps >10 points vs the previous entry",
     )
     args = ap.parse_args(argv)
 
@@ -153,6 +218,9 @@ def main(argv: list[str] | None = None) -> int:
                 ensure_ascii=False,
             )
         )
+
+    if args.append_history:
+        _append_history(Path(args.append_history), doc_results, aggregate, seg_totals)
 
     if (
         args.min_agreement is not None

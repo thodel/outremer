@@ -160,6 +160,12 @@
       <h2>Per-document breakdown</h2>
       <div id="docBreakdown"><div class="loading-msg">Loading…</div></div>
     </div>
+
+    <!-- Pipeline feedback applied -->
+    <div class="stat-panel feedback-panel">
+      <h2>Pipeline feedback</h2>
+      <div id="feedbackInfo"><div class="loading-msg">Loading…</div></div>
+    </div>
   </div>
 
   <script>
@@ -199,7 +205,7 @@
 
     // ── Aggregation ─────────────────────────────────────────────────────────
 
-    function aggregate({ docs, decisions }) {
+    function aggregate({ docs, decisions, runReport }) {
       let totalPersons = 0, totalLinks = 0;
       let high = 0, med = 0, low = 0, none = 0;
       const personAccepts = {};   // outremer_id → { name, count }
@@ -263,6 +269,7 @@
       return {
         totalDocs: docs.length,
         feedbackApplied,
+        runReport,
         totalPersons,
         totalLinks,
         high, med, low, none,
@@ -377,6 +384,18 @@
           ${src}`;
       }
 
+      // Extraction noise (M9.3): share of mentions the filter discarded
+      const noise = data.runReport?.noise || null;
+      if (noise && noise.extracted_total) {
+        const pct = Math.round((noise.noise_share || 0) * 100);
+        fbEl.innerHTML += `
+          <div class="feedback-row" style="margin-top:.6rem;" title="Filtered ${noise.filtered} of ${noise.extracted_total} extracted mentions in the latest run">
+            <span class="fb-badge" style="background:${pct > 30 ? "#f3d9d9" : "#e8efe3"};color:var(--text)">
+              🧹 extraction noise: ${pct}% (${noise.filtered}/${noise.extracted_total} filtered)
+            </span>
+          </div>`;
+      }
+
       // Per-document breakdown
       document.getElementById("docBreakdown").innerHTML = `
         <table class="top-table">
@@ -401,13 +420,6 @@
           </tbody>
         </table>`;
     }
-
-
-    <!-- Pipeline feedback applied -->
-    <div class="stat-panel feedback-panel">
-      <h2>Pipeline feedback</h2>
-      <div id="feedbackInfo"><div class="loading-msg">Loading…</div></div>
-    </div>
 
     // ── Init ────────────────────────────────────────────────────────────────
 
