@@ -537,8 +537,8 @@
       "source_offset": 4758
     },
     {
-      "name": "When \n the",
-      "raw_mention": "When \n the",
+      "name": "When the",
+      "raw_mention": "When the",
       "title": null,
       "epithet": null,
       "toponym": null,
@@ -1109,8 +1109,8 @@
       "source_offset": 12030
     },
     {
-      "name": "Bernard of \n Clairvaux",
-      "raw_mention": "Bernard of \n Clairvaux",
+      "name": "Bernard of Clairvaux",
+      "raw_mention": "Bernard of Clairvaux",
       "title": null,
       "epithet": null,
       "toponym": null,
@@ -1759,8 +1759,8 @@
       "source_offset": 18482
     },
     {
-      "name": "Empire \n of Constantinople",
-      "raw_mention": "Empire \n of Constantinople",
+      "name": "Empire of Constantinople",
+      "raw_mention": "Empire of Constantinople",
       "title": null,
       "epithet": null,
       "toponym": null,
@@ -2391,6 +2391,14 @@
       "person_group": false,
       "candidates": [
         {
+          "outremer_id": "AUTH:CR62",
+          "outremer_name": "Peter I of Courtenay",
+          "type": "person",
+          "score": 0.75,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'peter the hermit' ↔ 'Peter I of Courtenay'"
+        },
+        {
           "outremer_id": "AUTH:CR 165",
           "outremer_name": "Albert the Bear",
           "type": "person",
@@ -2405,39 +2413,55 @@
           "score": 0.6207,
           "match_type": "fuzzy",
           "evidence": "fuzzy match: 'peter the hermit' ↔ 'Peter Britaud'"
-        },
-        {
-          "outremer_id": "AUTH:CR62",
-          "outremer_name": "Peter I of Courtenay",
-          "type": "person",
-          "score": 0.6087,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'peter the hermit' ↔ 'Peter I of Courtenay'"
         }
       ],
       "top_candidate": {
-        "outremer_id": "AUTH:CR 165",
-        "outremer_name": "Albert the Bear",
+        "outremer_id": "AUTH:CR62",
+        "outremer_name": "Peter I of Courtenay",
         "type": "person",
-        "score": 0.6452,
+        "score": 0.75,
         "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'peter the hermit' ↔ 'Albert the Bear'"
+        "evidence": "fuzzy match: 'peter the hermit' ↔ 'Peter I of Courtenay'"
       },
-      "confidence": 0.6452,
-      "status": "low"
+      "confidence": 0.75,
+      "status": "medium"
     },
     {
       "person": "Fulk of Neuilly",
       "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
+      "candidates": [
+        {
+          "outremer_id": "AUTH:CR2",
+          "outremer_name": "Fulk V of Anjou",
+          "type": "person",
+          "score": 0.72,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'fulk of neuilly' ↔ 'Fulk V of Anjou'"
+        }
+      ],
+      "top_candidate": {
+        "outremer_id": "AUTH:CR2",
+        "outremer_name": "Fulk V of Anjou",
+        "type": "person",
+        "score": 0.72,
+        "match_type": "fuzzy",
+        "evidence": "fuzzy match: 'fulk of neuilly' ↔ 'Fulk V of Anjou'"
+      },
+      "confidence": 0.72,
+      "status": "low"
     },
     {
       "person": "Richard the Lion-",
       "person_group": false,
       "candidates": [
+        {
+          "outremer_id": "AUTH:CR26",
+          "outremer_name": "Henry the Lion",
+          "type": "person",
+          "score": 0.66,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'richard the lion' ↔ 'Henry the Lion'"
+        },
         {
           "outremer_id": "AUTH:CR19",
           "outremer_name": "Chalo the Red",
@@ -2456,14 +2480,14 @@
         }
       ],
       "top_candidate": {
-        "outremer_id": "AUTH:CR19",
-        "outremer_name": "Chalo the Red",
+        "outremer_id": "AUTH:CR26",
+        "outremer_name": "Henry the Lion",
         "type": "person",
-        "score": 0.6207,
+        "score": 0.66,
         "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'richard the lion' ↔ 'Chalo the Red'"
+        "evidence": "fuzzy match: 'richard the lion' ↔ 'Henry the Lion'"
       },
-      "confidence": 0.6207,
+      "confidence": 0.66,
       "status": "low"
     },
     {
@@ -2507,7 +2531,7 @@
       "status": "low"
     },
     {
-      "person": "When \n the",
+      "person": "When the",
       "person_group": false,
       "candidates": [
         {
@@ -3227,7 +3251,7 @@
       "status": "no_match"
     },
     {
-      "person": "Bernard of \n Clairvaux",
+      "person": "Bernard of Clairvaux",
       "person_group": false,
       "candidates": [
         {
@@ -3330,7 +3354,7 @@
           "outremer_id": "AUTH:CR91",
           "outremer_name": "Adhémar V of Limoges",
           "type": "person",
-          "score": 0.6364,
+          "score": 0.7368,
           "match_type": "fuzzy",
           "evidence": "fuzzy match: 'ademar of puy' ↔ 'Adhémar V of Limoges'"
         }
@@ -3339,11 +3363,11 @@
         "outremer_id": "AUTH:CR91",
         "outremer_name": "Adhémar V of Limoges",
         "type": "person",
-        "score": 0.6364,
+        "score": 0.7368,
         "match_type": "fuzzy",
         "evidence": "fuzzy match: 'ademar of puy' ↔ 'Adhémar V of Limoges'"
       },
-      "confidence": 0.6364,
+      "confidence": 0.7368,
       "status": "low"
     },
     {
@@ -3979,7 +4003,7 @@
       "status": "high"
     },
     {
-      "person": "Empire \n of Constantinople",
+      "person": "Empire of Constantinople",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -4036,6 +4060,19 @@
   "language_hint": null,
   "quality": {
     "filtered_problem_entities": 104,
-    "feedback_store": "data/entity_feedback.json"
+    "feedback_store": "data/entity_feedback.json",
+    "noise": {
+      "extracted_total": 238,
+      "kept": 134,
+      "filtered": 104,
+      "filtered_by_reason": {
+        "bibliographic_noise": 19,
+        "known_bad_entity": 79,
+        "modern_scholar": 5,
+        "post_medieval": 1
+      },
+      "low_confidence_kept": 134,
+      "noise_share": 0.437
+    }
   }
 }

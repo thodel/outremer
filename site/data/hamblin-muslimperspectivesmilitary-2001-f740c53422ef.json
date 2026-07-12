@@ -503,8 +503,8 @@
       "source_offset": 2671
     },
     {
-      "name": "Through\nthe",
-      "raw_mention": "Through\nthe",
+      "name": "Through the",
+      "raw_mention": "Through the",
       "title": null,
       "epithet": null,
       "toponym": null,
@@ -2058,8 +2058,8 @@
       "source_offset": 14132
     },
     {
-      "name": "Saladin of\nEgypt",
-      "raw_mention": "Saladin of\nEgypt",
+      "name": "Saladin of Egypt",
+      "raw_mention": "Saladin of Egypt",
       "title": null,
       "epithet": null,
       "toponym": null,
@@ -3722,8 +3722,8 @@
       "source_offset": 29863
     },
     {
-      "name": "During the\nCrusades",
-      "raw_mention": "During the\nCrusades",
+      "name": "During the Crusades",
+      "raw_mention": "During the Crusades",
       "title": null,
       "epithet": null,
       "toponym": null,
@@ -7228,8 +7228,8 @@
       "source_offset": 49725
     },
     {
-      "name": "Muluk of\nIbn",
-      "raw_mention": "Muluk of\nIbn",
+      "name": "Muluk of Ibn",
+      "raw_mention": "Muluk of Ibn",
       "title": null,
       "epithet": null,
       "toponym": null,
@@ -8164,8 +8164,8 @@
       "source_offset": 51328
     },
     {
-      "name": "Days of\nAbraham",
-      "raw_mention": "Days of\nAbraham",
+      "name": "Days of Abraham",
+      "raw_mention": "Days of Abraham",
       "title": null,
       "epithet": null,
       "toponym": null,
@@ -8365,8 +8365,8 @@
       }
     },
     {
-      "name": "End of\nDays",
-      "raw_mention": "End of\nDays",
+      "name": "End of Days",
+      "raw_mention": "End of Days",
       "title": null,
       "epithet": null,
       "toponym": null,
@@ -8960,7 +8960,7 @@
       "status": "no_match"
     },
     {
-      "person": "Through\nthe",
+      "person": "Through the",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -9052,21 +9052,37 @@
       "person_group": false,
       "candidates": [
         {
-          "outremer_id": "AUTH:CR26",
-          "outremer_name": "Henry the Lion",
+          "outremer_id": "AUTH:CR11",
+          "outremer_name": "William the Huntsman",
           "type": "person",
           "score": 0.6,
           "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'on the' ↔ 'Henry the Lion'"
+          "evidence": "fuzzy match: 'on the' ↔ 'William the Huntsman'"
+        },
+        {
+          "outremer_id": "AUTH:CR19",
+          "outremer_name": "Chalo the Red",
+          "type": "person",
+          "score": 0.6,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'on the' ↔ 'Chalo the Red'"
+        },
+        {
+          "outremer_id": "AUTH:CR23",
+          "outremer_name": "Ralph the Dog",
+          "type": "person",
+          "score": 0.6,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'on the' ↔ 'Ralph the Dog'"
         }
       ],
       "top_candidate": {
-        "outremer_id": "AUTH:CR26",
-        "outremer_name": "Henry the Lion",
+        "outremer_id": "AUTH:CR11",
+        "outremer_name": "William the Huntsman",
         "type": "person",
         "score": 0.6,
         "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'on the' ↔ 'Henry the Lion'"
+        "evidence": "fuzzy match: 'on the' ↔ 'William the Huntsman'"
       },
       "confidence": 0.6,
       "status": "low"
@@ -10608,7 +10624,7 @@
       "status": "no_match"
     },
     {
-      "person": "Saladin of\nEgypt",
+      "person": "Saladin of Egypt",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -11082,10 +11098,42 @@
     {
       "person": "By the",
       "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
+      "candidates": [
+        {
+          "outremer_id": "AUTH:CR11",
+          "outremer_name": "William the Huntsman",
+          "type": "person",
+          "score": 0.6,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'by the' ↔ 'William the Huntsman'"
+        },
+        {
+          "outremer_id": "AUTH:CR19",
+          "outremer_name": "Chalo the Red",
+          "type": "person",
+          "score": 0.6,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'by the' ↔ 'Chalo the Red'"
+        },
+        {
+          "outremer_id": "AUTH:CR23",
+          "outremer_name": "Ralph the Dog",
+          "type": "person",
+          "score": 0.6,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'by the' ↔ 'Ralph the Dog'"
+        }
+      ],
+      "top_candidate": {
+        "outremer_id": "AUTH:CR11",
+        "outremer_name": "William the Huntsman",
+        "type": "person",
+        "score": 0.6,
+        "match_type": "fuzzy",
+        "evidence": "fuzzy match: 'by the' ↔ 'William the Huntsman'"
+      },
+      "confidence": 0.6,
+      "status": "low"
     },
     {
       "person": "Dome",
@@ -12026,6 +12074,22 @@
           "score": 0.7692,
           "match_type": "fuzzy",
           "evidence": "fuzzy match: 'at the' ↔ 'Matthew of Bellenoue'"
+        },
+        {
+          "outremer_id": "AUTH:CR11",
+          "outremer_name": "William the Huntsman",
+          "type": "person",
+          "score": 0.6,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'at the' ↔ 'William the Huntsman'"
+        },
+        {
+          "outremer_id": "AUTH:CR19",
+          "outremer_name": "Chalo the Red",
+          "type": "person",
+          "score": 0.6,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'at the' ↔ 'Chalo the Red'"
         }
       ],
       "top_candidate": {
@@ -12328,7 +12392,7 @@
       "status": "no_match"
     },
     {
-      "person": "During the\nCrusades",
+      "person": "During the Crusades",
       "person_group": false,
       "candidates": [
         {
@@ -13636,6 +13700,14 @@
       "person_group": false,
       "candidates": [
         {
+          "outremer_id": "AUTH:CR62",
+          "outremer_name": "Peter I of Courtenay",
+          "type": "person",
+          "score": 0.75,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'peter of cyprus' ↔ 'Peter I of Courtenay'"
+        },
+        {
           "outremer_id": "AUTH:CR53",
           "outremer_name": "Peter of Langres",
           "type": "person",
@@ -13644,24 +13716,24 @@
           "evidence": "fuzzy match: 'peter of cyprus' ↔ 'Peter of Langres'"
         },
         {
-          "outremer_id": "AUTH:CR62",
-          "outremer_name": "Peter I of Courtenay",
+          "outremer_id": "AUTH:CR61",
+          "outremer_name": "Peter Britaud",
           "type": "person",
-          "score": 0.6286,
+          "score": 0.64,
           "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'peter of cyprus' ↔ 'Peter I of Courtenay'"
+          "evidence": "fuzzy match: 'peter of cyprus' ↔ 'Peter Britaud'"
         }
       ],
       "top_candidate": {
-        "outremer_id": "AUTH:CR53",
-        "outremer_name": "Peter of Langres",
+        "outremer_id": "AUTH:CR62",
+        "outremer_name": "Peter I of Courtenay",
         "type": "person",
-        "score": 0.7097,
+        "score": 0.75,
         "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'peter of cyprus' ↔ 'Peter of Langres'"
+        "evidence": "fuzzy match: 'peter of cyprus' ↔ 'Peter I of Courtenay'"
       },
-      "confidence": 0.7097,
-      "status": "low"
+      "confidence": 0.75,
+      "status": "medium"
     },
     {
       "person": "Alexandria",
@@ -15472,7 +15544,7 @@
       "status": "no_match"
     },
     {
-      "person": "Muluk of\nIbn",
+      "person": "Muluk of Ibn",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -16176,7 +16248,7 @@
       "status": "no_match"
     },
     {
-      "person": "Days of\nAbraham",
+      "person": "Days of Abraham",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -16312,7 +16384,7 @@
       "status": "no_match"
     },
     {
-      "person": "End of\nDays",
+      "person": "End of Days",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -16385,6 +16457,19 @@
   "language_hint": null,
   "quality": {
     "filtered_problem_entities": 462,
-    "feedback_store": "data/entity_feedback.json"
+    "feedback_store": "data/entity_feedback.json",
+    "noise": {
+      "extracted_total": 1053,
+      "kept": 591,
+      "filtered": 462,
+      "filtered_by_reason": {
+        "known_bad_entity": 255,
+        "bibliographic_noise": 139,
+        "modern_scholar": 62,
+        "post_medieval": 6
+      },
+      "low_confidence_kept": 591,
+      "noise_share": 0.4387
+    }
   }
 }
