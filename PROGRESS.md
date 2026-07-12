@@ -1,6 +1,29 @@
 # OUTREMER — GPUStack Adaptation Progress
 
-> **Status: Complete** — All 8 epics done (Epic 8 closed 2026-07-10)
+> **Status: Epics 1–8 closed; Epics 9–10 open** (evaluation & linking methodology, #33/#34).
+> CI green as of 2026-07-12 (`1cc805f`): ruff + 35 tests + eval gate (linking agreement ≥ 0.55, baseline 0.6479).
+
+## What was done 2026-07-12 (post-completion repair + evaluation)
+
+The 2026-07-10 "complete" state did not survive contact with CI: the nightly
+pipeline had failed 12 consecutive runs (`ModuleNotFoundError: scripts`), the
+CI workflow never parsed (duplicate `on.push` key), `config.py` crashed on any
+clone without `.env.gpustack` (`NameError` in the loader), the Docker
+entrypoint used a nonexistent `--raw-dir` flag, and `pip install -e .[dev]`
+silently failed so pytest never ran. All fixed (`1dc9888`, `407bb4c`,
+`19c3473`, `bb8b5b7`).
+
+Corrections to claims below:
+- **M6.1 was not done as described** — the peerage files were never moved to
+  `data/`; 159 remained tracked under `scripts/`. Untracked 2026-07-12.
+- **M8.2 shipped without tests** — `tests/test_validate_decisions.py` added
+  2026-07-12 (found and fixed a silent-skip bug in map-format imports).
+
+New: `evaluation/` package (pattern from agentic_historian) — extraction
+P/R/F1 + linking-agreement metrics, fixtures seeded from `data/decisions.json`
+(scholar adjudications become regression gold), `--min-agreement` gate in CI.
+Baseline: **0.6479 over 71 reviewed pairs** (rileysmith 0.76, hamblin 0.11,
+munro 0.0 — see #42 for the diagnosis plan).
 
 | Date | Commit | Change |
 |---|---|---|
