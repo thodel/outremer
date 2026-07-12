@@ -86,7 +86,7 @@
       "Fulk of Neuilly",
       "Richard the Lion-",
       "Hearted",
-      "When \n the",
+      "When the",
       "Such",
       "Cross",
       "Caesar of Heisterbach",
@@ -130,7 +130,7 @@
       "Taxes",
       "Consequently the Popes",
       "While the Popes",
-      "Bernard of \n Clairvaux",
+      "Bernard of Clairvaux",
       "Crusade of Richard",
       "Lion",
       "Fourth",
@@ -180,7 +180,7 @@
       "Christians",
       "merchants",
       "Matthew",
-      "Empire \n of Constantinople",
+      "Empire of Constantinople",
       "Heresy"
     ],
     "links": [
@@ -480,31 +480,40 @@
       {
         "person": "Peter the Hermit",
         "top_candidate": {
-          "outremer_id": "AUTH:CR 165"
+          "outremer_id": "AUTH:CR62"
         },
         "candidates": [
+          {
+            "outremer_id": "AUTH:CR62"
+          },
           {
             "outremer_id": "AUTH:CR 165"
           },
           {
             "outremer_id": "AUTH:CR61"
-          },
-          {
-            "outremer_id": "AUTH:CR62"
           }
         ]
       },
       {
         "person": "Fulk of Neuilly",
-        "top_candidate": null,
-        "candidates": []
+        "top_candidate": {
+          "outremer_id": "AUTH:CR2"
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR2"
+          }
+        ]
       },
       {
         "person": "Richard the Lion-",
         "top_candidate": {
-          "outremer_id": "AUTH:CR19"
+          "outremer_id": "AUTH:CR26"
         },
         "candidates": [
+          {
+            "outremer_id": "AUTH:CR26"
+          },
           {
             "outremer_id": "AUTH:CR19"
           },
@@ -531,7 +540,7 @@
         ]
       },
       {
-        "person": "When \n the",
+        "person": "When the",
         "top_candidate": {
           "outremer_id": "AUTH:CR94"
         },
@@ -889,7 +898,7 @@
         "candidates": []
       },
       {
-        "person": "Bernard of \n Clairvaux",
+        "person": "Bernard of Clairvaux",
         "top_candidate": {
           "outremer_id": "AUTH:CR183"
         },
@@ -1271,7 +1280,7 @@
         ]
       },
       {
-        "person": "Empire \n of Constantinople",
+        "person": "Empire of Constantinople",
         "top_candidate": null,
         "candidates": []
       },

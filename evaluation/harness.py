@@ -47,16 +47,26 @@ FIXTURES_DIR = Path(__file__).resolve().parent / "fixtures"
 
 
 def load_predictions_live(doc_id: str) -> dict:
-    """Load current pipeline output for a doc from site/data/."""
+    """Load current pipeline output for a doc from site/data/.
+
+    Includes the wikidata reconciliation entries for the doc — without
+    them, live wikidata agreement reads as all-miss (caught by the first
+    CI history entry, 2026-07-12).
+    """
     path = REPO_ROOT / "site" / "data" / f"{doc_id}.json"
     if not path.exists():
         raise FileNotFoundError(
             f"--live requested but {path} does not exist; run the pipeline first"
         )
     data = json.loads(path.read_text())
+    wikidata: dict = {}
+    wm_path = REPO_ROOT / "site" / "data" / "wikidata_matches.json"
+    if wm_path.exists():
+        wikidata = (json.loads(wm_path.read_text()).get(doc_id)) or {}
     return {
         "persons": [p.get("name", "") for p in data.get("persons", [])],
         "links": data.get("links", []),
+        "wikidata": wikidata,
     }
 
 
