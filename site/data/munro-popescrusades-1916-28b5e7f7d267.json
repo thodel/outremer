@@ -74,19 +74,6 @@
       }
     },
     {
-      "name": "Crusade",
-      "raw_mention": "Crusade",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "rst of religious enthusiasm led to the Children's Crusade, which   was to be a missionary movement, not a m",
-      "confidence": 0.3,
-      "source_offset": 6240
-    },
-    {
       "name": "Pope Urban",
       "raw_mention": "Pope Urban",
       "title": "Pope",
@@ -1870,46 +1857,6 @@
       "top_candidate": null,
       "confidence": 0.0,
       "status": "no_match"
-    },
-    {
-      "person": "Crusade",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR1",
-          "outremer_name": "Conrad III of Germany",
-          "type": "person",
-          "score": 0.6154,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'crusade' ↔ 'Conrad III of Germany'"
-        },
-        {
-          "outremer_id": "AUTH:CR37",
-          "outremer_name": "Conrad of Montferrat",
-          "type": "person",
-          "score": 0.6154,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'crusade' ↔ 'Conrad of Montferrat'"
-        },
-        {
-          "outremer_id": "AUTH:CR175",
-          "outremer_name": "Conrad of Meissen",
-          "type": "person",
-          "score": 0.6154,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'crusade' ↔ 'Conrad of Meissen'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR1",
-        "outremer_name": "Conrad III of Germany",
-        "type": "person",
-        "score": 0.6154,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'crusade' ↔ 'Conrad III of Germany'"
-      },
-      "confidence": 0.6154,
-      "status": "low"
     },
     {
       "person": "Pope Urban",
@@ -4084,7 +4031,7 @@
   "extraction_mode": "fallback",
   "language_hint": null,
   "quality": {
-    "filtered_problem_entities": 99,
+    "filtered_problem_entities": 104,
     "feedback_store": "data/entity_feedback.json"
   }
 }

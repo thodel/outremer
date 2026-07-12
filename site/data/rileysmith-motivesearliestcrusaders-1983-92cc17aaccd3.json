@@ -201,19 +201,6 @@
       "source_offset": 1949
     },
     {
-      "name": "Crusade",
-      "raw_mention": "Crusade",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": " continues today and every historian of the First Crusade has sooner or   later to face up to the question ",
-      "confidence": 0.3,
-      "source_offset": 2218
-    },
-    {
       "name": "Most",
       "raw_mention": "Most",
       "title": null,
@@ -2349,19 +2336,6 @@
           "modern_institution"
         ]
       }
-    },
-    {
-      "name": "October",
-      "raw_mention": "October",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "/terms  726 THE MOTIVES OF THE EARLIEST CRUSADERS October   group that seems to have been as close-knit as ",
-      "confidence": 0.3,
-      "source_offset": 16437
     },
     {
       "name": "After",
@@ -5659,46 +5633,6 @@
       "status": "low"
     },
     {
-      "person": "Crusade",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR1",
-          "outremer_name": "Conrad III of Germany",
-          "type": "person",
-          "score": 0.6154,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'crusade' ↔ 'Conrad III of Germany'"
-        },
-        {
-          "outremer_id": "AUTH:CR37",
-          "outremer_name": "Conrad of Montferrat",
-          "type": "person",
-          "score": 0.6154,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'crusade' ↔ 'Conrad of Montferrat'"
-        },
-        {
-          "outremer_id": "AUTH:CR175",
-          "outremer_name": "Conrad of Meissen",
-          "type": "person",
-          "score": 0.6154,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'crusade' ↔ 'Conrad of Meissen'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR1",
-        "outremer_name": "Conrad III of Germany",
-        "type": "person",
-        "score": 0.6154,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'crusade' ↔ 'Conrad III of Germany'"
-      },
-      "confidence": 0.6154,
-      "status": "low"
-    },
-    {
       "person": "Most",
       "person_group": false,
       "candidates": [],
@@ -7977,46 +7911,6 @@
       "top_candidate": null,
       "confidence": 0.0,
       "status": "no_match"
-    },
-    {
-      "person": "October",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR56",
-          "outremer_name": "Robert of Milly",
-          "type": "person",
-          "score": 0.6154,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'october' ↔ 'Robert of Milly'"
-        },
-        {
-          "outremer_id": "AUTH:CR100",
-          "outremer_name": "Robert of Buzançais",
-          "type": "person",
-          "score": 0.6154,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'october' ↔ 'Robert of Buzançais'"
-        },
-        {
-          "outremer_id": "AUTH:CR88",
-          "outremer_name": "Robert V of Béthune",
-          "type": "person",
-          "score": 0.6154,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'october' ↔ 'Robert V of Béthune'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR56",
-        "outremer_name": "Robert of Milly",
-        "type": "person",
-        "score": 0.6154,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'october' ↔ 'Robert of Milly'"
-      },
-      "confidence": 0.6154,
-      "status": "low"
     },
     {
       "person": "After",
@@ -11983,7 +11877,7 @@
   "extraction_mode": "fallback",
   "language_hint": null,
   "quality": {
-    "filtered_problem_entities": 505,
+    "filtered_problem_entities": 514,
     "feedback_store": "data/entity_feedback.json"
   }
 }
