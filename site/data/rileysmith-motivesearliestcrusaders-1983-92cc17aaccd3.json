@@ -11874,7 +11874,11 @@
     }
   ],
   "text_sha256": "92cc17aaccd31d44795d1a77f0c423d97bca6f4dd157c918a698c381361e51dc",
-  "extraction_mode": "fallback",
+  "extraction_mode": "gpustack",
+  "extraction_engine": {
+    "provider": "gpustack",
+    "model": "qwen3-30b-a3b-instruct"
+  },
   "language_hint": null,
   "quality": {
     "filtered_problem_entities": 514,

@@ -16377,7 +16377,11 @@
     }
   ],
   "text_sha256": "f740c53422effeef25ce42bf5ea3708bb659a7a63f0346d708444018d167261d",
-  "extraction_mode": "fallback",
+  "extraction_mode": "gpustack",
+  "extraction_engine": {
+    "provider": "gpustack",
+    "model": "qwen3-30b-a3b-instruct"
+  },
   "language_hint": null,
   "quality": {
     "filtered_problem_entities": 462,
