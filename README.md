@@ -130,6 +130,28 @@ pip install -r requirements-dev.txt
 pytest tests -q
 ```
 
+## Evaluation
+
+The `evaluation/` package measures pipeline quality against gold fixtures,
+so prompt/model changes are judged by numbers rather than impressions.
+Gold is seeded from Human-in-the-Loop adjudications (`data/decisions.json`):
+scholar decisions become regression tests.
+
+```bash
+# Score the committed fixture snapshots (offline; also runs in CI)
+python -m evaluation.harness
+
+# Score the *current* site/data output — run after a pipeline change
+python -m evaluation.harness --live
+
+# Regenerate fixtures after new adjudications arrive
+python -m evaluation.build_fixture
+```
+
+Key metric: **linking agreement** — of the (mention, authority) pairs
+scholars reviewed, how many does the pipeline's top candidate agree with.
+Baseline 2026-07-12: 0.6479 over 71 reviewed pairs. CI fails below 0.55.
+
 ---
 
 ## Reviewing results

@@ -31,8 +31,15 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON }}
-      - run: pip install -e .[dev] 2>/dev/null || pip install -r requirements.txt
+      # No silent fallback: if either install fails, the job must fail —
+      # a swallowed install error previously left pytest missing entirely.
+      - run: pip install -r requirements.txt
+      - run: pip install -e '.[dev]'
       - run: python -m pytest tests/ -v --ignore=tests/test_llm_client.py
+      # Offline evaluation over fixture snapshots. Gate is a regression
+      # floor below the 2026-07-12 baseline (0.6479 aggregate agreement);
+      # raise it as linking improves.
+      - run: python -m evaluation.harness --min-agreement 0.55
 
   docker:
     name: Docker build

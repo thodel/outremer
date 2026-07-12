@@ -28,7 +28,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-from config import EXTRACTION_MODEL, OCR_ENGINE
+from config import EXTRACTION_MODEL, GPUSTACK_BASE_URL, OCR_ENGINE
 from extract_persons_google import extract_persons_and_metadata
 from llm_client import generate as _llm_generate
 from validate_decisions import validate_decisions_file
@@ -52,6 +52,7 @@ def _write_run_report(
     ocr_engine: str,
     failures: list[dict],
     feedback_applied: dict[str, int] | None = None,
+    llm_provider: str = "unknown",
 ) -> None:
     """Write run report JSON to data/staging/run_report.json."""
     report = {
@@ -60,7 +61,7 @@ def _write_run_report(
         "docs_ok": docs_ok,
         "docs_failed": docs_failed,
         "total_persons": total_persons,
-        "llm_provider": "gpustack",
+        "llm_provider": llm_provider,
         "extraction_model": extraction_model,
         "ocr_engine": ocr_engine,
         "failures": failures,
@@ -626,7 +627,9 @@ def process_file(
         "persons": persons,
         "links": links,
         "text_sha256": sha256_text(text),
-        "extraction_mode": "gemini" if os.environ.get("GOOGLE_API_KEY") else "fallback",
+        # Provenance: which engine actually produced these persons
+        "extraction_mode": (result.get("engine") or {}).get("provider", "unknown"),
+        "extraction_engine": result.get("engine") or {},
         "language_hint": language,
         "quality": result.get("quality") or {},
     }
@@ -828,6 +831,7 @@ def main() -> int:
         ocr_engine=OCR_ENGINE,
         failures=[{"file": str(p), "error": str(e)} for p, e in errors],
         feedback_applied=feedback_stats,
+        llm_provider="gpustack" if GPUSTACK_BASE_URL else "heuristic",
     )
 
     if errors:

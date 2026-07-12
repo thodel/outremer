@@ -1063,7 +1063,7 @@ def extract_persons_and_metadata(
     feedback_store = _load_entity_feedback(feedback_path)
     feedback_terms = _feedback_terms_for_prompt(feedback_store)
 
-    from config import GPUSTACK_BASE_URL
+    from config import EXTRACTION_MODEL, GPUSTACK_BASE_URL
 
     if GPUSTACK_BASE_URL:
         result = _extract_gpustack(
@@ -1072,10 +1072,12 @@ def extract_persons_and_metadata(
             language=language,
             blocked_terms=feedback_terms,
         )
+        result["engine"] = {"provider": "gpustack", "model": EXTRACTION_MODEL}
     else:
         result = _extract_fallback(text)
         if use_genai_metadata:
             result["bibtex"] = _build_bibtex(result["metadata"])
+        result["engine"] = {"provider": "heuristic", "model": None}
 
     filtered_persons, flagged = _filter_and_reweight_persons(
         result.get("persons") or [],

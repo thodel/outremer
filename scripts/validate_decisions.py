@@ -244,8 +244,15 @@ def validate_decisions_file(path: Path) -> ValidationResult:
     elif isinstance(raw, dict):
         # Convert map format to list
         entries = []
-        for key, value in raw.items():
+        for i, (key, value) in enumerate(raw.items()):
             if not isinstance(value, dict):
+                # Report rather than skip: a malformed export must not
+                # shrink silently (M8.2).
+                result.errors.append(
+                    ValidationError(
+                        i, key, f"map value must be an object, got {type(value).__name__}"
+                    )
+                )
                 continue
             parts = key.split("::")
             entries.append(

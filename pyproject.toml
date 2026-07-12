@@ -1,8 +1,23 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "outremer"
 version = "0.1.0"
 description = "AI-assisted prosopography of the medieval Levant"
 requires-python = ">=3.10"
+# Runtime dependencies are pinned in requirements.txt (CI and Docker install from there).
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.8",
+]
+
+[tool.setuptools]
+packages = ["evaluation"]
 
 [tool.ruff]
 line-length = 100
