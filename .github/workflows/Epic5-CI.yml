@@ -37,7 +37,7 @@ jobs:
       - run: pip install -e '.[dev]'
       - run: python -m pytest tests/ -v --ignore=tests/test_llm_client.py
       # Offline evaluation over fixture snapshots. Gate is a regression
-      # floor below the 2026-07-12 baseline (0.6479 aggregate agreement);
+      # floor below the 2026-07-12 corrected baseline (0.6761 aggregate agreement);
       # raise it as linking improves.
       - run: python -m evaluation.harness --min-agreement 0.55
 

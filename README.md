@@ -150,7 +150,8 @@ python -m evaluation.build_fixture
 
 Key metric: **linking agreement** — of the (mention, authority) pairs
 scholars reviewed, how many does the pipeline's top candidate agree with.
-Baseline 2026-07-12: 0.6479 over 71 reviewed pairs. CI fails below 0.55.
+Baseline 2026-07-12 (corrected): 0.6761 over 71 reviewed pairs
+(rileysmith 0.81, hamblin 0.0, munro 0.0 — see issue #42). CI fails below 0.55.
 
 ---
 

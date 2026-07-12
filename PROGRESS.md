@@ -1,7 +1,7 @@
 # OUTREMER — GPUStack Adaptation Progress
 
 > **Status: Epics 1–8 closed; Epics 9–10 open** (evaluation & linking methodology, #33/#34).
-> CI green as of 2026-07-12 (`1cc805f`): ruff + 35 tests + eval gate (linking agreement ≥ 0.55, baseline 0.6479).
+> CI green as of 2026-07-12 (`1cc805f`): ruff + 35 tests + eval gate (linking agreement ≥ 0.55, corrected baseline 0.6761).
 
 ## What was done 2026-07-12 (post-completion repair + evaluation)
 
@@ -22,8 +22,11 @@ Corrections to claims below:
 New: `evaluation/` package (pattern from agentic_historian) — extraction
 P/R/F1 + linking-agreement metrics, fixtures seeded from `data/decisions.json`
 (scholar adjudications become regression gold), `--min-agreement` gate in CI.
-Baseline: **0.6479 over 71 reviewed pairs** (rileysmith 0.76, hamblin 0.11,
-munro 0.0 — see #42 for the diagnosis plan).
+Baseline: **0.6761 over 71 reviewed pairs**, corrected 2026-07-12 after a
+key-name bug in the first fixture build (candidates use `outremer_id`, the
+builder read `authority_id`, so accept_hit could never fire; first-published
+0.6479 was an artifact). Corrected per-doc: rileysmith 0.81, hamblin 0.0,
+munro 0.0 — see #42 for the diagnosis plan.
 
 | Date | Commit | Change |
 |---|---|---|

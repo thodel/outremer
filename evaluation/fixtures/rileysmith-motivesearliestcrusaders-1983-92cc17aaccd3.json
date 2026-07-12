@@ -257,7 +257,6 @@
       "Others",
       "Frankish",
       "Kingdom of Hungary",
-      "Crusade",
       "Most",
       "Historia",
       "Hierosolymitana",
@@ -271,10 +270,10 @@
       "Finally",
       "Promised",
       "Land",
+      "pilgrims",
       "Ekkehard",
       "Council of Clermont",
       "French",
-      "Peter",
       "Qtremer",
       "Smail",
       "Death",
@@ -284,13 +283,24 @@
       "Duparc",
       "Quioc",
       "Fulcher of Chartres",
+      "Hierosolimitana",
+      "Heidelberg",
+      "Robert of Rheims",
+      "Therosolimitana",
       "Baldric \n of Bourgueil",
       "Jerosolimitana",
       "Francorum",
       "Hierosolimitanorum",
       "Tudebode",
+      "Historia de \n Hierosolimitano",
+      "Somerville",
+      "Councils of Urban",
       "Decreta",
       "Claromontensia",
+      "Annuarium",
+      "Conciliorum",
+      "Suppl",
+      "Amsterdam",
       "Bologna",
       "Die",
       "KreuzZugsbriefe",
@@ -336,6 +346,7 @@
       "Robert \n of Torigni",
       "Chronica",
       "Iherusalem",
+      "children",
       "Haifa",
       "Galilee",
       "Galdemar",
@@ -367,6 +378,8 @@
       "Norman",
       "Chartesde \n la Terre",
       "Sainte",
+      "Notre",
+      "Dame de Josaphat",
       "Geoffreyl",
       "Stabelo",
       "Matthew",
@@ -385,6 +398,7 @@
       "Bohemond of Taranto",
       "Antiochiae",
       "That",
+      "settlers",
       "Arsuf",
       "Alberic of Trois-",
       "Fontaines",
@@ -405,9 +419,9 @@
       "Mary of",
       "Valley of Josaphat",
       "Eustace of Boulogne",
-      "Christian",
       "Gerard",
       "Thecua",
+      "Jaffa",
       "Perhaps",
       "Tiberias",
       "Omer",
@@ -443,20 +457,26 @@
       "Raymond of St",
       "Gilles",
       "Count of Toulouse",
+      "soldiers",
       "Count William of Montpellier",
       "Count \n Galdemar",
       "Archbishop Hugh of Die",
       "Lyons",
       "Jericho",
       "In the",
+      "Estoire de Jerusalem",
       "Devic",
       "Vaissete",
       "Histoire",
+      "Languedoc",
+      "Molinier",
+      "Toulouse",
       "Coc",
       "King Baldwin",
       "Raymond",
       "Roman of Le",
       "Adhemar",
+      "Ramle",
       "Seven",
       "Roger of Rozoy",
       "Laonnois",
@@ -479,6 +499,7 @@
       "October \n of Jerusalem",
       "Bethlehem",
       "Godwin",
+      "English",
       "Anglo",
       "Saxon",
       "Byzantine",
@@ -510,7 +531,13 @@
       "Robert of Sourdeval",
       "Tristan",
       "William of Montpellier",
+      "Puy",
       "Syrie du Nord",
+      "Liinig",
+      "Codex",
+      "Italiae",
+      "Frankfurt",
+      "Cod",
       "Eadmer",
       "Kreuttugsbriefe",
       "Henry",
@@ -529,6 +556,7 @@
       "Tripoli",
       "Peyre",
       "Cunlhat",
+      "Bartholomew",
       "Holy",
       "Lance",
       "Peter of Narbonne",
@@ -557,11 +585,13 @@
       "On the",
       "Church",
       "Nevertheless",
+      "Prince of Antioch",
       "European",
       "Arpin of Bourges",
       "Wounded",
       "Egyptians",
       "Cluny",
+      "Professor",
       "Count \n Beugnot",
       "Beugnot",
       "Syrie",
@@ -569,6 +599,9 @@
       "Bibliotheque de",
       "Feudal",
       "Nobility",
+      "Kingdom of Jerusalem",
+      "Richardot",
+      "Essai",
       "Revue",
       "Hugh of Bethsan",
       "Kingdoms of Jerusalem",
@@ -603,12 +636,9 @@
       "Royal",
       "Holloway",
       "College",
+      "University of London",
       "Outremer",
-      "Montjoie",
-      "pilgrims",
-      "children",
-      "settlers",
-      "soldiers"
+      "Montjoie"
     ],
     "links": [
       {
@@ -618,7 +648,7 @@
       {
         "person": "Earliest",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR33"
         }
       },
       {
@@ -632,7 +662,7 @@
       {
         "person": "Conditions of Use",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR86"
         }
       },
       {
@@ -646,13 +676,13 @@
       {
         "person": "Some",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR166"
         }
       },
       {
         "person": "God",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR78"
         }
       },
       {
@@ -662,13 +692,13 @@
       {
         "person": "Christ",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR33"
         }
       },
       {
         "person": "Others",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR16"
         }
       },
       {
@@ -678,13 +708,7 @@
       {
         "person": "Kingdom of Hungary",
         "top_candidate": {
-          "authority_id": null
-        }
-      },
-      {
-        "person": "Crusade",
-        "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR124"
         }
       },
       {
@@ -710,19 +734,19 @@
       {
         "person": "What",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR17"
         }
       },
       {
         "person": "German",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR25"
         }
       },
       {
         "person": "Ekkehard of Aura",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR87"
         }
       },
       {
@@ -744,30 +768,28 @@
       {
         "person": "Land",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR111"
         }
+      },
+      {
+        "person": "pilgrims",
+        "top_candidate": null
       },
       {
         "person": "Ekkehard",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR14"
         }
       },
       {
         "person": "Council of Clermont",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR4"
         }
       },
       {
         "person": "French",
         "top_candidate": null
-      },
-      {
-        "person": "Peter",
-        "top_candidate": {
-          "authority_id": null
-        }
       },
       {
         "person": "Qtremer",
@@ -784,13 +806,13 @@
       {
         "person": "Chibnall",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR19"
         }
       },
       {
         "person": "Chanson",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR19"
         }
       },
       {
@@ -808,8 +830,26 @@
       {
         "person": "Fulcher of Chartres",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR33"
         }
+      },
+      {
+        "person": "Hierosolimitana",
+        "top_candidate": null
+      },
+      {
+        "person": "Heidelberg",
+        "top_candidate": null
+      },
+      {
+        "person": "Robert of Rheims",
+        "top_candidate": {
+          "outremer_id": "AUTH:CR88"
+        }
+      },
+      {
+        "person": "Therosolimitana",
+        "top_candidate": null
       },
       {
         "person": "Baldric \n of Bourgueil",
@@ -830,7 +870,21 @@
       {
         "person": "Tudebode",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR109"
+        }
+      },
+      {
+        "person": "Historia de \n Hierosolimitano",
+        "top_candidate": null
+      },
+      {
+        "person": "Somerville",
+        "top_candidate": null
+      },
+      {
+        "person": "Councils of Urban",
+        "top_candidate": {
+          "outremer_id": "AUTH:CR100"
         }
       },
       {
@@ -839,6 +893,22 @@
       },
       {
         "person": "Claromontensia",
+        "top_candidate": null
+      },
+      {
+        "person": "Annuarium",
+        "top_candidate": null
+      },
+      {
+        "person": "Conciliorum",
+        "top_candidate": null
+      },
+      {
+        "person": "Suppl",
+        "top_candidate": null
+      },
+      {
+        "person": "Amsterdam",
         "top_candidate": null
       },
       {
@@ -868,7 +938,7 @@
       {
         "person": "Count Robert of Flanders",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR16"
         }
       },
       {
@@ -890,7 +960,7 @@
       {
         "person": "Georges",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR55"
         }
       },
       {
@@ -904,7 +974,7 @@
       {
         "person": "And the",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR111"
         }
       },
       {
@@ -930,19 +1000,19 @@
       {
         "person": "Ralph of Caen",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR24"
         }
       },
       {
         "person": "Hugh of St",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR39"
         }
       },
       {
         "person": "Maria",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR115"
         }
       },
       {
@@ -960,7 +1030,7 @@
       {
         "person": "Walter of Therouanne",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR110"
         }
       },
       {
@@ -970,13 +1040,13 @@
       {
         "person": "Karoli",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR126"
         }
       },
       {
         "person": "Flandriae",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR111"
         }
       },
       {
@@ -998,7 +1068,7 @@
       {
         "person": "Henry of Huntingdon",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR26"
         }
       },
       {
@@ -1008,25 +1078,25 @@
       {
         "person": "Arnold",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR126"
         }
       },
       {
         "person": "Herimannus",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR124"
         }
       },
       {
         "person": "Liber de",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR109"
         }
       },
       {
         "person": "Martini",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR10"
         }
       },
       {
@@ -1040,7 +1110,7 @@
       {
         "person": "Robert \n of Torigni",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR8"
         }
       },
       {
@@ -1052,19 +1122,23 @@
         "top_candidate": null
       },
       {
+        "person": "children",
+        "top_candidate": null
+      },
+      {
         "person": "Haifa",
         "top_candidate": null
       },
       {
         "person": "Galilee",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR119"
         }
       },
       {
         "person": "Galdemar",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR91"
         }
       },
       {
@@ -1074,7 +1148,7 @@
       {
         "person": "Hebron",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR26"
         }
       },
       {
@@ -1104,7 +1178,7 @@
       {
         "person": "Here",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR12"
         }
       },
       {
@@ -1142,25 +1216,25 @@
       {
         "person": "Gerard of Avesnes",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR14"
         }
       },
       {
         "person": "Lambert of Montaigu",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR4"
         }
       },
       {
         "person": "Then",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR94"
         }
       },
       {
         "person": "Compare the",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR19"
         }
       },
       {
@@ -1186,7 +1260,7 @@
       {
         "person": "Chartesde \n la Terre",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR33"
         }
       },
       {
@@ -1194,9 +1268,17 @@
         "top_candidate": null
       },
       {
+        "person": "Notre",
+        "top_candidate": null
+      },
+      {
+        "person": "Dame de Josaphat",
+        "top_candidate": null
+      },
+      {
         "person": "Geoffreyl",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR55"
         }
       },
       {
@@ -1206,7 +1288,7 @@
       {
         "person": "Matthew",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR103"
         }
       },
       {
@@ -1224,7 +1306,7 @@
       {
         "person": "Rothold",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR99"
         }
       },
       {
@@ -1238,7 +1320,7 @@
       {
         "person": "Engilbert",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR 165"
         }
       },
       {
@@ -1256,7 +1338,7 @@
       {
         "person": "Peter the Hermit",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR 165"
         }
       },
       {
@@ -1276,9 +1358,15 @@
         "top_candidate": null
       },
       {
+        "person": "settlers",
+        "top_candidate": {
+          "outremer_id": "AUTH:CR53"
+        }
+      },
+      {
         "person": "Arsuf",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR22"
         }
       },
       {
@@ -1288,7 +1376,7 @@
       {
         "person": "Fontaines",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR86"
         }
       },
       {
@@ -1298,7 +1386,7 @@
       {
         "person": "Chartes de",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR33"
         }
       },
       {
@@ -1308,7 +1396,7 @@
       {
         "person": "Terre",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR16"
         }
       },
       {
@@ -1346,13 +1434,13 @@
       {
         "person": "After",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR17"
         }
       },
       {
         "person": "Aschar",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR33"
         }
       },
       {
@@ -1368,17 +1456,17 @@
         "top_candidate": null
       },
       {
-        "person": "Christian",
-        "top_candidate": null
-      },
-      {
         "person": "Gerard",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR120"
         }
       },
       {
         "person": "Thecua",
+        "top_candidate": null
+      },
+      {
+        "person": "Jaffa",
         "top_candidate": null
       },
       {
@@ -1392,7 +1480,7 @@
       {
         "person": "Omer",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR56"
         }
       },
       {
@@ -1406,13 +1494,13 @@
       {
         "person": "Robert",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR56"
         }
       },
       {
         "person": "Guiscard",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR74"
         }
       },
       {
@@ -1422,25 +1510,25 @@
       {
         "person": "Other",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR16"
         }
       },
       {
         "person": "Carmel",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR33"
         }
       },
       {
         "person": "Samoe",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR46"
         }
       },
       {
         "person": "Lambert",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR 165"
         }
       },
       {
@@ -1458,7 +1546,7 @@
       {
         "person": "Duke Godfrey",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR78"
         }
       },
       {
@@ -1488,13 +1576,13 @@
       {
         "person": "Robert \n of Anzi",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR100"
         }
       },
       {
         "person": "Pflugk",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR2"
         }
       },
       {
@@ -1504,7 +1592,7 @@
       {
         "person": "Acta",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR50"
         }
       },
       {
@@ -1530,49 +1618,53 @@
       {
         "person": "When",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR12"
         }
       },
       {
         "person": "Raymond of St",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR43"
         }
       },
       {
         "person": "Gilles",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR119"
         }
       },
       {
         "person": "Count of Toulouse",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR86"
         }
+      },
+      {
+        "person": "soldiers",
+        "top_candidate": null
       },
       {
         "person": "Count William of Montpellier",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR98"
         }
       },
       {
         "person": "Count \n Galdemar",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR91"
         }
       },
       {
         "person": "Archbishop Hugh of Die",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR75"
         }
       },
       {
         "person": "Lyons",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR125"
         }
       },
       {
@@ -1582,8 +1674,12 @@
       {
         "person": "In the",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR94"
         }
+      },
+      {
+        "person": "Estoire de Jerusalem",
+        "top_candidate": null
       },
       {
         "person": "Devic",
@@ -1598,19 +1694,33 @@
         "top_candidate": null
       },
       {
+        "person": "Languedoc",
+        "top_candidate": null
+      },
+      {
+        "person": "Molinier",
+        "top_candidate": null
+      },
+      {
+        "person": "Toulouse",
+        "top_candidate": {
+          "outremer_id": "AUTH:CR125"
+        }
+      },
+      {
         "person": "Coc",
         "top_candidate": null
       },
       {
         "person": "King Baldwin",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR3"
         }
       },
       {
         "person": "Raymond",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR46"
         }
       },
       {
@@ -1620,13 +1730,19 @@
       {
         "person": "Adhemar",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR91"
+        }
+      },
+      {
+        "person": "Ramle",
+        "top_candidate": {
+          "outremer_id": "AUTH:CR23"
         }
       },
       {
         "person": "Seven",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR94"
         }
       },
       {
@@ -1636,7 +1752,7 @@
       {
         "person": "Laonnois",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR125"
         }
       },
       {
@@ -1646,13 +1762,13 @@
       {
         "person": "Flanders",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR27"
         }
       },
       {
         "person": "Ado of Quiersy",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR16"
         }
       },
       {
@@ -1662,7 +1778,7 @@
       {
         "person": "Gerard of Quiersy",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR120"
         }
       },
       {
@@ -1680,13 +1796,13 @@
       {
         "person": "Duke Robert of Normandy",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR56"
         }
       },
       {
         "person": "Ralph of Fontenelles",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR107"
         }
       },
       {
@@ -1696,7 +1812,7 @@
       {
         "person": "Anjou",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR2"
         }
       },
       {
@@ -1706,13 +1822,13 @@
       {
         "person": "Stephen of Blois",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR94"
         }
       },
       {
         "person": "Hugh of Vermandois",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR39"
         }
       },
       {
@@ -1730,13 +1846,17 @@
       {
         "person": "Godwin",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR122"
         }
+      },
+      {
+        "person": "English",
+        "top_candidate": null
       },
       {
         "person": "Anglo",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR19"
         }
       },
       {
@@ -1754,7 +1874,7 @@
       {
         "person": "Edgar",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR14"
         }
       },
       {
@@ -1792,7 +1912,7 @@
       {
         "person": "William the \n Carpenter",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR11"
         }
       },
       {
@@ -1806,19 +1926,19 @@
       {
         "person": "Another",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR17"
         }
       },
       {
         "person": "County of Edessa",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR25"
         }
       },
       {
         "person": "Roziere",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR56"
         }
       },
       {
@@ -1828,7 +1948,7 @@
       {
         "person": "Bethleem",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR99"
         }
       },
       {
@@ -1850,7 +1970,7 @@
       {
         "person": "Michael",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR19"
         }
       },
       {
@@ -1860,7 +1980,7 @@
       {
         "person": "Ralph",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR23"
         }
       },
       {
@@ -1874,17 +1994,43 @@
       {
         "person": "William of Montpellier",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR98"
         }
+      },
+      {
+        "person": "Puy",
+        "top_candidate": null
       },
       {
         "person": "Syrie du Nord",
         "top_candidate": null
       },
       {
+        "person": "Liinig",
+        "top_candidate": null
+      },
+      {
+        "person": "Codex",
+        "top_candidate": null
+      },
+      {
+        "person": "Italiae",
+        "top_candidate": null
+      },
+      {
+        "person": "Frankfurt",
+        "top_candidate": null
+      },
+      {
+        "person": "Cod",
+        "top_candidate": {
+          "outremer_id": "AUTH:CR1"
+        }
+      },
+      {
         "person": "Eadmer",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR91"
         }
       },
       {
@@ -1894,13 +2040,13 @@
       {
         "person": "Henry",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR12"
         }
       },
       {
         "person": "England",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR25"
         }
       },
       {
@@ -1910,13 +2056,13 @@
       {
         "person": "Ship",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR27"
         }
       },
       {
         "person": "Constantinople",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR86"
         }
       },
       {
@@ -1926,19 +2072,19 @@
       {
         "person": "After the",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR 165"
         }
       },
       {
         "person": "February",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR14"
         }
       },
       {
         "person": "Tortosa",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR32"
         }
       },
       {
@@ -1948,19 +2094,19 @@
       {
         "person": "Akrad",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR50"
         }
       },
       {
         "person": "Crac",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR1"
         }
       },
       {
         "person": "Chevaliers",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR33"
         }
       },
       {
@@ -1970,12 +2116,18 @@
       {
         "person": "Peyre",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR53"
         }
       },
       {
         "person": "Cunlhat",
         "top_candidate": null
+      },
+      {
+        "person": "Bartholomew",
+        "top_candidate": {
+          "outremer_id": "AUTH:CR99"
+        }
       },
       {
         "person": "Holy",
@@ -1988,25 +2140,25 @@
       {
         "person": "Peter of Narbonne",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR53"
         }
       },
       {
         "person": "Albara",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR 165"
         }
       },
       {
         "person": "Hugo of Monteil",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR96"
         }
       },
       {
         "person": "Bertrand",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR183"
         }
       },
       {
@@ -2016,13 +2168,13 @@
       {
         "person": "Arles",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR33"
         }
       },
       {
         "person": "Artusie",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR50"
         }
       },
       {
@@ -2032,19 +2184,19 @@
       {
         "person": "Richard",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR14"
         }
       },
       {
         "person": "Ste",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR94"
         }
       },
       {
         "person": "Marie",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR115"
         }
       },
       {
@@ -2062,25 +2214,25 @@
       {
         "person": "Milanges",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR20"
         }
       },
       {
         "person": "Louis",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR125"
         }
       },
       {
         "person": "Halphen",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR23"
         }
       },
       {
         "person": "Count Raymond",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR1"
         }
       },
       {
@@ -2102,23 +2254,27 @@
       {
         "person": "Tarsus",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR168"
         }
       },
       {
         "person": "On the",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR26"
         }
       },
       {
         "person": "Church",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR13"
         }
       },
       {
         "person": "Nevertheless",
+        "top_candidate": null
+      },
+      {
+        "person": "Prince of Antioch",
         "top_candidate": null
       },
       {
@@ -2139,6 +2295,10 @@
       },
       {
         "person": "Cluny",
+        "top_candidate": null
+      },
+      {
+        "person": "Professor",
         "top_candidate": null
       },
       {
@@ -2164,11 +2324,23 @@
       {
         "person": "Feudal",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR2"
         }
       },
       {
         "person": "Nobility",
+        "top_candidate": null
+      },
+      {
+        "person": "Kingdom of Jerusalem",
+        "top_candidate": null
+      },
+      {
+        "person": "Richardot",
+        "top_candidate": null
+      },
+      {
+        "person": "Essai",
         "top_candidate": null
       },
       {
@@ -2178,7 +2350,7 @@
       {
         "person": "Hugh of Bethsan",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR92"
         }
       },
       {
@@ -2220,13 +2392,13 @@
       {
         "person": "Among",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR46"
         }
       },
       {
         "person": "Eustace",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR86"
         }
       },
       {
@@ -2240,7 +2412,7 @@
       {
         "person": "Hugh of",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR13"
         }
       },
       {
@@ -2262,13 +2434,13 @@
       {
         "person": "Durand",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR10"
         }
       },
       {
         "person": "Veterum",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR53"
         }
       },
       {
@@ -2278,7 +2450,7 @@
       {
         "person": "They",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR16"
         }
       },
       {
@@ -2292,7 +2464,7 @@
       {
         "person": "Albert of Biandrate",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR 165"
         }
       },
       {
@@ -2310,13 +2482,13 @@
       {
         "person": "Ralph of Aalst",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR24"
         }
       },
       {
         "person": "Royal",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR30"
         }
       },
       {
@@ -2328,29 +2500,15 @@
         "top_candidate": null
       },
       {
+        "person": "University of London",
+        "top_candidate": null
+      },
+      {
         "person": "Outremer",
         "top_candidate": null
       },
       {
         "person": "Montjoie",
-        "top_candidate": null
-      },
-      {
-        "person": "pilgrims",
-        "top_candidate": null
-      },
-      {
-        "person": "children",
-        "top_candidate": null
-      },
-      {
-        "person": "settlers",
-        "top_candidate": {
-          "authority_id": null
-        }
-      },
-      {
-        "person": "soldiers",
         "top_candidate": null
       }
     ]

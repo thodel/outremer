@@ -82,9 +82,12 @@ def build_fixtures(
                         "person": link.get("person", ""),
                         "top_candidate": (
                             {
-                                "authority_id": (link.get("top_candidate") or {}).get(
-                                    "authority_id"
+                                # site/data uses "outremer_id"; accept legacy
+                                # "authority_id" defensively
+                                "outremer_id": (link.get("top_candidate") or {}).get(
+                                    "outremer_id"
                                 )
+                                or (link.get("top_candidate") or {}).get("authority_id")
                             }
                             if link.get("top_candidate")
                             else None

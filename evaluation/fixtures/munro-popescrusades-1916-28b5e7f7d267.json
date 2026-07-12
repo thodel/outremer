@@ -19,6 +19,9 @@
   "predictions": {
     "persons": [
       "Conditions of Use",
+      "Read",
+      "April",
+      "Pope Urban",
       "Council of Clermont",
       "Constantinople",
       "God",
@@ -62,6 +65,7 @@
       "Children",
       "Thus",
       "Land",
+      "Popes",
       "Because of",
       "Western",
       "Second",
@@ -75,6 +79,8 @@
       "Other",
       "Innocent",
       "Frederic",
+      "Crusaders",
+      "clergy",
       "When",
       "Gregory",
       "Sicilian",
@@ -84,8 +90,8 @@
       "Chris",
       "Bishops of",
       "Syria",
+      "Armenian",
       "Catholic",
-      "Crusaders",
       "East",
       "Orders of",
       "Temple",
@@ -94,10 +100,10 @@
       "Taxes",
       "Consequently the Popes",
       "While the Popes",
+      "Bernard of \n Clairvaux",
       "Crusade of Richard",
       "Lion",
       "Fourth",
-      "Christian",
       "Empire",
       "Fifth",
       "Louis",
@@ -105,15 +111,14 @@
       "Ademar of Puy",
       "Although",
       "Damietta",
+      "Orient",
       "With the",
       "Saviour",
-      "For the",
       "Dagobert",
       "Patriarch of Jerusalem",
       "Patriarch",
       "King",
       "Even",
-      "Orders",
       "Allah",
       "Venetians",
       "Zara",
@@ -132,6 +137,7 @@
       "One",
       "Turks",
       "Possibly",
+      "Clermont",
       "For the Turk",
       "Whatever",
       "Many of",
@@ -141,43 +147,55 @@
       "Walter",
       "Hohenstaufens",
       "But the",
-      "Matthew",
-      "Islam",
-      "Empire \n of Constantinople",
-      "Heresy",
-      "clergy",
       "Christians",
-      "merchants"
+      "merchants",
+      "Matthew",
+      "Empire \n of Constantinople",
+      "Heresy"
     ],
     "links": [
       {
         "person": "Conditions of Use",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR86"
         }
+      },
+      {
+        "person": "Read",
+        "top_candidate": {
+          "outremer_id": "AUTH:CR14"
+        }
+      },
+      {
+        "person": "April",
+        "top_candidate": null
+      },
+      {
+        "person": "Pope Urban",
+        "top_candidate": null
       },
       {
         "person": "Council of Clermont",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR4"
         }
       },
       {
         "person": "Constantinople",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR86"
         }
       },
       {
         "person": "God",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR78"
         }
       },
       {
         "person": "Christ",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR33"
         }
       },
       {
@@ -191,13 +209,13 @@
       {
         "person": "What",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR17"
         }
       },
       {
         "person": "Church",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR13"
         }
       },
       {
@@ -215,7 +233,7 @@
       {
         "person": "Fuller",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR2"
         }
       },
       {
@@ -237,19 +255,19 @@
       {
         "person": "Constanti",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR86"
         }
       },
       {
         "person": "Eastern",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR53"
         }
       },
       {
         "person": "Rome",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR56"
         }
       },
       {
@@ -283,7 +301,7 @@
       {
         "person": "Others",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR16"
         }
       },
       {
@@ -297,13 +315,13 @@
       {
         "person": "In the",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR94"
         }
       },
       {
         "person": "Peter the Hermit",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR 165"
         }
       },
       {
@@ -313,19 +331,19 @@
       {
         "person": "Richard the Lion-",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR19"
         }
       },
       {
         "person": "Hearted",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR14"
         }
       },
       {
         "person": "When \n the",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR94"
         }
       },
       {
@@ -343,7 +361,7 @@
       {
         "person": "After the",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR 165"
         }
       },
       {
@@ -361,8 +379,12 @@
       {
         "person": "Land",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR111"
         }
+      },
+      {
+        "person": "Popes",
+        "top_candidate": null
       },
       {
         "person": "Because of",
@@ -371,13 +393,13 @@
       {
         "person": "Western",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR53"
         }
       },
       {
         "person": "Second",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR1"
         }
       },
       {
@@ -387,7 +409,7 @@
       {
         "person": "German",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR25"
         }
       },
       {
@@ -401,7 +423,7 @@
       {
         "person": "Jews",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR71"
         }
       },
       {
@@ -411,13 +433,13 @@
       {
         "person": "They",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR16"
         }
       },
       {
         "person": "Other",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR16"
         }
       },
       {
@@ -429,15 +451,23 @@
         "top_candidate": null
       },
       {
+        "person": "Crusaders",
+        "top_candidate": null
+      },
+      {
+        "person": "clergy",
+        "top_candidate": null
+      },
+      {
         "person": "When",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR12"
         }
       },
       {
         "person": "Gregory",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR55"
         }
       },
       {
@@ -459,7 +489,7 @@
       {
         "person": "Chris",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR33"
         }
       },
       {
@@ -471,11 +501,11 @@
         "top_candidate": null
       },
       {
-        "person": "Catholic",
+        "person": "Armenian",
         "top_candidate": null
       },
       {
-        "person": "Crusaders",
+        "person": "Catholic",
         "top_candidate": null
       },
       {
@@ -489,7 +519,7 @@
       {
         "person": "Temple",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR94"
         }
       },
       {
@@ -503,7 +533,7 @@
       {
         "person": "Taxes",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR71"
         }
       },
       {
@@ -513,6 +543,12 @@
       {
         "person": "While the Popes",
         "top_candidate": null
+      },
+      {
+        "person": "Bernard of \n Clairvaux",
+        "top_candidate": {
+          "outremer_id": "AUTH:CR183"
+        }
       },
       {
         "person": "Crusade of Richard",
@@ -527,10 +563,6 @@
         "top_candidate": null
       },
       {
-        "person": "Christian",
-        "top_candidate": null
-      },
-      {
         "person": "Empire",
         "top_candidate": null
       },
@@ -541,7 +573,7 @@
       {
         "person": "Louis",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR125"
         }
       },
       {
@@ -551,17 +583,21 @@
       {
         "person": "Ademar of Puy",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR91"
         }
       },
       {
         "person": "Although",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR13"
         }
       },
       {
         "person": "Damietta",
+        "top_candidate": null
+      },
+      {
+        "person": "Orient",
         "top_candidate": null
       },
       {
@@ -573,15 +609,9 @@
         "top_candidate": null
       },
       {
-        "person": "For the",
-        "top_candidate": {
-          "authority_id": null
-        }
-      },
-      {
         "person": "Dagobert",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR56"
         }
       },
       {
@@ -601,13 +631,9 @@
         "top_candidate": null
       },
       {
-        "person": "Orders",
-        "top_candidate": null
-      },
-      {
         "person": "Allah",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR23"
         }
       },
       {
@@ -617,7 +643,7 @@
       {
         "person": "Zara",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR50"
         }
       },
       {
@@ -651,7 +677,7 @@
       {
         "person": "Oriental",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR10"
         }
       },
       {
@@ -665,13 +691,13 @@
       {
         "person": "Germany",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR1"
         }
       },
       {
         "person": "England",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR25"
         }
       },
       {
@@ -687,13 +713,17 @@
         "top_candidate": null
       },
       {
+        "person": "Clermont",
+        "top_candidate": null
+      },
+      {
         "person": "For the Turk",
         "top_candidate": null
       },
       {
         "person": "Whatever",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR17"
         }
       },
       {
@@ -703,7 +733,7 @@
       {
         "person": "Walter von",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR17"
         }
       },
       {
@@ -713,13 +743,13 @@
       {
         "person": "Little",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR68"
         }
       },
       {
         "person": "Walter",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR17"
         }
       },
       {
@@ -731,15 +761,17 @@
         "top_candidate": null
       },
       {
-        "person": "Matthew",
-        "top_candidate": {
-          "authority_id": null
-        }
+        "person": "Christians",
+        "top_candidate": null
       },
       {
-        "person": "Islam",
+        "person": "merchants",
+        "top_candidate": null
+      },
+      {
+        "person": "Matthew",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR103"
         }
       },
       {
@@ -749,20 +781,8 @@
       {
         "person": "Heresy",
         "top_candidate": {
-          "authority_id": null
+          "outremer_id": "AUTH:CR12"
         }
-      },
-      {
-        "person": "clergy",
-        "top_candidate": null
-      },
-      {
-        "person": "Christians",
-        "top_candidate": null
-      },
-      {
-        "person": "merchants",
-        "top_candidate": null
       }
     ]
   }

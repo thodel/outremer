@@ -127,23 +127,33 @@ def linking_agreement(
     - ``reject_hit``     — scholar rejected, pipeline still proposes it (bad)
     """
 
-    def top_auth(person: str) -> str | None:
+    def top_auths(person: str) -> set[str]:
+        """All authority ids proposed as top candidate for this person.
+
+        The linker deduplicates on (person, top_id), so one person may have
+        several link rows with different top candidates — agreement asks
+        whether *any* of them proposes the adjudicated pair.
+        """
+        auths: set[str] = set()
         for link in predicted_links:
             if _fuzzy_equal(link.get("person", ""), person, fuzzy_threshold):
                 top = link.get("top_candidate") or {}
-                return top.get("authority_id")
-        return None
+                # production key is "outremer_id"; tolerate "authority_id"
+                auth = top.get("outremer_id") or top.get("authority_id")
+                if auth:
+                    auths.add(auth)
+        return auths
 
     accept_hit = accept_miss = 0
     for person, auth_id in accepted:
-        if top_auth(person) == auth_id:
+        if auth_id in top_auths(person):
             accept_hit += 1
         else:
             accept_miss += 1
 
     reject_hit = reject_avoided = 0
     for person, auth_id in rejected:
-        if top_auth(person) == auth_id:
+        if auth_id in top_auths(person):
             reject_hit += 1
         else:
             reject_avoided += 1
