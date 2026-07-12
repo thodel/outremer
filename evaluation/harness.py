@@ -60,13 +60,24 @@ def load_predictions_live(doc_id: str) -> dict:
     }
 
 
-def evaluate_fixture(fixture: dict, *, live: bool = False) -> dict:
-    """Evaluate one fixture; returns {mode, extraction?, linking?}."""
+def evaluate_fixture(fixture: dict, *, live: bool = False, relink: bool = False) -> dict:
+    """Evaluate one fixture; returns {mode, extraction?, linking?, wikidata?}.
+
+    ``relink`` recomputes authority links from the snapshot's extracted
+    persons with the *current* linker code — the measurement mode for
+    linker changes (extraction held constant, no LLM needed).
+    """
     doc_id = fixture["doc_id"]
     mode = fixture.get("mode", "adjudicated")
     preds = (
         load_predictions_live(doc_id) if live else fixture.get("predictions") or {}
     )
+    if relink and preds.get("persons"):
+        from evaluation._pipeline import load_authority_lookup
+        from evaluation._pipeline import relink as _relink
+
+        preds = dict(preds)
+        preds["links"] = _relink(preds["persons"], load_authority_lookup())
 
     result: dict = {"mode": mode}
     if mode == "full" and fixture.get("gold_persons"):
@@ -156,6 +167,12 @@ def main(argv: list[str] | None = None) -> int:
         help="evaluate current site/data output instead of fixture snapshots",
     )
     ap.add_argument(
+        "--relink",
+        action="store_true",
+        help="recompute authority links from snapshot persons with the "
+        "current linker code (measures linker changes, M10.x)",
+    )
+    ap.add_argument(
         "--output",
         default=None,
         help="write full JSON results to this path",
@@ -183,7 +200,9 @@ def main(argv: list[str] | None = None) -> int:
     doc_results: dict[str, dict] = {}
     for f in fixture_files:
         fixture = json.loads(f.read_text())
-        doc_results[fixture["doc_id"]] = evaluate_fixture(fixture, live=args.live)
+        doc_results[fixture["doc_id"]] = evaluate_fixture(
+            fixture, live=args.live, relink=args.relink
+        )
 
     print(format_report(doc_results))
 

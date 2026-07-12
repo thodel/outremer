@@ -37,12 +37,11 @@ def test_prf_fuzzy_variant_spelling_matches():
     assert res["tp"] == 1 and res["fp"] == 0 and res["fn"] == 0
 
 
-def test_prf_connective_variant_below_threshold_is_a_miss():
-    # "de"→"of" scores ~85 < 90: documents the current matching boundary.
-    # If this starts passing after a normalisation change, update the
-    # threshold discussion in evaluation/metrics.py.
+def test_prf_connective_variant_matches_since_particle_folding():
+    # pre-M10.1 this was a documented miss ("de"→"of" scored ~85 < 90);
+    # particle folding (mirroring scripts/linker.py) makes the forms equal
     res = extraction_prf(["Godefroy de Bouillon"], ["Godefroy of Bouillon"])
-    assert res["tp"] == 0 and res["fp"] == 1 and res["fn"] == 1
+    assert res["tp"] == 1 and res["fp"] == 0 and res["fn"] == 0
 
 
 def test_prf_duplicate_predictions_are_false_positives():

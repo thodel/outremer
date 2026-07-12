@@ -33,13 +33,32 @@ from rapidfuzz import fuzz
 DEFAULT_FUZZY_THRESHOLD = 90.0
 
 
+import re
+
+# Mirrors scripts/linker.py so evaluation and production agree on name
+# equivalence; parity is asserted by tests/test_linker_matching.py.
+_PARTICLES = {"de", "of", "von", "du", "der", "des", "le", "la", "d"}
+
+
 def normalise_name(s: str) -> str:
-    """NFC-normalise, strip accents, casefold, collapse whitespace."""
+    """NFC-normalise, strip accents+punctuation, casefold, collapse whitespace.
+
+    Punctuation becomes a space so hyphenated toponyms split
+    ("Saint-Gilles" ≡ "Saint Gilles"), mirroring the production linker.
+    """
     s = unicodedata.normalize("NFC", s or "")
     s = "".join(
         c for c in unicodedata.normalize("NFD", s) if unicodedata.category(c) != "Mn"
     )
+    s = re.sub(r"[^\w\s]", " ", s)
     return " ".join(s.casefold().split())
+
+
+def _fold_particles(norm: str) -> str:
+    tokens = [t for t in norm.split() if t not in _PARTICLES]
+    if len(tokens) < 2:
+        return norm
+    return " ".join(tokens)
 
 
 def _fuzzy_equal(a: str, b: str, threshold: float) -> bool:
@@ -48,7 +67,10 @@ def _fuzzy_equal(a: str, b: str, threshold: float) -> bool:
         return False
     if na == nb:
         return True
-    return fuzz.token_sort_ratio(na, nb) >= threshold
+    if fuzz.token_sort_ratio(na, nb) >= threshold:
+        return True
+    fa, fb = _fold_particles(na), _fold_particles(nb)
+    return (fa, fb) != (na, nb) and fuzz.token_sort_ratio(fa, fb) >= threshold
 
 
 def extraction_prf(

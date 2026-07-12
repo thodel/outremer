@@ -58,3 +58,9 @@ ORCHESTRATOR_MODEL = _get("ORCHESTRATOR_MODEL", "minimax-m2.7")
 # "gpustack" - GPUStack MiniMax-M2.7 for document-level OCR
 # "mistral"  - Mistral API (legacy fallback)
 OCR_ENGINE = _get("OCR_ENGINE", "easyocr")
+
+# Linker thresholds (M10.3) - operating point documented in
+# evaluation/THRESHOLDS.md; sweep with `python -m evaluation.sweep`
+LINK_CANDIDATE_FLOOR = float(_get("LINK_CANDIDATE_FLOOR", "0.60"))
+LINK_MEDIUM          = float(_get("LINK_MEDIUM", "0.75"))
+LINK_HIGH            = float(_get("LINK_HIGH", "0.90"))
