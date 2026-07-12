@@ -29,6 +29,30 @@ ACCEPT = {"accept"}
 REJECT = {"reject", "not_a_person", "wrong_era", "is_group"}
 
 
+def _wikidata_snapshot(
+    site_data_dir: Path, doc_id: str, mentions: list[str]
+) -> dict[str, dict]:
+    """Snapshot wikidata reconciliation candidates for the given mentions."""
+    wm_path = site_data_dir / "wikidata_matches.json"
+    if not wm_path.exists():
+        return {}
+    all_matches = json.loads(wm_path.read_text())
+    doc_matches = all_matches.get(doc_id) or {}
+    from evaluation.metrics import normalise_name
+
+    wanted = {normalise_name(m) for m in mentions}
+    return {
+        key: {
+            "candidates": [
+                {"qid": c.get("qid"), "score": c.get("score")}
+                for c in (entry.get("candidates") or [])
+            ]
+        }
+        for key, entry in doc_matches.items()
+        if normalise_name(key) in wanted
+    }
+
+
 def build_fixtures(
     decisions_path: Path,
     site_data_dir: Path,
@@ -72,10 +96,13 @@ def build_fixtures(
             "accepted": sorted(gold["accepted"]),
             "rejected": sorted(gold["rejected"]),
         }
+        reviewed_mentions = [p for p, _ in gold["accepted"] + gold["rejected"]]
+        wd_snap = _wikidata_snapshot(site_data_dir, doc_id, reviewed_mentions)
         pred_path = site_data_dir / f"{doc_id}.json"
         if pred_path.exists():
             data = json.loads(pred_path.read_text())
             fixture["predictions"] = {
+                "wikidata": wd_snap,
                 "persons": [p.get("name", "") for p in data.get("persons", [])],
                 "links": [
                     {
@@ -92,6 +119,12 @@ def build_fixtures(
                             if link.get("top_candidate")
                             else None
                         ),
+                        # candidate ids beyond the top, for diagnosis (#42)
+                        "candidates": [
+                            {"outremer_id": c.get("outremer_id") or c.get("authority_id")}
+                            for c in (link.get("candidates") or [])
+                            if c.get("outremer_id") or c.get("authority_id")
+                        ],
                     }
                     for link in data.get("links", [])
                 ],

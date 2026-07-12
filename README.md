@@ -148,10 +148,13 @@ python -m evaluation.harness --live
 python -m evaluation.build_fixture
 ```
 
-Key metric: **linking agreement** — of the (mention, authority) pairs
-scholars reviewed, how many does the pipeline's top candidate agree with.
-Baseline 2026-07-12 (corrected): 0.6761 over 71 reviewed pairs
-(rileysmith 0.81, hamblin 0.0, munro 0.0 — see issue #42). CI fails below 0.55.
+Key metric: **linking agreement** — of the pairs scholars reviewed, how
+many does the responsible system's top proposal agree with. Adjudications
+cover two systems, each judged against its own output: the authority-file
+linker (`AUTH:CR…` ids) and Wikidata reconciliation (`wikidata:Q…` ids).
+Baseline 2026-07-12: **combined 0.9014** over 71 pairs (authority 0.8727
+over 55, wikidata 1.0 over 16). CI fails below 0.85. Residual misses are
+dominated by extraction drift, not linking — see issue #42.
 
 ---
 

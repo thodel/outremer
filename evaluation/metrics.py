@@ -172,22 +172,100 @@ def linking_agreement(
     }
 
 
+def split_pairs_by_system(
+    pairs: list[tuple[str, str]],
+) -> tuple[list[tuple[str, str]], list[tuple[str, str]]]:
+    """Split adjudicated (person, id) pairs into (authority, wikidata) lists.
+
+    Scholars adjudicated two distinct linking systems: the authority-file
+    linker (ids like ``AUTH:CR115``) and Wikidata reconciliation (ids like
+    ``wikidata:Q76721``). Each must be evaluated against the system that
+    proposed it — an authority linker can never propose a QID, so counting
+    wikidata pairs against it fabricates misses (issue #42).
+    """
+    authority: list[tuple[str, str]] = []
+    wikidata: list[tuple[str, str]] = []
+    for person, pid in pairs:
+        (wikidata if pid.startswith("wikidata:") else authority).append((person, pid))
+    return authority, wikidata
+
+
+def wikidata_agreement(
+    wd_entries: dict[str, dict],
+    accepted: list[tuple[str, str]],
+    rejected: list[tuple[str, str]],
+) -> dict:
+    """
+    Agreement between Wikidata reconciliation output and human adjudication.
+
+    ``wd_entries`` maps a normalised mention to its reconciliation record
+    (``{"candidates": [{"qid", "score", ...}]}``), as in
+    ``site/data/wikidata_matches.json[doc_id]``. The system's proposal is the
+    highest-scoring candidate.
+    """
+
+    def top_qid(person: str) -> str | None:
+        entry = wd_entries.get(normalise_name(person))
+        if not entry:
+            # fall back to fuzzy lookup over keys
+            for key, val in wd_entries.items():
+                if _fuzzy_equal(key, person, DEFAULT_FUZZY_THRESHOLD):
+                    entry = val
+                    break
+        candidates = (entry or {}).get("candidates") or []
+        if not candidates:
+            return None
+        best = max(candidates, key=lambda c: c.get("score") or 0.0)
+        return best.get("qid")
+
+    def _strip(pid: str) -> str:
+        return pid.removeprefix("wikidata:")
+
+    accept_hit = accept_miss = 0
+    for person, pid in accepted:
+        if top_qid(person) == _strip(pid):
+            accept_hit += 1
+        else:
+            accept_miss += 1
+
+    reject_hit = reject_avoided = 0
+    for person, pid in rejected:
+        if top_qid(person) == _strip(pid):
+            reject_hit += 1
+        else:
+            reject_avoided += 1
+
+    reviewed = accept_hit + accept_miss + reject_hit + reject_avoided
+    agreement = (accept_hit + reject_avoided) / reviewed if reviewed else 0.0
+    return {
+        "reviewed_pairs": reviewed,
+        "accept_hit": accept_hit,
+        "accept_miss": accept_miss,
+        "reject_hit": reject_hit,
+        "reject_avoided": reject_avoided,
+        "agreement": round(agreement, 4),
+    }
+
+
 def format_report(doc_results: dict[str, dict]) -> str:
     """Render per-document results plus aggregate as an aligned text table."""
     lines: list[str] = []
     header = (
-        f"{'document':<44} {'mode':<12} {'P':>6} {'R':>6} {'F1':>6} {'agree':>6}"
+        f"{'document':<44} {'mode':<12} {'P':>6} {'R':>6} {'F1':>6}"
+        f" {'auth':>6} {'wd':>6}"
     )
     lines.append(header)
     lines.append("-" * len(header))
     for doc_id, res in sorted(doc_results.items()):
         ext = res.get("extraction") or {}
-        link = res.get("linking") or {}
+        auth = res.get("linking") or {}
+        wd = res.get("wikidata") or {}
         lines.append(
             f"{doc_id[:44]:<44} {res.get('mode', '?'):<12}"
             f" {ext.get('precision', '—'):>6}"
             f" {ext.get('recall', '—'):>6}"
             f" {ext.get('f1', '—'):>6}"
-            f" {link.get('agreement', '—'):>6}"
+            f" {auth.get('agreement', '—'):>6}"
+            f" {wd.get('agreement', '—'):>6}"
         )
     return "\n".join(lines)

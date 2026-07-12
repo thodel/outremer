@@ -17,6 +17,36 @@
   ],
   "rejected": [],
   "predictions": {
+    "wikidata": {
+      "fulk of neuilly": {
+        "candidates": [
+          {
+            "qid": "Q594334",
+            "score": 0.5
+          }
+        ]
+      },
+      "caesar of heisterbach": {
+        "candidates": [
+          {
+            "qid": "Q649722",
+            "score": 0.5
+          }
+        ]
+      },
+      "pope urban ii": {
+        "candidates": [
+          {
+            "qid": "Q30578",
+            "score": 0.7
+          },
+          {
+            "qid": "Q171520",
+            "score": 0.4
+          }
+        ]
+      }
+    },
     "persons": [
       "Conditions of Use",
       "Read",
@@ -158,631 +188,1109 @@
         "person": "Conditions of Use",
         "top_candidate": {
           "outremer_id": "AUTH:CR86"
-        }
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR86"
+          }
+        ]
       },
       {
         "person": "Read",
         "top_candidate": {
           "outremer_id": "AUTH:CR14"
-        }
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR14"
+          },
+          {
+            "outremer_id": "AUTH:CR1"
+          },
+          {
+            "outremer_id": "AUTH:CR37"
+          }
+        ]
       },
       {
         "person": "April",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Pope Urban",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Council of Clermont",
         "top_candidate": {
           "outremer_id": "AUTH:CR4"
-        }
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR4"
+          },
+          {
+            "outremer_id": "AUTH:CR5"
+          }
+        ]
       },
       {
         "person": "Constantinople",
         "top_candidate": {
           "outremer_id": "AUTH:CR86"
-        }
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR86"
+          }
+        ]
       },
       {
         "person": "God",
         "top_candidate": {
           "outremer_id": "AUTH:CR78"
-        }
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR78"
+          }
+        ]
       },
       {
         "person": "Christ",
         "top_candidate": {
           "outremer_id": "AUTH:CR33"
-        }
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR33"
+          }
+        ]
       },
       {
         "person": "Moreover",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Why",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "What",
         "top_candidate": {
           "outremer_id": "AUTH:CR17"
-        }
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR17"
+          },
+          {
+            "outremer_id": "AUTH:CR110"
+          }
+        ]
       },
       {
         "person": "Church",
         "top_candidate": {
           "outremer_id": "AUTH:CR13"
-        }
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR13"
+          },
+          {
+            "outremer_id": "AUTH:CR18"
+          },
+          {
+            "outremer_id": "AUTH:CR21"
+          }
+        ]
       },
       {
         "person": "Christendom",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Many",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Thomas",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Fuller",
         "top_candidate": {
           "outremer_id": "AUTH:CR2"
-        }
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR2"
+          },
+          {
+            "outremer_id": "AUTH:CR6"
+          }
+        ]
       },
       {
         "person": "Holy",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Grecians",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Jerusalem",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Antioch",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Constanti",
         "top_candidate": {
           "outremer_id": "AUTH:CR86"
-        }
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR86"
+          }
+        ]
       },
       {
         "person": "Eastern",
         "top_candidate": {
           "outremer_id": "AUTH:CR53"
-        }
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR53"
+          },
+          {
+            "outremer_id": "AUTH:CR62"
+          },
+          {
+            "outremer_id": "AUTH:CR17"
+          }
+        ]
       },
       {
         "person": "Rome",
         "top_candidate": {
           "outremer_id": "AUTH:CR56"
-        }
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR56"
+          },
+          {
+            "outremer_id": "AUTH:CR100"
+          },
+          {
+            "outremer_id": "AUTH:CR88"
+          }
+        ]
       },
       {
         "person": "Without",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Greek",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Roman",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Documents",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Recueil",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Historiens",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Croisades",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Others",
         "top_candidate": {
           "outremer_id": "AUTH:CR16"
-        }
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR16"
+          }
+        ]
       },
       {
         "person": "Emperor",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Europe",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "In the",
         "top_candidate": {
           "outremer_id": "AUTH:CR94"
-        }
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR94"
+          },
+          {
+            "outremer_id": "AUTH:CR93"
+          },
+          {
+            "outremer_id": "AUTH:CR62"
+          }
+        ]
       },
       {
         "person": "Peter the Hermit",
         "top_candidate": {
           "outremer_id": "AUTH:CR 165"
-        }
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR 165"
+          },
+          {
+            "outremer_id": "AUTH:CR61"
+          },
+          {
+            "outremer_id": "AUTH:CR62"
+          }
+        ]
       },
       {
         "person": "Fulk of Neuilly",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Richard the Lion-",
         "top_candidate": {
           "outremer_id": "AUTH:CR19"
-        }
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR19"
+          },
+          {
+            "outremer_id": "AUTH:CR97"
+          }
+        ]
       },
       {
         "person": "Hearted",
         "top_candidate": {
           "outremer_id": "AUTH:CR14"
-        }
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR14"
+          },
+          {
+            "outremer_id": "AUTH:CR19"
+          },
+          {
+            "outremer_id": "AUTH:CR50"
+          }
+        ]
       },
       {
         "person": "When \n the",
         "top_candidate": {
           "outremer_id": "AUTH:CR94"
-        }
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR94"
+          },
+          {
+            "outremer_id": "AUTH:CR93"
+          },
+          {
+            "outremer_id": "AUTH:CR176"
+          }
+        ]
       },
       {
         "person": "Such",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Cross",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Caesar of Heisterbach",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "After the",
         "top_candidate": {
           "outremer_id": "AUTH:CR 165"
-        }
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR 165"
+          },
+          {
+            "outremer_id": "AUTH:CR103"
+          }
+        ]
       },
       {
         "person": "City",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Children",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Thus",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Land",
         "top_candidate": {
           "outremer_id": "AUTH:CR111"
-        }
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR111"
+          },
+          {
+            "outremer_id": "AUTH:CR126"
+          }
+        ]
       },
       {
         "person": "Popes",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Because of",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Western",
         "top_candidate": {
           "outremer_id": "AUTH:CR53"
-        }
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR53"
+          },
+          {
+            "outremer_id": "AUTH:CR62"
+          },
+          {
+            "outremer_id": "AUTH:CR17"
+          }
+        ]
       },
       {
         "person": "Second",
         "top_candidate": {
           "outremer_id": "AUTH:CR1"
-        }
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR1"
+          },
+          {
+            "outremer_id": "AUTH:CR37"
+          },
+          {
+            "outremer_id": "AUTH:CR175"
+          }
+        ]
       },
       {
         "person": "Eugene",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "German",
         "top_candidate": {
           "outremer_id": "AUTH:CR25"
-        }
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR25"
+          },
+          {
+            "outremer_id": "AUTH:CR120"
+          },
+          {
+            "outremer_id": "AUTH:CR1"
+          }
+        ]
       },
       {
         "person": "French",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Augustus",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Jews",
         "top_candidate": {
           "outremer_id": "AUTH:CR71"
-        }
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR71"
+          }
+        ]
       },
       {
         "person": "Church the Popes",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "They",
         "top_candidate": {
           "outremer_id": "AUTH:CR16"
-        }
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR16"
+          },
+          {
+            "outremer_id": "AUTH:CR12"
+          },
+          {
+            "outremer_id": "AUTH:CR26"
+          }
+        ]
       },
       {
         "person": "Other",
         "top_candidate": {
           "outremer_id": "AUTH:CR16"
-        }
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR16"
+          },
+          {
+            "outremer_id": "AUTH:CR12"
+          },
+          {
+            "outremer_id": "AUTH:CR26"
+          }
+        ]
       },
       {
         "person": "Innocent",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Frederic",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Crusaders",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "clergy",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "When",
         "top_candidate": {
           "outremer_id": "AUTH:CR12"
-        }
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR12"
+          },
+          {
+            "outremer_id": "AUTH:CR26"
+          },
+          {
+            "outremer_id": "AUTH:CR54"
+          }
+        ]
       },
       {
         "person": "Gregory",
         "top_candidate": {
           "outremer_id": "AUTH:CR55"
-        }
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR55"
+          }
+        ]
       },
       {
         "person": "Sicilian",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Moslems",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "These",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Albigenses",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Chris",
         "top_candidate": {
           "outremer_id": "AUTH:CR33"
-        }
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR33"
+          }
+        ]
       },
       {
         "person": "Bishops of",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Syria",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Armenian",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Catholic",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "East",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Orders of",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Temple",
         "top_candidate": {
           "outremer_id": "AUTH:CR94"
-        }
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR94"
+          },
+          {
+            "outremer_id": "AUTH:CR93"
+          },
+          {
+            "outremer_id": "AUTH:CR176"
+          }
+        ]
       },
       {
         "person": "Hospital",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Men",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Taxes",
         "top_candidate": {
           "outremer_id": "AUTH:CR71"
-        }
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR71"
+          }
+        ]
       },
       {
         "person": "Consequently the Popes",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "While the Popes",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Bernard of \n Clairvaux",
         "top_candidate": {
           "outremer_id": "AUTH:CR183"
-        }
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR183"
+          }
+        ]
       },
       {
         "person": "Crusade of Richard",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Lion",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Fourth",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Empire",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Fifth",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Louis",
         "top_candidate": {
           "outremer_id": "AUTH:CR125"
-        }
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR125"
+          }
+        ]
       },
       {
         "person": "For the First",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Ademar of Puy",
         "top_candidate": {
           "outremer_id": "AUTH:CR91"
-        }
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR91"
+          }
+        ]
       },
       {
         "person": "Although",
         "top_candidate": {
           "outremer_id": "AUTH:CR13"
-        }
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR13"
+          },
+          {
+            "outremer_id": "AUTH:CR18"
+          },
+          {
+            "outremer_id": "AUTH:CR21"
+          }
+        ]
       },
       {
         "person": "Damietta",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Orient",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "With the",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Saviour",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Dagobert",
         "top_candidate": {
           "outremer_id": "AUTH:CR56"
-        }
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR56"
+          },
+          {
+            "outremer_id": "AUTH:CR100"
+          },
+          {
+            "outremer_id": "AUTH:CR88"
+          }
+        ]
       },
       {
         "person": "Patriarch of Jerusalem",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Patriarch",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "King",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Even",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Allah",
         "top_candidate": {
           "outremer_id": "AUTH:CR23"
-        }
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR23"
+          },
+          {
+            "outremer_id": "AUTH:CR24"
+          },
+          {
+            "outremer_id": "AUTH:CR107"
+          }
+        ]
       },
       {
         "person": "Venetians",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Zara",
         "top_candidate": {
           "outremer_id": "AUTH:CR50"
-        }
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR50"
+          }
+        ]
       },
       {
         "person": "Despite the",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Mohammedans",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Even the Templars",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Mohammedan",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Christians of",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Kingdom of Jerusalem",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "From the East",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Oriental",
         "top_candidate": {
           "outremer_id": "AUTH:CR10"
-        }
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR10"
+          },
+          {
+            "outremer_id": "AUTH:CR43"
+          },
+          {
+            "outremer_id": "AUTH:CR97"
+          }
+        ]
       },
       {
         "person": "Soon",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "All of",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Germany",
         "top_candidate": {
           "outremer_id": "AUTH:CR1"
-        }
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR1"
+          },
+          {
+            "outremer_id": "AUTH:CR25"
+          },
+          {
+            "outremer_id": "AUTH:CR4"
+          }
+        ]
       },
       {
         "person": "England",
         "top_candidate": {
           "outremer_id": "AUTH:CR25"
-        }
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR25"
+          }
+        ]
       },
       {
         "person": "One",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Turks",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Possibly",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Clermont",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "For the Turk",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Whatever",
         "top_candidate": {
           "outremer_id": "AUTH:CR17"
-        }
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR17"
+          },
+          {
+            "outremer_id": "AUTH:CR110"
+          }
+        ]
       },
       {
         "person": "Many of",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Walter von",
         "top_candidate": {
           "outremer_id": "AUTH:CR17"
-        }
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR17"
+          },
+          {
+            "outremer_id": "AUTH:CR110"
+          }
+        ]
       },
       {
         "person": "Vogelweide",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Little",
         "top_candidate": {
           "outremer_id": "AUTH:CR68"
-        }
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR68"
+          }
+        ]
       },
       {
         "person": "Walter",
         "top_candidate": {
           "outremer_id": "AUTH:CR17"
-        }
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR17"
+          },
+          {
+            "outremer_id": "AUTH:CR110"
+          },
+          {
+            "outremer_id": "AUTH:CR 165"
+          }
+        ]
       },
       {
         "person": "Hohenstaufens",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "But the",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Christians",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "merchants",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Matthew",
         "top_candidate": {
           "outremer_id": "AUTH:CR103"
-        }
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR103"
+          }
+        ]
       },
       {
         "person": "Empire \n of Constantinople",
-        "top_candidate": null
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Heresy",
         "top_candidate": {
           "outremer_id": "AUTH:CR12"
-        }
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR12"
+          },
+          {
+            "outremer_id": "AUTH:CR26"
+          },
+          {
+            "outremer_id": "AUTH:CR54"
+          }
+        ]
       }
     ]
   }

@@ -99,3 +99,45 @@ def test_agreement_whitespace_artifacts_in_person_names():
 
 def test_agreement_no_reviewed_pairs():
     assert linking_agreement(LINKS, [], [])["agreement"] == 0.0
+
+
+# ── split_pairs_by_system / wikidata_agreement ───────────────────────────────
+
+from evaluation.metrics import split_pairs_by_system, wikidata_agreement
+
+
+def test_split_pairs_by_id_namespace():
+    auth, wd = split_pairs_by_system(
+        [("A", "AUTH:CR1"), ("B", "wikidata:Q42"), ("C", "AUTH:CR2")]
+    )
+    assert auth == [("A", "AUTH:CR1"), ("C", "AUTH:CR2")]
+    assert wd == [("B", "wikidata:Q42")]
+
+
+WD_ENTRIES = {
+    "godfrey of bouillon": {
+        "candidates": [
+            {"qid": "Q999", "score": 0.4},
+            {"qid": "Q76721", "score": 0.9},
+        ]
+    },
+    "no candidates person": {"candidates": []},
+}
+
+
+def test_wikidata_agreement_top_scored_candidate_wins():
+    res = wikidata_agreement(
+        WD_ENTRIES,
+        accepted=[("Godfrey of Bouillon", "wikidata:Q76721")],
+        rejected=[("Godfrey of Bouillon", "wikidata:Q999")],
+    )
+    assert res["accept_hit"] == 1
+    assert res["reject_avoided"] == 1  # Q999 is not the top proposal
+    assert res["agreement"] == 1.0
+
+
+def test_wikidata_agreement_missing_mention_is_a_miss():
+    res = wikidata_agreement(
+        WD_ENTRIES, accepted=[("Unknown Person", "wikidata:Q1")], rejected=[]
+    )
+    assert res["accept_miss"] == 1

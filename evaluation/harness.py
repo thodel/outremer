@@ -34,7 +34,13 @@ import json
 import sys
 from pathlib import Path
 
-from evaluation.metrics import extraction_prf, format_report, linking_agreement
+from evaluation.metrics import (
+    extraction_prf,
+    format_report,
+    linking_agreement,
+    split_pairs_by_system,
+    wikidata_agreement,
+)
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 FIXTURES_DIR = Path(__file__).resolve().parent / "fixtures"
@@ -69,9 +75,16 @@ def evaluate_fixture(fixture: dict, *, live: bool = False) -> dict:
         )
     accepted = [tuple(x) for x in fixture.get("accepted", [])]
     rejected = [tuple(x) for x in fixture.get("rejected", [])]
-    if accepted or rejected:
+    # Scholars adjudicated two systems; judge each against its own (#42)
+    acc_auth, acc_wd = split_pairs_by_system(accepted)
+    rej_auth, rej_wd = split_pairs_by_system(rejected)
+    if acc_auth or rej_auth:
         result["linking"] = linking_agreement(
-            preds.get("links", []), accepted, rejected
+            preds.get("links", []), acc_auth, rej_auth
+        )
+    if acc_wd or rej_wd:
+        result["wikidata"] = wikidata_agreement(
+            preds.get("wikidata") or {}, acc_wd, rej_wd
         )
     return result
 
@@ -109,16 +122,26 @@ def main(argv: list[str] | None = None) -> int:
 
     print(format_report(doc_results))
 
-    # Aggregate linking agreement across documents (pair-weighted)
-    total_pairs = good = 0
+    # Aggregate agreement across documents (pair-weighted), per system and
+    # combined — each adjudicated pair judged against the system that made it
+    seg_totals: dict[str, list[int]] = {"linking": [0, 0], "wikidata": [0, 0]}
     for res in doc_results.values():
-        link = res.get("linking")
-        if link:
-            total_pairs += link["reviewed_pairs"]
-            good += link["accept_hit"] + link["reject_avoided"]
+        for seg in ("linking", "wikidata"):
+            r = res.get(seg)
+            if r:
+                seg_totals[seg][0] += r["reviewed_pairs"]
+                seg_totals[seg][1] += r["accept_hit"] + r["reject_avoided"]
+
+    total_pairs = sum(t for t, _ in seg_totals.values())
+    good = sum(g for _, g in seg_totals.values())
+    print()
+    for seg, label in (("linking", "authority linking"), ("wikidata", "wikidata reconciliation")):
+        t, g = seg_totals[seg]
+        if t:
+            print(f"{label:>24}: {g/t:.4f} over {t} pairs")
     if total_pairs:
         aggregate = good / total_pairs
-        print(f"\naggregate linking agreement: {aggregate:.4f} over {total_pairs} reviewed pairs")
+        print(f"{'combined agreement':>24}: {aggregate:.4f} over {total_pairs} reviewed pairs")
     else:
         aggregate = None
 

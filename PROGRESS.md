@@ -1,7 +1,7 @@
 # OUTREMER — GPUStack Adaptation Progress
 
 > **Status: Epics 1–8 closed; Epics 9–10 open** (evaluation & linking methodology, #33/#34).
-> CI green as of 2026-07-12 (`1cc805f`): ruff + 35 tests + eval gate (linking agreement ≥ 0.55, corrected baseline 0.6761).
+> CI green as of 2026-07-12 (`1cc805f`): ruff + 35 tests + eval gate (linking agreement ≥ 0.85, system-aware baseline: combined 0.9014).
 
 ## What was done 2026-07-12 (post-completion repair + evaluation)
 
@@ -22,11 +22,15 @@ Corrections to claims below:
 New: `evaluation/` package (pattern from agentic_historian) — extraction
 P/R/F1 + linking-agreement metrics, fixtures seeded from `data/decisions.json`
 (scholar adjudications become regression gold), `--min-agreement` gate in CI.
-Baseline: **0.6761 over 71 reviewed pairs**, corrected 2026-07-12 after a
-key-name bug in the first fixture build (candidates use `outremer_id`, the
-builder read `authority_id`, so accept_hit could never fire; first-published
-0.6479 was an artifact). Corrected per-doc: rileysmith 0.81, hamblin 0.0,
-munro 0.0 — see #42 for the diagnosis plan.
+Baseline (system-aware, 2026-07-12): **combined 0.9014 over 71 pairs** —
+authority linker 0.8727 over 55, Wikidata reconciliation 1.0 over 16. Two
+earlier numbers were measurement artifacts: 0.6479 (fixture builder read
+`authority_id` where candidates carry `outremer_id`, so accept_hit could
+never fire) and 0.6761 (wikidata-system adjudications counted against the
+authority linker, which cannot propose QIDs). Diagnosis (#42): residual
+misses are extraction drift — Tancred, Albert of Aachen, Guibert of Nogent,
+Orderic Vitalis absent from today's GPUStack extraction of rileysmith, and
+"Pope Urban II" mangled to "Pope \n Urban" (whitespace fix landed).
 
 | Date | Commit | Change |
 |---|---|---|

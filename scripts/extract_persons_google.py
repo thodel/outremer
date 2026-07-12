@@ -804,9 +804,15 @@ def _coerce_person(raw: Any) -> dict[str, Any] | None:
     name = raw.get("name") or raw.get("raw_mention") or ""
     if not name:
         return None
+    # Collapse internal whitespace: LLMs echo line breaks from the source
+    # into names ("Pope \n Urban"), which breaks linking and adjudication
+    name = " ".join(str(name).split())
+    raw_mention = " ".join(str(raw.get("raw_mention") or name).split())
+    if not name:
+        return None
     return {
-        "name": str(name).strip(),
-        "raw_mention": str(raw.get("raw_mention") or name).strip(),
+        "name": name,
+        "raw_mention": raw_mention,
         "title": raw.get("title") or None,
         "epithet": raw.get("epithet") or None,
         "toponym": raw.get("toponym") or None,
