@@ -105,7 +105,6 @@ def has_medieval_pattern(name: str) -> bool:
 
 def is_likely_modern_scholar(person: dict, context: str = "") -> bool:
     """Detect modern scholars based on context and metadata."""
-    name = person.get("name", "")
     role = person.get("role", "")
     confidence = person.get("confidence", 1.0)
 

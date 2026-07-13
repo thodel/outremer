@@ -8,6 +8,7 @@ import json
 import sys
 
 from config import EXTRACTION_MODEL, ORCHESTRATOR_MODEL
+from llm_client import generate
 
 from scripts.llm_client import generate
 

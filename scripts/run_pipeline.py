@@ -22,15 +22,16 @@ import logging
 import os
 import re
 import sys
-import unicodedata
 from collections import Counter
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-from config import OCR_ENGINE
+from config import EXTRACTION_MODEL, GPUSTACK_BASE_URL, OCR_ENGINE
 from extract_persons_google import extract_persons_and_metadata
-
-from scripts.llm_client import generate as _llm_generate
+from linker import build_authority_lookup, link_voyagers_to_outremer, normalise
+from llm_client import generate as _llm_generate
+from validate_decisions import validate_decisions_file
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 logger = logging.getLogger(__name__)
@@ -50,6 +51,9 @@ def _write_run_report(
     extraction_model: str,
     ocr_engine: str,
     failures: list[dict],
+    feedback_applied: dict[str, int] | None = None,
+    llm_provider: str = "unknown",
+    noise: dict[str, int] | None = None,
 ) -> None:
     """Write run report JSON to data/staging/run_report.json."""
     report = {
@@ -58,11 +62,24 @@ def _write_run_report(
         "docs_ok": docs_ok,
         "docs_failed": docs_failed,
         "total_persons": total_persons,
-        "llm_provider": "gpustack",
+        "llm_provider": llm_provider,
         "extraction_model": extraction_model,
         "ocr_engine": ocr_engine,
         "failures": failures,
     }
+    if noise and noise.get("extracted_total"):
+        report["noise"] = {
+            **noise,
+            "noise_share": round(noise["filtered"] / noise["extracted_total"], 4),
+        }
+    if feedback_applied:
+        report["feedback_applied"] = {
+            "source_file": str(feedback_applied.get("source_file", "")),
+            "processed_decisions": feedback_applied.get("processed", 0),
+            "blocked_added": feedback_applied.get("blocked_added", 0),
+            "allowed_added": feedback_applied.get("allowed_added", 0),
+            "blocked_removed": feedback_applied.get("blocked_removed", 0),
+        }
     staging_dir = Path("data/staging")
     staging_dir.mkdir(parents=True, exist_ok=True)
     report_path = staging_dir / "run_report.json"
@@ -81,13 +98,6 @@ def slugify(name: str) -> str:
 def sha256_text(t: str) -> str:
     return hashlib.sha256(t.encode("utf-8")).hexdigest()
 
-
-def normalise(s: str) -> str:
-    """Lowercase, strip accents, collapse whitespace, strip punctuation."""
-    s = unicodedata.normalize("NFKD", s)
-    s = "".join(c for c in s if not unicodedata.combining(c))
-    s = re.sub(r"[^\w\s]", " ", s)
-    return re.sub(r"\s+", " ", s).lower().strip()
 
 
 # ──────────────────────────────────────────────
@@ -136,8 +146,6 @@ def _ocr_image(path: Path) -> str:
                → Mistral
       mistral  → Mistral only (legacy)
     """
-    engine = OCR_ENGINE.lower()
-
     # qwen3-vl (default): Qwen3 VL 30B primary → MiniMax fallback → Mistral final
     result = _qwen3vl_ocr(path)
     if result:
@@ -387,198 +395,6 @@ def sync_feedback_from_human_review(
 
 
 # ──────────────────────────────────────────────
-# Authority index preprocessing
-# ──────────────────────────────────────────────
-
-def build_authority_lookup(outremer: dict[str, Any]) -> list[dict[str, Any]]:
-    """
-    Pre-process the authority index into a flat list of
-    { authority_id, preferred_label, type, all_norms: [str] }
-    ready for fuzzy matching.
-    """
-    # Support both old ("entities") and new ("persons") top-level keys
-    entries = outremer.get("persons") or outremer.get("entities") or []
-    lookup: list[dict[str, Any]] = []
-
-    for e in entries:
-        auth_id = (e.get("authority_id") or "").strip()
-        label = (e.get("preferred_label") or e.get("name") or "").strip()
-        etype = e.get("type", "person")
-
-        # Collect all name variants to match against
-        raw_variants: list[str] = [label]
-
-        # From variants list
-        for v in e.get("variants") or []:
-            if isinstance(v, str) and v.strip():
-                raw_variants.append(v.strip())
-
-        # From normalized.variants
-        norm_block = e.get("normalized") or {}
-        if norm_block.get("preferred"):
-            raw_variants.append(norm_block["preferred"])
-        for v in norm_block.get("variants") or []:
-            if isinstance(v, str) and v.strip():
-                raw_variants.append(v.strip())
-
-        # From name sub-object
-        name_block = e.get("name") or {}
-        if isinstance(name_block, dict):
-            if name_block.get("raw"):
-                raw_variants.append(name_block["raw"])
-
-        # Deduplicate normalised forms
-        seen: set = set()
-        all_norms: list[str] = []
-        for v in raw_variants:
-            n = normalise(v)
-            if n and n not in seen:
-                seen.add(n)
-                all_norms.append(n)
-
-        if not auth_id or not label:
-            continue
-
-        lookup.append({
-            "authority_id": auth_id,
-            "preferred_label": label,
-            "type": etype,
-            "all_norms": all_norms,
-        })
-
-    return lookup
-
-
-# ──────────────────────────────────────────────
-# Fuzzy linker
-# ──────────────────────────────────────────────
-
-def _fuzzy_score(a: str, b: str) -> float:
-    """Token-sort fuzzy ratio, 0.0–1.0."""
-    try:
-        from rapidfuzz import fuzz
-        return fuzz.token_sort_ratio(a, b) / 100.0
-    except ImportError:
-        # Fallback: simple character overlap
-        set_a, set_b = set(a.split()), set(b.split())
-        if not set_a or not set_b:
-            return 0.0
-        return len(set_a & set_b) / max(len(set_a), len(set_b))
-
-
-def _status(score: float) -> str:
-    if score >= 0.90:
-        return "high"
-    if score >= 0.75:
-        return "medium"
-    if score >= 0.60:
-        return "low"
-    return "no_match"
-
-
-def link_voyagers_to_outremer(
-    persons: list[dict[str, Any]],
-    authority_lookup: list[dict[str, Any]],
-    top_k: int = 3,
-    min_score: float = 0.60,
-) -> list[dict[str, Any]]:
-    """
-    Link extracted person mentions to Outremer authority entries using fuzzy matching.
-
-    Returns one link object per person mention, each containing ranked candidates.
-    """
-    links: list[dict[str, Any]] = []
-
-    for p in persons:
-        pname = (p.get("name") or "").strip()
-        if not pname:
-            continue
-        pnorm = normalise(pname)
-        p_tokens = pnorm.split()
-
-        # Score every authority entry
-        scored: list[tuple[float, str, dict[str, Any]]] = []  # (score, match_type, entry)
-        for entry in authority_lookup:
-            best_score = 0.0
-            best_match_type = "fuzzy"
-
-            for variant_norm in entry["all_norms"]:
-                v_tokens = variant_norm.split()
-                # Exact match
-                if pnorm == variant_norm:
-                    best_score = 1.0
-                    best_match_type = "exact"
-                    break
-                # Token containment (reduces false positives from naive substrings)
-                elif len(p_tokens) >= 2 and all(t in v_tokens for t in p_tokens):
-                    sub_score = len(p_tokens) / max(len(v_tokens), 1)
-                    if sub_score > best_score:
-                        best_score = sub_score
-                        best_match_type = "token_subset"
-                elif len(v_tokens) >= 2 and all(t in p_tokens for t in v_tokens):
-                    sub_score = len(v_tokens) / max(len(p_tokens), 1)
-                    if sub_score > best_score:
-                        best_score = sub_score
-                        best_match_type = "token_subset"
-                # Fuzzy
-                else:
-                    fs = _fuzzy_score(pnorm, variant_norm)
-                    if fs > best_score:
-                        best_score = fs
-                        best_match_type = "fuzzy"
-
-            if best_score >= min_score:
-                scored.append((best_score, best_match_type, entry))
-
-        # Sort descending by score, take top_k
-        scored.sort(key=lambda x: x[0], reverse=True)
-        top_candidates = scored[:top_k]
-
-        candidates = [
-            {
-                "outremer_id": entry["authority_id"],
-                "outremer_name": entry["preferred_label"],
-                "type": entry["type"],
-                "score": round(score, 4),
-                "match_type": match_type,
-                "evidence": f"{match_type} match: '{pnorm}' ↔ '{entry['preferred_label']}'",
-            }
-            for score, match_type, entry in top_candidates
-        ]
-
-        top = candidates[0] if candidates else None
-        confidence = top["score"] if top else 0.0
-        status = _status(confidence) if top else "no_match"
-
-        links.append({
-            "person": pname,
-            "person_group": p.get("group", False),
-            "candidates": candidates,
-            "top_candidate": top,
-            "confidence": round(confidence, 4),
-            "status": status,
-        })
-
-    # De-duplicate: if same (person, outremer_id) appears multiple times, keep highest score
-    seen: dict[tuple[str, str], int] = {}  # key → index in links
-    deduped: list[dict[str, Any]] = []
-    for link in links:
-        top = link.get("top_candidate")
-        key = (link["person"], top["outremer_id"] if top else "__none__")
-        if key in seen:
-            existing = deduped[seen[key]]
-            if link["confidence"] > existing["confidence"]:
-                deduped[seen[key]] = link
-        else:
-            seen[key] = len(deduped)
-            deduped.append(link)
-
-    return deduped
-
-
-# ──────────────────────────────────────────────
-# File processor
-# ──────────────────────────────────────────────
 
 def process_file(
     in_path: Path,
@@ -618,7 +434,9 @@ def process_file(
         "persons": persons,
         "links": links,
         "text_sha256": sha256_text(text),
-        "extraction_mode": "gemini" if os.environ.get("GOOGLE_API_KEY") else "fallback",
+        # Provenance: which engine actually produced these persons
+        "extraction_mode": (result.get("engine") or {}).get("provider", "unknown"),
+        "extraction_engine": result.get("engine") or {},
         "language_hint": language,
         "quality": result.get("quality") or {},
     }
@@ -635,12 +453,16 @@ def process_file(
         "  → %d persons, %d links (%d high / %d medium / %d low / %d no_match)",
         len(persons),
         len(links),
-        sum(1 for l in links if l["status"] == "high"),
-        sum(1 for l in links if l["status"] == "medium"),
-        sum(1 for l in links if l["status"] == "low"),
-        sum(1 for l in links if l["status"] == "no_match"),
+        sum(1 for _l in links if _l["status"] == "high"),
+        sum(1 for _l in links if _l["status"] == "medium"),
+        sum(1 for _l in links if _l["status"] == "low"),
+        sum(1 for _l in links if _l["status"] == "no_match"),
     )
-    return json_path, bib_path_repo, bib_path_site
+    doc_stats = {
+        "persons": len(persons),
+        "noise": (result.get("quality") or {}).get("noise") or {},
+    }
+    return json_path, bib_path_repo, bib_path_site, doc_stats
 
 
 def build_site_index(site_data_dir: Path, site_dir: Path) -> None:
@@ -719,8 +541,33 @@ def main() -> int:
     authority_lookup = build_authority_lookup(outremer_index)
     logger.info("Loaded %d authority entries.", len(authority_lookup))
 
+    # ── Validate review decisions before processing ────────────────────────
+    if review_decisions_path:
+        from pathlib import Path as _P
+        _dp = _P(review_decisions_path) if not isinstance(review_decisions_path, _P) else review_decisions_path
+        logger.info("Validating decisions file: %s", _dp)
+        vr = validate_decisions_file(_dp)
+        if vr.errors:
+            logger.error("Decision file has %d validation error(s):", len(vr.errors))
+            for e in vr.errors[:10]:
+                logger.error("  [%s] %s: %s",
+                    f"index {e.entry_index}" if e.entry_index >= 0 else "file",
+                    e.field or "", e.message)
+            logger.error("Fix the errors above before re-running. Pipeline aborting.")
+            return 1
+        logger.info(
+            "Validated: %d/%d decisions OK, %d conflict(s)",
+            len(vr.records), vr.total_entries, len(vr.conflicts))
+        if vr.conflicts:
+            for c in vr.conflicts[:5]:
+                logger.warning(
+                    "  %s::%s::%s: accepts=%s rejects=%s → %s",
+                    c.doc_id, c.person, c.id,
+                    c.accepts, c.rejects, c.final_decision)
+
+    feedback_stats: dict[str, int] | None = None
     if entity_feedback_path and review_decisions_path:
-        stats = sync_feedback_from_human_review(
+        feedback_stats = sync_feedback_from_human_review(
             entity_feedback_path,
             review_decisions_path,
             min_reject_votes=max(1, args.review_min_reject_votes),
@@ -728,10 +575,10 @@ def main() -> int:
         )
         logger.info(
             "Synced review feedback: %d decisions, +%d blocked, +%d allowed, -%d blocked",
-            stats["processed"],
-            stats["blocked_added"],
-            stats["allowed_added"],
-            stats["blocked_removed"],
+            feedback_stats["processed"],
+            feedback_stats["blocked_added"],
+            feedback_stats["allowed_added"],
+            feedback_stats["blocked_removed"],
         )
 
     # Specific files or all files in directory
@@ -742,12 +589,14 @@ def main() -> int:
         inputs = sorted(set(list(in_dir.rglob("*.txt")) + list(in_dir.rglob("*.pdf"))))
 
     errors: list[tuple[Path, Exception]] = []
+    total_persons = 0
+    noise_agg = {"extracted_total": 0, "filtered": 0}
     if not inputs:
         logger.warning("No .txt or .pdf files found in %s", in_dir)
     else:
         for p in inputs:
             try:
-                json_path, bib_repo, bib_site = process_file(
+                json_path, bib_repo, bib_site, doc_stats = process_file(
                     p,
                     site_data_dir=site_data_dir,
                     bib_dir=bib_dir,
@@ -760,6 +609,9 @@ def main() -> int:
                 print(f"Wrote {json_path}")
                 print(f"Wrote {bib_repo}")
                 print(f"Wrote {bib_site}")
+                total_persons += doc_stats["persons"]
+                for k in noise_agg:
+                    noise_agg[k] += (doc_stats.get("noise") or {}).get(k, 0)
             except Exception as exc:
                 errors.append((p, exc))
                 logger.error("Failed processing %s: %s", p, exc)
@@ -790,10 +642,13 @@ def main() -> int:
         docs_total=len(inputs),
         docs_ok=len(inputs) - len(errors),
         docs_failed=len(errors),
-        total_persons=0,
+        total_persons=total_persons,
         extraction_model=EXTRACTION_MODEL,
         ocr_engine=OCR_ENGINE,
         failures=[{"file": str(p), "error": str(e)} for p, e in errors],
+        feedback_applied=feedback_stats,
+        llm_provider="gpustack" if GPUSTACK_BASE_URL else "heuristic",
+        noise=noise_agg,
     )
 
     if errors:

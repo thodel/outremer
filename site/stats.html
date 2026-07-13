@@ -83,6 +83,13 @@
     /* ── Empty / loading ── */
     .empty { color:var(--muted); font-size:.88rem; font-style:italic; padding:.5rem 0; }
     .loading-msg { color:var(--muted); font-size:.88rem; padding:1rem 0; text-align:center; }
+    /* ── Feedback panel ── */
+    .feedback-panel { margin-top: 1rem; }
+    .feedback-row  { display:flex; gap:.75rem; margin-bottom:.5rem; align-items:center; }
+    .fb-badge { padding:.2rem .55rem; border-radius:4px; font-size:.78rem; font-family:var(--mono); flex-shrink:0; }
+    .fb-blocked { background:var(--low-bg); color:var(--low); border:1px solid var(--low); }
+    .fb-allowed { background:var(--high-bg); color:var(--high); border:1px solid var(--high); }
+    .fb-src { font-size:.76rem; color:var(--muted); margin-top:.4rem; }
 
     .refresh-btn { float:right; margin-top:-.15rem; }
     .last-updated { font-size:.75rem; color:var(--muted); margin-bottom:1rem; }
@@ -153,6 +160,12 @@
       <h2>Per-document breakdown</h2>
       <div id="docBreakdown"><div class="loading-msg">Loading…</div></div>
     </div>
+
+    <!-- Pipeline feedback applied -->
+    <div class="stat-panel feedback-panel">
+      <h2>Pipeline feedback</h2>
+      <div id="feedbackInfo"><div class="loading-msg">Loading…</div></div>
+    </div>
   </div>
 
   <script>
@@ -171,22 +184,28 @@
       return r.json();
     }
 
+    async function loadRunReport() {
+      // Load the pipeline run report (generated at pipeline runtime)
+      return fetchJson(`${SITE_ROOT}../data/staging/run_report.json`).catch(() => null);
+    }
+
     async function loadAll() {
-      const [idx, allDecisions] = await Promise.all([
+      const [idx, allDecisions, runReport] = await Promise.all([
         fetchJson(`${SITE_ROOT}index.json`),
         fetchJson(`${API}/outremer-decisions`).catch(() => []),
+        loadRunReport(),
       ]);
 
       const docs = await Promise.all(
         (idx.documents || []).map(f => fetchJson(`${SITE_ROOT}data/${f}`).catch(() => null))
       );
 
-      return { docs: docs.filter(Boolean), decisions: allDecisions };
+      return { docs: docs.filter(Boolean), decisions: allDecisions, runReport };
     }
 
     // ── Aggregation ─────────────────────────────────────────────────────────
 
-    function aggregate({ docs, decisions }) {
+    function aggregate({ docs, decisions, runReport }) {
       let totalPersons = 0, totalLinks = 0;
       let high = 0, med = 0, low = 0, none = 0;
       const personAccepts = {};   // outremer_id → { name, count }
@@ -246,8 +265,11 @@
         .sort(([,a],[,b]) => b.count - a.count)
         .slice(0, 10);
 
+      const feedbackApplied = runReport?.feedback_applied || null;
       return {
         totalDocs: docs.length,
+        feedbackApplied,
+        runReport,
         totalPersons,
         totalLinks,
         high, med, low, none,
@@ -276,7 +298,8 @@
 
     function render(data) {
       const { totalDocs, totalPersons, totalLinks, high, med, low, none,
-              accept, reject, flag, totalDecisions, conflicts, topPersons, docStats } = data;
+              accept, reject, flag, totalDecisions, conflicts, topPersons, docStats,
+              feedbackApplied } = data;
 
       // KPIs
       document.getElementById("kpiDocs").textContent      = totalDocs;
@@ -340,6 +363,37 @@
               <td>${v.count} reviewer${v.count!==1?"s":""}</td>
             </tr>`).join("")}
           </tbody></table>`;
+      }
+
+      // Pipeline feedback section
+      const fbEl = document.getElementById("feedbackInfo");
+      if (!feedbackApplied) {
+        fbEl.innerHTML = `<p class="empty">No pipeline run report found — run the pipeline with --entity-feedback-path and --review-decisions-path to see applied feedback here.</p>`;
+      } else {
+        const { processed_decisions, blocked_added, allowed_added, blocked_removed, source_file } = feedbackApplied;
+        const src = source_file ? `<div class="fb-src">Source: <code>${esc(source_file)}</code></div>` : "";
+        fbEl.innerHTML = `
+          <div class="feedback-row">
+            <span class="fb-badge fb-blocked">🔒 ${blocked_added} blocked</span>
+            <span class="fb-badge fb-allowed">✅ ${allowed_added} allowed</span>
+            <span class="fb-badge" style="background:#f0ebe0;color:var(--text)">↩️ ${blocked_removed} un-blocked</span>
+          </div>
+          <div class="feedback-row" style="margin-top:.4rem;">
+            <span class="muted" style="font-size:.82rem">${processed_decisions} decision(s) processed</span>
+          </div>
+          ${src}`;
+      }
+
+      // Extraction noise (M9.3): share of mentions the filter discarded
+      const noise = data.runReport?.noise || null;
+      if (noise && noise.extracted_total) {
+        const pct = Math.round((noise.noise_share || 0) * 100);
+        fbEl.innerHTML += `
+          <div class="feedback-row" style="margin-top:.6rem;" title="Filtered ${noise.filtered} of ${noise.extracted_total} extracted mentions in the latest run">
+            <span class="fb-badge" style="background:${pct > 30 ? "#f3d9d9" : "#e8efe3"};color:var(--text)">
+              🧹 extraction noise: ${pct}% (${noise.filtered}/${noise.extracted_total} filtered)
+            </span>
+          </div>`;
       }
 
       // Per-document breakdown

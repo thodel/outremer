@@ -162,7 +162,7 @@ def load_wikidata_peerage(dir_path: Path) -> dict[str, dict[str, Any]]:
                 # Parse birth/death dates
                 birth = row.get('birth')
                 death = row.get('death')
-                floruit = row.get('floruit')
+                _floruit = row.get("floruit")  # noqa: F841  (parsed for future use)
 
                 if birth and persons[qid]["bio"]["birth"] is None:
                     persons[qid]["bio"]["birth"] = {"date": parse_iso_date(birth)}

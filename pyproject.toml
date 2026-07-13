@@ -1,48 +1,43 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "outremer"
 version = "0.1.0"
-description = "AI-assisted prosopography of the medieval Levant (Crusades era, 11th–14th centuries)"
-readme = "README.md"
-requires-python = ">=3.12"
+description = "AI-assisted prosopography of the medieval Levant"
+requires-python = ">=3.10"
+# Runtime dependencies are pinned in requirements.txt (CI and Docker install from there).
 dependencies = []
 
 [project.optional-dependencies]
 dev = [
-    "pytest>=8.0.0",
-    "ruff>=0.8.0",
+    "pytest>=8.0",
+    "ruff>=0.8",
 ]
 
-[tool.ruff]
-target-version = "py312"
-line-length = 100
-indent-width = 4
+[tool.setuptools]
+packages = ["evaluation"]
 
-# Exclude scrapers/ and scripts/kg/ (third-party / auto-generated provenance)
-exclude = ["scrapers/", "scripts/kg/"]
+[tool.ruff]
+line-length = 100
+target-version = "py310"
 
 [tool.ruff.lint]
 select = [
-    "E",     # pycodestyle errors
-    "W",     # pycodestyle warnings
-    "F",     # Pyflakes
-    "I",     # isort
-    "UP",    # pyupgrade
-    "B",     # flake8-bugbear
-    "C4",    # flake8-comprehensions
+  "E",     # pycodestyle errors
+  "W",     # pycodestyle warnings
+  "F",     # pyflakes
+  "I",     # isort
+  "UP",    # pyupgrade
 ]
 ignore = [
-    "E501",  # line too long
-    "E701",  # multiple statements on one line (one-liners)
-    "E402",  # module-level import not at top of file
-    "F401",  # unused import (scrapers are entry points)
-    "F821",  # undefined name (deferred annotation)
-    "F841",  # local variable assigned but never used
-    "B007",  # loop control variable not used
-    "W293",  # blank line contains whitespace
-    "E741",  # ambiguous variable name
-    "UP015",  # unnecessary mode argument
+  "E402",  # import not at top of file (some scripts need conditional setup)
+  "E501",  # line too long
+  "E701",  # multiple statements on one line (used intentionally in kg scripts)
+  "W293",  # blank line contains whitespace (cosmetic)
 ]
 
-[tool.pytest.ini_options]
-testpaths = ["tests"]
-addopts = "-v --tb=short"
+[tool.ruff.lint.per-file-ignores]
+"scripts/test_llm_client.py" = ["E402"]
+"tests/*" = ["E402"]

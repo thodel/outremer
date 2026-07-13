@@ -46,12 +46,12 @@ import json
 import logging
 import re
 import unicodedata
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
 # GPUStack LLM client
-from scripts.llm_client import generate as _llm_generate
+from llm_client import generate as _llm_generate
 
 logger = logging.getLogger(__name__)
 
@@ -295,7 +295,7 @@ def _sanitise_text(text: str) -> str:
 
 
 def _utc_now_iso() -> str:
-    return datetime.now(UTC).isoformat()
+    return datetime.now(timezone.utc).isoformat()
 
 
 def _default_feedback_store() -> dict[str, Any]:
@@ -528,7 +528,7 @@ def _chunk_text(text: str, size: int = _CHUNK_SIZE, overlap: int = _CHUNK_OVERLA
                 chunk_text = "\n\n".join(current)
                 chunks.append((start, chunk_text))
                 # Advance with overlap
-                overlap_text = "\n\n".join(current)[-overlap:] if current else ""
+                _overlap_text = "\n\n".join(current)[-overlap:] if current else ""
                 start += len(chunk_text) - overlap
                 start = max(start, 0)
 
@@ -550,7 +550,7 @@ def _chunk_text(text: str, size: int = _CHUNK_SIZE, overlap: int = _CHUNK_OVERLA
                         if current:
                             chunk_text = " ".join(current)
                             chunks.append((start, chunk_text))
-                            overlap_text = chunk_text[-overlap:] if chunk_text else ""
+                            _overlap_text = chunk_text[-overlap:] if chunk_text else ""
                             start += len(chunk_text) - overlap
                             start = max(start, 0)
                         # Single sentence that exceeds size — include it whole anyway
@@ -589,19 +589,19 @@ _MODERN_SCHOLAR_PATTERNS = re.compile(
 def _is_bibliographic_noise(name: str, context: str = "") -> bool:
     """Check if a name is likely bibliographic metadata."""
     name_lower = name.lower().strip()
-
+    
     # Single-word common nouns that are never persons
     if name_lower in {"source", "title", "language", "type", "date", "author",
                       "editor", "review", "press", "vol", "published", "copyright",
                       "volume", "number", "pages", "pp", "no", "isbn", "doi"}:
         return True
-
+    
     # Publisher/journal patterns
     if any(x in name_lower for x in ["university press", "oxford university",
                                       "cambridge university", "journal of",
                                       "proceedings of", "review of"]):
         return True
-
+    
     if _BIB_NOISE_PATTERNS.search(name):
         return True
 
@@ -625,15 +625,15 @@ def _is_modern_scholar(name: str, context: str = "") -> bool:
     scholar_surnames = {"riley", "smith", "mayer", "tyerman", "asbridge", "france",
                         "cahen", "runciman", "grousset", "kedar", "prawer", "hamilton",
                         "edgington", "jotischky", "barber", "boas", "folda", "rodenberg"}
-
+    
     name_lower = name.lower()
     if any(surname in name_lower for surname in scholar_surnames):
         return True
-
+    
     # Check context for citation markers
     if _MODERN_SCHOLAR_PATTERNS.search(context):
         return True
-
+    
     return False
 
 
@@ -804,9 +804,15 @@ def _coerce_person(raw: Any) -> dict[str, Any] | None:
     name = raw.get("name") or raw.get("raw_mention") or ""
     if not name:
         return None
+    # Collapse internal whitespace: LLMs echo line breaks from the source
+    # into names ("Pope \n Urban"), which breaks linking and adjudication
+    name = " ".join(str(name).split())
+    raw_mention = " ".join(str(raw.get("raw_mention") or name).split())
+    if not name:
+        return None
     return {
-        "name": str(name).strip(),
-        "raw_mention": str(raw.get("raw_mention") or name).strip(),
+        "name": name,
+        "raw_mention": raw_mention,
         "title": raw.get("title") or None,
         "epithet": raw.get("epithet") or None,
         "toponym": raw.get("toponym") or None,
@@ -1063,7 +1069,7 @@ def extract_persons_and_metadata(
     feedback_store = _load_entity_feedback(feedback_path)
     feedback_terms = _feedback_terms_for_prompt(feedback_store)
 
-    from config import GPUSTACK_BASE_URL
+    from config import EXTRACTION_MODEL, GPUSTACK_BASE_URL
 
     if GPUSTACK_BASE_URL:
         result = _extract_gpustack(
@@ -1072,10 +1078,12 @@ def extract_persons_and_metadata(
             language=language,
             blocked_terms=feedback_terms,
         )
+        result["engine"] = {"provider": "gpustack", "model": EXTRACTION_MODEL}
     else:
         result = _extract_fallback(text)
         if use_genai_metadata:
             result["bibtex"] = _build_bibtex(result["metadata"])
+        result["engine"] = {"provider": "heuristic", "model": None}
 
     filtered_persons, flagged = _filter_and_reweight_persons(
         result.get("persons") or [],
@@ -1089,8 +1097,28 @@ def extract_persons_and_metadata(
             _record_problem_entities(feedback_store, flagged)
         _save_entity_feedback(feedback_path, feedback_store)
 
+    kept = result["persons"]
+    extracted_total = len(kept) + len(flagged)
+    reason_counts: dict[str, int] = {}
+    for f in flagged:
+        r = f.get("reason", "unknown")
+        reason_counts[r] = reason_counts.get(r, 0) + 1
     result["quality"] = {
         "filtered_problem_entities": len(flagged),
         "feedback_store": feedback_path,
+        # M9.3: per-document extraction-noise breakdown — a prompt change
+        # that floods the output with fragments must be visible as a number
+        "noise": {
+            "extracted_total": extracted_total,
+            "kept": len(kept),
+            "filtered": len(flagged),
+            "filtered_by_reason": reason_counts,
+            "low_confidence_kept": sum(
+                1 for p in kept if _safe_float(p.get("confidence"), 0.5) < 0.5
+            ),
+            "noise_share": round(len(flagged) / extracted_total, 4)
+            if extracted_total
+            else 0.0,
+        },
     }
     return result

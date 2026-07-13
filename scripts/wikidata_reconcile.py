@@ -196,12 +196,10 @@ def score_candidate(name: str, cand: dict) -> float:
     return max(0.0, min(1.0, score))
 
 
-# ── Logging ─────────────────────────────────────────────────────────────────
-import logging
 
-logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
+
+logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 logger = logging.getLogger(__name__)
-
 
 def reconcile_person(name: str, limit: int = 3) -> list[dict[str, Any]]:
     """Return top Wikidata human candidates for a person name (P31=Q5 only).
