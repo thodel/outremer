@@ -499,17 +499,17 @@ def _recover_truncated_json(raw: str) -> dict[str, Any]:
 
 def _chunk_text(text: str, size: int = _CHUNK_SIZE, overlap: int = _CHUNK_OVERLAP) -> list[tuple[int, str]]:
     """
-    Split text into overlapping chunks at paragraph boundaries.
+    Split text into overlapping chunks at paragraph and sentence boundaries.
 
     Strategy:
-      1. Split on \n\n (paragraph breaks)
-      2. If a paragraph exceeds chunk size, split mid-paragraph on sentence boundaries
-      3. Never split mid-sentence — a sentence that would exceed chunk size is included whole
+      1. Split on \\n\\n (paragraph breaks)
+      2. If a paragraph exceeds chunk size, split on sentence boundaries (.!?, not mid-sentence)
+      3. Never split mid-sentence — an oversized sentence is included whole in one chunk
+      4. Overlapping: the last ``overlap`` characters of chunk N are prepended to chunk N+1
     """
     if len(text) <= size:
         return [(0, text)]
 
-    # Split into paragraphs
     paragraphs = re.split(r"\n\n+", text)
     chunks: list[tuple[int, str]] = []
     start = 0
@@ -527,8 +527,6 @@ def _chunk_text(text: str, size: int = _CHUNK_SIZE, overlap: int = _CHUNK_OVERLA
             if current:
                 chunk_text = "\n\n".join(current)
                 chunks.append((start, chunk_text))
-                # Advance with overlap
-                _overlap_text = "\n\n".join(current)[-overlap:] if current else ""
                 start += len(chunk_text) - overlap
                 start = max(start, 0)
 
@@ -550,13 +548,9 @@ def _chunk_text(text: str, size: int = _CHUNK_SIZE, overlap: int = _CHUNK_OVERLA
                         if current:
                             chunk_text = " ".join(current)
                             chunks.append((start, chunk_text))
-                            _overlap_text = chunk_text[-overlap:] if chunk_text else ""
                             start += len(chunk_text) - overlap
                             start = max(start, 0)
-                        # Single sentence that exceeds size — include it whole anyway
-                        if sent_len > size:
-                            chunks.append((start, sent[:size]))
-                            start += size
+                        # Oversized sentence — keep it whole rather than truncating mid-sentence
                         current = [sent]
                         current_len = sent_len + 1
 
