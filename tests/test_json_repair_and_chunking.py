@@ -1,4 +1,4 @@
-"""Tests for the hardened LLM-output paths in scripts/extract_persons_google.py.
+"""Tests for the hardened LLM-output paths in scripts/extract_persons.py.
 
 _repair_json, _recover_truncated_json, and _chunk_text shipped in Epic 2
 without coverage; these are the paths that keep the pipeline alive when a
@@ -7,7 +7,7 @@ model returns malformed or truncated JSON.
 
 import json
 
-from extract_persons_google import (
+from extract_persons import (
     _chunk_text,
     _recover_truncated_json,
     _repair_json,

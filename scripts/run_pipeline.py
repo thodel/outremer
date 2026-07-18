@@ -8,7 +8,7 @@ Usage
 ─────
     python scripts/run_pipeline.py [--input-dir data/raw] [--site-dir site] \
         [--bib-dir bib] [--outremer-index scripts/outremer_index.json] \
-        [--genai-metadata]
+        [--llm-metadata]
 
 GPUSTACK_BASE_URL (from .env.gpustack) activates GPUStack extraction;
 falls back to heuristic NER if absent.
@@ -28,7 +28,7 @@ from pathlib import Path
 from typing import Any
 
 from config import EXTRACTION_MODEL, GPUSTACK_BASE_URL, OCR_ENGINE
-from extract_persons_google import extract_persons_and_metadata
+from extract_persons import extract_persons_and_metadata
 from linker import build_authority_lookup, link_voyagers_to_outremer, normalise
 from llm_client import generate as _llm_generate
 from validate_decisions import validate_decisions_file
@@ -396,7 +396,7 @@ def process_file(
     bib_dir: Path,
     site_bib_dir: Path,
     authority_lookup: list[dict[str, Any]],
-    use_genai_metadata: bool,
+    use_llm_metadata: bool,
     language: str | None = None,
     entity_feedback_path: Path | None = None,
 ) -> tuple[Path, Path, Path]:
@@ -409,7 +409,7 @@ def process_file(
 
     result = extract_persons_and_metadata(
         text,
-        use_genai_metadata=use_genai_metadata,
+        use_llm_metadata=use_llm_metadata,
         language=language,
         feedback_path=str(entity_feedback_path) if entity_feedback_path else None,
         source_id=str(in_path.as_posix()),
@@ -486,7 +486,13 @@ def main() -> int:
         action="store_true",
         help="Fail if the Outremer index file is missing",
     )
-    ap.add_argument("--genai-metadata", action="store_true", help="Extract metadata + BibTeX via GenAI")
+    ap.add_argument(
+        "--llm-metadata",
+        "--genai-metadata",  # deprecated alias (pre-GPUStack name)
+        dest="llm_metadata",
+        action="store_true",
+        help="Extract metadata + BibTeX via the LLM",
+    )
     ap.add_argument("--language", default=None, help="ISO 639 language hint (la, fro, ar, el, de, en…)")
     ap.add_argument(
         "--entity-feedback-path",
@@ -596,7 +602,7 @@ def main() -> int:
                     bib_dir=bib_dir,
                     site_bib_dir=site_bib_dir,
                     authority_lookup=authority_lookup,
-                    use_genai_metadata=args.genai_metadata,
+                    use_llm_metadata=args.llm_metadata,
                     language=args.language,
                     entity_feedback_path=entity_feedback_path,
                 )

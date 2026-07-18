@@ -117,25 +117,21 @@ def cmd_process(item_id: str, reprocess_all: bool = False) -> None:
     # Determine Python executable
     py = str(VENV_PY) if VENV_PY.exists() else sys.executable
 
-    # Run pipeline
-    api_key         = os.environ.get("GOOGLE_API_KEY", "")
-    mistral_api_key = os.environ.get("MISTRAL_API_KEY", "")
+    # Run pipeline — GPUStack config comes from .env.gpustack / environment
+    gpustack_key = os.environ.get("GPUSTACK_API_KEY", "")
     env = os.environ.copy()
-    if api_key:
-        env["GOOGLE_API_KEY"] = api_key
-    env["MISTRAL_API_KEY"] = mistral_api_key
 
     if reprocess_all:
-        print(f"\nRunning pipeline on ENTIRE corpus (GOOGLE_API_KEY {'set' if api_key else 'NOT SET — fallback mode'})…")
+        print(f"\nRunning pipeline on ENTIRE corpus (GPUSTACK_API_KEY {'set' if gpustack_key else 'NOT SET'})…")
         result = subprocess.run(
-            [py, str(PIPELINE), "--input-dir", str(RAW), "--genai-metadata"],
+            [py, str(PIPELINE), "--input-dir", str(RAW), "--llm-metadata"],
             cwd=str(REPO),
             env=env,
         )
     else:
-        print(f"\nRunning pipeline for '{dest.name}' only (GOOGLE_API_KEY {'set' if api_key else 'NOT SET — fallback mode'})…")
+        print(f"\nRunning pipeline for '{dest.name}' only (GPUSTACK_API_KEY {'set' if gpustack_key else 'NOT SET'})…")
         result = subprocess.run(
-            [py, str(PIPELINE), "--file", str(dest), "--genai-metadata"],
+            [py, str(PIPELINE), "--file", str(dest), "--llm-metadata"],
             cwd=str(REPO),
             env=env,
         )

@@ -32,7 +32,7 @@ outremer/
 │   ├── config.py                  GPUStack configuration (reads .env.gpustack)
 │   ├── llm_client.py              Thin OpenAI-compatible GPUStack client
 │   ├── run_pipeline.py            Main pipeline entry point
-│   ├── extract_persons_google.py  Layer 1: extraction via GPUStack or regex fallback
+│   ├── extract_persons.py         Layer 1: extraction via GPUStack or regex fallback
 │   ├── wikidata_reconcile.py      Layer 2: KG linking
 │   ├── export_peerage_pre1500.py  Wikidata peerage export (QID → CSV)
 │   └── install-triplestore.sh     Canonical Fuseki/GraphDB installer

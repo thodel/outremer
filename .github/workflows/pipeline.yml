@@ -56,7 +56,7 @@ jobs:
           GPUSTACK_API_KEY: ${{ secrets.GPUSTACK_API_KEY }}
           MISTRAL_API_KEY:  ${{ secrets.MISTRAL_API_KEY }}
         run: |
-          python scripts/run_pipeline.py --genai-metadata
+          python scripts/run_pipeline.py --llm-metadata
 
       # M9.4: score the fresh output against gold fixtures and append to the
       # eval history. Informational — a low score must not block publishing

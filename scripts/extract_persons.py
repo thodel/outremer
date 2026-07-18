@@ -1,5 +1,5 @@
 """
-extract_persons_google.py
+extract_persons.py
 ─────────────────────────
 Person + metadata extraction for the Outremer pipeline.
 
@@ -8,7 +8,7 @@ Fallback path : regex / heuristic NER — runs without any API key.
 
 Public API
 ──────────
-    extract_persons_and_metadata(text, *, use_genai_metadata=True) -> Dict[str, Any]  # noqa: E501
+    extract_persons_and_metadata(text, *, use_llm_metadata=True) -> Dict[str, Any]  # noqa: E501
 
 Returns
 ───────
@@ -1023,7 +1023,7 @@ def _extract_gpustack_chunk(
 
 def _extract_gpustack(
     text: str,
-    use_genai_metadata: bool,
+    use_llm_metadata: bool,
     language: str | None = None,
     blocked_terms: list[str] | None = None,
 ) -> dict[str, Any]:
@@ -1066,7 +1066,7 @@ def _extract_gpustack(
     metadata = merged_metadata or _coerce_metadata({})
 
     bibtex = ""
-    if use_genai_metadata:
+    if use_llm_metadata:
         bibtex = _build_bibtex(metadata)
 
     return {"persons": persons, "metadata": metadata, "bibtex": bibtex}
@@ -1079,7 +1079,7 @@ def _extract_gpustack(
 def extract_persons_and_metadata(
     text: str,
     *,
-    use_genai_metadata: bool = True,
+    use_llm_metadata: bool = True,
     language: str | None = None,
     feedback_path: str | None = None,
     source_id: str | None = None,
@@ -1094,7 +1094,7 @@ def extract_persons_and_metadata(
     ----------
     text : str
         Full text of the historical source document.
-    use_genai_metadata : bool
+    use_llm_metadata : bool
         If True, also extract/generate document metadata and BibTeX.
 
     Returns
@@ -1113,14 +1113,14 @@ def extract_persons_and_metadata(
     if GPUSTACK_BASE_URL:
         result = _extract_gpustack(
             text,
-            use_genai_metadata,
+            use_llm_metadata,
             language=language,
             blocked_terms=feedback_terms,
         )
         result["engine"] = {"provider": "gpustack", "model": EXTRACTION_MODEL}
     else:
         result = _extract_fallback(text)
-        if use_genai_metadata:
+        if use_llm_metadata:
             result["bibtex"] = _build_bibtex(result["metadata"])
         result["engine"] = {"provider": "heuristic", "model": None}
 

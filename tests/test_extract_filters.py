@@ -1,4 +1,4 @@
-from extract_persons_google import _feedback_terms_for_prompt, _filter_and_reweight_persons
+from extract_persons import _feedback_terms_for_prompt, _filter_and_reweight_persons
 
 
 def _person(name, *, context="", confidence=0.8, group=False, title=None):
@@ -70,7 +70,7 @@ def _flag(name, *, reason="known_bad_entity", source="doc-a", context="ctx"):
 
 
 def test_record_problem_entities_idempotent_across_runs():
-    from extract_persons_google import _record_problem_entities
+    from extract_persons import _record_problem_entities
 
     store = {"auto_flagged": {}}
     flagged = [_flag("According"), _flag("According")]
@@ -89,7 +89,7 @@ def test_record_problem_entities_idempotent_across_runs():
 
 
 def test_record_problem_entities_sums_across_sources():
-    from extract_persons_google import _record_problem_entities
+    from extract_persons import _record_problem_entities
 
     store = {"auto_flagged": {}}
     _record_problem_entities(store, [_flag("According", source="doc-a")])
@@ -108,7 +108,7 @@ def test_record_problem_entities_sums_across_sources():
 
 
 def test_record_problem_entities_migrates_legacy_inflated_entry():
-    from extract_persons_google import _record_problem_entities
+    from extract_persons import _record_problem_entities
 
     store = {
         "auto_flagged": {
