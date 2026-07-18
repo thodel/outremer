@@ -364,40 +364,79 @@ def _record_problem_entities(
     feedback_store: dict[str, Any],
     flagged: list[dict[str, str]],
 ) -> None:
+    """Record flagged entities idempotently.
+
+    One call covers one source document, so the document's tally *replaces*
+    the stored per-source tally instead of incrementing it — re-processing
+    the same corpus nightly no longer inflates ``count`` by one per run.
+    ``count``/``reasons`` are recomputed as sums over ``per_source``, and
+    ``last_seen`` only moves when the entry's data actually changed, so an
+    unchanged run leaves the store byte-identical (no git churn).
+
+    Legacy entries without ``per_source`` carry run-inflated counts that
+    cannot be un-summed; they are rebuilt from the current run's tally the
+    first time the entity is flagged again.
+    """
     auto = feedback_store.setdefault("auto_flagged", {})
     if not isinstance(auto, dict):
         return
     ts = _utc_now_iso()
+
+    # Tally this document's flags per entity
+    run_tally: dict[str, dict[str, Any]] = {}
     for item in flagged:
         norm = item.get("norm")
         if not norm:
             continue
+        t = run_tally.setdefault(
+            norm,
+            {"name": item.get("name") or norm, "sources": {}, "context": ""},
+        )
+        src = item.get("source_id") or "_unknown"
+        s = t["sources"].setdefault(src, {"count": 0, "reasons": {}})
+        s["count"] += 1
+        reason = item.get("reason") or "unknown"
+        s["reasons"][reason] = int(s["reasons"].get(reason) or 0) + 1
+        if item.get("context"):
+            t["context"] = item["context"][:300]
+
+    for norm, t in run_tally.items():
         entry = auto.get(norm)
         if not isinstance(entry, dict):
             entry = {
-                "name": item.get("name") or norm,
+                "name": t["name"],
                 "count": 0,
                 "reasons": {},
                 "sources": [],
+                "per_source": {},
                 "last_seen": ts,
                 "last_context": "",
             }
             auto[norm] = entry
 
-        entry["name"] = item.get("name") or entry.get("name") or norm
-        entry["count"] = int(entry.get("count") or 0) + 1
-        reasons = entry.setdefault("reasons", {})
-        reason = item.get("reason") or "unknown"
-        reasons[reason] = int(reasons.get(reason) or 0) + 1
-        src = item.get("source_id")
-        if src:
-            sources = entry.setdefault("sources", [])
-            if src not in sources:
-                sources.append(src)
-                entry["sources"] = sources[-20:]
-        entry["last_seen"] = ts
-        if item.get("context"):
-            entry["last_context"] = item["context"][:300]
+        per_source = entry.get("per_source")
+        if not isinstance(per_source, dict):
+            per_source = {}  # legacy entry: drop inflated history, rebuild
+
+        changed = "per_source" not in entry
+        for src, s in t["sources"].items():
+            if per_source.get(src) != s:
+                per_source[src] = s
+                changed = True
+
+        entry["name"] = t["name"] or entry.get("name") or norm
+        entry["per_source"] = per_source
+        entry["count"] = sum(int(s.get("count") or 0) for s in per_source.values())
+        reasons: dict[str, int] = {}
+        for s in per_source.values():
+            for r, n in (s.get("reasons") or {}).items():
+                reasons[r] = reasons.get(r, 0) + int(n or 0)
+        entry["reasons"] = reasons
+        entry["sources"] = sorted(src for src in per_source if src != "_unknown")[-20:]
+        if changed:
+            entry["last_seen"] = ts
+            if t["context"]:
+                entry["last_context"] = t["context"]
 
 
 
