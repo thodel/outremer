@@ -39,8 +39,9 @@ jobs:
       - run: pip install -e '.[dev]'
       - run: python -m pytest tests/ -v
       # Offline evaluation over fixture snapshots. Gate is a regression
-      # floor below the 2026-07-12 system-aware baseline (combined 0.9014:
-      # authority 0.8727, wikidata 1.0); raise it as linking improves.
+      # floor below the 2026-07-18 baseline after the #44/#45 gold repair
+      # (combined 0.9155: authority 0.8909, wikidata 1.0); raise it as
+      # linking improves.
       - run: python -m evaluation.harness --min-agreement 0.85
 
   docker:

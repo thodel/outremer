@@ -1,10 +1,10 @@
 # scripts/config.py
 """
 GPUStack configuration for the OUTREMER pipeline.
-All LLM calls route through GPUStack on tei.dh.unibe.ch.
+All LLM calls route through GPUStack on gpustack.unibe.ch.
 
 Env vars (set in .env.gpustack, git-ignored):
-    GPUSTACK_BASE_URL    - defaults to https://tei.dh.unibe.ch/v1
+    GPUSTACK_BASE_URL    - defaults to https://gpustack.unibe.ch/v1
     GPUSTACK_API_KEY     - API key for GPUStack authentication
     GPUSTACK_TIMEOUT     - request timeout in seconds (default 120)
     EXTRACTION_MODEL     - model for person extraction (default qwen3-30b-a3b-instruct)

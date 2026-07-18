@@ -5,13 +5,13 @@
 
 A proof-of-concept pipeline for AI-assisted prosopography of the medieval Levant (Crusades era, 11th–14th centuries). Part of a collaborative research project by Jochen Burgtorf (Cal State Fullerton), Tobias Hodel (University of Bern), and Laura Morreale (Harvard / independent scholar).
 
-> **Status:** proof of concept. The pipeline runs end-to-end. All LLM calls route through the local GPUStack instance at `tei.dh.unibe.ch` — no external API calls to Google, Mistral, or third-party LLM providers.
+> **Status:** proof of concept. The pipeline runs end-to-end. All LLM calls route through the local GPUStack instance at `gpustack.unibe.ch` — no external third-party LLM calls (an optional Mistral OCR fallback exists for scanned PDFs, off unless `mistralai` is installed and `MISTRAL_API_KEY` is set).
 
 ---
 
 ## Architecture
 
-**Layer 1 — LLM extraction.** Reads historical texts (PDF or plain text) and extracts person-like signals: names, titles, epithets, roles, collective groups. Uses GPUStack-hosted models (Qwen3-30B-A3B for extraction, MiniMax-M2.7 for orchestration). Falls back to local EasyOCR for scanned PDFs and heuristic regex NER when GPUStack is unavailable.
+**Layer 1 — LLM extraction.** Reads historical texts (PDF or plain text) and extracts person-like signals: names, titles, epithets, roles, collective groups. Uses GPUStack-hosted models (Qwen3-30B-A3B for extraction, Qwen3-VL for scanned-PDF OCR, MiniMax-M2.7 for orchestration). Falls back to heuristic regex NER when GPUStack is unavailable, and optionally to Mistral OCR for scans.
 
 **Layer 2 — KG linking.** Fuzzy-matches extracted mentions against a curated authority file of known crusader persons. Returns ranked candidates with confidence scores and flags ambiguous or multi-candidate matches.
 
@@ -71,16 +71,17 @@ pip install -r requirements.txt
 Copy `.env.gpustack` template (or create manually):
 
 ```env
-# All LLM calls route to GPUStack on tei.dh.unibe.ch
-GPUSTACK_BASE_URL=https://tei.dh.unibe.ch/v1
+# All LLM calls route to GPUStack on gpustack.unibe.ch
+GPUSTACK_BASE_URL=https://gpustack.unibe.ch/v1
 GPUSTACK_API_KEY=your-token-here
 
 # Model names (check GPUStack dashboard for exact names)
 EXTRACTION_MODEL=qwen3-30b-a3b-instruct
 ORCHESTRATOR_MODEL=minimax-m2.7
+QWEN3_VL_MODEL=qwen3-vl-30b-a3b-instruct
 
-# OCR engine: easyocr (local CPU/GPU, no API call) or gpustack (MiniMax-M2.7)
-OCR_ENGINE=easyocr
+# OCR engine: qwen3-vl (GPUStack, default) or mistral (legacy fallback)
+OCR_ENGINE=qwen3-vl
 ```
 
 `.env.gpustack` is git-ignored. Without it, `config.py` uses sensible defaults (tei endpoint, no API key required for public models).
@@ -117,9 +118,8 @@ python scripts/run_pipeline.py --help
 
 | Engine | How it works | Speed | Cost |
 |---|---|---|---|
-| `easyocr` (default) | Local CPU/GPU, no API call | Medium | Free |
-| `gpustack` | GPUStack MiniMax-M2.7 | Fast | Free (local) |
-| `mistral` | Mistral API (legacy, requires `MISTRAL_API_KEY`) | Fast | Paid |
+| `qwen3-vl` (default) | GPUStack Qwen3-VL; falls back to Mistral if empty and available | Fast | Free (local) |
+| `mistral` | Mistral API only (legacy; `pip install -e '.[ocr-mistral]'` + `MISTRAL_API_KEY`) | Fast | Paid |
 
 Output: `site/data/*.json`, `site/bib/*.bib`, `bib/*.bib`.
 
@@ -152,9 +152,12 @@ Key metric: **linking agreement** — of the pairs scholars reviewed, how
 many does the responsible system's top proposal agree with. Adjudications
 cover two systems, each judged against its own output: the authority-file
 linker (`AUTH:CR…` ids) and Wikidata reconciliation (`wikidata:Q…` ids).
-Baseline 2026-07-12: **combined 0.9014** over 71 pairs (authority 0.8727
-over 55, wikidata 1.0 over 16). CI fails below 0.85. Residual misses are
-dominated by extraction drift, not linking — see issue #42.
+Baseline 2026-07-18: **combined 0.9155** over 71 pairs (authority 0.8909
+over 55, wikidata 1.0 over 16) — after the #44 gold repair (two
+wrong-person accepts re-adjudicated to reject) and the #45 authority
+additions (Godfrey of Bouillon, Robert II of Flanders, Ralph of Caen).
+CI fails below 0.85. Residual misses are dominated by extraction drift,
+not linking — see issue #42.
 
 ---
 

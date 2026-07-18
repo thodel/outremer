@@ -27,17 +27,16 @@ file is enriched.
 
 ## Known gold caveats (feeds #36)
 
-Two adjudicated "accepts" link *different persons who share a first name*
-— the authority file does not contain the mentioned person at all:
-
-- "Count Robert of Flanders" → AUTH:CR16, which is **Thierry** of Flanders
-- "Ralph of Caen" → AUTH:CR24, which is **Ralph of Dury**
-
-The post-Epic-10 linker deliberately declines both (its score for
-wrong-person same-first-name pairs stays below the floor), which *lowers*
-measured agreement (relink 0.8545 vs snapshot 0.8727). Until scholars
-re-adjudicate these pairs, part of the disagreement is the metric being
-wrong, not the linker.
+**Resolved 2026-07-18 (#44):** two adjudicated "accepts" linked *different
+persons who shared a first name* — "Count Robert of Flanders" → AUTH:CR16
+(Thierry of Flanders) and "Ralph of Caen" → AUTH:CR24 (Ralph of Dury);
+the authority file did not contain the mentioned persons at all. Both were
+re-adjudicated to reject (comments in `data/decisions.json`), the missing
+figures were added to the authority file with Wikidata QIDs (#45:
+AUTH:CR184 Godfrey of Bouillon, AUTH:CR185 Robert II of Flanders,
+AUTH:CR186 Ralph of Caen), and fixtures were regenerated. The linker's
+declines now count as `reject_avoided`: authority agreement moved
+0.8545 → 0.8909, combined 0.8873 → 0.9155.
 
 ## Matching upgrades in this operating point (M10.1 + M10.2)
 

@@ -1,7 +1,32 @@
 # OUTREMER — GPUStack Adaptation Progress
 
 > **Status: Epics 1–8 closed; Epics 9–10 open** (evaluation & linking methodology, #33/#34).
-> CI green as of 2026-07-12 (`1cc805f`): ruff + 35 tests + eval gate (linking agreement ≥ 0.85, system-aware baseline: combined 0.9014).
+> Baseline as of 2026-07-18: combined agreement **0.9155** over 71 pairs (authority 0.8909, wikidata 1.0); eval gate ≥ 0.85. 58 tests.
+
+## What was done 2026-07-18 (gold repair + repo health)
+
+- **#44 closed** — the two wrong-person gold accepts ("Count Robert of
+  Flanders" → CR16/Thierry, "Ralph of Caen" → CR24/Ralph of Dury)
+  re-adjudicated to reject; fixtures regenerated. Combined agreement
+  0.8873 → 0.9155 (the previously documented 0.9014 had silently drifted
+  down after the 45cc0ce fixture refresh — the drop *was* the wrong gold).
+- **#45 closed** — authority file gains AUTH:CR184 Godfrey of Bouillon
+  (Q76721), CR185 Robert II of Flanders (Q333306), CR186 Ralph of Caen
+  (Q266447); 126 → 129 records.
+- **Nightly churn fixed** — `auto_flagged` counters were incremented once
+  per pipeline run ("According" reached count 270 ≈ number of runs);
+  now idempotent per source document, `last_seen` only moves on real
+  change. `requirements.lock.txt` is no longer regenerated nightly; the
+  pipeline and CI install from it (dep bumps become deliberate commits).
+- **OCR chain made truthful** — dispatcher now honours `OCR_ENGINE`
+  (qwen3-vl default → Mistral fallback); defined the missing
+  `QWEN3_VL_MODEL` config (image-only PDFs crashed with ImportError);
+  `mistralai` is an optional extra (`.[ocr-mistral]`), kept in the lock
+  as the just-in-case fallback.
+- **Renames/cleanup** — `extract_persons_google.py` → `extract_persons.py`
+  (`--llm-metadata`, alias `--genai-metadata` kept); stale
+  `rerun_pipeline_fixed.py` deleted; `llm_client.py` got offline unit
+  tests (retry/backoff, message building).
 
 ## What was done 2026-07-12 (post-completion repair + evaluation)
 
