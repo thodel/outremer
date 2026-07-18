@@ -15,6 +15,11 @@ dev = [
     "pytest>=8.0",
     "ruff>=0.8",
 ]
+# Legacy Mistral OCR fallback (OCR_ENGINE=mistral, or automatic fallback
+# from qwen3-vl when installed + MISTRAL_API_KEY set)
+ocr-mistral = [
+    "mistralai>=1.0",
+]
 
 [tool.setuptools]
 packages = ["evaluation"]

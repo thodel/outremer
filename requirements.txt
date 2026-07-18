@@ -1,11 +1,13 @@
-# LLM / OCR
+# LLM (all inference via GPUStack, OpenAI-compatible API)
 openai>=1.0
-mistralai>=0.3  # legacy OCR fallback — set OCR_ENGINE=mistral to use
 
 # Core pipeline
 rapidfuzz>=3.0
 pypdf>=4.0
 python-dotenv>=1.0  # load .env.gpustack for GPUStack config
 
-# Optional: local OCR (set OCR_ENGINE=easyocr to use)
-
+# Optional: Mistral OCR fallback ("just in case" path — the qwen3-vl OCR
+# engine falls back to it automatically when mistralai is installed and
+# MISTRAL_API_KEY is set; or force it with OCR_ENGINE=mistral).
+# Install via: pip install -e '.[ocr-mistral]'   (or: pip install mistralai)
+# Kept in requirements.lock.txt so the nightly pipeline retains the fallback.

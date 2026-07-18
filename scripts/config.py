@@ -8,8 +8,9 @@ Env vars (set in .env.gpustack, git-ignored):
     GPUSTACK_API_KEY     - API key for GPUStack authentication
     GPUSTACK_TIMEOUT     - request timeout in seconds (default 120)
     EXTRACTION_MODEL     - model for person extraction (default qwen3-30b-a3b-instruct)
-    ORCHESTRATOR_MODEL   - model for orchestration/OCR (default minimax-m2.7)
-    OCR_ENGINE           - easyocr | gpustack | mistral (default easyocr)
+    ORCHESTRATOR_MODEL   - model for orchestration (default minimax-m2.7)
+    QWEN3_VL_MODEL       - vision model for document OCR (default qwen3-vl-30b-a3b-instruct)
+    OCR_ENGINE           - qwen3-vl | mistral (default qwen3-vl)
 """
 from __future__ import annotations
 
@@ -52,12 +53,13 @@ GPUSTACK_TIMEOUT   = int(_get("GPUSTACK_TIMEOUT", "120"))
 # Model names - must match exactly how models are registered in GPUStack
 EXTRACTION_MODEL   = _get("EXTRACTION_MODEL",   "qwen3-30b-a3b-instruct")
 ORCHESTRATOR_MODEL = _get("ORCHESTRATOR_MODEL", "minimax-m2.7")
+QWEN3_VL_MODEL     = _get("QWEN3_VL_MODEL",     "qwen3-vl-30b-a3b-instruct")
 
 # OCR
-# "easyocr"  - local CPU/GPU, no API call (preferred for speed/cost)
-# "gpustack" - GPUStack MiniMax-M2.7 for document-level OCR
-# "mistral"  - Mistral API (legacy fallback)
-OCR_ENGINE = _get("OCR_ENGINE", "easyocr")
+# "qwen3-vl" - GPUStack Qwen3 VL (default); falls back to Mistral if empty
+# "mistral"  - Mistral API only (legacy; needs `pip install mistralai`
+#              and MISTRAL_API_KEY)
+OCR_ENGINE = _get("OCR_ENGINE", "qwen3-vl")
 
 # Linker thresholds (M10.3) - operating point documented in
 # evaluation/THRESHOLDS.md; sweep with `python -m evaluation.sweep`

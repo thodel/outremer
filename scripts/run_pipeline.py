@@ -136,27 +136,18 @@ def read_pdf_file(path: Path) -> str:
 
 def _ocr_image(path: Path) -> str:
     """
-    OCR dispatcher — tries engines in priority order per OCR_ENGINE setting.
+    OCR dispatcher — engine per OCR_ENGINE setting.
 
-    # Priority chain:
-      qwen3-vl → GPUStack Qwen3 VL 30B (primary, GPU)
-               → GPUStack MiniMax-M2.7
-               → Mistral (legacy fallback)
-      gpustack → GPUStack MiniMax-M2.7
-               → Mistral
-      mistral  → Mistral only (legacy)
+      qwen3-vl (default) → GPUStack Qwen3 VL; Mistral as fallback if empty
+      mistral            → Mistral API only (legacy; optional dependency)
     """
-    # qwen3-vl (default): Qwen3 VL 30B primary → MiniMax fallback → Mistral final
+    if OCR_ENGINE == "mistral":
+        return _mistral_ocr(path)
     result = _qwen3vl_ocr(path)
     if result:
         return result
-    logger.info("Qwen3 VL OCR empty — trying MiniMax-M2.7.")
-    result = _minimax_ocr(path)
-    if result:
-        return result
-    logger.info("MiniMax OCR also empty — trying Mistral as last resort.")
-    return _minimax_ocr(path)
-
+    logger.info("Qwen3 VL OCR empty — trying Mistral as fallback.")
+    return _mistral_ocr(path)
 
 
 def _qwen3vl_ocr(path: Path) -> str:
@@ -188,8 +179,8 @@ def _qwen3vl_ocr(path: Path) -> str:
         return ""
 
 
-def _minimax_ocr(path: Path) -> str:  # secondary GPUStack fallback
-    """GPUStack MiniMax-M2.7 secondary → Mistral final fallback."""
+def _mistral_ocr(path: Path) -> str:
+    """Mistral OCR — legacy fallback; needs `pip install mistralai` + MISTRAL_API_KEY."""
     import base64
     api_key = os.environ.get("MISTRAL_API_KEY", "").strip()
     if not api_key:
@@ -198,7 +189,10 @@ def _minimax_ocr(path: Path) -> str:  # secondary GPUStack fallback
     try:
         from mistralai import Mistral
     except ImportError:
-        logger.warning("mistralai not installed — cannot run OCR fallback.")
+        logger.warning(
+            "mistralai not installed — OCR fallback unavailable "
+            "(pip install mistralai to enable it)."
+        )
         return ""
 
     try:
