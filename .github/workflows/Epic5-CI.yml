@@ -33,7 +33,9 @@ jobs:
           python-version: ${{ env.PYTHON }}
       # No silent fallback: if either install fails, the job must fail —
       # a swallowed install error previously left pytest missing entirely.
-      - run: pip install -r requirements.txt
+      # Runtime deps come from the lockfile so CI matches the nightly
+      # pipeline exactly; bump deps by regenerating requirements.lock.txt.
+      - run: pip install -r requirements.lock.txt
       - run: pip install -e '.[dev]'
       - run: python -m pytest tests/ -v --ignore=tests/test_llm_client.py
       # Offline evaluation over fixture snapshots. Gate is a regression
