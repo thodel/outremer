@@ -1,7 +1,7 @@
 {
   "schema_version": "gold-person-authority-v1",
   "generated_at": "2025-12-28",
-  "record_count": 126,
+  "record_count": 129,
   "persons": [
     {
       "authority_id": "AUTH:CR1",
@@ -4628,6 +4628,129 @@
           "person/item_2413.xml"
         ],
         "source_system": "omeka-xml"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR184",
+      "preferred_label": "Godfrey of Bouillon",
+      "identifiers": {
+        "project_identifier": "CR184",
+        "wikidata_qid": "Q76721"
+      },
+      "name": {
+        "raw": "Godfrey of Bouillon",
+        "name": "Godfrey",
+        "toponym": "Bouillon",
+        "pattern": "of"
+      },
+      "variants": [
+        "Bouillon's Godfrey",
+        "Duke Godfrey",
+        "Godfrey",
+        "Godfrey (Bouillon)",
+        "Godfrey of Bouillon",
+        "Godfrey, Bouillon"
+      ],
+      "normalized": {
+        "preferred": "godfrey of bouillon",
+        "variants": [
+          "bouillon s godfrey",
+          "duke godfrey",
+          "godfrey",
+          "godfrey bouillon",
+          "godfrey of bouillon"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [],
+        "source_system": "manual",
+        "note": "added 2026-07-18 per issue #45 (core First-Crusade figures absent from Omeka export); wikidata Q76721"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR185",
+      "preferred_label": "Robert II of Flanders",
+      "identifiers": {
+        "project_identifier": "CR185",
+        "wikidata_qid": "Q333306"
+      },
+      "name": {
+        "raw": "Robert II of Flanders",
+        "name": "Robert",
+        "regnal": "II",
+        "toponym": "Flanders",
+        "pattern": "regnal_of"
+      },
+      "variants": [
+        "Count Robert of Flanders",
+        "Flanders's Robert",
+        "Robert",
+        "Robert (Flanders)",
+        "Robert 2",
+        "Robert 2 of Flanders",
+        "Robert II",
+        "Robert II of Flanders",
+        "Robert of Flanders",
+        "Robert, Flanders"
+      ],
+      "normalized": {
+        "preferred": "robert ii of flanders",
+        "variants": [
+          "count robert of flanders",
+          "flanders s robert",
+          "robert",
+          "robert 2",
+          "robert 2 of flanders",
+          "robert flanders",
+          "robert ii",
+          "robert ii of flanders",
+          "robert of flanders"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [],
+        "source_system": "manual",
+        "note": "added 2026-07-18 per issue #45 (core First-Crusade figures absent from Omeka export); wikidata Q333306"
+      }
+    },
+    {
+      "authority_id": "AUTH:CR186",
+      "preferred_label": "Ralph of Caen",
+      "identifiers": {
+        "project_identifier": "CR186",
+        "wikidata_qid": "Q266447"
+      },
+      "name": {
+        "raw": "Ralph of Caen",
+        "name": "Ralph",
+        "toponym": "Caen",
+        "pattern": "of"
+      },
+      "variants": [
+        "Caen's Ralph",
+        "Radulph of Caen",
+        "Ralph",
+        "Ralph (Caen)",
+        "Ralph of Caen",
+        "Ralph, Caen"
+      ],
+      "normalized": {
+        "preferred": "ralph of caen",
+        "variants": [
+          "caen s ralph",
+          "radulph of caen",
+          "ralph",
+          "ralph caen",
+          "ralph of caen"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [],
+        "source_system": "manual",
+        "note": "added 2026-07-18 per issue #45 (core First-Crusade figures absent from Omeka export); wikidata Q266447"
       }
     }
   ]
