@@ -37,19 +37,6 @@
       "source_offset": 19
     },
     {
-      "name": "Crusaders",
-      "raw_mention": "Crusaders",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "The Motives of the Earliest Crusaders and the Settlement of Latin Palestine, 1095-1100 ",
-      "confidence": 0.3,
-      "source_offset": 28
-    },
-    {
       "name": "Settlement of Latin",
       "raw_mention": "Settlement of Latin",
       "title": null,
@@ -80,48 +67,6 @@
         "weak_signals": 0,
         "reasons": [
           "modern_institution"
-        ]
-      }
-    },
-    {
-      "name": "Sun",
-      "raw_mention": "Sun",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "nt downloaded from               31.10.142.125 on Sun, 28 Dec 2025 19:33:42 UTC               All use s",
-      "confidence": 0.0,
-      "source_offset": 968,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
-      "name": "Dec",
-      "raw_mention": "Dec",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "oaded from               31.10.142.125 on Sun, 28 Dec 2025 19:33:42 UTC               All use subject t",
-      "confidence": 0.0,
-      "source_offset": 976,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
         ]
       }
     },
@@ -254,19 +199,6 @@
       "context": "bate   continues today and every historian of the First Crusade has sooner or   later to face up to the q",
       "confidence": 0.3,
       "source_offset": 2212
-    },
-    {
-      "name": "Crusade",
-      "raw_mention": "Crusade",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": " continues today and every historian of the First Crusade has sooner or   later to face up to the question ",
-      "confidence": 0.3,
-      "source_offset": 2218
     },
     {
       "name": "Most",
@@ -438,19 +370,6 @@
       "source_offset": 4807
     },
     {
-      "name": "crusader",
-      "raw_mention": "crusader",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": "collective",
-      "gender": "unknown",
-      "group": true,
-      "context": "lfth-century story St Ambrose, dis-   guised as a crusader, appeared in a vision to an Italian priest and as",
-      "confidence": 0.25,
-      "source_offset": 1389
-    },
-    {
       "name": "pilgrims",
       "raw_mention": "pilgrims",
       "title": null,
@@ -581,32 +500,6 @@
       "source_offset": 5447
     },
     {
-      "name": "Chanson",
-      "raw_mention": "Chanson",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "ica, ed. M. Chibnall (Oxford, I 969-80), V. 4; La Chanson d'Antioche, ed. S. Duparc-Quioc (Paris,   I977-8)",
-      "confidence": 0.3,
-      "source_offset": 5475
-    },
-    {
-      "name": "Antioche",
-      "raw_mention": "Antioche",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": ". Chibnall (Oxford, I 969-80), V. 4; La Chanson d'Antioche, ed. S. Duparc-Quioc (Paris,   I977-8), i. 54, 30",
-      "confidence": 0.3,
-      "source_offset": 5485
-    },
-    {
       "name": "Duparc",
       "raw_mention": "Duparc",
       "title": null,
@@ -646,69 +539,6 @@
       "source_offset": 5590
     },
     {
-      "name": "Hierosolimitana",
-      "raw_mention": "Hierosolimitana",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": " of Aura, p. 17. 4. Fulcher of Chartres, Historia Hierosolimitana, ed. H. Hagenmeyer (Heidelberg,   1913), p. I 37;",
-      "confidence": 0.0,
-      "source_offset": 5620,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
-      "name": "Heidelberg",
-      "raw_mention": "Heidelberg",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "res, Historia Hierosolimitana, ed. H. Hagenmeyer (Heidelberg,   1913), p. I 37; Robert of Rheims, 'Historia Th",
-      "confidence": 0.0,
-      "source_offset": 5656,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
-      "name": "Therosolimitana",
-      "raw_mention": "Therosolimitana",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "rg,   1913), p. I 37; Robert of Rheims, 'Historia Therosolimitana', RHC oc. iii. 728; Baldric   of Bourgueil, 'Hist",
-      "confidence": 0.0,
-      "source_offset": 5714,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
       "name": "Baldric of Bourgueil",
       "raw_mention": "Baldric of Bourgueil",
       "title": null,
@@ -733,19 +563,6 @@
       "context": "C oc. iii. 728; Baldric   of Bourgueil, 'Historia Jerosolimitana', RHC oc. iv. 15; Gesta Francorum et aliorum   Hi",
       "confidence": 0.3,
       "source_offset": 5784
-    },
-    {
-      "name": "Francorum",
-      "raw_mention": "Francorum",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": " 'Historia Jerosolimitana', RHC oc. iv. 15; Gesta Francorum et aliorum   Hierosolimitanorum, ed. R. Hill (Lon",
-      "confidence": 0.3,
-      "source_offset": 5823
     },
     {
       "name": "Hierosolimitanorum",
@@ -787,69 +604,6 @@
       "source_offset": 5906
     },
     {
-      "name": "Historia de Hierosolimitano",
-      "raw_mention": "Historia de Hierosolimitano",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "ed. R. Hill (London, I962), p. i; Peter Tudebode, Historia de   Hierosolimitano itinere, eds. J. H. and L. L. Hill (Paris, 1977),",
-      "confidence": 0.0,
-      "source_offset": 5916,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
-      "name": "Somerville",
-      "raw_mention": "Somerville",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": " J. H. and L. L. Hill (Paris, 1977), p. 32. 5. R. Somerville, The Councils of Urban II. i. Decreta Claromonten",
-      "confidence": 0.0,
-      "source_offset": 6009,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
-      "name": "Councils of Urban",
-      "raw_mention": "Councils of Urban",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": " Hill (Paris, 1977), p. 32. 5. R. Somerville, The Councils of Urban II. i. Decreta Claromontensia (Annuarium   Histor",
-      "confidence": 0.0,
-      "source_offset": 6025,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
       "name": "Decreta",
       "raw_mention": "Decreta",
       "title": null,
@@ -874,103 +628,6 @@
       "context": " Somerville, The Councils of Urban II. i. Decreta Claromontensia (Annuarium   Historia Conciliorum. Suppl. i. Amst",
       "confidence": 0.3,
       "source_offset": 6058
-    },
-    {
-      "name": "Annuarium",
-      "raw_mention": "Annuarium",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": " Councils of Urban II. i. Decreta Claromontensia (Annuarium   Historia Conciliorum. Suppl. i. Amsterdam, 1972",
-      "confidence": 0.0,
-      "source_offset": 6074,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
-      "name": "Conciliorum",
-      "raw_mention": "Conciliorum",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": ". i. Decreta Claromontensia (Annuarium   Historia Conciliorum. Suppl. i. Amsterdam, 1972), p. 74. This was conf",
-      "confidence": 0.0,
-      "source_offset": 6095,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
-      "name": "Suppl",
-      "raw_mention": "Suppl",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "Claromontensia (Annuarium   Historia Conciliorum. Suppl. i. Amsterdam, 1972), p. 74. This was confirmed i",
-      "confidence": 0.0,
-      "source_offset": 6108,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
-      "name": "Amsterdam",
-      "raw_mention": "Amsterdam",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "nsia (Annuarium   Historia Conciliorum. Suppl. i. Amsterdam, 1972), p. 74. This was confirmed in   Urban's le",
-      "confidence": 0.0,
-      "source_offset": 6118,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
-      "name": "This",
-      "raw_mention": "This",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "s, 195 3),   p. 435. 7. Albert of Aachen, p. 503. This content downloaded from               31.10.142.1",
-      "confidence": 0.3,
-      "source_offset": 9296
     },
     {
       "name": "Urban",
@@ -1070,19 +727,6 @@
       "context": ", Die KreuzZugsbriefe aus den Jahren   Io88 -Ioo (Innsbruck, I9OI), p. 137. This content downloaded from     ",
       "confidence": 0.3,
       "source_offset": 6257
-    },
-    {
-      "name": "There",
-      "raw_mention": "There",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": " echo quite literally the wording of this decree. There can be   little doubt that a desire for earthly g",
-      "confidence": 0.3,
-      "source_offset": 6543
     },
     {
       "name": "Count Robert of Flanders",
@@ -1748,19 +1392,6 @@
       "source_offset": 10035
     },
     {
-      "name": "Palestine",
-      "raw_mention": "Palestine",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "survive - but at the very least the exodus from   Palestine throws doubt on the idea of the crusade as a mani",
-      "confidence": 0.3,
-      "source_offset": 10264
-    },
-    {
       "name": "Lebensraum",
       "raw_mention": "Lebensraum",
       "title": null,
@@ -2045,40 +1676,6 @@
       "context": "84,404,405; H. F. Delaborde, Chartesde   la Terre Sainte provenant de f'abbaye de Notre Dame de Josaphat (",
       "confidence": 0.3,
       "source_offset": 12501
-    },
-    {
-      "name": "Notre",
-      "raw_mention": "Notre",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "N PALESTINE: C. Kohler,   'Chartes de l'abbaye de Notre-Dame de la vallee de josaphat en Terre Sainte', R",
-      "confidence": 0.3,
-      "source_offset": 14779
-    },
-    {
-      "name": "Dame de Josaphat",
-      "raw_mention": "Dame de Josaphat",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "   la Terre Sainte provenant de f'abbaye de Notre Dame de Josaphat (Paris, 1880), p. 45 (R. R6hricht, Regesta regni ",
-      "confidence": 0.0,
-      "source_offset": 12539,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
     },
     {
       "name": "Geoffreyl",
@@ -2456,19 +2053,6 @@
       "context": "vue de   l'Orient latin, vii (I900), 114, 120; J. Delaville Le Roulx, Cartulairege'neral de I'ordre des   Hos",
       "confidence": 0.3,
       "source_offset": 14885
-    },
-    {
-      "name": "Roulx",
-      "raw_mention": "Roulx",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "ient latin, vii (I900), 114, 120; J. Delaville Le Roulx, Cartulairege'neral de I'ordre des   Hospitaliers",
-      "confidence": 0.3,
-      "source_offset": 14898
     },
     {
       "name": "Cartulairege",
@@ -3163,19 +2747,6 @@
       "source_offset": 18844
     },
     {
-      "name": "knights",
-      "raw_mention": "knights",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": "collective",
-      "gender": "unknown",
-      "group": true,
-      "context": "tenances from Duke Godfrey'.3   Two of Bohemond's knights can be identified among the Latins in   Palestine",
-      "confidence": 0.25,
-      "source_offset": 19948
-    },
-    {
       "name": "Count William of Montpellier",
       "raw_mention": "Count William of Montpellier",
       "title": "Count",
@@ -3254,6 +2825,19 @@
       "source_offset": 23364
     },
     {
+      "name": "Estoire de Jerusalem",
+      "raw_mention": "Estoire de Jerusalem",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "d'Antioche, i. 477;   William of Tyre, p. 96; 'Li Estoire de Jerusalem', pp. 626, 630. Henry of Huntingdon   ('De captio",
+      "confidence": 0.3,
+      "source_offset": 24352
+    },
+    {
       "name": "Devic",
       "raw_mention": "Devic",
       "title": null,
@@ -3293,38 +2877,17 @@
       "source_offset": 24677
     },
     {
-      "name": "Molinier",
-      "raw_mention": "Molinier",
+      "name": "Languedoc",
+      "raw_mention": "Languedoc",
       "title": null,
       "epithet": null,
       "toponym": null,
       "role": null,
       "gender": "unknown",
       "group": false,
-      "context": "Vaissete, Histoire generale de Languedoc, rev. A. Molinier et al. (Toulouse,   I874-1914), iii. 577. 5. Raym",
+      "context": " C. Devic   and J. Vaissete, Histoire generale de Languedoc, rev. A. Molinier et al. (Toulouse,   I874-1914),",
       "confidence": 0.0,
-      "source_offset": 24717,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
-      "name": "Toulouse",
-      "raw_mention": "Toulouse",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "e generale de Languedoc, rev. A. Molinier et al. (Toulouse,   I874-1914), iii. 577. 5. Raymond of Aguilers, ",
-      "confidence": 0.0,
-      "source_offset": 24734,
+      "source_offset": 24698,
       "post_medieval_penalty": {
         "applied": true,
         "strong_signals": 1,
@@ -3647,6 +3210,19 @@
       "source_offset": 27301
     },
     {
+      "name": "Delaborde",
+      "raw_mention": "Delaborde",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": " 91, 593, 636, 637; Kohler,   'Chartes', p. II 3; Delaborde, Chartes, p. 30 (R6hricht, Regesta, nos. 52, 8o).",
+      "confidence": 0.3,
+      "source_offset": 27529
+    },
+    {
       "name": "October of Jerusalem",
       "raw_mention": "October of Jerusalem",
       "title": null,
@@ -3684,6 +3260,19 @@
       "context": "ef between Bethlehem and Hebron. 1 Robert fitz-   Godwin was an English knight who had served in the Anglo",
       "confidence": 0.3,
       "source_offset": 28414
+    },
+    {
+      "name": "English",
+      "raw_mention": "English",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "hlehem and Hebron. 1 Robert fitz-   Godwin was an English knight who had served in the Anglo-Saxon   fleet ",
+      "confidence": 0.3,
+      "source_offset": 28428
     },
     {
       "name": "Anglo",
@@ -4102,17 +3691,17 @@
       "source_offset": 31880
     },
     {
-      "name": "His",
-      "raw_mention": "His",
+      "name": "Puy",
+      "raw_mention": "Puy",
       "title": null,
       "epithet": null,
       "toponym": null,
       "role": null,
       "gender": "unknown",
       "group": false,
-      "context": " Galdemar Carpenel and perhaps   Roman of Le Puy. His actions appear to confirm the story that he had  ",
+      "context": "lier, Galdemar Carpenel and perhaps   Roman of Le Puy. His actions appear to confirm the story that he ",
       "confidence": 0.3,
-      "source_offset": 31953
+      "source_offset": 31948
     },
     {
       "name": "Syrie du Nord",
@@ -4126,111 +3715,6 @@
       "context": "D DEATH: Albert of   Aachen, P. 357; C. Cahen, La Syrie du Nord a' /poque des croisades et la principautefranque ",
       "confidence": 0.3,
       "source_offset": 32166
-    },
-    {
-      "name": "Liinig",
-      "raw_mention": "Liinig",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "anson d'Antioche, i. 471. IN SYRIA: perhaps J. C. Liinig, Codex Italiae diplomaticus (Frankfurt, 1725-3 5)",
-      "confidence": 0.15,
-      "source_offset": 32443,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 0,
-        "weak_signals": 1,
-        "reasons": [
-          "post_1500_date_context"
-        ]
-      }
-    },
-    {
-      "name": "Codex",
-      "raw_mention": "Codex",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "Antioche, i. 471. IN SYRIA: perhaps J. C. Liinig, Codex Italiae diplomaticus (Frankfurt, 1725-3 5),   ii,",
-      "confidence": 0.15,
-      "source_offset": 32451,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 0,
-        "weak_signals": 1,
-        "reasons": [
-          "post_1500_date_context"
-        ]
-      }
-    },
-    {
-      "name": "Italiae",
-      "raw_mention": "Italiae",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "he, i. 471. IN SYRIA: perhaps J. C. Liinig, Codex Italiae diplomaticus (Frankfurt, 1725-3 5),   ii, col. zo",
-      "confidence": 0.15,
-      "source_offset": 32457,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 0,
-        "weak_signals": 1,
-        "reasons": [
-          "post_1500_date_context"
-        ]
-      }
-    },
-    {
-      "name": "Frankfurt",
-      "raw_mention": "Frankfurt",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "perhaps J. C. Liinig, Codex Italiae diplomaticus (Frankfurt, 1725-3 5),   ii, col. zo8z (R6hricht, Regesta, n",
-      "confidence": 0.15,
-      "source_offset": 32479,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 0,
-        "weak_signals": 1,
-        "reasons": [
-          "post_1500_date_context"
-        ]
-      }
-    },
-    {
-      "name": "Cod",
-      "raw_mention": "Cod",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "lliam   of Tyre, p. 90. IN SYRIA: perhaps Liinig, Cod. Ital. dipl. ii, col. 2082 (R6hricht,   Regesta, ",
-      "confidence": 0.0,
-      "source_offset": 32759,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
     },
     {
       "name": "Eadmer",
@@ -4883,27 +4367,6 @@
       "source_offset": 39656
     },
     {
-      "name": "Prince of Antioch",
-      "raw_mention": "Prince of Antioch",
-      "title": "Prince",
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "47), pp. 48-49. 2. See R. B. Yewdale, Bohemond I, Prince of Antioch (Princeton, 1924), passim;   Cahen, La Syrie du N",
-      "confidence": 0.0,
-      "source_offset": 40444,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
       "name": "European",
       "raw_mention": "European",
       "title": null,
@@ -4967,6 +4430,27 @@
       "context": "he eventually returned home to become a monk at   Cluny.",
       "confidence": 0.3,
       "source_offset": 41748
+    },
+    {
+      "name": "Professor",
+      "raw_mention": "Professor",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "t the settlement was regulated. It is true that   Professor Prawer, following the nineteenth-century historia",
+      "confidence": 0.0,
+      "source_offset": 41356,
+      "post_medieval_penalty": {
+        "applied": true,
+        "strong_signals": 1,
+        "weak_signals": 0,
+        "reasons": [
+          "modern_title"
+        ]
+      }
     },
     {
       "name": "Count Beugnot",
@@ -5071,48 +4555,6 @@
       "context": "3. 3. J. Riley-Smith, The Feudal Nobility and the Kingdom of Jerusalem i174-i277   (London, 1973), p. 7; H. Richardot, '",
       "confidence": 0.0,
       "source_offset": 43128,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
-      "name": "Richardot",
-      "raw_mention": "Richardot",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "of Jerusalem i174-i277   (London, 1973), p. 7; H. Richardot, 'Francs-fiefs. Essai sur l'exemption totale ou  ",
-      "confidence": 0.0,
-      "source_offset": 43186,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
-      "name": "Essai",
-      "raw_mention": "Essai",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "London, 1973), p. 7; H. Richardot, 'Francs-fiefs. Essai sur l'exemption totale ou   partielle des service",
-      "confidence": 0.0,
-      "source_offset": 43212,
       "post_medieval_penalty": {
         "applied": true,
         "strong_signals": 1,
@@ -5602,27 +5044,6 @@
       }
     },
     {
-      "name": "University of London",
-      "raw_mention": "University of London",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "e political   climate.  Royal Holloway College,   University of London JONATHAN RILEY-SMITH   crusade, but was he the Fu",
-      "confidence": 0.0,
-      "source_offset": 48398,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_institution"
-        ]
-      }
-    },
-    {
       "name": "Outremer",
       "raw_mention": "Outremer",
       "title": null,
@@ -5691,14 +5112,6 @@
       "status": "low"
     },
     {
-      "person": "Crusaders",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
       "person": "Settlement of Latin",
       "person_group": false,
       "candidates": [],
@@ -5729,46 +5142,6 @@
       },
       "confidence": 0.6316,
       "status": "low"
-    },
-    {
-      "person": "Sun",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR122",
-          "outremer_name": "Gosuin the Goat",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'sun' ↔ 'Gosuin the Goat'"
-        },
-        {
-          "outremer_id": "AUTH:CR181",
-          "outremer_name": "Seguin of Lastours",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'sun' ↔ 'Seguin of Lastours'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR122",
-        "outremer_name": "Gosuin the Goat",
-        "type": "person",
-        "score": 0.6667,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'sun' ↔ 'Gosuin the Goat'"
-      },
-      "confidence": 0.6667,
-      "status": "low"
-    },
-    {
-      "person": "Dec",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
     },
     {
       "person": "Italian",
@@ -5937,46 +5310,6 @@
       "top_candidate": null,
       "confidence": 0.0,
       "status": "no_match"
-    },
-    {
-      "person": "Crusade",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR1",
-          "outremer_name": "Conrad III of Germany",
-          "type": "person",
-          "score": 0.6154,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'crusade' ↔ 'Conrad III of Germany'"
-        },
-        {
-          "outremer_id": "AUTH:CR37",
-          "outremer_name": "Conrad of Montferrat",
-          "type": "person",
-          "score": 0.6154,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'crusade' ↔ 'Conrad of Montferrat'"
-        },
-        {
-          "outremer_id": "AUTH:CR175",
-          "outremer_name": "Conrad of Meissen",
-          "type": "person",
-          "score": 0.6154,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'crusade' ↔ 'Conrad of Meissen'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR1",
-        "outremer_name": "Conrad III of Germany",
-        "type": "person",
-        "score": 0.6154,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'crusade' ↔ 'Conrad III of Germany'"
-      },
-      "confidence": 0.6154,
-      "status": "low"
     },
     {
       "person": "Most",
@@ -6179,14 +5512,6 @@
       "status": "low"
     },
     {
-      "person": "crusader",
-      "person_group": true,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
       "person": "pilgrims",
       "person_group": true,
       "candidates": [],
@@ -6347,38 +5672,6 @@
       "status": "no_match"
     },
     {
-      "person": "Chanson",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR19",
-          "outremer_name": "Chalo the Red",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'chanson' ↔ 'Chalo the Red'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR19",
-        "outremer_name": "Chalo the Red",
-        "type": "person",
-        "score": 0.6667,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'chanson' ↔ 'Chalo the Red'"
-      },
-      "confidence": 0.6667,
-      "status": "low"
-    },
-    {
-      "person": "Antioche",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
       "person": "Duparc",
       "person_group": false,
       "candidates": [],
@@ -6419,30 +5712,6 @@
       "status": "low"
     },
     {
-      "person": "Hierosolimitana",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Heidelberg",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Therosolimitana",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
       "person": "Baldric of Bourgueil",
       "person_group": false,
       "candidates": [],
@@ -6452,14 +5721,6 @@
     },
     {
       "person": "Jerosolimitana",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Francorum",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -6507,54 +5768,6 @@
       "status": "low"
     },
     {
-      "person": "Historia de Hierosolimitano",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Somerville",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Councils of Urban",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR25",
-          "outremer_name": "Enguerran II of Coucy",
-          "type": "person",
-          "score": 0.6207,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'councils of urban' ↔ 'Enguerran II of Coucy'"
-        },
-        {
-          "outremer_id": "AUTH:CR100",
-          "outremer_name": "Robert of Buzançais",
-          "type": "person",
-          "score": 0.6111,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'councils of urban' ↔ 'Robert of Buzançais'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR25",
-        "outremer_name": "Enguerran II of Coucy",
-        "type": "person",
-        "score": 0.6207,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'councils of urban' ↔ 'Enguerran II of Coucy'"
-      },
-      "confidence": 0.6207,
-      "status": "low"
-    },
-    {
       "person": "Decreta",
       "person_group": false,
       "candidates": [],
@@ -6564,46 +5777,6 @@
     },
     {
       "person": "Claromontensia",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Annuarium",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Conciliorum",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Suppl",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Amsterdam",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "This",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -6665,46 +5838,6 @@
       "top_candidate": null,
       "confidence": 0.0,
       "status": "no_match"
-    },
-    {
-      "person": "There",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR16",
-          "outremer_name": "Thierry of Flanders",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'there' ↔ 'Thierry of Flanders'"
-        },
-        {
-          "outremer_id": "AUTH:CR12",
-          "outremer_name": "Henry I of Troyes, count of Champagne",
-          "type": "person",
-          "score": 0.6,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'there' ↔ 'Henry I of Troyes, count of Champagne'"
-        },
-        {
-          "outremer_id": "AUTH:CR26",
-          "outremer_name": "Henry the Lion",
-          "type": "person",
-          "score": 0.6,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'there' ↔ 'Henry the Lion'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR16",
-        "outremer_name": "Thierry of Flanders",
-        "type": "person",
-        "score": 0.6667,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'there' ↔ 'Thierry of Flanders'"
-      },
-      "confidence": 0.6667,
-      "status": "low"
     },
     {
       "person": "Count Robert of Flanders",
@@ -7555,14 +6688,6 @@
       "status": "no_match"
     },
     {
-      "person": "Palestine",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
       "person": "Lebensraum",
       "person_group": false,
       "candidates": [],
@@ -7996,22 +7121,6 @@
     },
     {
       "person": "Sainte",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Notre",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Dame de Josaphat",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -8532,14 +7641,6 @@
     },
     {
       "person": "Delaville",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Roulx",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -9467,14 +8568,6 @@
       "status": "no_match"
     },
     {
-      "person": "knights",
-      "person_group": true,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
       "person": "Count William of Montpellier",
       "person_group": false,
       "candidates": [
@@ -9651,6 +8744,14 @@
       "status": "low"
     },
     {
+      "person": "Estoire de Jerusalem",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
       "person": "Devic",
       "person_group": false,
       "candidates": [],
@@ -9675,44 +8776,12 @@
       "status": "no_match"
     },
     {
-      "person": "Molinier",
+      "person": "Languedoc",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
       "confidence": 0.0,
       "status": "no_match"
-    },
-    {
-      "person": "Toulouse",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR125",
-          "outremer_name": "Louis of Hesbaye",
-          "type": "person",
-          "score": 0.6154,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'toulouse' ↔ 'Louis of Hesbaye'"
-        },
-        {
-          "outremer_id": "AUTH:CR86",
-          "outremer_name": "Constance of Toulouse",
-          "type": "person",
-          "score": 0.6154,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'toulouse' ↔ 'Constance of Toulouse'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR125",
-        "outremer_name": "Louis of Hesbaye",
-        "type": "person",
-        "score": 0.6154,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'toulouse' ↔ 'Louis of Hesbaye'"
-      },
-      "confidence": 0.6154,
-      "status": "low"
     },
     {
       "person": "Coc",
@@ -10267,6 +9336,14 @@
       "status": "no_match"
     },
     {
+      "person": "Delaborde",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
       "person": "October of Jerusalem",
       "person_group": false,
       "candidates": [],
@@ -10321,6 +9398,14 @@
       },
       "confidence": 0.6667,
       "status": "low"
+    },
+    {
+      "person": "English",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
     },
     {
       "person": "Anglo",
@@ -10859,7 +9944,7 @@
       "status": "medium"
     },
     {
-      "person": "His",
+      "person": "Puy",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -10873,78 +9958,6 @@
       "top_candidate": null,
       "confidence": 0.0,
       "status": "no_match"
-    },
-    {
-      "person": "Liinig",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Codex",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Italiae",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Frankfurt",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Cod",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR1",
-          "outremer_name": "Conrad III of Germany",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'cod' ↔ 'Conrad III of Germany'"
-        },
-        {
-          "outremer_id": "AUTH:CR37",
-          "outremer_name": "Conrad of Montferrat",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'cod' ↔ 'Conrad of Montferrat'"
-        },
-        {
-          "outremer_id": "AUTH:CR175",
-          "outremer_name": "Conrad of Meissen",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'cod' ↔ 'Conrad of Meissen'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR1",
-        "outremer_name": "Conrad III of Germany",
-        "type": "person",
-        "score": 0.6667,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'cod' ↔ 'Conrad III of Germany'"
-      },
-      "confidence": 0.6667,
-      "status": "low"
     },
     {
       "person": "Eadmer",
@@ -12075,14 +11088,6 @@
       "status": "no_match"
     },
     {
-      "person": "Prince of Antioch",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
       "person": "European",
       "person_group": false,
       "candidates": [],
@@ -12116,6 +11121,14 @@
     },
     {
       "person": "Cluny",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "Professor",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -12204,22 +11217,6 @@
     },
     {
       "person": "Kingdom of Jerusalem",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Richardot",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Essai",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -12891,14 +11888,6 @@
       "status": "no_match"
     },
     {
-      "person": "University of London",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
       "person": "Outremer",
       "person_group": false,
       "candidates": [],
@@ -12923,20 +11912,19 @@
   },
   "language_hint": null,
   "quality": {
-    "filtered_problem_entities": 450,
+    "filtered_problem_entities": 524,
     "feedback_store": "data/entity_feedback.json",
     "noise": {
-      "extracted_total": 864,
-      "kept": 414,
-      "filtered": 450,
+      "extracted_total": 907,
+      "kept": 383,
+      "filtered": 524,
       "filtered_by_reason": {
-        "bibliographic_noise": 137,
-        "known_bad_entity": 257,
-        "modern_scholar": 55,
-        "common_word": 1
+        "known_bad_entity": 290,
+        "bibliographic_noise": 168,
+        "modern_scholar": 66
       },
-      "low_confidence_kept": 414,
-      "noise_share": 0.5208
+      "low_confidence_kept": 383,
+      "noise_share": 0.5777
     }
   }
 }

@@ -45,46 +45,17 @@
       }
     },
     {
-      "name": "Fri",
-      "raw_mention": "Fri",
+      "name": "This",
+      "raw_mention": "This",
       "title": null,
       "epithet": null,
       "toponym": null,
       "role": null,
       "gender": "unknown",
       "group": false,
-      "context": "ent downloaded from              31.10.141.160 on Fri, 27 Feb 2026 19:59:05 UTC              All use su",
-      "confidence": 0.0,
-      "source_offset": 926,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
-      "name": "Feb",
-      "raw_mention": "Feb",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "loaded from              31.10.141.160 on Fri, 27 Feb 2026 19:59:05 UTC              All use subject to",
-      "confidence": 0.0,
-      "source_offset": 934,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
+      "context": "deal, for his early biographers describe him as a This content downloaded from              31.10.141.16",
+      "confidence": 0.3,
+      "source_offset": 5270
     },
     {
       "name": "July",
@@ -98,6 +69,19 @@
       "context": "y Orders during the Crusades William J.Hamblin On July 4, 1187, the armies ofSaladin, sultan ofEgypt and",
       "confidence": 0.3,
       "source_offset": 1102
+    },
+    {
+      "name": "Saladin",
+      "raw_mention": "Saladin",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "s William J.Hamblin On July 4, 1187, the armies ofSaladin, sultan ofEgypt and Syria, sur- rounded thousands",
+      "confidence": 0.3,
+      "source_offset": 1129
     },
     {
       "name": "Egypt",
@@ -267,6 +251,19 @@
       "context": " ofthe Mili- tary Orders faced a different fate.2 After his triumphant victory, Saladin singled out the c",
       "confidence": 0.3,
       "source_offset": 1640
+    },
+    {
+      "name": "Templars",
+      "raw_mention": "Templars",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "iumphant victory, Saladin singled out the captive Templars and Hospitallers for execution. Of course, such a",
+      "confidence": 0.3,
+      "source_offset": 1702
     },
     {
       "name": "Hospitallers",
@@ -641,6 +638,19 @@
       "source_offset": 3979
     },
     {
+      "name": "Muslims",
+      "raw_mention": "Muslims",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": " implacable ofmen in their enmity to thefaithful [Muslims] are the Jewsand the pagans, and that the nearest",
+      "confidence": 0.3,
+      "source_offset": 4056
+    },
+    {
       "name": "Jewsand the",
       "raw_mention": "Jewsand the",
       "title": null,
@@ -756,6 +766,19 @@
       "context": "with a caravan to Syria: When the caravan reached Busra in Syria, there was a monk there in his cell by t",
       "confidence": 0.3,
       "source_offset": 4556
+    },
+    {
+      "name": "There",
+      "raw_mention": "There",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": " was well versed in the knowledge of Chris- tians There he gained his knowledge from abook that was in th",
+      "confidence": 0.3,
+      "source_offset": 4683
     },
     {
       "name": "They",
@@ -899,6 +922,58 @@
       "context": "this nephew of yours, so take him home quickly.\"9 Thispassage revealsanumberofimplicitattitudesabout monasticis",
       "confidence": 0.3,
       "source_offset": 4839
+    },
+    {
+      "name": "First",
+      "raw_mention": "First",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "vealsanumberofimplicitattitudesabout monasticism. First, there is a clear preference in early Islamic sou",
+      "confidence": 0.3,
+      "source_offset": 4903
+    },
+    {
+      "name": "Orders",
+      "raw_mention": "Orders",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "stor.org/terms Muslim Perspectives on theMilitary Orders duringtheCrusades 99 Fig. 2. Mount Hirã', Saudia ",
+      "confidence": 0.3,
+      "source_offset": 5456
+    },
+    {
+      "name": "Crusades",
+      "raw_mention": "Crusades",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "uslim Perspectives on theMilitary Orders duringtheCrusades 99 Fig. 2. Mount Hirã', Saudia Arabia. Mount Hirã",
+      "confidence": 0.3,
+      "source_offset": 5472
+    },
+    {
+      "name": "Fig",
+      "raw_mention": "Fig",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "ctives on theMilitary Orders duringtheCrusades 99 Fig. 2. Mount Hirã', Saudia Arabia. Mount Hirã' wasth",
+      "confidence": 0.3,
+      "source_offset": 5484
     },
     {
       "name": "Mount",
@@ -1096,6 +1171,19 @@
       "source_offset": 7252
     },
     {
+      "name": "Islam",
+      "raw_mention": "Islam",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "ch theybecame atolerated religious minoritywithin Islam. This attitude is reflected in the early Islamic ",
+      "confidence": 0.3,
+      "source_offset": 7991
+    },
+    {
       "name": "Umar",
       "raw_mention": "Umar",
       "title": null,
@@ -1198,6 +1286,19 @@
       "context": " roles some Christians played under Islamic rule. Under the caliphs, the literaryand scholarlyskills ofChristi",
       "confidence": 0.3,
       "source_offset": 9104
+    },
+    {
+      "name": "Christian",
+      "raw_mention": "Christian",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "er the caliphs, the literaryand scholarlyskills ofChristian monks were highly prized, with many monks serving",
+      "confidence": 0.3,
+      "source_offset": 9157
     },
     {
       "name": "John",
@@ -2006,6 +2107,19 @@
       "source_offset": 14066
     },
     {
+      "name": "knights",
+      "raw_mention": "knights",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": "collective",
+      "gender": "unknown",
+      "group": true,
+      "context": "escribes the following encounter with the Templar knights at the Arab al-Aqsa Mosque on the Temple Mount in",
+      "confidence": 0.25,
+      "source_offset": 12583
+    },
+    {
       "name": "Usamah the",
       "raw_mention": "Usamah the",
       "title": null,
@@ -2017,6 +2131,19 @@
       "context": "at paradoxically from the modern perspective, for Usamah the knights Tem- plar are examples ofmoderate tolerati",
       "confidence": 0.3,
       "source_offset": 13799
+    },
+    {
+      "name": "All",
+      "raw_mention": "All",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": " towards the Templars, whom he calls his friends. All ofthis was to change with the rise ofthe two grea",
+      "confidence": 0.3,
+      "source_offset": 14042
     },
     {
       "name": "Sultans",
@@ -2095,6 +2222,32 @@
       "context": "-1193). Even so, during the early phases ofNur al-Din s and Saladin's rise to power the Military Orders",
       "confidence": 0.3,
       "source_offset": 14256
+    },
+    {
+      "name": "Military",
+      "raw_mention": "Military",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "es ofNur al-Din s and Saladin's rise to power the Military Orders were apparently not viewed as a special th",
+      "confidence": 0.3,
+      "source_offset": 14294
+    },
+    {
+      "name": "Latin",
+      "raw_mention": "Latin",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "ote that the warrior monks are called \"brothers\" (Latin fratres = Arabic ikhwa), live in a monastic house",
+      "confidence": 0.3,
+      "source_offset": 14643
     },
     {
       "name": "But the Orders",
@@ -2266,6 +2419,19 @@
       "source_offset": 15781
     },
     {
+      "name": "Baldwin",
+      "raw_mention": "Baldwin",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "han any other members ofthe Frankish aristocracy. Baldwin ofIbelin was ran- somed for 150,000 dinars; Hugh ",
+      "confidence": 0.3,
+      "source_offset": 15919
+    },
+    {
       "name": "Ibelin",
       "raw_mention": "Ibelin",
       "title": null,
@@ -2407,6 +2573,19 @@
       "context": "ofChastellet on Jacob's Ford in the upper Jordan. Whereas Saladin specifically ordered the execution of cro",
       "confidence": 0.3,
       "source_offset": 16607
+    },
+    {
+      "name": "Crusader",
+      "raw_mention": "Crusader",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "n of crossbowmen and Muslim apostates who were in Crusader service, it seems that the Templars themselves we",
+      "confidence": 0.3,
+      "source_offset": 16706
     },
     {
       "name": "Apparently",
@@ -2862,6 +3041,19 @@
       "context": "l-Harawi, entitled Al-Harawťs Dis- cussion on the Stratagems ofWar. Al-Harawi's manual offers some interesting",
       "confidence": 0.3,
       "source_offset": 19478
+    },
+    {
+      "name": "War",
+      "raw_mention": "War",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "itled Al-Harawťs Dis- cussion on the Stratagems ofWar. Al-Harawi's manual offers some interesting insig",
+      "confidence": 0.3,
+      "source_offset": 19491
     },
     {
       "name": "Sultan",
@@ -3345,6 +3537,19 @@
       "source_offset": 25240
     },
     {
+      "name": "His",
+      "raw_mention": "His",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "Ibn Zaki: \"I praise [God] ... for his cleansing ofHis HolyHouse from the filth ofpolytheism and its pol",
+      "confidence": 0.3,
+      "source_offset": 25286
+    },
+    {
       "name": "HolyHouse",
       "raw_mention": "HolyHouse",
       "title": null,
@@ -3696,6 +3901,19 @@
       "source_offset": 29589
     },
     {
+      "name": "Palestine",
+      "raw_mention": "Palestine",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "weramongthevarious Christian andMuslim princes of Palestine. For Muslim rulers in this period, the Military O",
+      "confidence": 0.3,
+      "source_offset": 29669
+    },
+    {
       "name": "TheMamluksandthe",
       "raw_mention": "TheMamluksandthe",
       "title": null,
@@ -3759,40 +3977,6 @@
       "context": "sion struggles that followed the death ofSultanal-SalihofEgyptin 1250, theleadersoftheseslave-soldiersmanaged .B 1",
       "confidence": 0.3,
       "source_offset": 30276
-    },
-    {
-      "name": "Ottoman",
-      "raw_mention": "Ottoman",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "continuedafterthe Crusades in the policies of the Ottoman sultans.  While numerous accommodations were made",
-      "confidence": 0.3,
-      "source_offset": 52398
-    },
-    {
-      "name": "Founded",
-      "raw_mention": "Founded",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "asted until the Ottoman conquest ofEgypt in 1517. Founded by rebellious slaves and usurpers, the Mamluk sul",
-      "confidence": 0.15,
-      "source_offset": 30650,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 0,
-        "weak_signals": 1,
-        "reasons": [
-          "post_1500_date_context"
-        ]
-      }
     },
     {
       "name": "Mamluks",
@@ -4757,6 +4941,19 @@
       "source_offset": 38053
     },
     {
+      "name": "West",
+      "raw_mention": "West",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": " presencewould also encourage pilgrimage from the West, which would, not incidentally, bring a nice flow",
+      "confidence": 0.3,
+      "source_offset": 38313
+    },
+    {
       "name": "Tourism",
       "raw_mention": "Tourism",
       "title": null,
@@ -5051,6 +5248,27 @@
       }
     },
     {
+      "name": "University",
+      "raw_mention": "University",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "@byu.edu] is Professor of History at BrighamYoung University. He receiveda B.A. in history from BrighamYoung U",
+      "confidence": 0.0,
+      "source_offset": 41650,
+      "post_medieval_penalty": {
+        "applied": true,
+        "strong_signals": 1,
+        "weak_signals": 0,
+        "reasons": [
+          "modern_institution"
+        ]
+      }
+    },
+    {
       "name": "Univer",
       "raw_mention": "Univer",
       "title": null,
@@ -5119,6 +5337,27 @@
       }
     },
     {
+      "name": "Hill",
+      "raw_mention": "Hill",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "an invited lectureforthe Malta StudyCenter at the Hill Monastic Manuscript Library, St.",
+      "confidence": 0.0,
+      "source_offset": 41876,
+      "post_medieval_penalty": {
+        "applied": true,
+        "strong_signals": 1,
+        "weak_signals": 0,
+        "reasons": [
+          "modern_institution"
+        ]
+      }
+    },
+    {
       "name": "Monastic",
       "raw_mention": "Monastic",
       "title": null,
@@ -5161,27 +5400,6 @@
       }
     },
     {
-      "name": "Library",
-      "raw_mention": "Library",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "Malta StudyCenter at the Hill Monastic Manuscript Library, St.",
-      "confidence": 0.0,
-      "source_offset": 41901,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_institution"
-        ]
-      }
-    },
-    {
       "name": "Pilgrims",
       "raw_mention": "Pilgrims",
       "title": null,
@@ -5206,6 +5424,19 @@
       "context": " these events from the frequent visits ofVenetian merchants to Alexandria. It seems that when the Templars we",
       "confidence": 0.25,
       "source_offset": 39983
+    },
+    {
+      "name": "Reynald de Chatillon",
+      "raw_mention": "Reynald de Chatillon",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "rsifa suitable ran- som could not be agreed upon. Reynald de Chatillon was captured and remained unransomedforsixteen ye",
+      "confidence": 0.3,
+      "source_offset": 46767
     },
     {
       "name": "Politics",
@@ -5271,6 +5502,27 @@
       }
     },
     {
+      "name": "Longman",
+      "raw_mention": "Longman",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "eNearEastfrom the Eleventh Centuryto1517(NewYork: Longman, 1986). This content downloaded from             ",
+      "confidence": 0.0,
+      "source_offset": 41699,
+      "post_medieval_penalty": {
+        "applied": true,
+        "strong_signals": 1,
+        "weak_signals": 0,
+        "reasons": [
+          "modern_date_1800_plus"
+        ]
+      }
+    },
+    {
       "name": "Christ",
       "raw_mention": "Christ",
       "title": null,
@@ -5321,19 +5573,6 @@
       "context": "ewho wereperceivedas enemies ofGodand ofthe Roman Catholic Church. The literatureon the Military Orders is i",
       "confidence": 0.3,
       "source_offset": 42132
-    },
-    {
-      "name": "Order",
-      "raw_mention": "Order",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "enerally, John Moorman, A History oftheFranciscan Order from Its OriginstotheYear1517(Oxford: Clarendon P",
-      "confidence": 0.3,
-      "source_offset": 51029
     },
     {
       "name": "Alexander",
@@ -5412,132 +5651,6 @@
       "context": "eferences in The Encyclopaedia of Islam, ed. A. J.Wensinck, C. E. Bosworth, and others, 2d ed. (Leiden: E.J.",
       "confidence": 0.3,
       "source_offset": 43239
-    },
-    {
-      "name": "Bosworth",
-      "raw_mention": "Bosworth",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": " Encyclopaedia of Islam, ed. A. J.Wensinck, C. E. Bosworth, and others, 2d ed. (Leiden: E.J.Brill, 1954-), 8",
-      "confidence": 0.0,
-      "source_offset": 43255,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
-      "name": "Leiden",
-      "raw_mention": "Leiden",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": ". J.Wensinck, C. E. Bosworth, and others, 2d ed. (Leiden: E.J.Brill, 1954-), 8:396-97, s.v. \"Rahbaniyya\" a",
-      "confidence": 0.0,
-      "source_offset": 43285,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
-      "name": "Brill",
-      "raw_mention": "Brill",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": ", C. E. Bosworth, and others, 2d ed. (Leiden: E.J.Brill, 1954-), 8:396-97, s.v. \"Rahbaniyya\" and \"Rahib\";",
-      "confidence": 0.0,
-      "source_offset": 43297,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
-      "name": "Gibb",
-      "raw_mention": "Gibb",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": " also Shorter Encyclopaedia ofIslam, ed. H. A. R. Gibb and J.H. Kramers (Leiden: E.J.Brill, 1953), 466-6",
-      "confidence": 0.0,
-      "source_offset": 43406,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
-      "name": "Kramers",
-      "raw_mention": "Kramers",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "Encyclopaedia ofIslam, ed. H. A. R. Gibb and J.H. Kramers (Leiden: E.J.Brill, 1953), 466-67, s.v. \"Rahbaniy",
-      "confidence": 0.0,
-      "source_offset": 43420,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
-      "name": "Rahbaniya",
-      "raw_mention": "Rahbaniya",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": " Kramers (Leiden: E.J.Brill, 1953), 466-67, s.v. \"Rahbaniya\" and \"Rahib.\" 7.TheKoran,5thed., trans. N.J.Dawoo",
-      "confidence": 0.0,
-      "source_offset": 43469,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
     },
     {
       "name": "TheKoran",
@@ -5741,27 +5854,6 @@
       }
     },
     {
-      "name": "Cass",
-      "raw_mention": "Cass",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "itical Study ofthe Covenantof'Umar [London: Frank Cass, 1970],9,quoting Ibn al-Athir) This content downl",
-      "confidence": 0.0,
-      "source_offset": 45175,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
       "name": "Dictionary",
       "raw_mention": "Dictionary",
       "title": null,
@@ -5879,90 +5971,6 @@
       "source_offset": 45718
     },
     {
-      "name": "Eighth",
-      "raw_mention": "Eighth",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "Baghdad and Early 'Abbasid Society (Second-Fourth/Eighth-Tenth Cen- turies) (London: Routledge, 1998). 16.",
-      "confidence": 0.0,
-      "source_offset": 45725,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
-      "name": "Tenth",
-      "raw_mention": "Tenth",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": " and Early 'Abbasid Society (Second-Fourth/Eighth-Tenth Cen- turies) (London: Routledge, 1998). 16.For ge",
-      "confidence": 0.0,
-      "source_offset": 45732,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
-      "name": "Cen",
-      "raw_mention": "Cen",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "arly 'Abbasid Society (Second-Fourth/Eighth-Tenth Cen- turies) (London: Routledge, 1998). 16.For genera",
-      "confidence": 0.0,
-      "source_offset": 45738,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
-      "name": "Routledge",
-      "raw_mention": "Routledge",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "(Second-Fourth/Eighth-Tenth Cen- turies) (London: Routledge, 1998). 16.For general background on Egyptian mon",
-      "confidence": 0.0,
-      "source_offset": 45760,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
       "name": "Deserts",
       "raw_mention": "Deserts",
       "title": null,
@@ -5976,17 +5984,17 @@
       "source_offset": 45891
     },
     {
-      "name": "Qalanisi",
-      "raw_mention": "Qalanisi",
+      "name": "Some of",
+      "raw_mention": "Some of",
       "title": null,
       "epithet": null,
       "toponym": null,
       "role": null,
       "gender": "unknown",
       "group": false,
-      "context": " toSufism (London: I. B. Tauris, 1989). 19.Ibn al-Qalanisi, Dhayl ta'rikh Dimashq, ed. H. Amerdroz (Leiden: ",
+      "context": "0 (San Francisco: Harper San Francisco, 1992). 18.Some of the beliefs and practices of monasticism may also ",
       "confidence": 0.0,
-      "source_offset": 46524,
+      "source_offset": 46192,
       "post_medieval_penalty": {
         "applied": true,
         "strong_signals": 1,
@@ -5995,82 +6003,6 @@
           "modern_date_1800_plus"
         ]
       }
-    },
-    {
-      "name": "Dhayl",
-      "raw_mention": "Dhayl",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "(London: I. B. Tauris, 1989). 19.Ibn al-Qalanisi, Dhayl ta'rikh Dimashq, ed. H. Amerdroz (Leiden: E. J.Br",
-      "confidence": 0.0,
-      "source_offset": 46534,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
-      "name": "Dimashq",
-      "raw_mention": "Dimashq",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": " Tauris, 1989). 19.Ibn al-Qalanisi, Dhayl ta'rikh Dimashq, ed. H. Amerdroz (Leiden: E. J.Brill, 1908), 339.",
-      "confidence": 0.0,
-      "source_offset": 46548,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
-      "name": "Amerdroz",
-      "raw_mention": "Amerdroz",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "19.Ibn al-Qalanisi, Dhayl ta'rikh Dimashq, ed. H. Amerdroz (Leiden: E. J.Brill, 1908), 339. 20.",
-      "confidence": 0.0,
-      "source_offset": 46564,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
-      "name": "On the History",
-      "raw_mention": "On the History",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "On the History ofDamascus as the firstreference and on the philo",
-      "confidence": 0.3,
-      "source_offset": null
     },
     {
       "name": "SupplementalVolume",
@@ -6084,48 +6016,6 @@
       "context": " R. Stephen Humphreys, in Encyclopaedia of Islam, SupplementalVolume (Leiden: E. J.Brill, 1981), s.v. \"Dawiyya and Isb",
       "confidence": 0.0,
       "source_offset": 45964,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
-      "name": "Dawiyya",
-      "raw_mention": "Dawiyya",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "plementalVolume (Leiden: E. J.Brill, 1981), s.v. \"Dawiyya and Isbitariyya.\" 21.Usamah ibn-Munqidh, An Arab-",
-      "confidence": 0.0,
-      "source_offset": 46017,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
-      "name": "Isbitariyya",
-      "raw_mention": "Isbitariyya",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "ume (Leiden: E. J.Brill, 1981), s.v. \"Dawiyya and Isbitariyya.\" 21.Usamah ibn-Munqidh, An Arab-Syrian,Gentleman",
-      "confidence": 0.0,
-      "source_offset": 46029,
       "post_medieval_penalty": {
         "applied": true,
         "strong_signals": 1,
@@ -6227,6 +6117,19 @@
       "source_offset": 46396
     },
     {
+      "name": "William",
+      "raw_mention": "William",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "ighthood, 86; Lyons and Jackson, Saladin, 139-41; William, Archbishop ofTyre, A History ofDeedsDone beyondt",
+      "confidence": 0.3,
+      "source_offset": 46422
+    },
+    {
       "name": "Archbishop",
       "raw_mention": "Archbishop",
       "title": "Archbishop",
@@ -6251,6 +6154,19 @@
       "context": "d Jackson, Saladin, 139-41; William, Archbishop ofTyre, A History ofDeedsDone beyondtheSea,trans. EmilyA",
       "confidence": 0.3,
       "source_offset": 46444
+    },
+    {
+      "name": "History",
+      "raw_mention": "History",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "n, Saladin, 139-41; William, Archbishop ofTyre, A History ofDeedsDone beyondtheSea,trans. EmilyAtwater Bab-",
+      "confidence": 0.3,
+      "source_offset": 46452
     },
     {
       "name": "DeedsDone",
@@ -6318,27 +6234,6 @@
       "source_offset": 46647
     },
     {
-      "name": "Rout",
-      "raw_mention": "Rout",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "and, The Crusades: Islamic Perspectives (NewYork: Rout- ledge, 2000), 89-255, with a bibliographyon earl",
-      "confidence": 0.0,
-      "source_offset": 47107,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
       "name": "Gabrielli",
       "raw_mention": "Gabrielli",
       "title": null,
@@ -6365,111 +6260,6 @@
       "source_offset": 47218
     },
     {
-      "name": "Kamilfi",
-      "raw_mention": "Kamilfi",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "rielli, Arab Historians, 124. 31.Ibn al-Athir, Al-Kamilfi al-Tarikh (Beirut: Dar Sader, Dar Beyrouth, 1966)",
-      "confidence": 0.0,
-      "source_offset": 47315,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
-      "name": "Tarikh",
-      "raw_mention": "Tarikh",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "b Historians, 124. 31.Ibn al-Athir, Al-Kamilfi al-Tarikh (Beirut: Dar Sader, Dar Beyrouth, 1966), 11:531;t",
-      "confidence": 0.0,
-      "source_offset": 47326,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
-      "name": "Beirut",
-      "raw_mention": "Beirut",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "ians, 124. 31.Ibn al-Athir, Al-Kamilfi al-Tarikh (Beirut: Dar Sader, Dar Beyrouth, 1966), 11:531;translati",
-      "confidence": 0.0,
-      "source_offset": 47334,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
-      "name": "Dar",
-      "raw_mention": "Dar",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "4. 31.Ibn al-Athir, Al-Kamilfi al-Tarikh (Beirut: Dar Sader, Dar Beyrouth, 1966), 11:531;translation by",
-      "confidence": 0.0,
-      "source_offset": 47342,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
-      "name": "Sader",
-      "raw_mention": "Sader",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "1.Ibn al-Athir, Al-Kamilfi al-Tarikh (Beirut: Dar Sader, Dar Beyrouth, 1966), 11:531;translation by autho",
-      "confidence": 0.0,
-      "source_offset": 47346,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
       "name": "Daftary",
       "raw_mention": "Daftary",
       "title": null,
@@ -6483,48 +6273,6 @@
       "source_offset": 47504
     },
     {
-      "name": "Basic",
-      "raw_mention": "Basic",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": " The Assassins: A Radical Sect in Islam (NewYork: Basic Books, 1968). 34. For a more detailed discussion ",
-      "confidence": 0.0,
-      "source_offset": 47725,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
-      "name": "Books",
-      "raw_mention": "Books",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "ssassins: A Radical Sect in Islam (NewYork: Basic Books, 1968). 34. For a more detailed discussion of al-",
-      "confidence": 0.0,
-      "source_offset": 47731,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
       "name": "TheHorns",
       "raw_mention": "TheHorns",
       "title": null,
@@ -6536,6 +6284,19 @@
       "context": "J.Hamblin, \"Saladin andMuslim MilitaryTheory,\" in TheHorns ofHattin, ed. B. Z. Kedar (London: Variorum; Jeru",
       "confidence": 0.3,
       "source_offset": 47882
+    },
+    {
+      "name": "London",
+      "raw_mention": "London",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "ryTheory,\" in TheHorns ofHattin, ed. B. Z. Kedar (London: Variorum; Jerusalem: Yad Izhak Ben-Zvi and Israe",
+      "confidence": 0.3,
+      "source_offset": 47918
     },
     {
       "name": "Variorum",
@@ -6564,59 +6325,17 @@
       "source_offset": 47947
     },
     {
-      "name": "Izhak",
-      "raw_mention": "Izhak",
+      "name": "Zvi",
+      "raw_mention": "Zvi",
       "title": null,
       "epithet": null,
       "toponym": null,
       "role": null,
       "gender": "unknown",
       "group": false,
-      "context": "ed. B. Z. Kedar (London: Variorum; Jerusalem: Yad Izhak Ben-Zvi and Israel Exploration Society, 1992), 22",
+      "context": "Kedar (London: Variorum; Jerusalem: Yad Izhak Ben-Zvi and Israel Exploration Society, 1992), 228-38. Th",
       "confidence": 0.0,
-      "source_offset": 47951,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
-      "name": "Ben",
-      "raw_mention": "Ben",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": " Z. Kedar (London: Variorum; Jerusalem: Yad Izhak Ben-Zvi and Israel Exploration Society, 1992), 228-38",
-      "confidence": 0.0,
-      "source_offset": 47957,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
-      "name": "Exploration",
-      "raw_mention": "Exploration",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "Variorum; Jerusalem: Yad Izhak Ben-Zvi and Israel Exploration Society, 1992), 228-38. This content downloaded f",
-      "confidence": 0.0,
-      "source_offset": 47976,
+      "source_offset": 47961,
       "post_medieval_penalty": {
         "applied": true,
         "strong_signals": 1,
@@ -6679,27 +6398,6 @@
       "source_offset": 48278
     },
     {
-      "name": "Murabit",
-      "raw_mention": "Murabit",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "hkiratal-Harawiyyafi al-Haylal-Harbiyya,ed. M. al-Murabit (Damascus: Wizarat al-Thaqafah, 1972), 104; trans",
-      "confidence": 0.0,
-      "source_offset": 48297,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
       "name": "Crusadesy",
       "raw_mention": "Crusadesy",
       "title": null,
@@ -6737,27 +6435,6 @@
       "context": "sy 89-255. 39. 'Imad al-Din al-Isfahani, Kitab al-Fath al-qussifi'l-fath al-qudsi> ed. C. Land- berg (Le",
       "confidence": 0.3,
       "source_offset": 48634
-    },
-    {
-      "name": "Subh",
-      "raw_mention": "Subh",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": " ed. C. Land- berg (Leiden: n.p., 1888); ed M. M. Subh (Cairo, 1965), quoted in Hillenbrand, The Crusade",
-      "confidence": 0.0,
-      "source_offset": 48716,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
     },
     {
       "name": "Cairo",
@@ -6812,101 +6489,17 @@
       "source_offset": 48825
     },
     {
-      "name": "Thomine",
-      "raw_mention": "Thomine",
+      "name": "Wasil",
+      "raw_mention": "Wasil",
       "title": null,
       "epithet": null,
       "toponym": null,
       "role": null,
       "gender": "unknown",
       "group": false,
-      "context": "Ali al-Harawi, Kitab al-Ziyarat,,trans. J.Sourdel-Thomine as Guide des lieux depèlerinage (Damascus, 1957),",
+      "context": ", quoted in Hillenbrand, The Crusades,290. 41.Ibn Wasil, Mufarrij al-kurub, ed. J.al-Shayyal (Cairo, 1953",
       "confidence": 0.0,
-      "source_offset": 48833,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
-      "name": "Guide",
-      "raw_mention": "Guide",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "wi, Kitab al-Ziyarat,,trans. J.Sourdel-Thomine as Guide des lieux depèlerinage (Damascus, 1957), quoted i",
-      "confidence": 0.0,
-      "source_offset": 48844,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
-      "name": "Mufarrij",
-      "raw_mention": "Mufarrij",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "d in Hillenbrand, The Crusades,290. 41.Ibn Wasil, Mufarrij al-kurub, ed. J.al-Shayyal (Cairo, 1953~57)> quot",
-      "confidence": 0.0,
-      "source_offset": 48946,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
-      "name": "Shayyal",
-      "raw_mention": "Shayyal",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "es,290. 41.Ibn Wasil, Mufarrij al-kurub, ed. J.al-Shayyal (Cairo, 1953~57)> quoted in Hil- lenbrand, The Cr",
-      "confidence": 0.0,
-      "source_offset": 48974,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
-      "name": "Hil",
-      "raw_mention": "Hil",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "rub, ed. J.al-Shayyal (Cairo, 1953~57)> quoted in Hil- lenbrand, The Crusadesy 291. 42. Abu Shama, Kita",
-      "confidence": 0.0,
-      "source_offset": 49010,
+      "source_offset": 48939,
       "post_medieval_penalty": {
         "applied": true,
         "strong_signals": 1,
@@ -6954,48 +6547,6 @@
       "context": "llenbrand, The Crusadesy151. 44. Ibn al-Athir, Al-Kamilfiyl-tarikhy ed. C. J.Tornberg,12vols. (Leiden and Upp",
       "confidence": 0.3,
       "source_offset": 49227
-    },
-    {
-      "name": "Tornberg",
-      "raw_mention": "Tornberg",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": ". 44. Ibn al-Athir, Al-Kamilfiyl-tarikhy ed. C. J.Tornberg,12vols. (Leiden and Upp- sala, 1851-76), quoted i",
-      "confidence": 0.0,
-      "source_offset": 49254,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
-      "name": "Upp",
-      "raw_mention": "Upp",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "iyl-tarikhy ed. C. J.Tornberg,12vols. (Leiden and Upp- sala, 1851-76), quoted in Hillenbrand, The Crusa",
-      "confidence": 0.0,
-      "source_offset": 49283,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
     },
     {
       "name": "Maqrizi",
@@ -7066,80 +6617,17 @@
       }
     },
     {
-      "name": "Boston",
-      "raw_mention": "Boston",
+      "name": "Paris",
+      "raw_mention": "Paris",
       "title": null,
       "epithet": null,
       "toponym": null,
       "role": null,
       "gender": "unknown",
       "group": false,
-      "context": "R.J.C. Broadhurstas HistoryofAyyubidsand Mamluks (Boston: n.p., 1980); trans. E. Quatremère as Historie de",
+      "context": "ère as Historie des sultans mamlouks de l'Egypte (Paris, 1837-45), quoted in Hillenbrand, The Crusadesy 3",
       "confidence": 0.0,
-      "source_offset": 49468,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
-      "name": "Quatremère",
-      "raw_mention": "Quatremère",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "yubidsand Mamluks (Boston: n.p., 1980); trans. E. Quatremère as Historie des sultans mamlouks de l'Egypte (Par",
-      "confidence": 0.0,
-      "source_offset": 49499,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
-      "name": "Historie",
-      "raw_mention": "Historie",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "uks (Boston: n.p., 1980); trans. E. Quatremère as Historie des sultans mamlouks de l'Egypte (Paris, 1837-45)",
-      "confidence": 0.0,
-      "source_offset": 49513,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
-      "name": "Egypte",
-      "raw_mention": "Egypte",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": " Quatremère as Historie des sultans mamlouks de l'Egypte (Paris, 1837-45), quoted in Hillenbrand, The Crus",
-      "confidence": 0.0,
-      "source_offset": 49548,
+      "source_offset": 49556,
       "post_medieval_penalty": {
         "applied": true,
         "strong_signals": 1,
@@ -7434,111 +6922,6 @@
       "source_offset": 50494
     },
     {
-      "name": "Sultanate",
-      "raw_mention": "Sultanate",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "win, TheMiddleEastintheMiddleAges: TheEarlyMamluk Sultanate, 1250-1382 (London: Croon Helm, 1986). 55.David M",
-      "confidence": 0.0,
-      "source_offset": 50509,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
-      "name": "Croon",
-      "raw_mention": "Croon",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "ges: TheEarlyMamluk Sultanate, 1250-1382 (London: Croon Helm, 1986). 55.David Morgan, TheMongols (Oxford:",
-      "confidence": 0.0,
-      "source_offset": 50539,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
-      "name": "Helm",
-      "raw_mention": "Helm",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "heEarlyMamluk Sultanate, 1250-1382 (London: Croon Helm, 1986). 55.David Morgan, TheMongols (Oxford: Basi",
-      "confidence": 0.0,
-      "source_offset": 50545,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
-      "name": "David",
-      "raw_mention": "David",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "ltanate, 1250-1382 (London: Croon Helm, 1986). 55.David Morgan, TheMongols (Oxford: Basil Blackwell, 1990",
-      "confidence": 0.0,
-      "source_offset": 50561,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
-      "name": "Morgan",
-      "raw_mention": "Morgan",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "e, 1250-1382 (London: Croon Helm, 1986). 55.David Morgan, TheMongols (Oxford: Basil Blackwell, 1990). 56. ",
-      "confidence": 0.0,
-      "source_offset": 50567,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
       "name": "TheMongols",
       "raw_mention": "TheMongols",
       "title": null,
@@ -7560,38 +6943,17 @@
       }
     },
     {
-      "name": "Basil",
-      "raw_mention": "Basil",
+      "name": "Oxford",
+      "raw_mention": "Oxford",
       "title": null,
       "epithet": null,
       "toponym": null,
       "role": null,
       "gender": "unknown",
       "group": false,
-      "context": "Helm, 1986). 55.David Morgan, TheMongols (Oxford: Basil Blackwell, 1990). 56. Ontheseissues, seeReuvenAmi",
+      "context": ": Croon Helm, 1986). 55.David Morgan, TheMongols (Oxford: Basil Blackwell, 1990). 56. Ontheseissues, seeRe",
       "confidence": 0.0,
-      "source_offset": 50595,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
-      "name": "Blackwell",
-      "raw_mention": "Blackwell",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "1986). 55.David Morgan, TheMongols (Oxford: Basil Blackwell, 1990). 56. Ontheseissues, seeReuvenAmitai-Preiss",
-      "confidence": 0.0,
-      "source_offset": 50601,
+      "source_offset": 50587,
       "post_medieval_penalty": {
         "applied": true,
         "strong_signals": 1,
@@ -7634,27 +6996,6 @@
       "context": "rd: Basil Blackwell, 1990). 56. Ontheseissues, seeReuvenAmitai-Preiss, MongolsandMamluks: 1heMamluk- Ilkhanid War",
       "confidence": 0.0,
       "source_offset": 50641,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
-      "name": "Preiss",
-      "raw_mention": "Preiss",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "ckwell, 1990). 56. Ontheseissues, seeReuvenAmitai-Preiss, MongolsandMamluks: 1heMamluk- Ilkhanid War,1260-",
-      "confidence": 0.0,
-      "source_offset": 50654,
       "post_medieval_penalty": {
         "applied": true,
         "strong_signals": 1,
@@ -7754,27 +7095,6 @@
       "source_offset": 50830
     },
     {
-      "name": "Centuryytrans",
-      "raw_mention": "Centuryytrans",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "pt: Sultan BaybarsIandtheNearEastintheThir- teenthCenturyytrans. P. M. Holt (NewYork: Longman, 1992). 58. Some of",
-      "confidence": 0.0,
-      "source_offset": 50842,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
       "name": "Holt",
       "raw_mention": "Holt",
       "title": null,
@@ -7846,19 +7166,6 @@
       "context": "undon the Franciscans in theHolyLand, seeSabinoDe San- doli, The Peaceful Liberation oftheHoly Places i",
       "confidence": 0.3,
       "source_offset": 50702
-    },
-    {
-      "name": "Peaceful",
-      "raw_mention": "Peaceful",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "iscans in theHolyLand, seeSabinoDe San- doli, The Peaceful Liberation oftheHoly Places intheFourteenth Centu",
-      "confidence": 0.3,
-      "source_offset": 50717
     },
     {
       "name": "Liberation",
@@ -7965,90 +7272,6 @@
       "source_offset": 50885
     },
     {
-      "name": "Center of Christian",
-      "raw_mention": "Center of Christian",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "gh Official Negotiations in1333(Cairo: Franciscan Center of Christian Oriental Studies, 1990); and, more generally, Joh",
-      "confidence": 0.0,
-      "source_offset": 50923,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
-      "name": "Oriental",
-      "raw_mention": "Oriental",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "ions in1333(Cairo: Franciscan Center of Christian Oriental Studies, 1990); and, more generally, John Moorman",
-      "confidence": 0.0,
-      "source_offset": 50943,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
-      "name": "Moorman",
-      "raw_mention": "Moorman",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "riental Studies, 1990); and, more generally, John Moorman, A History oftheFranciscan Order from Its Origins",
-      "confidence": 0.0,
-      "source_offset": 50994,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
-      "name": "Hoade",
-      "raw_mention": "Hoade",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "umentorum Terrae Sanctae (1724-1744), trans.  E.  Hoade (Jerusalem: Franciscan PrintingPress, 1962), quot",
-      "confidence": 0.0,
-      "source_offset": 51182,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
       "name": "PrintingPress",
       "raw_mention": "PrintingPress",
       "title": null,
@@ -8060,27 +7283,6 @@
       "context": "4-1744), trans.  E.  Hoade (Jerusalem: Franciscan PrintingPress, 1962), quoted in F.  E.  Peters, Jerusalem: TheH",
       "confidence": 0.0,
       "source_offset": 51211,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
-      "name": "Peters",
-      "raw_mention": "Peters",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "ranciscan PrintingPress, 1962), quoted in F.  E.  Peters, Jerusalem: TheHoly CityintheEyes ofChroniclers,V",
-      "confidence": 0.0,
-      "source_offset": 51251,
       "post_medieval_penalty": {
         "applied": true,
         "strong_signals": 1,
@@ -8198,6 +7400,19 @@
       }
     },
     {
+      "name": "Peter",
+      "raw_mention": "Peter",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "m,422; Horn, quoted in Peters, Jerusalem,370.  71.Peter W.  Edbury, The Kingdom ofCyprus and theCrusades,",
+      "confidence": 0.3,
+      "source_offset": 51772
+    },
+    {
       "name": "Edbury",
       "raw_mention": "Edbury",
       "title": null,
@@ -8237,38 +7452,17 @@
       "source_offset": 51804
     },
     {
-      "name": "Houghton",
-      "raw_mention": "Houghton",
+      "name": "York",
+      "raw_mention": "York",
       "title": null,
       "epithet": null,
       "toponym": null,
       "role": null,
       "gender": "unknown",
       "group": false,
-      "context": "Sword: The Church andtheJews,a History (New York: Houghton Mifflin, 2001).  73.  Barber, New Knighthood, 280",
+      "context": "ine's Sword: The Church andtheJews,a History (New York: Houghton Mifflin, 2001).  73.  Barber, New Knigh",
       "confidence": 0.0,
-      "source_offset": 52063,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
-      "name": "Mifflin",
-      "raw_mention": "Mifflin",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "e Church andtheJews,a History (New York: Houghton Mifflin, 2001).  73.  Barber, New Knighthood, 280-313.  7",
-      "confidence": 0.0,
-      "source_offset": 52072,
+      "source_offset": 52057,
       "post_medieval_penalty": {
         "applied": true,
         "strong_signals": 1,
@@ -8344,27 +7538,6 @@
       "source_offset": 52558
     },
     {
-      "name": "Rhodes",
-      "raw_mention": "Rhodes",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "nemies ofIslam, culminating in the great sieges ofRhodes in 1480 and 1522and of Malta in 1565.For a genera",
-      "confidence": 0.15,
-      "source_offset": 52685,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 0,
-        "weak_signals": 1,
-        "reasons": [
-          "post_1500_date_context"
-        ]
-      }
-    },
-    {
       "name": "End of Days",
       "raw_mention": "End of Days",
       "title": null,
@@ -8389,27 +7562,6 @@
       "context": " 51-72.  75.  Gershom Gorenberg, The End of Days: Fundamentalism and theStruggle for theTemple Mount (New York: Fr",
       "confidence": 0.3,
       "source_offset": 52868
-    },
-    {
-      "name": "Oil",
-      "raw_mention": "Oil",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "ss, 2000).  Khayber, by Hashim al-Tawil (1952-).  Oil and mixed media on canvas, 36\" x 60\", 1994.  Khay",
-      "confidence": 0.0,
-      "source_offset": 52988,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
     },
     {
       "name": "Thetextofthe",
@@ -8472,31 +7624,7 @@
       "status": "low"
     },
     {
-      "person": "Fri",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR121",
-          "outremer_name": "Frizo of Glabbeek",
-          "type": "person",
-          "score": 0.75,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'fri' ↔ 'Frizo of Glabbeek'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR121",
-        "outremer_name": "Frizo of Glabbeek",
-        "type": "person",
-        "score": 0.75,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'fri' ↔ 'Frizo of Glabbeek'"
-      },
-      "confidence": 0.75,
-      "status": "medium"
-    },
-    {
-      "person": "Feb",
+      "person": "This",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -8510,6 +7638,30 @@
       "top_candidate": null,
       "confidence": 0.0,
       "status": "no_match"
+    },
+    {
+      "person": "Saladin",
+      "person_group": false,
+      "candidates": [
+        {
+          "outremer_id": "AUTH:CR3",
+          "outremer_name": "Baldwin of Vern d'Anjou",
+          "type": "person",
+          "score": 0.7143,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'saladin' ↔ 'Baldwin of Vern d'Anjou'"
+        }
+      ],
+      "top_candidate": {
+        "outremer_id": "AUTH:CR3",
+        "outremer_name": "Baldwin of Vern d'Anjou",
+        "type": "person",
+        "score": 0.7143,
+        "match_type": "fuzzy",
+        "evidence": "fuzzy match: 'saladin' ↔ 'Baldwin of Vern d'Anjou'"
+      },
+      "confidence": 0.7143,
+      "status": "low"
     },
     {
       "person": "Egypt",
@@ -8662,6 +7814,14 @@
       },
       "confidence": 0.7273,
       "status": "low"
+    },
+    {
+      "person": "Templars",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
     },
     {
       "person": "Hospitallers",
@@ -9128,6 +8288,14 @@
       "status": "no_match"
     },
     {
+      "person": "Muslims",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
       "person": "Jewsand the",
       "person_group": false,
       "candidates": [],
@@ -9230,6 +8398,46 @@
       "top_candidate": null,
       "confidence": 0.0,
       "status": "no_match"
+    },
+    {
+      "person": "There",
+      "person_group": false,
+      "candidates": [
+        {
+          "outremer_id": "AUTH:CR16",
+          "outremer_name": "Thierry of Flanders",
+          "type": "person",
+          "score": 0.6667,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'there' ↔ 'Thierry of Flanders'"
+        },
+        {
+          "outremer_id": "AUTH:CR12",
+          "outremer_name": "Henry I of Troyes, count of Champagne",
+          "type": "person",
+          "score": 0.6,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'there' ↔ 'Henry I of Troyes, count of Champagne'"
+        },
+        {
+          "outremer_id": "AUTH:CR26",
+          "outremer_name": "Henry the Lion",
+          "type": "person",
+          "score": 0.6,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'there' ↔ 'Henry the Lion'"
+        }
+      ],
+      "top_candidate": {
+        "outremer_id": "AUTH:CR16",
+        "outremer_name": "Thierry of Flanders",
+        "type": "person",
+        "score": 0.6667,
+        "match_type": "fuzzy",
+        "evidence": "fuzzy match: 'there' ↔ 'Thierry of Flanders'"
+      },
+      "confidence": 0.6667,
+      "status": "low"
     },
     {
       "person": "They",
@@ -9432,6 +8640,38 @@
       "status": "no_match"
     },
     {
+      "person": "First",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "Orders",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "Crusades",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "Fig",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
       "person": "Mount",
       "person_group": false,
       "candidates": [],
@@ -9600,6 +8840,46 @@
       "status": "no_match"
     },
     {
+      "person": "Islam",
+      "person_group": false,
+      "candidates": [
+        {
+          "outremer_id": "AUTH:CR11",
+          "outremer_name": "William the Huntsman",
+          "type": "person",
+          "score": 0.6667,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'islam' ↔ 'William the Huntsman'"
+        },
+        {
+          "outremer_id": "AUTH:CR32",
+          "outremer_name": "William of Tortosa",
+          "type": "person",
+          "score": 0.6667,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'islam' ↔ 'William of Tortosa'"
+        },
+        {
+          "outremer_id": "AUTH:CR44",
+          "outremer_name": "William of Orkney",
+          "type": "person",
+          "score": 0.6667,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'islam' ↔ 'William of Orkney'"
+        }
+      ],
+      "top_candidate": {
+        "outremer_id": "AUTH:CR11",
+        "outremer_name": "William the Huntsman",
+        "type": "person",
+        "score": 0.6667,
+        "match_type": "fuzzy",
+        "evidence": "fuzzy match: 'islam' ↔ 'William the Huntsman'"
+      },
+      "confidence": 0.6667,
+      "status": "low"
+    },
+    {
       "person": "Umar",
       "person_group": false,
       "candidates": [],
@@ -9713,6 +8993,14 @@
     },
     {
       "person": "Under the",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "Christian",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -10584,7 +9872,23 @@
       "status": "no_match"
     },
     {
+      "person": "knights",
+      "person_group": true,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
       "person": "Usamah the",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "All",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -10670,6 +9974,22 @@
       },
       "confidence": 0.6,
       "status": "low"
+    },
+    {
+      "person": "Military",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "Latin",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
     },
     {
       "person": "But the Orders",
@@ -10880,6 +10200,30 @@
       "status": "low"
     },
     {
+      "person": "Baldwin",
+      "person_group": false,
+      "candidates": [
+        {
+          "outremer_id": "AUTH:CR3",
+          "outremer_name": "Baldwin of Vern d'Anjou",
+          "type": "person",
+          "score": 1.0,
+          "match_type": "exact",
+          "evidence": "exact match: 'baldwin' ↔ 'Baldwin of Vern d'Anjou'"
+        }
+      ],
+      "top_candidate": {
+        "outremer_id": "AUTH:CR3",
+        "outremer_name": "Baldwin of Vern d'Anjou",
+        "type": "person",
+        "score": 1.0,
+        "match_type": "exact",
+        "evidence": "exact match: 'baldwin' ↔ 'Baldwin of Vern d'Anjou'"
+      },
+      "confidence": 1.0,
+      "status": "high"
+    },
+    {
       "person": "Ibelin",
       "person_group": false,
       "candidates": [
@@ -11073,6 +10417,14 @@
     },
     {
       "person": "Whereas",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "Crusader",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -11552,6 +10904,38 @@
       "status": "no_match"
     },
     {
+      "person": "War",
+      "person_group": false,
+      "candidates": [
+        {
+          "outremer_id": "AUTH:CR17",
+          "outremer_name": "Walter of Hereford",
+          "type": "person",
+          "score": 0.6667,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'war' ↔ 'Walter of Hereford'"
+        },
+        {
+          "outremer_id": "AUTH:CR110",
+          "outremer_name": "Walter of St. Omer",
+          "type": "person",
+          "score": 0.6667,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'war' ↔ 'Walter of St. Omer'"
+        }
+      ],
+      "top_candidate": {
+        "outremer_id": "AUTH:CR17",
+        "outremer_name": "Walter of Hereford",
+        "type": "person",
+        "score": 0.6667,
+        "match_type": "fuzzy",
+        "evidence": "fuzzy match: 'war' ↔ 'Walter of Hereford'"
+      },
+      "confidence": 0.6667,
+      "status": "low"
+    },
+    {
       "person": "Sultan",
       "person_group": false,
       "candidates": [
@@ -12000,6 +11384,14 @@
       "status": "no_match"
     },
     {
+      "person": "His",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
       "person": "HolyHouse",
       "person_group": false,
       "candidates": [],
@@ -12384,6 +11776,14 @@
       "status": "no_match"
     },
     {
+      "person": "Palestine",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
       "person": "TheMamluksandthe",
       "person_group": false,
       "candidates": [],
@@ -12433,22 +11833,6 @@
     },
     {
       "person": "SalihofEgyptin",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Ottoman",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Founded",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -13616,6 +13000,14 @@
       "status": "no_match"
     },
     {
+      "person": "West",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
       "person": "Tourism",
       "person_group": false,
       "candidates": [
@@ -13952,6 +13344,14 @@
       "status": "no_match"
     },
     {
+      "person": "University",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
       "person": "Univer",
       "person_group": false,
       "candidates": [],
@@ -13984,6 +13384,46 @@
       "status": "no_match"
     },
     {
+      "person": "Hill",
+      "person_group": false,
+      "candidates": [
+        {
+          "outremer_id": "AUTH:CR27",
+          "outremer_name": "Philip of Flanders",
+          "type": "person",
+          "score": 0.6,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'hill' ↔ 'Philip of Flanders'"
+        },
+        {
+          "outremer_id": "AUTH:CR52",
+          "outremer_name": "Philip of Sézanne",
+          "type": "person",
+          "score": 0.6,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'hill' ↔ 'Philip of Sézanne'"
+        },
+        {
+          "outremer_id": "AUTH:CR63",
+          "outremer_name": "Philip of Dreux, bishop of Beavais",
+          "type": "person",
+          "score": 0.6,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'hill' ↔ 'Philip of Dreux, bishop of Beavais'"
+        }
+      ],
+      "top_candidate": {
+        "outremer_id": "AUTH:CR27",
+        "outremer_name": "Philip of Flanders",
+        "type": "person",
+        "score": 0.6,
+        "match_type": "fuzzy",
+        "evidence": "fuzzy match: 'hill' ↔ 'Philip of Flanders'"
+      },
+      "confidence": 0.6,
+      "status": "low"
+    },
+    {
       "person": "Monastic",
       "person_group": false,
       "candidates": [],
@@ -14000,38 +13440,6 @@
       "status": "no_match"
     },
     {
-      "person": "Library",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR4",
-          "outremer_name": "Berlay II of Montreuil",
-          "type": "person",
-          "score": 0.6154,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'library' ↔ 'Berlay II of Montreuil'"
-        },
-        {
-          "outremer_id": "AUTH:CR5",
-          "outremer_name": "Berlay III of Montreuil",
-          "type": "person",
-          "score": 0.6154,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'library' ↔ 'Berlay III of Montreuil'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR4",
-        "outremer_name": "Berlay II of Montreuil",
-        "type": "person",
-        "score": 0.6154,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'library' ↔ 'Berlay II of Montreuil'"
-      },
-      "confidence": 0.6154,
-      "status": "low"
-    },
-    {
       "person": "Pilgrims",
       "person_group": false,
       "candidates": [],
@@ -14046,6 +13454,38 @@
       "top_candidate": null,
       "confidence": 0.0,
       "status": "no_match"
+    },
+    {
+      "person": "Reynald de Chatillon",
+      "person_group": false,
+      "candidates": [
+        {
+          "outremer_id": "AUTH:CR19",
+          "outremer_name": "Chalo the Red",
+          "type": "person",
+          "score": 0.6923,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'reynald de chatillon' ↔ 'Chalo the Red'"
+        },
+        {
+          "outremer_id": "AUTH:CR10",
+          "outremer_name": "Rainald of Martigné",
+          "type": "person",
+          "score": 0.6111,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'reynald de chatillon' ↔ 'Rainald of Martigné'"
+        }
+      ],
+      "top_candidate": {
+        "outremer_id": "AUTH:CR19",
+        "outremer_name": "Chalo the Red",
+        "type": "person",
+        "score": 0.6923,
+        "match_type": "fuzzy",
+        "evidence": "fuzzy match: 'reynald de chatillon' ↔ 'Chalo the Red'"
+      },
+      "confidence": 0.6923,
+      "status": "low"
     },
     {
       "person": "Politics",
@@ -14065,6 +13505,14 @@
     },
     {
       "person": "NewYork",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "Longman",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -14136,14 +13584,6 @@
       "status": "no_match"
     },
     {
-      "person": "Order",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
       "person": "Alexander",
       "person_group": false,
       "candidates": [],
@@ -14185,70 +13625,6 @@
     },
     {
       "person": "Wensinck",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Bosworth",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Leiden",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Brill",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Gibb",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Kramers",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR71",
-          "outremer_name": "James of Chacenay",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'kramers' ↔ 'James of Chacenay'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR71",
-        "outremer_name": "James of Chacenay",
-        "type": "person",
-        "score": 0.6667,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'kramers' ↔ 'James of Chacenay'"
-      },
-      "confidence": 0.6667,
-      "status": "low"
-    },
-    {
-      "person": "Rahbaniya",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -14424,14 +13800,6 @@
       "status": "no_match"
     },
     {
-      "person": "Cass",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
       "person": "Dictionary",
       "person_group": false,
       "candidates": [],
@@ -14552,38 +13920,6 @@
       "status": "no_match"
     },
     {
-      "person": "Eighth",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Tenth",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Cen",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Routledge",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
       "person": "Deserts",
       "person_group": false,
       "candidates": [
@@ -14608,95 +13944,15 @@
       "status": "low"
     },
     {
-      "person": "Qalanisi",
+      "person": "Some of",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
       "confidence": 0.0,
       "status": "no_match"
-    },
-    {
-      "person": "Dhayl",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR19",
-          "outremer_name": "Chalo the Red",
-          "type": "person",
-          "score": 0.6,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'dhayl' ↔ 'Chalo the Red'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR19",
-        "outremer_name": "Chalo the Red",
-        "type": "person",
-        "score": 0.6,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'dhayl' ↔ 'Chalo the Red'"
-      },
-      "confidence": 0.6,
-      "status": "low"
-    },
-    {
-      "person": "Dimashq",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Amerdroz",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "On the History",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR26",
-          "outremer_name": "Henry the Lion",
-          "type": "person",
-          "score": 0.7143,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'on the history' ↔ 'Henry the Lion'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR26",
-        "outremer_name": "Henry the Lion",
-        "type": "person",
-        "score": 0.7143,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'on the history' ↔ 'Henry the Lion'"
-      },
-      "confidence": 0.7143,
-      "status": "low"
     },
     {
       "person": "SupplementalVolume",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Dawiyya",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Isbitariyya",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -14776,6 +14032,46 @@
       "status": "no_match"
     },
     {
+      "person": "William",
+      "person_group": false,
+      "candidates": [
+        {
+          "outremer_id": "AUTH:CR11",
+          "outremer_name": "William the Huntsman",
+          "type": "person",
+          "score": 1.0,
+          "match_type": "exact",
+          "evidence": "exact match: 'william' ↔ 'William the Huntsman'"
+        },
+        {
+          "outremer_id": "AUTH:CR32",
+          "outremer_name": "William of Tortosa",
+          "type": "person",
+          "score": 1.0,
+          "match_type": "exact",
+          "evidence": "exact match: 'william' ↔ 'William of Tortosa'"
+        },
+        {
+          "outremer_id": "AUTH:CR44",
+          "outremer_name": "William of Orkney",
+          "type": "person",
+          "score": 1.0,
+          "match_type": "exact",
+          "evidence": "exact match: 'william' ↔ 'William of Orkney'"
+        }
+      ],
+      "top_candidate": {
+        "outremer_id": "AUTH:CR11",
+        "outremer_name": "William the Huntsman",
+        "type": "person",
+        "score": 1.0,
+        "match_type": "exact",
+        "evidence": "exact match: 'william' ↔ 'William the Huntsman'"
+      },
+      "confidence": 1.0,
+      "status": "high"
+    },
+    {
       "person": "Archbishop",
       "person_group": false,
       "candidates": [],
@@ -14785,6 +14081,14 @@
     },
     {
       "person": "Tyre",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "History",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -14864,46 +14168,6 @@
       "status": "low"
     },
     {
-      "person": "Rout",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR56",
-          "outremer_name": "Robert of Milly",
-          "type": "person",
-          "score": 0.6,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'rout' ↔ 'Robert of Milly'"
-        },
-        {
-          "outremer_id": "AUTH:CR100",
-          "outremer_name": "Robert of Buzançais",
-          "type": "person",
-          "score": 0.6,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'rout' ↔ 'Robert of Buzançais'"
-        },
-        {
-          "outremer_id": "AUTH:CR88",
-          "outremer_name": "Robert V of Béthune",
-          "type": "person",
-          "score": 0.6,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'rout' ↔ 'Robert V of Béthune'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR56",
-        "outremer_name": "Robert of Milly",
-        "type": "person",
-        "score": 0.6,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'rout' ↔ 'Robert of Milly'"
-      },
-      "confidence": 0.6,
-      "status": "low"
-    },
-    {
       "person": "Gabrielli",
       "person_group": false,
       "candidates": [],
@@ -14920,118 +14184,6 @@
       "status": "no_match"
     },
     {
-      "person": "Kamilfi",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Tarikh",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Beirut",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR56",
-          "outremer_name": "Robert of Milly",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'beirut' ↔ 'Robert of Milly'"
-        },
-        {
-          "outremer_id": "AUTH:CR100",
-          "outremer_name": "Robert of Buzançais",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'beirut' ↔ 'Robert of Buzançais'"
-        },
-        {
-          "outremer_id": "AUTH:CR88",
-          "outremer_name": "Robert V of Béthune",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'beirut' ↔ 'Robert V of Béthune'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR56",
-        "outremer_name": "Robert of Milly",
-        "type": "person",
-        "score": 0.6667,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'beirut' ↔ 'Robert of Milly'"
-      },
-      "confidence": 0.6667,
-      "status": "low"
-    },
-    {
-      "person": "Dar",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR91",
-          "outremer_name": "Adhémar V of Limoges",
-          "type": "person",
-          "score": 0.6,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'dar' ↔ 'Adhémar V of Limoges'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR91",
-        "outremer_name": "Adhémar V of Limoges",
-        "type": "person",
-        "score": 0.6,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'dar' ↔ 'Adhémar V of Limoges'"
-      },
-      "confidence": 0.6,
-      "status": "low"
-    },
-    {
-      "person": "Sader",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR91",
-          "outremer_name": "Adhémar V of Limoges",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'sader' ↔ 'Adhémar V of Limoges'"
-        },
-        {
-          "outremer_id": "AUTH:CR109",
-          "outremer_name": "Audebert IV of La Marche",
-          "type": "person",
-          "score": 0.6154,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'sader' ↔ 'Audebert IV of La Marche'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR91",
-        "outremer_name": "Adhémar V of Limoges",
-        "type": "person",
-        "score": 0.6667,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'sader' ↔ 'Adhémar V of Limoges'"
-      },
-      "confidence": 0.6667,
-      "status": "low"
-    },
-    {
       "person": "Daftary",
       "person_group": false,
       "candidates": [],
@@ -15040,31 +14192,7 @@
       "status": "no_match"
     },
     {
-      "person": "Basic",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR72",
-          "outremer_name": "Anseric II of Chacenay",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'basic' ↔ 'Anseric II of Chacenay'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR72",
-        "outremer_name": "Anseric II of Chacenay",
-        "type": "person",
-        "score": 0.6667,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'basic' ↔ 'Anseric II of Chacenay'"
-      },
-      "confidence": 0.6667,
-      "status": "low"
-    },
-    {
-      "person": "Books",
+      "person": "TheHorns",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -15072,7 +14200,7 @@
       "status": "no_match"
     },
     {
-      "person": "TheHorns",
+      "person": "London",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -15096,39 +14224,7 @@
       "status": "no_match"
     },
     {
-      "person": "Izhak",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Ben",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR183",
-          "outremer_name": "Bernard of Dorat",
-          "type": "person",
-          "score": 0.6,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'ben' ↔ 'Bernard of Dorat'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR183",
-        "outremer_name": "Bernard of Dorat",
-        "type": "person",
-        "score": 0.6,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'ben' ↔ 'Bernard of Dorat'"
-      },
-      "confidence": 0.6,
-      "status": "low"
-    },
-    {
-      "person": "Exploration",
+      "person": "Zvi",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -15168,14 +14264,6 @@
       "status": "no_match"
     },
     {
-      "person": "Murabit",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
       "person": "Crusadesy",
       "person_group": false,
       "candidates": [],
@@ -15193,14 +14281,6 @@
     },
     {
       "person": "Fath",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Subh",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -15280,76 +14360,12 @@
       "status": "no_match"
     },
     {
-      "person": "Thomine",
+      "person": "Wasil",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
       "confidence": 0.0,
       "status": "no_match"
-    },
-    {
-      "person": "Guide",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Mufarrij",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Shayyal",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Hil",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR27",
-          "outremer_name": "Philip of Flanders",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'hil' ↔ 'Philip of Flanders'"
-        },
-        {
-          "outremer_id": "AUTH:CR52",
-          "outremer_name": "Philip of Sézanne",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'hil' ↔ 'Philip of Sézanne'"
-        },
-        {
-          "outremer_id": "AUTH:CR63",
-          "outremer_name": "Philip of Dreux, bishop of Beavais",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'hil' ↔ 'Philip of Dreux, bishop of Beavais'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR27",
-        "outremer_name": "Philip of Flanders",
-        "type": "person",
-        "score": 0.6667,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'hil' ↔ 'Philip of Flanders'"
-      },
-      "confidence": 0.6667,
-      "status": "low"
     },
     {
       "person": "Shama",
@@ -15392,22 +14408,6 @@
       "status": "no_match"
     },
     {
-      "person": "Tornberg",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Upp",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
       "person": "Maqrizi",
       "person_group": false,
       "candidates": [],
@@ -15440,31 +14440,7 @@
       "status": "no_match"
     },
     {
-      "person": "Boston",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Quatremère",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Historie",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Egypte",
+      "person": "Paris",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -15728,46 +14704,6 @@
       "status": "low"
     },
     {
-      "person": "Sultanate",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Croon",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Helm",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "David",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Morgan",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
       "person": "TheMongols",
       "person_group": false,
       "candidates": [],
@@ -15776,15 +14712,7 @@
       "status": "no_match"
     },
     {
-      "person": "Basil",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Blackwell",
+      "person": "Oxford",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -15801,14 +14729,6 @@
     },
     {
       "person": "ReuvenAmitai-",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Preiss",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -15888,30 +14808,6 @@
       "status": "low"
     },
     {
-      "person": "Centuryytrans",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR25",
-          "outremer_name": "Enguerran II of Coucy",
-          "type": "person",
-          "score": 0.6364,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'centuryytrans' ↔ 'Enguerran II of Coucy'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR25",
-        "outremer_name": "Enguerran II of Coucy",
-        "type": "person",
-        "score": 0.6364,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'centuryytrans' ↔ 'Enguerran II of Coucy'"
-      },
-      "confidence": 0.6364,
-      "status": "low"
-    },
-    {
       "person": "Holt",
       "person_group": false,
       "candidates": [],
@@ -15945,14 +14841,6 @@
     },
     {
       "person": "San",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Peaceful",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -16080,116 +14968,12 @@
       "status": "no_match"
     },
     {
-      "person": "Center of Christian",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Oriental",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR10",
-          "outremer_name": "Rainald of Martigné",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'oriental' ↔ 'Rainald of Martigné'"
-        },
-        {
-          "outremer_id": "AUTH:CR43",
-          "outremer_name": "Rainald of St Valéry",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'oriental' ↔ 'Rainald of St Valéry'"
-        },
-        {
-          "outremer_id": "AUTH:CR97",
-          "outremer_name": "Rainald the Proud",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'oriental' ↔ 'Rainald the Proud'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR10",
-        "outremer_name": "Rainald of Martigné",
-        "type": "person",
-        "score": 0.6667,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'oriental' ↔ 'Rainald of Martigné'"
-      },
-      "confidence": 0.6667,
-      "status": "low"
-    },
-    {
-      "person": "Moorman",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Hoade",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
       "person": "PrintingPress",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
       "confidence": 0.0,
       "status": "no_match"
-    },
-    {
-      "person": "Peters",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR53",
-          "outremer_name": "Peter of Langres",
-          "type": "person",
-          "score": 0.9091,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'peters' ↔ 'Peter of Langres'"
-        },
-        {
-          "outremer_id": "AUTH:CR62",
-          "outremer_name": "Peter I of Courtenay",
-          "type": "person",
-          "score": 0.9091,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'peters' ↔ 'Peter I of Courtenay'"
-        },
-        {
-          "outremer_id": "AUTH:CR77",
-          "outremer_name": "Jon Petersson",
-          "type": "person",
-          "score": 0.6316,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'peters' ↔ 'Jon Petersson'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR53",
-        "outremer_name": "Peter of Langres",
-        "type": "person",
-        "score": 0.9091,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'peters' ↔ 'Peter of Langres'"
-      },
-      "confidence": 0.9091,
-      "status": "high"
     },
     {
       "person": "TheHoly",
@@ -16272,6 +15056,38 @@
       "status": "no_match"
     },
     {
+      "person": "Peter",
+      "person_group": false,
+      "candidates": [
+        {
+          "outremer_id": "AUTH:CR53",
+          "outremer_name": "Peter of Langres",
+          "type": "person",
+          "score": 1.0,
+          "match_type": "exact",
+          "evidence": "exact match: 'peter' ↔ 'Peter of Langres'"
+        },
+        {
+          "outremer_id": "AUTH:CR62",
+          "outremer_name": "Peter I of Courtenay",
+          "type": "person",
+          "score": 1.0,
+          "match_type": "exact",
+          "evidence": "exact match: 'peter' ↔ 'Peter I of Courtenay'"
+        }
+      ],
+      "top_candidate": {
+        "outremer_id": "AUTH:CR53",
+        "outremer_name": "Peter of Langres",
+        "type": "person",
+        "score": 1.0,
+        "match_type": "exact",
+        "evidence": "exact match: 'peter' ↔ 'Peter of Langres'"
+      },
+      "confidence": 1.0,
+      "status": "high"
+    },
+    {
       "person": "Edbury",
       "person_group": false,
       "candidates": [],
@@ -16296,47 +15112,7 @@
       "status": "no_match"
     },
     {
-      "person": "Houghton",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR13",
-          "outremer_name": "Hugh of Troyes",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'houghton' ↔ 'Hugh of Troyes'"
-        },
-        {
-          "outremer_id": "AUTH:CR18",
-          "outremer_name": "Hugh of Chaumont-sur-Loire",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'houghton' ↔ 'Hugh of Chaumont-sur-Loire'"
-        },
-        {
-          "outremer_id": "AUTH:CR21",
-          "outremer_name": "Hugh III of Le Puisset",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'houghton' ↔ 'Hugh III of Le Puisset'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR13",
-        "outremer_name": "Hugh of Troyes",
-        "type": "person",
-        "score": 0.6667,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'houghton' ↔ 'Hugh of Troyes'"
-      },
-      "confidence": 0.6667,
-      "status": "low"
-    },
-    {
-      "person": "Mifflin",
+      "person": "York",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -16384,14 +15160,6 @@
       "status": "no_match"
     },
     {
-      "person": "Rhodes",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
       "person": "End of Days",
       "person_group": false,
       "candidates": [],
@@ -16401,14 +15169,6 @@
     },
     {
       "person": "Fundamentalism",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Oil",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -16464,20 +15224,21 @@
   },
   "language_hint": null,
   "quality": {
-    "filtered_problem_entities": 462,
+    "filtered_problem_entities": 430,
     "feedback_store": "data/entity_feedback.json",
     "noise": {
-      "extracted_total": 1053,
-      "kept": 591,
-      "filtered": 462,
+      "extracted_total": 989,
+      "kept": 559,
+      "filtered": 430,
       "filtered_by_reason": {
-        "known_bad_entity": 255,
-        "bibliographic_noise": 139,
-        "modern_scholar": 62,
-        "post_medieval": 6
+        "bibliographic_noise": 244,
+        "known_bad_entity": 94,
+        "modern_scholar": 83,
+        "common_word": 2,
+        "post_medieval": 7
       },
-      "low_confidence_kept": 591,
-      "noise_share": 0.4387
+      "low_confidence_kept": 559,
+      "noise_share": 0.4348
     }
   }
 }
