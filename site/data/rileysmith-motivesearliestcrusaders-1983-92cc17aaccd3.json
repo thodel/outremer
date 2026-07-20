@@ -97,19 +97,6 @@
       "source_offset": 1515
     },
     {
-      "name": "Some",
-      "raw_mention": "Some",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "t people give different reasons for this journey. Some say that in all   pilgrims the desire for it has ",
-      "confidence": 0.3,
-      "source_offset": 1657
-    },
-    {
       "name": "God",
       "raw_mention": "God",
       "title": null,
@@ -188,19 +175,6 @@
       "source_offset": 1949
     },
     {
-      "name": "First",
-      "raw_mention": "First",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "bate   continues today and every historian of the First Crusade has sooner or   later to face up to the q",
-      "confidence": 0.3,
-      "source_offset": 2212
-    },
-    {
       "name": "Most",
       "raw_mention": "Most",
       "title": null,
@@ -212,19 +186,6 @@
       "context": "urces for the crusade point   in both directions. Most contemporary commentators, who were, of   i. Albe",
       "confidence": 0.3,
       "source_offset": 3038
-    },
-    {
-      "name": "Historia",
-      "raw_mention": "Historia",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "ommentators, who were, of   i. Albert of Aachen, 'Historia Hierosolymitana', Recueil des historiens des croi",
-      "confidence": 0.3,
-      "source_offset": 3107
     },
     {
       "name": "Hierosolymitana",
@@ -422,19 +383,6 @@
       "source_offset": 4729
     },
     {
-      "name": "Peter",
-      "raw_mention": "Peter",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "es by J. Riley-Smith: 'The First Crusade and St   Peter', OQtremer, eds. R. C. Smail, H. E. Mayer and B. ",
-      "confidence": 0.3,
-      "source_offset": 5004
-    },
-    {
       "name": "Qtremer",
       "raw_mention": "Qtremer",
       "title": null,
@@ -487,56 +435,67 @@
       "source_offset": 5437
     },
     {
-      "name": "Oxford",
-      "raw_mention": "Oxford",
+      "name": "Hierosolimitana",
+      "raw_mention": "Hierosolimitana",
       "title": null,
       "epithet": null,
       "toponym": null,
       "role": null,
       "gender": "unknown",
       "group": false,
-      "context": "italis, Historia aecclesiastica, ed. M. Chibnall (Oxford, I 969-80), V. 4; La Chanson d'Antioche, ed. S. D",
-      "confidence": 0.3,
-      "source_offset": 5447
+      "context": " of Aura, p. 17. 4. Fulcher of Chartres, Historia Hierosolimitana, ed. H. Hagenmeyer (Heidelberg,   1913), p. I 37;",
+      "confidence": 0.0,
+      "source_offset": 5620,
+      "post_medieval_penalty": {
+        "applied": true,
+        "strong_signals": 1,
+        "weak_signals": 0,
+        "reasons": [
+          "modern_date_1800_plus"
+        ]
+      }
     },
     {
-      "name": "Duparc",
-      "raw_mention": "Duparc",
+      "name": "Heidelberg",
+      "raw_mention": "Heidelberg",
       "title": null,
       "epithet": null,
       "toponym": null,
       "role": null,
       "gender": "unknown",
       "group": false,
-      "context": "d, I 969-80), V. 4; La Chanson d'Antioche, ed. S. Duparc-Quioc (Paris,   I977-8), i. 54, 303, 351,406,418.",
-      "confidence": 0.3,
-      "source_offset": 5502
+      "context": "res, Historia Hierosolimitana, ed. H. Hagenmeyer (Heidelberg,   1913), p. I 37; Robert of Rheims, 'Historia Th",
+      "confidence": 0.0,
+      "source_offset": 5656,
+      "post_medieval_penalty": {
+        "applied": true,
+        "strong_signals": 1,
+        "weak_signals": 0,
+        "reasons": [
+          "modern_date_1800_plus"
+        ]
+      }
     },
     {
-      "name": "Quioc",
-      "raw_mention": "Quioc",
+      "name": "Therosolimitana",
+      "raw_mention": "Therosolimitana",
       "title": null,
       "epithet": null,
       "toponym": null,
       "role": null,
       "gender": "unknown",
       "group": false,
-      "context": "9-80), V. 4; La Chanson d'Antioche, ed. S. Duparc-Quioc (Paris,   I977-8), i. 54, 303, 351,406,418. 3. Ek",
-      "confidence": 0.3,
-      "source_offset": 5509
-    },
-    {
-      "name": "Fulcher of Chartres",
-      "raw_mention": "Fulcher of Chartres",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": " 303, 351,406,418. 3. Ekkehard of Aura, p. 17. 4. Fulcher of Chartres, Historia Hierosolimitana, ed. H. Hagenmeyer (Hei",
-      "confidence": 0.3,
-      "source_offset": 5590
+      "context": "rg,   1913), p. I 37; Robert of Rheims, 'Historia Therosolimitana', RHC oc. iii. 728; Baldric   of Bourgueil, 'Hist",
+      "confidence": 0.0,
+      "source_offset": 5714,
+      "post_medieval_penalty": {
+        "applied": true,
+        "strong_signals": 1,
+        "weak_signals": 0,
+        "reasons": [
+          "modern_date_1800_plus"
+        ]
+      }
     },
     {
       "name": "Baldric of Bourgueil",
@@ -578,30 +537,67 @@
       "source_offset": 5846
     },
     {
-      "name": "London",
-      "raw_mention": "London",
+      "name": "Historia de Hierosolimitano",
+      "raw_mention": "Historia de Hierosolimitano",
       "title": null,
       "epithet": null,
       "toponym": null,
       "role": null,
       "gender": "unknown",
       "group": false,
-      "context": "rum et aliorum   Hierosolimitanorum, ed. R. Hill (London, I962), p. i; Peter Tudebode, Historia de   Hiero",
-      "confidence": 0.3,
-      "source_offset": 5879
+      "context": "ed. R. Hill (London, I962), p. i; Peter Tudebode, Historia de   Hierosolimitano itinere, eds. J. H. and L. L. Hill (Paris, 1977),",
+      "confidence": 0.0,
+      "source_offset": 5916,
+      "post_medieval_penalty": {
+        "applied": true,
+        "strong_signals": 1,
+        "weak_signals": 0,
+        "reasons": [
+          "modern_date_1800_plus"
+        ]
+      }
     },
     {
-      "name": "Tudebode",
-      "raw_mention": "Tudebode",
+      "name": "Somerville",
+      "raw_mention": "Somerville",
       "title": null,
       "epithet": null,
       "toponym": null,
       "role": null,
       "gender": "unknown",
       "group": false,
-      "context": "itanorum, ed. R. Hill (London, I962), p. i; Peter Tudebode, Historia de   Hierosolimitano itinere, eds. J. H",
-      "confidence": 0.3,
-      "source_offset": 5906
+      "context": " J. H. and L. L. Hill (Paris, 1977), p. 32. 5. R. Somerville, The Councils of Urban II. i. Decreta Claromonten",
+      "confidence": 0.0,
+      "source_offset": 6009,
+      "post_medieval_penalty": {
+        "applied": true,
+        "strong_signals": 1,
+        "weak_signals": 0,
+        "reasons": [
+          "modern_date_1800_plus"
+        ]
+      }
+    },
+    {
+      "name": "Councils of Urban",
+      "raw_mention": "Councils of Urban",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": " Hill (Paris, 1977), p. 32. 5. R. Somerville, The Councils of Urban II. i. Decreta Claromontensia (Annuarium   Histor",
+      "confidence": 0.0,
+      "source_offset": 6025,
+      "post_medieval_penalty": {
+        "applied": true,
+        "strong_signals": 1,
+        "weak_signals": 0,
+        "reasons": [
+          "modern_date_1800_plus"
+        ]
+      }
     },
     {
       "name": "Decreta",
@@ -628,6 +624,90 @@
       "context": " Somerville, The Councils of Urban II. i. Decreta Claromontensia (Annuarium   Historia Conciliorum. Suppl. i. Amst",
       "confidence": 0.3,
       "source_offset": 6058
+    },
+    {
+      "name": "Annuarium",
+      "raw_mention": "Annuarium",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": " Councils of Urban II. i. Decreta Claromontensia (Annuarium   Historia Conciliorum. Suppl. i. Amsterdam, 1972",
+      "confidence": 0.0,
+      "source_offset": 6074,
+      "post_medieval_penalty": {
+        "applied": true,
+        "strong_signals": 1,
+        "weak_signals": 0,
+        "reasons": [
+          "modern_date_1800_plus"
+        ]
+      }
+    },
+    {
+      "name": "Conciliorum",
+      "raw_mention": "Conciliorum",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": ". i. Decreta Claromontensia (Annuarium   Historia Conciliorum. Suppl. i. Amsterdam, 1972), p. 74. This was conf",
+      "confidence": 0.0,
+      "source_offset": 6095,
+      "post_medieval_penalty": {
+        "applied": true,
+        "strong_signals": 1,
+        "weak_signals": 0,
+        "reasons": [
+          "modern_date_1800_plus"
+        ]
+      }
+    },
+    {
+      "name": "Suppl",
+      "raw_mention": "Suppl",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "Claromontensia (Annuarium   Historia Conciliorum. Suppl. i. Amsterdam, 1972), p. 74. This was confirmed i",
+      "confidence": 0.0,
+      "source_offset": 6108,
+      "post_medieval_penalty": {
+        "applied": true,
+        "strong_signals": 1,
+        "weak_signals": 0,
+        "reasons": [
+          "modern_date_1800_plus"
+        ]
+      }
+    },
+    {
+      "name": "Amsterdam",
+      "raw_mention": "Amsterdam",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "nsia (Annuarium   Historia Conciliorum. Suppl. i. Amsterdam, 1972), p. 74. This was confirmed in   Urban's le",
+      "confidence": 0.0,
+      "source_offset": 6118,
+      "post_medieval_penalty": {
+        "applied": true,
+        "strong_signals": 1,
+        "weak_signals": 0,
+        "reasons": [
+          "modern_date_1800_plus"
+        ]
+      }
     },
     {
       "name": "Urban",
@@ -1249,19 +1329,6 @@
       "source_offset": 4253
     },
     {
-      "name": "Paris",
-      "raw_mention": "Paris",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "ux XIe et XIIe siecles dans la region maconnaise (Paris, 195 3),   p. 435. 7. Albert of Aachen, p. 503. T",
-      "confidence": 0.3,
-      "source_offset": 9242
-    },
-    {
       "name": "Haifa",
       "raw_mention": "Haifa",
       "title": null,
@@ -1364,19 +1431,6 @@
       "context": "ccessor in Nablus,   and the settlers in northern Syria,2 but even so there can be little   doubt that mo",
       "confidence": 0.3,
       "source_offset": 9872
-    },
-    {
-      "name": "East",
-      "raw_mention": "East",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "  doubt that most crusaders did not settle in the East. It does not, of   course, follow that all of tho",
-      "confidence": 0.3,
-      "source_offset": 9962
     },
     {
       "name": "Europe",
@@ -1507,19 +1561,6 @@
       "context": "rs of their families: Garnier, Count of   Grez in Brabant, who was the most prominent and was related to   ",
       "confidence": 0.3,
       "source_offset": 11284
-    },
-    {
-      "name": "Godfrey",
-      "raw_mention": "Godfrey",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": ", who was the most prominent and was related to   Godfrey by birth and perhaps also by marriage,4 Franco of",
-      "confidence": 0.3,
-      "source_offset": 11341
     },
     {
       "name": "Franco of Mechelen",
@@ -1676,6 +1717,40 @@
       "context": "84,404,405; H. F. Delaborde, Chartesde   la Terre Sainte provenant de f'abbaye de Notre Dame de Josaphat (",
       "confidence": 0.3,
       "source_offset": 12501
+    },
+    {
+      "name": "Notre",
+      "raw_mention": "Notre",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "N PALESTINE: C. Kohler,   'Chartes de l'abbaye de Notre-Dame de la vallee de josaphat en Terre Sainte', R",
+      "confidence": 0.3,
+      "source_offset": 14779
+    },
+    {
+      "name": "Dame de Josaphat",
+      "raw_mention": "Dame de Josaphat",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "   la Terre Sainte provenant de f'abbaye de Notre Dame de Josaphat (Paris, 1880), p. 45 (R. R6hricht, Regesta regni ",
+      "confidence": 0.0,
+      "source_offset": 12539,
+      "post_medieval_penalty": {
+        "applied": true,
+        "strong_signals": 1,
+        "weak_signals": 0,
+        "reasons": [
+          "modern_date_1800_plus"
+        ]
+      }
     },
     {
       "name": "Geoffreyl",
@@ -2139,19 +2214,6 @@
       "context": "that accompanied a   leader of the First Crusade. After Godfrey's death on i 8 July i ioo it   acted as a",
       "confidence": 0.3,
       "source_offset": 16548
-    },
-    {
-      "name": "Baldwin",
-      "raw_mention": "Baldwin",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "a body to preserve the settlement for his brother Baldwin and   it still had a sort of corporate existence ",
-      "confidence": 0.3,
-      "source_offset": 16652
     },
     {
       "name": "Aschar",
@@ -2648,27 +2710,6 @@
       "source_offset": 21853
     },
     {
-      "name": "Pope",
-      "raw_mention": "Pope",
-      "title": "Pope",
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "eval Literature presented to Professor Mildred K. Pope   (Manchester, 1939), pp. 201-2. 5. He was Bohemo",
-      "confidence": 0.0,
-      "source_offset": 21970,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
       "name": "Cilicia",
       "raw_mention": "Cilicia",
       "title": null,
@@ -2888,6 +2929,27 @@
       "context": " C. Devic   and J. Vaissete, Histoire generale de Languedoc, rev. A. Molinier et al. (Toulouse,   I874-1914),",
       "confidence": 0.0,
       "source_offset": 24698,
+      "post_medieval_penalty": {
+        "applied": true,
+        "strong_signals": 1,
+        "weak_signals": 0,
+        "reasons": [
+          "modern_date_1800_plus"
+        ]
+      }
+    },
+    {
+      "name": "Molinier",
+      "raw_mention": "Molinier",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "Vaissete, Histoire generale de Languedoc, rev. A. Molinier et al. (Toulouse,   I874-1914), iii. 577. 5. Raym",
+      "confidence": 0.0,
+      "source_offset": 24717,
       "post_medieval_penalty": {
         "applied": true,
         "strong_signals": 1,
@@ -3208,19 +3270,6 @@
       "context": "as castellan in 1107. Albert of   Aachen, p. 636. Roman was later to be lord of Oultrejourdain. 4. ON CRU",
       "confidence": 0.3,
       "source_offset": 27301
-    },
-    {
-      "name": "Delaborde",
-      "raw_mention": "Delaborde",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": " 91, 593, 636, 637; Kohler,   'Chartes', p. II 3; Delaborde, Chartes, p. 30 (R6hricht, Regesta, nos. 52, 8o).",
-      "confidence": 0.3,
-      "source_offset": 27529
     },
     {
       "name": "October of Jerusalem",
@@ -3717,6 +3766,111 @@
       "source_offset": 32166
     },
     {
+      "name": "Liinig",
+      "raw_mention": "Liinig",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "anson d'Antioche, i. 471. IN SYRIA: perhaps J. C. Liinig, Codex Italiae diplomaticus (Frankfurt, 1725-3 5)",
+      "confidence": 0.15,
+      "source_offset": 32443,
+      "post_medieval_penalty": {
+        "applied": true,
+        "strong_signals": 0,
+        "weak_signals": 1,
+        "reasons": [
+          "post_1500_date_context"
+        ]
+      }
+    },
+    {
+      "name": "Codex",
+      "raw_mention": "Codex",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "Antioche, i. 471. IN SYRIA: perhaps J. C. Liinig, Codex Italiae diplomaticus (Frankfurt, 1725-3 5),   ii,",
+      "confidence": 0.15,
+      "source_offset": 32451,
+      "post_medieval_penalty": {
+        "applied": true,
+        "strong_signals": 0,
+        "weak_signals": 1,
+        "reasons": [
+          "post_1500_date_context"
+        ]
+      }
+    },
+    {
+      "name": "Italiae",
+      "raw_mention": "Italiae",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "he, i. 471. IN SYRIA: perhaps J. C. Liinig, Codex Italiae diplomaticus (Frankfurt, 1725-3 5),   ii, col. zo",
+      "confidence": 0.15,
+      "source_offset": 32457,
+      "post_medieval_penalty": {
+        "applied": true,
+        "strong_signals": 0,
+        "weak_signals": 1,
+        "reasons": [
+          "post_1500_date_context"
+        ]
+      }
+    },
+    {
+      "name": "Frankfurt",
+      "raw_mention": "Frankfurt",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "perhaps J. C. Liinig, Codex Italiae diplomaticus (Frankfurt, 1725-3 5),   ii, col. zo8z (R6hricht, Regesta, n",
+      "confidence": 0.15,
+      "source_offset": 32479,
+      "post_medieval_penalty": {
+        "applied": true,
+        "strong_signals": 0,
+        "weak_signals": 1,
+        "reasons": [
+          "post_1500_date_context"
+        ]
+      }
+    },
+    {
+      "name": "Cod",
+      "raw_mention": "Cod",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "lliam   of Tyre, p. 90. IN SYRIA: perhaps Liinig, Cod. Ital. dipl. ii, col. 2082 (R6hricht,   Regesta, ",
+      "confidence": 0.0,
+      "source_offset": 32759,
+      "post_medieval_penalty": {
+        "applied": true,
+        "strong_signals": 1,
+        "weak_signals": 0,
+        "reasons": [
+          "modern_date_1800_plus"
+        ]
+      }
+    },
+    {
       "name": "Eadmer",
       "raw_mention": "Eadmer",
       "title": null,
@@ -3938,19 +4092,6 @@
       "source_offset": 35775
     },
     {
-      "name": "William",
-      "raw_mention": "William",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "hey must have had little hope of eventual reward. William Peyre, lord of Cunlhat, had been the employer of ",
-      "confidence": 0.3,
-      "source_offset": 35961
-    },
-    {
       "name": "Peyre",
       "raw_mention": "Peyre",
       "title": null,
@@ -4027,19 +4168,6 @@
       "context": "lic of the Holy   Lance, and had been a knight of Peter of Narbonne, one of   Raymond's clerics who had been appointe",
       "confidence": 0.3,
       "source_offset": 36127
-    },
-    {
-      "name": "Latin",
-      "raw_mention": "Latin",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "aymond's clerics who had been appointed the first Latin bishop of   Albara in Syria. He had then transfer",
-      "confidence": 0.3,
-      "source_offset": 36206
     },
     {
       "name": "Albara",
@@ -4341,19 +4469,6 @@
       "source_offset": 39159
     },
     {
-      "name": "Church",
-      "raw_mention": "Church",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "ruler of Galilee who was fair and generous to the Church.5 Baldwin,   as will be seen below, seems to have",
-      "confidence": 0.3,
-      "source_offset": 39272
-    },
-    {
       "name": "Nevertheless",
       "raw_mention": "Nevertheless",
       "title": null,
@@ -4365,6 +4480,27 @@
       "context": "to establish themselves in   a territorial sense. Nevertheless, one cannot avoid concluding that   most of the c",
       "confidence": 0.3,
       "source_offset": 39656
+    },
+    {
+      "name": "Prince of Antioch",
+      "raw_mention": "Prince of Antioch",
+      "title": "Prince",
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "47), pp. 48-49. 2. See R. B. Yewdale, Bohemond I, Prince of Antioch (Princeton, 1924), passim;   Cahen, La Syrie du N",
+      "confidence": 0.0,
+      "source_offset": 40444,
+      "post_medieval_penalty": {
+        "applied": true,
+        "strong_signals": 1,
+        "weak_signals": 0,
+        "reasons": [
+          "modern_date_1800_plus"
+        ]
+      }
     },
     {
       "name": "European",
@@ -4555,6 +4691,48 @@
       "context": "3. 3. J. Riley-Smith, The Feudal Nobility and the Kingdom of Jerusalem i174-i277   (London, 1973), p. 7; H. Richardot, '",
       "confidence": 0.0,
       "source_offset": 43128,
+      "post_medieval_penalty": {
+        "applied": true,
+        "strong_signals": 1,
+        "weak_signals": 0,
+        "reasons": [
+          "modern_date_1800_plus"
+        ]
+      }
+    },
+    {
+      "name": "Richardot",
+      "raw_mention": "Richardot",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "of Jerusalem i174-i277   (London, 1973), p. 7; H. Richardot, 'Francs-fiefs. Essai sur l'exemption totale ou  ",
+      "confidence": 0.0,
+      "source_offset": 43186,
+      "post_medieval_penalty": {
+        "applied": true,
+        "strong_signals": 1,
+        "weak_signals": 0,
+        "reasons": [
+          "modern_date_1800_plus"
+        ]
+      }
+    },
+    {
+      "name": "Essai",
+      "raw_mention": "Essai",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "London, 1973), p. 7; H. Richardot, 'Francs-fiefs. Essai sur l'exemption totale ou   partielle des service",
+      "confidence": 0.0,
+      "source_offset": 43212,
       "post_medieval_penalty": {
         "applied": true,
         "strong_signals": 1,
@@ -5044,6 +5222,27 @@
       }
     },
     {
+      "name": "University of London",
+      "raw_mention": "University of London",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "e political   climate.  Royal Holloway College,   University of London JONATHAN RILEY-SMITH   crusade, but was he the Fu",
+      "confidence": 0.0,
+      "source_offset": 48398,
+      "post_medieval_penalty": {
+        "applied": true,
+        "strong_signals": 1,
+        "weak_signals": 0,
+        "reasons": [
+          "modern_institution"
+        ]
+      }
+    },
+    {
       "name": "Outremer",
       "raw_mention": "Outremer",
       "title": null,
@@ -5158,30 +5357,6 @@
       "top_candidate": null,
       "confidence": 0.0,
       "status": "no_match"
-    },
-    {
-      "person": "Some",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR166",
-          "outremer_name": "Sophie of Winzenburg",
-          "type": "person",
-          "score": 0.6,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'some' ↔ 'Sophie of Winzenburg'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR166",
-        "outremer_name": "Sophie of Winzenburg",
-        "type": "person",
-        "score": 0.6,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'some' ↔ 'Sophie of Winzenburg'"
-      },
-      "confidence": 0.6,
-      "status": "low"
     },
     {
       "person": "God",
@@ -5304,23 +5479,7 @@
       "status": "low"
     },
     {
-      "person": "First",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
       "person": "Most",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Historia",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -5584,38 +5743,6 @@
       "status": "no_match"
     },
     {
-      "person": "Peter",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR53",
-          "outremer_name": "Peter of Langres",
-          "type": "person",
-          "score": 1.0,
-          "match_type": "exact",
-          "evidence": "exact match: 'peter' ↔ 'Peter of Langres'"
-        },
-        {
-          "outremer_id": "AUTH:CR62",
-          "outremer_name": "Peter I of Courtenay",
-          "type": "person",
-          "score": 1.0,
-          "match_type": "exact",
-          "evidence": "exact match: 'peter' ↔ 'Peter I of Courtenay'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR53",
-        "outremer_name": "Peter of Langres",
-        "type": "person",
-        "score": 1.0,
-        "match_type": "exact",
-        "evidence": "exact match: 'peter' ↔ 'Peter of Langres'"
-      },
-      "confidence": 1.0,
-      "status": "high"
-    },
-    {
       "person": "Qtremer",
       "person_group": false,
       "candidates": [],
@@ -5664,7 +5791,7 @@
       "status": "low"
     },
     {
-      "person": "Oxford",
+      "person": "Hierosolimitana",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -5672,7 +5799,7 @@
       "status": "no_match"
     },
     {
-      "person": "Duparc",
+      "person": "Heidelberg",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -5680,36 +5807,12 @@
       "status": "no_match"
     },
     {
-      "person": "Quioc",
+      "person": "Therosolimitana",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
       "confidence": 0.0,
       "status": "no_match"
-    },
-    {
-      "person": "Fulcher of Chartres",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR33",
-          "outremer_name": "Charles of Denmark",
-          "type": "person",
-          "score": 0.6486,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'fulcher of chartres' ↔ 'Charles of Denmark'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR33",
-        "outremer_name": "Charles of Denmark",
-        "type": "person",
-        "score": 0.6486,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'fulcher of chartres' ↔ 'Charles of Denmark'"
-      },
-      "confidence": 0.6486,
-      "status": "low"
     },
     {
       "person": "Baldric of Bourgueil",
@@ -5736,7 +5839,7 @@
       "status": "no_match"
     },
     {
-      "person": "London",
+      "person": "Historia de Hierosolimitano",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -5744,27 +5847,43 @@
       "status": "no_match"
     },
     {
-      "person": "Tudebode",
+      "person": "Somerville",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "Councils of Urban",
       "person_group": false,
       "candidates": [
         {
-          "outremer_id": "AUTH:CR109",
-          "outremer_name": "Audebert IV of La Marche",
+          "outremer_id": "AUTH:CR25",
+          "outremer_name": "Enguerran II of Coucy",
           "type": "person",
-          "score": 0.625,
+          "score": 0.6207,
           "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'tudebode' ↔ 'Audebert IV of La Marche'"
+          "evidence": "fuzzy match: 'councils of urban' ↔ 'Enguerran II of Coucy'"
+        },
+        {
+          "outremer_id": "AUTH:CR100",
+          "outremer_name": "Robert of Buzançais",
+          "type": "person",
+          "score": 0.6111,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'councils of urban' ↔ 'Robert of Buzançais'"
         }
       ],
       "top_candidate": {
-        "outremer_id": "AUTH:CR109",
-        "outremer_name": "Audebert IV of La Marche",
+        "outremer_id": "AUTH:CR25",
+        "outremer_name": "Enguerran II of Coucy",
         "type": "person",
-        "score": 0.625,
+        "score": 0.6207,
         "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'tudebode' ↔ 'Audebert IV of La Marche'"
+        "evidence": "fuzzy match: 'councils of urban' ↔ 'Enguerran II of Coucy'"
       },
-      "confidence": 0.625,
+      "confidence": 0.6207,
       "status": "low"
     },
     {
@@ -5777,6 +5896,38 @@
     },
     {
       "person": "Claromontensia",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "Annuarium",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "Conciliorum",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "Suppl",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "Amsterdam",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -6544,14 +6695,6 @@
       "status": "no_match"
     },
     {
-      "person": "Paris",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
       "person": "Haifa",
       "person_group": false,
       "candidates": [],
@@ -6665,14 +6808,6 @@
     },
     {
       "person": "Syria",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "East",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -6846,46 +6981,6 @@
       "top_candidate": null,
       "confidence": 0.0,
       "status": "no_match"
-    },
-    {
-      "person": "Godfrey",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR78",
-          "outremer_name": "Godfrey III of Louvain",
-          "type": "person",
-          "score": 1.0,
-          "match_type": "exact",
-          "evidence": "exact match: 'godfrey' ↔ 'Godfrey III of Louvain'"
-        },
-        {
-          "outremer_id": "AUTH:CR184",
-          "outremer_name": "Godfrey of Bouillon",
-          "type": "person",
-          "score": 1.0,
-          "match_type": "exact",
-          "evidence": "exact match: 'godfrey' ↔ 'Godfrey of Bouillon'"
-        },
-        {
-          "outremer_id": "AUTH:CR55",
-          "outremer_name": "Geoffrey of Grandpré",
-          "type": "person",
-          "score": 0.8,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'godfrey' ↔ 'Geoffrey of Grandpré'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR78",
-        "outremer_name": "Godfrey III of Louvain",
-        "type": "person",
-        "score": 1.0,
-        "match_type": "exact",
-        "evidence": "exact match: 'godfrey' ↔ 'Godfrey III of Louvain'"
-      },
-      "confidence": 1.0,
-      "status": "high"
     },
     {
       "person": "Franco of Mechelen",
@@ -7121,6 +7216,22 @@
     },
     {
       "person": "Sainte",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "Notre",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "Dame de Josaphat",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -7726,30 +7837,6 @@
       },
       "confidence": 0.7273,
       "status": "low"
-    },
-    {
-      "person": "Baldwin",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR3",
-          "outremer_name": "Baldwin of Vern d'Anjou",
-          "type": "person",
-          "score": 1.0,
-          "match_type": "exact",
-          "evidence": "exact match: 'baldwin' ↔ 'Baldwin of Vern d'Anjou'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR3",
-        "outremer_name": "Baldwin of Vern d'Anjou",
-        "type": "person",
-        "score": 1.0,
-        "match_type": "exact",
-        "evidence": "exact match: 'baldwin' ↔ 'Baldwin of Vern d'Anjou'"
-      },
-      "confidence": 1.0,
-      "status": "high"
     },
     {
       "person": "Aschar",
@@ -8416,30 +8503,6 @@
       "status": "no_match"
     },
     {
-      "person": "Pope",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR166",
-          "outremer_name": "Sophie of Winzenburg",
-          "type": "person",
-          "score": 0.6,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'pope' ↔ 'Sophie of Winzenburg'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR166",
-        "outremer_name": "Sophie of Winzenburg",
-        "type": "person",
-        "score": 0.6,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'pope' ↔ 'Sophie of Winzenburg'"
-      },
-      "confidence": 0.6,
-      "status": "low"
-    },
-    {
       "person": "Cilicia",
       "person_group": false,
       "candidates": [],
@@ -8777,6 +8840,14 @@
     },
     {
       "person": "Languedoc",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "Molinier",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -9329,14 +9400,6 @@
     },
     {
       "person": "Roman",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Delaborde",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -9960,6 +10023,78 @@
       "status": "no_match"
     },
     {
+      "person": "Liinig",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "Codex",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "Italiae",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "Frankfurt",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "Cod",
+      "person_group": false,
+      "candidates": [
+        {
+          "outremer_id": "AUTH:CR1",
+          "outremer_name": "Conrad III of Germany",
+          "type": "person",
+          "score": 0.6667,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'cod' ↔ 'Conrad III of Germany'"
+        },
+        {
+          "outremer_id": "AUTH:CR37",
+          "outremer_name": "Conrad of Montferrat",
+          "type": "person",
+          "score": 0.6667,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'cod' ↔ 'Conrad of Montferrat'"
+        },
+        {
+          "outremer_id": "AUTH:CR175",
+          "outremer_name": "Conrad of Meissen",
+          "type": "person",
+          "score": 0.6667,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'cod' ↔ 'Conrad of Meissen'"
+        }
+      ],
+      "top_candidate": {
+        "outremer_id": "AUTH:CR1",
+        "outremer_name": "Conrad III of Germany",
+        "type": "person",
+        "score": 0.6667,
+        "match_type": "fuzzy",
+        "evidence": "fuzzy match: 'cod' ↔ 'Conrad III of Germany'"
+      },
+      "confidence": 0.6667,
+      "status": "low"
+    },
+    {
       "person": "Eadmer",
       "person_group": false,
       "candidates": [
@@ -10344,46 +10479,6 @@
       "status": "no_match"
     },
     {
-      "person": "William",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR11",
-          "outremer_name": "William the Huntsman",
-          "type": "person",
-          "score": 1.0,
-          "match_type": "exact",
-          "evidence": "exact match: 'william' ↔ 'William the Huntsman'"
-        },
-        {
-          "outremer_id": "AUTH:CR32",
-          "outremer_name": "William of Tortosa",
-          "type": "person",
-          "score": 1.0,
-          "match_type": "exact",
-          "evidence": "exact match: 'william' ↔ 'William of Tortosa'"
-        },
-        {
-          "outremer_id": "AUTH:CR44",
-          "outremer_name": "William of Orkney",
-          "type": "person",
-          "score": 1.0,
-          "match_type": "exact",
-          "evidence": "exact match: 'william' ↔ 'William of Orkney'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR11",
-        "outremer_name": "William the Huntsman",
-        "type": "person",
-        "score": 1.0,
-        "match_type": "exact",
-        "evidence": "exact match: 'william' ↔ 'William the Huntsman'"
-      },
-      "confidence": 1.0,
-      "status": "high"
-    },
-    {
       "person": "Peyre",
       "person_group": false,
       "candidates": [
@@ -10494,14 +10589,6 @@
       },
       "confidence": 0.75,
       "status": "medium"
-    },
-    {
-      "person": "Latin",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
     },
     {
       "person": "Albara",
@@ -11040,47 +11127,15 @@
       "status": "low"
     },
     {
-      "person": "Church",
+      "person": "Nevertheless",
       "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR13",
-          "outremer_name": "Hugh of Troyes",
-          "type": "person",
-          "score": 0.6,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'church' ↔ 'Hugh of Troyes'"
-        },
-        {
-          "outremer_id": "AUTH:CR18",
-          "outremer_name": "Hugh of Chaumont-sur-Loire",
-          "type": "person",
-          "score": 0.6,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'church' ↔ 'Hugh of Chaumont-sur-Loire'"
-        },
-        {
-          "outremer_id": "AUTH:CR21",
-          "outremer_name": "Hugh III of Le Puisset",
-          "type": "person",
-          "score": 0.6,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'church' ↔ 'Hugh III of Le Puisset'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR13",
-        "outremer_name": "Hugh of Troyes",
-        "type": "person",
-        "score": 0.6,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'church' ↔ 'Hugh of Troyes'"
-      },
-      "confidence": 0.6,
-      "status": "low"
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
     },
     {
-      "person": "Nevertheless",
+      "person": "Prince of Antioch",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -11217,6 +11272,22 @@
     },
     {
       "person": "Kingdom of Jerusalem",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "Richardot",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "Essai",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -11888,6 +11959,14 @@
       "status": "no_match"
     },
     {
+      "person": "University of London",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
       "person": "Outremer",
       "person_group": false,
       "candidates": [],
@@ -11912,19 +11991,19 @@
   },
   "language_hint": null,
   "quality": {
-    "filtered_problem_entities": 524,
+    "filtered_problem_entities": 551,
     "feedback_store": "data/entity_feedback.json",
     "noise": {
-      "extracted_total": 907,
-      "kept": 383,
-      "filtered": 524,
+      "extracted_total": 937,
+      "kept": 386,
+      "filtered": 551,
       "filtered_by_reason": {
-        "known_bad_entity": 290,
-        "bibliographic_noise": 168,
-        "modern_scholar": 66
+        "known_bad_entity": 381,
+        "bibliographic_noise": 118,
+        "modern_scholar": 52
       },
-      "low_confidence_kept": 383,
-      "noise_share": 0.5777
+      "low_confidence_kept": 386,
+      "noise_share": 0.588
     }
   }
 }

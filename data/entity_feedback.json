@@ -194,15 +194,15 @@
       ]
     },
     "all": {
-      "count": 27,
-      "last_context": "25 on Sun, 28 Dec 2025 19:33:42 UTC               All use subject to https://about.jstor.org/terms  736",
-      "last_seen": "2026-07-19T05:20:17.168676+00:00",
+      "count": 28,
+      "last_context": "160 on Fri, 27 Feb 2026 19:59:05 UTC              All use subject to https://about.jstor.org/terms 118 ",
+      "last_seen": "2026-07-20T05:35:26.813693+00:00",
       "name": "All",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
-          "count": 11,
+          "count": 12,
           "reasons": {
-            "bibliographic_noise": 11
+            "known_bad_entity": 12
           }
         },
         "data/raw/Munro-PopesCrusades-1916.pdf": {
@@ -219,8 +219,7 @@
         }
       },
       "reasons": {
-        "bibliographic_noise": 11,
-        "known_bad_entity": 16
+        "known_bad_entity": 28
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
@@ -789,8 +788,8 @@
     },
     "author": {
       "count": 3,
-      "last_context": "ctives on the Military Orders during the Crusades Author(s): William J. Hamblin Source: Brigham Young Univ",
-      "last_seen": "2026-07-19T05:18:06.969693+00:00",
+      "last_context": "and the Settlement of Latin Palestine, 1095-1100  Author(s): Jonathan Riley-Smith  Source: The English His",
+      "last_seen": "2026-07-20T05:37:38.000116+00:00",
       "name": "Author",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
@@ -802,18 +801,19 @@
         "data/raw/Munro-PopesCrusades-1916.pdf": {
           "count": 1,
           "reasons": {
-            "bibliographic_noise": 1
+            "known_bad_entity": 1
           }
         },
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
           "count": 1,
           "reasons": {
-            "bibliographic_noise": 1
+            "known_bad_entity": 1
           }
         }
       },
       "reasons": {
-        "bibliographic_noise": 3
+        "bibliographic_noise": 1,
+        "known_bad_entity": 2
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
@@ -886,9 +886,9 @@
       ]
     },
     "baldwin": {
-      "count": 3,
-      "last_context": "te was made in the period immediately following   Baldwin's arrival in Palestine, when no decision had yet ",
-      "last_seen": "2026-07-18T17:49:41.931159+00:00",
+      "count": 8,
+      "last_context": "arge detachment from that force was attached to   Baldwin for his foray into Cilicia in September 1097.2 Am",
+      "last_seen": "2026-07-20T05:37:38.000116+00:00",
       "name": "Baldwin",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
@@ -897,19 +897,25 @@
             "known_bad_entity": 1
           }
         },
-        "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
-          "count": 2,
+        "data/raw/Munro-PopesCrusades-1916.pdf": {
+          "count": 1,
           "reasons": {
-            "bibliographic_noise": 2
+            "known_bad_entity": 1
+          }
+        },
+        "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
+          "count": 6,
+          "reasons": {
+            "known_bad_entity": 6
           }
         }
       },
       "reasons": {
-        "bibliographic_noise": 2,
-        "known_bad_entity": 1
+        "known_bad_entity": 8
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
+        "data/raw/Munro-PopesCrusades-1916.pdf",
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf"
       ]
     },
@@ -1333,12 +1339,20 @@
       ]
     },
     "biographicaldictionary": {
-      "count": 31,
+      "count": 1,
       "last_context": "ny 4 vols., trans. W. M. ae Slane as IbnKhallikansBiographicalDictionary(Paris, 1843-71), quoted in Hillenbrand, The Crusa",
-      "last_seen": "2026-07-05T16:54:08.155901+00:00",
+      "last_seen": "2026-07-20T05:35:26.813693+00:00",
       "name": "BiographicalDictionary",
+      "per_source": {
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
+          "count": 1,
+          "reasons": {
+            "known_bad_entity": 1
+          }
+        }
+      },
       "reasons": {
-        "post_medieval": 31
+        "known_bad_entity": 1
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
@@ -1689,12 +1703,20 @@
       ]
     },
     "broadhurstas": {
-      "count": 31,
+      "count": 1,
       "last_context": " 299. 46. Al-Maqrizi, Kitabal-sulukytrans. R.J.C. Broadhurstas HistoryofAyyubidsand Mamluks (Boston: n.p., 1980)",
-      "last_seen": "2026-07-05T16:54:08.155901+00:00",
+      "last_seen": "2026-07-20T05:35:26.813693+00:00",
       "name": "Broadhurstas",
+      "per_source": {
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
+          "count": 1,
+          "reasons": {
+            "known_bad_entity": 1
+          }
+        }
+      },
       "reasons": {
-        "post_medieval": 31
+        "known_bad_entity": 1
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
@@ -1804,14 +1826,14 @@
     },
     "cambridge": {
       "count": 5,
-      "last_context": "e R.  C.  Smail, Crusading Warfare (Iog7-IIg3)   (Cambridge, i956), pp.  89-90.  The existence of a feudal re",
-      "last_seen": "2026-07-19T05:20:17.168676+00:00",
+      "last_context": " ofCyprus and theCrusades,1191-1374 (Cam- bridge: Cambridge University Press, 1991), 161-71.  72.  For a gene",
+      "last_seen": "2026-07-20T05:35:26.813693+00:00",
       "name": "Cambridge",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
           "count": 3,
           "reasons": {
-            "bibliographic_noise": 3
+            "known_bad_entity": 3
           }
         },
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
@@ -1822,8 +1844,7 @@
         }
       },
       "reasons": {
-        "bibliographic_noise": 3,
-        "known_bad_entity": 2
+        "known_bad_entity": 5
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
@@ -2043,12 +2064,20 @@
       ]
     },
     "centuryto": {
-      "count": 31,
+      "count": 1,
       "last_context": "heAge oftheCrusades: TheNearEastfrom the Eleventh Centuryto1517(NewYork: Longman, 1986). This content downloa",
-      "last_seen": "2026-07-05T16:54:08.155901+00:00",
+      "last_seen": "2026-07-20T05:35:26.813693+00:00",
       "name": "Centuryto",
+      "per_source": {
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
+          "count": 1,
+          "reasons": {
+            "known_bad_entity": 1
+          }
+        }
+      },
       "reasons": {
-        "post_medieval": 31
+        "known_bad_entity": 1
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
@@ -2277,9 +2306,9 @@
       ]
     },
     "church": {
-      "count": 3,
+      "count": 8,
       "last_context": "eehold;   both confirmations are of grants to the Church.4 On the other hand,   i. Guibert of Nogent, pp. ",
-      "last_seen": "2026-07-18T17:49:41.931159+00:00",
+      "last_seen": "2026-07-20T05:37:38.000116+00:00",
       "name": "Church",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
@@ -2289,20 +2318,20 @@
           }
         },
         "data/raw/Munro-PopesCrusades-1916.pdf": {
-          "count": 1,
+          "count": 5,
           "reasons": {
-            "bibliographic_noise": 1
+            "known_bad_entity": 5
           }
         },
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
-          "count": 1,
+          "count": 2,
           "reasons": {
-            "bibliographic_noise": 1
+            "known_bad_entity": 2
           }
         }
       },
       "reasons": {
-        "bibliographic_noise": 2,
+        "known_bad_entity": 7,
         "modern_scholar": 1
       },
       "sources": [
@@ -2312,12 +2341,20 @@
       ]
     },
     "cityintheeyes": {
-      "count": 31,
-      "last_context": "1962), quoted in F. E. Peters, Jerusalem: TheHoly CityintheEyes ofChroniclers,Visitors,Pilgrims, andProphetsfrom ",
-      "last_seen": "2026-07-05T16:54:08.155901+00:00",
+      "count": 1,
+      "last_context": "62), quoted in F.  E.  Peters, Jerusalem: TheHoly CityintheEyes ofChroniclers,Visitors,Pilgrims, andProphetsfrom ",
+      "last_seen": "2026-07-20T05:35:26.813693+00:00",
       "name": "CityintheEyes",
+      "per_source": {
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
+          "count": 1,
+          "reasons": {
+            "known_bad_entity": 1
+          }
+        }
+      },
       "reasons": {
-        "post_medieval": 31
+        "known_bad_entity": 1
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
@@ -2588,12 +2625,20 @@
       ]
     },
     "covenantof": {
-      "count": 31,
+      "count": 1,
       "last_context": "Their Non-Muslim Subjects: A Critical Study ofthe Covenantof'Umar [London: Frank Cass, 1970],9,quoting Ibn al-",
-      "last_seen": "2026-07-05T16:54:08.155901+00:00",
+      "last_seen": "2026-07-20T05:35:26.813693+00:00",
       "name": "Covenantof",
+      "per_source": {
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
+          "count": 1,
+          "reasons": {
+            "known_bad_entity": 1
+          }
+        }
+      },
       "reasons": {
-        "post_medieval": 31
+        "known_bad_entity": 1
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
@@ -2701,11 +2746,17 @@
       ]
     },
     "crusaders": {
-      "count": 13,
-      "last_context": ".jstor.org/terms  736 THE MOTIVES OF THE EARLIEST CRUSADERS October   Robecquel all came from that district a",
-      "last_seen": "2026-07-19T05:20:17.168676+00:00",
+      "count": 21,
+      "last_context": "., and J.S. C. Riley-Smith, AyyubidSyMamlukes and Crusaders: Selectionsfrom theTarikh al-Duwal wa' l-Muluk of",
+      "last_seen": "2026-07-20T05:35:26.813693+00:00",
       "name": "Crusaders",
       "per_source": {
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
+          "count": 8,
+          "reasons": {
+            "known_bad_entity": 8
+          }
+        },
         "data/raw/Munro-PopesCrusades-1916.pdf": {
           "count": 4,
           "reasons": {
@@ -2720,23 +2771,24 @@
         }
       },
       "reasons": {
-        "known_bad_entity": 13
+        "known_bad_entity": 21
       },
       "sources": [
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
         "data/raw/Munro-PopesCrusades-1916.pdf",
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf"
       ]
     },
     "crusades": {
-      "count": 7,
-      "last_context": "f St Omer.  For his later career, see   Runciman, Crusades, ii, passim.  He was already a fief-holder by i I",
-      "last_seen": "2026-07-19T05:20:17.168676+00:00",
+      "count": 17,
+      "last_context": " 71.Peter W.  Edbury, The Kingdom ofCyprus and theCrusades,1191-1374 (Cam- bridge: Cambridge University Pres",
+      "last_seen": "2026-07-20T05:35:26.813693+00:00",
       "name": "Crusades",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
-          "count": 2,
+          "count": 12,
           "reasons": {
-            "bibliographic_noise": 2
+            "known_bad_entity": 12
           }
         },
         "data/raw/Munro-PopesCrusades-1916.pdf": {
@@ -2753,8 +2805,7 @@
         }
       },
       "reasons": {
-        "bibliographic_noise": 2,
-        "known_bad_entity": 5
+        "known_bad_entity": 17
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
@@ -2990,20 +3041,20 @@
       ]
     },
     "delaborde": {
-      "count": 3,
-      "last_context": "3. 5. Delaville Le Roulx, Cartulaire, i. 2i, 172; Delaborde, Chartes, pp. 29, 33   (R6hricht, Regesta, nos. 5",
-      "last_seen": "2026-07-19T05:20:17.168676+00:00",
+      "count": 4,
+      "last_context": " 91, 593, 636, 637; Kohler,   'Chartes', p. II 3; Delaborde, Chartes, p. 30 (R6hricht, Regesta, nos. 52, 8o).",
+      "last_seen": "2026-07-20T05:37:38.000116+00:00",
       "name": "Delaborde",
       "per_source": {
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
-          "count": 3,
+          "count": 4,
           "reasons": {
-            "bibliographic_noise": 3
+            "known_bad_entity": 4
           }
         }
       },
       "reasons": {
-        "bibliographic_noise": 3
+        "known_bad_entity": 4
       },
       "sources": [
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf"
@@ -3232,20 +3283,20 @@
       ]
     },
     "duparc": {
-      "count": 3,
+      "count": 5,
       "last_context": "s 7,76a, I I 5 (add.), 293.  For his origins, see Duparc-Quioc, La   Chanson d'Antioche, ii.  229, n.  5. ",
-      "last_seen": "2026-07-18T17:49:41.931159+00:00",
+      "last_seen": "2026-07-20T05:37:38.000116+00:00",
       "name": "Duparc",
       "per_source": {
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
-          "count": 3,
+          "count": 5,
           "reasons": {
-            "modern_scholar": 3
+            "known_bad_entity": 5
           }
         }
       },
       "reasons": {
-        "modern_scholar": 3
+        "known_bad_entity": 5
       },
       "sources": [
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf"
@@ -3284,9 +3335,9 @@
       ]
     },
     "east": {
-      "count": 3,
+      "count": 6,
       "last_context": "ho certainly had no financial need to stay in the East. There are   i. Raymond of Aguilers, Liber, pp. 7",
-      "last_seen": "2026-07-18T17:49:41.931159+00:00",
+      "last_seen": "2026-07-20T05:37:38.000116+00:00",
       "name": "East",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
@@ -3295,19 +3346,26 @@
             "modern_scholar": 1
           }
         },
-        "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
-          "count": 2,
+        "data/raw/Munro-PopesCrusades-1916.pdf": {
+          "count": 1,
           "reasons": {
-            "bibliographic_noise": 2
+            "known_bad_entity": 1
+          }
+        },
+        "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
+          "count": 4,
+          "reasons": {
+            "known_bad_entity": 4
           }
         }
       },
       "reasons": {
-        "bibliographic_noise": 2,
+        "known_bad_entity": 5,
         "modern_scholar": 1
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
+        "data/raw/Munro-PopesCrusades-1916.pdf",
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf"
       ]
     },
@@ -3856,9 +3914,9 @@
       ]
     },
     "first": {
-      "count": 4,
-      "last_context": "5, 39, 49,   50, 52, 5o8, 523, 524) he was on the First Crusade: on this introduction of material   from ",
-      "last_seen": "2026-07-18T17:49:41.931159+00:00",
+      "count": 11,
+      "last_context": " came from that district and may have been on the First   Crusade, although they only made appearance in ",
+      "last_seen": "2026-07-20T05:37:38.000116+00:00",
       "name": "First",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
@@ -3867,19 +3925,25 @@
             "known_bad_entity": 2
           }
         },
-        "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
-          "count": 2,
+        "data/raw/Munro-PopesCrusades-1916.pdf": {
+          "count": 3,
           "reasons": {
-            "bibliographic_noise": 2
+            "known_bad_entity": 3
+          }
+        },
+        "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
+          "count": 6,
+          "reasons": {
+            "known_bad_entity": 6
           }
         }
       },
       "reasons": {
-        "bibliographic_noise": 2,
-        "known_bad_entity": 2
+        "known_bad_entity": 11
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
+        "data/raw/Munro-PopesCrusades-1916.pdf",
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf"
       ]
     },
@@ -3898,7 +3962,7 @@
     "for the": {
       "count": 4,
       "last_context": "ute Cour', RHC Lois, i.  422 (see also p.  420).  For the date of the list, see R.  C.  Smail, Crusading War",
-      "last_seen": "2026-07-18T17:49:41.931159+00:00",
+      "last_seen": "2026-07-20T05:37:38.000116+00:00",
       "name": "For the",
       "per_source": {
         "data/raw/Munro-PopesCrusades-1916.pdf": {
@@ -3910,15 +3974,12 @@
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
           "count": 3,
           "reasons": {
-            "bibliographic_noise": 2,
-            "modern_scholar": 1
+            "known_bad_entity": 3
           }
         }
       },
       "reasons": {
-        "bibliographic_noise": 2,
-        "known_bad_entity": 1,
-        "modern_scholar": 1
+        "known_bad_entity": 4
       },
       "sources": [
         "data/raw/Munro-PopesCrusades-1916.pdf",
@@ -3987,8 +4048,8 @@
     },
     "france": {
       "count": 3,
-      "last_context": "114 BYUStudies The destruction of the Templars in France from 1307 to 131273 went basi- cally unnoticed am",
-      "last_seen": "2026-07-19T05:18:06.969693+00:00",
+      "last_context": "litum there; he was later   alongside Bohemond in France.9 He appears to have been a man who   had attache",
+      "last_seen": "2026-07-20T05:37:38.000116+00:00",
       "name": "France",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
@@ -4000,18 +4061,19 @@
         "data/raw/Munro-PopesCrusades-1916.pdf": {
           "count": 1,
           "reasons": {
-            "modern_scholar": 1
+            "known_bad_entity": 1
           }
         },
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
           "count": 1,
           "reasons": {
-            "modern_scholar": 1
+            "known_bad_entity": 1
           }
         }
       },
       "reasons": {
-        "modern_scholar": 3
+        "known_bad_entity": 2,
+        "modern_scholar": 1
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
@@ -4241,15 +4303,14 @@
     },
     "from": {
       "count": 5,
-      "last_context": " of the kingdom,   including Hebron and Jericho.8 From admittedly fragmentary   evidence one can deduce ",
-      "last_seen": "2026-07-19T05:20:17.168676+00:00",
+      "last_context": "-Athir, Al-Kamily 12:22. 51.R. Stephen Humphreys, From Saladin totheMongols: The AyyubidsofDamas- cuSy11",
+      "last_seen": "2026-07-20T05:35:26.813693+00:00",
       "name": "From",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
           "count": 2,
           "reasons": {
-            "common_word": 1,
-            "modern_scholar": 1
+            "known_bad_entity": 2
           }
         },
         "data/raw/Munro-PopesCrusades-1916.pdf": {
@@ -4266,9 +4327,7 @@
         }
       },
       "reasons": {
-        "common_word": 1,
-        "known_bad_entity": 3,
-        "modern_scholar": 1
+        "known_bad_entity": 5
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
@@ -4297,12 +4356,20 @@
       ]
     },
     "fulcher of chartres": {
-      "count": 3,
-      "last_context": "2. See supra, p. 730. \n3. Hagenmeyer, intro. to Fulcher of Chartres, pp. 4-7. \n4. ON CRUSADE: Robert of",
-      "last_seen": "2026-03-07T20:47:38.413104+00:00",
+      "count": 5,
+      "last_context": "h of Caen, pp.  632-3, 636-7.  3.  Hagenmeyer (in Fulcher of Chartres, p.  66o, n.  7) thought it unlikely that he   ca",
+      "last_seen": "2026-07-20T05:37:38.000116+00:00",
       "name": "Fulcher of Chartres",
+      "per_source": {
+        "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
+          "count": 5,
+          "reasons": {
+            "known_bad_entity": 5
+          }
+        }
+      },
       "reasons": {
-        "modern_scholar": 3
+        "known_bad_entity": 5
       },
       "sources": [
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf"
@@ -4641,26 +4708,26 @@
       ]
     },
     "godfrey": {
-      "count": 3,
-      "last_context": "ded; after the   capture of the city they elected Godfrey, Defender of the Holy   Sepulcher. This title pro",
-      "last_seen": "2026-07-19T05:18:48.013345+00:00",
+      "count": 9,
+      "last_context": "eems to have consisted partly of men drawn from   Godfrey's army: a large detachment from that force was at",
+      "last_seen": "2026-07-20T05:37:38.000116+00:00",
       "name": "Godfrey",
       "per_source": {
         "data/raw/Munro-PopesCrusades-1916.pdf": {
           "count": 1,
           "reasons": {
-            "bibliographic_noise": 1
+            "known_bad_entity": 1
           }
         },
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
-          "count": 2,
+          "count": 8,
           "reasons": {
-            "bibliographic_noise": 2
+            "known_bad_entity": 8
           }
         }
       },
       "reasons": {
-        "bibliographic_noise": 3
+        "known_bad_entity": 9
       },
       "sources": [
         "data/raw/Munro-PopesCrusades-1916.pdf",
@@ -5242,7 +5309,7 @@
     "hill": {
       "count": 4,
       "last_context": "enel, on the other hand, was a rich nobleman   i. Hill, Raymond I V, pp. 142-3. But cf. J. C. Andressohn",
-      "last_seen": "2026-07-18T17:49:41.931159+00:00",
+      "last_seen": "2026-07-20T05:37:38.000116+00:00",
       "name": "Hill",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
@@ -5254,15 +5321,12 @@
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
           "count": 3,
           "reasons": {
-            "bibliographic_noise": 2,
-            "modern_scholar": 1
+            "known_bad_entity": 3
           }
         }
       },
       "reasons": {
-        "bibliographic_noise": 2,
-        "known_bad_entity": 1,
-        "modern_scholar": 1
+        "known_bad_entity": 4
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
@@ -5356,20 +5420,20 @@
       ]
     },
     "historia": {
-      "count": 4,
-      "last_context": "rgueil, p. 2 1; Bartolf   of Nangis, pp. I 23-4; 'Historia peregrinorum', p. 176; Orderic Vitalis, v. 36; Wi",
-      "last_seen": "2026-07-18T17:49:41.931159+00:00",
+      "count": 8,
+      "last_context": "itanae', RHC oc.  iii.  563, 568; Baldwin III,   'Historia Nicaena', RHC oc.  v.  I79, i8i; William of Tyre,",
+      "last_seen": "2026-07-20T05:37:38.000116+00:00",
       "name": "Historia",
       "per_source": {
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
-          "count": 4,
+          "count": 8,
           "reasons": {
-            "bibliographic_noise": 4
+            "known_bad_entity": 8
           }
         }
       },
       "reasons": {
-        "bibliographic_noise": 4
+        "known_bad_entity": 8
       },
       "sources": [
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf"
@@ -5586,12 +5650,20 @@
       ]
     },
     "historyofayyubidsand": {
-      "count": 31,
+      "count": 1,
       "last_context": "Maqrizi, Kitabal-sulukytrans. R.J.C. Broadhurstas HistoryofAyyubidsand Mamluks (Boston: n.p., 1980); trans. E. Quatremèr",
-      "last_seen": "2026-07-05T16:54:08.155901+00:00",
+      "last_seen": "2026-07-20T05:35:26.813693+00:00",
       "name": "HistoryofAyyubidsand",
+      "per_source": {
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
+          "count": 1,
+          "reasons": {
+            "known_bad_entity": 1
+          }
+        }
+      },
       "reasons": {
-        "post_medieval": 31
+        "known_bad_entity": 1
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
@@ -5898,12 +5970,20 @@
       ]
     },
     "ibnkhallikans": {
-      "count": 31,
+      "count": 1,
       "last_context": "afayat al-ayany 4 vols., trans. W. M. ae Slane as IbnKhallikansBiographicalDictionary(Paris, 1843-71), quoted in ",
-      "last_seen": "2026-07-05T16:54:08.155901+00:00",
+      "last_seen": "2026-07-20T05:35:26.813693+00:00",
       "name": "IbnKhallikans",
+      "per_source": {
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
+          "count": 1,
+          "reasons": {
+            "known_bad_entity": 1
+          }
+        }
+      },
       "reasons": {
-        "post_medieval": 31
+        "known_bad_entity": 1
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
@@ -6124,9 +6204,9 @@
       ]
     },
     "islam": {
-      "count": 3,
-      "last_context": "ya\" and \"Rahib\"; see also Shorter Encyclopaedia ofIslam, ed. H. A. R. Gibb and J.H. Kramers (Leiden: E.J.",
-      "last_seen": "2026-07-19T05:18:06.969693+00:00",
+      "count": 4,
+      "last_context": " much longer be \"the   bulwark of Europe\" against Islam.  The fall of the Latin Empire   of Constantinopl",
+      "last_seen": "2026-07-20T05:36:17.349017+00:00",
       "name": "Islam",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
@@ -6135,14 +6215,22 @@
             "bibliographic_noise": 2,
             "modern_scholar": 1
           }
+        },
+        "data/raw/Munro-PopesCrusades-1916.pdf": {
+          "count": 1,
+          "reasons": {
+            "known_bad_entity": 1
+          }
         }
       },
       "reasons": {
         "bibliographic_noise": 2,
+        "known_bad_entity": 1,
         "modern_scholar": 1
       },
       "sources": [
-        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
+        "data/raw/Munro-PopesCrusades-1916.pdf"
       ]
     },
     "islamic": {
@@ -6168,12 +6256,20 @@
       ]
     },
     "israel": {
-      "count": 31,
-      "last_context": "2001) 97 Fig.1.The Horns ofHattin, near Tiberias, Israel. The Horns of Hattin was the site of Saladin's gr",
-      "last_seen": "2026-07-05T16:54:08.155901+00:00",
+      "count": 2,
+      "last_context": "ondon: Variorum; Jerusalem: Yad Izhak Ben-Zvi and Israel Exploration Society, 1992), 228-38. This content ",
+      "last_seen": "2026-07-20T05:35:26.813693+00:00",
       "name": "Israel",
+      "per_source": {
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
+          "count": 2,
+          "reasons": {
+            "known_bad_entity": 2
+          }
+        }
+      },
       "reasons": {
-        "post_medieval": 31
+        "known_bad_entity": 2
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
@@ -6414,18 +6510,18 @@
     "jamison": {
       "count": 3,
       "last_context": "heims, pp. 767-8. For Tancred's   background, see Jamison, 'Some notes', pp. I96-7. 4. See supra, pp. 726-7",
-      "last_seen": "2026-07-19T05:20:17.168676+00:00",
+      "last_seen": "2026-07-20T05:37:38.000116+00:00",
       "name": "Jamison",
       "per_source": {
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
           "count": 3,
           "reasons": {
-            "bibliographic_noise": 3
+            "known_bad_entity": 3
           }
         }
       },
       "reasons": {
-        "bibliographic_noise": 3
+        "known_bad_entity": 3
       },
       "sources": [
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf"
@@ -6818,15 +6914,15 @@
       ]
     },
     "knights": {
-      "count": 8,
-      "last_context": " not a fi6franc, since it owed the service of I S knights.1 If   Bethsan had ever been allodial, no evidenc",
-      "last_seen": "2026-07-19T05:20:17.168676+00:00",
+      "count": 14,
+      "last_context": "n and bibliography on the great sieges, see Sire, Knights ofMalta, 51-72.  75.  Gershom Gorenberg, The End ",
+      "last_seen": "2026-07-20T05:35:26.813693+00:00",
       "name": "knights",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
-          "count": 3,
+          "count": 9,
           "reasons": {
-            "bibliographic_noise": 3
+            "known_bad_entity": 9
           }
         },
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
@@ -6837,8 +6933,7 @@
         }
       },
       "reasons": {
-        "bibliographic_noise": 3,
-        "known_bad_entity": 5
+        "known_bad_entity": 14
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
@@ -7058,31 +7153,36 @@
       ]
     },
     "latin": {
-      "count": 3,
-      "last_context": "hristian monasti- cism. First, the monks were now Latin Catholics, who frequently had little or no unders",
-      "last_seen": "2026-07-19T05:18:06.969693+00:00",
+      "count": 11,
+      "last_context": " marcher lordships - which was a feature of the   Latin kingdom of Jerusalem. After i ioo, however, the p",
+      "last_seen": "2026-07-20T05:37:38.000116+00:00",
       "name": "Latin",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
-          "count": 1,
+          "count": 5,
           "reasons": {
-            "bibliographic_noise": 1
+            "known_bad_entity": 5
+          }
+        },
+        "data/raw/Munro-PopesCrusades-1916.pdf": {
+          "count": 2,
+          "reasons": {
+            "known_bad_entity": 2
           }
         },
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
-          "count": 2,
+          "count": 4,
           "reasons": {
-            "bibliographic_noise": 1,
-            "modern_scholar": 1
+            "known_bad_entity": 4
           }
         }
       },
       "reasons": {
-        "bibliographic_noise": 2,
-        "modern_scholar": 1
+        "known_bad_entity": 11
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
+        "data/raw/Munro-PopesCrusades-1916.pdf",
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf"
       ]
     },
@@ -7459,26 +7559,26 @@
       ]
     },
     "london": {
-      "count": 3,
-      "last_context": "nd \"Rahib.\" 7.TheKoran,5thed., trans. N.J.Dawood (London: Penguin, 1990); references to the Qur'an are by ",
-      "last_seen": "2026-07-19T05:18:06.969693+00:00",
+      "count": 7,
+      "last_context": "obility and the Kingdom of Jerusalem i174-i277   (London, 1973), p. 7; H. Richardot, 'Francs-fiefs. Essai ",
+      "last_seen": "2026-07-20T05:37:38.000116+00:00",
       "name": "London",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
-          "count": 1,
+          "count": 2,
           "reasons": {
-            "bibliographic_noise": 1
+            "known_bad_entity": 2
           }
         },
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
-          "count": 2,
+          "count": 5,
           "reasons": {
-            "bibliographic_noise": 2
+            "known_bad_entity": 5
           }
         }
       },
       "reasons": {
-        "bibliographic_noise": 3
+        "known_bad_entity": 7
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
@@ -7488,7 +7588,7 @@
     "longman": {
       "count": 3,
       "last_context": "tor.org/terms  English Historical Review   ? 1983 Longman Group Limited London 0013-8266/83/16290721 $03.00",
-      "last_seen": "2026-07-18T17:49:41.931159+00:00",
+      "last_seen": "2026-07-20T05:37:38.000116+00:00",
       "name": "Longman",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
@@ -7500,13 +7600,12 @@
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
           "count": 1,
           "reasons": {
-            "bibliographic_noise": 1
+            "known_bad_entity": 1
           }
         }
       },
       "reasons": {
-        "bibliographic_noise": 1,
-        "known_bad_entity": 2
+        "known_bad_entity": 3
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
@@ -7720,20 +7819,18 @@
     "mayer": {
       "count": 3,
       "last_context": "onor of land   in R6hricht, Regesta, no. 576, but Mayer (Bistiimer, pp. 233-4) shows that this   document",
-      "last_seen": "2026-07-19T05:20:17.168676+00:00",
+      "last_seen": "2026-07-20T05:37:38.000116+00:00",
       "name": "Mayer",
       "per_source": {
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
           "count": 3,
           "reasons": {
-            "bibliographic_noise": 2,
-            "modern_scholar": 1
+            "known_bad_entity": 3
           }
         }
       },
       "reasons": {
-        "bibliographic_noise": 2,
-        "modern_scholar": 1
+        "known_bad_entity": 3
       },
       "sources": [
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf"
@@ -7932,20 +8029,20 @@
       ]
     },
     "military": {
-      "count": 8,
+      "count": 11,
       "last_context": "//about.jstor.org/terms Muslim Perspectives on theMilitary Orders duringtheCrusades 117 35.Al-Harawi, Al-Tad",
-      "last_seen": "2026-07-19T05:18:06.969693+00:00",
+      "last_seen": "2026-07-20T05:35:26.813693+00:00",
       "name": "Military",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
-          "count": 8,
+          "count": 11,
           "reasons": {
-            "bibliographic_noise": 8
+            "known_bad_entity": 11
           }
         }
       },
       "reasons": {
-        "bibliographic_noise": 8
+        "known_bad_entity": 11
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
@@ -8104,12 +8201,20 @@
       ]
     },
     "mongolsandmamluks": {
-      "count": 31,
+      "count": 1,
       "last_context": "1990). 56. Ontheseissues, seeReuvenAmitai-Preiss, MongolsandMamluks: 1heMamluk- Ilkhanid War,1260-1281 (Cambridge: Ca",
-      "last_seen": "2026-07-05T16:54:08.155901+00:00",
+      "last_seen": "2026-07-20T05:35:26.813693+00:00",
       "name": "MongolsandMamluks",
+      "per_source": {
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
+          "count": 1,
+          "reasons": {
+            "known_bad_entity": 1
+          }
+        }
+      },
       "reasons": {
-        "post_medieval": 31
+        "known_bad_entity": 1
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
@@ -8340,22 +8445,20 @@
       ]
     },
     "muslim": {
-      "count": 8,
+      "count": 11,
       "last_context": "d bibliography, see WilliamJ.Hamblin, \"Saladin andMuslim MilitaryTheory,\" in TheHorns ofHattin, ed. B. Z. ",
-      "last_seen": "2026-07-18T17:47:41.148628+00:00",
+      "last_seen": "2026-07-20T05:35:26.813693+00:00",
       "name": "Muslim",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
-          "count": 8,
+          "count": 11,
           "reasons": {
-            "bibliographic_noise": 7,
-            "modern_scholar": 1
+            "known_bad_entity": 11
           }
         }
       },
       "reasons": {
-        "bibliographic_noise": 7,
-        "modern_scholar": 1
+        "known_bad_entity": 11
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
@@ -8778,12 +8881,20 @@
       ]
     },
     "ontheseissues": {
-      "count": 31,
+      "count": 1,
       "last_context": ", TheMongols (Oxford: Basil Blackwell, 1990). 56. Ontheseissues, seeReuvenAmitai-Preiss, MongolsandMamluks: 1heMa",
-      "last_seen": "2026-07-05T16:54:08.155901+00:00",
+      "last_seen": "2026-07-20T05:35:26.813693+00:00",
       "name": "Ontheseissues",
+      "per_source": {
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
+          "count": 1,
+          "reasons": {
+            "known_bad_entity": 1
+          }
+        }
+      },
       "reasons": {
-        "post_medieval": 31
+        "known_bad_entity": 1
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
@@ -9028,26 +9139,26 @@
       ]
     },
     "oxford": {
-      "count": 4,
-      "last_context": "theFranciscan Order from Its OriginstotheYear1517(Oxford: Clarendon Press, 1968).  66.  Elzear Horn, Ichno",
-      "last_seen": "2026-07-19T05:18:06.969693+00:00",
+      "count": 6,
+      "last_context": "1, 126, 255. 2. J. Prawer, Crusader Institutions (Oxford, I980), pp. I 1-12, 35 I; A. A. Beugnot,   'Memoi",
+      "last_seen": "2026-07-20T05:37:38.000116+00:00",
       "name": "Oxford",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
-          "count": 2,
+          "count": 3,
           "reasons": {
-            "bibliographic_noise": 2
+            "known_bad_entity": 3
           }
         },
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
-          "count": 2,
+          "count": 3,
           "reasons": {
-            "bibliographic_noise": 2
+            "known_bad_entity": 3
           }
         }
       },
       "reasons": {
-        "bibliographic_noise": 4
+        "known_bad_entity": 6
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
@@ -9102,9 +9213,9 @@
       ]
     },
     "paris": {
-      "count": 4,
-      "last_context": " croisades et la principautefranque   d'Antioche (Paris, 1940), pp. 2I9, 230. His son inherited his fief ",
-      "last_seen": "2026-07-18T17:49:41.931159+00:00",
+      "count": 10,
+      "last_context": "Veterum scriptorum .  .  .  amplissima collectio (Paris, 1724-3 3), v, col.  5 40, even though he   could",
+      "last_seen": "2026-07-20T05:37:38.000116+00:00",
       "name": "Paris",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
@@ -9113,19 +9224,25 @@
             "known_bad_entity": 1
           }
         },
-        "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
-          "count": 3,
+        "data/raw/Munro-PopesCrusades-1916.pdf": {
+          "count": 1,
           "reasons": {
-            "bibliographic_noise": 3
+            "known_bad_entity": 1
+          }
+        },
+        "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
+          "count": 8,
+          "reasons": {
+            "known_bad_entity": 8
           }
         }
       },
       "reasons": {
-        "bibliographic_noise": 3,
-        "known_bad_entity": 1
+        "known_bad_entity": 10
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
+        "data/raw/Munro-PopesCrusades-1916.pdf",
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf"
       ]
     },
@@ -9232,48 +9349,44 @@
     "perspectives": {
       "count": 11,
       "last_context": "es, see Carole Hillenbrand, The Crusades: Islamic Perspectives (NewYork: Rout- ledge, 2000), 89-255, with a bibl",
-      "last_seen": "2026-07-19T05:18:06.969693+00:00",
+      "last_seen": "2026-07-20T05:35:26.813693+00:00",
       "name": "Perspectives",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
           "count": 11,
           "reasons": {
-            "bibliographic_noise": 10,
-            "modern_scholar": 1
+            "known_bad_entity": 11
           }
         }
       },
       "reasons": {
-        "bibliographic_noise": 10,
-        "modern_scholar": 1
+        "known_bad_entity": 11
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
       ]
     },
     "peter": {
-      "count": 4,
-      "last_context": "(Cambridge: Cambridge University Press, 1995). 57.Peter Thorau, TheLion ofEgypt: Sultan BaybarsIandtheNea",
-      "last_seen": "2026-07-19T05:18:06.969693+00:00",
+      "count": 8,
+      "last_context": "Emicho of Leiningen): Gesta Francorum, pp. 33-34; Peter Tudebode, pp. 68-69; Baldric of Bourgueil, pp. 43",
+      "last_seen": "2026-07-20T05:37:38.000116+00:00",
       "name": "Peter",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
-          "count": 1,
+          "count": 2,
           "reasons": {
-            "bibliographic_noise": 1
+            "known_bad_entity": 2
           }
         },
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
-          "count": 3,
+          "count": 6,
           "reasons": {
-            "bibliographic_noise": 2,
-            "modern_scholar": 1
+            "known_bad_entity": 6
           }
         }
       },
       "reasons": {
-        "bibliographic_noise": 3,
-        "modern_scholar": 1
+        "known_bad_entity": 8
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
@@ -9373,9 +9486,9 @@
       ]
     },
     "pope": {
-      "count": 4,
-      "last_context": "g, and the latter   was wholly independent of the Pope. The Christian conquests in   Syria, instead of b",
-      "last_seen": "2026-07-18T17:48:19.347018+00:00",
+      "count": 5,
+      "last_context": "eval Literature presented to Professor Mildred K. Pope   (Manchester, 1939), pp. 201-2. 5. He was Bohemo",
+      "last_seen": "2026-07-20T05:37:38.000116+00:00",
       "name": "Pope",
       "per_source": {
         "data/raw/Munro-PopesCrusades-1916.pdf": {
@@ -9383,13 +9496,20 @@
           "reasons": {
             "known_bad_entity": 4
           }
+        },
+        "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
+          "count": 1,
+          "reasons": {
+            "known_bad_entity": 1
+          }
         }
       },
       "reasons": {
-        "known_bad_entity": 4
+        "known_bad_entity": 5
       },
       "sources": [
-        "data/raw/Munro-PopesCrusades-1916.pdf"
+        "data/raw/Munro-PopesCrusades-1916.pdf",
+        "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf"
       ]
     },
     "pope urban": {
@@ -9494,14 +9614,14 @@
     },
     "press": {
       "count": 4,
-      "last_context": "), pp. 721- 736   Published by: Oxford University Press  Stable URL: https://www.jstor.org/stable/567757 ",
-      "last_seen": "2026-07-19T05:20:17.168676+00:00",
+      "last_context": "r from Its OriginstotheYear1517(Oxford: Clarendon Press, 1968).  66.  Elzear Horn, IchnographiaeMonumento",
+      "last_seen": "2026-07-20T05:35:26.813693+00:00",
       "name": "Press",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
           "count": 3,
           "reasons": {
-            "bibliographic_noise": 3
+            "known_bad_entity": 3
           }
         },
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
@@ -9512,8 +9632,7 @@
         }
       },
       "reasons": {
-        "bibliographic_noise": 3,
-        "known_bad_entity": 1
+        "known_bad_entity": 4
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
@@ -9578,20 +9697,20 @@
     },
     "princeton": {
       "count": 4,
-      "last_context": "See R. B. Yewdale, Bohemond I, Prince of Antioch (Princeton, 1924), passim;   Cahen, La Syrie du Nord, pp. 20",
-      "last_seen": "2026-07-19T05:20:17.168676+00:00",
+      "last_context": "d in them and the Popes' connection   with them.  Princeton University,   April, 1916.  This content download",
+      "last_seen": "2026-07-20T05:36:17.349017+00:00",
       "name": "Princeton",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
           "count": 2,
           "reasons": {
-            "bibliographic_noise": 2
+            "known_bad_entity": 2
           }
         },
         "data/raw/Munro-PopesCrusades-1916.pdf": {
           "count": 1,
           "reasons": {
-            "post_medieval": 1
+            "known_bad_entity": 1
           }
         },
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
@@ -9602,9 +9721,7 @@
         }
       },
       "reasons": {
-        "bibliographic_noise": 2,
-        "known_bad_entity": 1,
-        "post_medieval": 1
+        "known_bad_entity": 4
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
@@ -9625,12 +9742,20 @@
       ]
     },
     "printingpress": {
-      "count": 31,
-      "last_context": "724-1744), trans. E. Hoade (Jerusalem: Franciscan PrintingPress, 1962), quoted in F. E. Peters, Jerusalem: TheHol",
-      "last_seen": "2026-07-05T16:54:08.155901+00:00",
+      "count": 1,
+      "last_context": "4-1744), trans.  E.  Hoade (Jerusalem: Franciscan PrintingPress, 1962), quoted in F.  E.  Peters, Jerusalem: TheH",
+      "last_seen": "2026-07-20T05:35:26.813693+00:00",
       "name": "PrintingPress",
+      "per_source": {
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
+          "count": 1,
+          "reasons": {
+            "known_bad_entity": 1
+          }
+        }
+      },
       "reasons": {
-        "post_medieval": 31
+        "known_bad_entity": 1
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
@@ -9698,31 +9823,31 @@
     },
     "published": {
       "count": 3,
-      "last_context": "o. 4, A Special Issue on Islam (2001), pp. 97-118 Published by: Brigham Young University Stable URL: https://",
-      "last_seen": "2026-07-19T05:18:06.969693+00:00",
+      "last_context": "83, Vol. 98, No. 389 (Oct., 1983), pp. 721- 736   Published by: Oxford University Press  Stable URL: https://",
+      "last_seen": "2026-07-20T05:37:38.000116+00:00",
       "name": "Published",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
           "count": 1,
           "reasons": {
-            "bibliographic_noise": 1
+            "known_bad_entity": 1
           }
         },
         "data/raw/Munro-PopesCrusades-1916.pdf": {
           "count": 1,
           "reasons": {
-            "bibliographic_noise": 1
+            "known_bad_entity": 1
           }
         },
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
           "count": 1,
           "reasons": {
-            "bibliographic_noise": 1
+            "known_bad_entity": 1
           }
         }
       },
       "reasons": {
-        "bibliographic_noise": 3
+        "known_bad_entity": 3
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
@@ -9811,20 +9936,20 @@
       ]
     },
     "quioc": {
-      "count": 3,
+      "count": 5,
       "last_context": ", I I 5 (add.), 293.  For his origins, see Duparc-Quioc, La   Chanson d'Antioche, ii.  229, n.  5.  ON CR",
-      "last_seen": "2026-07-18T17:49:41.931159+00:00",
+      "last_seen": "2026-07-20T05:37:38.000116+00:00",
       "name": "Quioc",
       "per_source": {
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
-          "count": 3,
+          "count": 5,
           "reasons": {
-            "modern_scholar": 3
+            "known_bad_entity": 5
           }
         }
       },
       "reasons": {
-        "modern_scholar": 3
+        "known_bad_entity": 5
       },
       "sources": [
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf"
@@ -10147,12 +10272,20 @@
       ]
     },
     "reuvenamitai-": {
-      "count": 31,
+      "count": 1,
       "last_context": "rd: Basil Blackwell, 1990). 56. Ontheseissues, seeReuvenAmitai-Preiss, MongolsandMamluks: 1heMamluk- Ilkhanid War",
-      "last_seen": "2026-07-05T16:54:08.155901+00:00",
+      "last_seen": "2026-07-20T05:35:26.813693+00:00",
       "name": "ReuvenAmitai-",
+      "per_source": {
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
+          "count": 1,
+          "reasons": {
+            "known_bad_entity": 1
+          }
+        }
+      },
       "reasons": {
-        "post_medieval": 31
+        "known_bad_entity": 1
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
@@ -10280,14 +10413,14 @@
     },
     "riley": {
       "count": 4,
-      "last_context": "le des Chartes, ser. 3, V. (i 8 54), 52-53. 3. J. Riley-Smith, The Feudal Nobility and the Kingdom of Jer",
-      "last_seen": "2026-07-19T05:20:17.168676+00:00",
+      "last_context": "ns and Malcolm Cameron Lyons, trans., and J.S. C. Riley-Smith, AyyubidSyMamlukes and Crusaders: Selection",
+      "last_seen": "2026-07-20T05:35:26.813693+00:00",
       "name": "Riley",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
           "count": 1,
           "reasons": {
-            "modern_scholar": 1
+            "known_bad_entity": 1
           }
         },
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
@@ -10298,8 +10431,7 @@
         }
       },
       "reasons": {
-        "known_bad_entity": 3,
-        "modern_scholar": 1
+        "known_bad_entity": 4
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
@@ -10564,15 +10696,14 @@
     },
     "runciman": {
       "count": 4,
-      "last_context": "ith Hugh of St Omer.  For his later career, see   Runciman, Crusades, ii, passim.  He was already a fief-hol",
-      "last_seen": "2026-07-19T05:20:17.168676+00:00",
+      "last_context": "k: Columbia University Press, 1943)» 2:442-43. 25.Runciman, Crusades,2:420; William ofTyre, History ofDeeds,",
+      "last_seen": "2026-07-20T05:35:26.813693+00:00",
       "name": "Runciman",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
           "count": 2,
           "reasons": {
-            "bibliographic_noise": 1,
-            "modern_scholar": 1
+            "known_bad_entity": 2
           }
         },
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
@@ -10583,9 +10714,7 @@
         }
       },
       "reasons": {
-        "bibliographic_noise": 1,
-        "known_bad_entity": 2,
-        "modern_scholar": 1
+        "known_bad_entity": 4
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
@@ -11025,14 +11154,14 @@
     },
     "smith": {
       "count": 4,
-      "last_context": " Chartes, ser. 3, V. (i 8 54), 52-53. 3. J. Riley-Smith, The Feudal Nobility and the Kingdom of Jerusalem",
-      "last_seen": "2026-07-19T05:20:17.168676+00:00",
+      "last_context": " Malcolm Cameron Lyons, trans., and J.S. C. Riley-Smith, AyyubidSyMamlukes and Crusaders: Selectionsfrom ",
+      "last_seen": "2026-07-20T05:35:26.813693+00:00",
       "name": "Smith",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
           "count": 1,
           "reasons": {
-            "modern_scholar": 1
+            "known_bad_entity": 1
           }
         },
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
@@ -11043,8 +11172,7 @@
         }
       },
       "reasons": {
-        "known_bad_entity": 3,
-        "modern_scholar": 1
+        "known_bad_entity": 4
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
@@ -11072,22 +11200,29 @@
       ]
     },
     "some": {
-      "count": 3,
+      "count": 8,
       "last_context": " 767-8. For Tancred's   background, see Jamison, 'Some notes', pp. I96-7. 4. See supra, pp. 726-7. 5. Wi",
-      "last_seen": "2026-07-18T17:49:41.931159+00:00",
+      "last_seen": "2026-07-20T05:37:38.000116+00:00",
       "name": "Some",
       "per_source": {
-        "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
-          "count": 3,
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
+          "count": 4,
           "reasons": {
-            "bibliographic_noise": 3
+            "known_bad_entity": 4
+          }
+        },
+        "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
+          "count": 4,
+          "reasons": {
+            "known_bad_entity": 4
           }
         }
       },
       "reasons": {
-        "bibliographic_noise": 3
+        "known_bad_entity": 8
       },
       "sources": [
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf"
       ]
     },
@@ -11153,31 +11288,31 @@
     },
     "source": {
       "count": 3,
-      "last_context": "during the Crusades Author(s): William J. Hamblin Source: Brigham Young University Studies, 2001, Vol. 40,",
-      "last_seen": "2026-07-19T05:18:06.969693+00:00",
+      "last_context": "tine, 1095-1100  Author(s): Jonathan Riley-Smith  Source: The English Historical Review , Oct., 1983, Vol.",
+      "last_seen": "2026-07-20T05:37:38.000116+00:00",
       "name": "Source",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
           "count": 1,
           "reasons": {
-            "bibliographic_noise": 1
+            "known_bad_entity": 1
           }
         },
         "data/raw/Munro-PopesCrusades-1916.pdf": {
           "count": 1,
           "reasons": {
-            "bibliographic_noise": 1
+            "known_bad_entity": 1
           }
         },
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
           "count": 1,
           "reasons": {
-            "bibliographic_noise": 1
+            "known_bad_entity": 1
           }
         }
       },
       "reasons": {
-        "bibliographic_noise": 3
+        "known_bad_entity": 3
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
@@ -11207,31 +11342,31 @@
     },
     "stable": {
       "count": 3,
-      "last_context": "pp. 97-118 Published by: Brigham Young University Stable URL: https://www.jstor.org/stable/43044283 JSTOR ",
-      "last_seen": "2026-07-19T05:18:06.969693+00:00",
+      "last_context": "721- 736   Published by: Oxford University Press  Stable URL: https://www.jstor.org/stable/567757 JSTOR is",
+      "last_seen": "2026-07-20T05:37:38.000116+00:00",
       "name": "Stable",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
           "count": 1,
           "reasons": {
-            "bibliographic_noise": 1
+            "known_bad_entity": 1
           }
         },
         "data/raw/Munro-PopesCrusades-1916.pdf": {
           "count": 1,
           "reasons": {
-            "bibliographic_noise": 1
+            "known_bad_entity": 1
           }
         },
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
           "count": 1,
           "reasons": {
-            "bibliographic_noise": 1
+            "known_bad_entity": 1
           }
         }
       },
       "reasons": {
-        "bibliographic_noise": 3
+        "known_bad_entity": 3
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
@@ -11401,14 +11536,14 @@
     },
     "studies": {
       "count": 11,
-      "last_context": "m South Italy and Sicily in the First Crusade',   Studies in French Language and Medieval Literature presen",
-      "last_seen": "2026-07-19T05:20:17.168676+00:00",
+      "last_context": "e subject to https://about.jstor.org/terms 118 BYUStudies 65.  Forgeneralbackgroundon the Franciscans in th",
+      "last_seen": "2026-07-20T05:35:26.813693+00:00",
       "name": "Studies",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
           "count": 10,
           "reasons": {
-            "bibliographic_noise": 10
+            "known_bad_entity": 10
           }
         },
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
@@ -11419,8 +11554,7 @@
         }
       },
       "reasons": {
-        "bibliographic_noise": 10,
-        "known_bad_entity": 1
+        "known_bad_entity": 11
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
@@ -11428,12 +11562,20 @@
       ]
     },
     "study": {
-      "count": 31,
+      "count": 1,
       "last_context": "Caliphs and Their Non-Muslim Subjects: A Critical Study ofthe Covenantof'Umar [London: Frank Cass, 1970],",
-      "last_seen": "2026-07-05T16:54:08.155901+00:00",
+      "last_seen": "2026-07-20T05:35:26.813693+00:00",
       "name": "Study",
+      "per_source": {
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
+          "count": 1,
+          "reasons": {
+            "known_bad_entity": 1
+          }
+        }
+      },
       "reasons": {
-        "post_medieval": 31
+        "known_bad_entity": 1
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
@@ -11556,12 +11698,20 @@
       ]
     },
     "sultan baybarsiandthe": {
-      "count": 31,
+      "count": 1,
       "last_context": "y Press, 1995). 57.Peter Thorau, TheLion ofEgypt: Sultan BaybarsIandtheNearEastintheThir- teenthCenturyytrans. P. M. Holt",
-      "last_seen": "2026-07-05T16:54:08.155901+00:00",
+      "last_seen": "2026-07-20T05:35:26.813693+00:00",
       "name": "Sultan BaybarsIandthe",
+      "per_source": {
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
+          "count": 1,
+          "reasons": {
+            "known_bad_entity": 1
+          }
+        }
+      },
       "reasons": {
-        "post_medieval": 31
+        "known_bad_entity": 1
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
@@ -11648,12 +11798,20 @@
       ]
     },
     "supplementalvolume": {
-      "count": 31,
+      "count": 1,
       "last_context": " R. Stephen Humphreys, in Encyclopaedia of Islam, SupplementalVolume (Leiden: E. J.Brill, 1981), s.v. \"Dawiyya and Isb",
-      "last_seen": "2026-07-05T16:54:08.155901+00:00",
+      "last_seen": "2026-07-20T05:35:26.813693+00:00",
       "name": "SupplementalVolume",
+      "per_source": {
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
+          "count": 1,
+          "reasons": {
+            "known_bad_entity": 1
+          }
+        }
+      },
       "reasons": {
-        "post_medieval": 31
+        "known_bad_entity": 1
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
@@ -11960,31 +12118,31 @@
     },
     "terms": {
       "count": 3,
-      "last_context": "he JSTOR archive indicates your acceptance of the Terms & Conditions of Use, available at https://about.j",
-      "last_seen": "2026-07-19T05:18:06.969693+00:00",
+      "last_context": "he JSTOR archive indicates your acceptance of the Terms & Conditions of Use, available at  https://about.",
+      "last_seen": "2026-07-20T05:37:38.000116+00:00",
       "name": "Terms",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
           "count": 1,
           "reasons": {
-            "bibliographic_noise": 1
+            "known_bad_entity": 1
           }
         },
         "data/raw/Munro-PopesCrusades-1916.pdf": {
           "count": 1,
           "reasons": {
-            "bibliographic_noise": 1
+            "known_bad_entity": 1
           }
         },
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
           "count": 1,
           "reasons": {
-            "bibliographic_noise": 1
+            "known_bad_entity": 1
           }
         }
       },
       "reasons": {
-        "bibliographic_noise": 3
+        "known_bad_entity": 3
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
@@ -12125,12 +12283,20 @@
       ]
     },
     "theholy": {
-      "count": 31,
-      "last_context": "gPress, 1962), quoted in F. E. Peters, Jerusalem: TheHoly CityintheEyes ofChroniclers,Visitors,Pilgrims, an",
-      "last_seen": "2026-07-05T16:54:08.155901+00:00",
+      "count": 1,
+      "last_context": "ress, 1962), quoted in F.  E.  Peters, Jerusalem: TheHoly CityintheEyes ofChroniclers,Visitors,Pilgrims, an",
+      "last_seen": "2026-07-20T05:35:26.813693+00:00",
       "name": "TheHoly",
+      "per_source": {
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
+          "count": 1,
+          "reasons": {
+            "known_bad_entity": 1
+          }
+        }
+      },
       "reasons": {
-        "post_medieval": 31
+        "known_bad_entity": 1
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
@@ -12157,12 +12323,20 @@
       ]
     },
     "thekoran": {
-      "count": 31,
+      "count": 1,
       "last_context": "l, 1953), 466-67, s.v. \"Rahbaniya\" and \"Rahib.\" 7.TheKoran,5thed., trans. N.J.Dawood (London: Penguin, 1990)",
-      "last_seen": "2026-07-05T16:54:08.155901+00:00",
+      "last_seen": "2026-07-20T05:35:26.813693+00:00",
       "name": "TheKoran",
+      "per_source": {
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
+          "count": 1,
+          "reasons": {
+            "known_bad_entity": 1
+          }
+        }
+      },
       "reasons": {
-        "post_medieval": 31
+        "known_bad_entity": 1
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
@@ -12189,12 +12363,20 @@
       ]
     },
     "themongols": {
-      "count": 31,
+      "count": 1,
       "last_context": "1382 (London: Croon Helm, 1986). 55.David Morgan, TheMongols (Oxford: Basil Blackwell, 1990). 56. Ontheseissue",
-      "last_seen": "2026-07-05T16:54:08.155901+00:00",
+      "last_seen": "2026-07-20T05:35:26.813693+00:00",
       "name": "TheMongols",
+      "per_source": {
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
+          "count": 1,
+          "reasons": {
+            "known_bad_entity": 1
+          }
+        }
+      },
       "reasons": {
-        "post_medieval": 31
+        "known_bad_entity": 1
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
@@ -12221,15 +12403,15 @@
       ]
     },
     "there": {
-      "count": 7,
-      "last_context": "1  The picture that emerges is not a clear one. There are a few   examples of an apparent desire for ma",
-      "last_seen": "2026-07-19T05:20:17.168676+00:00",
+      "count": 11,
+      "last_context": "by any means entirely or even largely altruistic. There were manyadvantages thatMamluksultanshoped to obt",
+      "last_seen": "2026-07-20T05:35:26.813693+00:00",
       "name": "There",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
-          "count": 2,
+          "count": 6,
           "reasons": {
-            "bibliographic_noise": 2
+            "known_bad_entity": 6
           }
         },
         "data/raw/Munro-PopesCrusades-1916.pdf": {
@@ -12246,8 +12428,7 @@
         }
       },
       "reasons": {
-        "bibliographic_noise": 2,
-        "known_bad_entity": 5
+        "known_bad_entity": 11
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
@@ -12590,22 +12771,20 @@
       ]
     },
     "tudebode": {
-      "count": 3,
+      "count": 5,
       "last_context": " of Leiningen): Gesta Francorum, pp. 33-34; Peter Tudebode, pp. 68-69; Baldric of Bourgueil, pp. 43-44; Guib",
-      "last_seen": "2026-07-18T17:49:41.931159+00:00",
+      "last_seen": "2026-07-20T05:37:38.000116+00:00",
       "name": "Tudebode",
       "per_source": {
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
-          "count": 3,
+          "count": 5,
           "reasons": {
-            "bibliographic_noise": 2,
-            "modern_scholar": 1
+            "known_bad_entity": 5
           }
         }
       },
       "reasons": {
-        "bibliographic_noise": 2,
-        "modern_scholar": 1
+        "known_bad_entity": 5
       },
       "sources": [
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf"
@@ -12712,16 +12891,15 @@
       ]
     },
     "university": {
-      "count": 6,
-      "last_context": "(Oct., 1983), pp. 721- 736   Published by: Oxford University Press  Stable URL: https://www.jstor.org/stable/5",
-      "last_seen": "2026-07-19T05:20:17.168676+00:00",
+      "count": 7,
+      "last_context": "heBeginnings ofModern Times (Princeton: Princeton University Press, 1985), 369.  67.  Horn, quoted in Peters, ",
+      "last_seen": "2026-07-20T05:35:26.813693+00:00",
       "name": "University",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
-          "count": 4,
+          "count": 5,
           "reasons": {
-            "bibliographic_noise": 3,
-            "post_medieval": 1
+            "known_bad_entity": 5
           }
         },
         "data/raw/Munro-PopesCrusades-1916.pdf": {
@@ -12738,9 +12916,7 @@
         }
       },
       "reasons": {
-        "bibliographic_noise": 3,
-        "known_bad_entity": 2,
-        "post_medieval": 1
+        "known_bad_entity": 7
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
@@ -13005,31 +13181,31 @@
     },
     "vol": {
       "count": 3,
-      "last_context": "n Source: Brigham Young University Studies, 2001, Vol. 40, No. 4, A Special Issue on Islam (2001), pp. ",
-      "last_seen": "2026-07-19T05:18:06.969693+00:00",
+      "last_context": "urce: The English Historical Review , Oct., 1983, Vol. 98, No. 389 (Oct., 1983), pp. 721- 736   Publish",
+      "last_seen": "2026-07-20T05:37:38.000116+00:00",
       "name": "Vol",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
           "count": 1,
           "reasons": {
-            "bibliographic_noise": 1
+            "known_bad_entity": 1
           }
         },
         "data/raw/Munro-PopesCrusades-1916.pdf": {
           "count": 1,
           "reasons": {
-            "bibliographic_noise": 1
+            "known_bad_entity": 1
           }
         },
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
           "count": 1,
           "reasons": {
-            "bibliographic_noise": 1
+            "known_bad_entity": 1
           }
         }
       },
       "reasons": {
-        "bibliographic_noise": 3
+        "known_bad_entity": 3
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
@@ -13123,9 +13299,9 @@
       ]
     },
     "war": {
-      "count": 2,
-      "last_context": "ai-Preiss, MongolsandMamluks: 1heMamluk- Ilkhanid War,1260-1281 (Cambridge: Cambridge University Press,",
-      "last_seen": "2026-07-19T05:18:06.969693+00:00",
+      "count": 3,
+      "last_context": "riter. Thomas Fuller in his History of the   Holy War said :   \" Though the pretences were pious and pl",
+      "last_seen": "2026-07-20T05:36:17.349017+00:00",
       "name": "War",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
@@ -13133,13 +13309,21 @@
           "reasons": {
             "bibliographic_noise": 2
           }
+        },
+        "data/raw/Munro-PopesCrusades-1916.pdf": {
+          "count": 1,
+          "reasons": {
+            "known_bad_entity": 1
+          }
         }
       },
       "reasons": {
-        "bibliographic_noise": 2
+        "bibliographic_noise": 2,
+        "known_bad_entity": 1
       },
       "sources": [
-        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
+        "data/raw/Munro-PopesCrusades-1916.pdf"
       ]
     },
     "warfare": {
@@ -13223,31 +13407,36 @@
       ]
     },
     "william": {
-      "count": 3,
-      "last_context": "holy site without abandoning a part oftheir soul. William J.Hamblin [william_hamblin@byu.edu] is Professor ",
-      "last_seen": "2026-07-19T05:18:06.969693+00:00",
+      "count": 5,
+      "last_context": "hey must have had little hope of eventual reward. William Peyre, lord of Cunlhat, had been the employer of ",
+      "last_seen": "2026-07-20T05:37:38.000116+00:00",
       "name": "William",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
-          "count": 3,
+          "count": 4,
           "reasons": {
-            "bibliographic_noise": 2,
-            "modern_scholar": 1
+            "known_bad_entity": 4
+          }
+        },
+        "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
+          "count": 1,
+          "reasons": {
+            "known_bad_entity": 1
           }
         }
       },
       "reasons": {
-        "bibliographic_noise": 2,
-        "modern_scholar": 1
+        "known_bad_entity": 5
       },
       "sources": [
-        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
+        "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf"
       ]
     },
     "william of malmesbury": {
       "count": 2,
       "last_context": ",   Regesta, nos. I I I, 983 and also passim). 2. William of Malmesbury, De gestis regum Anglorum, ed. W. Stubbs (London,",
-      "last_seen": "2026-07-18T17:49:41.931159+00:00",
+      "last_seen": "2026-07-20T05:37:38.000116+00:00",
       "name": "William of Malmesbury",
       "per_source": {
         "data/raw/Munro-PopesCrusades-1916.pdf": {
@@ -13259,13 +13448,12 @@
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
           "count": 1,
           "reasons": {
-            "modern_scholar": 1
+            "known_bad_entity": 1
           }
         }
       },
       "reasons": {
-        "known_bad_entity": 1,
-        "modern_scholar": 1
+        "known_bad_entity": 2
       },
       "sources": [
         "data/raw/Munro-PopesCrusades-1916.pdf",
@@ -13295,18 +13483,18 @@
     "wiscardides": {
       "count": 2,
       "last_context": "lph of Caen, pp. 686, 703. For a reference to the Wiscardides as soldiers of   Bohemond's army, see ibid. p. 6i",
-      "last_seen": "2026-07-19T05:20:17.168676+00:00",
+      "last_seen": "2026-07-20T05:37:38.000116+00:00",
       "name": "Wiscardides",
       "per_source": {
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
           "count": 2,
           "reasons": {
-            "bibliographic_noise": 2
+            "known_bad_entity": 2
           }
         }
       },
       "reasons": {
-        "bibliographic_noise": 2
+        "known_bad_entity": 2
       },
       "sources": [
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf"
@@ -13447,31 +13635,31 @@
     },
     "your": {
       "count": 3,
-      "last_context": "ion about JSTOR, please contact support@jstor.org Your use of the JSTOR archive indicates your acceptanc",
-      "last_seen": "2026-07-19T05:18:06.969693+00:00",
+      "last_context": "on about JSTOR, please contact support@jstor.org. Your use of the JSTOR archive indicates your acceptanc",
+      "last_seen": "2026-07-20T05:37:38.000116+00:00",
       "name": "Your",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
           "count": 1,
           "reasons": {
-            "bibliographic_noise": 1
+            "known_bad_entity": 1
           }
         },
         "data/raw/Munro-PopesCrusades-1916.pdf": {
           "count": 1,
           "reasons": {
-            "bibliographic_noise": 1
+            "known_bad_entity": 1
           }
         },
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
           "count": 1,
           "reasons": {
-            "bibliographic_noise": 1
+            "known_bad_entity": 1
           }
         }
       },
       "reasons": {
-        "bibliographic_noise": 3
+        "known_bad_entity": 3
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
