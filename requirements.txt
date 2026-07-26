@@ -11,3 +11,5 @@ python-dotenv>=1.0  # load .env.gpustack for GPUStack config
 # MISTRAL_API_KEY is set; or force it with OCR_ENGINE=mistral).
 # Install via: pip install -e '.[ocr-mistral]'   (or: pip install mistralai)
 # Kept in requirements.lock.txt so the nightly pipeline retains the fallback.
+rdflib==7.6.0
+pyshacl==0.31.0

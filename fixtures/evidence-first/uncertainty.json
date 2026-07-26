@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0.0",
+  "objects": [
+    {"id":"outremer:snapshot:chronicle","type":"snapshot","version":1,"manifestation_id":"outremer:manifestation:chronicle","checksum":"2222222222222222222222222222222222222222222222222222222222222222","retrieved_at":"2026-07-26T08:00:00Z","source_locator":"chronicle.xml","source_created_at":"1175-01-01T00:00:00Z","source_published_at":"1899-01-01T00:00:00Z","ingested_at":"2026-07-26T08:00:00Z"},
+    {"id":"outremer:passage:chronicle-44","type":"passage","version":1,"snapshot_id":"outremer:snapshot:chronicle","locator":"folio 22r, lines 4–8","text":"He perhaps came to Jerusalem between 1160 and 1170."},
+    {"id":"outremer:activity:extract-1","type":"activity","version":1,"activity_kind":"extraction","agent":"adapter-syriaca","started_at":"2026-07-26T08:00:01Z","adapter_version":"syriaca-tei-v1"},
+    {"id":"outremer:activity:review-3","type":"activity","version":1,"activity_kind":"review","agent":"reviewer-gamma","started_at":"2026-07-26T09:00:00Z","adapter_version":null},
+    {
+      "id":"outremer:assertion:uncertain-visit",
+      "type":"assertion",
+      "version":1,
+      "passage_ids":["outremer:passage:chronicle-44"],
+      "subject_id":"outremer:person:visitor",
+      "predicate":"visited",
+      "object":"Jerusalem",
+      "semantics":{
+        "source_certainty":"possible",
+        "polarity":"affirmed",
+        "inference":"source_explicit",
+        "source_reliability":"medium",
+        "review_status":"disputed",
+        "extractor_confidence":0.88,
+        "reconciliation_score":0.61,
+        "editorial_confidence":0.55
+      },
+      "asserted_time":{
+        "notBefore":1160,
+        "notAfter":1170,
+        "original_text":"between the twentieth and thirtieth year of the reign",
+        "calendar_note":"normalized approximately to CE from the source regnal dating"
+      },
+      "place_candidates":[
+        {"source_string":"Jerusalem","uri":"https://pleiades.stoa.org/places/687928","rank":1,"valid_from":-500,"valid_to":700,"geometry":"POINT(35.2167 31.7833)","spatial_precision":"settlement-centroid"},
+        {"source_string":"Jerusalem","uri":"https://www.wikidata.org/entity/Q1218","rank":2,"valid_from":1000,"valid_to":1400,"geometry":null,"spatial_precision":"city"}
+      ],
+      "provenance":{
+        "snapshot_id":"outremer:snapshot:chronicle",
+        "generation_activity_id":"outremer:activity:extract-1",
+        "review_activity_id":"outremer:activity:review-3"
+      }
+    },
+    {"id":"outremer:decision:identity-accepted","type":"decision","version":1,"hypothesis_id":"outremer:identity_hypothesis:visitor","candidate_id":"outremer:person:visitor","status":"accepted","activity_id":"outremer:activity:review-3"}
+  ]
+}

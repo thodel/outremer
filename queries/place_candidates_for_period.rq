@@ -1,0 +1,8 @@
+PREFIX out: <https://outremer.example/ns/>
+SELECT ?assertion ?candidate ?place WHERE {
+  ?assertion a out:Assertion ; out:placeCandidate ?candidate .
+  ?candidate out:candidateUri ?place .
+  OPTIONAL { ?candidate out:validFrom ?from }
+  OPTIONAL { ?candidate out:validTo ?to }
+  FILTER ((!BOUND(?from) || ?from <= 1200) && (!BOUND(?to) || ?to >= 1100))
+}
