@@ -1,0 +1,45 @@
+{
+  "pilot_version": "syriaca-tei-v1",
+  "snapshot_commit": "fefe80f5aabebeef5ee3cef66d3d344cf573f173",
+  "reviewed_at": "2026-07-26",
+  "reviewer": "editor-th",
+  "method": "manual review of name/date/place evidence; no label-only acceptance",
+  "summary": {
+    "candidates": 20,
+    "accepted": 4,
+    "rejected": 9,
+    "unresolved": 7,
+    "precision_on_decided": 0.3077,
+    "estimated_minutes_per_candidate": 6,
+    "estimated_curator_minutes": 120
+  },
+  "ambiguity_classes": {
+    "cross_tradition_name_variant": 5,
+    "chronology_mismatch": 4,
+    "homonym": 5,
+    "indirect_place_connection": 3,
+    "insufficient_source_evidence": 3
+  },
+  "cases": [
+    {"id":"S01","outremer_label":"Michael the Syrian","syriaca_label":"Michael the Great","decision":"accepted","class":"cross_tradition_name_variant","rationale":"compatible patriarchal title, chronology and Antioch context"},
+    {"id":"S02","outremer_label":"Bar Hebraeus","syriaca_label":"Gregory Abu al-Faraj","decision":"accepted","class":"cross_tradition_name_variant","rationale":"established name variants with compatible dates and see"},
+    {"id":"S03","outremer_label":"Baldwin I","syriaca_label":"Baldwin","decision":"unresolved","class":"homonym","rationale":"name overlap without a stable cross-identifier"},
+    {"id":"S04","outremer_label":"Bohemond","syriaca_label":"Bohemond","decision":"unresolved","class":"homonym","rationale":"several princes share the name; relation evidence required"},
+    {"id":"S05","outremer_label":"Nur al-Din","syriaca_label":"Nur al-Din Mahmud","decision":"accepted","class":"cross_tradition_name_variant","rationale":"compatible dates, title and Aleppo/Damascus context"},
+    {"id":"S06","outremer_label":"Saladin","syriaca_label":"Salah al-Din Yusuf","decision":"accepted","class":"cross_tradition_name_variant","rationale":"compatible name, dates, role and geography"},
+    {"id":"S07","outremer_label":"John","syriaca_label":"John","decision":"rejected","class":"homonym","rationale":"name alone is non-discriminating"},
+    {"id":"S08","outremer_label":"Theodore","syriaca_label":"Theodore","decision":"rejected","class":"homonym","rationale":"no compatible role or source link"},
+    {"id":"S09","outremer_label":"Heraclius","syriaca_label":"Heraclius","decision":"rejected","class":"chronology_mismatch","rationale":"candidate belongs to seventh century"},
+    {"id":"S10","outremer_label":"Aphrahat","syriaca_label":"Aphrahat the Persian","decision":"rejected","class":"chronology_mismatch","rationale":"fourth-century author outside pilot dates"},
+    {"id":"S11","outremer_label":"Ephrem","syriaca_label":"Ephrem the Syrian","decision":"rejected","class":"chronology_mismatch","rationale":"fourth-century author outside pilot dates"},
+    {"id":"S12","outremer_label":"Jacob","syriaca_label":"Jacob of Serugh","decision":"rejected","class":"chronology_mismatch","rationale":"died before pilot period"},
+    {"id":"S13","outremer_label":"Patriarch of Antioch","syriaca_label":"Patriarch Michael","decision":"unresolved","class":"indirect_place_connection","rationale":"role/place overlap but candidate identity underspecified"},
+    {"id":"S14","outremer_label":"Bishop of Edessa","syriaca_label":"Basil of Edessa","decision":"unresolved","class":"indirect_place_connection","rationale":"title and place insufficient without chronology"},
+    {"id":"S15","outremer_label":"Dionysius","syriaca_label":"Dionysius bar Salibi","decision":"unresolved","class":"cross_tradition_name_variant","rationale":"possible overlap; requires source-passage comparison"},
+    {"id":"S16","outremer_label":"Matthew","syriaca_label":"Matthew of Edessa","decision":"unresolved","class":"insufficient_source_evidence","rationale":"chronicle author may be evidence source rather than prosopographical subject"},
+    {"id":"S17","outremer_label":"Usama","syriaca_label":"Usama ibn Munqidh","decision":"unresolved","class":"insufficient_source_evidence","rationale":"candidate needs stable Syriaca URI and relation evidence"},
+    {"id":"S18","outremer_label":"Constantine","syriaca_label":"Constantine","decision":"rejected","class":"homonym","rationale":"name overlap produces multiple emperors and clerics"},
+    {"id":"S19","outremer_label":"Gabriel","syriaca_label":"Gabriel of Mosul","decision":"rejected","class":"indirect_place_connection","rationale":"place connection does not establish person identity"},
+    {"id":"S20","outremer_label":"Isaac","syriaca_label":"Isaac","decision":"rejected","class":"insufficient_source_evidence","rationale":"no discriminating date, role or relationship"}
+  ]
+}

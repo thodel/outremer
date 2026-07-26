@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc><titleStmt><title>SPEAR factoid</title></titleStmt>
+      <publicationStmt><idno type="URI">http://syriaca.org/spear/999/tei</idno>
+        <availability><licence target="http://creativecommons.org/licenses/by/3.0/"><p>CC BY 3.0</p></licence></availability>
+      </publicationStmt><sourceDesc><listBibl><bibl xml:id="bib999-1">Source passage 44</bibl></listBibl></sourceDesc>
+    </fileDesc>
+    <revisionDesc><change when="2020-01-01" who="#editor">Created</change></revisionDesc>
+  </teiHeader>
+  <text><body><person xml:id="factoid-999">
+    <persName xml:id="name999" xml:lang="ar" source="#bib999-1">ميخائيل</persName>
+    <event xml:id="factoid-event" notBefore="1170" notAfter="1190" source="#bib999-1">Visited <placeName ref="http://syriaca.org/place/78">Jerusalem</placeName></event>
+    <relation name="spear:attestation" active="#factoid-999" passive="http://syriaca.org/person/123" source="#bib999-1"/>
+  </person></body></text>
+</TEI>

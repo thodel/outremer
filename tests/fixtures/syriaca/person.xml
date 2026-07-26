@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="en">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt><title>Michael the Syrian</title></titleStmt>
+      <publicationStmt>
+        <idno type="URI">http://syriaca.org/person/123/tei</idno>
+        <availability><licence target="http://creativecommons.org/licenses/by/3.0/">
+          <p>Distributed under a Creative Commons Attribution 3.0 Unported License.</p>
+          <p>This entry incorporates copyrighted material from a third-party work.</p>
+        </licence></availability>
+      </publicationStmt>
+      <sourceDesc><listBibl><bibl xml:id="bib123-1">Chronicle <ptr target="urn:isbn:1"/></bibl></listBibl></sourceDesc>
+    </fileDesc>
+    <revisionDesc><change when="2023-10" who="#editor">Updated schema</change></revisionDesc>
+  </teiHeader>
+  <text><body><listPerson><person xml:id="person-123">
+    <persName xml:id="name123-en" xml:lang="en" source="#bib123-1">Michael the Syrian</persName>
+    <persName xml:id="name123-syr" xml:lang="syr">ܡܝܟܐܝܠ ܣܘܪܝܝܐ</persName>
+    <floruit notBefore="1126" notAfter="1199" source="#bib123-1">twelfth century</floruit>
+    <event xml:id="event123-1" when="1166" source="#bib123-1">Became patriarch at <placeName ref="http://syriaca.org/place/10">Antioch</placeName></event>
+    <relation name="snap:Kinship" active="http://syriaca.org/person/123" passive="http://syriaca.org/person/456" source="#bib123-1"/>
+  </person></listPerson></body></text>
+</TEI>
