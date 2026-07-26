@@ -17,6 +17,7 @@ import time
 from typing import Any
 
 import openai
+
 from config import (
     EXTRACTION_MODEL,
     GPUSTACK_API_KEY,

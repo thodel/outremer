@@ -1,0 +1,23 @@
+{
+  "repository": "https://github.com/srophe/syriaca-data.git",
+  "commit": "fefe80f5aabebeef5ee3cef66d3d344cf573f173",
+  "paths": [
+    "data/persons/tei",
+    "data/spear/tei"
+  ],
+  "selection": {
+    "not_before": 1000,
+    "not_after": 1400,
+    "regions": [
+      "Levant",
+      "Jerusalem",
+      "Antioch",
+      "Edessa",
+      "Aleppo",
+      "Damascus",
+      "Mosul",
+      "Mediterranean"
+    ]
+  },
+  "live_api_enabled": false
+}

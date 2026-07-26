@@ -27,11 +27,12 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-from config import EXTRACTION_MODEL, GPUSTACK_BASE_URL, OCR_ENGINE
 from extract_persons import extract_persons_and_metadata
 from linker import build_authority_lookup, link_voyagers_to_outremer, normalise
 from llm_client import generate as _llm_generate
 from validate_decisions import validate_decisions_file
+
+from config import EXTRACTION_MODEL, GPUSTACK_BASE_URL, OCR_ENGINE
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 logger = logging.getLogger(__name__)

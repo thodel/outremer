@@ -6,9 +6,9 @@ inequalities against the config thresholds, not exact values, so rapidfuzz
 version bumps don't break the suite.
 """
 
-from config import LINK_CANDIDATE_FLOOR, LINK_HIGH
 from linker import _fuzzy_score, fold_particles, link_voyagers_to_outremer, normalise
 
+from config import LINK_CANDIDATE_FLOOR, LINK_HIGH
 from evaluation import metrics as eval_metrics
 
 # ── normalise / fold_particles ───────────────────────────────────────────────
