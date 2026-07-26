@@ -1,0 +1,49 @@
+{
+  "pilot_version": "open-authorities-v1",
+  "assessed_at": "2026-07-26",
+  "basis": "fixture-based preflight; live manual validation still required",
+  "summary": {
+    "candidates": 20,
+    "accepted": 11,
+    "rejected": 5,
+    "unresolved": 4,
+    "precision_on_decided": 0.6875,
+    "estimated_minutes_per_candidate": 4,
+    "estimated_curator_minutes": 80
+  },
+  "overlap": {
+    "wikidata_gnd": 5,
+    "wikidata_factgrid": 3,
+    "wikidata_pleiades": 0,
+    "source_unique": 12
+  },
+  "ambiguity_classes": {
+    "homonym": 4,
+    "chronology_conflict": 2,
+    "place_scope_mismatch": 3,
+    "insufficient_evidence": 4,
+    "clear_cross_identifier": 7
+  },
+  "cases": [
+    {"id":"P01","source":"wikidata","decision":"accepted","class":"clear_cross_identifier"},
+    {"id":"P02","source":"gnd","decision":"accepted","class":"clear_cross_identifier"},
+    {"id":"P03","source":"factgrid","decision":"accepted","class":"clear_cross_identifier"},
+    {"id":"P04","source":"pleiades","decision":"unresolved","class":"place_scope_mismatch"},
+    {"id":"P05","source":"wikidata","decision":"rejected","class":"homonym"},
+    {"id":"P06","source":"gnd","decision":"accepted","class":"clear_cross_identifier"},
+    {"id":"P07","source":"factgrid","decision":"unresolved","class":"insufficient_evidence"},
+    {"id":"P08","source":"pleiades","decision":"accepted","class":"clear_cross_identifier"},
+    {"id":"P09","source":"wikidata","decision":"rejected","class":"chronology_conflict"},
+    {"id":"P10","source":"gnd","decision":"accepted","class":"clear_cross_identifier"},
+    {"id":"P11","source":"factgrid","decision":"rejected","class":"homonym"},
+    {"id":"P12","source":"pleiades","decision":"unresolved","class":"place_scope_mismatch"},
+    {"id":"P13","source":"wikidata","decision":"accepted","class":"clear_cross_identifier"},
+    {"id":"P14","source":"gnd","decision":"rejected","class":"homonym"},
+    {"id":"P15","source":"factgrid","decision":"accepted","class":"insufficient_evidence"},
+    {"id":"P16","source":"pleiades","decision":"accepted","class":"place_scope_mismatch"},
+    {"id":"P17","source":"wikidata","decision":"rejected","class":"chronology_conflict"},
+    {"id":"P18","source":"gnd","decision":"accepted","class":"homonym"},
+    {"id":"P19","source":"factgrid","decision":"unresolved","class":"insufficient_evidence"},
+    {"id":"P20","source":"pleiades","decision":"accepted","class":"insufficient_evidence"}
+  ]
+}
