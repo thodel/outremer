@@ -9,8 +9,12 @@ Output: site/data/fmg_medlands_crusaders.json (pipeline format)
 """
 
 import json
+import sys
 from datetime import datetime
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from source_registry import SourcePolicyError, require_operation
 
 
 def convert_person(fmg_person, index):
@@ -92,6 +96,10 @@ def convert_person(fmg_person, index):
 
 
 def main():
+    try:
+        require_operation("fmg-medlands", "public-export")
+    except SourcePolicyError as exc:
+        raise SystemExit(f"Quarantined by source registry: {exc}") from exc
     repo_root = Path(__file__).parent.parent
 
     input_file = repo_root / "data" / "fmg" / "fmg_medlands_crusaders.json"

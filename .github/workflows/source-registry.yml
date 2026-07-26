@@ -1,0 +1,42 @@
+name: Source rights registry
+
+on:
+  pull_request:
+    paths:
+      - "data/sources/**"
+      - "data/quarantine/**"
+      - "scripts/**"
+      - "scrapers/**"
+  push:
+    branches: [main]
+  schedule:
+    - cron: "17 6 * * 1"
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python scripts/source_registry.py validate
+      - run: python -m pytest tests/test_source_registry.py -q
+
+  review:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Report stale reviews without changing policy
+        run: python scripts/source_registry.py review --output source-review.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: source-rights-review
+          path: source-review.json

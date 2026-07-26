@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "items": [
+    {
+      "source_id": "dhi-crusaders",
+      "paths": ["data/dhi/dhi_sample_output.json"],
+      "status": "permission-required",
+      "allowed_use": "technical-fixture-testing",
+      "canonical_export": false,
+      "public_export": false
+    },
+    {
+      "source_id": "fmg-medlands",
+      "paths": [
+        "data/fmg/fmg_medlands_crusaders.json",
+        "data/fmg/raw/JERUSALEM_SAMPLE.htm",
+        "site/data/fmg_medlands_crusaders.json"
+      ],
+      "status": "permission-required",
+      "allowed_use": "technical-fixture-testing",
+      "canonical_export": false,
+      "public_export": false
+    }
+  ]
+}
