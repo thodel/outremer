@@ -8,19 +8,23 @@ Source: https://www.dhi.ac.uk/crusaders/
 Output: data/dhi/dhi_crusaders_raw.json (raw scraped data)
         data/dhi/dhi_crusaders_unified.json (mapped to Outremer KG schema)
 
-The database contains ~1100 records of crusaders from First Crusade (1096-1099) 
+The database contains ~1100 records of crusaders from First Crusade (1096-1099)
 to Second Crusade (1145-1149).
 """
 
-import requests
-from bs4 import BeautifulSoup
 import json
-import re
-import time
 import random
+import re
+import sys
+import time
 from datetime import datetime
 from pathlib import Path
-from urllib.parse import urljoin
+
+import requests
+from bs4 import BeautifulSoup
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
+from source_registry import SourcePolicyError, require_operation
 
 BASE_URL = "https://www.dhi.ac.uk/crusaders/"
 PERSON_URL = "https://www.dhi.ac.uk/crusaders/person/"
@@ -34,6 +38,14 @@ HEADERS = {
 }
 
 OUTPUT_DIR = Path(__file__).parent.parent / "data" / "dhi"
+
+
+def assert_ingestion_allowed():
+    """Fail closed until written reuse permission is recorded."""
+    try:
+        require_operation("dhi-crusaders", "snapshot")
+    except SourcePolicyError as exc:
+        raise SystemExit(f"Quarantined by source registry: {exc}") from exc
 
 def fetch_person_page(person_id, session=None):
     """Fetch a single person page."""
@@ -361,7 +373,7 @@ def scrape_all(output_raw=True, output_unified=True):
         
         html = fetch_person_page(person_id)
         if not html:
-            print(f"  Skipped (no page)")
+            print("  Skipped (no page)")
             continue
         
         raw = parse_person_html(html, person_id)
@@ -426,7 +438,9 @@ def scrape_single(person_id):
 
 if __name__ == "__main__":
     import sys
-    
+
+    if "--help" not in sys.argv:
+        assert_ingestion_allowed()
     if len(sys.argv) > 1:
         if sys.argv[1] == "--single":
             person_id = int(sys.argv[2]) if len(sys.argv) > 2 else 1

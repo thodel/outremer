@@ -8,14 +8,19 @@ Target sections: Kings of Jerusalem, Counts of Tripoli, Princes of Antioch, Coun
 Output: data/fmg/fmg_medlands_crusaders.json
 """
 
-import requests
-from bs4 import BeautifulSoup
 import json
-import re
-import time
 import random
+import re
+import sys
+import time
 from datetime import datetime
 from pathlib import Path
+
+import requests
+from bs4 import BeautifulSoup
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
+from source_registry import SourcePolicyError, require_operation
 
 BASE_URL = "http://fmg.ac/Projects/MedLands/"
 
@@ -37,6 +42,14 @@ TARGET_PAGES = [
     {"file": "EDESSA.htm", "region": "County of Edessa", "title_filter": "COMTES"},
     {"file": "BYZANTIUM.htm", "region": "Byzantine Empire", "title_filter": "EMPERORS"},
 ]
+
+
+def assert_ingestion_allowed():
+    """Fail closed until written reuse permission is recorded."""
+    try:
+        require_operation("fmg-medlands", "snapshot")
+    except SourcePolicyError as exc:
+        raise SystemExit(f"Quarantined by source registry: {exc}") from exc
 
 def extract_name(text):
     """Extract person name from MedLands format (usually bold or at start of paragraph)."""
@@ -176,7 +189,7 @@ def parse_medlands_page(url, region_info, session):
         except requests.RequestException as e:
             if attempt == max_retries - 1:
                 print(f"  ⚠️  Error fetching {url} after {max_retries} attempts: {e}")
-                print(f"  💡 The fmg.ac server may be blocking automated requests.")
+                print("  💡 The fmg.ac server may be blocking automated requests.")
                 print(f"  💡 Try downloading pages manually from: {BASE_URL}")
                 return persons
             print(f"  ⚠️  Attempt {attempt + 1} failed: {type(e).__name__}")
@@ -236,6 +249,7 @@ def parse_medlands_page(url, region_info, session):
     return persons
 
 def main():
+    assert_ingestion_allowed()
     print("🏰 FMG MedLands Crusader Nobility Scraper")
     print("=" * 50)
     
