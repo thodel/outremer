@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Outremer evidence review</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>Evidence and identity review</h1>
+    <p>Review assertions and identity hypotheses without changing source evidence.</p>
+    <label>Reviewer pseudonym seed <input id="reviewer" autocomplete="off"></label>
+    <label>Canonical dataset <input id="dataset" type="file" accept=".json"></label>
+    <section id="items"></section>
+    <button id="export">Export append-only reviews</button>
+  </main>
+  <script src="evidence-review.js"></script>
+</body>
+</html>
