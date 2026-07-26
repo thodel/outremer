@@ -1,0 +1,44 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix out: <https://outremer.example/ns/> .
+
+out:AssertionShape
+    a sh:NodeShape ;
+    sh:targetClass out:Assertion ;
+    sh:property [
+        sh:path out:evidencePassage ;
+        sh:minCount 1 ;
+        sh:class out:Passage ;
+        sh:message "Every assertion requires an evidence passage." ;
+    ] ;
+    sh:sparql [
+        sh:message "Temporal notBefore must not be later than notAfter." ;
+        sh:select """
+            SELECT $this WHERE {
+              $this out:notBefore ?start ; out:notAfter ?end .
+              FILTER (?start > ?end)
+            }
+        """ ;
+    ] .
+
+out:DecisionShape
+    a sh:NodeShape ;
+    sh:targetClass out:Decision ;
+    sh:property [
+        sh:path out:decisionStatus ;
+        sh:minCount 1 ;
+        sh:in ("accepted" "rejected" "superseded" "disputed") ;
+        sh:message "Decision status must use the controlled vocabulary." ;
+    ] ;
+    sh:sparql [
+        sh:message "Accepted identity decisions require reviewer and review activity provenance." ;
+        sh:select """
+            SELECT $this WHERE {
+              $this out:decisionStatus "accepted" .
+              FILTER NOT EXISTS {
+                $this out:reviewActivity ?activity .
+                ?activity out:responsibleAgent ?reviewer .
+              }
+            }
+        """ ;
+    ] .

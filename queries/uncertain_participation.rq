@@ -1,0 +1,7 @@
+PREFIX out: <https://outremer.example/ns/>
+SELECT ?assertion ?certainty WHERE {
+  ?assertion a out:Assertion ;
+             out:predicate "participated_in" ;
+             out:source_certainty ?certainty .
+  FILTER (?certainty != "certain")
+}

@@ -1,0 +1,6 @@
+PREFIX out: <https://outremer.example/ns/>
+SELECT ?assertion ?passage WHERE {
+  ?assertion a out:Assertion ;
+             out:evidencePassage ?passage .
+  FILTER EXISTS { ?assertion out:assertionObject ?value }
+}

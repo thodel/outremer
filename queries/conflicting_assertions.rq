@@ -1,0 +1,6 @@
+PREFIX out: <https://outremer.example/ns/>
+SELECT ?left ?right WHERE {
+  ?left a out:Assertion ; out:predicate ?predicate ; out:assertionObject ?object .
+  ?right a out:Assertion ; out:predicate ?predicate ; out:assertionObject ?other .
+  FILTER (?left != ?right && ?object != ?other)
+}
