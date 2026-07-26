@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0.0",
+  "objects": [
+    {"id":"outremer:source_work:munro","type":"source_work","version":1,"title":"The Popes and the Crusades"},
+    {"id":"outremer:manifestation:munro-pdf","type":"manifestation","version":1,"work_id":"outremer:source_work:munro","citation":"Munro 1916 PDF"},
+    {"id":"outremer:snapshot:munro-sha","type":"snapshot","version":1,"manifestation_id":"outremer:manifestation:munro-pdf","checksum":"1111111111111111111111111111111111111111111111111111111111111111","retrieved_at":"2026-07-26T00:00:00Z","source_locator":"data/raw/Munro-PopesCrusades-1916.pdf"},
+    {"id":"outremer:passage:munro-p12","type":"passage","version":1,"snapshot_id":"outremer:snapshot:munro-sha","locator":"PDF p. 12, lines 4–7","text":"Baldwin perhaps joined the expedition."},
+    {"id":"outremer:mention:baldwin","type":"mention","version":1,"passage_id":"outremer:passage:munro-p12","verbatim":"Baldwin","language":"en","script":"Latn","mention_kind":"person"},
+    {"id":"outremer:mention:anonymous","type":"mention","version":1,"passage_id":"outremer:passage:munro-p12","verbatim":"the pilgrims","language":"en","script":"Latn","mention_kind":"group"},
+    {"id":"outremer:person:baldwin-i","type":"person","version":1,"preferred_label":"Baldwin I of Jerusalem","source_native_ids":{"wikidata":"Q8016"}},
+    {"id":"outremer:person:baldwin-ii","type":"person","version":1,"preferred_label":"Baldwin II of Jerusalem","source_native_ids":{"wikidata":"Q314164"}},
+    {"id":"outremer:group:pilgrims","type":"group","version":1,"preferred_label":"Anonymous pilgrims"},
+    {"id":"outremer:assertion:participation-1","type":"assertion","version":1,"passage_ids":["outremer:passage:munro-p12"],"subject_id":"outremer:person:baldwin-i","predicate":"possibly_participated_in","object":"expedition","participants":[{"role":"participant","identity_id":"outremer:person:baldwin-i"}]},
+    {"id":"outremer:assertion:contradiction","type":"assertion","version":1,"passage_ids":["outremer:passage:munro-p12"],"subject_id":"outremer:person:baldwin-i","predicate":"did_not_participate_in","object":"expedition","participants":[]},
+    {"id":"outremer:identity_hypothesis:baldwin","type":"identity_hypothesis","version":1,"mention_id":"outremer:mention:baldwin","candidates":[{"identity_id":"outremer:person:baldwin-i","score":0.72,"features":{"name":true}},{"identity_id":"outremer:person:baldwin-ii","score":0.69,"features":{"name":true}}]},
+    {"id":"outremer:activity:review-1","type":"activity","version":1,"activity_kind":"review","agent":"reviewer-alpha","started_at":"2026-07-26T00:00:00Z","adapter_version":null},
+    {"id":"outremer:decision:reject-bii","type":"decision","version":1,"hypothesis_id":"outremer:identity_hypothesis:baldwin","candidate_id":"outremer:person:baldwin-ii","status":"rejected","activity_id":"outremer:activity:review-1","comment":"Chronology conflicts."},
+    {"id":"outremer:activity:review-2","type":"activity","version":1,"activity_kind":"review","agent":"reviewer-beta","started_at":"2026-07-26T01:00:00Z","adapter_version":null},
+    {"id":"outremer:decision:accept-bi","type":"decision","version":1,"hypothesis_id":"outremer:identity_hypothesis:baldwin","candidate_id":"outremer:person:baldwin-i","status":"accepted","activity_id":"outremer:activity:review-2","comment":"Source and chronology align."},
+    {"id":"outremer:decision:superseded-bi","type":"decision","version":2,"supersedes":"outremer:decision:accept-bi","hypothesis_id":"outremer:identity_hypothesis:baldwin","candidate_id":"outremer:person:baldwin-i","status":"superseded","activity_id":"outremer:activity:review-2","comment":"Preserved while a contradiction is investigated."}
+  ]
+}
