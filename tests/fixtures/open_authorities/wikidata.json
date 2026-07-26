@@ -1,0 +1,16 @@
+[
+  {
+    "id": "Q8016",
+    "lastrevid": 12345,
+    "labels": {"en": {"value": "Baldwin I of Jerusalem"}},
+    "aliases": {"fr": [{"value": "Baudouin de Boulogne"}]},
+    "claims": {
+      "P39": [{
+        "rank": "normal",
+        "mainsnak": {"datavalue": {"value": {"id": "Q208691"}}},
+        "qualifiers": {"P580": [{"datavalue": {"value": {"time": "+1100-00-00T00:00:00Z", "precision": 7}}}]},
+        "references": [{"snaks": {"P248": [{"datavalue": {"value": {"id": "Q123"}}}]}}]
+      }]
+    }
+  }
+]
