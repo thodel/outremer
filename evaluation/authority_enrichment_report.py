@@ -6,7 +6,7 @@ import json
 from collections import Counter
 from pathlib import Path
 
-from evaluation._pipeline import load_authority_lookup, relink
+from evaluation._pipeline import REPO_ROOT, load_authority_lookup, relink
 from evaluation.diagnose import diagnose_document
 from evaluation.metrics import (
     DEFAULT_FUZZY_THRESHOLD,
@@ -15,6 +15,7 @@ from evaluation.metrics import (
     split_pairs_by_system,
 )
 from evaluation.sweep import sweep
+from scripts.linker import normalise
 
 FIXTURES = Path(__file__).resolve().parent / "fixtures"
 
@@ -33,9 +34,16 @@ def _score_bin(score: float) -> str:
 
 def build_report(fixtures_dir: Path = FIXTURES) -> dict:
     lookup = load_authority_lookup()
+    authority_source = json.loads(
+        (REPO_ROOT / "scripts" / "outremer_index.json").read_text(encoding="utf-8")
+    )
+    authority = {
+        item["authority_id"]: item for item in authority_source.get("persons", [])
+    }
     totals = Counter()
     causes = Counter()
     correct_scores: list[float] = []
+    accepted_pair_audit: list[dict] = []
 
     for path in sorted(fixtures_dir.glob("*.json")):
         fixture = json.loads(path.read_text(encoding="utf-8"))
@@ -47,6 +55,26 @@ def build_report(fixtures_dir: Path = FIXTURES) -> dict:
         rejected, _ = split_pairs_by_system(
             [tuple(item) for item in fixture.get("rejected", [])]
         )
+        for mention, authority_id in accepted:
+            record = authority.get(authority_id)
+            attested_names = (
+                [record.get("preferred_label", ""), *(record.get("variants") or [])]
+                if record
+                else []
+            )
+            exact_attestation = any(
+                normalise(name) == normalise(mention) for name in attested_names if name
+            )
+            accepted_pair_audit.append(
+                {
+                    "document": fixture["doc_id"],
+                    "mention": mention,
+                    "authority_id": authority_id,
+                    "authority_label": record.get("preferred_label") if record else None,
+                    "exact_attested_variant": exact_attestation,
+                    "status": "attested" if exact_attestation else "needs_scholarly_review",
+                }
+            )
         if not persons or not (accepted or rejected):
             continue
 
@@ -78,6 +106,9 @@ def build_report(fixtures_dir: Path = FIXTURES) -> dict:
             "reject_avoided": totals["reject_avoided"],
         },
         "accepted_pair_diagnosis": dict(sorted(causes.items())),
+        "accepted_authority_pair_audit": sorted(
+            accepted_pair_audit, key=lambda row: (row["document"], row["mention"])
+        ),
         "correct_match_score_distribution": dict(sorted(bins.items())),
         "candidate_floor_sweep": sweep(
             [0.55, 0.60, 0.65, 0.70, 0.75, 0.80, 0.85], fixtures_dir
