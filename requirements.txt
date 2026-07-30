@@ -13,3 +13,4 @@ python-dotenv>=1.0  # load .env.gpustack for GPUStack config
 # Kept in requirements.lock.txt so the nightly pipeline retains the fallback.
 rdflib==7.6.0
 pyshacl==0.31.0
+jsonschema==4.25.1
