@@ -1,9 +1,12 @@
 """Tests for evaluation/metrics.py — extraction P/R/F1 and linking agreement."""
 
 from evaluation.metrics import (
+    candidate_distance,
+    cer,
     extraction_prf,
     linking_agreement,
     normalise_name,
+    wer,
 )
 
 # ── normalise_name ───────────────────────────────────────────────────────────
@@ -14,6 +17,45 @@ def test_normalise_strips_accents_case_whitespace():
         "raymond de saint-gilles"
     )
     assert normalise_name("Adhémar") == "adhemar"
+
+
+# ── recognition metrics ──────────────────────────────────────────────────────
+
+def test_cer_and_wer_hand_computed_values():
+    assert cer("abcd", "abxd") == 0.25
+    assert wer("one two three", "one four three") == 1 / 3
+
+
+def test_recognition_normalisation_switches():
+    assert cer("Godfrey,  DE Bouillon", "godfrey de bouillon") == 0.0
+    assert cer("A.", "a", ignore_punctuation=False) == 0.5
+    assert cer("ſā", "sa", abbrev_fold=True) == 0.0
+    assert cer("A", "a", ignore_case=False) == 1.0
+    assert cer("a  b", "a b", ignore_whitespace=False) == 0.25
+
+
+def test_recognition_metrics_empty_and_identical_edges():
+    assert cer("", "") == 0.0
+    assert cer("", "text") == 1.0
+    assert wer("", "") == 0.0
+    assert wer("", "text") == 1.0
+    assert candidate_distance(["same", "same"]) == {
+        "pairs": 1,
+        "mean_cer": 0.0,
+        "max_cer": 0.0,
+    }
+    assert candidate_distance(["only"]) == {
+        "pairs": 0,
+        "mean_cer": 0.0,
+        "max_cer": 0.0,
+    }
+
+
+def test_candidate_distance_reports_mean_and_max_pairwise_cer():
+    result = candidate_distance(["abc", "axc", "xyz"])
+    assert result["pairs"] == 3
+    assert result["max_cer"] == 1.0
+    assert result["mean_cer"] == 7 / 9
 
 
 # ── extraction_prf ───────────────────────────────────────────────────────────
