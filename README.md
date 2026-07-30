@@ -75,6 +75,11 @@ Copy `.env.gpustack` template (or create manually):
 GPUSTACK_BASE_URL=https://gpustack.unibe.ch/v1
 GPUSTACK_API_KEY=your-token-here
 
+# Optional local ATR recognition gateway
+ATR_GATEWAY_URL=http://localhost:8200
+ATR_API_KEY=your-gateway-token
+ATR_HTTP_TIMEOUT=300
+
 # Model names (check GPUStack dashboard for exact names)
 EXTRACTION_MODEL=qwen3-30b-a3b-instruct
 ORCHESTRATOR_MODEL=minimax-m2.7

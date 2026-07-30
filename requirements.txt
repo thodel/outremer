@@ -1,5 +1,6 @@
 # LLM (all inference via GPUStack, OpenAI-compatible API)
 openai>=1.0
+httpx>=0.28
 
 # Core pipeline
 rapidfuzz>=3.0

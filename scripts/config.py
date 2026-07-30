@@ -10,6 +10,9 @@ Env vars (set in .env.gpustack, git-ignored):
     EXTRACTION_MODEL     - model for person extraction (default qwen3-30b-a3b-instruct)
     ORCHESTRATOR_MODEL   - model for orchestration (default minimax-m2.7)
     QWEN3_VL_MODEL       - vision model for document OCR (default qwen3-vl-30b-a3b-instruct)
+    ATR_GATEWAY_URL      - serving-atr-inference base URL
+    ATR_API_KEY          - static X-API-Key credential (empty for local development)
+    ATR_HTTP_TIMEOUT     - gateway request timeout in seconds (default 300)
     OCR_ENGINE           - qwen3-vl | mistral (default qwen3-vl)
 """
 from __future__ import annotations
@@ -49,6 +52,12 @@ def _get(key: str, default=None):
 GPUSTACK_BASE_URL  = _get("GPUSTACK_BASE_URL",  "https://gpustack.unibe.ch/v1")
 GPUSTACK_API_KEY   = os.environ.get("GPUSTACK_API_KEY", "")
 GPUSTACK_TIMEOUT   = int(_get("GPUSTACK_TIMEOUT", "120"))
+
+# ATR gateway. The 300-second client budget matches the gateway engine budget;
+# shorter timeouts can misreport healthy cold-model or long-page requests.
+ATR_GATEWAY_URL = _get("ATR_GATEWAY_URL", "")
+ATR_API_KEY = _get("ATR_API_KEY", "")
+ATR_HTTP_TIMEOUT = float(_get("ATR_HTTP_TIMEOUT", "300"))
 
 # Model names - must match exactly how models are registered in GPUStack
 EXTRACTION_MODEL   = _get("EXTRACTION_MODEL",   "qwen3-30b-a3b-instruct")
