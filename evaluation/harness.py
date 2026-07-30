@@ -47,6 +47,10 @@ from evaluation.metrics import (
 REPO_ROOT = Path(__file__).resolve().parent.parent
 FIXTURES_DIR = Path(__file__).resolve().parent / "fixtures"
 
+# Below this lift over the null linker, a system's agreement figure is not
+# evidence that it works — it is evidence that the gold is reject-dominated.
+WEAK_SIGNAL_LIFT = 0.05
+
 
 def load_predictions_live(doc_id: str) -> dict:
     """Load current pipeline output for a doc from site/data/.
@@ -117,6 +121,7 @@ def _append_history(
     doc_results: dict[str, dict],
     aggregate: float | None,
     seg_totals: dict[str, list[int]],
+    seg_gold: dict[str, list[int]] | None = None,
 ) -> None:
     """Append one eval-history entry (M9.4) and warn on a noise jump (M9.3).
 
@@ -138,11 +143,28 @@ def _append_history(
         if lines:
             prev = json.loads(lines[-1])
 
+    gold = seg_gold or {}
     entry = {
         "run_at": datetime.now(timezone.utc).isoformat(),
         "combined_agreement": aggregate,
         "segments": {
-            seg: {"pairs": t, "good": g} for seg, (t, g) in seg_totals.items()
+            seg: {
+                "pairs": t,
+                "good": g,
+                # null = what a linker proposing nothing scores on this gold;
+                # lift is the only part that evidences the linker works (#42)
+                **(
+                    {
+                        "accepts": gold[seg][0],
+                        "rejects": gold[seg][1],
+                        "null": round(gold[seg][1] / t, 4) if t else None,
+                        "lift": round(g / t - gold[seg][1] / t, 4) if t else None,
+                    }
+                    if seg in gold
+                    else {}
+                ),
+            }
+            for seg, (t, g) in seg_totals.items()
         },
         "per_document": {
             doc: {
@@ -207,6 +229,15 @@ def main(argv: list[str] | None = None) -> int:
         help="exit 1 if aggregate linking agreement falls below this value",
     )
     ap.add_argument(
+        "--min-lift",
+        type=float,
+        default=None,
+        help="exit 1 if agreement minus the null-linker baseline falls below "
+        "this value. Prefer this over --min-agreement: on reject-dominated "
+        "gold a do-nothing linker already scores ~0.90, so an absolute "
+        "threshold below that can never fail (M9.x / issue #42).",
+    )
+    ap.add_argument(
         "--append-history",
         default=None,
         metavar="JSONL",
@@ -239,6 +270,8 @@ def main(argv: list[str] | None = None) -> int:
         sample_totals: dict[str, list[int]] = {
             "linking": [0, 0], "wikidata": [0, 0]
         }
+        # accepts/rejects per segment, for the null-linker reference
+        sample_gold: dict[str, list[int]] = {"linking": [0, 0], "wikidata": [0, 0]}
         for res in doc_results.values():
             for segment in ("linking", "wikidata"):
                 result = res.get(segment)
@@ -247,12 +280,19 @@ def main(argv: list[str] | None = None) -> int:
                     sample_totals[segment][1] += (
                         result["accept_hit"] + result["reject_avoided"]
                     )
+                    sample_gold[segment][0] += (
+                        result["accept_hit"] + result["accept_miss"]
+                    )
+                    sample_gold[segment][1] += (
+                        result["reject_hit"] + result["reject_avoided"]
+                    )
         sample_pairs = sum(total for total, _ in sample_totals.values())
         sample_good = sum(good for _, good in sample_totals.values())
         samples.append({
             "sample": sample_number,
             "documents": doc_results,
             "segments": sample_totals,
+            "gold": sample_gold,
             "aggregate_agreement": (
                 sample_good / sample_pairs if sample_pairs else None
             ),
@@ -266,18 +306,53 @@ def main(argv: list[str] | None = None) -> int:
     # combined — each adjudicated pair judged against the system that made it
     seg_totals = samples[-1]["segments"]
 
+    seg_gold = samples[-1]["gold"]
+
     total_pairs = sum(t for t, _ in seg_totals.values())
     good = sum(g for _, g in seg_totals.values())
+    # A "null linker" proposes nothing: it misses every accept but avoids
+    # every reject, so it scores rejects/total. Reporting it keeps a
+    # reject-dominated gold from flattering a linker that does nothing.
+    null_good = sum(rej for _, rej in seg_gold.values())
+    null_aggregate = (null_good / total_pairs) if total_pairs else None
     print()
+    seg_lifts: dict[str, float] = {}
     for seg, label in (("linking", "authority linking"), ("wikidata", "wikidata reconciliation")):
         t, g = seg_totals[seg]
         if t:
-            print(f"{label:>24}: {g/t:.4f} over {t} pairs")
+            acc, rej = seg_gold[seg]
+            null_seg = rej / t
+            seg_lifts[seg] = g / t - null_seg
+            print(
+                f"{label:>24}: {g/t:.4f} over {t} pairs "
+                f"(null {null_seg:.4f}, lift {seg_lifts[seg]:+.4f}; "
+                f"{acc} accepts / {rej} rejects)"
+            )
+    # A segment whose lift is near zero carries no positive signal, however
+    # healthy the combined figure looks — combining a reject-dominated system
+    # with an accept-only one hides exactly that (authority vs wikidata, #42).
+    for seg, lift_seg in seg_lifts.items():
+        if lift_seg < WEAK_SIGNAL_LIFT:
+            print(
+                f"::warning::{seg} lift {lift_seg:+.4f} is below "
+                f"{WEAK_SIGNAL_LIFT} — this system scores about what a linker "
+                f"proposing nothing would score; grow positive gold before "
+                f"trusting its agreement figure"
+            )
     if total_pairs:
         aggregate = good / total_pairs
+        lift = aggregate - null_aggregate
         print(f"{'combined agreement':>24}: {aggregate:.4f} over {total_pairs} reviewed pairs")
+        print(f"{'null-linker baseline':>24}: {null_aggregate:.4f} (a linker proposing nothing)")
+        print(f"{'lift over null':>24}: {lift:+.4f}  ← the actual signal")
+        if lift <= 0:
+            print(
+                "::warning::linking scores at or below a linker that proposes "
+                "nothing — the agreement figure carries no positive signal"
+            )
     else:
         aggregate = None
+        lift = None
     observed = [
         sample["aggregate_agreement"]
         for sample in samples
@@ -313,8 +388,11 @@ def main(argv: list[str] | None = None) -> int:
         )
 
     if args.append_history:
-        _append_history(Path(args.append_history), doc_results, aggregate, seg_totals)
+        _append_history(
+            Path(args.append_history), doc_results, aggregate, seg_totals, seg_gold
+        )
 
+    failed = False
     if (
         args.min_agreement is not None
         and observed
@@ -325,8 +403,23 @@ def main(argv: list[str] | None = None) -> int:
             f"< --min-agreement {args.min_agreement}",
             file=sys.stderr,
         )
-        return 1
-    return 0
+        failed = True
+
+    # Gate on the WEAKEST segment, not the combined figure: authority linking
+    # could collapse to proposing nothing and combined agreement would still
+    # read 0.90, because wikidata's accept-only gold carries it.
+    if args.min_lift is not None and seg_lifts:
+        worst_seg = min(seg_lifts, key=lambda s: seg_lifts[s])
+        if seg_lifts[worst_seg] < args.min_lift:
+            print(
+                f"FAIL: {worst_seg} lift {seg_lifts[worst_seg]:+.4f} "
+                f"< --min-lift {args.min_lift} "
+                f"(combined agreement {aggregate:.4f} hides this)",
+                file=sys.stderr,
+            )
+            failed = True
+
+    return 1 if failed else 0
 
 
 if __name__ == "__main__":

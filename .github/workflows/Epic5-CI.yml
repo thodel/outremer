@@ -38,11 +38,23 @@ jobs:
       - run: pip install -r requirements.lock.txt
       - run: pip install -e '.[dev]'
       - run: python -m pytest tests/ -v
-      # Offline evaluation over fixture snapshots. Gate is a regression
-      # floor below the 2026-07-18 baseline after the #44/#45 gold repair
-      # (combined 0.9155: authority 0.8909, wikidata 1.0). Repeated runs
-      # gate on their lower observed bound; fixture CI is deterministic.
-      - run: python -m evaluation.harness --repeat 3 --min-agreement 0.85
+      # Offline evaluation over fixture snapshots.
+      #
+      # --min-agreement alone could not fail. The authority gold is
+      # reject-dominated (7 accepts / 48 rejects), so a linker proposing
+      # NOTHING scores 48/55 = 0.873 on authority and 0.9014 combined —
+      # above the old 0.85 threshold. Authority linking could collapse
+      # entirely and this gate would stay green.
+      #
+      # --min-lift gates on the weakest segment's lift over that null
+      # baseline, which is the only part that is evidence the linker works.
+      # Authority lift is +0.018 today, so 0.01 is a "do not get worse than
+      # 2026-07-30" floor. RAISE IT once the gold repair (#98) and gold
+      # growth (#36) land — with six of seven accepts currently linking the
+      # wrong person, this number cannot yet be pushed higher honestly.
+      - run: >
+          python -m evaluation.harness --repeat 3
+          --min-agreement 0.85 --min-lift 0.01
 
   docker:
     name: Docker build

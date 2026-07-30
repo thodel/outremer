@@ -181,8 +181,20 @@ must not be presented as improvements. The pinned baseline follows the #44
 gold repair (two
 wrong-person accepts re-adjudicated to reject) and the #45 authority
 additions (Godfrey of Bouillon, Robert II of Flanders, Ralph of Caen).
-CI fails below 0.85. Residual misses are dominated by extraction drift,
-not linking — see issue #42.
+Residual misses are dominated by extraction drift, not linking — see issue #42.
+
+> **Read agreement against the null baseline, not on its own.** Agreement
+> rewards proposing what scholars accepted *and* not proposing what they
+> rejected. The authority gold is 7 accepts against 48 rejects, so a linker
+> that proposes **nothing at all** already scores 48/55 = **0.873** on
+> authority and 0.9014 combined. Measured authority agreement is 0.891 — a
+> lift of just **+0.018** over silence. The harness therefore reports
+> `null`, `lift`, and `accept_rate` per system, and CI gates on
+> `--min-lift` against the *weakest* segment; a combined threshold cannot
+> fail, because Wikidata's accept-only gold (lift +1.0) masks any authority
+> collapse. Until the gold repair (#98 — six of seven accepts link the wrong
+> person) and gold growth (#36) land, treat the authority figure as
+> uninformative about linker quality.
 
 Where a backend does not honour `EXTRACTION_SEED`, generate repeated live
 outputs and evaluate them as a band:
