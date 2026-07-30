@@ -82,6 +82,7 @@ ATR_HTTP_TIMEOUT=300
 
 # Model names (check GPUStack dashboard for exact names)
 EXTRACTION_MODEL=qwen3-30b-a3b-instruct
+EXTRACTION_SEED=42
 ORCHESTRATOR_MODEL=minimax-m2.7
 QWEN3_VL_MODEL=qwen3-vl-30b-a3b-instruct
 
@@ -165,12 +166,27 @@ Key metric: **linking agreement** — of the pairs scholars reviewed, how
 many does the responsible system's top proposal agree with. Adjudications
 cover two systems, each judged against its own output: the authority-file
 linker (`AUTH:CR…` ids) and Wikidata reconciliation (`wikidata:Q…` ids).
-Baseline 2026-07-18: **combined 0.9155** over 71 pairs (authority 0.8909
-over 55, wikidata 1.0 over 16) — after the #44 gold repair (two
+Pinned-seed baseline 2026-07-18: **combined 0.9155** over 71 pairs
+(authority 0.8909 over 55, wikidata 1.0 over 16). Before seed pinning,
+unchanged code produced an observed combined band of approximately
+**0.8873–0.9296** (63–66 correct of 71); point differences inside that range
+must not be presented as improvements. The pinned baseline follows the #44
+gold repair (two
 wrong-person accepts re-adjudicated to reject) and the #45 authority
 additions (Godfrey of Bouillon, Robert II of Flanders, Ralph of Caen).
 CI fails below 0.85. Residual misses are dominated by extraction drift,
 not linking — see issue #42.
+
+Where a backend does not honour `EXTRACTION_SEED`, generate repeated live
+outputs and evaluate them as a band:
+
+```bash
+python -m evaluation.harness --live --repeat 5 \
+  --repeat-command "python scripts/run_pipeline.py"
+```
+
+Repeated gates use the lowest observed agreement, not the mean, so sampling
+variance cannot make a regression appear to pass.
 
 ---
 

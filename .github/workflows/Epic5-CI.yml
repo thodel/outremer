@@ -40,9 +40,9 @@ jobs:
       - run: python -m pytest tests/ -v
       # Offline evaluation over fixture snapshots. Gate is a regression
       # floor below the 2026-07-18 baseline after the #44/#45 gold repair
-      # (combined 0.9155: authority 0.8909, wikidata 1.0); raise it as
-      # linking improves.
-      - run: python -m evaluation.harness --min-agreement 0.85
+      # (combined 0.9155: authority 0.8909, wikidata 1.0). Repeated runs
+      # gate on their lower observed bound; fixture CI is deterministic.
+      - run: python -m evaluation.harness --repeat 3 --min-agreement 0.85
 
   docker:
     name: Docker build

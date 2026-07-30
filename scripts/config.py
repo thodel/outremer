@@ -14,6 +14,7 @@ Env vars (set in .env.gpustack, git-ignored):
     ATR_API_KEY          - static X-API-Key credential (empty for local development)
     ATR_HTTP_TIMEOUT     - gateway request timeout in seconds (default 300)
     OCR_ENGINE           - qwen3-vl | mistral (default qwen3-vl)
+    EXTRACTION_SEED      - fixed chat-completion seed (default 42)
 """
 from __future__ import annotations
 
@@ -63,6 +64,7 @@ ATR_HTTP_TIMEOUT = float(_get("ATR_HTTP_TIMEOUT", "300"))
 EXTRACTION_MODEL   = _get("EXTRACTION_MODEL",   "qwen3-30b-a3b-instruct")
 ORCHESTRATOR_MODEL = _get("ORCHESTRATOR_MODEL", "minimax-m2.7")
 QWEN3_VL_MODEL     = _get("QWEN3_VL_MODEL",     "qwen3-vl-30b-a3b-instruct")
+EXTRACTION_SEED    = int(_get("EXTRACTION_SEED", "42"))
 
 # OCR
 # "qwen3-vl" - GPUStack Qwen3 VL (default); falls back to Mistral if empty

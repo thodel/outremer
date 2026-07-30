@@ -31,6 +31,8 @@ from __future__ import annotations
 
 import argparse
 import json
+import shlex
+import subprocess
 import sys
 from pathlib import Path
 
@@ -172,6 +174,17 @@ def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     ap.add_argument("--fixtures", default=str(FIXTURES_DIR))
     ap.add_argument(
+        "--repeat",
+        type=int,
+        default=1,
+        help="evaluate N samples and report mean plus observed range",
+    )
+    ap.add_argument(
+        "--repeat-command",
+        default=None,
+        help="command to refresh live predictions before every repeated sample",
+    )
+    ap.add_argument(
         "--live",
         action="store_true",
         help="evaluate current site/data output instead of fixture snapshots",
@@ -207,24 +220,51 @@ def main(argv: list[str] | None = None) -> int:
         print(f"No fixtures found in {args.fixtures}", file=sys.stderr)
         return 2
 
-    doc_results: dict[str, dict] = {}
-    for f in fixture_files:
-        fixture = json.loads(f.read_text())
-        doc_results[fixture["doc_id"]] = evaluate_fixture(
-            fixture, live=args.live, relink=args.relink
-        )
+    if args.repeat < 1:
+        ap.error("--repeat must be at least 1")
+    if args.repeat_command and not args.live:
+        ap.error("--repeat-command requires --live")
+
+    samples: list[dict] = []
+    for sample_number in range(1, args.repeat + 1):
+        if args.repeat_command:
+            subprocess.run(shlex.split(args.repeat_command), check=True)
+        doc_results: dict[str, dict] = {}
+        for f in fixture_files:
+            fixture = json.loads(f.read_text())
+            doc_results[fixture["doc_id"]] = evaluate_fixture(
+                fixture, live=args.live, relink=args.relink
+            )
+
+        sample_totals: dict[str, list[int]] = {
+            "linking": [0, 0], "wikidata": [0, 0]
+        }
+        for res in doc_results.values():
+            for segment in ("linking", "wikidata"):
+                result = res.get(segment)
+                if result:
+                    sample_totals[segment][0] += result["reviewed_pairs"]
+                    sample_totals[segment][1] += (
+                        result["accept_hit"] + result["reject_avoided"]
+                    )
+        sample_pairs = sum(total for total, _ in sample_totals.values())
+        sample_good = sum(good for _, good in sample_totals.values())
+        samples.append({
+            "sample": sample_number,
+            "documents": doc_results,
+            "segments": sample_totals,
+            "aggregate_agreement": (
+                sample_good / sample_pairs if sample_pairs else None
+            ),
+        })
+
+    doc_results = samples[-1]["documents"]
 
     print(format_report(doc_results))
 
     # Aggregate agreement across documents (pair-weighted), per system and
     # combined — each adjudicated pair judged against the system that made it
-    seg_totals: dict[str, list[int]] = {"linking": [0, 0], "wikidata": [0, 0]}
-    for res in doc_results.values():
-        for seg in ("linking", "wikidata"):
-            r = res.get(seg)
-            if r:
-                seg_totals[seg][0] += r["reviewed_pairs"]
-                seg_totals[seg][1] += r["accept_hit"] + r["reject_avoided"]
+    seg_totals = samples[-1]["segments"]
 
     total_pairs = sum(t for t, _ in seg_totals.values())
     good = sum(g for _, g in seg_totals.values())
@@ -238,11 +278,35 @@ def main(argv: list[str] | None = None) -> int:
         print(f"{'combined agreement':>24}: {aggregate:.4f} over {total_pairs} reviewed pairs")
     else:
         aggregate = None
+    observed = [
+        sample["aggregate_agreement"]
+        for sample in samples
+        if sample["aggregate_agreement"] is not None
+    ]
+    uncertainty = None
+    if observed:
+        uncertainty = {
+            "samples": len(observed),
+            "mean": sum(observed) / len(observed),
+            "min": min(observed),
+            "max": max(observed),
+        }
+        if args.repeat > 1:
+            print(
+                f"{'observed band':>24}: mean {uncertainty['mean']:.4f}; "
+                f"range {uncertainty['min']:.4f}–{uncertainty['max']:.4f} "
+                f"over {uncertainty['samples']} samples"
+            )
 
     if args.output:
         Path(args.output).write_text(
             json.dumps(
-                {"documents": doc_results, "aggregate_agreement": aggregate},
+                {
+                    "documents": doc_results,
+                    "aggregate_agreement": aggregate,
+                    "uncertainty": uncertainty,
+                    "samples": samples if args.repeat > 1 else None,
+                },
                 indent=2,
                 ensure_ascii=False,
             )
@@ -253,11 +317,12 @@ def main(argv: list[str] | None = None) -> int:
 
     if (
         args.min_agreement is not None
-        and aggregate is not None
-        and aggregate < args.min_agreement
+        and observed
+        and min(observed) < args.min_agreement
     ):
         print(
-            f"FAIL: aggregate agreement {aggregate:.4f} < --min-agreement {args.min_agreement}",
+            f"FAIL: lower observed agreement {min(observed):.4f} "
+            f"< --min-agreement {args.min_agreement}",
             file=sys.stderr,
         )
         return 1

@@ -20,6 +20,7 @@ import openai
 
 from config import (
     EXTRACTION_MODEL,
+    EXTRACTION_SEED,
     GPUSTACK_API_KEY,
     GPUSTACK_BASE_URL,
     GPUSTACK_TIMEOUT,
@@ -93,6 +94,7 @@ def generate(
     if system:
         messages.append({"role": "system", "content": system})
     messages.append({"role": "user", "content": prompt})
+    kwargs.setdefault("seed", EXTRACTION_SEED)
 
     client = get_client()
     resp = client.chat.completions.create(

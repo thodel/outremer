@@ -43,6 +43,7 @@ def test_generate_defaults_to_extraction_model(fake_client):
     generate("p")
     kwargs = fake_client.chat.completions.create.call_args.kwargs
     assert kwargs["model"] == llm_client.EXTRACTION_MODEL
+    assert kwargs["seed"] == llm_client.EXTRACTION_SEED
 
     generate("p", model="other-model")
     kwargs = fake_client.chat.completions.create.call_args.kwargs
