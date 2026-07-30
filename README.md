@@ -137,6 +137,13 @@ evidence-first JSON Schema and SHACL shapes before being published. Invalid
 canonical output fails the document run; the existing `site/data` JSON remains
 available as a temporary compatibility format.
 
+The pipeline mirrors validated artifacts to `site/evidence/` for the unified
+Explorer. Select a document in `site/explorer.html` to review source passages,
+assertions, identity hypotheses, candidate scores, and generation provenance
+beside the legacy link review. Documents without an evidence artifact continue
+to use the legacy interface. `site/evidence-review.html` remains available as a
+compatibility entry point and uses the same renderer and local review store.
+
 ## Tests
 
 ```bash

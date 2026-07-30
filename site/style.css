@@ -222,6 +222,32 @@ select {
   font-size: .95rem;
 }
 
+/* ── Unified evidence review ───────────────────────────────────────── */
+.evidence-card h3 {
+  color: var(--accent);
+  font-size: .9rem;
+  overflow-wrap: anywhere;
+  margin-bottom: .55rem;
+}
+.evidence-field {
+  padding: .3rem 0;
+  border-bottom: 1px dashed var(--border);
+  white-space: pre-wrap;
+}
+.evidence-candidates {
+  margin: .55rem 0;
+  padding-left: 1.3rem;
+}
+.evidence-actions {
+  display: flex;
+  align-items: center;
+  gap: .45rem;
+  margin-top: .7rem;
+  flex-wrap: wrap;
+}
+.evidence-review-status { margin-left: .25rem; }
+#panel-evidence[data-available="false"] #evidenceItems { display: none; }
+
 /* ── Confidence badge (persons) ─────────────────────────────────────── */
 .conf-badge {
   font-size: .72rem;

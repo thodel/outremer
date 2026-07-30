@@ -1,3 +1,8 @@
+import {
+  evidencePathForDocument,
+  renderEvidenceReview,
+} from "./evidence-review-core.mjs";
+
 /**
  * app.js — Outremer explorer + Human-in-the-Loop adjudication
  *
@@ -1073,8 +1078,29 @@ async function loadDoc(filename) {
   renderPersons(doc);
   renderLinks(doc);
   updateStats();
+  await loadEvidenceReview(doc.doc_id);
 
   document.getElementById("raw").textContent = JSON.stringify(doc, null, 2);
+}
+
+async function loadEvidenceReview(docId) {
+  const panel = document.getElementById("panel-evidence");
+  const status = document.getElementById("evidenceStatus");
+  const container = document.getElementById("evidenceItems");
+  status.textContent = "Loading evidence-first record…";
+  container.replaceChildren();
+  try {
+    const dataset = await fetchJson(evidencePathForDocument(docId));
+    const items = renderEvidenceReview(container, dataset, {
+      reviewer: () => getScholarName() || "anonymous",
+    });
+    status.textContent = `${items.length} reviewable evidence item(s)`;
+    panel.dataset.available = "true";
+  } catch (error) {
+    panel.dataset.available = "false";
+    status.textContent =
+      "No evidence-first artifact is available for this document; legacy review remains active.";
+  }
 }
 
 async function loadIndex() {
