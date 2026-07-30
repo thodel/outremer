@@ -19,9 +19,9 @@ from typing import Any
 import openai
 
 from config import (
-    EXTRACTION_MODEL,
     GPUSTACK_API_KEY,
     GPUSTACK_BASE_URL,
+    GPUSTACK_MODEL_TEXT,
     GPUSTACK_TIMEOUT,
 )
 
@@ -83,7 +83,7 @@ def generate(
     Args:
         prompt   — user message
         system   — optional system prompt
-        model    — override EXTRACTION_MODEL (None = use config default)
+        model    — override GPUSTACK_MODEL_TEXT (None = use config default)
         **kwargs — passed through to the API (temperature, max_tokens, …)
 
     Returns:
@@ -94,9 +94,11 @@ def generate(
         messages.append({"role": "system", "content": system})
     messages.append({"role": "user", "content": prompt})
 
+    # Reasoning text models need enough room for hidden reasoning plus output.
+    kwargs.setdefault("max_tokens", 4096)
     client = get_client()
     resp = client.chat.completions.create(
-        model=model or EXTRACTION_MODEL,
+        model=model or GPUSTACK_MODEL_TEXT,
         messages=messages,
         **kwargs,
     )

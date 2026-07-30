@@ -33,7 +33,13 @@ from linker import build_authority_lookup, link_voyagers_to_outremer, normalise
 from llm_client import generate as _llm_generate
 from validate_decisions import validate_decisions_file
 
-from config import EXTRACTION_MODEL, GPUSTACK_BASE_URL, OCR_ENGINE
+from config import (
+    GPUSTACK_BASE_URL,
+    GPUSTACK_MODEL_TEXT,
+    GPUSTACK_MODEL_VISION,
+    MODEL_ROLES,
+    OCR_ENGINE,
+)
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 logger = logging.getLogger(__name__)
@@ -51,6 +57,7 @@ def _write_run_report(
     docs_failed: int,
     total_persons: int,
     extraction_model: str,
+    model_roles: dict[str, str],
     ocr_engine: str,
     failures: list[dict],
     feedback_applied: dict[str, int] | None = None,
@@ -66,6 +73,7 @@ def _write_run_report(
         "total_persons": total_persons,
         "llm_provider": llm_provider,
         "extraction_model": extraction_model,
+        "model_roles": model_roles,
         "ocr_engine": ocr_engine,
         "failures": failures,
     }
@@ -156,8 +164,6 @@ def _qwen3vl_ocr(path: Path) -> str:
     """GPUStack Qwen3 VL 30B for primary document OCR."""
     import base64
 
-    from config import QWEN3_VL_MODEL
-
     b64 = base64.b64encode(path.read_bytes()).decode()
     prompt = (
         "You are an OCR system. Given an image of a document page, transcribe ALL text "
@@ -168,7 +174,7 @@ def _qwen3vl_ocr(path: Path) -> str:
     try:
         text = _llm_generate(
             prompt,
-            model=QWEN3_VL_MODEL,
+            model=GPUSTACK_MODEL_VISION,
             max_tokens=8192,
             temperature=0.0,
         )
@@ -669,7 +675,8 @@ def main() -> int:
         docs_ok=len(inputs) - len(errors),
         docs_failed=len(errors),
         total_persons=total_persons,
-        extraction_model=EXTRACTION_MODEL,
+        extraction_model=GPUSTACK_MODEL_TEXT,
+        model_roles=MODEL_ROLES,
         ocr_engine=OCR_ENGINE,
         failures=[{"file": str(p), "error": str(e)} for p, e in errors],
         feedback_applied=feedback_stats,
