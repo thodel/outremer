@@ -14,5 +14,6 @@ from evaluation.metrics import (  # noqa: F401
     cer,
     extraction_prf,
     linking_agreement,
+    selection_metrics,
     wer,
 )
