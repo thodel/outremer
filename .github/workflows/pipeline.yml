@@ -8,6 +8,7 @@ on:
       - "site/data/**"
       - "site/bib/**"
       - "site/index.json"
+      - "site/evidence/**"
       - "bib/**"
       - "data/staging/**"
       - "data/decisions.json"
@@ -81,7 +82,7 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add site/index.json site/data site/bib bib data/entity_feedback.json data/evidence
+          git add site/index.json site/data site/bib site/evidence bib data/entity_feedback.json data/evidence
           git add data/staging/eval_history.jsonl 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "No changes to commit."

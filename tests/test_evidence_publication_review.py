@@ -107,7 +107,10 @@ def test_supersede_preserves_prior_review_history():
 
 def test_review_ui_exposes_all_required_actions():
     html = (ROOT / "site" / "evidence-review.html").read_text(encoding="utf-8")
-    script = (ROOT / "site" / "evidence-review.js").read_text(encoding="utf-8")
+    script = (
+        (ROOT / "site" / "evidence-review.js").read_text(encoding="utf-8")
+        + (ROOT / "site" / "evidence-review-core.mjs").read_text(encoding="utf-8")
+    )
     assert "identity_hypothesis" in script and "assertion" in script
     for action in ("accept", "reject", "flag", "supersede"):
         assert action in script

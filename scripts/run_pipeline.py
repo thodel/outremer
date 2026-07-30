@@ -402,6 +402,7 @@ def process_file(
     language: str | None = None,
     entity_feedback_path: Path | None = None,
     evidence_dir: Path | None = None,
+    site_evidence_dir: Path | None = None,
 ) -> tuple[Path, Path, Path, Path | None, dict[str, Any]]:
     logger.info("Processing %s …", in_path.name)
     text = read_input(in_path)
@@ -460,6 +461,13 @@ def process_file(
         evidence_path = write_evidence_dataset(
             evidence, evidence_dir / f"{doc_id}.evidence.json"
         )
+        if site_evidence_dir is not None:
+            import shutil
+
+            site_evidence_dir.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(
+                evidence_path, site_evidence_dir / f"{doc_id}.evidence.json"
+            )
 
     logger.info(
         "  → %d persons, %d links (%d high / %d medium / %d low / %d no_match)",
@@ -551,8 +559,11 @@ def main() -> int:
 
     site_data_dir = site_dir / "data"
     site_bib_dir = site_dir / "bib"
+    site_evidence_dir = site_dir / "evidence"
 
-    for d in (site_dir, site_data_dir, site_bib_dir, bib_dir, evidence_dir):
+    for d in (
+        site_dir, site_data_dir, site_bib_dir, site_evidence_dir, bib_dir, evidence_dir
+    ):
         d.mkdir(parents=True, exist_ok=True)
 
     try:
@@ -630,6 +641,7 @@ def main() -> int:
                     language=args.language,
                     entity_feedback_path=entity_feedback_path,
                     evidence_dir=evidence_dir,
+                    site_evidence_dir=site_evidence_dir,
                 )
                 print(f"Wrote {json_path}")
                 print(f"Wrote {bib_repo}")
