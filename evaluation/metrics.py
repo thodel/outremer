@@ -385,6 +385,42 @@ def linking_agreement(
         "reject_hit": reject_hit,
         "reject_avoided": reject_avoided,
         "agreement": round(agreement, 4),
+        **null_reference(len(accepted), len(rejected), agreement, accept_hit),
+    }
+
+
+def null_reference(
+    n_accepted: int, n_rejected: int, agreement: float, accept_hit: int
+) -> dict:
+    """Score a *null linker* — one that proposes nothing — on the same gold.
+
+    Agreement rewards two different things: proposing what scholars accepted
+    (positive evidence) and *not* proposing what they rejected (negative
+    evidence). When the gold is dominated by rejects, a linker that returns
+    no candidates at all scores highly by doing nothing, and the headline
+    number stops distinguishing a working linker from a disabled one.
+
+    On the 2026-07-30 authority gold (7 accepts, 48 rejects) the null linker
+    scores 48/55 = 0.873 against a measured 0.891 — the linker's entire
+    demonstrated value over silence was one pair out of 55. Reporting
+    ``lift_over_null`` and ``accept_rate`` alongside ``agreement`` keeps that
+    visible instead of hidden inside a comfortable-looking score.
+
+    Returns
+    -------
+    ``null_agreement``  — what a do-nothing linker scores on this gold
+    ``lift_over_null``  — measured agreement minus that floor (the real signal)
+    ``accept_rate``     — accept_hit / accepted; positive evidence only, and 0.0
+                          for a null linker regardless of how many rejects exist
+    ``negative_share``  — fraction of gold that is reject pairs (gold health)
+    """
+    total = n_accepted + n_rejected
+    null_agreement = (n_rejected / total) if total else 0.0
+    return {
+        "null_agreement": round(null_agreement, 4),
+        "lift_over_null": round(agreement - null_agreement, 4),
+        "accept_rate": round(accept_hit / n_accepted, 4) if n_accepted else 0.0,
+        "negative_share": round(n_rejected / total, 4) if total else 0.0,
     }
 
 
@@ -460,6 +496,7 @@ def wikidata_agreement(
         "reject_hit": reject_hit,
         "reject_avoided": reject_avoided,
         "agreement": round(agreement, 4),
+        **null_reference(len(accepted), len(rejected), agreement, accept_hit),
     }
 
 

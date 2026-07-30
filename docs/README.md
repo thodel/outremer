@@ -9,6 +9,7 @@ This directory contains active documentation. Stale/historical documents are in 
 | `LOCAL_LLM_ADAPTATION_PLAN.md` | GPUStack migration plan — Epic 1–8 roadmap, current as of 2026-07 |
 | `INTEGRATED_DATA_MODEL.md` | Data model for OUTREMER persons (HBLS + Wikidata + Königsfelden) |
 | `EPIC4_HBLS_MCP.md` | HBLS MCP server: deployment, API reference, Docker |
+| `AUTHORITY_REVIEW_WORKSHEET.md` | **Generated** — scholar worksheet for repairing (#98) and growing (#36) the authority adjudication gold. Regenerate with `python scripts/build_review_worksheet.py`; do not hand-edit |
 | `PROGRESS.md` | Project-wide progress tracker (root of repo) |
 
 ## Archived (historical, may be outdated)
