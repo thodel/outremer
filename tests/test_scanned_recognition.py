@@ -43,6 +43,7 @@ def test_image_only_pdf_routes_to_recognition_and_records_engine(monkeypatch, tm
         docs_failed=0,
         total_persons=0,
         extraction_model="test",
+        extraction_seed=42,
         ocr_engine="qwen3-vl",
         failures=[],
         recognition_engines=dict(run_pipeline._recognition_engines_used),
