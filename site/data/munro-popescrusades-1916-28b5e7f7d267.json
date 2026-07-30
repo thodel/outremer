@@ -4195,7 +4195,8 @@
   "extraction_mode": "gpustack",
   "extraction_engine": {
     "provider": "gpustack",
-    "model": "qwen3-30b-a3b-instruct"
+    "model": "qwen3-30b-a3b-instruct",
+    "seed": 42
   },
   "language_hint": null,
   "quality": {
