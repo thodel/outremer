@@ -13,6 +13,7 @@ on:
       - "data/decisions.json"
       - "data/wikidata_matches.json"
       - "data/entity_feedback.json"
+      - "data/evidence/**"
       - "requirements.lock.txt"
   workflow_dispatch:
   schedule:
@@ -80,7 +81,7 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add site/index.json site/data site/bib bib data/entity_feedback.json
+          git add site/index.json site/data site/bib bib data/entity_feedback.json data/evidence
           git add data/staging/eval_history.jsonl 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "No changes to commit."

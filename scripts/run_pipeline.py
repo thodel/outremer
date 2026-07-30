@@ -27,6 +27,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+from evidence_pipeline import build_evidence_dataset, write_evidence_dataset
 from extract_persons import extract_persons_and_metadata
 from linker import build_authority_lookup, link_voyagers_to_outremer, normalise
 from llm_client import generate as _llm_generate
@@ -400,7 +401,8 @@ def process_file(
     use_llm_metadata: bool,
     language: str | None = None,
     entity_feedback_path: Path | None = None,
-) -> tuple[Path, Path, Path]:
+    evidence_dir: Path | None = None,
+) -> tuple[Path, Path, Path, Path | None, dict[str, Any]]:
     logger.info("Processing %s …", in_path.name)
     text = read_input(in_path)
 
@@ -443,6 +445,21 @@ def process_file(
     json_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     bib_path_repo.write_text(bibtex, encoding="utf-8")
     bib_path_site.write_text(bibtex, encoding="utf-8")
+    evidence_path = None
+    if evidence_dir is not None:
+        evidence = build_evidence_dataset(
+            in_path=in_path,
+            doc_id=doc_id,
+            text_sha256=payload["text_sha256"],
+            metadata=metadata,
+            persons=persons,
+            links=links,
+            extraction_engine=payload["extraction_engine"],
+            language=language,
+        )
+        evidence_path = write_evidence_dataset(
+            evidence, evidence_dir / f"{doc_id}.evidence.json"
+        )
 
     logger.info(
         "  → %d persons, %d links (%d high / %d medium / %d low / %d no_match)",
@@ -457,7 +474,7 @@ def process_file(
         "persons": len(persons),
         "noise": (result.get("quality") or {}).get("noise") or {},
     }
-    return json_path, bib_path_repo, bib_path_site, doc_stats
+    return json_path, bib_path_repo, bib_path_site, evidence_path, doc_stats
 
 
 def build_site_index(site_data_dir: Path, site_dir: Path) -> None:
@@ -481,6 +498,11 @@ def main() -> int:
     ap.add_argument("--file", action="append", dest="files", metavar="FILE", help="Process specific file(s) only (can be repeated)")
     ap.add_argument("--site-dir", default="site", help="Static site folder")
     ap.add_argument("--bib-dir", default="bib", help="Repo-level BibTeX output folder")
+    ap.add_argument(
+        "--evidence-dir",
+        default="data/evidence",
+        help="Validated evidence-first JSON output folder",
+    )
     ap.add_argument("--outremer-index", default="scripts/outremer_index.json")
     ap.add_argument(
         "--require-outremer-index",
@@ -522,6 +544,7 @@ def main() -> int:
     in_dir = Path(args.input_dir)
     site_dir = Path(args.site_dir)
     bib_dir = Path(args.bib_dir)
+    evidence_dir = Path(args.evidence_dir)
     outremer_path = Path(args.outremer_index)
     entity_feedback_path = Path(args.entity_feedback_path) if args.entity_feedback_path else None
     review_decisions_path = Path(args.review_decisions_path) if args.review_decisions_path else None
@@ -529,7 +552,7 @@ def main() -> int:
     site_data_dir = site_dir / "data"
     site_bib_dir = site_dir / "bib"
 
-    for d in (site_dir, site_data_dir, site_bib_dir, bib_dir):
+    for d in (site_dir, site_data_dir, site_bib_dir, bib_dir, evidence_dir):
         d.mkdir(parents=True, exist_ok=True)
 
     try:
@@ -597,7 +620,7 @@ def main() -> int:
     else:
         for p in inputs:
             try:
-                json_path, bib_repo, bib_site, doc_stats = process_file(
+                json_path, bib_repo, bib_site, evidence_path, doc_stats = process_file(
                     p,
                     site_data_dir=site_data_dir,
                     bib_dir=bib_dir,
@@ -606,10 +629,12 @@ def main() -> int:
                     use_llm_metadata=args.llm_metadata,
                     language=args.language,
                     entity_feedback_path=entity_feedback_path,
+                    evidence_dir=evidence_dir,
                 )
                 print(f"Wrote {json_path}")
                 print(f"Wrote {bib_repo}")
                 print(f"Wrote {bib_site}")
+                print(f"Wrote {evidence_path}")
                 total_persons += doc_stats["persons"]
                 for k in noise_agg:
                     noise_agg[k] += (doc_stats.get("noise") or {}).get(k, 0)

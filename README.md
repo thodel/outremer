@@ -123,6 +123,14 @@ python scripts/run_pipeline.py --help
 
 Output: `site/data/*.json`, `site/bib/*.bib`, `bib/*.bib`.
 
+Every processed document also produces a canonical evidence-first artifact at
+`data/evidence/<document-id>.evidence.json`. These records separate immutable
+source snapshots and passages from extracted mentions, assertions, identity
+hypotheses, and generation provenance. They are validated against the
+evidence-first JSON Schema and SHACL shapes before being published. Invalid
+canonical output fails the document run; the existing `site/data` JSON remains
+available as a temporary compatibility format.
+
 ## Tests
 
 ```bash
