@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "scope": "Named benchmark figures for the First Crusade and its principal narrative traditions",
+  "sources": [
+    {
+      "id": "riley-smith-first-crusaders",
+      "citation": "Jonathan Riley-Smith, The First Crusaders, 1095–1131 (Cambridge, 1997)",
+      "use": "Latin-Christian participant and chronicler coverage benchmark"
+    },
+    {
+      "id": "outremer-corpus",
+      "citation": "Outremer adjudicated source corpus",
+      "use": "Figures explicitly encountered and reviewed in project texts"
+    },
+    {
+      "id": "wikidata-cc0",
+      "citation": "Wikidata entity search, checked 2026-07-30, CC0",
+      "use": "Stable open identifiers only; not sole evidence for historical assertions"
+    }
+  ],
+  "figures": [
+    {"preferred_label": "Godfrey of Bouillon", "tradition": "Latin Christian", "role": "participant", "wikidata": "Q76721", "sources": ["riley-smith-first-crusaders", "outremer-corpus", "wikidata-cc0"]},
+    {"preferred_label": "Urban II", "variants": ["Pope Urban II"], "tradition": "Latin Christian", "role": "pope", "wikidata": "Q30578", "sources": ["riley-smith-first-crusaders", "outremer-corpus", "wikidata-cc0"]},
+    {"preferred_label": "Albert of Aachen", "variants": ["Albert of Aix"], "tradition": "Latin Christian", "role": "chronicler", "wikidata": "Q4323", "sources": ["outremer-corpus", "wikidata-cc0"]},
+    {"preferred_label": "Ekkehard of Aura", "variants": ["Ekkehard"], "tradition": "Latin Christian", "role": "chronicler", "wikidata": "Q66673", "sources": ["outremer-corpus", "wikidata-cc0"]},
+    {"preferred_label": "Fulcher of Chartres", "tradition": "Latin Christian", "role": "chronicler", "wikidata": "Q5630", "sources": ["outremer-corpus", "wikidata-cc0"]},
+    {"preferred_label": "Guibert of Nogent", "tradition": "Latin Christian", "role": "chronicler", "wikidata": "Q4289", "sources": ["outremer-corpus", "wikidata-cc0"]},
+    {"preferred_label": "Orderic Vitalis", "tradition": "Latin Christian", "role": "chronicler", "wikidata": "Q356298", "sources": ["outremer-corpus", "wikidata-cc0"]},
+    {"preferred_label": "William of Tyre", "tradition": "Latin Christian", "role": "chronicler", "wikidata": "Q311822", "sources": ["wikidata-cc0"]},
+    {"preferred_label": "Anna Komnene", "tradition": "Byzantine", "role": "historian", "wikidata": "Q179284", "sources": ["wikidata-cc0"]},
+    {"preferred_label": "Alexios I Komnenos", "tradition": "Byzantine", "role": "ruler", "sources": ["riley-smith-first-crusaders"]},
+    {"preferred_label": "Ibn al-Qalanisi", "tradition": "Arabic-Islamic", "role": "chronicler", "sources": ["riley-smith-first-crusaders"]},
+    {"preferred_label": "Ibn al-Athir", "tradition": "Arabic-Islamic", "role": "chronicler", "sources": ["riley-smith-first-crusaders"]},
+    {"preferred_label": "Usama ibn Munqidh", "tradition": "Arabic-Islamic", "role": "author and participant", "sources": ["riley-smith-first-crusaders"]},
+    {"preferred_label": "Matthew of Edessa", "tradition": "Armenian", "role": "chronicler", "sources": ["riley-smith-first-crusaders"]}
+  ]
+}
