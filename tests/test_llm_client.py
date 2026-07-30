@@ -39,14 +39,16 @@ def test_generate_builds_messages_with_system(fake_client):
     ]
 
 
-def test_generate_defaults_to_extraction_model(fake_client):
+def test_generate_defaults_to_text_model_and_token_budget(fake_client):
     generate("p")
     kwargs = fake_client.chat.completions.create.call_args.kwargs
-    assert kwargs["model"] == llm_client.EXTRACTION_MODEL
+    assert kwargs["model"] == llm_client.GPUSTACK_MODEL_TEXT
+    assert kwargs["max_tokens"] == 4096
 
-    generate("p", model="other-model")
+    generate("p", model="other-model", max_tokens=512)
     kwargs = fake_client.chat.completions.create.call_args.kwargs
     assert kwargs["model"] == "other-model"
+    assert kwargs["max_tokens"] == 512
 
 
 def test_generate_none_content_returns_empty_string(fake_client):

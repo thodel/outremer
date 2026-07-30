@@ -7,9 +7,11 @@ Env vars (set in .env.gpustack, git-ignored):
     GPUSTACK_BASE_URL    - defaults to https://gpustack.unibe.ch/v1
     GPUSTACK_API_KEY     - API key for GPUStack authentication
     GPUSTACK_TIMEOUT     - request timeout in seconds (default 120)
-    EXTRACTION_MODEL     - model for person extraction (default qwen3-30b-a3b-instruct)
-    ORCHESTRATOR_MODEL   - model for orchestration (default minimax-m2.7)
-    QWEN3_VL_MODEL       - vision model for document OCR (default qwen3-vl-30b-a3b-instruct)
+    GPUSTACK_MODEL_TEXT          - text extraction/metadata model (default gpt-oss-120b)
+    GPUSTACK_MODEL_ORCHESTRATOR  - orchestration model (default minimax-m2.7)
+    GPUSTACK_MODEL_VISION        - document OCR model (default qwen3-vl-30b-a3b-instruct)
+    EXTRACTION_MODEL, ORCHESTRATOR_MODEL, and QWEN3_VL_MODEL remain supported
+        as deprecated aliases.
     OCR_ENGINE           - qwen3-vl | mistral (default qwen3-vl)
 """
 from __future__ import annotations
@@ -50,10 +52,34 @@ GPUSTACK_BASE_URL  = _get("GPUSTACK_BASE_URL",  "https://gpustack.unibe.ch/v1")
 GPUSTACK_API_KEY   = os.environ.get("GPUSTACK_API_KEY", "")
 GPUSTACK_TIMEOUT   = int(_get("GPUSTACK_TIMEOUT", "120"))
 
-# Model names - must match exactly how models are registered in GPUStack
-EXTRACTION_MODEL   = _get("EXTRACTION_MODEL",   "qwen3-30b-a3b-instruct")
-ORCHESTRATOR_MODEL = _get("ORCHESTRATOR_MODEL", "minimax-m2.7")
-QWEN3_VL_MODEL     = _get("QWEN3_VL_MODEL",     "qwen3-vl-30b-a3b-instruct")
+def resolve_model_roles(environ: os._Environ[str] | dict[str, str]) -> dict[str, str]:
+    """Resolve role-based models, with deprecated environment aliases."""
+    return {
+        "VISION": environ.get(
+            "GPUSTACK_MODEL_VISION",
+            environ.get("QWEN3_VL_MODEL", "qwen3-vl-30b-a3b-instruct"),
+        ),
+        "TEXT": environ.get(
+            "GPUSTACK_MODEL_TEXT",
+            environ.get("EXTRACTION_MODEL", "gpt-oss-120b"),
+        ),
+        "ORCH": environ.get(
+            "GPUSTACK_MODEL_ORCHESTRATOR",
+            environ.get("ORCHESTRATOR_MODEL", "minimax-m2.7"),
+        ),
+    }
+
+
+# Model names must match exactly how models are registered in GPUStack.
+MODEL_ROLES = resolve_model_roles(os.environ)
+GPUSTACK_MODEL_VISION = MODEL_ROLES["VISION"]
+GPUSTACK_MODEL_TEXT = MODEL_ROLES["TEXT"]
+GPUSTACK_MODEL_ORCHESTRATOR = MODEL_ROLES["ORCH"]
+
+# Deprecated Python aliases retained for downstream compatibility.
+QWEN3_VL_MODEL = GPUSTACK_MODEL_VISION
+EXTRACTION_MODEL = GPUSTACK_MODEL_TEXT
+ORCHESTRATOR_MODEL = GPUSTACK_MODEL_ORCHESTRATOR
 
 # OCR
 # "qwen3-vl" - GPUStack Qwen3 VL (default); falls back to Mistral if empty

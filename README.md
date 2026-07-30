@@ -75,16 +75,18 @@ Copy `.env.gpustack` template (or create manually):
 GPUSTACK_BASE_URL=https://gpustack.unibe.ch/v1
 GPUSTACK_API_KEY=your-token-here
 
-# Model names (check GPUStack dashboard for exact names)
-EXTRACTION_MODEL=qwen3-30b-a3b-instruct
-ORCHESTRATOR_MODEL=minimax-m2.7
-QWEN3_VL_MODEL=qwen3-vl-30b-a3b-instruct
+# Role-based model routing (check GPUStack dashboard for exact names)
+GPUSTACK_MODEL_VISION=qwen3-vl-30b-a3b-instruct
+GPUSTACK_MODEL_TEXT=gpt-oss-120b
+GPUSTACK_MODEL_ORCHESTRATOR=minimax-m2.7
 
 # OCR engine: qwen3-vl (GPUStack, default) or mistral (legacy fallback)
 OCR_ENGINE=qwen3-vl
 ```
 
 `.env.gpustack` is git-ignored. Without it, `config.py` uses sensible defaults (tei endpoint, no API key required for public models).
+The former `QWEN3_VL_MODEL`, `EXTRACTION_MODEL`, and `ORCHESTRATOR_MODEL`
+variables remain supported as deprecated aliases.
 
 ---
 

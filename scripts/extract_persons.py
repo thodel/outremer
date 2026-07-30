@@ -50,8 +50,10 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-# GPUStack LLM client
 from llm_client import generate as _llm_generate
+
+# GPUStack LLM client
+from config import GPUSTACK_MODEL_TEXT
 
 logger = logging.getLogger(__name__)
 
@@ -59,8 +61,6 @@ logger = logging.getLogger(__name__)
 # Constants
 # ──────────────────────────────────────────────
 
-# GPUStack model — see scripts/config.py / .env.gpustack
-_EXTRACTION_MODEL = "qwen3-30b-a3b-instruct"  # from config.EXTRACTION_MODEL at runtime
 _CHUNK_SIZE = 5_500   # chunk size for GPUStack extraction
 _CHUNK_OVERLAP = 800
 
@@ -998,7 +998,7 @@ def _extract_gpustack_chunk(
     prompt = _build_prompt(language, blocked_terms=blocked_terms) + clean_chunk
     raw_text = _llm_generate(
         prompt,
-        model=_EXTRACTION_MODEL,
+        model=GPUSTACK_MODEL_TEXT,
         max_tokens=4096,
         temperature=0.1,
     )
@@ -1108,7 +1108,7 @@ def extract_persons_and_metadata(
     feedback_store = _load_entity_feedback(feedback_path)
     feedback_terms = _feedback_terms_for_prompt(feedback_store)
 
-    from config import EXTRACTION_MODEL, GPUSTACK_BASE_URL
+    from config import GPUSTACK_BASE_URL
 
     if GPUSTACK_BASE_URL:
         result = _extract_gpustack(
@@ -1117,7 +1117,11 @@ def extract_persons_and_metadata(
             language=language,
             blocked_terms=feedback_terms,
         )
-        result["engine"] = {"provider": "gpustack", "model": EXTRACTION_MODEL}
+        result["engine"] = {
+            "provider": "gpustack",
+            "role": "TEXT",
+            "model": GPUSTACK_MODEL_TEXT,
+        }
     else:
         result = _extract_fallback(text)
         if use_llm_metadata:
