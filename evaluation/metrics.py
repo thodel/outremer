@@ -183,6 +183,71 @@ def candidate_distance(candidates: list[str], **normalisation: bool) -> dict:
     }
 
 
+_FORBIDDEN_SELECTION_FIELDS = {"ground_truth", "gold"}
+
+
+def validate_selection_event(event: dict) -> None:
+    """Reject misleading selection-data names and malformed candidate choices."""
+    stack: list[object] = [event]
+    while stack:
+        value = stack.pop()
+        if isinstance(value, dict):
+            forbidden = {
+                str(key).casefold() for key in value
+            } & _FORBIDDEN_SELECTION_FIELDS
+            if forbidden:
+                names = ", ".join(sorted(forbidden))
+                raise ValueError(
+                    f"selection-derived data cannot use truth-claim field(s): {names}"
+                )
+            stack.extend(value.values())
+        elif isinstance(value, list):
+            stack.extend(value)
+
+    candidates = event.get("candidates")
+    if not isinstance(candidates, list) or not all(
+        isinstance(candidate, str) for candidate in candidates
+    ):
+        raise ValueError("selection event candidates must be a list of strings")
+    for field in ("automatic_selection", "human_selection"):
+        selection = event.get(field)
+        if selection is not None and selection not in candidates:
+            raise ValueError(f"{field} must be one of the offered candidates or null")
+
+
+def selection_metrics(events: list[dict]) -> dict:
+    """Measure candidate coverage, automatic selection agreement, and regret.
+
+    A non-null ``human_selection`` means the offered pool contained an
+    acceptable reading. It is the closest acceptable option in that bounded
+    pool, not an independent reference transcription.
+    """
+    for event in events:
+        validate_selection_event(event)
+
+    covered = [event for event in events if event.get("human_selection") is not None]
+    comparable = [
+        event for event in covered if event.get("automatic_selection") is not None
+    ]
+    matches = sum(
+        event["automatic_selection"] == event["human_selection"]
+        for event in comparable
+    )
+    regrets = [
+        cer(event["human_selection"], event["automatic_selection"])
+        for event in comparable
+    ]
+    return {
+        "events": len(events),
+        "covered": len(covered),
+        "coverage": len(covered) / len(events) if events else 0.0,
+        "comparable_selections": len(comparable),
+        "automatic_matches": matches,
+        "selection_agreement": matches / len(comparable) if comparable else 0.0,
+        "mean_regret_cer": sum(regrets) / len(regrets) if regrets else 0.0,
+    }
+
+
 def _fold_particles(norm: str) -> str:
     tokens = [t for t in norm.split() if t not in _PARTICLES]
     if len(tokens) < 2:
