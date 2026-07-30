@@ -46,3 +46,8 @@ ignore = [
 [tool.ruff.lint.per-file-ignores]
 "scripts/test_llm_client.py" = ["E402"]
 "tests/*" = ["E402"]
+
+[tool.pytest.ini_options]
+markers = [
+    "live_backend: requires access to a configured live inference backend",
+]
