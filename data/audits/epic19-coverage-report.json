@@ -1,0 +1,200 @@
+{
+  "schema_version": 1,
+  "authority_records": 129,
+  "benchmark_figures": 14,
+  "summary": {
+    "missing": 13,
+    "present": 1
+  },
+  "by_tradition": {
+    "Arabic-Islamic": {
+      "total": 3,
+      "present": 0,
+      "missing": 3
+    },
+    "Armenian": {
+      "total": 1,
+      "present": 0,
+      "missing": 1
+    },
+    "Byzantine": {
+      "total": 2,
+      "present": 0,
+      "missing": 2
+    },
+    "Latin Christian": {
+      "total": 8,
+      "present": 1,
+      "missing": 7
+    }
+  },
+  "figures": [
+    {
+      "preferred_label": "Godfrey of Bouillon",
+      "tradition": "Latin Christian",
+      "role": "participant",
+      "wikidata": "Q76721",
+      "sources": [
+        "riley-smith-first-crusaders",
+        "outremer-corpus",
+        "wikidata-cc0"
+      ],
+      "status": "present",
+      "authority_id": "AUTH:CR184"
+    },
+    {
+      "preferred_label": "Urban II",
+      "variants": [
+        "Pope Urban II"
+      ],
+      "tradition": "Latin Christian",
+      "role": "pope",
+      "wikidata": "Q30578",
+      "sources": [
+        "riley-smith-first-crusaders",
+        "outremer-corpus",
+        "wikidata-cc0"
+      ],
+      "status": "missing",
+      "authority_id": null
+    },
+    {
+      "preferred_label": "Albert of Aachen",
+      "variants": [
+        "Albert of Aix"
+      ],
+      "tradition": "Latin Christian",
+      "role": "chronicler",
+      "wikidata": "Q4323",
+      "sources": [
+        "outremer-corpus",
+        "wikidata-cc0"
+      ],
+      "status": "missing",
+      "authority_id": null
+    },
+    {
+      "preferred_label": "Ekkehard of Aura",
+      "variants": [
+        "Ekkehard"
+      ],
+      "tradition": "Latin Christian",
+      "role": "chronicler",
+      "wikidata": "Q66673",
+      "sources": [
+        "outremer-corpus",
+        "wikidata-cc0"
+      ],
+      "status": "missing",
+      "authority_id": null
+    },
+    {
+      "preferred_label": "Fulcher of Chartres",
+      "tradition": "Latin Christian",
+      "role": "chronicler",
+      "wikidata": "Q5630",
+      "sources": [
+        "outremer-corpus",
+        "wikidata-cc0"
+      ],
+      "status": "missing",
+      "authority_id": null
+    },
+    {
+      "preferred_label": "Guibert of Nogent",
+      "tradition": "Latin Christian",
+      "role": "chronicler",
+      "wikidata": "Q4289",
+      "sources": [
+        "outremer-corpus",
+        "wikidata-cc0"
+      ],
+      "status": "missing",
+      "authority_id": null
+    },
+    {
+      "preferred_label": "Orderic Vitalis",
+      "tradition": "Latin Christian",
+      "role": "chronicler",
+      "wikidata": "Q356298",
+      "sources": [
+        "outremer-corpus",
+        "wikidata-cc0"
+      ],
+      "status": "missing",
+      "authority_id": null
+    },
+    {
+      "preferred_label": "William of Tyre",
+      "tradition": "Latin Christian",
+      "role": "chronicler",
+      "wikidata": "Q311822",
+      "sources": [
+        "wikidata-cc0"
+      ],
+      "status": "missing",
+      "authority_id": null
+    },
+    {
+      "preferred_label": "Anna Komnene",
+      "tradition": "Byzantine",
+      "role": "historian",
+      "wikidata": "Q179284",
+      "sources": [
+        "wikidata-cc0"
+      ],
+      "status": "missing",
+      "authority_id": null
+    },
+    {
+      "preferred_label": "Alexios I Komnenos",
+      "tradition": "Byzantine",
+      "role": "ruler",
+      "sources": [
+        "riley-smith-first-crusaders"
+      ],
+      "status": "missing",
+      "authority_id": null
+    },
+    {
+      "preferred_label": "Ibn al-Qalanisi",
+      "tradition": "Arabic-Islamic",
+      "role": "chronicler",
+      "sources": [
+        "riley-smith-first-crusaders"
+      ],
+      "status": "missing",
+      "authority_id": null
+    },
+    {
+      "preferred_label": "Ibn al-Athir",
+      "tradition": "Arabic-Islamic",
+      "role": "chronicler",
+      "sources": [
+        "riley-smith-first-crusaders"
+      ],
+      "status": "missing",
+      "authority_id": null
+    },
+    {
+      "preferred_label": "Usama ibn Munqidh",
+      "tradition": "Arabic-Islamic",
+      "role": "author and participant",
+      "sources": [
+        "riley-smith-first-crusaders"
+      ],
+      "status": "missing",
+      "authority_id": null
+    },
+    {
+      "preferred_label": "Matthew of Edessa",
+      "tradition": "Armenian",
+      "role": "chronicler",
+      "sources": [
+        "riley-smith-first-crusaders"
+      ],
+      "status": "missing",
+      "authority_id": null
+    }
+  ]
+}
