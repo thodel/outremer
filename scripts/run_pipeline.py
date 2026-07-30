@@ -37,6 +37,7 @@ from config import EXTRACTION_MODEL, GPUSTACK_BASE_URL, OCR_ENGINE
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 logger = logging.getLogger(__name__)
+_recognition_engines_used: Counter[str] = Counter()
 
 
 # ──────────────────────────────────────────────
@@ -56,6 +57,7 @@ def _write_run_report(
     feedback_applied: dict[str, int] | None = None,
     llm_provider: str = "unknown",
     noise: dict[str, int] | None = None,
+    recognition_engines: dict[str, int] | None = None,
 ) -> None:
     """Write run report JSON to data/staging/run_report.json."""
     report = {
@@ -68,6 +70,7 @@ def _write_run_report(
         "extraction_model": extraction_model,
         "ocr_engine": ocr_engine,
         "failures": failures,
+        "recognition": {"engines_used": recognition_engines or {}},
     }
     if noise and noise.get("extracted_total"):
         report["noise"] = {
@@ -111,7 +114,7 @@ def read_text_file(path: Path) -> str:
 
 
 def read_pdf_file(path: Path) -> str:
-    """Extract text from PDF. Falls back to Mistral OCR for image-only PDFs."""
+    """Extract text from PDF and route image-only documents to recognition."""
     try:
         from pypdf import PdfReader
     except ImportError as exc:
@@ -129,7 +132,7 @@ def read_pdf_file(path: Path) -> str:
         logger.info("Low text yield from pypdf (%d chars) — trying OCR (engine=%s)…", len(text), OCR_ENGINE)
         ocr_text = _ocr_image(path)
         if ocr_text:
-            logger.info("Mistral OCR returned %d chars.", len(ocr_text))
+            logger.info("Recognition returned %d chars.", len(ocr_text))
             return ocr_text
         logger.warning("OCR also failed; proceeding with minimal text.")
 
@@ -144,12 +147,19 @@ def _ocr_image(path: Path) -> str:
       mistral            → Mistral API only (legacy; optional dependency)
     """
     if OCR_ENGINE == "mistral":
-        return _mistral_ocr(path)
+        result = _mistral_ocr(path)
+        if result:
+            _recognition_engines_used["mistral"] += 1
+        return result
     result = _qwen3vl_ocr(path)
     if result:
+        _recognition_engines_used["qwen3-vl"] += 1
         return result
     logger.info("Qwen3 VL OCR empty — trying Mistral as fallback.")
-    return _mistral_ocr(path)
+    result = _mistral_ocr(path)
+    if result:
+        _recognition_engines_used["mistral"] += 1
+    return result
 
 
 def _qwen3vl_ocr(path: Path) -> str:
@@ -493,6 +503,7 @@ def build_site_index(site_data_dir: Path, site_dir: Path) -> None:
 # ──────────────────────────────────────────────
 
 def main() -> int:
+    _recognition_engines_used.clear()
     ap = argparse.ArgumentParser(description="Outremer NER + KG linking pipeline.")
     ap.add_argument("--input-dir", default="data/raw", help="Folder with .txt/.pdf files")
     ap.add_argument("--file", action="append", dest="files", metavar="FILE", help="Process specific file(s) only (can be repeated)")
@@ -675,6 +686,7 @@ def main() -> int:
         feedback_applied=feedback_stats,
         llm_provider="gpustack" if GPUSTACK_BASE_URL else "heuristic",
         noise=noise_agg,
+        recognition_engines=dict(_recognition_engines_used),
     )
 
     if errors:
