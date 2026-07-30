@@ -1,0 +1,82 @@
+{
+  "authority": {
+    "agreement": 0.8909,
+    "reviewed_pairs": 55,
+    "accept_hit": 4,
+    "accept_miss": 3,
+    "reject_hit": 3,
+    "reject_avoided": 45
+  },
+  "accepted_pair_diagnosis": {
+    "HIT": 4,
+    "not_extracted": 3
+  },
+  "correct_match_score_distribution": {
+    "[0.60,0.65)": 4
+  },
+  "candidate_floor_sweep": [
+    {
+      "floor": 0.55,
+      "agreement": 0.8909,
+      "reviewed_pairs": 55,
+      "accept_hit": 4,
+      "accept_miss": 3,
+      "reject_hit": 3,
+      "reject_avoided": 45
+    },
+    {
+      "floor": 0.6,
+      "agreement": 0.8909,
+      "reviewed_pairs": 55,
+      "accept_hit": 4,
+      "accept_miss": 3,
+      "reject_hit": 3,
+      "reject_avoided": 45
+    },
+    {
+      "floor": 0.65,
+      "agreement": 0.8364,
+      "reviewed_pairs": 55,
+      "accept_hit": 0,
+      "accept_miss": 7,
+      "reject_hit": 2,
+      "reject_avoided": 46
+    },
+    {
+      "floor": 0.7,
+      "agreement": 0.8545,
+      "reviewed_pairs": 55,
+      "accept_hit": 0,
+      "accept_miss": 7,
+      "reject_hit": 1,
+      "reject_avoided": 47
+    },
+    {
+      "floor": 0.75,
+      "agreement": 0.8545,
+      "reviewed_pairs": 55,
+      "accept_hit": 0,
+      "accept_miss": 7,
+      "reject_hit": 1,
+      "reject_avoided": 47
+    },
+    {
+      "floor": 0.8,
+      "agreement": 0.8545,
+      "reviewed_pairs": 55,
+      "accept_hit": 0,
+      "accept_miss": 7,
+      "reject_hit": 1,
+      "reject_avoided": 47
+    },
+    {
+      "floor": 0.85,
+      "agreement": 0.8545,
+      "reviewed_pairs": 55,
+      "accept_hit": 0,
+      "accept_miss": 7,
+      "reject_hit": 1,
+      "reject_avoided": 47
+    }
+  ]
+}
