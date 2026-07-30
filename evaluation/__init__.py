@@ -9,4 +9,10 @@ Run from repo root:
     python -m evaluation.harness --fixtures evaluation/fixtures
 """
 
-from evaluation.metrics import extraction_prf, linking_agreement  # noqa: F401
+from evaluation.metrics import (  # noqa: F401
+    candidate_distance,
+    cer,
+    extraction_prf,
+    linking_agreement,
+    wer,
+)

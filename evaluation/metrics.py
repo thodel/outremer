@@ -26,14 +26,14 @@ agree on what counts as "the same name".
 
 from __future__ import annotations
 
+import itertools
+import re
+import string
 import unicodedata
 
 from rapidfuzz import fuzz
 
 DEFAULT_FUZZY_THRESHOLD = 90.0
-
-
-import re
 
 # Mirrors scripts/linker.py so evaluation and production agree on name
 # equivalence; parity is asserted by tests/test_linker_matching.py.
@@ -52,6 +52,135 @@ def normalise_name(s: str) -> str:
     )
     s = re.sub(r"[^\w\s]", " ", s)
     return " ".join(s.casefold().split())
+
+
+_ABBREV_FOLD_MAP = str.maketrans(
+    {
+        "ā": "a", "ē": "e", "ī": "i", "ō": "o", "ū": "u",
+        "Ā": "A", "Ē": "E", "Ī": "I", "Ō": "O", "Ū": "U",
+        "ʒ": "z", "Ç": "C", "ç": "c", "ı": "i", "ß": "ss", "ſ": "s",
+    }
+)
+
+
+def _normalise_recognition(
+    text: str,
+    *,
+    ignore_case: bool,
+    ignore_whitespace: bool,
+    ignore_punctuation: bool,
+    abbrev_fold: bool,
+) -> str:
+    """Apply the explicitly selected recognition-comparison normalisations."""
+    if abbrev_fold:
+        text = text.translate(_ABBREV_FOLD_MAP)
+    if ignore_case:
+        text = text.casefold()
+    if ignore_whitespace:
+        text = re.sub(r"\s+", " ", text).strip()
+    if ignore_punctuation:
+        text = text.translate(str.maketrans("", "", string.punctuation))
+    return text
+
+
+def _edit_distance(reference: list[str] | str, hypothesis: list[str] | str) -> int:
+    """Return Levenshtein distance using two rows of dynamic-programming state."""
+    if not reference:
+        return len(hypothesis)
+    previous = list(range(len(reference) + 1))
+    current = [0] * (len(reference) + 1)
+    for i, hyp_item in enumerate(hypothesis, start=1):
+        current[0] = i
+        for j, ref_item in enumerate(reference, start=1):
+            current[j] = min(
+                previous[j] + 1,
+                current[j - 1] + 1,
+                previous[j - 1] + (ref_item != hyp_item),
+            )
+        previous, current = current, previous
+    return previous[-1]
+
+
+def cer(
+    reference: str,
+    hypothesis: str,
+    *,
+    ignore_case: bool = True,
+    ignore_whitespace: bool = True,
+    ignore_punctuation: bool = True,
+    abbrev_fold: bool = False,
+) -> float:
+    """Return character error rate after explicitly selected normalisation."""
+    options = {
+        "ignore_case": ignore_case,
+        "ignore_whitespace": ignore_whitespace,
+        "ignore_punctuation": ignore_punctuation,
+        "abbrev_fold": abbrev_fold,
+    }
+    ref = _normalise_recognition(reference, **options)
+    hyp = _normalise_recognition(hypothesis, **options)
+    if not ref:
+        return 0.0 if not hyp else 1.0
+    return _edit_distance(ref, hyp) / len(ref)
+
+
+def wer(
+    reference: str,
+    hypothesis: str,
+    *,
+    ignore_case: bool = True,
+    ignore_whitespace: bool = True,
+    ignore_punctuation: bool = True,
+    abbrev_fold: bool = False,
+) -> float:
+    """Return word error rate after explicitly selected normalisation."""
+    options = {
+        "ignore_case": ignore_case,
+        "ignore_whitespace": ignore_whitespace,
+        "ignore_punctuation": ignore_punctuation,
+        "abbrev_fold": abbrev_fold,
+    }
+    ref = _normalise_recognition(reference, **options).split()
+    hyp = _normalise_recognition(hypothesis, **options).split()
+    if not ref:
+        return 0.0 if not hyp else 1.0
+    return _edit_distance(ref, hyp) / len(ref)
+
+
+def candidate_distance(candidates: list[str], **normalisation: bool) -> dict:
+    """Return mean/max pairwise character distance between recognition candidates.
+
+    Candidates are unordered, so each pair uses edit distance divided by the
+    longer normalised candidate. This symmetric CER-like distance measures
+    disagreement within the offered pool; it is not transcription accuracy.
+    """
+    pairs = list(itertools.combinations(candidates, 2))
+    if not pairs:
+        return {"pairs": 0, "mean_cer": 0.0, "max_cer": 0.0}
+
+    options = {
+        "ignore_case": True,
+        "ignore_whitespace": True,
+        "ignore_punctuation": True,
+        "abbrev_fold": False,
+    }
+    options.update(normalisation)
+    distances: list[float] = []
+    for left, right in pairs:
+        norm_left = _normalise_recognition(left, **options)
+        norm_right = _normalise_recognition(right, **options)
+        denominator = max(len(norm_left), len(norm_right))
+        distance = (
+            _edit_distance(norm_left, norm_right) / denominator
+            if denominator
+            else 0.0
+        )
+        distances.append(distance)
+    return {
+        "pairs": len(pairs),
+        "mean_cer": sum(distances) / len(distances),
+        "max_cer": max(distances),
+    }
 
 
 def _fold_particles(norm: str) -> str:
