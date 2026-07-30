@@ -33,7 +33,7 @@ from linker import build_authority_lookup, link_voyagers_to_outremer, normalise
 from llm_client import generate as _llm_generate
 from validate_decisions import validate_decisions_file
 
-from config import EXTRACTION_MODEL, GPUSTACK_BASE_URL, OCR_ENGINE
+from config import EXTRACTION_MODEL, EXTRACTION_SEED, GPUSTACK_BASE_URL, OCR_ENGINE
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 logger = logging.getLogger(__name__)
@@ -51,6 +51,7 @@ def _write_run_report(
     docs_failed: int,
     total_persons: int,
     extraction_model: str,
+    extraction_seed: int,
     ocr_engine: str,
     failures: list[dict],
     feedback_applied: dict[str, int] | None = None,
@@ -66,6 +67,7 @@ def _write_run_report(
         "total_persons": total_persons,
         "llm_provider": llm_provider,
         "extraction_model": extraction_model,
+        "extraction_seed": extraction_seed,
         "ocr_engine": ocr_engine,
         "failures": failures,
     }
@@ -670,6 +672,7 @@ def main() -> int:
         docs_failed=len(errors),
         total_persons=total_persons,
         extraction_model=EXTRACTION_MODEL,
+        extraction_seed=EXTRACTION_SEED,
         ocr_engine=OCR_ENGINE,
         failures=[{"file": str(p), "error": str(e)} for p, e in errors],
         feedback_applied=feedback_stats,

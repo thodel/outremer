@@ -1,7 +1,10 @@
 # OUTREMER — GPUStack Adaptation Progress
 
 > **Status: Epics 1–8 closed; Epics 9–10 open** (evaluation & linking methodology, #33/#34).
-> Baseline as of 2026-07-18: combined agreement **0.9155** over 71 pairs (authority 0.8909, wikidata 1.0); eval gate ≥ 0.85. 58 tests.
+> Pinned-seed baseline as of 2026-07-18: combined agreement **0.9155** over
+> 71 pairs (authority 0.8909, wikidata 1.0); eval gate ≥ 0.85. Before seed
+> pinning, unchanged code produced an observed combined band of
+> **0.8873–0.9296**. Repeated gates use the lower observed bound.
 
 ## What was done 2026-07-18 (gold repair + repo health)
 

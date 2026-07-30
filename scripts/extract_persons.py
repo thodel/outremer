@@ -1108,7 +1108,7 @@ def extract_persons_and_metadata(
     feedback_store = _load_entity_feedback(feedback_path)
     feedback_terms = _feedback_terms_for_prompt(feedback_store)
 
-    from config import EXTRACTION_MODEL, GPUSTACK_BASE_URL
+    from config import EXTRACTION_MODEL, EXTRACTION_SEED, GPUSTACK_BASE_URL
 
     if GPUSTACK_BASE_URL:
         result = _extract_gpustack(
@@ -1117,7 +1117,11 @@ def extract_persons_and_metadata(
             language=language,
             blocked_terms=feedback_terms,
         )
-        result["engine"] = {"provider": "gpustack", "model": EXTRACTION_MODEL}
+        result["engine"] = {
+            "provider": "gpustack",
+            "model": EXTRACTION_MODEL,
+            "seed": EXTRACTION_SEED,
+        }
     else:
         result = _extract_fallback(text)
         if use_llm_metadata:
