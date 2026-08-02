@@ -289,9 +289,14 @@ def _build_bibtex(metadata: dict[str, Any]) -> str:
 
 
 def _sanitise_text(text: str) -> str:
-    """Strip control characters that break JSON when embedded in LLM responses."""
+    """Strip control characters and repair PDF line-break hyphenation."""
     # Keep: tab (\x09), newline (\x0a), carriage return (\x0d), and all printable
-    return re.sub(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]", " ", text)
+    text = re.sub(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]", " ", text)
+    # Rejoin words split across a line break ("Constanti-\nnople"), which the
+    # PDF text layer emits verbatim and which otherwise surface as truncated
+    # mentions ("Constanti", "Chris"). A hyphen NOT followed by a line break is
+    # left alone so genuine compounds ("Lion-Hearted") survive.
+    return re.sub(r"(\w)-[ \t]*\r?\n[ \t]*(\w)", r"\1\2", text)
 
 
 def _utc_now_iso() -> str:
@@ -618,9 +623,32 @@ _BIB_NOISE_PATTERNS = re.compile(
     re.I
 )
 
+# Citation apparatus that genuinely marks a MODERN scholarly reference.
+#
+# The previous version also matched bare prose verbs — argues, writes, notes,
+# observes, suggests, claims, states, "according to", see — which are exactly
+# the words a historian uses when citing a MEDIEVAL chronicler. "According to
+# Fulk of Chartres…" and "…Bernard of Clairvaux's sermons … states that" both
+# tripped it, so the filter deleted the very people this project exists to
+# find. Only unambiguous apparatus survives here.
 _MODERN_SCHOLAR_PATTERNS = re.compile(
-    r"\b(argues|writes|notes|observes|suggests|claims|states|according to|"
-    r"cf\.?|see|ibid|op\. cit\.|loc\. cit\.|passim|ed\.|eds\.|trans\.|tr\.|rev\.|repr\.)\b",
+    r"(\bcf\.|\bibid\b|op\. cit\.|loc\. cit\.|\bpassim\b|\beds?\.|"
+    r"\btrans\.|\brepr\.|\bpp\.|\bvol\.|\b(?:1[89]|20)\d{2}\b)",
+    re.I
+)
+
+# Unambiguous bibliographic markers, for CONTEXT matching only.
+#
+# _BIB_NOISE_PATTERNS below stays broad because it is matched against the NAME
+# itself (a mention literally called "Index" or "Source" is noise). It must not
+# be used on surrounding prose: it matches "part", "no", "see", "source",
+# "date", "book" and "review", which occur constantly in historical narrative —
+# that is what removed "Cardinal Pelagius" ("no one played a prominent part")
+# and "Godfrey".
+_BIB_CONTEXT_PATTERNS = re.compile(
+    r"(\bvol\.|\bpp\.|\bisbn\b|\bdoi\b|\bissn\b|\bjstor\b|copyright|"
+    r"all rights reserved|university press|\baccessed\b|\bretrieved\b|"
+    r"\beds?\.|\btrans\.)",
     re.I
 )
 
@@ -648,11 +676,14 @@ def _is_bibliographic_noise(name: str, context: str = "") -> bool:
     # This avoids dropping real names that appear near bibliographic words.
     if context and len(name.split()) <= 2:
         title_like = re.search(
-            r"\b(king|queen|count|duke|prince|emperor|pope|bishop|patriarch|sultan|emir|lord|lady)\b",
+            r"\b(king|queen|count|duke|prince|emperor|pope|bishop|archbishop|"
+            r"patriarch|cardinal|legate|abbot|abbess|sultan|emir|caliph|"
+            r"lord|lady|sir|saint|st)\b",
             name,
             re.I,
         )
-        if not title_like and _BIB_NOISE_PATTERNS.search(context):
+        # Narrow context pattern only — the broad one matches ordinary prose.
+        if not title_like and _BIB_CONTEXT_PATTERNS.search(context):
             return True
 
     return False
@@ -664,10 +695,18 @@ def _is_modern_scholar(name: str, context: str = "") -> bool:
     scholar_surnames = {"riley", "smith", "mayer", "tyerman", "asbridge", "france",
                         "cahen", "runciman", "grousset", "kedar", "prawer", "hamilton",
                         "edgington", "jotischky", "barber", "boas", "folda", "rodenberg"}
-    
-    name_lower = name.lower()
-    if any(surname in name_lower for surname in scholar_surnames):
-        return True
+
+    # Match whole tokens, not substrings: `"france" in name_lower` also fired on
+    # a medieval "Robert of France", and `"boas"` inside any longer word.
+    # A toponym attached by a particle ("of France") is part of a medieval
+    # style, not a modern surname, so it does not count.
+    tokens = [t.strip(".,'s").lower() for t in name.split()]
+    for i, tok in enumerate(tokens):
+        if tok in scholar_surnames:
+            prev = tokens[i - 1] if i else ""
+            if prev in {"de", "of", "von", "van", "der", "den", "le", "la", "du"}:
+                continue
+            return True
     
     # Check context for citation markers
     if _MODERN_SCHOLAR_PATTERNS.search(context):
@@ -889,14 +928,110 @@ _TITLE_WORDS = re.compile(
     re.I,
 )
 
+# A single capitalised name token, allowing internal hyphens ("Lion-Hearted")
+# and accented forms.
+_NAME_TOKEN = r"[A-Z][a-zéèêëàâùûüîïôçœæÀ-ÿ]+(?:-[A-Z]?[a-zéèêëàâùûüîïôçœæÀ-ÿ]+)*"
+# Nobiliary/patronymic particles that join name tokens.
+_NAME_PARTICLE = r"(?:de|of|von|van|der|den|le|la|du|d'|al-|ibn|bin|bar|the)"
+_TITLE_ALT = (
+    r"King|Queen|Count|Countess|Duke|Duchess|Prince|Princess|Emperor|"
+    r"Empress|Pope|Bishop|Archbishop|Patriarch|Cardinal|Sultan|Emir|Caliph|Amir|"
+    r"Sir|Lord|Lady|Master|Brother|Fra|Don|Sire|Baron|Viscount|"
+    r"Constable|Marshal|Seneschal|Castellan|Abbot|Abbess|St\.?|Saint"
+)
+
+# Person mention: optional title, then one or more name tokens joined either
+# directly ("Thomas Fuller") or by a particle ("Walter von der Vogelweide"),
+# optionally closed by a regnal numeral ("Gregory IX.", "Urban II").
+#
+# The previous pattern joined two tokens ONLY across a particle, so every
+# ordinary two-word name was emitted as two separate fragments — costing a
+# false positive *and* a false negative for the same person. It also never
+# captured regnal numerals, so "Gregory IX." surfaced as bare "Gregory".
 _PERSON_PATTERN = re.compile(
-    r"(?:"
-    r"(?:(?:King|Queen|Count|Countess|Duke|Duchess|Prince|Princess|Emperor|"
-    r"Empress|Pope|Bishop|Archbishop|Sultan|Emir|Amir|Sir|Lord|Lady|Master|"
-    r"Brother|Fra|Don|Sire|Baron|Viscount|Constable|Marshal|Seneschal|Abbot|Abbess)\s+)?"
-    r"(?:[A-Z][a-zéèêëàâùûüîïôçœæÀ-ÿ]+(?:\s+(?:de|of|von|van|le|la|the|du|d'|al-|ibn|bin|bar)\s+)?"
-    r"(?:[A-Z][a-zéèêëàâùûüîïôçœæÀ-ÿ\-]+)?)"
-    r")"
+    rf"(?:(?:{_TITLE_ALT})\s+)?"
+    rf"{_NAME_TOKEN}"
+    rf"(?:\s+(?:{_NAME_PARTICLE}\s+)?{_NAME_TOKEN}){{0,3}}"
+    rf"(?:\s+(?=[IVXL])[IVXL]{{1,6}}\.?(?![a-zA-Z]))?"
+)
+
+# Capitalised tokens that are never a personal name in this corpus. Used both
+# to reject a whole span and to stop multi-token joining, so "Second Crusade
+# Eugene" cannot be glued into one bogus mention.
+_NON_NAME_TOKENS = frozenset(
+    w.lower()
+    for w in (
+        # sentence-initial connectives and adverbs
+        "the a an and but or nor yet so for if then than thus therefore however "
+        "moreover meanwhile nevertheless furthermore consequently because since "
+        "while when where why what who whom whose which that this these those "
+        "there here now soon later after before during until unless although "
+        "though despite whatever whenever wherever however possibly probably "
+        "perhaps certainly indeed even also only just still already always "
+        "never many much more most little less least few several some any all "
+        "one two three first second third fourth fifth sixth other others "
+        "such same own very such with without within from into onto upon "
+        "about above below over under again once both each either neither "
+        "they them their he she his her him it its we us our you your i my "
+        # short function words: without these the joining rule glues a
+        # following sentence-initial capital ("Louis In the year" → "Louis In")
+        "in to at on by as of off up out is was were be been being are am "
+        "had has have having do did does done will would shall should "
+        "may might can could must let its it's "
+        "read see cf ibid op cit vol no pp ed trans eds "
+        # calendar
+        "january february march april may june july august september october "
+        "november december monday tuesday wednesday thursday friday saturday sunday "
+        # abstractions, institutions, objects
+        "church christendom cross crusade crusades council synod papacy empire "
+        "kingdom county duchy city land lands temple hospital order orders rule "
+        "tax taxes tithe heresy faith law laws war peace truce army fleet "
+        "letter letters bull privilege charter chronicle history documents "
+        "recueil historiens croisades sources source text texts note notes "
+        "conditions use press university monastery abbey cathedral "
+        # peoples / adjectival forms (collectives are handled separately)
+        "greek greeks grecian grecians roman romans latin latins frank franks "
+        "german germans french english turk turks moslem moslems muslim muslims "
+        "mohammedan mohammedans christian christians jew jews saracen saracens "
+        "armenian armenians syrian syrians venetian venetians sicilian sicilians "
+        "oriental orientals eastern western northern southern catholic orthodox "
+        "albigenses templars hospitallers "
+        # deities / honorifics for the divine (excluded from person gold)
+        "god christ jesus saviour saviors savior allah lord' "
+        # additional sentence-openers and abstractions seen in the corpus
+        "according defender holy sepulcher sepulchre islam christianity "
+        "east west north south revue annales bulletin recueil"
+    ).split()
+)
+
+# Bare honorifics: a span consisting only of these is a title, not a person.
+_TITLE_ONLY_TOKENS = frozenset(
+    "king queen count countess duke duchess prince princess emperor empress "
+    "pope popes bishop bishops archbishop patriarch patriarchs cardinal legate "
+    "abbot abbess sultan emir caliph amir sir lord lady master brother fra don "
+    "sire baron viscount constable marshal seneschal castellan saint st".split()
+)
+
+# Particles may not open or close a personal-name span.
+_EDGE_PARTICLES = frozenset(
+    "de of von van der den le la du the d' al- ibn bin bar".split()
+)
+
+# Place names frequent in this corpus. A gazetteer is crude, but the corpus is
+# domain-bounded and the alternative — treating every capitalised token as a
+# person — is what produced 95% false positives.
+_PLACE_TOKENS = frozenset(
+    w.lower()
+    for w in (
+        "jerusalem constantinople antioch rome europe asia africa syria egypt "
+        "palestine damascus aleppo edessa tripoli acre tyre sidon ascalon "
+        "nicaea dorylaeum clermont damietta zara venice genoa pisa germany "
+        "england france italy spain hungary poland bohemia flanders normandy "
+        "anjou toulouse provence burgundy lorraine bavaria saxony swabia "
+        "rhodes cyprus sicily calabria apulia orient occident levant "
+        "byzantium anatolia armenia georgia persia arabia mecca medina "
+        "nile jordan euphrates tigris bosphorus"
+    ).split()
 )
 
 _GROUP_PATTERN = re.compile(
@@ -908,6 +1043,72 @@ _GROUP_PATTERN = re.compile(
 )
 
 
+def _trim_person_span(span: str) -> str:
+    """Trim a matched span down to its plausible personal-name core.
+
+    Drops leading/trailing tokens that are never part of a name (sentence
+    connectives, abstractions, place names), so "Second Crusade Eugene III"
+    reduces to "Eugene III" rather than being emitted whole or discarded.
+    Returns "" when nothing name-like survives.
+    """
+    tokens = span.split()
+    # Trim from the left while the first token cannot open a name. A leading
+    # particle is also invalid ("of Clermont" is a prepositional phrase the
+    # regex clipped out of "Council of Clermont", not a person).
+    while tokens and (
+        tokens[0].strip(".,").lower() in _NON_NAME_TOKENS
+        or tokens[0].strip(".,").lower() in _EDGE_PARTICLES
+    ):
+        tokens.pop(0)
+    # Trim from the right while the last token cannot close a name. A regnal
+    # numeral is a legitimate closer, so keep it.
+    while tokens:
+        last = tokens[-1].strip(".,").lower()
+        if last in _NON_NAME_TOKENS or last in _PLACE_TOKENS:
+            # "Godfrey of Bouillon" keeps its toponym; only strip a trailing
+            # place when it is not attached by a particle.
+            if len(tokens) >= 2 and tokens[-2].strip(".,").lower() in {
+                "de", "of", "von", "van", "der", "den", "le", "la", "du",
+            }:
+                break
+            tokens.pop()
+            continue
+        break
+    # A dangling particle left at either end is not a name.
+    while tokens and tokens[-1].strip(".,").lower() in {
+        "de", "of", "von", "van", "der", "den", "le", "la", "du", "the",
+    }:
+        tokens.pop()
+    return " ".join(tokens).strip()
+
+
+def _is_person_like(span: str) -> bool:
+    """Reject spans that are places, abstractions, or bare common words."""
+    if len(span) < 3:
+        return False
+    norm_tokens = [t.strip(".,").lower() for t in span.split()]
+    if not norm_tokens:
+        return False
+    # A single token that is a known place or non-name is not a person.
+    if len(norm_tokens) == 1:
+        t = norm_tokens[0]
+        if t in _NON_NAME_TOKENS or t in _PLACE_TOKENS:
+            return False
+    # Every token being a place ("Kingdom of Jerusalem" → place, not person).
+    # Particles must count here too, or the joining "of" alone keeps the span
+    # alive.
+    if all(
+        t in _PLACE_TOKENS or t in _NON_NAME_TOKENS or t in _EDGE_PARTICLES
+        for t in norm_tokens
+    ):
+        return False
+    # A bare honorific with no personal name attached ("Pope", "Patriarch",
+    # "King") is a title, not a mention of a specific person.
+    if all(t in _TITLE_ONLY_TOKENS or t in _EDGE_PARTICLES for t in norm_tokens):
+        return False
+    return True
+
+
 def _extract_fallback(text: str) -> dict[str, Any]:
     """Heuristic extraction when no API key is available."""
     persons: list[dict[str, Any]] = []
@@ -915,14 +1116,19 @@ def _extract_fallback(text: str) -> dict[str, Any]:
 
     # Individual persons
     for m in _PERSON_PATTERN.finditer(text):
-        span = m.group(0).strip()
-        if len(span) < 3 or len(span.split()) > 6:
+        span = _trim_person_span(m.group(0).strip())
+        if not span or len(span.split()) > 6:
+            continue
+        if not _is_person_like(span):
+            continue
+        # Collectives are handled by the group pass below, which records them
+        # with group=True and role="collective". Persons are matched first, so
+        # without this a capitalised "Crusaders" or "Templars" was claimed as
+        # an individual and `seen_names` then blocked the group pass.
+        if _GROUP_PATTERN.fullmatch(span):
             continue
         norm = _normalise(span)
         if norm in seen_names:
-            continue
-        # Skip if it's just a common word
-        if norm in {"the", "and", "but", "for", "nor", "yet"}:
             continue
         seen_names.add(norm)
         start = max(0, m.start() - 50)
@@ -1032,11 +1238,15 @@ def _extract_gpustack(
 
     if not GPUSTACK_BASE_URL:
         logger.warning("GPUSTACK_BASE_URL not set; using fallback extraction.")
-        return _extract_fallback(text)
+        result = _extract_fallback(text)
+        result["degradation"] = {"chunks": 1, "fallback_chunks": 1, "reasons": ["not_configured"]}
+        return result
 
     chunks = _chunk_text(text)
     all_persons: list[dict[str, Any]] = []
     merged_metadata: dict[str, Any] = {}
+    fallback_chunks = 0
+    failure_reasons: list[str] = []
 
     for offset, chunk in chunks:
         try:
@@ -1047,6 +1257,10 @@ def _extract_gpustack(
             )
         except Exception as exc:
             logger.warning("GPUStack chunk failed (offset=%d): %s", offset, exc)
+            fallback_chunks += 1
+            reason = type(exc).__name__
+            if reason not in failure_reasons:
+                failure_reasons.append(reason)
             result = _extract_fallback(chunk)
 
         for p in result.get("persons") or []:
@@ -1069,7 +1283,26 @@ def _extract_gpustack(
     if use_llm_metadata:
         bibtex = _build_bibtex(metadata)
 
-    return {"persons": persons, "metadata": metadata, "bibtex": bibtex}
+    if fallback_chunks:
+        # Loud, because the previous behaviour was to substitute the heuristic
+        # extractor per failed chunk and still label the document "gpustack".
+        # In CI every chunk 403s (Actions cannot reach the GPUStack host), so
+        # the published corpus was regex output wearing the model's name.
+        logger.error(
+            "Extraction degraded: %d/%d chunk(s) fell back to heuristic NER (%s)",
+            fallback_chunks, len(chunks), ", ".join(failure_reasons) or "unknown",
+        )
+
+    return {
+        "persons": persons,
+        "metadata": metadata,
+        "bibtex": bibtex,
+        "degradation": {
+            "chunks": len(chunks),
+            "fallback_chunks": fallback_chunks,
+            "reasons": failure_reasons,
+        },
+    }
 
 
 # ──────────────────────────────────────────────
@@ -1117,10 +1350,25 @@ def extract_persons_and_metadata(
             language=language,
             blocked_terms=feedback_terms,
         )
+        # Report the engine that ACTUALLY produced these persons. When some or
+        # all chunks fell back, "gpustack" alone is a false provenance claim.
+        deg = result.get("degradation") or {}
+        n_chunks = deg.get("chunks", 0) or 0
+        n_fallback = deg.get("fallback_chunks", 0) or 0
+        if n_fallback == 0:
+            provider = "gpustack"
+        elif n_fallback >= n_chunks:
+            provider = "heuristic"  # nothing came from the model
+        else:
+            provider = "mixed"
         result["engine"] = {
-            "provider": "gpustack",
-            "model": EXTRACTION_MODEL,
+            "provider": provider,
+            "model": EXTRACTION_MODEL if provider != "heuristic" else None,
             "seed": EXTRACTION_SEED,
+            "configured_provider": "gpustack",
+            "chunks": n_chunks,
+            "fallback_chunks": n_fallback,
+            "degraded_reasons": deg.get("reasons") or [],
         }
     else:
         result = _extract_fallback(text)
