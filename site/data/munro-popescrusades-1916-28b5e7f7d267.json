@@ -11,78 +11,41 @@
   },
   "persons": [
     {
-      "name": "Conditions of Use",
-      "raw_mention": "Conditions of Use",
+      "name": "Dana",
+      "raw_mention": "Dana",
       "title": null,
       "epithet": null,
       "toponym": null,
       "role": null,
       "gender": "unknown",
       "group": false,
-      "context": " archive indicates your acceptance of the Terms & Conditions of Use, available at  https://about.jstor.org/terms Amer",
-      "confidence": 0.0,
-      "source_offset": 664,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_institution"
-        ]
-      }
+      "context": "The Popes and the Crusades  Author(s): Dana C. Munro  Source: Proceedings of the American Phi",
+      "confidence": 0.3,
+      "source_offset": 39
     },
     {
-      "name": "Read",
-      "raw_mention": "Read",
+      "name": "Munro",
+      "raw_mention": "Munro",
       "title": null,
       "epithet": null,
       "toponym": null,
       "role": null,
       "gender": "unknown",
       "group": false,
-      "context": "POPES AND THE CRUSADES. By DANA C. MUNRO, L.H.D. (Read April 13, 1916.)   The First Crusade was the work",
-      "confidence": 0.0,
-      "source_offset": 1089,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
+      "context": "The Popes and the Crusades  Author(s): Dana C. Munro  Source: Proceedings of the American Philosophical Societ",
+      "confidence": 0.3,
+      "source_offset": 47
     },
     {
-      "name": "April",
-      "raw_mention": "April",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": " AND THE CRUSADES. By DANA C. MUNRO, L.H.D. (Read April 13, 1916.)   The First Crusade was the work of Po",
-      "confidence": 0.0,
-      "source_offset": 1094,
-      "post_medieval_penalty": {
-        "applied": true,
-        "strong_signals": 1,
-        "weak_signals": 0,
-        "reasons": [
-          "modern_date_1800_plus"
-        ]
-      }
-    },
-    {
-      "name": "Pope Urban",
-      "raw_mention": "Pope Urban",
+      "name": "Pope Urban IL",
+      "raw_mention": "Pope Urban IL",
       "title": "Pope",
       "epithet": null,
       "toponym": null,
       "role": null,
       "gender": "unknown",
       "group": false,
-      "context": "il 13, 1916.)   The First Crusade was the work of Pope Urban IL, whose won-   derful speech at the Council of ",
+      "context": "il 13, 1916.)   The First Crusade was the work of Pope Urban IL, whose wonderful speech at the Council of Clermon",
       "confidence": 0.0,
       "source_offset": 1147,
       "post_medieval_penalty": {
@@ -95,134 +58,43 @@
       }
     },
     {
-      "name": "Council of Clermont",
-      "raw_mention": "Council of Clermont",
+      "name": "Fulk of Chartres",
+      "raw_mention": "Fulk of Chartres",
       "title": null,
       "epithet": null,
       "toponym": null,
       "role": null,
       "gender": "unknown",
       "group": false,
-      "context": " Pope Urban IL, whose won-   derful speech at the Council of Clermont led thousands to take the   cross. From that time",
+      "context": " work and that they were His agents. According to Fulk of   Chartres, Urban at Clermont used the following words:   \" ",
       "confidence": 0.3,
-      "source_offset": 1196
+      "source_offset": 1562
     },
     {
-      "name": "Constantinople",
-      "raw_mention": "Constantinople",
+      "name": "Urban",
+      "raw_mention": "Urban",
       "title": null,
       "epithet": null,
       "toponym": null,
       "role": null,
       "gender": "unknown",
       "group": false,
-      "context": "f some of   the expeditions, like the one against Constantinople, escaped from   their direction. For they believe",
+      "context": "were His agents. According to Fulk of   Chartres, Urban at Clermont used the following words:   \" I speak",
       "confidence": 0.3,
-      "source_offset": 1420
+      "source_offset": 1582
     },
     {
-      "name": "God",
-      "raw_mention": "God",
+      "name": "Thomas Fuller",
+      "raw_mention": "Thomas Fuller",
       "title": null,
       "epithet": null,
       "toponym": null,
       "role": null,
       "gender": "unknown",
       "group": false,
-      "context": "rection. For they believed that the crusades were God's   work and that they were His agents. According",
+      "context": " reflecting merely   the prejudice of the writer. Thomas Fuller in his History of the   Holy War said :   \" Thoug",
       "confidence": 0.3,
-      "source_offset": 1509
-    },
-    {
-      "name": "Christ",
-      "raw_mention": "Christ",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "t, I shall proclaim it to the absent, but   it is Christ who commands. Moreover, if those who set out thit",
-      "confidence": 0.3,
-      "source_offset": 1715
-    },
-    {
-      "name": "Moreover",
-      "raw_mention": "Moreover",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "t to the absent, but   it is Christ who commands. Moreover, if those who set out thither lose their   lives ",
-      "confidence": 0.3,
-      "source_offset": 1736
-    },
-    {
-      "name": "Why",
-      "raw_mention": "Why",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "ized their   preeminent concern in the holy wars. Why did the Popes enter upon this undertaking? What d",
-      "confidence": 0.3,
-      "source_offset": 2343
-    },
-    {
-      "name": "What",
-      "raw_mention": "What",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "s. Why did the Popes enter upon this undertaking? What did   they hope to gain for the Church and for Ch",
-      "confidence": 0.3,
-      "source_offset": 2390
-    },
-    {
-      "name": "Christendom",
-      "raw_mention": "Christendom",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "at did   they hope to gain for the Church and for Christendom from these   crusades ? Many have attempted to an",
-      "confidence": 0.3,
-      "source_offset": 2442
-    },
-    {
-      "name": "Many",
-      "raw_mention": "Many",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "hurch and for Christendom from these   crusades ? Many have attempted to answer these questions and thei",
-      "confidence": 0.3,
-      "source_offset": 2478
-    },
-    {
-      "name": "Thomas",
-      "raw_mention": "Thomas",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": " reflecting merely   the prejudice of the writer. Thomas Fuller in his History of the   Holy War said :   ",
-      "confidence": 0.3,
-      "source_offset": 2633
+      "source_offset": 2629
     },
     {
       "name": "Fuller",
@@ -233,256 +105,9 @@
       "role": null,
       "gender": "unknown",
       "group": false,
-      "context": "ting merely   the prejudice of the writer. Thomas Fuller in his History of the   Holy War said :   \" Thoug",
+      "context": " THE CRUSADES. 349   Without quoting farther from Fuller we may note that many   scholars have agreed with",
       "confidence": 0.3,
-      "source_offset": 2640
-    },
-    {
-      "name": "History of",
-      "raw_mention": "History of",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "the prejudice of the writer. Thomas Fuller in his History of the   Holy War said :   \" Though the pretences wer",
-      "confidence": 0.3,
-      "source_offset": 2654
-    },
-    {
-      "name": "Holy",
-      "raw_mention": "Holy",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "the writer. Thomas Fuller in his History of the   Holy War said :   \" Though the pretences were pious an",
-      "confidence": 0.3,
-      "source_offset": 2671
-    },
-    {
-      "name": "Grecians",
-      "raw_mention": "Grecians",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "   beyond the public design: First, to reduce the Grecians into subjection to   himself, with their three pa",
-      "confidence": 0.3,
-      "source_offset": 2889
-    },
-    {
-      "name": "Jerusalem",
-      "raw_mention": "Jerusalem",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "tion to   himself, with their three patriarchs of Jerusalem, Antioch, and Constanti-   nople; and to make the",
-      "confidence": 0.3,
-      "source_offset": 2959
-    },
-    {
-      "name": "Antioch",
-      "raw_mention": "Antioch",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "imself, with their three patriarchs of Jerusalem, Antioch, and Constanti-   nople; and to make the Eastern ",
-      "confidence": 0.3,
-      "source_offset": 2970
-    },
-    {
-      "name": "Constanti",
-      "raw_mention": "Constanti",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "their three patriarchs of Jerusalem, Antioch, and Constanti-   nople; and to make the Eastern Church a chapel",
-      "confidence": 0.3,
-      "source_offset": 2983
-    },
-    {
-      "name": "Eastern",
-      "raw_mention": "Eastern",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": " Antioch, and Constanti-   nople; and to make the Eastern Church a chapel of ease to the mother church   of",
-      "confidence": 0.3,
-      "source_offset": 3019
-    },
-    {
-      "name": "Rome",
-      "raw_mention": "Rome",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "Church a chapel of ease to the mother church   of Rome.\"   348 This content downloaded from             ",
-      "confidence": 0.3,
-      "source_offset": 3077
-    },
-    {
-      "name": "Without",
-      "raw_mention": "Without",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "rg/terms  MUNRO?THE POPES AND THE CRUSADES. 349   Without quoting farther from Fuller we may note that many",
-      "confidence": 0.3,
-      "source_offset": 3284
-    },
-    {
-      "name": "Greek",
-      "raw_mention": "Greek",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "f the Popes'   action was the desire to bring the Greek Church under the Roman   curia. The most notable ",
-      "confidence": 0.3,
-      "source_offset": 3447
-    },
-    {
-      "name": "Roman",
-      "raw_mention": "Roman",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "as the desire to bring the Greek Church under the Roman   curia. The most notable exponent of this idea i",
-      "confidence": 0.3,
-      "source_offset": 3470
-    },
-    {
-      "name": "Documents",
-      "raw_mention": "Documents",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": " the Revue de VOrient latin and of the   Armenian Documents in the Recueil des Historiens des Croisades,   an",
-      "confidence": 0.3,
-      "source_offset": 3619
-    },
-    {
-      "name": "Recueil",
-      "raw_mention": "Recueil",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "ient latin and of the   Armenian Documents in the Recueil des Historiens des Croisades,   and one of the be",
-      "confidence": 0.3,
-      "source_offset": 3636
-    },
-    {
-      "name": "Historiens",
-      "raw_mention": "Historiens",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "nd of the   Armenian Documents in the Recueil des Historiens des Croisades,   and one of the best informed sch",
-      "confidence": 0.3,
-      "source_offset": 3648
-    },
-    {
-      "name": "Croisades",
-      "raw_mention": "Croisades",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "enian Documents in the Recueil des Historiens des Croisades,   and one of the best informed scholars in this ",
-      "confidence": 0.3,
-      "source_offset": 3663
-    },
-    {
-      "name": "Others",
-      "raw_mention": "Others",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "ne of the best informed scholars in this subject. Others have thought that Urban was moved by the appeal f",
-      "confidence": 0.3,
-      "source_offset": 3731
-    },
-    {
-      "name": "Emperor",
-      "raw_mention": "Emperor",
-      "title": "Emperor",
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": " Urban was moved by the appeal for aid   from the Emperor at Constantinople, and with the bread view of a  ",
-      "confidence": 0.3,
-      "source_offset": 3805
-    },
-    {
-      "name": "Europe",
-      "raw_mention": "Europe",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "   statesman realized the necessity of protecting Europe most effectively   by carrying the war into the e",
-      "confidence": 0.3,
-      "source_offset": 3910
-    },
-    {
-      "name": "In the",
-      "raw_mention": "In the",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": " bringing   such important results to the Church. In the first place the preaching of the crusades aroused ",
-      "confidence": 0.3,
-      "source_offset": 4728
+      "source_offset": 3305
     },
     {
       "name": "Peter the Hermit",
@@ -493,22 +118,9 @@
       "role": null,
       "gender": "unknown",
       "group": false,
-      "context": "many sinners to reform, at least tem-   porarily. Peter the Hermit preached right living as well as the   Crusade; a",
+      "context": "led many sinners to reform, at least temporarily. Peter the Hermit preached right living as well as the   Crusade; a",
       "confidence": 0.3,
-      "source_offset": 4872
-    },
-    {
-      "name": "Some of",
-      "raw_mention": "Some of",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "  added to their dowries from his own resources.\" Some of the   preachers had many qualities of the modern e",
-      "confidence": 0.3,
-      "source_offset": 5109
+      "source_offset": 4860
     },
     {
       "name": "Fulk of Neuilly",
@@ -519,74 +131,48 @@
       "role": null,
       "gender": "unknown",
       "group": false,
-      "context": "Fulk of Neuilly, who   claimed that he had given out 200,000 cros",
+      "context": "y ; some   were accused of evil-living and greed. Fulk of Neuilly, who   claimed that he had given out 200,000 cros",
       "confidence": 0.3,
-      "source_offset": null
+      "source_offset": 5293
     },
     {
-      "name": "Richard the Lion-",
-      "raw_mention": "Richard the Lion-",
+      "name": "Greek",
+      "raw_mention": "Greek",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": "collective",
+      "gender": "unknown",
+      "group": true,
+      "context": "f the Popes'   action was the desire to bring the Greek Church under the Roman   curia. The most notable ",
+      "confidence": 0.25,
+      "source_offset": 3439
+    },
+    {
+      "name": "Armenian",
+      "raw_mention": "Armenian",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": "collective",
+      "gender": "unknown",
+      "group": true,
+      "context": "editor of the Revue de VOrient latin and of the   Armenian Documents in the Recueil des Historiens des Crois",
+      "confidence": 0.25,
+      "source_offset": 3602
+    },
+    {
+      "name": "Richard the Lion-Hearted",
+      "raw_mention": "Richard the Lion-Hearted",
       "title": null,
       "epithet": null,
       "toponym": null,
       "role": null,
       "gender": "unknown",
       "group": false,
-      "context": "crusades. He bandied jests equally   readily with Richard the Lion-Hearted and with the mob. When   the crowd pressed",
+      "context": "He bandied jests equally   readily with Richard the Lion-Hearted and with the mob. When   the crowd pressed too cl",
       "confidence": 0.3,
-      "source_offset": 4741
-    },
-    {
-      "name": "Hearted",
-      "raw_mention": "Hearted",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "ied jests equally   readily with Richard the Lion-Hearted and with the mob. When   the crowd pressed too cl",
-      "confidence": 0.3,
-      "source_offset": 4758
-    },
-    {
-      "name": "When the",
-      "raw_mention": "When the",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "y with Richard the Lion-Hearted and with the mob. When   the crowd pressed too closely upon him he would lay ab",
-      "confidence": 0.3,
-      "source_offset": 4784
-    },
-    {
-      "name": "Such",
-      "raw_mention": "Such",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "om his body, in bits to   be preserved as relics. Such preachers naturally appealed to the   common peop",
-      "confidence": 0.3,
-      "source_offset": 5474
-    },
-    {
-      "name": "Cross",
-      "raw_mention": "Cross",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": " to expiate their sins, in-   stead of taking the Cross. Caesar of Heisterbach tells of the   marvelous e",
-      "confidence": 0.3,
-      "source_offset": 5740
+      "source_offset": 4729
     },
     {
       "name": "Caesar of Heisterbach",
@@ -597,35 +183,87 @@
       "role": null,
       "gender": "unknown",
       "group": false,
-      "context": "iate their sins, in-   stead of taking the Cross. Caesar of Heisterbach tells of the   marvelous effect of Bernard of Cla",
+      "context": " expiate their sins, instead of taking the Cross. Caesar of Heisterbach tells of the   marvelous effect of Bernard of Cla",
       "confidence": 0.3,
-      "source_offset": 5747
+      "source_offset": 5727
     },
     {
-      "name": "After the",
-      "raw_mention": "After the",
+      "name": "Bernard of Clairvaux",
+      "raw_mention": "Bernard of Clairvaux",
       "title": null,
       "epithet": null,
       "toponym": null,
       "role": null,
       "gender": "unknown",
       "group": false,
-      "context": "o monasteries; to the others he   gave the Cross. After the fall of Jerusalem such a wave of piety   spread ov",
+      "context": "of Heisterbach tells of the   marvelous effect of Bernard of Clairvaux's sermons and states that   Bernard sent all who ",
       "confidence": 0.3,
-      "source_offset": 5936
+      "source_offset": 5784
     },
     {
-      "name": "City",
-      "raw_mention": "City",
+      "name": "Bernard",
+      "raw_mention": "Bernard",
       "title": null,
       "epithet": null,
       "toponym": null,
       "role": null,
       "gender": "unknown",
       "group": false,
-      "context": "e cardinals took a vow to go afoot until the Holy City was   rescued from the infidel. In the next centu",
+      "context": " Bernard of Clairvaux's sermons and states that   Bernard sent all who were fit into monasteries; to the ot",
       "confidence": 0.3,
-      "source_offset": 6108
+      "source_offset": 5833
+    },
+    {
+      "name": "Eugene III.",
+      "raw_mention": "Eugene III.",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "rom the feudal courts. In his privilege   for the Second Crusade Eugene III. gave vassals who took the   Cross, the right, und",
+      "confidence": 0.3,
+      "source_offset": 7375
+    },
+    {
+      "name": "Philip Augustus",
+      "raw_mention": "Philip Augustus",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "the monarchs   should take steps to enforce this. Philip Augustus actually followed   the mandate, by an ordinance ",
+      "confidence": 0.3,
+      "source_offset": 8188
+    },
+    {
+      "name": "Innocent III.",
+      "raw_mention": "Innocent III.",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "ad reached   so great an extension by the time of Innocent III. In the thirteenth century the influence of the cr",
+      "confidence": 0.3,
+      "source_offset": 9460
+    },
+    {
+      "name": "Frederic II.",
+      "raw_mention": "Frederic II.",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": null,
+      "gender": "unknown",
+      "group": false,
+      "context": "the Pope's power can be illustrated in many ways. Frederic II., in a burst of enthusiasm caused by his unexpecte",
+      "confidence": 0.3,
+      "source_offset": 9603
     },
     {
       "name": "Children",
@@ -633,142 +271,25 @@
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": null,
+      "role": "collective",
       "gender": "unknown",
-      "group": false,
-      "context": "g out-   burst of religious enthusiasm led to the Children's Crusade, which   was to be a missionary movemen",
-      "confidence": 0.3,
-      "source_offset": 6229
+      "group": true,
+      "context": "iking outburst of religious enthusiasm led to the Children's Crusade, which   was to be a missionary movemen",
+      "confidence": 0.25,
+      "source_offset": 6205
     },
     {
-      "name": "Thus",
-      "raw_mention": "Thus",
+      "name": "crusaders",
+      "raw_mention": "crusaders",
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": null,
+      "role": "collective",
       "gender": "unknown",
-      "group": false,
-      "context": "e a missionary movement, not a military campaign. Thus,   undoubtedly, through the preaching of the crus",
-      "confidence": 0.3,
-      "source_offset": 6315
-    },
-    {
-      "name": "Land",
-      "raw_mention": "Land",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "   in manners, and a greater interest in the Holy Land and all con-   nected with it. This would redound",
-      "confidence": 0.3,
-      "source_offset": 6503
-    },
-    {
-      "name": "Because of",
-      "raw_mention": "Because of",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "ritual and temporal, to   all who took the Cross. Because of the intense enthusiasm for the   crusades and also",
-      "confidence": 0.3,
-      "source_offset": 6726
-    },
-    {
-      "name": "Western",
-      "raw_mention": "Western",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "ause of the weakness of most of the monarchs   in Western Europe during the first half of the twelfth centu",
-      "confidence": 0.3,
-      "source_offset": 6841
-    },
-    {
-      "name": "Second",
-      "raw_mention": "Second",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "rom the feudal courts. In his privilege   for the Second Crusade Eugene III. gave vassals who took the   C",
-      "confidence": 0.3,
-      "source_offset": 7407
-    },
-    {
-      "name": "Eugene",
-      "raw_mention": "Eugene",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "courts. In his privilege   for the Second Crusade Eugene III. gave vassals who took the   Cross, the right",
-      "confidence": 0.3,
-      "source_offset": 7422
-    },
-    {
-      "name": "German",
-      "raw_mention": "German",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "nse enthusiasm for a   movement in which both the German emperor and the French king   participated this u",
-      "confidence": 0.3,
-      "source_offset": 7890
-    },
-    {
-      "name": "French",
-      "raw_mention": "French",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "movement in which both the German emperor and the French king   participated this usurpation passed withou",
-      "confidence": 0.3,
-      "source_offset": 7913
-    },
-    {
-      "name": "Philip",
-      "raw_mention": "Philip",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "the monarchs   should take steps to enforce this. Philip Augustus actually followed   the mandate, by an o",
-      "confidence": 0.3,
-      "source_offset": 8228
-    },
-    {
-      "name": "Augustus",
-      "raw_mention": "Augustus",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "archs   should take steps to enforce this. Philip Augustus actually followed   the mandate, by an ordinance ",
-      "confidence": 0.3,
-      "source_offset": 8235
+      "group": true,
+      "context": "pon the sphere of the temporal authorities. All   crusaders were given the protection of the ecclesiastical c",
+      "confidence": 0.25,
+      "source_offset": 7014
     },
     {
       "name": "Jews",
@@ -776,77 +297,25 @@
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": null,
+      "role": "collective",
       "gender": "unknown",
-      "group": false,
+      "group": true,
       "context": "pposition because the creditors were   frequently Jews. As each crusader was under the protection of the",
-      "confidence": 0.3,
-      "source_offset": 8480
+      "confidence": 0.25,
+      "source_offset": 8436
     },
     {
-      "name": "Church the Popes",
-      "raw_mention": "Church the Popes",
+      "name": "crusader",
+      "raw_mention": "crusader",
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": null,
+      "role": "collective",
       "gender": "unknown",
-      "group": false,
-      "context": "s each crusader was under the protection of the   Church the Popes interfered in case of capture of individual   cru",
-      "confidence": 0.3,
-      "source_offset": 8537
-    },
-    {
-      "name": "They",
-      "raw_mention": "They",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "ch would   hinder men from fulfilling their vows. They used the censures of   the Church freely for this",
-      "confidence": 0.3,
-      "source_offset": 8708
-    },
-    {
-      "name": "Other",
-      "raw_mention": "Other",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "hreatening to ex-   communicate all participants. Other instances might be cited to   show the manner in ",
-      "confidence": 0.3,
-      "source_offset": 8964
-    },
-    {
-      "name": "Innocent",
-      "raw_mention": "Innocent",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "ad reached   so great an extension by the time of Innocent III. In the thirteenth century the influence of t",
-      "confidence": 0.3,
-      "source_offset": 9508
-    },
-    {
-      "name": "Frederic",
-      "raw_mention": "Frederic",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "the Pope's power can be illustrated in many ways. Frederic II., in a burst of enthusiasm caused by his unexp",
-      "confidence": 0.3,
-      "source_offset": 9655
+      "group": true,
+      "context": "use the creditors were   frequently Jews. As each crusader was under the protection of the   Church the Pope",
+      "confidence": 0.25,
+      "source_offset": 8450
     },
     {
       "name": "clergy",
@@ -859,189 +328,33 @@
       "group": true,
       "context": "nd control over those who were not members of the clergy, so   that after a century of crusading activity ",
       "confidence": 0.25,
-      "source_offset": 9118
+      "source_offset": 9070
     },
     {
-      "name": "When",
-      "raw_mention": "When",
+      "name": "Gregory IX.",
+      "raw_mention": "Gregory IX.",
       "title": null,
       "epithet": null,
       "toponym": null,
       "role": null,
       "gender": "unknown",
       "group": false,
-      "context": "When an energetic pontiff, Gregory IX., was elected, F",
+      "context": "When an energetic pontiff, Gregory IX., was elected, Frederic was   obliged to start on ",
       "confidence": 0.3,
-      "source_offset": null
+      "source_offset": 9161
     },
     {
-      "name": "Gregory",
-      "raw_mention": "Gregory",
+      "name": "Frederic",
+      "raw_mention": "Frederic",
       "title": null,
       "epithet": null,
       "toponym": null,
       "role": null,
       "gender": "unknown",
       "group": false,
-      "context": "When an energetic pontiff, Gregory IX., was elected, Frederic was   obliged to start",
+      "context": "n an energetic pontiff, Gregory IX., was elected, Frederic was   obliged to start on his expedition, althoug",
       "confidence": 0.3,
-      "source_offset": 9217
-    },
-    {
-      "name": "Sicilian",
-      "raw_mention": "Sicilian",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "-   iasm. The Pope preached a crusade against his Sicilian kingdom ;   and this illustrates another means by",
-      "confidence": 0.3,
-      "source_offset": 9766
-    },
-    {
-      "name": "Moslems",
-      "raw_mention": "Moslems",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "en to those who   went on expeditions against the Moslems. These holy wars were   sometimes directed agains",
-      "confidence": 0.3,
-      "source_offset": 10091
-    },
-    {
-      "name": "These",
-      "raw_mention": "These",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "se who   went on expeditions against the Moslems. These holy wars were   sometimes directed against monar",
-      "confidence": 0.3,
-      "source_offset": 10100
-    },
-    {
-      "name": "Albigenses",
-      "raw_mention": "Albigenses",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": " cities, at other times against heretics like the Albigenses, or   against the heathen in the north and northe",
-      "confidence": 0.3,
-      "source_offset": 10246
-    },
-    {
-      "name": "Chris",
-      "raw_mention": "Chris",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "entury also saw the temporary union of almost all Chris-  tian lands under the authority of the Pope and ",
-      "confidence": 0.3,
-      "source_offset": 10461
-    },
-    {
-      "name": "Bishops of",
-      "raw_mention": "Bishops of",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "the  establishment of a Latin patriarchate there. Bishops of heretical  churches in Syria acknowledged the supr",
-      "confidence": 0.3,
-      "source_offset": 10643
-    },
-    {
-      "name": "Syria",
-      "raw_mention": "Syria",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "iarchate there. Bishops of heretical  churches in Syria acknowledged the supremacy of the Latin Church. T",
-      "confidence": 0.3,
-      "source_offset": 10677
-    },
-    {
-      "name": "Armenian",
-      "raw_mention": "Armenian",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "m by the Pope and promised in return to bring the Armenian  Church under the Pope. For a time there seemed a",
-      "confidence": 0.3,
-      "source_offset": 10852
-    },
-    {
-      "name": "Catholic",
-      "raw_mention": "Catholic",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "ossibility that  there might be one all-inclusive Catholic Church, under the authority  of the Pope. The cru",
-      "confidence": 0.3,
-      "source_offset": 10962
-    },
-    {
-      "name": "Orders of",
-      "raw_mention": "Orders of",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "onditions very ad-  vantageous to the latter. The Orders of the Temple and Hospital  received great endowments",
-      "confidence": 0.3,
-      "source_offset": 11301
-    },
-    {
-      "name": "Temple",
-      "raw_mention": "Temple",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": " ad-  vantageous to the latter. The Orders of the Temple and Hospital  received great endowments and becam",
-      "confidence": 0.3,
-      "source_offset": 11315
-    },
-    {
-      "name": "Hospital",
-      "raw_mention": "Hospital",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "geous to the latter. The Orders of the Temple and Hospital  received great endowments and became very wealth",
-      "confidence": 0.3,
-      "source_offset": 11326
+      "source_offset": 9187
     },
     {
       "name": "Men",
@@ -1054,176 +367,33 @@
       "group": false,
       "context": "eceived great endowments and became very wealthy. Men who  had taken the Cross and were unable to go, p",
       "confidence": 0.3,
-      "source_offset": 11387
+      "source_offset": 11321
     },
     {
-      "name": "Taxes",
-      "raw_mention": "Taxes",
+      "name": "St. Louis",
+      "raw_mention": "St. Louis",
       "title": null,
       "epithet": null,
       "toponym": null,
       "role": null,
       "gender": "unknown",
       "group": false,
-      "context": "nable to go, purchased exemption  from their vow. Taxes for the crusades were frequently collected  and h",
+      "context": "ions had achieved   little or nothing; the heroic St. Louis had been obliged to ransom   himself from captivi",
       "confidence": 0.3,
-      "source_offset": 11476
+      "source_offset": 12711
     },
     {
-      "name": "Consequently the Popes",
-      "raw_mention": "Consequently the Popes",
+      "name": "Urban II.",
+      "raw_mention": "Urban II.",
       "title": null,
       "epithet": null,
       "toponym": null,
       "role": null,
       "gender": "unknown",
       "group": false,
-      "context": "eived through the crusades,  but it was enormous. Consequently the Popes became much more  powerful, especially through th",
+      "context": "itary operations only to   a very limited extent. For the First Crusade Urban II. had appointed a papal legate, Ademar of Puy, who ",
       "confidence": 0.3,
-      "source_offset": 11684
-    },
-    {
-      "name": "While the Popes",
-      "raw_mention": "While the Popes",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "rg/terms  MUNRO?THE POPES AND THE CRUSADES. 353   While the Popes and the Church gained so much in so many   differ",
-      "confidence": 0.3,
-      "source_offset": 12030
-    },
-    {
-      "name": "Bernard of Clairvaux",
-      "raw_mention": "Bernard of Clairvaux",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "  home ignominiously from the Second Crusade even Bernard of   Clairvaux felt sick at heart over the failure of the moveme",
-      "confidence": 0.3,
-      "source_offset": 12335
-    },
-    {
-      "name": "Crusade of Richard",
-      "raw_mention": "Crusade of Richard",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "lure of the movement which   he had preached. The Crusade of Richard the Lion-Hearted and   Philip Augustus had not re",
-      "confidence": 0.3,
-      "source_offset": 12439
-    },
-    {
-      "name": "Lion",
-      "raw_mention": "Lion",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "ich   he had preached. The Crusade of Richard the Lion-Hearted and   Philip Augustus had not rescued Jer",
-      "confidence": 0.3,
-      "source_offset": 12462
-    },
-    {
-      "name": "Fourth",
-      "raw_mention": "Fourth",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "   Philip Augustus had not rescued Jerusalem; the Fourth Crusade   had been shamelessly diverted against a",
-      "confidence": 0.3,
-      "source_offset": 12528
-    },
-    {
-      "name": "Christian",
-      "raw_mention": "Christian",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "Crusade   had been shamelessly diverted against a Christian Empire; the Fifth   had secured a diplomatic triu",
-      "confidence": 0.3,
-      "source_offset": 12585
-    },
-    {
-      "name": "Empire",
-      "raw_mention": "Empire",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "had been shamelessly diverted against a Christian Empire; the Fifth   had secured a diplomatic triumph whi",
-      "confidence": 0.3,
-      "source_offset": 12595
-    },
-    {
-      "name": "Fifth",
-      "raw_mention": "Fifth",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "melessly diverted against a Christian Empire; the Fifth   had secured a diplomatic triumph which the Pope",
-      "confidence": 0.3,
-      "source_offset": 12607
-    },
-    {
-      "name": "Louis",
-      "raw_mention": "Louis",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": " had achieved   little or nothing; the heroic St. Louis had been obliged to ransom   himself from captivi",
-      "confidence": 0.3,
-      "source_offset": 12781
-    },
-    {
-      "name": "For the First",
-      "raw_mention": "For the First",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "itary operations only to   a very limited extent. For the First Crusade Urban II. had ap-   pointed a papal legat",
-      "confidence": 0.3,
-      "source_offset": 13044
-    },
-    {
-      "name": "Urban",
-      "raw_mention": "Urban",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "to   a very limited extent. For the First Crusade Urban II. had ap-   pointed a papal legate, Ademar of P",
-      "confidence": 0.3,
-      "source_offset": 13066
+      "source_offset": 12978
     },
     {
       "name": "Ademar of Puy",
@@ -1234,87 +404,74 @@
       "role": null,
       "gender": "unknown",
       "group": false,
-      "context": "usade Urban II. had ap-   pointed a papal legate, Ademar of Puy, who proved of great assist-   ance to the expedi",
+      "context": "t Crusade Urban II. had appointed a papal legate, Ademar of Puy, who proved of great assistance to the expedition",
       "confidence": 0.3,
-      "source_offset": 13110
+      "source_offset": 13040
     },
     {
-      "name": "Although",
-      "raw_mention": "Although",
+      "name": "Cardinal Pelagius",
+      "raw_mention": "Cardinal Pelagius",
       "title": null,
       "epithet": null,
       "toponym": null,
       "role": null,
       "gender": "unknown",
       "group": false,
-      "context": " and   his loss was keenly felt by the crusaders. Although other legates   were sent with the various expedi",
+      "context": "ditions, no one played a prominent   part, except Cardinal Pelagius, whose lack of tact, to put it mildly,   was prin",
       "confidence": 0.3,
-      "source_offset": 13269
+      "source_offset": 13301
     },
     {
-      "name": "Damietta",
-      "raw_mention": "Damietta",
+      "name": "Innocent",
+      "raw_mention": "Innocent",
       "title": null,
       "epithet": null,
       "toponym": null,
       "role": null,
       "gender": "unknown",
       "group": false,
-      "context": "ponsible for the failure of the Crusade against   Damietta. The leaders of the various crusades to the Orien",
+      "context": "for   which Urban made the plans was successful ; Innocent's orders were   not obeyed. The leaders in the Ch",
       "confidence": 0.3,
-      "source_offset": 13503
+      "source_offset": 13736
     },
     {
-      "name": "Orient",
-      "raw_mention": "Orient",
+      "name": "St. Bernard",
+      "raw_mention": "St. Bernard",
       "title": null,
       "epithet": null,
       "toponym": null,
       "role": null,
       "gender": "unknown",
       "group": false,
-      "context": "ietta. The leaders of the various crusades to the Orient were   not designated by the Popes. With the exce",
+      "context": "ere   not obeyed. The leaders in the Church, like St. Bernard, were able   to throw the blame for failure upon ",
       "confidence": 0.3,
-      "source_offset": 13556
+      "source_offset": 13805
     },
     {
-      "name": "With the",
-      "raw_mention": "With the",
+      "name": "Godfrey",
+      "raw_mention": "Godfrey",
       "title": null,
       "epithet": null,
       "toponym": null,
       "role": null,
       "gender": "unknown",
       "group": false,
-      "context": "to the Orient were   not designated by the Popes. With the exceptions of Urban II. and Innocent III., the Pop",
+      "context": "ded; after the   capture of the city they elected Godfrey, Defender of the Holy   Sepulcher.",
       "confidence": 0.3,
-      "source_offset": 13599
+      "source_offset": 14590
     },
     {
-      "name": "Bernard",
-      "raw_mention": "Bernard",
+      "name": "Christian",
+      "raw_mention": "Christian",
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": null,
+      "role": "collective",
       "gender": "unknown",
-      "group": false,
-      "context": "  not obeyed. The leaders in the Church, like St. Bernard, were able   to throw the blame for failure upon ",
-      "confidence": 0.3,
-      "source_offset": 13883
-    },
-    {
-      "name": "Saviour",
-      "raw_mention": "Saviour",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "monarch   ought to wear a crown of gold where our Saviour had worn a  This content downloaded from         ",
-      "confidence": 0.3,
-      "source_offset": 14355
+      "group": true,
+      "context": "entury also saw the temporary union of almost all Christian lands under the authority of the Pope and this wa",
+      "confidence": 0.25,
+      "source_offset": 10401
     },
     {
       "name": "Dagobert",
@@ -1325,9 +482,9 @@
       "role": null,
       "gender": "unknown",
       "group": false,
-      "context": " point   of view held by the clerical party. When Dagobert was elected   Patriarch of Jerusalem and demanded",
+      "context": "o the point   of view held by the clerical party. When Dagobert was elected   Patriarch of Jerusalem and demanded",
       "confidence": 0.3,
-      "source_offset": 14002
+      "source_offset": 13923
     },
     {
       "name": "Patriarch of Jerusalem",
@@ -1340,371 +497,59 @@
       "group": false,
       "context": "y the clerical party. When Dagobert was elected   Patriarch of Jerusalem and demanded that Godfrey should give up   the Ho",
       "confidence": 0.3,
-      "source_offset": 14025
+      "source_offset": 13951
     },
     {
-      "name": "Patriarch",
-      "raw_mention": "Patriarch",
-      "title": "Patriarch",
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "mising that he would hand   over Jerusalem to the Patriarch when he had secured other con-   quests. But afte",
-      "confidence": 0.3,
-      "source_offset": 14182
-    },
-    {
-      "name": "King",
-      "raw_mention": "King",
-      "title": "King",
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "ch   the Patriarch was clearly subordinate to the King, and the latter   was wholly independent of the P",
-      "confidence": 0.3,
-      "source_offset": 14404
-    },
-    {
-      "name": "West",
-      "raw_mention": "West",
+      "name": "Baldwin",
+      "raw_mention": "Baldwin",
       "title": null,
       "epithet": null,
       "toponym": null,
       "role": null,
       "gender": "unknown",
       "group": false,
-      "context": " viewed askance the bands of crusaders   from the West who might interfere with their commerce by pro-  ",
+      "context": " other conquests. But after his death his brother Baldwin was crowned king,   and Jerusalem gradually becam",
       "confidence": 0.3,
-      "source_offset": 14776
+      "source_offset": 14187
     },
     {
-      "name": "Even",
-      "raw_mention": "Even",
+      "name": "Frederic IL",
+      "raw_mention": "Frederic IL",
       "title": null,
       "epithet": null,
       "toponym": null,
       "role": null,
       "gender": "unknown",
       "group": false,
-      "context": "with their commerce by pro-   voking hostilities. Even members of the military Orders, whose   main purp",
+      "context": "ntinople and in   sacking those Christian cities. Frederic IL, excommunicated for   not going on a crusade, wen",
       "confidence": 0.3,
-      "source_offset": 14851
+      "source_offset": 15243
     },
     {
-      "name": "Orders",
-      "raw_mention": "Orders",
+      "name": "William of Malmesbury",
+      "raw_mention": "William of Malmesbury",
       "title": null,
       "epithet": null,
       "toponym": null,
       "role": null,
       "gender": "unknown",
       "group": false,
-      "context": " voking hostilities. Even members of the military Orders, whose   main purpose was supposed to be the defe",
+      "context": "idea was due to Urban's speech   at Clermont, for William of Malmesbury reports that the Pope   said: the Turks are   \" f",
       "confidence": 0.3,
-      "source_offset": 14880
+      "source_offset": 17125
     },
     {
-      "name": "Allah",
-      "raw_mention": "Allah",
+      "name": "Walter",
+      "raw_mention": "Walter",
       "title": null,
       "epithet": null,
       "toponym": null,
       "role": null,
       "gender": "unknown",
       "group": false,
-      "context": "rtained in   their castles and allowed to pray to Allah in their chapels. The   direction of the great Cr",
+      "context": "f   the funds which they raised for the crusades. Walter von der   Vogelweide voices this feeling in his v",
       "confidence": 0.3,
-      "source_offset": 15061
-    },
-    {
-      "name": "Venetians",
-      "raw_mention": "Venetians",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "ds and repeated excommunications the French   and Venetians persisted in going to Zara and Constantinople and",
-      "confidence": 0.3,
-      "source_offset": 15232
-    },
-    {
-      "name": "Zara",
-      "raw_mention": "Zara",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": " the French   and Venetians persisted in going to Zara and Constantinople and in   sacking those Christi",
-      "confidence": 0.3,
-      "source_offset": 15264
-    },
-    {
-      "name": "Despite the",
-      "raw_mention": "Despite the",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "mmunicated again for   going while excommunicate. Despite the efforts of the Pope and   of the leading churchmen",
-      "confidence": 0.3,
-      "source_offset": 15454
-    },
-    {
-      "name": "Mohammedans",
-      "raw_mention": "Mohammedans",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "urchmen in the Holy Land he made peace with the   Mohammedans and secured Jerusalem by diplomacy. The crusaders",
-      "confidence": 0.3,
-      "source_offset": 15559
-    },
-    {
-      "name": "Even the Templars",
-      "raw_mention": "Even the Templars",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "f their wives, and   some of their superstitions. Even the Templars were generally   believed to be contaminated by t",
-      "confidence": 0.3,
-      "source_offset": 15860
-    },
-    {
-      "name": "Mohammedan",
-      "raw_mention": "Mohammedan",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "re generally   believed to be contaminated by the Mohammedan beliefs. The   monastic chroniclers, especially t",
-      "confidence": 0.3,
-      "source_offset": 15930
-    },
-    {
-      "name": "Christians of",
-      "raw_mention": "Christians of",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "ery out-   spoken about the evil lives led by the Christians of all ranks, even   the patriarchs, in the Kingdom o",
-      "confidence": 0.3,
-      "source_offset": 16065
-    },
-    {
-      "name": "Kingdom of Jerusalem",
-      "raw_mention": "Kingdom of Jerusalem",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "tians of all ranks, even   the patriarchs, in the Kingdom of Jerusalem. From the East these  This content downloaded fro",
-      "confidence": 0.3,
-      "source_offset": 16120
-    },
-    {
-      "name": "From the East",
-      "raw_mention": "From the East",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "en   the patriarchs, in the Kingdom of Jerusalem. From the East these  This content downloaded from              ",
-      "confidence": 0.3,
-      "source_offset": 16142
-    },
-    {
-      "name": "Oriental",
-      "raw_mention": "Oriental",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "the Church. The merchants carried back not merely Oriental wares, but also   Oriental heresies, which spread",
-      "confidence": 0.3,
-      "source_offset": 16464
-    },
-    {
-      "name": "Soon",
-      "raw_mention": "Soon",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "ly in the West along the com-   mercial highways. Soon crusades had to be preached against the   heresie",
-      "confidence": 0.3,
-      "source_offset": 16578
-    },
-    {
-      "name": "All of",
-      "raw_mention": "All of",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "  heresies which were mainly due to the crusades. All of these   factors detracted from the power of the Po",
-      "confidence": 0.3,
-      "source_offset": 16673
-    },
-    {
-      "name": "Germany",
-      "raw_mention": "Germany",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": " to many causes, e. g., all teaching in France,   Germany and England had been done by the clerics and the ",
-      "confidence": 0.3,
-      "source_offset": 16878
-    },
-    {
-      "name": "England",
-      "raw_mention": "England",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "ses, e. g., all teaching in France,   Germany and England had been done by the clerics and the   crusaders ",
-      "confidence": 0.3,
-      "source_offset": 16890
-    },
-    {
-      "name": "One",
-      "raw_mention": "One",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": " things which they had been taught were   untrue. One chronicler of the First Crusade naively expressed",
-      "confidence": 0.3,
-      "source_offset": 17012
-    },
-    {
-      "name": "Turks",
-      "raw_mention": "Turks",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "ly expressed his   surprise at the bravery of the Turks who he had been taught to   believe were cowards.",
-      "confidence": 0.3,
-      "source_offset": 17103
-    },
-    {
-      "name": "Possibly",
-      "raw_mention": "Possibly",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "who he had been taught to   believe were cowards. Possibly this idea was due to Urban's speech   at Clermont",
-      "confidence": 0.3,
-      "source_offset": 17159
-    },
-    {
-      "name": "Clermont",
-      "raw_mention": "Clermont",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "Possibly this idea was due to Urban's speech   at Clermont, for William of Malmesbury reports that the Pope ",
-      "confidence": 0.3,
-      "source_offset": 17209
-    },
-    {
-      "name": "For the Turk",
-      "raw_mention": "For the Turk",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "close encounter, love   a flying mode of warfare. For the Turk never ventures upon close fight;   but, when driv",
-      "confidence": 0.3,
-      "source_offset": 17392
-    },
-    {
-      "name": "Whatever",
-      "raw_mention": "Whatever",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": " not valor, inflicts death on the man he strikes. Whatever he effects,   then, I attribute to fortune, not t",
-      "confidence": 0.3,
-      "source_offset": 17644
-    },
-    {
-      "name": "Many of",
-      "raw_mention": "Many of",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": " hope that some might be led to take the   Cross. Many of the preachers were charged with misappropriation o",
-      "confidence": 0.3,
-      "source_offset": 18643
-    },
-    {
-      "name": "Walter von",
-      "raw_mention": "Walter von",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "f   the funds which they raised for the crusades. Walter von der   Vogelweide voices this feeling in his verses",
-      "confidence": 0.3,
-      "source_offset": 18751
+      "source_offset": 18649
     },
     {
       "name": "Vogelweide",
@@ -1717,33 +562,7 @@
       "group": false,
       "context": "ch they raised for the crusades. Walter von der   Vogelweide voices this feeling in his verses :  This content",
       "confidence": 0.3,
-      "source_offset": 18768
-    },
-    {
-      "name": "Little",
-      "raw_mention": "Little",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "rg/terms  356 MUNRO?THE POPES AND THE CRUSADES. \" Little, methinks, of all this silver in God's cause is s",
-      "confidence": 0.3,
-      "source_offset": 19010
-    },
-    {
-      "name": "Walter",
-      "raw_mention": "Walter",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": " a great treasure priests are ill-content.,,   As Walter was a partisan of the Hohenstaufens and opposed t",
-      "confidence": 0.3,
-      "source_offset": 19137
+      "source_offset": 18666
     },
     {
       "name": "Hohenstaufens",
@@ -1756,20 +575,33 @@
       "group": false,
       "context": " ill-content.,,   As Walter was a partisan of the Hohenstaufens and opposed to the   papacy he might be considere",
       "confidence": 0.3,
-      "source_offset": 19166
+      "source_offset": 19064
     },
     {
-      "name": "But the",
-      "raw_mention": "But the",
+      "name": "Matthew Paris",
+      "raw_mention": "Matthew Paris",
       "title": null,
       "epithet": null,
       "toponym": null,
       "role": null,
       "gender": "unknown",
       "group": false,
-      "context": "o the   papacy he might be considered prejudiced. But the same idea was   common ; e.",
+      "context": "ejudiced. But the same idea was   common ; e. g., Matthew Paris, the historiographer of the monastery   of St.",
       "confidence": 0.3,
-      "source_offset": 19243
+      "source_offset": 19181
+    },
+    {
+      "name": "Templars",
+      "raw_mention": "Templars",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": "collective",
+      "gender": "unknown",
+      "group": true,
+      "context": "ives, and   some of their superstitions. Even the Templars were generally   believed to be contaminated by t",
+      "confidence": 0.25,
+      "source_offset": 15783
     },
     {
       "name": "Christians",
@@ -1780,9 +612,9 @@
       "role": "collective",
       "gender": "unknown",
       "group": true,
-      "context": "ery out-   spoken about the evil lives led by the Christians of all ranks, even   the patriarchs, in the Kingd",
+      "context": "re very outspoken about the evil lives led by the Christians of all ranks, even   the patriarchs, in the Kingd",
       "confidence": 0.25,
-      "source_offset": 16065
+      "source_offset": 15975
     },
     {
       "name": "merchants",
@@ -1795,115 +627,25 @@
       "group": true,
       "context": "e West, to the great detriment of the Church. The merchants carried back not merely Oriental wares, but also ",
       "confidence": 0.25,
-      "source_offset": 16430
+      "source_offset": 16340
     },
     {
-      "name": "Matthew",
-      "raw_mention": "Matthew",
+      "name": "Albans",
+      "raw_mention": "Albans",
       "title": null,
       "epithet": null,
       "toponym": null,
       "role": null,
       "gender": "unknown",
       "group": false,
-      "context": "g., Matthew Paris, the historiographer of the monastery   of ",
+      "context": "Albans writes :   \" By divers wiles the Roman curia stro",
       "confidence": 0.3,
-      "source_offset": 18482
-    },
-    {
-      "name": "Empire of Constantinople",
-      "raw_mention": "Empire of Constantinople",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": " of Europe\" against Islam.  The fall of the Latin Empire   of Constantinople led to the return of the Greek patriarch.  Heresy",
-      "confidence": 0.3,
-      "source_offset": 19357
-    },
-    {
-      "name": "Heresy",
-      "raw_mention": "Heresy",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "inople led to the return of the Greek patriarch.  Heresy   and opposition to the Church spread in the West",
-      "confidence": 0.3,
-      "source_offset": 19427
+      "source_offset": null
     }
   ],
   "links": [
     {
-      "person": "Conditions of Use",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR86",
-          "outremer_name": "Constance of Toulouse",
-          "type": "person",
-          "score": 0.6316,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'conditions of use' ↔ 'Constance of Toulouse'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR86",
-        "outremer_name": "Constance of Toulouse",
-        "type": "person",
-        "score": 0.6316,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'conditions of use' ↔ 'Constance of Toulouse'"
-      },
-      "confidence": 0.6316,
-      "status": "low"
-    },
-    {
-      "person": "Read",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR14",
-          "outremer_name": "Erard I of Brienne",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'read' ↔ 'Erard I of Brienne'"
-        },
-        {
-          "outremer_id": "AUTH:CR1",
-          "outremer_name": "Conrad III of Germany",
-          "type": "person",
-          "score": 0.6,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'read' ↔ 'Conrad III of Germany'"
-        },
-        {
-          "outremer_id": "AUTH:CR37",
-          "outremer_name": "Conrad of Montferrat",
-          "type": "person",
-          "score": 0.6,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'read' ↔ 'Conrad of Montferrat'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR14",
-        "outremer_name": "Erard I of Brienne",
-        "type": "person",
-        "score": 0.6667,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'read' ↔ 'Erard I of Brienne'"
-      },
-      "confidence": 0.6667,
-      "status": "low"
-    },
-    {
-      "person": "April",
+      "person": "Dana",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -1911,7 +653,7 @@
       "status": "no_match"
     },
     {
-      "person": "Pope Urban",
+      "person": "Munro",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -1919,119 +661,47 @@
       "status": "no_match"
     },
     {
-      "person": "Council of Clermont",
+      "person": "Pope Urban IL",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "Fulk of Chartres",
       "person_group": false,
       "candidates": [
         {
-          "outremer_id": "AUTH:CR4",
-          "outremer_name": "Berlay II of Montreuil",
+          "outremer_id": "AUTH:CR2",
+          "outremer_name": "Fulk V of Anjou",
           "type": "person",
-          "score": 0.6,
+          "score": 0.72,
           "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'council of clermont' ↔ 'Berlay II of Montreuil'"
+          "evidence": "fuzzy match: 'fulk of chartres' ↔ 'Fulk V of Anjou'"
         },
-        {
-          "outremer_id": "AUTH:CR5",
-          "outremer_name": "Berlay III of Montreuil",
-          "type": "person",
-          "score": 0.6,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'council of clermont' ↔ 'Berlay III of Montreuil'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR4",
-        "outremer_name": "Berlay II of Montreuil",
-        "type": "person",
-        "score": 0.6,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'council of clermont' ↔ 'Berlay II of Montreuil'"
-      },
-      "confidence": 0.6,
-      "status": "low"
-    },
-    {
-      "person": "Constantinople",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR86",
-          "outremer_name": "Constance of Toulouse",
-          "type": "person",
-          "score": 0.6957,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'constantinople' ↔ 'Constance of Toulouse'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR86",
-        "outremer_name": "Constance of Toulouse",
-        "type": "person",
-        "score": 0.6957,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'constantinople' ↔ 'Constance of Toulouse'"
-      },
-      "confidence": 0.6957,
-      "status": "low"
-    },
-    {
-      "person": "God",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR78",
-          "outremer_name": "Godfrey III of Louvain",
-          "type": "person",
-          "score": 0.6,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'god' ↔ 'Godfrey III of Louvain'"
-        },
-        {
-          "outremer_id": "AUTH:CR184",
-          "outremer_name": "Godfrey of Bouillon",
-          "type": "person",
-          "score": 0.6,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'god' ↔ 'Godfrey of Bouillon'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR78",
-        "outremer_name": "Godfrey III of Louvain",
-        "type": "person",
-        "score": 0.6,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'god' ↔ 'Godfrey III of Louvain'"
-      },
-      "confidence": 0.6,
-      "status": "low"
-    },
-    {
-      "person": "Christ",
-      "person_group": false,
-      "candidates": [
         {
           "outremer_id": "AUTH:CR33",
           "outremer_name": "Charles of Denmark",
           "type": "person",
-          "score": 0.6154,
+          "score": 0.6471,
           "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'christ' ↔ 'Charles of Denmark'"
+          "evidence": "fuzzy match: 'fulk of chartres' ↔ 'Charles of Denmark'"
         }
       ],
       "top_candidate": {
-        "outremer_id": "AUTH:CR33",
-        "outremer_name": "Charles of Denmark",
+        "outremer_id": "AUTH:CR2",
+        "outremer_name": "Fulk V of Anjou",
         "type": "person",
-        "score": 0.6154,
+        "score": 0.72,
         "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'christ' ↔ 'Charles of Denmark'"
+        "evidence": "fuzzy match: 'fulk of chartres' ↔ 'Fulk V of Anjou'"
       },
-      "confidence": 0.6154,
+      "confidence": 0.72,
       "status": "low"
     },
     {
-      "person": "Moreover",
+      "person": "Urban",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -2039,63 +709,7 @@
       "status": "no_match"
     },
     {
-      "person": "Why",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "What",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR17",
-          "outremer_name": "Walter of Hereford",
-          "type": "person",
-          "score": 0.6,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'what' ↔ 'Walter of Hereford'"
-        },
-        {
-          "outremer_id": "AUTH:CR110",
-          "outremer_name": "Walter of St. Omer",
-          "type": "person",
-          "score": 0.6,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'what' ↔ 'Walter of St. Omer'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR17",
-        "outremer_name": "Walter of Hereford",
-        "type": "person",
-        "score": 0.6,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'what' ↔ 'Walter of Hereford'"
-      },
-      "confidence": 0.6,
-      "status": "low"
-    },
-    {
-      "person": "Christendom",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Many",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Thomas",
+      "person": "Thomas Fuller",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -2132,286 +746,6 @@
         "evidence": "fuzzy match: 'fuller' ↔ 'Fulk V of Anjou'"
       },
       "confidence": 0.6,
-      "status": "low"
-    },
-    {
-      "person": "History of",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Holy",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Grecians",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Jerusalem",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Antioch",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Constanti",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR86",
-          "outremer_name": "Constance of Toulouse",
-          "type": "person",
-          "score": 0.7778,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'constanti' ↔ 'Constance of Toulouse'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR86",
-        "outremer_name": "Constance of Toulouse",
-        "type": "person",
-        "score": 0.7778,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'constanti' ↔ 'Constance of Toulouse'"
-      },
-      "confidence": 0.7778,
-      "status": "medium"
-    },
-    {
-      "person": "Eastern",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR53",
-          "outremer_name": "Peter of Langres",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'eastern' ↔ 'Peter of Langres'"
-        },
-        {
-          "outremer_id": "AUTH:CR62",
-          "outremer_name": "Peter I of Courtenay",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'eastern' ↔ 'Peter I of Courtenay'"
-        },
-        {
-          "outremer_id": "AUTH:CR17",
-          "outremer_name": "Walter of Hereford",
-          "type": "person",
-          "score": 0.6154,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'eastern' ↔ 'Walter of Hereford'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR53",
-        "outremer_name": "Peter of Langres",
-        "type": "person",
-        "score": 0.6667,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'eastern' ↔ 'Peter of Langres'"
-      },
-      "confidence": 0.6667,
-      "status": "low"
-    },
-    {
-      "person": "Rome",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR56",
-          "outremer_name": "Robert of Milly",
-          "type": "person",
-          "score": 0.6,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'rome' ↔ 'Robert of Milly'"
-        },
-        {
-          "outremer_id": "AUTH:CR100",
-          "outremer_name": "Robert of Buzançais",
-          "type": "person",
-          "score": 0.6,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'rome' ↔ 'Robert of Buzançais'"
-        },
-        {
-          "outremer_id": "AUTH:CR88",
-          "outremer_name": "Robert V of Béthune",
-          "type": "person",
-          "score": 0.6,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'rome' ↔ 'Robert V of Béthune'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR56",
-        "outremer_name": "Robert of Milly",
-        "type": "person",
-        "score": 0.6,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'rome' ↔ 'Robert of Milly'"
-      },
-      "confidence": 0.6,
-      "status": "low"
-    },
-    {
-      "person": "Without",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Greek",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Roman",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Documents",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Recueil",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Historiens",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Croisades",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Others",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR16",
-          "outremer_name": "Thierry of Flanders",
-          "type": "person",
-          "score": 0.6154,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'others' ↔ 'Thierry of Flanders'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR16",
-        "outremer_name": "Thierry of Flanders",
-        "type": "person",
-        "score": 0.6154,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'others' ↔ 'Thierry of Flanders'"
-      },
-      "confidence": 0.6154,
-      "status": "low"
-    },
-    {
-      "person": "Emperor",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Europe",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "In the",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR94",
-          "outremer_name": "Stephen I of Sancerre",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'in the' ↔ 'Stephen I of Sancerre'"
-        },
-        {
-          "outremer_id": "AUTH:CR93",
-          "outremer_name": "Stephen II of Auxonne",
-          "type": "person",
-          "score": 0.625,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'in the' ↔ 'Stephen II of Auxonne'"
-        },
-        {
-          "outremer_id": "AUTH:CR62",
-          "outremer_name": "Peter I of Courtenay",
-          "type": "person",
-          "score": 0.6154,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'in the' ↔ 'Peter I of Courtenay'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR94",
-        "outremer_name": "Stephen I of Sancerre",
-        "type": "person",
-        "score": 0.6667,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'in the' ↔ 'Stephen I of Sancerre'"
-      },
-      "confidence": 0.6667,
       "status": "low"
     },
     {
@@ -2455,14 +789,6 @@
       "status": "medium"
     },
     {
-      "person": "Some of",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
       "person": "Fulk of Neuilly",
       "person_group": false,
       "candidates": [
@@ -2487,559 +813,7 @@
       "status": "low"
     },
     {
-      "person": "Richard the Lion-",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR26",
-          "outremer_name": "Henry the Lion",
-          "type": "person",
-          "score": 0.66,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'richard the lion' ↔ 'Henry the Lion'"
-        },
-        {
-          "outremer_id": "AUTH:CR19",
-          "outremer_name": "Chalo the Red",
-          "type": "person",
-          "score": 0.6207,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'richard the lion' ↔ 'Chalo the Red'"
-        },
-        {
-          "outremer_id": "AUTH:CR97",
-          "outremer_name": "Rainald the Proud",
-          "type": "person",
-          "score": 0.6061,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'richard the lion' ↔ 'Rainald the Proud'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR26",
-        "outremer_name": "Henry the Lion",
-        "type": "person",
-        "score": 0.66,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'richard the lion' ↔ 'Henry the Lion'"
-      },
-      "confidence": 0.66,
-      "status": "low"
-    },
-    {
-      "person": "Hearted",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR14",
-          "outremer_name": "Erard I of Brienne",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'hearted' ↔ 'Erard I of Brienne'"
-        },
-        {
-          "outremer_id": "AUTH:CR19",
-          "outremer_name": "Chalo the Red",
-          "type": "person",
-          "score": 0.625,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'hearted' ↔ 'Chalo the Red'"
-        },
-        {
-          "outremer_id": "AUTH:CR50",
-          "outremer_name": "Artaud the Chamberlain",
-          "type": "person",
-          "score": 0.6154,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'hearted' ↔ 'Artaud the Chamberlain'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR14",
-        "outremer_name": "Erard I of Brienne",
-        "type": "person",
-        "score": 0.6667,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'hearted' ↔ 'Erard I of Brienne'"
-      },
-      "confidence": 0.6667,
-      "status": "low"
-    },
-    {
-      "person": "When the",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR94",
-          "outremer_name": "Stephen I of Sancerre",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'when the' ↔ 'Stephen I of Sancerre'"
-        },
-        {
-          "outremer_id": "AUTH:CR93",
-          "outremer_name": "Stephen II of Auxonne",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'when the' ↔ 'Stephen II of Auxonne'"
-        },
-        {
-          "outremer_id": "AUTH:CR176",
-          "outremer_name": "Stephen of Perche",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'when the' ↔ 'Stephen of Perche'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR94",
-        "outremer_name": "Stephen I of Sancerre",
-        "type": "person",
-        "score": 0.6667,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'when the' ↔ 'Stephen I of Sancerre'"
-      },
-      "confidence": 0.6667,
-      "status": "low"
-    },
-    {
-      "person": "Such",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Cross",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Caesar of Heisterbach",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "After the",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR 165",
-          "outremer_name": "Albert the Bear",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'after the' ↔ 'Albert the Bear'"
-        },
-        {
-          "outremer_id": "AUTH:CR103",
-          "outremer_name": "Matthew of Bellenoue",
-          "type": "person",
-          "score": 0.625,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'after the' ↔ 'Matthew of Bellenoue'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR 165",
-        "outremer_name": "Albert the Bear",
-        "type": "person",
-        "score": 0.6667,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'after the' ↔ 'Albert the Bear'"
-      },
-      "confidence": 0.6667,
-      "status": "low"
-    },
-    {
-      "person": "City",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Children",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Thus",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Land",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR111",
-          "outremer_name": "Andrew II of Vitré",
-          "type": "person",
-          "score": 0.6,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'land' ↔ 'Andrew II of Vitré'"
-        },
-        {
-          "outremer_id": "AUTH:CR126",
-          "outremer_name": "Arnold of Wezemaal",
-          "type": "person",
-          "score": 0.6,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'land' ↔ 'Arnold of Wezemaal'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR111",
-        "outremer_name": "Andrew II of Vitré",
-        "type": "person",
-        "score": 0.6,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'land' ↔ 'Andrew II of Vitré'"
-      },
-      "confidence": 0.6,
-      "status": "low"
-    },
-    {
-      "person": "Because of",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Western",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR53",
-          "outremer_name": "Peter of Langres",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'western' ↔ 'Peter of Langres'"
-        },
-        {
-          "outremer_id": "AUTH:CR62",
-          "outremer_name": "Peter I of Courtenay",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'western' ↔ 'Peter I of Courtenay'"
-        },
-        {
-          "outremer_id": "AUTH:CR17",
-          "outremer_name": "Walter of Hereford",
-          "type": "person",
-          "score": 0.6154,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'western' ↔ 'Walter of Hereford'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR53",
-        "outremer_name": "Peter of Langres",
-        "type": "person",
-        "score": 0.6667,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'western' ↔ 'Peter of Langres'"
-      },
-      "confidence": 0.6667,
-      "status": "low"
-    },
-    {
-      "person": "Second",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR1",
-          "outremer_name": "Conrad III of Germany",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'second' ↔ 'Conrad III of Germany'"
-        },
-        {
-          "outremer_id": "AUTH:CR37",
-          "outremer_name": "Conrad of Montferrat",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'second' ↔ 'Conrad of Montferrat'"
-        },
-        {
-          "outremer_id": "AUTH:CR175",
-          "outremer_name": "Conrad of Meissen",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'second' ↔ 'Conrad of Meissen'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR1",
-        "outremer_name": "Conrad III of Germany",
-        "type": "person",
-        "score": 0.6667,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'second' ↔ 'Conrad III of Germany'"
-      },
-      "confidence": 0.6667,
-      "status": "low"
-    },
-    {
-      "person": "Eugene",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "German",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR25",
-          "outremer_name": "Enguerran II of Coucy",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'german' ↔ 'Enguerran II of Coucy'"
-        },
-        {
-          "outremer_id": "AUTH:CR120",
-          "outremer_name": "Gerard II of Looz",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'german' ↔ 'Gerard II of Looz'"
-        },
-        {
-          "outremer_id": "AUTH:CR1",
-          "outremer_name": "Conrad III of Germany",
-          "type": "person",
-          "score": 0.6,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'german' ↔ 'Conrad III of Germany'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR25",
-        "outremer_name": "Enguerran II of Coucy",
-        "type": "person",
-        "score": 0.6667,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'german' ↔ 'Enguerran II of Coucy'"
-      },
-      "confidence": 0.6667,
-      "status": "low"
-    },
-    {
-      "person": "French",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Philip",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR27",
-          "outremer_name": "Philip of Flanders",
-          "type": "person",
-          "score": 1.0,
-          "match_type": "exact",
-          "evidence": "exact match: 'philip' ↔ 'Philip of Flanders'"
-        },
-        {
-          "outremer_id": "AUTH:CR52",
-          "outremer_name": "Philip of Sézanne",
-          "type": "person",
-          "score": 1.0,
-          "match_type": "exact",
-          "evidence": "exact match: 'philip' ↔ 'Philip of Sézanne'"
-        },
-        {
-          "outremer_id": "AUTH:CR63",
-          "outremer_name": "Philip of Dreux, bishop of Beavais",
-          "type": "person",
-          "score": 1.0,
-          "match_type": "exact",
-          "evidence": "exact match: 'philip' ↔ 'Philip of Dreux, bishop of Beavais'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR27",
-        "outremer_name": "Philip of Flanders",
-        "type": "person",
-        "score": 1.0,
-        "match_type": "exact",
-        "evidence": "exact match: 'philip' ↔ 'Philip of Flanders'"
-      },
-      "confidence": 1.0,
-      "status": "high"
-    },
-    {
-      "person": "Augustus",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Jews",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR71",
-          "outremer_name": "James of Chacenay",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'jews' ↔ 'James of Chacenay'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR71",
-        "outremer_name": "James of Chacenay",
-        "type": "person",
-        "score": 0.6667,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'jews' ↔ 'James of Chacenay'"
-      },
-      "confidence": 0.6667,
-      "status": "low"
-    },
-    {
-      "person": "Church the Popes",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "They",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR16",
-          "outremer_name": "Thierry of Flanders",
-          "type": "person",
-          "score": 0.7273,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'they' ↔ 'Thierry of Flanders'"
-        },
-        {
-          "outremer_id": "AUTH:CR12",
-          "outremer_name": "Henry I of Troyes, count of Champagne",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'they' ↔ 'Henry I of Troyes, count of Champagne'"
-        },
-        {
-          "outremer_id": "AUTH:CR26",
-          "outremer_name": "Henry the Lion",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'they' ↔ 'Henry the Lion'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR16",
-        "outremer_name": "Thierry of Flanders",
-        "type": "person",
-        "score": 0.7273,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'they' ↔ 'Thierry of Flanders'"
-      },
-      "confidence": 0.7273,
-      "status": "low"
-    },
-    {
-      "person": "Other",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR16",
-          "outremer_name": "Thierry of Flanders",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'other' ↔ 'Thierry of Flanders'"
-        },
-        {
-          "outremer_id": "AUTH:CR12",
-          "outremer_name": "Henry I of Troyes, count of Champagne",
-          "type": "person",
-          "score": 0.6,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'other' ↔ 'Henry I of Troyes, count of Champagne'"
-        },
-        {
-          "outremer_id": "AUTH:CR26",
-          "outremer_name": "Henry the Lion",
-          "type": "person",
-          "score": 0.6,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'other' ↔ 'Henry the Lion'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR16",
-        "outremer_name": "Thierry of Flanders",
-        "type": "person",
-        "score": 0.6667,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'other' ↔ 'Thierry of Flanders'"
-      },
-      "confidence": 0.6667,
-      "status": "low"
-    },
-    {
-      "person": "Innocent",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Frederic",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "clergy",
+      "person": "Greek",
       "person_group": true,
       "candidates": [],
       "top_candidate": null,
@@ -3047,255 +821,39 @@
       "status": "no_match"
     },
     {
-      "person": "When",
+      "person": "Armenian",
+      "person_group": true,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "Richard the Lion-Hearted",
       "person_group": false,
       "candidates": [
-        {
-          "outremer_id": "AUTH:CR12",
-          "outremer_name": "Henry I of Troyes, count of Champagne",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'when' ↔ 'Henry I of Troyes, count of Champagne'"
-        },
         {
           "outremer_id": "AUTH:CR26",
           "outremer_name": "Henry the Lion",
           "type": "person",
-          "score": 0.6667,
+          "score": 0.6545,
           "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'when' ↔ 'Henry the Lion'"
-        },
-        {
-          "outremer_id": "AUTH:CR54",
-          "outremer_name": "Henry of Grandpré",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'when' ↔ 'Henry of Grandpré'"
+          "evidence": "fuzzy match: 'richard the lion hearted' ↔ 'Henry the Lion'"
         }
       ],
       "top_candidate": {
-        "outremer_id": "AUTH:CR12",
-        "outremer_name": "Henry I of Troyes, count of Champagne",
+        "outremer_id": "AUTH:CR26",
+        "outremer_name": "Henry the Lion",
         "type": "person",
-        "score": 0.6667,
+        "score": 0.6545,
         "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'when' ↔ 'Henry I of Troyes, count of Champagne'"
+        "evidence": "fuzzy match: 'richard the lion hearted' ↔ 'Henry the Lion'"
       },
-      "confidence": 0.6667,
+      "confidence": 0.6545,
       "status": "low"
     },
     {
-      "person": "Gregory",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR55",
-          "outremer_name": "Geoffrey of Grandpré",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'gregory' ↔ 'Geoffrey of Grandpré'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR55",
-        "outremer_name": "Geoffrey of Grandpré",
-        "type": "person",
-        "score": 0.6667,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'gregory' ↔ 'Geoffrey of Grandpré'"
-      },
-      "confidence": 0.6667,
-      "status": "low"
-    },
-    {
-      "person": "Sicilian",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Moslems",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "These",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Albigenses",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Chris",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR33",
-          "outremer_name": "Charles of Denmark",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'chris' ↔ 'Charles of Denmark'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR33",
-        "outremer_name": "Charles of Denmark",
-        "type": "person",
-        "score": 0.6667,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'chris' ↔ 'Charles of Denmark'"
-      },
-      "confidence": 0.6667,
-      "status": "low"
-    },
-    {
-      "person": "Bishops of",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Syria",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Armenian",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Catholic",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Orders of",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Temple",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR94",
-          "outremer_name": "Stephen I of Sancerre",
-          "type": "person",
-          "score": 0.6154,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'temple' ↔ 'Stephen I of Sancerre'"
-        },
-        {
-          "outremer_id": "AUTH:CR93",
-          "outremer_name": "Stephen II of Auxonne",
-          "type": "person",
-          "score": 0.6154,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'temple' ↔ 'Stephen II of Auxonne'"
-        },
-        {
-          "outremer_id": "AUTH:CR176",
-          "outremer_name": "Stephen of Perche",
-          "type": "person",
-          "score": 0.6154,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'temple' ↔ 'Stephen of Perche'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR94",
-        "outremer_name": "Stephen I of Sancerre",
-        "type": "person",
-        "score": 0.6154,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'temple' ↔ 'Stephen I of Sancerre'"
-      },
-      "confidence": 0.6154,
-      "status": "low"
-    },
-    {
-      "person": "Hospital",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Men",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Taxes",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR71",
-          "outremer_name": "James of Chacenay",
-          "type": "person",
-          "score": 0.6,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'taxes' ↔ 'James of Chacenay'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR71",
-        "outremer_name": "James of Chacenay",
-        "type": "person",
-        "score": 0.6,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'taxes' ↔ 'James of Chacenay'"
-      },
-      "confidence": 0.6,
-      "status": "low"
-    },
-    {
-      "person": "Consequently the Popes",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "While the Popes",
+      "person": "Caesar of Heisterbach",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -3325,198 +883,6 @@
       },
       "confidence": 0.7222,
       "status": "low"
-    },
-    {
-      "person": "Crusade of Richard",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR186",
-          "outremer_name": "Ralph of Caen",
-          "type": "person",
-          "score": 0.6061,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'crusade of richard' ↔ 'Ralph of Caen'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR186",
-        "outremer_name": "Ralph of Caen",
-        "type": "person",
-        "score": 0.6061,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'crusade of richard' ↔ 'Ralph of Caen'"
-      },
-      "confidence": 0.6061,
-      "status": "low"
-    },
-    {
-      "person": "Lion",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Fourth",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Christian",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Empire",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Fifth",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Louis",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR125",
-          "outremer_name": "Louis of Hesbaye",
-          "type": "person",
-          "score": 1.0,
-          "match_type": "exact",
-          "evidence": "exact match: 'louis' ↔ 'Louis of Hesbaye'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR125",
-        "outremer_name": "Louis of Hesbaye",
-        "type": "person",
-        "score": 1.0,
-        "match_type": "exact",
-        "evidence": "exact match: 'louis' ↔ 'Louis of Hesbaye'"
-      },
-      "confidence": 1.0,
-      "status": "high"
-    },
-    {
-      "person": "For the First",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Urban",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Ademar of Puy",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR91",
-          "outremer_name": "Adhémar V of Limoges",
-          "type": "person",
-          "score": 0.7368,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'ademar of puy' ↔ 'Adhémar V of Limoges'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR91",
-        "outremer_name": "Adhémar V of Limoges",
-        "type": "person",
-        "score": 0.7368,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'ademar of puy' ↔ 'Adhémar V of Limoges'"
-      },
-      "confidence": 0.7368,
-      "status": "low"
-    },
-    {
-      "person": "Although",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR13",
-          "outremer_name": "Hugh of Troyes",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'although' ↔ 'Hugh of Troyes'"
-        },
-        {
-          "outremer_id": "AUTH:CR18",
-          "outremer_name": "Hugh of Chaumont-sur-Loire",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'although' ↔ 'Hugh of Chaumont-sur-Loire'"
-        },
-        {
-          "outremer_id": "AUTH:CR21",
-          "outremer_name": "Hugh III of Le Puisset",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'although' ↔ 'Hugh III of Le Puisset'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR13",
-        "outremer_name": "Hugh of Troyes",
-        "type": "person",
-        "score": 0.6667,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'although' ↔ 'Hugh of Troyes'"
-      },
-      "confidence": 0.6667,
-      "status": "low"
-    },
-    {
-      "person": "Damietta",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Orient",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "With the",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
     },
     {
       "person": "Bernard",
@@ -3559,8 +925,360 @@
       "status": "high"
     },
     {
-      "person": "Saviour",
+      "person": "Eugene III.",
       "person_group": false,
+      "candidates": [
+        {
+          "outremer_id": "AUTH:CR21",
+          "outremer_name": "Hugh III of Le Puisset",
+          "type": "person",
+          "score": 0.6667,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'eugene iii' ↔ 'Hugh III of Le Puisset'"
+        },
+        {
+          "outremer_id": "AUTH:CR92",
+          "outremer_name": "Hugh III of Burgundy",
+          "type": "person",
+          "score": 0.6667,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'eugene iii' ↔ 'Hugh III of Burgundy'"
+        },
+        {
+          "outremer_id": "AUTH:CR25",
+          "outremer_name": "Enguerran II of Coucy",
+          "type": "person",
+          "score": 0.6364,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'eugene iii' ↔ 'Enguerran II of Coucy'"
+        }
+      ],
+      "top_candidate": {
+        "outremer_id": "AUTH:CR21",
+        "outremer_name": "Hugh III of Le Puisset",
+        "type": "person",
+        "score": 0.6667,
+        "match_type": "fuzzy",
+        "evidence": "fuzzy match: 'eugene iii' ↔ 'Hugh III of Le Puisset'"
+      },
+      "confidence": 0.6667,
+      "status": "low"
+    },
+    {
+      "person": "Philip Augustus",
+      "person_group": false,
+      "candidates": [
+        {
+          "outremer_id": "AUTH:CR27",
+          "outremer_name": "Philip of Flanders",
+          "type": "person",
+          "score": 0.6,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'philip augustus' ↔ 'Philip of Flanders'"
+        }
+      ],
+      "top_candidate": {
+        "outremer_id": "AUTH:CR27",
+        "outremer_name": "Philip of Flanders",
+        "type": "person",
+        "score": 0.6,
+        "match_type": "fuzzy",
+        "evidence": "fuzzy match: 'philip augustus' ↔ 'Philip of Flanders'"
+      },
+      "confidence": 0.6,
+      "status": "low"
+    },
+    {
+      "person": "Innocent III.",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "Frederic II.",
+      "person_group": false,
+      "candidates": [
+        {
+          "outremer_id": "AUTH:CR72",
+          "outremer_name": "Anseric II of Chacenay",
+          "type": "person",
+          "score": 0.6667,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'frederic ii' ↔ 'Anseric II of Chacenay'"
+        }
+      ],
+      "top_candidate": {
+        "outremer_id": "AUTH:CR72",
+        "outremer_name": "Anseric II of Chacenay",
+        "type": "person",
+        "score": 0.6667,
+        "match_type": "fuzzy",
+        "evidence": "fuzzy match: 'frederic ii' ↔ 'Anseric II of Chacenay'"
+      },
+      "confidence": 0.6667,
+      "status": "low"
+    },
+    {
+      "person": "Children",
+      "person_group": true,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "crusaders",
+      "person_group": true,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "Jews",
+      "person_group": true,
+      "candidates": [
+        {
+          "outremer_id": "AUTH:CR71",
+          "outremer_name": "James of Chacenay",
+          "type": "person",
+          "score": 0.6667,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'jews' ↔ 'James of Chacenay'"
+        }
+      ],
+      "top_candidate": {
+        "outremer_id": "AUTH:CR71",
+        "outremer_name": "James of Chacenay",
+        "type": "person",
+        "score": 0.6667,
+        "match_type": "fuzzy",
+        "evidence": "fuzzy match: 'jews' ↔ 'James of Chacenay'"
+      },
+      "confidence": 0.6667,
+      "status": "low"
+    },
+    {
+      "person": "crusader",
+      "person_group": true,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "clergy",
+      "person_group": true,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "Gregory IX.",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "Frederic",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "Men",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "St. Louis",
+      "person_group": false,
+      "candidates": [
+        {
+          "outremer_id": "AUTH:CR125",
+          "outremer_name": "Louis of Hesbaye",
+          "type": "person",
+          "score": 0.7692,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'st louis' ↔ 'Louis of Hesbaye'"
+        }
+      ],
+      "top_candidate": {
+        "outremer_id": "AUTH:CR125",
+        "outremer_name": "Louis of Hesbaye",
+        "type": "person",
+        "score": 0.7692,
+        "match_type": "fuzzy",
+        "evidence": "fuzzy match: 'st louis' ↔ 'Louis of Hesbaye'"
+      },
+      "confidence": 0.7692,
+      "status": "medium"
+    },
+    {
+      "person": "Urban II.",
+      "person_group": false,
+      "candidates": [
+        {
+          "outremer_id": "AUTH:CR25",
+          "outremer_name": "Enguerran II of Coucy",
+          "type": "person",
+          "score": 0.63,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'urban ii' ↔ 'Enguerran II of Coucy'"
+        },
+        {
+          "outremer_id": "AUTH:CR107",
+          "outremer_name": "Ralph II of Fougères",
+          "type": "person",
+          "score": 0.625,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'urban ii' ↔ 'Ralph II of Fougères'"
+        }
+      ],
+      "top_candidate": {
+        "outremer_id": "AUTH:CR25",
+        "outremer_name": "Enguerran II of Coucy",
+        "type": "person",
+        "score": 0.63,
+        "match_type": "fuzzy",
+        "evidence": "fuzzy match: 'urban ii' ↔ 'Enguerran II of Coucy'"
+      },
+      "confidence": 0.63,
+      "status": "low"
+    },
+    {
+      "person": "Ademar of Puy",
+      "person_group": false,
+      "candidates": [
+        {
+          "outremer_id": "AUTH:CR91",
+          "outremer_name": "Adhémar V of Limoges",
+          "type": "person",
+          "score": 0.7368,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'ademar of puy' ↔ 'Adhémar V of Limoges'"
+        }
+      ],
+      "top_candidate": {
+        "outremer_id": "AUTH:CR91",
+        "outremer_name": "Adhémar V of Limoges",
+        "type": "person",
+        "score": 0.7368,
+        "match_type": "fuzzy",
+        "evidence": "fuzzy match: 'ademar of puy' ↔ 'Adhémar V of Limoges'"
+      },
+      "confidence": 0.7368,
+      "status": "low"
+    },
+    {
+      "person": "Cardinal Pelagius",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "Innocent",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "St. Bernard",
+      "person_group": false,
+      "candidates": [
+        {
+          "outremer_id": "AUTH:CR183",
+          "outremer_name": "Bernard of Dorat",
+          "type": "person",
+          "score": 0.8235,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'st bernard' ↔ 'Bernard of Dorat'"
+        },
+        {
+          "outremer_id": "AUTH:CR14",
+          "outremer_name": "Erard I of Brienne",
+          "type": "person",
+          "score": 0.7059,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'st bernard' ↔ 'Erard I of Brienne'"
+        },
+        {
+          "outremer_id": "AUTH:CR120",
+          "outremer_name": "Gerard II of Looz",
+          "type": "person",
+          "score": 0.6316,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'st bernard' ↔ 'Gerard II of Looz'"
+        }
+      ],
+      "top_candidate": {
+        "outremer_id": "AUTH:CR183",
+        "outremer_name": "Bernard of Dorat",
+        "type": "person",
+        "score": 0.8235,
+        "match_type": "fuzzy",
+        "evidence": "fuzzy match: 'st bernard' ↔ 'Bernard of Dorat'"
+      },
+      "confidence": 0.8235,
+      "status": "medium"
+    },
+    {
+      "person": "Godfrey",
+      "person_group": false,
+      "candidates": [
+        {
+          "outremer_id": "AUTH:CR78",
+          "outremer_name": "Godfrey III of Louvain",
+          "type": "person",
+          "score": 1.0,
+          "match_type": "exact",
+          "evidence": "exact match: 'godfrey' ↔ 'Godfrey III of Louvain'"
+        },
+        {
+          "outremer_id": "AUTH:CR184",
+          "outremer_name": "Godfrey of Bouillon",
+          "type": "person",
+          "score": 1.0,
+          "match_type": "exact",
+          "evidence": "exact match: 'godfrey' ↔ 'Godfrey of Bouillon'"
+        },
+        {
+          "outremer_id": "AUTH:CR55",
+          "outremer_name": "Geoffrey of Grandpré",
+          "type": "person",
+          "score": 0.8,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'godfrey' ↔ 'Geoffrey of Grandpré'"
+        }
+      ],
+      "top_candidate": {
+        "outremer_id": "AUTH:CR78",
+        "outremer_name": "Godfrey III of Louvain",
+        "type": "person",
+        "score": 1.0,
+        "match_type": "exact",
+        "evidence": "exact match: 'godfrey' ↔ 'Godfrey III of Louvain'"
+      },
+      "confidence": 1.0,
+      "status": "high"
+    },
+    {
+      "person": "Christian",
+      "person_group": true,
       "candidates": [],
       "top_candidate": null,
       "confidence": 0.0,
@@ -3615,87 +1333,31 @@
       "status": "no_match"
     },
     {
-      "person": "Patriarch",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "King",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "West",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Even",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Orders",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Allah",
+      "person": "Baldwin",
       "person_group": false,
       "candidates": [
         {
-          "outremer_id": "AUTH:CR23",
-          "outremer_name": "Ralph the Dog",
+          "outremer_id": "AUTH:CR3",
+          "outremer_name": "Baldwin of Vern d'Anjou",
           "type": "person",
-          "score": 0.6,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'allah' ↔ 'Ralph the Dog'"
-        },
-        {
-          "outremer_id": "AUTH:CR24",
-          "outremer_name": "Ralph of Dury",
-          "type": "person",
-          "score": 0.6,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'allah' ↔ 'Ralph of Dury'"
-        },
-        {
-          "outremer_id": "AUTH:CR107",
-          "outremer_name": "Ralph II of Fougères",
-          "type": "person",
-          "score": 0.6,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'allah' ↔ 'Ralph II of Fougères'"
+          "score": 1.0,
+          "match_type": "exact",
+          "evidence": "exact match: 'baldwin' ↔ 'Baldwin of Vern d'Anjou'"
         }
       ],
       "top_candidate": {
-        "outremer_id": "AUTH:CR23",
-        "outremer_name": "Ralph the Dog",
+        "outremer_id": "AUTH:CR3",
+        "outremer_name": "Baldwin of Vern d'Anjou",
         "type": "person",
-        "score": 0.6,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'allah' ↔ 'Ralph the Dog'"
+        "score": 1.0,
+        "match_type": "exact",
+        "evidence": "exact match: 'baldwin' ↔ 'Baldwin of Vern d'Anjou'"
       },
-      "confidence": 0.6,
-      "status": "low"
+      "confidence": 1.0,
+      "status": "high"
     },
     {
-      "person": "Venetians",
+      "person": "Frederic IL",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -3703,348 +1365,44 @@
       "status": "no_match"
     },
     {
-      "person": "Zara",
+      "person": "William of Malmesbury",
       "person_group": false,
       "candidates": [
         {
-          "outremer_id": "AUTH:CR50",
-          "outremer_name": "Artaud the Chamberlain",
+          "outremer_id": "AUTH:CR112",
+          "outremer_name": "William III of Mâcon",
           "type": "person",
-          "score": 0.6,
+          "score": 0.7875,
           "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'zara' ↔ 'Artaud the Chamberlain'"
+          "evidence": "fuzzy match: 'william of malmesbury' ↔ 'William III of Mâcon'"
+        },
+        {
+          "outremer_id": "AUTH:CR108",
+          "outremer_name": "William IV of Nevers",
+          "type": "person",
+          "score": 0.7875,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'william of malmesbury' ↔ 'William IV of Nevers'"
+        },
+        {
+          "outremer_id": "AUTH:CR98",
+          "outremer_name": "William V of Montferrat",
+          "type": "person",
+          "score": 0.7875,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'william of malmesbury' ↔ 'William V of Montferrat'"
         }
       ],
       "top_candidate": {
-        "outremer_id": "AUTH:CR50",
-        "outremer_name": "Artaud the Chamberlain",
+        "outremer_id": "AUTH:CR112",
+        "outremer_name": "William III of Mâcon",
         "type": "person",
-        "score": 0.6,
+        "score": 0.7875,
         "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'zara' ↔ 'Artaud the Chamberlain'"
+        "evidence": "fuzzy match: 'william of malmesbury' ↔ 'William III of Mâcon'"
       },
-      "confidence": 0.6,
-      "status": "low"
-    },
-    {
-      "person": "Despite the",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Mohammedans",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Even the Templars",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Mohammedan",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Christians of",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Kingdom of Jerusalem",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "From the East",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Oriental",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR10",
-          "outremer_name": "Rainald of Martigné",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'oriental' ↔ 'Rainald of Martigné'"
-        },
-        {
-          "outremer_id": "AUTH:CR43",
-          "outremer_name": "Rainald of St Valéry",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'oriental' ↔ 'Rainald of St Valéry'"
-        },
-        {
-          "outremer_id": "AUTH:CR97",
-          "outremer_name": "Rainald the Proud",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'oriental' ↔ 'Rainald the Proud'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR10",
-        "outremer_name": "Rainald of Martigné",
-        "type": "person",
-        "score": 0.6667,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'oriental' ↔ 'Rainald of Martigné'"
-      },
-      "confidence": 0.6667,
-      "status": "low"
-    },
-    {
-      "person": "Soon",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "All of",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Germany",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR1",
-          "outremer_name": "Conrad III of Germany",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'germany' ↔ 'Conrad III of Germany'"
-        },
-        {
-          "outremer_id": "AUTH:CR25",
-          "outremer_name": "Enguerran II of Coucy",
-          "type": "person",
-          "score": 0.625,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'germany' ↔ 'Enguerran II of Coucy'"
-        },
-        {
-          "outremer_id": "AUTH:CR4",
-          "outremer_name": "Berlay II of Montreuil",
-          "type": "person",
-          "score": 0.6154,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'germany' ↔ 'Berlay II of Montreuil'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR1",
-        "outremer_name": "Conrad III of Germany",
-        "type": "person",
-        "score": 0.6667,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'germany' ↔ 'Conrad III of Germany'"
-      },
-      "confidence": 0.6667,
-      "status": "low"
-    },
-    {
-      "person": "England",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR25",
-          "outremer_name": "Enguerran II of Coucy",
-          "type": "person",
-          "score": 0.625,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'england' ↔ 'Enguerran II of Coucy'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR25",
-        "outremer_name": "Enguerran II of Coucy",
-        "type": "person",
-        "score": 0.625,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'england' ↔ 'Enguerran II of Coucy'"
-      },
-      "confidence": 0.625,
-      "status": "low"
-    },
-    {
-      "person": "One",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Turks",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Possibly",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Clermont",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "For the Turk",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Whatever",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR17",
-          "outremer_name": "Walter of Hereford",
-          "type": "person",
-          "score": 0.7143,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'whatever' ↔ 'Walter of Hereford'"
-        },
-        {
-          "outremer_id": "AUTH:CR110",
-          "outremer_name": "Walter of St. Omer",
-          "type": "person",
-          "score": 0.7143,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'whatever' ↔ 'Walter of St. Omer'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR17",
-        "outremer_name": "Walter of Hereford",
-        "type": "person",
-        "score": 0.7143,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'whatever' ↔ 'Walter of Hereford'"
-      },
-      "confidence": 0.7143,
-      "status": "low"
-    },
-    {
-      "person": "Many of",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Walter von",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR17",
-          "outremer_name": "Walter of Hereford",
-          "type": "person",
-          "score": 0.75,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'walter von' ↔ 'Walter of Hereford'"
-        },
-        {
-          "outremer_id": "AUTH:CR110",
-          "outremer_name": "Walter of St. Omer",
-          "type": "person",
-          "score": 0.75,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'walter von' ↔ 'Walter of St. Omer'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR17",
-        "outremer_name": "Walter of Hereford",
-        "type": "person",
-        "score": 0.75,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'walter von' ↔ 'Walter of Hereford'"
-      },
-      "confidence": 0.75,
+      "confidence": 0.7875,
       "status": "medium"
-    },
-    {
-      "person": "Vogelweide",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Little",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR68",
-          "outremer_name": "Oddi the Little",
-          "type": "person",
-          "score": 0.7059,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'little' ↔ 'Oddi the Little'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR68",
-        "outremer_name": "Oddi the Little",
-        "type": "person",
-        "score": 0.7059,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'little' ↔ 'Oddi the Little'"
-      },
-      "confidence": 0.7059,
-      "status": "low"
     },
     {
       "person": "Walter",
@@ -4087,6 +1445,14 @@
       "status": "high"
     },
     {
+      "person": "Vogelweide",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
       "person": "Hohenstaufens",
       "person_group": false,
       "candidates": [],
@@ -4095,8 +1461,32 @@
       "status": "no_match"
     },
     {
-      "person": "But the",
+      "person": "Matthew Paris",
       "person_group": false,
+      "candidates": [
+        {
+          "outremer_id": "AUTH:CR103",
+          "outremer_name": "Matthew of Bellenoue",
+          "type": "person",
+          "score": 0.7,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'matthew paris' ↔ 'Matthew of Bellenoue'"
+        }
+      ],
+      "top_candidate": {
+        "outremer_id": "AUTH:CR103",
+        "outremer_name": "Matthew of Bellenoue",
+        "type": "person",
+        "score": 0.7,
+        "match_type": "fuzzy",
+        "evidence": "fuzzy match: 'matthew paris' ↔ 'Matthew of Bellenoue'"
+      },
+      "confidence": 0.7,
+      "status": "low"
+    },
+    {
+      "person": "Templars",
+      "person_group": true,
       "candidates": [],
       "top_candidate": null,
       "confidence": 0.0,
@@ -4119,101 +1509,42 @@
       "status": "no_match"
     },
     {
-      "person": "Matthew",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR103",
-          "outremer_name": "Matthew of Bellenoue",
-          "type": "person",
-          "score": 1.0,
-          "match_type": "exact",
-          "evidence": "exact match: 'matthew' ↔ 'Matthew of Bellenoue'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR103",
-        "outremer_name": "Matthew of Bellenoue",
-        "type": "person",
-        "score": 1.0,
-        "match_type": "exact",
-        "evidence": "exact match: 'matthew' ↔ 'Matthew of Bellenoue'"
-      },
-      "confidence": 1.0,
-      "status": "high"
-    },
-    {
-      "person": "Empire of Constantinople",
+      "person": "Albans",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
       "confidence": 0.0,
       "status": "no_match"
-    },
-    {
-      "person": "Heresy",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR12",
-          "outremer_name": "Henry I of Troyes, count of Champagne",
-          "type": "person",
-          "score": 0.7273,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'heresy' ↔ 'Henry I of Troyes, count of Champagne'"
-        },
-        {
-          "outremer_id": "AUTH:CR26",
-          "outremer_name": "Henry the Lion",
-          "type": "person",
-          "score": 0.7273,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'heresy' ↔ 'Henry the Lion'"
-        },
-        {
-          "outremer_id": "AUTH:CR54",
-          "outremer_name": "Henry of Grandpré",
-          "type": "person",
-          "score": 0.7273,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'heresy' ↔ 'Henry of Grandpré'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR12",
-        "outremer_name": "Henry I of Troyes, count of Champagne",
-        "type": "person",
-        "score": 0.7273,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'heresy' ↔ 'Henry I of Troyes, count of Champagne'"
-      },
-      "confidence": 0.7273,
-      "status": "low"
     }
   ],
   "text_sha256": "28b5e7f7d267c7053cea13ed28ba90b3c67af1d49c0cc99e70602c4724054560",
-  "extraction_mode": "gpustack",
+  "extraction_mode": "heuristic",
   "extraction_engine": {
-    "provider": "gpustack",
-    "model": "qwen3-30b-a3b-instruct",
-    "seed": 42
+    "provider": "heuristic",
+    "model": null,
+    "seed": 42,
+    "configured_provider": "gpustack",
+    "chunks": 5,
+    "fallback_chunks": 5,
+    "degraded_reasons": [
+      "PermissionDeniedError"
+    ]
   },
   "language_hint": null,
   "quality": {
-    "filtered_problem_entities": 105,
+    "filtered_problem_entities": 18,
     "feedback_store": "data/entity_feedback.json",
     "noise": {
-      "extracted_total": 243,
-      "kept": 138,
-      "filtered": 105,
+      "extracted_total": 66,
+      "kept": 48,
+      "filtered": 18,
       "filtered_by_reason": {
-        "known_bad_entity": 77,
-        "bibliographic_noise": 19,
-        "modern_scholar": 8,
-        "post_medieval": 1
+        "bibliographic_noise": 5,
+        "modern_scholar": 12,
+        "known_bad_entity": 1
       },
-      "low_confidence_kept": 138,
-      "noise_share": 0.4321
+      "low_confidence_kept": 48,
+      "noise_share": 0.2727
     }
   }
 }
