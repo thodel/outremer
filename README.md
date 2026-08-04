@@ -13,6 +13,17 @@ A proof-of-concept pipeline for AI-assisted prosopography of the medieval Levant
 
 **Layer 1 — LLM extraction.** Reads historical texts (PDF or plain text) and extracts person-like signals: names, titles, epithets, roles, collective groups. Uses GPUStack-hosted models (Qwen3-30B-A3B for extraction, Qwen3-VL for scanned-PDF OCR, MiniMax-M2.7 for orchestration). Falls back to heuristic regex NER when GPUStack is unavailable, and optionally to Mistral OCR for scans.
 
+> **Which engine produced the published data.** GPUStack sits behind the
+> university network: GitHub Actions cannot reach it and every extraction chunk
+> returns `403 Forbidden`. The nightly run therefore degrades to the heuristic
+> regex extractor, and **the data published to GitHub Pages is heuristic output,
+> not Qwen3 output.** Model-quality figures require a run from inside the
+> network. Each document records what actually produced it in
+> `extraction_engine` (`gpustack` / `mixed` / `heuristic`, with chunk counts),
+> the run report aggregates it under `extraction.documents_by_engine`, and a
+> degraded run emits a CI warning. Until 2026-07-30 this degradation was silent
+> and the output was labelled `gpustack` regardless.
+
 **Layer 2 — KG linking.** Fuzzy-matches extracted mentions against a curated authority file of known crusader persons. Returns ranked candidates with confidence scores and flags ambiguous or multi-candidate matches.
 
 Results are published as a static GitHub Pages site with a **Human-in-the-Loop review UI** — scholars can accept, reject, or flag individual candidate links and export their decisions as JSON.
@@ -168,6 +179,16 @@ python -m evaluation.harness --live
 # Regenerate fixtures after new adjudications arrive
 python -m evaluation.build_fixture
 ```
+
+**Extraction quality** is measured separately, against the full-gold fixture
+(`mode: "full"`, currently munro only, DRAFT pending scholar validation).
+Because CI cannot reach GPUStack, this scores the **heuristic extractor** — the
+engine that actually produces the published corpus. Rewriting it on 2026-07-30
+moved munro from P 0.047 / R 0.318 / F1 0.082 to **P 0.568 / R 0.955 /
+F1 0.712** (individual persons only; collectives are excluded from the person
+gold by design and scored separately). Recall is now the strong side: 21 of 22
+gold persons are found. Measuring Qwen3 itself needs a run from inside the
+university network.
 
 Key metric: **linking agreement** — of the pairs scholars reviewed, how
 many does the responsible system's top proposal agree with. Adjudications

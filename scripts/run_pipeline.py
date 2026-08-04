@@ -59,6 +59,8 @@ def _write_run_report(
     llm_provider: str = "unknown",
     noise: dict[str, int] | None = None,
     recognition_engines: dict[str, int] | None = None,
+    extraction_engines: dict[str, int] | None = None,
+    extraction_degradation: dict[str, Any] | None = None,
 ) -> None:
     """Write run report JSON to data/staging/run_report.json."""
     report = {
@@ -73,6 +75,12 @@ def _write_run_report(
         "ocr_engine": ocr_engine,
         "failures": failures,
         "recognition": {"engines_used": recognition_engines or {}},
+        # What actually produced the persons, per document, plus how much of
+        # the run silently degraded to the heuristic extractor.
+        "extraction": {
+            "documents_by_engine": extraction_engines or {},
+            "degradation": extraction_degradation or {},
+        },
     }
     if noise and noise.get("extracted_total"):
         report["noise"] = {
@@ -493,6 +501,7 @@ def process_file(
     doc_stats = {
         "persons": len(persons),
         "noise": (result.get("quality") or {}).get("noise") or {},
+        "engine": result.get("engine") or {},
     }
     return json_path, bib_path_repo, bib_path_site, evidence_path, doc_stats
 
@@ -544,6 +553,14 @@ def main() -> int:
         help="JSON store for problematic entities used as Gemini negative memory",
     )
     ap.add_argument(
+        "--reset-auto-flagged",
+        action="store_true",
+        help="Clear machine-generated auto_flagged entries in the feedback store "
+        "before running, keeping human allow_terms/blocked_terms. Run this after "
+        "changing the extraction filters: auto-flags accumulated under the old "
+        "logic keep suppressing mentions the new logic accepts.",
+    )
+    ap.add_argument(
         "--review-decisions-path",
         default=None,
         help="Optional JSON with human review decisions to sync into blocked/allow terms",
@@ -569,6 +586,20 @@ def main() -> int:
     outremer_path = Path(args.outremer_index)
     entity_feedback_path = Path(args.entity_feedback_path) if args.entity_feedback_path else None
     review_decisions_path = Path(args.review_decisions_path) if args.review_decisions_path else None
+
+    if args.reset_auto_flagged and entity_feedback_path:
+        from extract_persons import _load_entity_feedback, _save_entity_feedback
+
+        store = _load_entity_feedback(str(entity_feedback_path))
+        dropped = len(store.get("auto_flagged") or {})
+        store["auto_flagged"] = {}
+        _save_entity_feedback(str(entity_feedback_path), store)
+        logger.warning(
+            "Cleared %d machine auto_flagged entries from %s "
+            "(kept %d allow_terms, %d blocked_terms)",
+            dropped, entity_feedback_path,
+            len(store.get("allow_terms") or []), len(store.get("blocked_terms") or []),
+        )
 
     site_data_dir = site_dir / "data"
     site_bib_dir = site_dir / "bib"
@@ -639,6 +670,9 @@ def main() -> int:
     errors: list[tuple[Path, Exception]] = []
     total_persons = 0
     noise_agg = {"extracted_total": 0, "filtered": 0}
+    engine_docs: Counter[str] = Counter()
+    chunk_agg = {"chunks": 0, "fallback_chunks": 0}
+    degrade_reasons: list[str] = []
     if not inputs:
         logger.warning("No .txt or .pdf files found in %s", in_dir)
     else:
@@ -663,6 +697,13 @@ def main() -> int:
                 total_persons += doc_stats["persons"]
                 for k in noise_agg:
                     noise_agg[k] += (doc_stats.get("noise") or {}).get(k, 0)
+                eng = doc_stats.get("engine") or {}
+                engine_docs[eng.get("provider", "unknown")] += 1
+                for k in chunk_agg:
+                    chunk_agg[k] += eng.get(k, 0) or 0
+                for r in eng.get("degraded_reasons") or []:
+                    if r not in degrade_reasons:
+                        degrade_reasons.append(r)
             except Exception as exc:
                 errors.append((p, exc))
                 logger.error("Failed processing %s: %s", p, exc)
@@ -699,10 +740,29 @@ def main() -> int:
         ocr_engine=OCR_ENGINE,
         failures=[{"file": str(p), "error": str(e)} for p, e in errors],
         feedback_applied=feedback_stats,
-        llm_provider="gpustack" if GPUSTACK_BASE_URL else "heuristic",
+        # Derived from what actually ran, not from what was configured: with
+        # GPUSTACK_BASE_URL set but unreachable this previously reported
+        # "gpustack" for a run that produced only heuristic output.
+        llm_provider=(
+            engine_docs.most_common(1)[0][0]
+            if engine_docs
+            else ("gpustack" if GPUSTACK_BASE_URL else "heuristic")
+        ),
         noise=noise_agg,
         recognition_engines=dict(_recognition_engines_used),
+        extraction_engines=dict(engine_docs),
+        extraction_degradation={**chunk_agg, "reasons": degrade_reasons},
     )
+
+    # Surface silent degradation where someone will see it. Until 2026-07-30
+    # every CI chunk 403'd and the corpus was published as "gpustack" anyway.
+    if chunk_agg["fallback_chunks"]:
+        print(
+            f"::warning::extraction degraded — "
+            f"{chunk_agg['fallback_chunks']}/{chunk_agg['chunks']} chunk(s) fell back to "
+            f"heuristic NER ({', '.join(degrade_reasons) or 'unknown'}); "
+            f"documents by engine: {dict(engine_docs)}"
+        )
 
     if errors:
         logger.error("Completed with %d error(s).", len(errors))
