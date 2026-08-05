@@ -11,32 +11,6 @@
   },
   "persons": [
     {
-      "name": "Perspectives",
-      "raw_mention": "Perspectives",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "Muslim Perspectives on the Military Orders during the Crusades Author",
-      "confidence": 0.3,
-      "source_offset": null
-    },
-    {
-      "name": "Military",
-      "raw_mention": "Military",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "Muslim Perspectives on the Military Orders during the Crusades Author(s): William J. Hamblin",
-      "confidence": 0.3,
-      "source_offset": 27
-    },
-    {
       "name": "William",
       "raw_mention": "William",
       "title": null,
@@ -451,32 +425,6 @@
       "context": " with a cloud overshadowing him among the people.8Thentheycameandstopped intheshadowofatreenearthemonk When Bahira saw him",
       "confidence": 0.3,
       "source_offset": 4946
-    },
-    {
-      "name": "Muslim",
-      "raw_mention": "Muslim",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": "collective",
-      "gender": "unknown",
-      "group": true,
-      "context": "Muslim Perspectives on the Military Orders during the Cr",
-      "confidence": 0.25,
-      "source_offset": null
-    },
-    {
-      "name": "Crusaders",
-      "raw_mention": "Crusaders",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": "collective",
-      "gender": "unknown",
-      "group": true,
-      "context": "t, thirst, and days of marching and fighting, the Crusaders were forced to surrender. Thousands of the result",
-      "confidence": 0.25,
-      "source_offset": 1329
     },
     {
       "name": "knights",
@@ -3451,19 +3399,6 @@
       "source_offset": 38813
     },
     {
-      "name": "New",
-      "raw_mention": "New",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "rested and executed the Franciscans of Jerusalem. New monks were allowed to return only after peace was",
-      "confidence": 0.3,
-      "source_offset": 38839
-    },
-    {
       "name": "Mamlukpolicytowarda",
       "raw_mention": "Mamlukpolicytowarda",
       "title": null,
@@ -4782,19 +4717,6 @@
       "source_offset": 50664
     },
     {
-      "name": "Cairo",
-      "raw_mention": "Cairo",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": null,
-      "gender": "unknown",
-      "group": false,
-      "context": "eHoly Places through Official Negotiations in1333(Cairo: Franciscan Center of Christian Oriental Studies,",
-      "confidence": 0.3,
-      "source_offset": 50693
-    },
-    {
       "name": "Eyes",
       "raw_mention": "Eyes",
       "title": null,
@@ -5064,22 +4986,6 @@
     }
   ],
   "links": [
-    {
-      "person": "Perspectives",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Military",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
     {
       "person": "William",
       "person_group": false,
@@ -5475,22 +5381,6 @@
     {
       "person": "Thentheycameandstopped",
       "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Muslim",
-      "person_group": true,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Crusaders",
-      "person_group": true,
       "candidates": [],
       "top_candidate": null,
       "confidence": 0.0,
@@ -8257,30 +8147,6 @@
       "status": "no_match"
     },
     {
-      "person": "New",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR111",
-          "outremer_name": "Andrew II of Vitré",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'new' ↔ 'Andrew II of Vitré'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR111",
-        "outremer_name": "Andrew II of Vitré",
-        "type": "person",
-        "score": 0.6667,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'new' ↔ 'Andrew II of Vitré'"
-      },
-      "confidence": 0.6667,
-      "status": "low"
-    },
-    {
       "person": "Mamlukpolicytowarda",
       "person_group": false,
       "candidates": [],
@@ -9473,38 +9339,6 @@
       "status": "no_match"
     },
     {
-      "person": "Cairo",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR19",
-          "outremer_name": "Chalo the Red",
-          "type": "person",
-          "score": 0.6,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'cairo' ↔ 'Chalo the Red'"
-        },
-        {
-          "outremer_id": "AUTH:CR46",
-          "outremer_name": "Armod",
-          "type": "person",
-          "score": 0.6,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'cairo' ↔ 'Armod'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR19",
-        "outremer_name": "Chalo the Red",
-        "type": "person",
-        "score": 0.6,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'cairo' ↔ 'Chalo the Red'"
-      },
-      "confidence": 0.6,
-      "status": "low"
-    },
-    {
       "person": "Eyes",
       "person_group": false,
       "candidates": [],
@@ -9800,19 +9634,20 @@
   },
   "language_hint": null,
   "quality": {
-    "filtered_problem_entities": 315,
+    "filtered_problem_entities": 336,
     "feedback_store": "data/entity_feedback.json",
     "noise": {
-      "extracted_total": 695,
-      "kept": 380,
-      "filtered": 315,
+      "extracted_total": 710,
+      "kept": 374,
+      "filtered": 336,
       "filtered_by_reason": {
-        "bibliographic_noise": 178,
-        "post_medieval": 14,
-        "modern_scholar": 123
+        "known_bad_entity": 123,
+        "bibliographic_noise": 120,
+        "post_medieval": 12,
+        "modern_scholar": 81
       },
-      "low_confidence_kept": 380,
-      "noise_share": 0.4532
+      "low_confidence_kept": 374,
+      "noise_share": 0.4732
     }
   }
 }

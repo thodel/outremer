@@ -279,19 +279,6 @@
       "source_offset": 6205
     },
     {
-      "name": "crusaders",
-      "raw_mention": "crusaders",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": "collective",
-      "gender": "unknown",
-      "group": true,
-      "context": "pon the sphere of the temporal authorities. All   crusaders were given the protection of the ecclesiastical c",
-      "confidence": 0.25,
-      "source_offset": 7014
-    },
-    {
       "name": "Jews",
       "raw_mention": "Jews",
       "title": null,
@@ -1029,14 +1016,6 @@
       "status": "no_match"
     },
     {
-      "person": "crusaders",
-      "person_group": true,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
       "person": "Jews",
       "person_group": true,
       "candidates": [
@@ -1532,19 +1511,19 @@
   },
   "language_hint": null,
   "quality": {
-    "filtered_problem_entities": 18,
+    "filtered_problem_entities": 22,
     "feedback_store": "data/entity_feedback.json",
     "noise": {
-      "extracted_total": 66,
-      "kept": 48,
-      "filtered": 18,
+      "extracted_total": 69,
+      "kept": 47,
+      "filtered": 22,
       "filtered_by_reason": {
-        "bibliographic_noise": 5,
-        "modern_scholar": 12,
-        "known_bad_entity": 1
+        "known_bad_entity": 18,
+        "bibliographic_noise": 2,
+        "modern_scholar": 2
       },
-      "low_confidence_kept": 48,
-      "noise_share": 0.2727
+      "low_confidence_kept": 47,
+      "noise_share": 0.3188
     }
   }
 }
