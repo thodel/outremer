@@ -1,0 +1,276 @@
+schema_version: "1.0"
+profile: tei-production
+status: proposed
+last_updated: "2026-08-11"
+tracking:
+  epic: "https://github.com/thodel/outremer/issues/116"
+  issue: "https://github.com/thodel/outremer/issues/110"
+  adr: "docs/adr/0001-tei-production-deployment.md"
+
+deployment:
+  public_base_url:
+    proposed: "https://tei.dh.unibe.ch/outremer/"
+    configurable: true
+    environment: OUTREMER_PUBLIC_BASE_URL
+    owner: dh-infrastructure
+    approval: required
+  network_zone: university-internal
+  production_publication_policy:
+    reject_unexpected_fallback: true
+    reject_heuristic_extraction: true
+    require_release_manifest: true
+    require_capability_versions: true
+
+classifications:
+  public: Approved publication artifacts and non-sensitive provenance.
+  internal: Service topology, model inventory, operational metadata, non-public outputs.
+  restricted: Unpublished sources, reviewer identities, access-controlled corpora, content-bearing logs.
+  secret: Credentials, signing keys, session secrets, pseudonymisation salts.
+
+defaults:
+  owner: tbd
+  health_timeout_seconds: 10
+  retry_policy: bounded-exponential-backoff
+  secret_source: host-managed-environment-or-credential-store
+  observability:
+    correlation_id: required
+    redact_credentials: true
+    record_version: true
+    record_latency: true
+
+capabilities:
+  - id: outremer-state
+    class: required
+    provider: outremer
+    purpose: Durable evidence, review, provenance, audit, and run state.
+    contract: transactional-store-and-versioned-research-export
+    endpoint: null
+    endpoint_environment: OUTREMER_STATE_URL
+    owner: outremer-maintainers
+    authentication: least-privilege-service-identity
+    timeout_seconds: 30
+    data_classification: restricted
+    availability: required-for-application-readiness
+    fallback: none-fail-closed
+    provenance: schema-and-migration-version
+    implementation_issues: [111, 114]
+    validation_issue: 115
+
+  - id: gpustack-text
+    class: required
+    provider: agentic-historian-shared-infrastructure
+    purpose: Person extraction, metadata, entity and corpus text tasks.
+    contract: openai-compatible-v1-models-and-chat-completions
+    endpoint: null
+    endpoint_environment: GPUSTACK_BASE_URL
+    model_role: TEXT
+    model_environment: GPUSTACK_MODEL_TEXT
+    owner: dh-infrastructure
+    authentication: bearer-api-key
+    credential_environment: GPUSTACK_API_KEY
+    timeout_seconds_environment: GPUSTACK_TIMEOUT
+    timeout_seconds_default: 120
+    data_classification: restricted
+    availability: required-for-production-pipeline
+    fallback: block-run-and-publication
+    forbidden_production_fallbacks: [heuristic-extraction, third-party-llm]
+    provenance: endpoint-identity-service-version-resolved-model-parameters
+    implementation_issues: [88, 113]
+    validation_issue: 112
+
+  - id: gpustack-vision
+    class: conditionally-required
+    condition: Source requires page-level visual recognition or description.
+    provider: agentic-historian-shared-infrastructure
+    purpose: Page-level recognition and visual source analysis.
+    contract: openai-compatible-v1-models-and-chat-completions
+    endpoint: null
+    endpoint_environment: GPUSTACK_BASE_URL
+    model_role: VISION
+    model_environment: GPUSTACK_MODEL_VISION
+    owner: dh-infrastructure
+    authentication: bearer-api-key
+    credential_environment: GPUSTACK_API_KEY
+    timeout_seconds_environment: GPUSTACK_TIMEOUT
+    timeout_seconds_default: 120
+    data_classification: restricted
+    availability: required-for-visual-stage
+    fallback: block-visual-stage-no-empty-text
+    provenance: endpoint-identity-service-version-resolved-model-parameters
+    implementation_issues: [64, 88, 113]
+    validation_issue: 112
+
+  - id: gpustack-orchestrator
+    class: deferred
+    provider: agentic-historian-shared-infrastructure
+    purpose: Optional natural-language or Scholar-in-the-Loop planning.
+    contract: openai-compatible-v1-models-and-chat-completions
+    endpoint: null
+    endpoint_environment: GPUSTACK_BASE_URL
+    model_role: ORCHESTRATOR
+    model_environment: GPUSTACK_MODEL_ORCHESTRATOR
+    owner: dh-infrastructure
+    authentication: bearer-api-key
+    credential_environment: GPUSTACK_API_KEY
+    timeout_seconds_environment: GPUSTACK_TIMEOUT
+    timeout_seconds_default: 120
+    data_classification: restricted
+    availability: not-in-production-readiness-until-promoted
+    fallback: deterministic-explicit-workflow
+    provenance: endpoint-identity-service-version-resolved-model-parameters
+    implementation_issues: [88, 113]
+    validation_issue: 115
+
+  - id: gpustack-retrieval
+    class: optional
+    provider: agentic-historian-shared-infrastructure
+    purpose: Multilingual embeddings and reranking for candidate retrieval.
+    contract: openai-compatible-embedding-plus-provider-rerank-contract
+    endpoint: null
+    endpoint_environment: GPUSTACK_BASE_URL
+    model_environments: [GPUSTACK_MODEL_EMBEDDING, GPUSTACK_MODEL_RERANKER]
+    owner: dh-infrastructure
+    authentication: bearer-api-key
+    credential_environment: GPUSTACK_API_KEY
+    timeout_seconds_environment: GPUSTACK_TIMEOUT
+    timeout_seconds_default: 120
+    data_classification: restricted
+    availability: optional-until-evaluation-proves-and-promotes
+    fallback: existing-versioned-candidate-retrieval-with-degraded-state
+    provenance: endpoint-identity-model-version-and-retrieval-parameters
+    implementation_issues: [113]
+    validation_issue: 115
+
+  - id: atr-gateway
+    class: conditionally-required
+    condition: Source requires ATR recognition or ensemble recognition is enabled.
+    provider: serving-atr-inference
+    purpose: Model discovery, segmentation, Kraken/TrOCR/PARTY recognition, and OCR.
+    contract: "GET /health; GET /models; POST /segment; POST /recognize; POST /ocr"
+    endpoint: null
+    endpoint_environment: ATR_GATEWAY_URL
+    owner: dh-infrastructure
+    authentication: x-api-key
+    credential_environment: ATR_API_KEY
+    timeout_seconds_environment: ATR_HTTP_TIMEOUT
+    timeout_seconds_default: 300
+    data_classification: restricted
+    availability: required-for-selected-recognition-stage
+    fallback: block-recognition-no-empty-text
+    provenance: gateway-version-engine-model-segmentation-and-decoding-parameters
+    implementation_issues: [64, 87, 113]
+    validation_issue: 112
+
+  - id: mcp-knowledge-federation
+    class: conditionally-required
+    condition: A run selects federated knowledge linking.
+    provider: agentic-historian-knowledge-hub
+    purpose: Federated person/place authority search and entity resolution.
+    contract: mcp-versioned-person-result-contract
+    endpoint: null
+    endpoint_environment: MCP_BASE_URL
+    owner: dh-infrastructure-and-source-owners
+    authentication: tbd
+    credential_environment: MCP_API_KEY
+    timeout_seconds_environment: MCP_TIMEOUT
+    timeout_seconds_default: 30
+    data_classification: restricted
+    availability: required-for-federated-linking-stage
+    fallback: explicit-source-unavailable-not-empty-result
+    provenance: registry-version-source-versions-query-and-resolver-version
+    implementation_issues: [113]
+    validation_issue: 115
+
+  - id: qlever
+    class: optional
+    provider: agentic-historian-shared-infrastructure
+    purpose: Local SPARQL knowledge-graph query and reproducible authority snapshots.
+    contract: sparql-1.1-query
+    endpoint: null
+    endpoint_environment: QLEVER_ENDPOINT
+    owner: dh-infrastructure
+    authentication: tbd
+    credential_environment: QLEVER_API_KEY
+    timeout_seconds_environment: QLEVER_TIMEOUT
+    timeout_seconds_default: 60
+    data_classification: internal
+    availability: optional-until-promoted-by-authority-integration
+    fallback: pinned-versioned-local-snapshot-with-explicit-staleness
+    provenance: dataset-snapshot-index-and-service-version
+    implementation_issues: [83, 113]
+    validation_issue: 115
+
+  - id: voyant
+    class: optional
+    provider: dh-infrastructure
+    purpose: Scholar-initiated corpus exploration and analysis hand-off.
+    contract: voyant-corpus-upload-or-url-contract
+    endpoint: "https://tei.dh.unibe.ch/voyant/"
+    endpoint_environment: VOYANT_API_URL
+    owner: dh-infrastructure
+    authentication: tbd
+    timeout_seconds_environment: VOYANT_TIMEOUT
+    timeout_seconds_default: 120
+    data_classification: restricted
+    availability: optional-never-blocks-canonical-pipeline
+    fallback: export-versioned-plain-text-corpus-and-report-unavailable
+    provenance: corpus-id-service-version-input-artifact-digest
+    implementation_issues: [113]
+    validation_issue: 115
+
+  - id: agent-tool-registry
+    class: deferred
+    provider: agentic-historian
+    purpose: Discoverable source-description, entity, corpus-analysis, reporting, and orchestration tool contracts.
+    contract: provider-neutral-versioned-tool-descriptors
+    endpoint: null
+    endpoint_environment: OUTREMER_TOOL_PROVIDER_URL
+    owner: both-project-maintainers
+    authentication: tbd
+    timeout_seconds: 120
+    data_classification: restricted
+    availability: deferred-until-scholarly-fit-and-adapter-review
+    fallback: outremer-explicit-pipeline
+    excluded_components: [discord-bot, repository-relative-imports, deployment-state]
+    provenance: tool-id-contract-version-provider-version-input-output-artifact-digests
+    implementation_issues: [90, 113]
+    validation_issue: 115
+
+prerequisites:
+  blocking_human_approvals:
+    - id: url-dns-tls
+      owner: dh-infrastructure
+      value: TBD
+    - id: nginx-routing-and-limits
+      owner: dh-infrastructure
+      value: TBD
+    - id: application-and-deployment-service-identities
+      owner: dh-infrastructure
+      value: TBD
+    - id: firewall-service-allowlist
+      owner: dh-infrastructure
+      value: TBD
+    - id: credential-provisioning-and-rotation
+      owner: dh-infrastructure
+      value: TBD
+    - id: durable-source-state-cache-paths-and-quotas
+      owner: dh-infrastructure-and-outremer-maintainers
+      value: TBD
+    - id: backup-retention-encryption-rpo-rto-and-restore-owner
+      owner: dh-infrastructure-and-outremer-maintainers
+      value: TBD
+    - id: telemetry-destination-retention-and-access
+      owner: dh-infrastructure
+      value: TBD
+    - id: inside-network-runner-and-artifact-verification
+      owner: dh-infrastructure
+      value: TBD
+    - id: maintenance-incident-and-rollback-authority
+      owner: dh-infrastructure-and-outremer-maintainers
+      value: TBD
+
+non_goals:
+  - Replace Outremer with the agentic_historian application or Discord bot.
+  - Copy every agentic_historian module irrespective of scholarly fit.
+  - Store production secrets, concrete credentials, or restricted paths in this manifest.
+  - Authorize automated production infrastructure changes.
