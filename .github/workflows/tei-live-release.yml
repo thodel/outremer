@@ -1,0 +1,182 @@
+name: TEI live validation and release
+
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: Validate staging, promote the validated release, or roll back production
+        type: choice
+        options: [validate, promote, rollback]
+        default: validate
+        required: true
+      ref:
+        description: Git ref to validate/promote (ignored for rollback)
+        type: string
+        default: main
+        required: true
+      rollback_commit:
+        description: Previously verified commit directory to restore
+        type: string
+        required: false
+
+permissions:
+  contents: read
+
+# Never cancel an inference or promotion midway. The host-side flock also covers
+# manual and scheduled jobs outside GitHub Actions.
+concurrency:
+  group: tei-production-release
+  cancel-in-progress: false
+
+jobs:
+  staging:
+    if: inputs.action != 'rollback'
+    runs-on: [self-hosted, linux, outremer-tei]
+    environment: tei-staging
+    outputs:
+      commit: ${{ steps.release.outputs.commit }}
+      release_dir: ${{ steps.release.outputs.release_dir }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref }}
+          fetch-depth: 0
+
+      - name: Validate, exercise live backends, and stage immutable release
+        id: release
+        env:
+          OUTREMER_ENV_FILE: ${{ vars.OUTREMER_ENV_FILE }}
+          OUTREMER_LIVE_CONFIG: ${{ vars.OUTREMER_LIVE_CONFIG }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "${OUTREMER_ENV_FILE}" && test -r "${OUTREMER_ENV_FILE}"
+          test -n "${OUTREMER_LIVE_CONFIG}" && test -r "${OUTREMER_LIVE_CONFIG}"
+          set -a
+          source "${OUTREMER_ENV_FILE}"
+          set +a
+
+          exec 9>/var/lock/outremer-release.lock
+          flock -n 9 || { echo 'another Outremer release/pipeline job is active'; exit 1; }
+
+          commit="$(git rev-parse HEAD)"
+          work="${OUTREMER_STAGING_DIR}/runs/${GITHUB_RUN_ID}"
+          staging_release_root="${work}/release-root"
+          release_dir="${staging_release_root}/releases/${commit}"
+          mkdir -p "${work}/text/site" "${work}/scan/site" "${release_dir}"
+          cp -a site/. "${work}/text/site/"
+          cp -a site/. "${work}/scan/site/"
+
+          python3.12 -m venv .release-venv
+          .release-venv/bin/pip install -r requirements.lock.txt
+          .release-venv/bin/pip install -e . --no-deps
+
+          .release-venv/bin/python scripts/release_control.py preflight \
+            --config "${OUTREMER_LIVE_CONFIG}" --output "${work}/preflight.json"
+
+          .release-venv/bin/python scripts/run_pipeline.py \
+            --file data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf \
+            --site-dir "${work}/text/site" --bib-dir "${work}/text/bib" \
+            --evidence-dir "${work}/text/evidence" \
+            --entity-feedback-path "${work}/text/entity-feedback.json" --llm-metadata
+          cp data/staging/run_report.json "${work}/text-run-report.json"
+          .release-venv/bin/python scripts/release_control.py gate \
+            --report "${work}/text-run-report.json" --output "${work}/text-gate.json" \
+            --expected-model "${EXTRACTION_MODEL}"
+
+          .release-venv/bin/python scripts/run_pipeline.py \
+            --file tests/fixtures/scans/magna-carta-1215-image-only.pdf \
+            --site-dir "${work}/scan/site" --bib-dir "${work}/scan/bib" \
+            --evidence-dir "${work}/scan/evidence" \
+            --entity-feedback-path "${work}/scan/entity-feedback.json"
+          cp data/staging/run_report.json "${work}/scan-run-report.json"
+          .release-venv/bin/python scripts/release_control.py gate \
+            --report "${work}/scan-run-report.json" --output "${work}/scan-gate.json" \
+            --expected-model "${EXTRACTION_MODEL}" --require-recognition
+
+          .release-venv/bin/python scripts/release_control.py manifest \
+            --preflight "${work}/preflight.json" \
+            --report "${work}/text-run-report.json" \
+            --report "${work}/scan-run-report.json" \
+            --output "${work}/release-manifest.json"
+
+          # run_pipeline has a fixed local report path. The verified copies live
+          # in university staging; never let this transient file enter a release.
+          rm -f data/staging/run_report.json
+
+          rsync -a --delete --exclude .git --exclude .release-venv ./ "${release_dir}/"
+          mv .release-venv "${release_dir}/.venv"
+          cp "${work}/release-manifest.json" "${release_dir}/release-manifest.json"
+          chmod -R a-w "${release_dir}"
+
+          python3 scripts/promote_release.py promote \
+            --release-root "${staging_release_root}" --release "${release_dir}" \
+            --history "${work}/staging-history.jsonl"
+          sudo systemctl restart outremer-staging-web.service
+          curl --fail --silent --show-error "${OUTREMER_STAGING_SMOKE_URL}index.html" >/dev/null
+          curl --fail --silent --show-error "${OUTREMER_STAGING_SMOKE_URL}app.js" >/dev/null
+
+          echo "commit=${commit}" >> "${GITHUB_OUTPUT}"
+          echo "release_dir=${release_dir}" >> "${GITHUB_OUTPUT}"
+
+  production:
+    if: inputs.action == 'promote' && needs.staging.result == 'success'
+    needs: staging
+    runs-on: [self-hosted, linux, outremer-tei]
+    environment: tei-production
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.staging.outputs.commit }}
+          fetch-depth: 1
+      - name: Promote exact staging release
+        env:
+          OUTREMER_RELEASE_ROOT: ${{ vars.OUTREMER_RELEASE_ROOT }}
+          OUTREMER_PRODUCTION_SMOKE_URL: ${{ vars.OUTREMER_PRODUCTION_SMOKE_URL }}
+          STAGING_RELEASE_DIR: ${{ needs.staging.outputs.release_dir }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "${OUTREMER_RELEASE_ROOT}"
+          test -n "${OUTREMER_PRODUCTION_SMOKE_URL}"
+          exec 9>/var/lock/outremer-release.lock
+          flock -n 9 || { echo 'another Outremer release/pipeline job is active'; exit 1; }
+          commit="$(git rev-parse HEAD)"
+          test "${commit}" = "$(basename "${STAGING_RELEASE_DIR}")"
+          production_release="${OUTREMER_RELEASE_ROOT}/releases/${commit}"
+          if test ! -e "${production_release}"; then
+            cp -a "${STAGING_RELEASE_DIR}" "${production_release}"
+          fi
+          python3 scripts/promote_release.py promote \
+            --release-root "${OUTREMER_RELEASE_ROOT}" --release "${production_release}" \
+            --history "${OUTREMER_RELEASE_ROOT}/production-history.jsonl"
+          sudo systemctl restart outremer-web.service
+          curl --fail --silent --show-error "${OUTREMER_PRODUCTION_SMOKE_URL}index.html" >/dev/null
+          curl --fail --silent --show-error "${OUTREMER_PRODUCTION_SMOKE_URL}app.js" >/dev/null
+
+  rollback:
+    if: inputs.action == 'rollback'
+    runs-on: [self-hosted, linux, outremer-tei]
+    environment: tei-production
+    steps:
+      - uses: actions/checkout@v4
+      - name: Restore a previously verified immutable release
+        env:
+          OUTREMER_RELEASE_ROOT: ${{ vars.OUTREMER_RELEASE_ROOT }}
+          OUTREMER_PRODUCTION_SMOKE_URL: ${{ vars.OUTREMER_PRODUCTION_SMOKE_URL }}
+          ROLLBACK_COMMIT: ${{ inputs.rollback_commit }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "${OUTREMER_RELEASE_ROOT}"
+          test -n "${OUTREMER_PRODUCTION_SMOKE_URL}"
+          test "${ROLLBACK_COMMIT}" = "$(printf '%s' "${ROLLBACK_COMMIT}" | tr -cd '0-9a-f')"
+          test "${#ROLLBACK_COMMIT}" -eq 40
+          exec 9>/var/lock/outremer-release.lock
+          flock -n 9 || { echo 'another Outremer release/pipeline job is active'; exit 1; }
+          python3 scripts/promote_release.py rollback \
+            --release-root "${OUTREMER_RELEASE_ROOT}" \
+            --release "${OUTREMER_RELEASE_ROOT}/releases/${ROLLBACK_COMMIT}" \
+            --history "${OUTREMER_RELEASE_ROOT}/production-history.jsonl"
+          sudo systemctl restart outremer-web.service
+          curl --fail --silent --show-error "${OUTREMER_PRODUCTION_SMOKE_URL}index.html" >/dev/null
