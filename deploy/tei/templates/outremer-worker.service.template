@@ -1,0 +1,37 @@
+[Unit]
+Description=Outremer production pipeline worker
+After=network-online.target
+Wants=network-online.target
+ConditionPathIsDirectory=@RELEASE_ROOT@/current
+
+[Service]
+Type=oneshot
+User=@RUNTIME_USER@
+Group=@RUNTIME_USER@
+WorkingDirectory=@RELEASE_ROOT@/current
+EnvironmentFile=/etc/outremer/outremer.env
+ExecStart=@RELEASE_ROOT@/current/.venv/bin/python scripts/run_pipeline.py --input-dir ${OUTREMER_SOURCE_DIR} --site-dir ${OUTREMER_SITE_DIR} --bib-dir ${OUTREMER_BIB_DIR} --evidence-dir ${OUTREMER_EVIDENCE_DIR} --entity-feedback-path ${OUTREMER_ENTITY_FEEDBACK_PATH} --review-decisions-path ${OUTREMER_REVIEW_DECISIONS_PATH}
+TimeoutStartSec=6h
+UMask=0027
+TasksMax=512
+MemoryMax=8G
+CPUQuota=400%
+
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+LockPersonality=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+SystemCallArchitectures=native
+ReadOnlyPaths=@RELEASE_ROOT@
+ReadWritePaths=@STATE_ROOT@
+
+# Failure is visible to systemd and monitoring; no Restart loop for expensive jobs.
+StandardOutput=journal
+StandardError=journal
