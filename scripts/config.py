@@ -65,6 +65,10 @@ EXTRACTION_MODEL   = _get("EXTRACTION_MODEL",   "qwen3-30b-a3b-instruct")
 ORCHESTRATOR_MODEL = _get("ORCHESTRATOR_MODEL", "minimax-m2.7")
 QWEN3_VL_MODEL     = _get("QWEN3_VL_MODEL",     "qwen3-vl-30b-a3b-instruct")
 EXTRACTION_SEED    = int(_get("EXTRACTION_SEED", "42"))
+# Reasoning models (gpt-oss-120b) spend tokens on reasoning before emitting
+# content; a tight budget truncates the JSON mid-array. agentic_historian
+# carries the same lesson as GPUSTACK_TEXT_MAX_TOKENS.
+EXTRACTION_MAX_TOKENS = int(_get("EXTRACTION_MAX_TOKENS", "4096"))
 
 # OCR
 # "qwen3-vl" - GPUStack Qwen3 VL (default); falls back to Mistral if empty

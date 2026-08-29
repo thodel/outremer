@@ -1206,12 +1206,12 @@ def _extract_gpustack_chunk(
     # exists on the stack — while claiming to mirror config; every chunk
     # 404ed regardless of EXTRACTION_MODEL and the pipeline silently
     # degraded to heuristic NER even inside the university network.
-    from config import EXTRACTION_MODEL
+    from config import EXTRACTION_MAX_TOKENS, EXTRACTION_MODEL
 
     raw_text = _llm_generate(
         prompt,
         model=EXTRACTION_MODEL,
-        max_tokens=4096,
+        max_tokens=EXTRACTION_MAX_TOKENS,
         temperature=0.1,
     )
     raw_text = _repair_json(raw_text)
