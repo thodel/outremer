@@ -172,32 +172,74 @@ def _ocr_image(path: Path) -> str:
     return result
 
 
-def _qwen3vl_ocr(path: Path) -> str:
-    """GPUStack Qwen3 VL 30B for primary document OCR."""
+def _page_images_as_data_urls(path: Path, max_pages: int = 8) -> list[str]:
+    """Extract page images from a PDF as data: URLs for a vision model.
+
+    A vision model needs real image parts. The embedded XObject is used
+    directly where present (no re-encoding); pages without one are skipped
+    rather than silently sent as an empty image.
+    """
     import base64
 
+    from pypdf import PdfReader
+
+    urls: list[str] = []
+    reader = PdfReader(str(path))
+    for page in reader.pages[:max_pages]:
+        try:
+            images = list(page.images)
+        except Exception as exc:  # pillow missing, exotic filters, …
+            logger.warning("Cannot extract page image: %s", exc)
+            return []
+        if not images:
+            continue
+        blob = images[0].data
+        mime = "image/png" if blob[:8] == b"\x89PNG\r\n\x1a\n" else "image/jpeg"
+        urls.append(f"data:{mime};base64," + base64.b64encode(blob).decode())
+    return urls
+
+
+def _qwen3vl_ocr(path: Path) -> str:
+    """GPUStack Qwen3-VL for document recognition (multimodal, not text)."""
     from config import QWEN3_VL_MODEL
 
-    b64 = base64.b64encode(path.read_bytes()).decode()
+    # A base64 PDF pasted into the TEXT prompt — the previous implementation —
+    # never reached the model: measured on tei it produced 65k input tokens and
+    # HTTP 400, and even within the window a vision model cannot read a blob of
+    # text tokens. Images must travel as image parts.
+    images = _page_images_as_data_urls(path)
+    if not images:
+        logger.warning("No page image extracted from %s — cannot run VLM OCR.", path.name)
+        return ""
+
+    # No [NOT_A_PAGE] escape hatch: on a genuine medieval manuscript the model
+    # took it rather than attempting the hand (verified on the Magna Carta
+    # fixture). Naming the material and the task keeps it transcribing.
     prompt = (
-        "You are an OCR system. Given an image of a document page, transcribe ALL text "
-        "exactly as it appears. Preserve line breaks, capitalization, and unusual characters. "
-        "If the image is not a document page, respond with: [NOT_A_PAGE]\n\n"
-        f"Image data: data:application/pdf;base64,{b64}"
+        "This is a photograph of a historical manuscript or printed page. "
+        "You are an expert palaeographer. Transcribe the visible text line by "
+        "line, exactly as written: preserve the original orthography, "
+        "abbreviations, line breaks and capitalisation, and expand nothing. "
+        "Where a passage is illegible write [illegible]. "
+        "Output only the transcription, with no commentary."
     )
     try:
         text = _llm_generate(
             prompt,
             model=QWEN3_VL_MODEL,
+            images=images,
             max_tokens=8192,
             temperature=0.0,
         )
-        if text == "[NOT_A_PAGE]" or not text.strip():
+        if not text.strip():
             return ""
-        logger.info("GPUStack OCR returned %d chars.", len(text))
+        logger.info(
+            "GPUStack VLM OCR returned %d chars from %d page image(s).",
+            len(text), len(images),
+        )
         return text.strip()
     except Exception as exc:
-        logger.error("GPUStack OCR error: %s", exc)
+        logger.error("GPUStack VLM OCR error: %s", exc)
         return ""
 
 

@@ -75,6 +75,7 @@ def generate(
     prompt: str,
     *,
     system: str | None = None,
+    images: list[str] | None = None,
     model: str | None = None,
     **kwargs: Any,
 ) -> str:
@@ -84,6 +85,7 @@ def generate(
     Args:
         prompt   — user message
         system   — optional system prompt
+        images   — optional data: URLs sent as multimodal image parts
         model    — override EXTRACTION_MODEL (None = use config default)
         **kwargs — passed through to the API (temperature, max_tokens, …)
 
@@ -93,7 +95,17 @@ def generate(
     messages = []
     if system:
         messages.append({"role": "system", "content": system})
-    messages.append({"role": "user", "content": prompt})
+    if images:
+        # Vision models need the image as a structured content part. Pasting a
+        # base64 blob into the text prompt does NOT work: the model sees an
+        # opaque token string, and a page-sized document blows the context
+        # window outright (measured on tei: 65k tokens → HTTP 400).
+        content: list[dict[str, Any]] = [{"type": "text", "text": prompt}]
+        for data_url in images:
+            content.append({"type": "image_url", "image_url": {"url": data_url}})
+        messages.append({"role": "user", "content": content})
+    else:
+        messages.append({"role": "user", "content": prompt})
     kwargs.setdefault("seed", EXTRACTION_SEED)
 
     client = get_client()

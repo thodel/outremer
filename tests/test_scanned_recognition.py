@@ -64,3 +64,43 @@ def test_live_image_only_pdf_returns_non_empty_text():
     text = run_pipeline.read_input(FIXTURE)
     assert text.strip()
     assert sum(run_pipeline._recognition_engines_used.values()) == 1
+
+
+def test_page_images_extracted_as_image_data_urls():
+    """The VLM path must send real image parts.
+
+    The previous implementation base64-encoded the PDF into the TEXT prompt:
+    measured against GPUStack on tei that produced 65k input tokens and HTTP
+    400, and a vision model cannot read a blob of text tokens anyway.
+    """
+    urls = run_pipeline._page_images_as_data_urls(FIXTURE)
+    assert urls, "fixture page carries an embedded image"
+    assert urls[0].startswith("data:image/"), urls[0][:40]
+    assert "application/pdf" not in urls[0]
+
+
+def test_vlm_ocr_passes_images_not_text_blob(monkeypatch):
+    seen = {}
+
+    def fake_generate(prompt, *, model=None, images=None, **kw):
+        seen["prompt"] = prompt
+        seen["images"] = images
+        return "Johannes Dei gratia rex Anglie"
+
+    monkeypatch.setattr(run_pipeline, "_llm_generate", fake_generate)
+    out = run_pipeline._qwen3vl_ocr(FIXTURE)
+
+    assert out == "Johannes Dei gratia rex Anglie"
+    assert seen["images"] and seen["images"][0].startswith("data:image/")
+    assert "base64" not in seen["prompt"], "image must not ride in the text prompt"
+    # no [NOT_A_PAGE] escape hatch — the model took it on a real manuscript
+    assert "NOT_A_PAGE" not in seen["prompt"]
+
+
+def test_vlm_ocr_returns_empty_when_no_page_image(monkeypatch, tmp_path):
+    monkeypatch.setattr(run_pipeline, "_page_images_as_data_urls", lambda p, **k: [])
+    called = {"n": 0}
+    monkeypatch.setattr(run_pipeline, "_llm_generate",
+                        lambda *a, **k: called.__setitem__("n", called["n"] + 1) or "x")
+    assert run_pipeline._qwen3vl_ocr(FIXTURE) == ""
+    assert called["n"] == 0, "must not call the model without an image"
