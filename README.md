@@ -18,18 +18,23 @@ A proof-of-concept pipeline for AI-assisted prosopography of the medieval Levant
 
 ## Architecture
 
-**Layer 1 — LLM extraction.** Reads historical texts (PDF or plain text) and extracts person-like signals: names, titles, epithets, roles, collective groups. Uses GPUStack-hosted models (Qwen3-30B-A3B for extraction, Qwen3-VL for scanned-PDF OCR, MiniMax-M2.7 for orchestration). Falls back to heuristic regex NER when GPUStack is unavailable, and optionally to Mistral OCR for scans.
+**Layer 1 — LLM extraction.** Reads historical texts (PDF or plain text) and extracts person-like signals: names, titles, epithets, roles, collective groups. Uses GPUStack-hosted models (`qwen3.8-27b` for extraction, `qwen3-vl-30b-a3b-instruct` for scanned-PDF OCR, `minimax-m2.7` for orchestration). Falls back to heuristic regex NER when GPUStack is unavailable, and optionally to Mistral OCR for scans.
 
-> **Which engine produced the published data.** GPUStack sits behind the
-> university network: GitHub Actions cannot reach it and every extraction chunk
-> returns `403 Forbidden`. The nightly run therefore degrades to the heuristic
-> regex extractor, and **the data published to GitHub Pages is heuristic output,
-> not Qwen3 output.** Model-quality figures require a run from inside the
-> network. Each document records what actually produced it in
-> `extraction_engine` (`gpustack` / `mixed` / `heuristic`, with chunk counts),
-> the run report aggregates it under `extraction.documents_by_engine`, and a
-> degraded run emits a CI warning. Until 2026-07-30 this degradation was silent
-> and the output was labelled `gpustack` regardless.
+> **Which engine produced the published data.** Since 2026-08-29 the nightly
+> run happens on `tei.dh.unibe.ch` inside the university network, where GPUStack
+> is reachable, and a **provenance gate** refuses to publish anything the model
+> did not produce (heuristic or mixed extraction, any fallback chunk, or a
+> wrong model aborts the run before the commit). Both the tei site and the
+> GitHub Pages copy therefore carry real model output; every document records
+> its engine in `extraction_engine` (`gpustack` / `mixed` / `heuristic`, with
+> chunk counts and the seed), and the run report aggregates it under
+> `extraction.documents_by_engine`.
+>
+> GitHub-hosted runners still cannot reach GPUStack (every chunk `403`), so the
+> Actions pipeline is `workflow_dispatch`-only — running it would regress the
+> corpus to heuristic output. Before the tei move that degradation was the
+> silent default, and until 2026-07-30 the output was labelled `gpustack`
+> regardless.
 
 **Layer 2 — KG linking.** Fuzzy-matches extracted mentions against a curated authority file of known crusader persons. Returns ranked candidates with confidence scores and flags ambiguous or multi-candidate matches.
 
@@ -99,8 +104,14 @@ ATR_API_KEY=your-gateway-token
 ATR_HTTP_TIMEOUT=300
 
 # Model names (check GPUStack dashboard for exact names)
-EXTRACTION_MODEL=qwen3-30b-a3b-instruct
+# NB: qwen3-30b-a3b-instruct no longer exists on the stack (checked 2026-08-29)
+EXTRACTION_MODEL=qwen3.8-27b
 EXTRACTION_SEED=42
+EXTRACTION_MAX_TOKENS=6000
+# Qwen3 hybrids think silently until the budget is gone and return empty
+# content unless plain-answer mode is forced:
+EXTRACTION_DISABLE_THINKING=true
+GPUSTACK_TIMEOUT=300
 ORCHESTRATOR_MODEL=minimax-m2.7
 QWEN3_VL_MODEL=qwen3-vl-30b-a3b-instruct
 
