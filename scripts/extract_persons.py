@@ -60,7 +60,6 @@ logger = logging.getLogger(__name__)
 # ──────────────────────────────────────────────
 
 # GPUStack model — see scripts/config.py / .env.gpustack
-_EXTRACTION_MODEL = "qwen3-30b-a3b-instruct"  # from config.EXTRACTION_MODEL at runtime
 _CHUNK_SIZE = 5_500   # chunk size for GPUStack extraction
 _CHUNK_OVERLAP = 800
 
@@ -1202,9 +1201,16 @@ def _extract_gpustack_chunk(
     """Call GPUStack on a single chunk. Returns parsed JSON or raises."""
     clean_chunk = _sanitise_text(_nfc(chunk))
     prompt = _build_prompt(language, blocked_terms=blocked_terms) + clean_chunk
+    # Resolve the model from config at CALL time. A module-level constant
+    # here was hardcoded to qwen3-30b-a3b-instruct — a model that no longer
+    # exists on the stack — while claiming to mirror config; every chunk
+    # 404ed regardless of EXTRACTION_MODEL and the pipeline silently
+    # degraded to heuristic NER even inside the university network.
+    from config import EXTRACTION_MODEL
+
     raw_text = _llm_generate(
         prompt,
-        model=_EXTRACTION_MODEL,
+        model=EXTRACTION_MODEL,
         max_tokens=4096,
         temperature=0.1,
     )

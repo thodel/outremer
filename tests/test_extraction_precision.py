@@ -220,3 +220,27 @@ def test_clean_run_still_reports_gpustack(monkeypatch):
 
 def _raise_403(*args, **kwargs):
     raise RuntimeError("403 Forbidden: Access denied")
+
+
+def test_chunk_extraction_resolves_model_at_call_time(monkeypatch):
+    """The chunk call must use config.EXTRACTION_MODEL at CALL time.
+
+    A module-level constant was hardcoded to a model that no longer exists
+    on the stack ("qwen3-30b-a3b-instruct") while its comment claimed it
+    mirrored config — every chunk 404ed regardless of the environment, even
+    inside the university network.
+    """
+    import extract_persons as E
+
+    import config
+
+    monkeypatch.setattr(config, "EXTRACTION_MODEL", "model-set-after-import")
+    seen = {}
+
+    def fake_generate(prompt, *, model=None, **kw):
+        seen["model"] = model
+        return '{"persons": [], "metadata": {}}'
+
+    monkeypatch.setattr(E, "_llm_generate", fake_generate)
+    E._extract_gpustack_chunk("Godfrey took the cross.", language=None, blocked_terms=None)
+    assert seen["model"] == "model-set-after-import"
