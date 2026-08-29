@@ -31,6 +31,31 @@
   `rerun_pipeline_fixed.py` deleted; `llm_client.py` got offline unit
   tests (retry/backoff, message building).
 
+## 2026-08-29 — Umzug auf tei: Extraktion läuft erstmals wirklich auf dem Modell
+
+Produktionspfad ist jetzt ein Cron-Worker auf `tei.dh.unibe.ch` (03:15,
+`deploy/tei/nightly.sh`): preflight → Pipeline → **Provenance-Gate** →
+Publish. Degradierte Läufe publizieren nichts. Der Actions-Nightly, der
+monatelang Heuristik-Output als Modell-Output publizierte, ist auf
+`workflow_dispatch` reduziert. PRs #117–#120 (ADR 0001, Deploy-Paket,
+Release-Gate, Capability-Adapter) gemerged; Root-Vollausbau: #123.
+
+Erster gate-geprüfter Modell-Lauf (`a5bd6da`): alle Dokumente
+`gpustack/qwen3.8-27b`, 0 Fallback-Chunks, Seed 42. Vier Befunde aus der
+Durchführung, jeder für sich fatal: das Extraktionsmodell existierte auf
+dem Stack nicht mehr; `_EXTRACTION_MODEL` war hartkodiert (Import-Zeit,
+`082e19e`); Qwen3-Hybrid liefert im Thinking-Mode leeren content
+(`EXTRACTION_DISABLE_THINKING`, `fcfb792`); Client-Timeout 120s < reale
+Generationszeit (`GPUSTACK_TIMEOUT=300`).
+
+Erste echte Modellzahl (munro full-gold, DRAFT): P 0.226 / R 0.864 /
+F1 0.359 — nicht direkt mit der Heuristik (0.568/0.955/0.712)
+vergleichbar: das Modell extrahiert prompt-gemäss auch unbenannte
+Individuen, die das eng benannte 22-Personen-Gold als FP zählt.
+Linkverteilung rileysmith: 9 high / 35 medium / 48 no_match gegen
+15/26/238 bei Heuristik. Authority-Lift exakt 0.0000 (Gold korrupt, #97
+unverändert der Blocker). Weiterarbeit: #116-Kommentar, Epics #121/#122.
+
 ## What was done 2026-07-12 (post-completion repair + evaluation)
 
 The 2026-07-10 "complete" state did not survive contact with CI: the nightly
