@@ -1,0 +1,11 @@
+[Unit]
+Description=Schedule the Outremer production pipeline
+
+[Timer]
+OnCalendar=*-*-* 03:00:00 Europe/Zurich
+Persistent=true
+RandomizedDelaySec=10m
+Unit=outremer-worker.service
+
+[Install]
+WantedBy=timers.target
