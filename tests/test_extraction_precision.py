@@ -266,9 +266,8 @@ def test_unparsable_chunk_answer_is_retried_before_fallback(monkeypatch):
 
 
 def test_persistently_unparsable_chunk_still_raises(monkeypatch):
-    import pytest
-
     import extract_persons as E
+    import pytest
 
     def always_bad(chunk, *, language, blocked_terms):
         raise ValueError("Unrecoverable JSON")
