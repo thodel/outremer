@@ -1,0 +1,17 @@
+# User-level unit for the interim tei deployment (#114 v1; Linger=yes on tei).
+# Install:  cp deploy/tei/outremer-review-api.user.service ~/.config/systemd/user/outremer-review-api.service
+#           systemctl --user daemon-reload && systemctl --user enable --now outremer-review-api
+# The root-owned successor lands with #123's packaged layout.
+[Unit]
+Description=Outremer review API (loopback; nginx proxies /outremer/api/)
+
+[Service]
+Environment=REVIEW_DB=%h/outremer/state/reviews.db
+EnvironmentFile=-%h/outremer/etc/outremer.env
+WorkingDirectory=%h/outremer/work
+ExecStart=%h/outremer/work/.venv/bin/python scripts/review_api.py --db ${REVIEW_DB} --port 8089
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target
