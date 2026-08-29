@@ -1,26 +1,14 @@
 name: Pipeline (extract persons + build site data)
 
+# Extraction moved to tei.dh.unibe.ch (2026-08-29): the nightly worker there
+# runs inside the university network and reaches GPUStack, so it produces real
+# model output. GitHub-hosted runners cannot reach GPUStack (403) and would
+# silently regress the published corpus to heuristic NER — which is exactly
+# what this workflow did until the tei move. Manual dispatch remains as an
+# emergency fallback; its output is labelled by the honest engine provenance.
 on:
-  push:
-    branches: ["main"]
-    # Don't re-run when the bot itself pushes data
-    paths-ignore:
-      - "site/data/**"
-      - "site/bib/**"
-      - "site/index.json"
-      - "site/evidence/**"
-      - "bib/**"
-      - "data/staging/**"
-      - "data/decisions.json"
-      - "data/wikidata_matches.json"
-      - "data/entity_feedback.json"
-      - "data/evidence/**"
-      - "requirements.lock.txt"
   workflow_dispatch:
-  schedule:
-    - cron: "0 2 * * *"   # nightly 02:00 UTC
 
-# Only one pipeline run at a time; cancel in-progress on new push
 concurrency:
   group: pipeline
   cancel-in-progress: true
