@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "profile": "tei-production",
+  "capabilities": [
+    {
+      "id": "gpustack",
+      "required": true,
+      "kind": "openai_models",
+      "url_env": "GPUSTACK_BASE_URL",
+      "health_path": "/models",
+      "auth": "bearer",
+      "credential_env": "GPUSTACK_API_KEY",
+      "required_model_envs": [
+        "EXTRACTION_MODEL",
+        "QWEN3_VL_MODEL",
+        "ORCHESTRATOR_MODEL"
+      ],
+      "timeout_seconds": 15
+    },
+    {
+      "id": "atr",
+      "required": true,
+      "kind": "atr",
+      "url_env": "ATR_GATEWAY_URL",
+      "health_path": "/health",
+      "models_path": "/models",
+      "auth": "x-api-key",
+      "credential_env": "ATR_API_KEY",
+      "timeout_seconds": 15
+    },
+    {
+      "id": "mcp",
+      "required": false,
+      "kind": "http_json",
+      "url_env": "MCP_BASE_URL",
+      "health_path": "/health",
+      "auth": "bearer-optional",
+      "credential_env": "MCP_API_KEY",
+      "timeout_seconds": 10
+    },
+    {
+      "id": "qlever",
+      "required": false,
+      "kind": "http",
+      "url_env": "QLEVER_ENDPOINT",
+      "health_path": "/",
+      "auth": "none",
+      "timeout_seconds": 10
+    },
+    {
+      "id": "voyant",
+      "required": false,
+      "kind": "http",
+      "url_env": "VOYANT_API_URL",
+      "health_path": "/",
+      "auth": "none",
+      "timeout_seconds": 10
+    }
+  ],
+  "storage": [
+    {"id": "source", "path_env": "OUTREMER_SOURCE_DIR", "writable": false},
+    {"id": "state", "path_env": "OUTREMER_STATE_DIR", "writable": true},
+    {"id": "staging", "path_env": "OUTREMER_STAGING_DIR", "writable": true}
+  ],
+  "schema": {"evidence": "1.0.0"}
+}
