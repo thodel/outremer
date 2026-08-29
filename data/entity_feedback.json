@@ -999,6 +999,26 @@
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
       ]
     },
+    "bedouin": {
+      "count": 1,
+      "last_context": "allusion describes a bedouin wandering lost in the desert by night, who sees in the distance the flickering",
+      "last_seen": "2026-08-29T11:15:28.041897+00:00",
+      "name": "bedouin",
+      "per_source": {
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
+          "count": 1,
+          "reasons": {
+            "lowercase_non_name": 1
+          }
+        }
+      },
+      "reasons": {
+        "lowercase_non_name": 1
+      },
+      "sources": [
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
+      ]
+    },
     "beginnings": {
       "count": 1,
       "last_context": " Moffett, A History of Christianity inAsia,vol. 1:Beginnings to1500 (San Francisco: Harper San Francisco, 1992",
@@ -1887,9 +1907,9 @@
       ]
     },
     "crusaders": {
-      "count": 14,
-      "last_context": "Tortosa was taken and the crusaders pressed on, leaving Raymond to subdue the area around it",
-      "last_seen": "2026-08-29T08:32:59.143899+00:00",
+      "count": 11,
+      "last_context": "probably in early September after the departure of most of the crusaders",
+      "last_seen": "2026-08-29T11:25:47.171028+00:00",
       "name": "crusaders",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
@@ -1905,14 +1925,14 @@
           }
         },
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
-          "count": 7,
+          "count": 4,
           "reasons": {
-            "known_bad_entity": 7
+            "known_bad_entity": 4
           }
         }
       },
       "reasons": {
-        "known_bad_entity": 14
+        "known_bad_entity": 11
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
@@ -5462,20 +5482,20 @@
       ]
     },
     "monk": {
-      "count": 1,
-      "last_context": "there was a monk there in his cell by the name of Bahira, who was well versed in the knowledge",
-      "last_seen": "2026-08-29T08:22:24.450464+00:00",
+      "count": 2,
+      "last_context": "When the caravan reached Busra in Syria, there was a monk there in his cell by the name of Bahira",
+      "last_seen": "2026-08-29T11:15:28.041897+00:00",
       "name": "monk",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
-          "count": 1,
+          "count": 2,
           "reasons": {
-            "lowercase_non_name": 1
+            "lowercase_non_name": 2
           }
         }
       },
       "reasons": {
-        "lowercase_non_name": 1
+        "lowercase_non_name": 2
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
@@ -7879,26 +7899,26 @@
       ]
     },
     "the pope": {
-      "count": 2,
+      "count": 13,
       "last_context": "Thomas Fuller, later, put it bluntly, the pope \"got a bag of money by it.\"",
-      "last_seen": "2026-08-29T08:26:28.141216+00:00",
-      "name": "the pope",
+      "last_seen": "2026-08-29T11:19:29.244077+00:00",
+      "name": "the Pope",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
           "count": 1,
           "reasons": {
-            "lowercase_non_name": 1
+            "known_bad_entity": 1
           }
         },
         "data/raw/Munro-PopesCrusades-1916.pdf": {
-          "count": 1,
+          "count": 12,
           "reasons": {
-            "lowercase_non_name": 1
+            "known_bad_entity": 12
           }
         }
       },
       "reasons": {
-        "lowercase_non_name": 2
+        "known_bad_entity": 13
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
