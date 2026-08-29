@@ -244,3 +244,35 @@ def test_chunk_extraction_resolves_model_at_call_time(monkeypatch):
     monkeypatch.setattr(E, "_llm_generate", fake_generate)
     E._extract_gpustack_chunk("Godfrey took the cross.", language=None, blocked_terms=None)
     assert seen["model"] == "model-set-after-import"
+
+
+def test_unparsable_chunk_answer_is_retried_before_fallback(monkeypatch):
+    """One malformed model answer must not cost the chunk (and thereby the
+    provenance gate the whole nightly publish); retry once first."""
+    import extract_persons as E
+
+    calls = {"n": 0}
+
+    def flaky(chunk, *, language, blocked_terms):
+        calls["n"] += 1
+        if calls["n"] == 1:
+            raise ValueError("Unrecoverable JSON from GPUStack (length=436)")
+        return {"persons": [{"name": "Godfrey"}], "metadata": {}}
+
+    monkeypatch.setattr(E, "_extract_gpustack_chunk", flaky)
+    out = E._chunk_with_parse_retry("text", language=None, blocked_terms=None)
+    assert calls["n"] == 2
+    assert out["persons"][0]["name"] == "Godfrey"
+
+
+def test_persistently_unparsable_chunk_still_raises(monkeypatch):
+    import pytest
+
+    import extract_persons as E
+
+    def always_bad(chunk, *, language, blocked_terms):
+        raise ValueError("Unrecoverable JSON")
+
+    monkeypatch.setattr(E, "_extract_gpustack_chunk", always_bad)
+    with pytest.raises(ValueError):
+        E._chunk_with_parse_retry("text", language=None, blocked_terms=None)

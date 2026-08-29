@@ -1233,6 +1233,38 @@ def _extract_gpustack_chunk(
     raise ValueError(f"Unrecoverable JSON from GPUStack (length={len(raw_text)})")
 
 
+
+def _chunk_with_parse_retry(
+    chunk: str,
+    *,
+    language: str | None,
+    blocked_terms: list[str] | None,
+    attempts: int = 2,
+) -> dict[str, Any]:
+    """Retry a chunk whose RESPONSE was unparsable, before falling back.
+
+    llm_client's with_retry only covers transport errors; a syntactically
+    broken model answer raised ValueError straight through and the caller
+    substituted heuristic NER for the chunk — which the provenance gate then
+    rightly rejects for the whole run. One well-formed second attempt is
+    cheaper than losing the night's publish.
+    """
+    last: Exception | None = None
+    for attempt in range(attempts):
+        try:
+            return _extract_gpustack_chunk(
+                chunk, language=language, blocked_terms=blocked_terms
+            )
+        except ValueError as exc:
+            last = exc
+            logger.warning(
+                "Chunk answer unparsable (attempt %d/%d): %s",
+                attempt + 1, attempts, exc,
+            )
+    assert last is not None
+    raise last
+
+
 def _extract_gpustack(
     text: str,
     use_llm_metadata: bool,
@@ -1256,7 +1288,7 @@ def _extract_gpustack(
 
     for offset, chunk in chunks:
         try:
-            result = _extract_gpustack_chunk(
+            result = _chunk_with_parse_retry(
                 chunk,
                 language=language,
                 blocked_terms=blocked_terms,
