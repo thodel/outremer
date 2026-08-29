@@ -53,6 +53,19 @@ VENV="$WORK/.venv/bin"
 "$VENV/python" scripts/nightly_status.py \
   --gate "$LOGDIR/gate-latest.json" || true
 
+# 4c) Mirror the freshly built site into the served state directory, so the
+# public page reflects this run. The web unit runs as `outremer` and cannot
+# read /home/dh (mode 0750) — hence a copy into shared state rather than
+# pointing the server at the work tree. Requires group write, granted by
+# deploy/tei/fix-worker-split.sh.
+PUBLIC_SITE="${OUTREMER_PUBLIC_SITE:-/var/lib/outremer/state/site}"
+if [ -d "$PUBLIC_SITE" ] && [ -w "$PUBLIC_SITE" ]; then
+  rsync -a --delete --exclude '.git' site/ "$PUBLIC_SITE"/
+  echo "mirrored site/ → $PUBLIC_SITE"
+else
+  echo "note: $PUBLIC_SITE not writable — public site not refreshed"
+fi
+
 # 5) Publish.
 git add site/index.json site/data site/bib site/evidence bib \
         data/entity_feedback.json data/evidence data/staging/eval_history.jsonl
