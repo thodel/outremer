@@ -1,0 +1,37 @@
+# Include inside the TLS server block for tei.dh.unibe.ch.
+# nginx terminates TLS; both upstreams listen on loopback only.
+
+location = @PUBLIC_BASE_PATH_NO_SLASH@ {
+    return 308 @PUBLIC_BASE_PATH@;
+}
+
+# Reserve the server-side review/API boundary introduced by #114. Keeping it
+# more specific than the site route prevents an API failure from falling through
+# to static HTML.
+location ^~ @PUBLIC_BASE_PATH@api/ {
+    proxy_pass @API_UPSTREAM@/;
+    proxy_http_version 1.1;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_set_header X-Forwarded-Host $host;
+    proxy_set_header X-Forwarded-Prefix @PUBLIC_BASE_PATH@;
+    proxy_read_timeout 300s;
+    proxy_send_timeout 300s;
+    client_max_body_size 100m;
+    proxy_buffering off;
+}
+
+location ^~ @PUBLIC_BASE_PATH@ {
+    proxy_pass @WEB_UPSTREAM@/;
+    proxy_http_version 1.1;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_set_header X-Forwarded-Host $host;
+    proxy_set_header X-Forwarded-Prefix @PUBLIC_BASE_PATH@;
+    proxy_read_timeout 60s;
+    proxy_redirect off;
+}

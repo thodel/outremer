@@ -1,0 +1,37 @@
+[Unit]
+Description=Outremer static research interface
+After=network.target
+ConditionPathIsDirectory=@STATE_ROOT@/state/site
+
+[Service]
+Type=simple
+User=@RUNTIME_USER@
+Group=@RUNTIME_USER@
+WorkingDirectory=@RELEASE_ROOT@/current
+EnvironmentFile=/etc/outremer/outremer.env
+ExecStart=@RELEASE_ROOT@/current/.venv/bin/python -m http.server ${OUTREMER_WEB_PORT} --bind 127.0.0.1 --directory @STATE_ROOT@/state/site
+Restart=on-failure
+RestartSec=5s
+TimeoutStopSec=30s
+TasksMax=128
+MemoryMax=512M
+CPUQuota=200%
+
+# The web process needs no mutable filesystem access.
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+LockPersonality=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+SystemCallArchitectures=native
+ReadOnlyPaths=@RELEASE_ROOT@
+ReadOnlyPaths=@STATE_ROOT@
+
+[Install]
+WantedBy=multi-user.target
