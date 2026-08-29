@@ -35,6 +35,9 @@ if [ ! -f /etc/outremer/outremer.env ]; then
     cp /home/dh/outremer/etc/outremer.env /etc/outremer/outremer.env
     # state paths for the packaged layout (interim file points into the checkout)
     cat >> /etc/outremer/outremer.env <<'ENVEOF'
+OUTREMER_WEB_PORT=8088
+OUTREMER_STATE_DIR=/var/lib/outremer/state
+OUTREMER_CACHE_DIR=/var/cache/outremer
 OUTREMER_SOURCE_DIR=/var/lib/outremer/source
 OUTREMER_SITE_DIR=/var/lib/outremer/state/site
 OUTREMER_BIB_DIR=/var/lib/outremer/state/bib
@@ -46,6 +49,12 @@ ENVEOF
     echo "!! no interim env found — copy outremer.env.example and fill it"; exit 1
   fi
 fi
+# Backfill for hosts installed before these keys were added (the web unit
+# exits 2 on an empty ${OUTREMER_WEB_PORT}).
+for kv in OUTREMER_WEB_PORT=8088 OUTREMER_STATE_DIR=/var/lib/outremer/state \
+          OUTREMER_CACHE_DIR=/var/cache/outremer; do
+  grep -q "^${kv%%=*}=" /etc/outremer/outremer.env || echo "$kv" >> /etc/outremer/outremer.env
+done
 chown root:outremer /etc/outremer/outremer.env && chmod 0640 /etc/outremer/outremer.env
 
 echo "== 4. state seed =="
@@ -69,7 +78,15 @@ echo "ADD inside the tei.dh.unibe.ch TLS server block:"
 echo "    include snippets/outremer.conf;"
 echo "then: nginx -t && systemctl reload nginx"
 echo
-echo "== 7. retire the interim cron (run as dh) =="
-echo "    crontab -l | grep -v 'outremer/work/deploy/tei' | crontab -"
+echo "== 7. retire the interim nightly cron =="
+# The packaged worker timer and the interim cron would both run the pipeline
+# (03:07 vs 03:15, ~20 min each) and both push — remove the nightly cron line.
+# The healthcheck line is kept: it still reads ~dh logs until #115 is repointed.
+for u in dh; do
+  if crontab -u "$u" -l 2>/dev/null | grep -q 'deploy/tei/nightly.sh'; then
+    crontab -u "$u" -l 2>/dev/null | grep -v 'deploy/tei/nightly.sh' | crontab -u "$u" -
+    echo "   removed nightly cron for $u (packaged timer owns it now)"
+  fi
+done
 echo
 echo "done — verify: systemctl status outremer-web outremer-worker.timer"
