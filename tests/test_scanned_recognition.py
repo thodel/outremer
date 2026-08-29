@@ -93,8 +93,11 @@ def test_vlm_ocr_passes_images_not_text_blob(monkeypatch):
     assert out == "Johannes Dei gratia rex Anglie"
     assert seen["images"] and seen["images"][0].startswith("data:image/")
     assert "base64" not in seen["prompt"], "image must not ride in the text prompt"
-    # no [NOT_A_PAGE] escape hatch — the model took it on a real manuscript
+    # No escape hatch of ANY kind: measured on this fixture the model answers
+    # with whichever bail-out token the prompt offers ("[NOT_A_PAGE]",
+    # "[illegible]") instead of attempting the hand.
     assert "NOT_A_PAGE" not in seen["prompt"]
+    assert "illegible" not in seen["prompt"].lower()
 
 
 def test_vlm_ocr_returns_empty_when_no_page_image(monkeypatch, tmp_path):

@@ -212,16 +212,17 @@ def _qwen3vl_ocr(path: Path) -> str:
         logger.warning("No page image extracted from %s — cannot run VLM OCR.", path.name)
         return ""
 
-    # No [NOT_A_PAGE] escape hatch: on a genuine medieval manuscript the model
-    # took it rather than attempting the hand (verified on the Magna Carta
-    # fixture). Naming the material and the task keeps it transcribing.
+    # Give the model NO escape hatch. Measured on the Magna Carta fixture
+    # against qwen3-vl-30b-a3b-instruct:
+    #   "…if not a document page respond [NOT_A_PAGE]" → "[NOT_A_PAGE]"  (12 chars)
+    #   "…where illegible write [illegible]"           → "[illegible]"   (11 chars)
+    #   plain "transcribe all visible text"            → 4670 chars
+    # The model can read the page (asked to describe it, it correctly names
+    # the Magna Carta) — it simply takes any offered way out of a hard hand.
     prompt = (
-        "This is a photograph of a historical manuscript or printed page. "
-        "You are an expert palaeographer. Transcribe the visible text line by "
-        "line, exactly as written: preserve the original orthography, "
-        "abbreviations, line breaks and capitalisation, and expand nothing. "
-        "Where a passage is illegible write [illegible]. "
-        "Output only the transcription, with no commentary."
+        "Transcribe all visible text in this image exactly as written, "
+        "preserving the original orthography, abbreviations, line breaks and "
+        "capitalisation. Expand nothing. Output only the transcription."
     )
     try:
         text = _llm_generate(
