@@ -69,6 +69,11 @@ EXTRACTION_SEED    = int(_get("EXTRACTION_SEED", "42"))
 # content; a tight budget truncates the JSON mid-array. agentic_historian
 # carries the same lesson as GPUSTACK_TEXT_MAX_TOKENS.
 EXTRACTION_MAX_TOKENS = int(_get("EXTRACTION_MAX_TOKENS", "4096"))
+# Qwen3-family hybrid models default to thinking mode: they reason silently
+# until the token budget is exhausted and return an EMPTY content string
+# (observed as "Unrecoverable JSON (length=0)" on tei, 2026-08-29). Setting
+# this sends vLLM's chat_template_kwargs {"enable_thinking": false}.
+EXTRACTION_DISABLE_THINKING = _get("EXTRACTION_DISABLE_THINKING", "false").lower() == "true"
 
 # OCR
 # "qwen3-vl" - GPUStack Qwen3 VL (default); falls back to Mistral if empty

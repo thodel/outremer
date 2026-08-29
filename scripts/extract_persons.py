@@ -1206,13 +1206,23 @@ def _extract_gpustack_chunk(
     # exists on the stack — while claiming to mirror config; every chunk
     # 404ed regardless of EXTRACTION_MODEL and the pipeline silently
     # degraded to heuristic NER even inside the university network.
-    from config import EXTRACTION_MAX_TOKENS, EXTRACTION_MODEL
+    from config import (
+        EXTRACTION_DISABLE_THINKING,
+        EXTRACTION_MAX_TOKENS,
+        EXTRACTION_MODEL,
+    )
 
+    extra: dict[str, Any] = {}
+    if EXTRACTION_DISABLE_THINKING:
+        # Qwen3 hybrid models think silently until the budget is gone and
+        # then return empty content; force plain-answer mode.
+        extra["extra_body"] = {"chat_template_kwargs": {"enable_thinking": False}}
     raw_text = _llm_generate(
         prompt,
         model=EXTRACTION_MODEL,
         max_tokens=EXTRACTION_MAX_TOKENS,
         temperature=0.1,
+        **extra,
     )
     raw_text = _repair_json(raw_text)
 
