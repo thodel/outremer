@@ -34,6 +34,27 @@ site in `site/` is a release/export seed; production pipeline output is directed
 to `OUTREMER_SITE_DIR`. Until #114 moves reviews server-side, browser-local
 review data must still be exported before browser storage is cleared.
 
+## Capability opt-in
+
+Adapters are **off by default** (`adapters.py::enabled()`, default `false`).
+A capability that is reachable still reports `disabled` until its flag is set —
+that is intended, not a fault:
+
+| flag | effect |
+|---|---|
+| `OUTREMER_CAPABILITY_ATR` | ATR recognition gateway (needs `ATR_GATEWAY_URL`, `ATR_API_KEY`, `ATR_HTTP_TIMEOUT=300`) |
+| `OUTREMER_CAPABILITY_MCP` | MCP knowledge federation — see the caveat below |
+| `OUTREMER_CAPABILITY_QLEVER` / `_VOYANT` / `_AGENT_TOOLS` | not yet integrated |
+| `OUTREMER_CAPABILITY_ATR_REQUIRED` | promotes ATR from optional to run-blocking |
+
+Verify with `python scripts/discover_capabilities.py --output <file>`; the
+production preflight (`release_control.py preflight`) checks the same backends.
+
+**MCP caveat (tei):** the adapter probes one federation endpoint
+(`MCP_BASE_URL` + `/health`), but the tei fleet mounts each institution
+separately (`/mcp/<name>/mcp`); `/mcp/health` is 404. Leave the flag off until
+issue #127 gives the adapter a per-institution server list.
+
 ## Render and inspect configuration
 
 Rendering accepts topology only and refuses unsafe root paths, traversal, unsafe
