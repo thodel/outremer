@@ -5,6 +5,13 @@
 
 A proof-of-concept pipeline for AI-assisted prosopography of the medieval Levant (Crusades era, 11th–14th centuries). Part of a collaborative research project by Jochen Burgtorf (Cal State Fullerton), Tobias Hodel (University of Bern), and Laura Morreale (Harvard / independent scholar).
 
+> **Produktion:** <https://tei.dh.unibe.ch/outremer/> — läuft seit 2026-08-29
+> auf `tei.dh.unibe.ch` im Uni-Netz. Die Extraktion nutzt dort GPUStack
+> (`qwen3.8-27b`); ein Provenance-Gate verhindert, dass heuristischer
+> Fallback-Output publiziert wird. Laufstatus maschinenlesbar unter
+> [`data/status.json`](https://tei.dh.unibe.ch/outremer/data/status.json).
+> Die GitHub-Pages-Ausgabe bleibt als offline gebaute Kopie bestehen.
+>
 > **Status:** proof of concept. The pipeline runs end-to-end. All LLM calls route through the local GPUStack instance at `gpustack.unibe.ch` — no external third-party LLM calls (an optional Mistral OCR fallback exists for scanned PDFs, off unless `mistralai` is installed and `MISTRAL_API_KEY` is set).
 
 ---
