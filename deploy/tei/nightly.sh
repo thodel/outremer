@@ -19,6 +19,12 @@ flock -n 9 || { echo "another run is active; skipping"; exit 0; }
 cd "$WORK"
 git pull --rebase origin main
 
+# Log hygiene (#115): cap the cron log, prune one-off run logs older than 14d.
+if [ -f "$LOGDIR/nightly.log" ] && [ "$(wc -c < "$LOGDIR/nightly.log")" -gt 5242880 ]; then
+  mv "$LOGDIR/nightly.log" "$LOGDIR/nightly.log.1"
+fi
+find "$LOGDIR" -maxdepth 1 -name "full-run-*.log" -mtime +14 -delete 2>/dev/null || true
+
 set -a; . "$ENVFILE"; set +a
 VENV="$WORK/.venv/bin"
 "$VENV/pip" install -q -r requirements.lock.txt
@@ -41,6 +47,11 @@ VENV="$WORK/.venv/bin"
 # 4) Evaluation history (informational — never blocks publishing).
 "$VENV/python" -m evaluation.harness --live \
   --append-history data/staging/eval_history.jsonl || true
+
+# 4b) Published status file (#115): last run, engine mix, gate verdict —
+# served by GitHub Pages, so no SSH is needed to check the nightly's health.
+"$VENV/python" scripts/nightly_status.py \
+  --gate "$LOGDIR/gate-latest.json" || true
 
 # 5) Publish.
 git add site/index.json site/data site/bib site/evidence bib \
