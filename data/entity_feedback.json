@@ -5,21 +5,121 @@
     "Pope Urban II"
   ],
   "auto_flagged": {
+    "'ali al harawi": {
+      "count": 1,
+      "last_context": "40. 'Ali al Harawi, Kitab al Ziyarat,,trans. J.Sourdel Thomine as Guide des lieux depèlerinage",
+      "last_seen": "2026-08-29T08:22:24.450464+00:00",
+      "name": "'Ali al Harawi",
+      "per_source": {
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
+          "count": 1,
+          "reasons": {
+            "modern_scholar": 1
+          }
+        }
+      },
+      "reasons": {
+        "modern_scholar": 1
+      },
+      "sources": [
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
+      ]
+    },
+    "'imad al din al isfahani": {
+      "count": 1,
+      "last_context": "39. 'Imad al Din al Isfahani, Kitab al Fath al qussifi'l fath al qudsi> ed. C. Landberg",
+      "last_seen": "2026-08-29T08:22:24.450464+00:00",
+      "name": "'Imad al Din al Isfahani",
+      "per_source": {
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
+          "count": 1,
+          "reasons": {
+            "modern_scholar": 1
+          }
+        }
+      },
+      "reasons": {
+        "modern_scholar": 1
+      },
+      "sources": [
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
+      ]
+    },
+    "a vassal": {
+      "count": 1,
+      "last_context": "ecclesiastical courts ; thus when a vassal took the cross he might escape to a considerable",
+      "last_seen": "2026-08-29T08:26:28.141216+00:00",
+      "name": "a vassal",
+      "per_source": {
+        "data/raw/Munro-PopesCrusades-1916.pdf": {
+          "count": 1,
+          "reasons": {
+            "lowercase_non_name": 1
+          }
+        }
+      },
+      "reasons": {
+        "lowercase_non_name": 1
+      },
+      "sources": [
+        "data/raw/Munro-PopesCrusades-1916.pdf"
+      ]
+    },
+    "abu 1 mahasin": {
+      "count": 1,
+      "last_context": "63. Abu 1 Mahasin, in Gabrieli, Arab Historiansy 348. 64. Abu 1 Mahasin, m Gabrieli, Arab Historiansy 348.",
+      "last_seen": "2026-08-29T08:22:24.450464+00:00",
+      "name": "Abu 1 Mahasin",
+      "per_source": {
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
+          "count": 1,
+          "reasons": {
+            "contains_digits": 1
+          }
+        }
+      },
+      "reasons": {
+        "contains_digits": 1
+      },
+      "sources": [
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
+      ]
+    },
+    "abu al hasan ali bin abi bakr al harawi": {
+      "count": 1,
+      "last_context": "best reflected in the writings ofAbu al Hasan Ali bin Abi Bakr al Harawi (ca. 1145 1215), a courtier, militarytheorist",
+      "last_seen": "2026-08-29T08:22:24.450464+00:00",
+      "name": "Abu al Hasan Ali bin Abi Bakr al Harawi",
+      "per_source": {
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
+          "count": 1,
+          "reasons": {
+            "name_too_long": 1
+          }
+        }
+      },
+      "reasons": {
+        "name_too_long": 1
+      },
+      "sources": [
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
+      ]
+    },
     "adhemar": {
       "count": 1,
-      "last_context": "Liber, pp. I28, 130, 144. For Count Raymond and   Adhemar'sfamilia, see ibid. p. 85. 3. Richard, 'Le chartr",
-      "last_seen": "2026-08-04T14:15:50.205358+00:00",
+      "last_context": "For Count Raymond and Adhemar'sfamilia, see ibid. p. 85.",
+      "last_seen": "2026-08-29T08:32:59.143899+00:00",
       "name": "Adhemar",
       "per_source": {
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
           "count": 1,
           "reasons": {
-            "bibliographic_noise": 1
+            "modern_scholar": 1
           }
         }
       },
       "reasons": {
-        "bibliographic_noise": 1
+        "modern_scholar": 1
       },
       "sources": [
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf"
@@ -1787,32 +1887,32 @@
       ]
     },
     "crusaders": {
-      "count": 22,
-      "last_context": ".jstor.org/terms  736 THE MOTIVES OF THE EARLIEST CRUSADERS October   Robecquel all came from that district a",
-      "last_seen": "2026-08-05T05:13:02.718149+00:00",
-      "name": "Crusaders",
+      "count": 14,
+      "last_context": "Tortosa was taken and the crusaders pressed on, leaving Raymond to subdue the area around it",
+      "last_seen": "2026-08-29T08:32:59.143899+00:00",
+      "name": "crusaders",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
-          "count": 9,
+          "count": 5,
           "reasons": {
-            "known_bad_entity": 9
+            "known_bad_entity": 5
           }
         },
         "data/raw/Munro-PopesCrusades-1916.pdf": {
-          "count": 4,
+          "count": 2,
           "reasons": {
-            "known_bad_entity": 4
+            "known_bad_entity": 2
           }
         },
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
-          "count": 9,
+          "count": 7,
           "reasons": {
-            "known_bad_entity": 9
+            "known_bad_entity": 7
           }
         }
       },
       "reasons": {
-        "known_bad_entity": 22
+        "known_bad_entity": 14
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
@@ -2848,20 +2948,20 @@
       ]
     },
     "fulcher of chartres": {
-      "count": 5,
-      "last_context": "h of Caen, pp.  632-3, 636-7.  3.  Hagenmeyer (in Fulcher of Chartres, p.  66o, n.  7) thought it unlikely that he   ca",
-      "last_seen": "2026-08-05T05:13:02.718149+00:00",
+      "count": 1,
+      "last_context": "The knight Fulcher of Chartres, who became a great lord in Edessa, had been a follower of Peter the Hermit",
+      "last_seen": "2026-08-29T08:32:59.143899+00:00",
       "name": "Fulcher of Chartres",
       "per_source": {
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
-          "count": 5,
+          "count": 1,
           "reasons": {
-            "known_bad_entity": 5
+            "known_bad_entity": 1
           }
         }
       },
       "reasons": {
-        "known_bad_entity": 5
+        "known_bad_entity": 1
       },
       "sources": [
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf"
@@ -3028,20 +3128,20 @@
       ]
     },
     "guibert of nogent": {
-      "count": 8,
-      "last_context": "of grants to the Church.4 On the other hand,   i. Guibert of Nogent, pp. 244-5; Albert of Aachen, pp. 5 44,59, 593-5;",
-      "last_seen": "2026-08-05T05:13:02.718149+00:00",
+      "count": 1,
+      "last_context": "shared the view of the Frenchman Guibert of Nogent: We see nations moved by the inspiration of God",
+      "last_seen": "2026-08-29T08:32:59.143899+00:00",
       "name": "Guibert of Nogent",
       "per_source": {
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
-          "count": 8,
+          "count": 1,
           "reasons": {
-            "known_bad_entity": 8
+            "known_bad_entity": 1
           }
         }
       },
       "reasons": {
-        "known_bad_entity": 8
+        "known_bad_entity": 1
       },
       "sources": [
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf"
@@ -3467,6 +3567,26 @@
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf"
       ]
     },
+    "his feudal lord": {
+      "count": 1,
+      "last_context": "escape to a considerable extent from the jurisdiction of his feudal lord. Moreover, his family",
+      "last_seen": "2026-08-29T08:26:28.141216+00:00",
+      "name": "his feudal lord",
+      "per_source": {
+        "data/raw/Munro-PopesCrusades-1916.pdf": {
+          "count": 1,
+          "reasons": {
+            "lowercase_non_name": 1
+          }
+        }
+      },
+      "reasons": {
+        "lowercase_non_name": 1
+      },
+      "sources": [
+        "data/raw/Munro-PopesCrusades-1916.pdf"
+      ]
+    },
     "histoire": {
       "count": 1,
       "last_context": "'Le chartrier', pp. 6io, 6I2; Devic and Vaissete, Histoire gene'rale de   Languedoc, v. 78I (R6hricht, Reges",
@@ -3782,6 +3902,86 @@
       },
       "reasons": {
         "modern_scholar": 1
+      },
+      "sources": [
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
+      ]
+    },
+    "ibn al furat": {
+      "count": 1,
+      "last_context": "AyyubidSyMamlukes and Crusaders: Selectionsfrom theTarikh al Duwal wa' l Muluk of Ibn al Furaty vol. 2",
+      "last_seen": "2026-08-29T08:22:24.450464+00:00",
+      "name": "Ibn al Furat",
+      "per_source": {
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
+          "count": 1,
+          "reasons": {
+            "modern_scholar": 1
+          }
+        }
+      },
+      "reasons": {
+        "modern_scholar": 1
+      },
+      "sources": [
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
+      ]
+    },
+    "ibn khallikan": {
+      "count": 1,
+      "last_context": "Ibn Zaki, quoted in Ibn Khallikan, Wafayat al ayany 4 vols., trans. W. M. ae Slane as IbnKhallikansBiographicalDictionary",
+      "last_seen": "2026-08-29T08:22:24.450464+00:00",
+      "name": "Ibn Khallikan",
+      "per_source": {
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
+          "count": 1,
+          "reasons": {
+            "bibliographic_noise": 1
+          }
+        }
+      },
+      "reasons": {
+        "bibliographic_noise": 1
+      },
+      "sources": [
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
+      ]
+    },
+    "ibn wasil": {
+      "count": 1,
+      "last_context": "41.Ibn Wasil, Mufarrij al kurub, ed. J.al Shayyal (Cairo, 1953~57)> quoted in Hillenbrand",
+      "last_seen": "2026-08-29T08:22:24.450464+00:00",
+      "name": "Ibn Wasil",
+      "per_source": {
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
+          "count": 1,
+          "reasons": {
+            "bibliographic_noise": 1
+          }
+        }
+      },
+      "reasons": {
+        "bibliographic_noise": 1
+      },
+      "sources": [
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
+      ]
+    },
+    "ibn zaki": {
+      "count": 1,
+      "last_context": "Ibn Zaki, quoted in Ibn Khallikan, Wafayat al ayany 4 vols., trans. W. M. ae Slane",
+      "last_seen": "2026-08-29T08:22:24.450464+00:00",
+      "name": "Ibn Zaki",
+      "per_source": {
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
+          "count": 1,
+          "reasons": {
+            "bibliographic_noise": 1
+          }
+        }
+      },
+      "reasons": {
+        "bibliographic_noise": 1
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
@@ -4209,19 +4409,19 @@
     },
     "john of damascus": {
       "count": 1,
-      "last_context": "The Oxford Dictionary oftheChristian Church,s.v. \"John of Damascus\" (Oxford: Oxford University Press, 1997), 735-36.",
-      "last_seen": "2026-08-04T14:13:44.423195+00:00",
+      "last_context": "see F. L. Cross and E. A. Livingstone, eds., The Oxford Dictionary oftheChristian Church,s.v. \"John of Damascus\"",
+      "last_seen": "2026-08-29T08:22:24.450464+00:00",
       "name": "John of Damascus",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
           "count": 1,
           "reasons": {
-            "post_medieval": 1
+            "modern_scholar": 1
           }
         }
       },
       "reasons": {
-        "post_medieval": 1
+        "modern_scholar": 1
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
@@ -5261,6 +5461,26 @@
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
       ]
     },
+    "monk": {
+      "count": 1,
+      "last_context": "there was a monk there in his cell by the name of Bahira, who was well versed in the knowledge",
+      "last_seen": "2026-08-29T08:22:24.450464+00:00",
+      "name": "monk",
+      "per_source": {
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
+          "count": 1,
+          "reasons": {
+            "lowercase_non_name": 1
+          }
+        }
+      },
+      "reasons": {
+        "lowercase_non_name": 1
+      },
+      "sources": [
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
+      ]
+    },
     "monks": {
       "count": 1,
       "last_context": "n Egyptian monasticism, see Otto F. A. Meinardus, Monks and Monasteries oftheEgyptian Deserts,rev. ed. (C",
@@ -5975,6 +6195,46 @@
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
       ]
     },
+    "pilgrim": {
+      "count": 1,
+      "last_context": "when compared to the uncomprehending pilgrim from the West",
+      "last_seen": "2026-08-29T08:22:24.450464+00:00",
+      "name": "pilgrim",
+      "per_source": {
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
+          "count": 1,
+          "reasons": {
+            "lowercase_non_name": 1
+          }
+        }
+      },
+      "reasons": {
+        "lowercase_non_name": 1
+      },
+      "sources": [
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
+      ]
+    },
+    "pope": {
+      "count": 1,
+      "last_context": "and have a special relationship with the pope",
+      "last_seen": "2026-08-29T08:22:24.450464+00:00",
+      "name": "pope",
+      "per_source": {
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
+          "count": 1,
+          "reasons": {
+            "lowercase_non_name": 1
+          }
+        }
+      },
+      "reasons": {
+        "lowercase_non_name": 1
+      },
+      "sources": [
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
+      ]
+    },
     "prawer": {
       "count": 1,
       "last_context": "l settlers seized what they   could.2 Beugnot and Prawer based their arguments on the existence   in the k",
@@ -6358,6 +6618,26 @@
       },
       "reasons": {
         "known_bad_entity": 8
+      },
+      "sources": [
+        "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf"
+      ]
+    },
+    "ralph the red of pont echanfray": {
+      "count": 1,
+      "last_context": "Cf. the career of Ralph the Red of Pont Echanfray with Bohemond. Hagenmeyer, Die Kreuttugsbriefe",
+      "last_seen": "2026-08-29T08:32:59.143899+00:00",
+      "name": "Ralph the Red of Pont Echanfray",
+      "per_source": {
+        "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
+          "count": 1,
+          "reasons": {
+            "modern_scholar": 1
+          }
+        }
+      },
+      "reasons": {
+        "modern_scholar": 1
       },
       "sources": [
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf"
@@ -7598,6 +7878,33 @@
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
       ]
     },
+    "the pope": {
+      "count": 2,
+      "last_context": "Thomas Fuller, later, put it bluntly, the pope \"got a bag of money by it.\"",
+      "last_seen": "2026-08-29T08:26:28.141216+00:00",
+      "name": "the pope",
+      "per_source": {
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
+          "count": 1,
+          "reasons": {
+            "lowercase_non_name": 1
+          }
+        },
+        "data/raw/Munro-PopesCrusades-1916.pdf": {
+          "count": 1,
+          "reasons": {
+            "lowercase_non_name": 1
+          }
+        }
+      },
+      "reasons": {
+        "lowercase_non_name": 2
+      },
+      "sources": [
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
+        "data/raw/Munro-PopesCrusades-1916.pdf"
+      ]
+    },
     "theory": {
       "count": 1,
       "last_context": " see WilliamJ.Hamblin, \"Saladin andMuslim MilitaryTheory,\" in TheHorns ofHattin, ed. B. Z. Kedar (London: ",
@@ -8119,11 +8426,17 @@
       ]
     },
     "william of tyre": {
-      "count": 8,
-      "last_context": "nson d'Antioche, i.  86, go, 9I, 93, 94, 95, 488; William of Tyre, pp.  8o,   2I8.  WITH BALDWIN TO EDESSA: Albert ",
-      "last_seen": "2026-08-05T05:13:02.718149+00:00",
+      "count": 9,
+      "last_context": "according to William ofTyre, \"the Grand Master was too proud",
+      "last_seen": "2026-08-29T08:22:24.450464+00:00",
       "name": "William of Tyre",
       "per_source": {
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
+          "count": 1,
+          "reasons": {
+            "known_bad_entity": 1
+          }
+        },
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
           "count": 8,
           "reasons": {
@@ -8132,9 +8445,10 @@
         }
       },
       "reasons": {
-        "known_bad_entity": 8
+        "known_bad_entity": 9
       },
       "sources": [
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf"
       ]
     },
