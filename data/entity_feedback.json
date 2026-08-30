@@ -1907,15 +1907,15 @@
       ]
     },
     "crusaders": {
-      "count": 11,
-      "last_context": "probably in early September after the departure of most of the crusaders",
-      "last_seen": "2026-08-29T11:25:47.171028+00:00",
+      "count": 16,
+      "last_context": "following the expulsion of the Crusaders, the Arabs simply ceased to pay further attention",
+      "last_seen": "2026-08-30T01:25:16.535290+00:00",
       "name": "crusaders",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
-          "count": 5,
+          "count": 10,
           "reasons": {
-            "known_bad_entity": 5
+            "known_bad_entity": 10
           }
         },
         "data/raw/Munro-PopesCrusades-1916.pdf": {
@@ -1932,7 +1932,7 @@
         }
       },
       "reasons": {
-        "known_bad_entity": 11
+        "known_bad_entity": 16
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
@@ -5482,20 +5482,20 @@
       ]
     },
     "monk": {
-      "count": 2,
-      "last_context": "When the caravan reached Busra in Syria, there was a monk there in his cell by the name of Bahira",
-      "last_seen": "2026-08-29T11:15:28.041897+00:00",
+      "count": 1,
+      "last_context": "sees in the distance the flickering light from the lamp ofa monk reading in his cell and finds shelter with him",
+      "last_seen": "2026-08-30T01:25:16.535290+00:00",
       "name": "monk",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
-          "count": 2,
+          "count": 1,
           "reasons": {
-            "lowercase_non_name": 2
+            "known_bad_entity": 1
           }
         }
       },
       "reasons": {
-        "lowercase_non_name": 2
+        "known_bad_entity": 1
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
@@ -7899,30 +7899,50 @@
       ]
     },
     "the pope": {
-      "count": 13,
+      "count": 16,
       "last_context": "Thomas Fuller, later, put it bluntly, the pope \"got a bag of money by it.\"",
-      "last_seen": "2026-08-29T11:19:29.244077+00:00",
+      "last_seen": "2026-08-30T01:29:33.267527+00:00",
       "name": "the Pope",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
-          "count": 1,
+          "count": 2,
           "reasons": {
-            "known_bad_entity": 1
+            "known_bad_entity": 2
           }
         },
         "data/raw/Munro-PopesCrusades-1916.pdf": {
-          "count": 12,
+          "count": 14,
           "reasons": {
-            "known_bad_entity": 12
+            "known_bad_entity": 14
           }
         }
       },
       "reasons": {
-        "known_bad_entity": 13
+        "known_bad_entity": 16
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
         "data/raw/Munro-PopesCrusades-1916.pdf"
+      ]
+    },
+    "the sultan": {
+      "count": 2,
+      "last_context": "The sultan granted this request of the pope",
+      "last_seen": "2026-08-30T01:25:16.535290+00:00",
+      "name": "the sultan",
+      "per_source": {
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
+          "count": 2,
+          "reasons": {
+            "lowercase_non_name": 2
+          }
+        }
+      },
+      "reasons": {
+        "lowercase_non_name": 2
+      },
+      "sources": [
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
       ]
     },
     "theory": {

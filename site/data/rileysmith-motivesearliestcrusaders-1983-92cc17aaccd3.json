@@ -115,19 +115,6 @@
       "source_offset": null
     },
     {
-      "name": "nations",
-      "raw_mention": "nations",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": "collective",
-      "gender": "unknown",
-      "group": true,
-      "context": "We see nations moved by the inspiration of God.... The highest offices of government, the lordships of castles",
-      "confidence": 0.5,
-      "source_offset": null
-    },
-    {
       "name": "the crusaders",
       "raw_mention": "the crusaders",
       "title": null,
@@ -159,7 +146,7 @@
       "title": null,
       "epithet": null,
       "toponym": "western",
-      "role": "ethnic group",
+      "role": "frank",
       "gender": "unknown",
       "group": true,
       "context": "it was easy to persuade the western Franks to leave their farms. For Gaul had been afflicted for some years",
@@ -167,12 +154,12 @@
       "source_offset": null
     },
     {
-      "name": "prophets",
-      "raw_mention": "prophets",
+      "name": "certain prophets",
+      "raw_mention": "certain prophets",
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "religious leader",
+      "role": "prophet",
       "gender": "unknown",
       "group": true,
       "context": "summoned to go to the Promised Land by certain prophets recently arisen among them or by signs in the heavens",
@@ -228,7 +215,7 @@
       "gender": "unknown",
       "group": true,
       "context": "and the needs of the armies on the march, which seem only to have been met by periodic divisions of spoil.",
-      "confidence": 0.7,
+      "confidence": 0.8,
       "source_offset": null
     },
     {
@@ -501,7 +488,7 @@
       "gender": "m",
       "group": false,
       "context": "Ralph of Menonville and Engilbert, who came from the ecclesiastical territory of Tournai",
-      "confidence": 0.85,
+      "confidence": 0.9,
       "source_offset": null
     },
     {
@@ -513,7 +500,7 @@
       "role": "knight",
       "gender": "m",
       "group": false,
-      "context": "the Swabian Frederick of Zimmern, who had travelled",
+      "context": "the Swabian Frederick of Zimmern, who had travelled perhaps with Peter the Hermit",
       "confidence": 0.9,
       "source_offset": null
     },
@@ -526,7 +513,7 @@
       "role": "crusader",
       "gender": "m",
       "group": false,
-      "context": "perhaps with Peter the Hermit or Emicho of Leiningen",
+      "context": "travelled perhaps with Peter the Hermit or Emicho of Leiningen",
       "confidence": 0.95,
       "source_offset": null
     },
@@ -539,7 +526,7 @@
       "role": "crusader",
       "gender": "m",
       "group": false,
-      "context": "Peter the Hermit or Emicho of Leiningen",
+      "context": "Peter the Hermit or Emicho of Leiningen and then in Godfrey's company",
       "confidence": 0.95,
       "source_offset": null
     },
@@ -648,8 +635,8 @@
       "source_offset": null
     },
     {
-      "name": "Italian Norman army",
-      "raw_mention": "Italian Norman army",
+      "name": "the Italian Norman army",
+      "raw_mention": "Bohemond's Italian Norman army",
       "title": null,
       "epithet": null,
       "toponym": null,
@@ -735,7 +722,20 @@
       "gender": "m",
       "group": false,
       "context": "the second son of Count Gerard of Buonalbergo and Bohemond's cousin",
-      "confidence": 0.95,
+      "confidence": 0.9,
+      "source_offset": null
+    },
+    {
+      "name": "Robert",
+      "raw_mention": "Robert",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": "knight",
+      "gender": "m",
+      "group": false,
+      "context": "One of the ambassadors on the same mission was another Robert",
+      "confidence": 0.7,
       "source_offset": null
     },
     {
@@ -791,8 +791,8 @@
       "source_offset": null
     },
     {
-      "name": "South French army",
-      "raw_mention": "South French army",
+      "name": "the South French army",
+      "raw_mention": "the South French army",
       "title": null,
       "epithet": null,
       "toponym": null,
@@ -882,29 +882,55 @@
       "source_offset": null
     },
     {
-      "name": "Raymond",
-      "raw_mention": "Raymond",
+      "name": "Raymond's army",
+      "raw_mention": "Raymond's army",
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "count",
-      "gender": "m",
-      "group": false,
+      "role": "military unit",
+      "gender": "unknown",
+      "group": true,
       "context": "A third member of Raymond's army may have been Roman of Le Puy, who was to play an important part",
-      "confidence": 0.85,
+      "confidence": 0.8,
       "source_offset": null
     },
     {
       "name": "Adhemar",
       "raw_mention": "Adhemar",
-      "title": null,
+      "title": "Papal Legate",
       "epithet": null,
       "toponym": null,
       "role": "papal legate",
       "gender": "m",
       "group": false,
-      "context": "accompanied the papal legate Adhemar and had transferred his allegiance directly to Raymond after Adhemar's death",
-      "confidence": 0.9,
+      "context": "brother of the papal legate Adhemar. He must have travelled to Syria in the legate's company",
+      "confidence": 0.95,
+      "source_offset": null
+    },
+    {
+      "name": "Raymond",
+      "raw_mention": "Raymond",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": "prince",
+      "gender": "m",
+      "group": false,
+      "context": "transferred his allegiance directly to Raymond after Adhemar's death on I August IO98",
+      "confidence": 0.85,
+      "source_offset": null
+    },
+    {
+      "name": "Count Robert of Flanders's army",
+      "raw_mention": "Count Robert of Flanders's army",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": "military unit",
+      "gender": "unknown",
+      "group": true,
+      "context": "From Count Robert of Flanders's army came Roger of Rozoy in the Laonnois, who became prominent",
+      "confidence": 0.8,
       "source_offset": null
     },
     {
@@ -916,7 +942,7 @@
       "role": "castellan",
       "gender": "m",
       "group": false,
-      "context": "From Count Robert of Flanders's army came Roger of Rozoy in the Laonnois, who became prominent after Godfrey's death",
+      "context": "came Roger of Rozoy in the Laonnois, who became prominent after Godfrey's death   by 1107 he was castellan of Jaffa",
       "confidence": 0.9,
       "source_offset": null
     },
@@ -942,7 +968,7 @@
       "role": "settler",
       "gender": "m",
       "group": false,
-      "context": "and perhaps Winrich from Flanders itself and Ado of Quiersy, also in the Laonnois. Winrich was Godfrey's butler",
+      "context": "and Ado of Quiersy, also in the Laonnois. Winrich was Godfrey's butler in Palestine",
       "confidence": 0.9,
       "source_offset": null
     },
@@ -981,8 +1007,21 @@
       "role": "duke",
       "gender": "m",
       "group": false,
-      "context": "Ralph of Montpinson in Normandy probably arrived with Duke Robert of Normandy's forces",
+      "context": "probably arrived with Duke Robert of Normandy's forces, although he too could have been a follower of Tancred",
       "confidence": 0.95,
+      "source_offset": null
+    },
+    {
+      "name": "Duke Robert of Normandy's forces",
+      "raw_mention": "Duke Robert of Normandy's forces",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": "military unit",
+      "gender": "unknown",
+      "group": true,
+      "context": "probably arrived with Duke Robert of Normandy's forces, although he too could have been a follower of Tancred",
+      "confidence": 0.8,
       "source_offset": null
     },
     {
@@ -994,8 +1033,21 @@
       "role": "crusader",
       "gender": "m",
       "group": false,
-      "context": "Ralph of Fontenelles (or Fontenay) in Anjou crusaded in the Angevin company",
+      "context": "Ralph of Fontenelles (or Fontenay) in Anjou crusaded in the Angevin company which must have followed",
       "confidence": 0.9,
+      "source_offset": null
+    },
+    {
+      "name": "the Angevin company",
+      "raw_mention": "the Angevin company",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": "military unit",
+      "gender": "unknown",
+      "group": true,
+      "context": "crusaded in the Angevin company which must have followed either Stephen of Blois or Hugh of Vermandois",
+      "confidence": 0.8,
       "source_offset": null
     },
     {
@@ -1007,7 +1059,7 @@
       "role": "count",
       "gender": "m",
       "group": false,
-      "context": "Angevin company which must have followed either Stephen of Blois or Hugh of Vermandois",
+      "context": "must have followed either Stephen of Blois or Hugh of Vermandois. He fled from Antioch in the summer of IO98",
       "confidence": 0.9,
       "source_offset": null
     },
@@ -1020,7 +1072,7 @@
       "role": "count",
       "gender": "m",
       "group": false,
-      "context": "Angevin company which must have followed either Stephen of Blois or Hugh of Vermandois",
+      "context": "either Stephen of Blois or Hugh of Vermandois. He fled from Antioch in the summer of IO98, but returned",
       "confidence": 0.9,
       "source_offset": null
     },
@@ -1281,7 +1333,33 @@
       "gender": "m",
       "group": false,
       "context": "Ralph later became a captain of Henry I of England's household troops",
-      "confidence": 0.9,
+      "confidence": 0.95,
+      "source_offset": null
+    },
+    {
+      "name": "a newly formed band of crusaders",
+      "raw_mention": "a newly formed band of crusaders",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": "crusader",
+      "gender": "unknown",
+      "group": true,
+      "context": "In February I I02 a newly formed band of crusaders was collecting at Antioch",
+      "confidence": 0.8,
+      "source_offset": null
+    },
+    {
+      "name": "the count's constables",
+      "raw_mention": "the count's constables",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": "constable",
+      "gender": "unknown",
+      "group": true,
+      "context": "In I 103 he was still at Raymond's side and was one of the count's constables",
+      "confidence": 0.7,
       "source_offset": null
     },
     {
@@ -1407,7 +1485,7 @@
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "crusader",
+      "role": "knight",
       "gender": "m",
       "group": false,
       "context": "Eustace Garnier,3 Fulk of Guines4 and Hugh of i.",
@@ -1420,7 +1498,7 @@
       "title": null,
       "epithet": null,
       "toponym": "Guines",
-      "role": "crusader",
+      "role": "knight",
       "gender": "m",
       "group": false,
       "context": "Eustace Garnier,3 Fulk of Guines4 and Hugh of i.",
@@ -1433,7 +1511,7 @@
       "title": null,
       "epithet": null,
       "toponym": "Robecquel",
-      "role": "crusader",
+      "role": "knight",
       "gender": "m",
       "group": false,
       "context": "Hugh of i. ... Robecquel all came from that district and may have been on the First Crusade",
@@ -1524,7 +1602,7 @@
       "title": null,
       "epithet": "the Orphan",
       "toponym": null,
-      "role": "crusader",
+      "role": "knight",
       "gender": "m",
       "group": false,
       "context": "was he the Fulk the Orphan, born in Flanders according to most manuscripts",
@@ -1598,14 +1676,6 @@
       "status": "no_match"
     },
     {
-      "person": "nations",
-      "person_group": true,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
       "person": "the crusaders",
       "person_group": true,
       "candidates": [
@@ -1662,7 +1732,7 @@
       "status": "no_match"
     },
     {
-      "person": "prophets",
+      "person": "certain prophets",
       "person_group": true,
       "candidates": [],
       "top_candidate": null,
@@ -2470,7 +2540,7 @@
       "status": "medium"
     },
     {
-      "person": "Italian Norman army",
+      "person": "the Italian Norman army",
       "person_group": true,
       "candidates": [],
       "top_candidate": null,
@@ -2638,6 +2708,46 @@
       "status": "medium"
     },
     {
+      "person": "Robert",
+      "person_group": false,
+      "candidates": [
+        {
+          "outremer_id": "AUTH:CR56",
+          "outremer_name": "Robert of Milly",
+          "type": "person",
+          "score": 1.0,
+          "match_type": "exact",
+          "evidence": "exact match: 'robert' ↔ 'Robert of Milly'"
+        },
+        {
+          "outremer_id": "AUTH:CR100",
+          "outremer_name": "Robert of Buzançais",
+          "type": "person",
+          "score": 1.0,
+          "match_type": "exact",
+          "evidence": "exact match: 'robert' ↔ 'Robert of Buzançais'"
+        },
+        {
+          "outremer_id": "AUTH:CR88",
+          "outremer_name": "Robert V of Béthune",
+          "type": "person",
+          "score": 1.0,
+          "match_type": "exact",
+          "evidence": "exact match: 'robert' ↔ 'Robert V of Béthune'"
+        }
+      ],
+      "top_candidate": {
+        "outremer_id": "AUTH:CR56",
+        "outremer_name": "Robert of Milly",
+        "type": "person",
+        "score": 1.0,
+        "match_type": "exact",
+        "evidence": "exact match: 'robert' ↔ 'Robert of Milly'"
+      },
+      "confidence": 1.0,
+      "status": "high"
+    },
+    {
       "person": "Robert of Anzi",
       "person_group": false,
       "candidates": [
@@ -2766,7 +2876,7 @@
       "status": "medium"
     },
     {
-      "person": "South French army",
+      "person": "the South French army",
       "person_group": true,
       "candidates": [],
       "top_candidate": null,
@@ -2886,28 +2996,12 @@
       "status": "no_match"
     },
     {
-      "person": "Raymond",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR46",
-          "outremer_name": "Armod",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'raymond' ↔ 'Armod'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR46",
-        "outremer_name": "Armod",
-        "type": "person",
-        "score": 0.6667,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'raymond' ↔ 'Armod'"
-      },
-      "confidence": 0.6667,
-      "status": "low"
+      "person": "Raymond's army",
+      "person_group": true,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
     },
     {
       "person": "Adhemar",
@@ -2932,6 +3026,70 @@
       },
       "confidence": 1.0,
       "status": "high"
+    },
+    {
+      "person": "Raymond",
+      "person_group": false,
+      "candidates": [
+        {
+          "outremer_id": "AUTH:CR46",
+          "outremer_name": "Armod",
+          "type": "person",
+          "score": 0.6667,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'raymond' ↔ 'Armod'"
+        }
+      ],
+      "top_candidate": {
+        "outremer_id": "AUTH:CR46",
+        "outremer_name": "Armod",
+        "type": "person",
+        "score": 0.6667,
+        "match_type": "fuzzy",
+        "evidence": "fuzzy match: 'raymond' ↔ 'Armod'"
+      },
+      "confidence": 0.6667,
+      "status": "low"
+    },
+    {
+      "person": "Count Robert of Flanders's army",
+      "person_group": true,
+      "candidates": [
+        {
+          "outremer_id": "AUTH:CR185",
+          "outremer_name": "Robert II of Flanders",
+          "type": "person",
+          "score": 0.8438,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'count robert of flanders s army' ↔ 'Robert II of Flanders'"
+        },
+        {
+          "outremer_id": "AUTH:CR88",
+          "outremer_name": "Robert V of Béthune",
+          "type": "person",
+          "score": 0.7714,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'count robert of flanders s army' ↔ 'Robert V of Béthune'"
+        },
+        {
+          "outremer_id": "AUTH:CR27",
+          "outremer_name": "Philip of Flanders",
+          "type": "person",
+          "score": 0.6667,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'count robert of flanders s army' ↔ 'Philip of Flanders'"
+        }
+      ],
+      "top_candidate": {
+        "outremer_id": "AUTH:CR185",
+        "outremer_name": "Robert II of Flanders",
+        "type": "person",
+        "score": 0.8438,
+        "match_type": "fuzzy",
+        "evidence": "fuzzy match: 'count robert of flanders s army' ↔ 'Robert II of Flanders'"
+      },
+      "confidence": 0.8438,
+      "status": "medium"
     },
     {
       "person": "Roger of Rozoy",
@@ -3102,6 +3260,46 @@
       "status": "medium"
     },
     {
+      "person": "Duke Robert of Normandy's forces",
+      "person_group": true,
+      "candidates": [
+        {
+          "outremer_id": "AUTH:CR88",
+          "outremer_name": "Robert V of Béthune",
+          "type": "person",
+          "score": 0.7714,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'duke robert of normandy s forces' ↔ 'Robert V of Béthune'"
+        },
+        {
+          "outremer_id": "AUTH:CR185",
+          "outremer_name": "Robert II of Flanders",
+          "type": "person",
+          "score": 0.7714,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'duke robert of normandy s forces' ↔ 'Robert II of Flanders'"
+        },
+        {
+          "outremer_id": "AUTH:CR56",
+          "outremer_name": "Robert of Milly",
+          "type": "person",
+          "score": 0.6545,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'duke robert of normandy s forces' ↔ 'Robert of Milly'"
+        }
+      ],
+      "top_candidate": {
+        "outremer_id": "AUTH:CR88",
+        "outremer_name": "Robert V of Béthune",
+        "type": "person",
+        "score": 0.7714,
+        "match_type": "fuzzy",
+        "evidence": "fuzzy match: 'duke robert of normandy s forces' ↔ 'Robert V of Béthune'"
+      },
+      "confidence": 0.7714,
+      "status": "medium"
+    },
+    {
       "person": "Ralph of Fontenelles",
       "person_group": false,
       "candidates": [
@@ -3140,6 +3338,14 @@
       },
       "confidence": 0.75,
       "status": "medium"
+    },
+    {
+      "person": "the Angevin company",
+      "person_group": true,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
     },
     {
       "person": "Stephen of Blois",
@@ -3758,6 +3964,38 @@
       "status": "medium"
     },
     {
+      "person": "a newly formed band of crusaders",
+      "person_group": true,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "the count's constables",
+      "person_group": true,
+      "candidates": [
+        {
+          "outremer_id": "AUTH:CR86",
+          "outremer_name": "Constance of Toulouse",
+          "type": "person",
+          "score": 0.619,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'the count s constables' ↔ 'Constance of Toulouse'"
+        }
+      ],
+      "top_candidate": {
+        "outremer_id": "AUTH:CR86",
+        "outremer_name": "Constance of Toulouse",
+        "type": "person",
+        "score": 0.619,
+        "match_type": "fuzzy",
+        "evidence": "fuzzy match: 'the count s constables' ↔ 'Constance of Toulouse'"
+      },
+      "confidence": 0.619,
+      "status": "low"
+    },
+    {
       "person": "Count Raymond",
       "person_group": false,
       "candidates": [
@@ -4190,15 +4428,15 @@
     "filtered_problem_entities": 8,
     "feedback_store": "data/entity_feedback.json",
     "noise": {
-      "extracted_total": 125,
-      "kept": 117,
+      "extracted_total": 131,
+      "kept": 123,
       "filtered": 8,
       "filtered_by_reason": {
         "known_bad_entity": 4,
         "modern_scholar": 4
       },
       "low_confidence_kept": 1,
-      "noise_share": 0.064
+      "noise_share": 0.0611
     }
   }
 }
