@@ -17,7 +17,10 @@ exec 9>"$HOME/outremer/.nightly.lock"
 flock -n 9 || { echo "another run is active; skipping"; exit 0; }
 
 cd "$WORK"
-git pull --rebase origin main
+# --autostash: a previous aborted run leaves regenerated pipeline output in
+# the tree, and a plain rebase then refuses to start — which turns one
+# failed night into every following night failing too.
+git pull --rebase --autostash origin main
 
 # Log hygiene (#115): cap the cron log, prune one-off run logs older than 14d.
 if [ -f "$LOGDIR/nightly.log" ] && [ "$(wc -c < "$LOGDIR/nightly.log")" -gt 5242880 ]; then
@@ -60,8 +63,18 @@ VENV="$WORK/.venv/bin"
 # deploy/tei/fix-worker-split.sh.
 PUBLIC_SITE="${OUTREMER_PUBLIC_SITE:-/var/lib/outremer/state/site}"
 if [ -d "$PUBLIC_SITE" ] && [ -w "$PUBLIC_SITE" ]; then
-  rsync -a --delete --exclude '.git' site/ "$PUBLIC_SITE"/
-  echo "mirrored site/ → $PUBLIC_SITE"
+  # -rlptD is -a minus -o/-g: the destination belongs to the `outremer` user
+  # and this runs as `dh`, so preserving ownership fails with EPERM. rsync
+  # then exits 23 and, under `set -e`, killed the whole run *before* the
+  # publish step — the files copied, but nothing reached GitHub (2026-08-30).
+  # The setgid directory assigns the right group by itself.
+  if rsync -rlptD --delete --exclude '.git' site/ "$PUBLIC_SITE"/; then
+    echo "mirrored site/ → $PUBLIC_SITE"
+  else
+    # The mirror is a view; the git publish below is the durable record.
+    # A failed mirror must never cost the publish.
+    echo "::warning::site mirror failed — public page may be stale"
+  fi
 else
   echo "note: $PUBLIC_SITE not writable — public site not refreshed"
 fi
