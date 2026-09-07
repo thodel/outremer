@@ -18,7 +18,7 @@ A proof-of-concept pipeline for AI-assisted prosopography of the medieval Levant
 
 ## Architecture
 
-**Layer 1 — LLM extraction.** Reads historical texts (PDF or plain text) and extracts person-like signals: names, titles, epithets, roles, collective groups. Uses GPUStack-hosted models (`qwen3.8-27b` for extraction, `qwen3-vl-30b-a3b-instruct` for scanned-PDF OCR, `minimax-m2.7` for orchestration). Falls back to heuristic regex NER when GPUStack is unavailable, and optionally to Mistral OCR for scans.
+**Layer 1 — LLM extraction.** Reads historical texts (PDF or plain text) and extracts person-like signals: names, titles, epithets, roles, collective groups. Uses GPUStack-hosted models (`qwen3.8-27b` for extraction, `qwen3.8-27b` for scanned-PDF OCR, `minimax-m2.7` for orchestration). Falls back to heuristic regex NER when GPUStack is unavailable, and optionally to Mistral OCR for scans.
 
 > **Which engine produced the published data.** Since 2026-08-29 the nightly
 > run happens on `tei.dh.unibe.ch` inside the university network, where GPUStack
@@ -113,9 +113,10 @@ EXTRACTION_MAX_TOKENS=6000
 EXTRACTION_DISABLE_THINKING=true
 GPUSTACK_TIMEOUT=300
 ORCHESTRATOR_MODEL=minimax-m2.7
-QWEN3_VL_MODEL=qwen3-vl-30b-a3b-instruct
+QWEN3_VL_MODEL=qwen3.8-27b
 
-# OCR engine: qwen3-vl (GPUStack, default) or mistral (legacy fallback)
+# OCR engine: qwen3-vl (GPUStack, default; the engine key is historical,
+# the model behind it is QWEN3_VL_MODEL) or mistral (legacy fallback)
 OCR_ENGINE=qwen3-vl
 ```
 
@@ -153,7 +154,7 @@ python scripts/run_pipeline.py --help
 
 | Engine | How it works | Speed | Cost |
 |---|---|---|---|
-| `qwen3-vl` (default) | GPUStack Qwen3-VL; falls back to Mistral if empty and available | Fast | Free (local) |
+| `qwen3-vl` (default) | GPUStack vision model, set by `QWEN3_VL_MODEL` (now `qwen3.8-27b`); falls back to Mistral if empty and available | Fast | Free (local) |
 | `mistral` | Mistral API only (legacy; `pip install -e '.[ocr-mistral]'` + `MISTRAL_API_KEY`) | Fast | Paid |
 
 Output: `site/data/*.json`, `site/bib/*.bib`, `bib/*.bib`.

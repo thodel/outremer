@@ -9,7 +9,7 @@ Env vars (set in .env.gpustack, git-ignored):
     GPUSTACK_TIMEOUT     - request timeout in seconds (default 120)
     EXTRACTION_MODEL     - model for person extraction (default qwen3-30b-a3b-instruct)
     ORCHESTRATOR_MODEL   - model for orchestration (default minimax-m2.7)
-    QWEN3_VL_MODEL       - vision model for document OCR (default qwen3-vl-30b-a3b-instruct)
+    QWEN3_VL_MODEL       - vision model for document OCR (default qwen3.8-27b)
     ATR_GATEWAY_URL      - serving-atr-inference base URL
     ATR_API_KEY          - static X-API-Key credential (empty for local development)
     ATR_HTTP_TIMEOUT     - gateway request timeout in seconds (default 300)
@@ -63,7 +63,7 @@ ATR_HTTP_TIMEOUT = float(_get("ATR_HTTP_TIMEOUT", "300"))
 # Model names - must match exactly how models are registered in GPUStack
 EXTRACTION_MODEL   = _get("EXTRACTION_MODEL",   "qwen3-30b-a3b-instruct")
 ORCHESTRATOR_MODEL = _get("ORCHESTRATOR_MODEL", "minimax-m2.7")
-QWEN3_VL_MODEL     = _get("QWEN3_VL_MODEL",     "qwen3-vl-30b-a3b-instruct")
+QWEN3_VL_MODEL     = _get("QWEN3_VL_MODEL",     "qwen3.8-27b")
 EXTRACTION_SEED    = int(_get("EXTRACTION_SEED", "42"))
 # Reasoning models (gpt-oss-120b) spend tokens on reasoning before emitting
 # content; a tight budget truncates the JSON mid-array. agentic_historian
