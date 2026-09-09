@@ -5522,20 +5522,20 @@
       ]
     },
     "monk": {
-      "count": 2,
-      "last_context": "When the caravan reached Busra in Syria, there was a monk there in his cell by the name of Bahira",
-      "last_seen": "2026-09-08T01:24:57.395021+00:00",
+      "count": 1,
+      "last_context": "sees in the distance the flickering light from the lamp ofa monk reading in his cell and finds shelter",
+      "last_seen": "2026-09-09T01:27:00.603284+00:00",
       "name": "monk",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
-          "count": 2,
+          "count": 1,
           "reasons": {
-            "lowercase_non_name": 2
+            "known_bad_entity": 1
           }
         }
       },
       "reasons": {
-        "lowercase_non_name": 2
+        "known_bad_entity": 1
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
@@ -7959,9 +7959,9 @@
       ]
     },
     "the pope": {
-      "count": 15,
+      "count": 14,
       "last_context": "Thomas Fuller, later, put it bluntly, the pope \"got a bag of money by it.\"",
-      "last_seen": "2026-08-31T01:28:34.788063+00:00",
+      "last_seen": "2026-09-09T01:33:12.317163+00:00",
       "name": "the Pope",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
@@ -7971,35 +7971,55 @@
           }
         },
         "data/raw/Munro-PopesCrusades-1916.pdf": {
-          "count": 13,
+          "count": 12,
           "reasons": {
-            "known_bad_entity": 13
+            "known_bad_entity": 12
           }
         }
       },
       "reasons": {
-        "known_bad_entity": 15
+        "known_bad_entity": 14
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
         "data/raw/Munro-PopesCrusades-1916.pdf"
       ]
     },
-    "the sultan": {
-      "count": 2,
-      "last_context": "One reason for the Sultan's wrath against them",
-      "last_seen": "2026-08-31T01:23:55.843459+00:00",
-      "name": "the Sultan",
+    "the prince": {
+      "count": 1,
+      "last_context": "as 'knights and prince of the kingdom of Jerusalem': the 'prince' could only have been Galdemar",
+      "last_seen": "2026-09-09T01:41:41.919287+00:00",
+      "name": "the prince",
       "per_source": {
-        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
-          "count": 2,
+        "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
+          "count": 1,
           "reasons": {
-            "known_bad_entity": 2
+            "lowercase_non_name": 1
           }
         }
       },
       "reasons": {
-        "known_bad_entity": 2
+        "lowercase_non_name": 1
+      },
+      "sources": [
+        "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf"
+      ]
+    },
+    "the sultan": {
+      "count": 4,
+      "last_context": "The sultan granted this request of the pope",
+      "last_seen": "2026-09-09T01:27:00.603284+00:00",
+      "name": "the Sultan",
+      "per_source": {
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
+          "count": 4,
+          "reasons": {
+            "known_bad_entity": 4
+          }
+        }
+      },
+      "reasons": {
+        "known_bad_entity": 4
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
