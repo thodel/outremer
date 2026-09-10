@@ -85,6 +85,26 @@
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
       ]
     },
+    "a stranger": {
+      "count": 1,
+      "last_context": "This is a stranger who has only recently arrived from the land of the Franks",
+      "last_seen": "2026-09-10T01:28:33.414097+00:00",
+      "name": "a stranger",
+      "per_source": {
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
+          "count": 1,
+          "reasons": {
+            "lowercase_non_name": 1
+          }
+        }
+      },
+      "reasons": {
+        "lowercase_non_name": 1
+      },
+      "sources": [
+        "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
+      ]
+    },
     "a vassal": {
       "count": 1,
       "last_context": "ecclesiastical courts ; thus when a vassal took the cross he might escape to a considerable",
@@ -1948,14 +1968,14 @@
     },
     "crusaders": {
       "count": 10,
-      "last_context": "following the expulsion of the Crusaders, the Arabs simply ceased to pay further attention",
-      "last_seen": "2026-09-08T01:24:57.395021+00:00",
+      "last_context": "after the departure of most of the crusaders and before he laid siege to Arsuf",
+      "last_seen": "2026-09-10T01:43:33.451238+00:00",
       "name": "crusaders",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
-          "count": 5,
+          "count": 4,
           "reasons": {
-            "known_bad_entity": 5
+            "known_bad_entity": 4
           }
         },
         "data/raw/Munro-PopesCrusades-1916.pdf": {
@@ -1965,9 +1985,9 @@
           }
         },
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
-          "count": 3,
+          "count": 4,
           "reasons": {
-            "known_bad_entity": 3
+            "known_bad_entity": 4
           }
         }
       },
@@ -7962,7 +7982,7 @@
       "count": 14,
       "last_context": "Thomas Fuller, later, put it bluntly, the pope \"got a bag of money by it.\"",
       "last_seen": "2026-09-09T01:33:12.317163+00:00",
-      "name": "the Pope",
+      "name": "The Pope",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
           "count": 2,
@@ -8006,20 +8026,20 @@
       ]
     },
     "the sultan": {
-      "count": 4,
-      "last_context": "The sultan granted this request of the pope",
-      "last_seen": "2026-09-09T01:27:00.603284+00:00",
+      "count": 2,
+      "last_context": "One reason for the Sultan's wrath against them",
+      "last_seen": "2026-09-10T01:28:33.414097+00:00",
       "name": "the Sultan",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
-          "count": 4,
+          "count": 2,
           "reasons": {
-            "known_bad_entity": 4
+            "known_bad_entity": 2
           }
         }
       },
       "reasons": {
-        "known_bad_entity": 4
+        "known_bad_entity": 2
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
