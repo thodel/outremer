@@ -942,18 +942,18 @@
     "bartolf of nangis": {
       "count": 1,
       "last_context": "R6hricht, Regesta, nos. 43, 57; Bartolf of Nangis, pp. 524, 535",
-      "last_seen": "2026-08-31T01:35:06.708781+00:00",
+      "last_seen": "2026-09-11T01:40:34.418398+00:00",
       "name": "Bartolf of Nangis",
       "per_source": {
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
           "count": 1,
           "reasons": {
-            "known_bad_entity": 1
+            "modern_scholar": 1
           }
         }
       },
       "reasons": {
-        "known_bad_entity": 1
+        "modern_scholar": 1
       },
       "sources": [
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf"
@@ -1967,15 +1967,15 @@
       ]
     },
     "crusaders": {
-      "count": 10,
-      "last_context": "after the departure of most of the crusaders and before he laid siege to Arsuf",
-      "last_seen": "2026-09-10T01:43:33.451238+00:00",
+      "count": 16,
+      "last_context": "following the expulsion of the Crusaders, the Arabs simply ceased to pay further attention",
+      "last_seen": "2026-09-11T01:27:32.272936+00:00",
       "name": "crusaders",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
-          "count": 4,
+          "count": 10,
           "reasons": {
-            "known_bad_entity": 4
+            "known_bad_entity": 10
           }
         },
         "data/raw/Munro-PopesCrusades-1916.pdf": {
@@ -1992,7 +1992,7 @@
         }
       },
       "reasons": {
-        "known_bad_entity": 10
+        "known_bad_entity": 16
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
@@ -5543,19 +5543,19 @@
     },
     "monk": {
       "count": 1,
-      "last_context": "sees in the distance the flickering light from the lamp ofa monk reading in his cell and finds shelter",
-      "last_seen": "2026-09-09T01:27:00.603284+00:00",
+      "last_context": "sees in the distance the flickering light from the lamp ofa monk reading in his cell and finds shelter with him",
+      "last_seen": "2026-09-11T01:27:32.272936+00:00",
       "name": "monk",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
           "count": 1,
           "reasons": {
-            "known_bad_entity": 1
+            "lowercase_non_name": 1
           }
         }
       },
       "reasons": {
-        "known_bad_entity": 1
+        "lowercase_non_name": 1
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
@@ -7979,9 +7979,9 @@
       ]
     },
     "the pope": {
-      "count": 14,
+      "count": 16,
       "last_context": "Thomas Fuller, later, put it bluntly, the pope \"got a bag of money by it.\"",
-      "last_seen": "2026-09-09T01:33:12.317163+00:00",
+      "last_seen": "2026-09-11T01:32:33.378648+00:00",
       "name": "The Pope",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
@@ -7991,14 +7991,14 @@
           }
         },
         "data/raw/Munro-PopesCrusades-1916.pdf": {
-          "count": 12,
+          "count": 14,
           "reasons": {
-            "known_bad_entity": 12
+            "known_bad_entity": 14
           }
         }
       },
       "reasons": {
-        "known_bad_entity": 14
+        "known_bad_entity": 16
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
