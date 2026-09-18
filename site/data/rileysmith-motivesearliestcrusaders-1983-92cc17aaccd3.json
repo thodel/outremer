@@ -123,7 +123,7 @@
       "role": "military group",
       "gender": "unknown",
       "group": true,
-      "context": "after the departure of most of the crusaders and before he laid siege to Arsuf",
+      "context": "after the departure of most of the crusaders and before he laid siege",
       "confidence": 0.9,
       "source_offset": null
     },
@@ -182,10 +182,10 @@
     {
       "name": "the French bishops",
       "raw_mention": "the French bishops",
-      "title": "bishops",
+      "title": null,
       "epithet": null,
       "toponym": "French",
-      "role": "clergy",
+      "role": "bishops",
       "gender": "m",
       "group": true,
       "context": "is evidence that the pope and the French bishops were aware that some at least would take the cross for material reasons",
@@ -198,10 +198,10 @@
       "title": "Count",
       "epithet": null,
       "toponym": "Flanders",
-      "role": "crusader",
+      "role": "count",
       "gender": "m",
       "group": false,
-      "context": "Count Robert of Flanders, for instance, was treated for the rest of his life with the special respect accorded to a Jerosolimitanus",
+      "context": "Count Robert of Flanders, for instance, was treated for the rest of his life with the special respect accorded to a Jerosolimitanus.",
       "confidence": 0.95,
       "source_offset": null
     },
@@ -211,24 +211,11 @@
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "military",
+      "role": "army",
       "gender": "unknown",
       "group": true,
-      "context": "and the needs of the armies on the march, which seem only to have been met by periodic divisions of spoil",
+      "context": "and the needs of the armies on the march, which seem only to have been met by periodic divisions of spoil.",
       "confidence": 0.8,
-      "source_offset": null
-    },
-    {
-      "name": "the Egyptian army",
-      "raw_mention": "the Egyptian army",
-      "title": null,
-      "epithet": null,
-      "toponym": "Egyptian",
-      "role": "military",
-      "gender": "unknown",
-      "group": true,
-      "context": "and the victory over the Egyptian army on I 2 August, most crusaders decided to return home",
-      "confidence": 0.85,
       "source_offset": null
     },
     {
@@ -250,7 +237,7 @@
       "title": "king",
       "epithet": null,
       "toponym": "Jerusalem",
-      "role": "monarch",
+      "role": "king",
       "gender": "m",
       "group": false,
       "context": "Fulcher of Chartres, the chaplain of the first king of lerusalem, reported that in",
@@ -923,14 +910,14 @@
     {
       "name": "Adhemar",
       "raw_mention": "Adhemar",
-      "title": null,
+      "title": "Papal Legate",
       "epithet": null,
       "toponym": null,
-      "role": "papal legate",
+      "role": "legate",
       "gender": "m",
       "group": false,
-      "context": "accompanied the papal legate Adhemar and had transferred his allegiance directly to Raymond after Adhemar's death",
-      "confidence": 0.9,
+      "context": "brother of the papal legate Adhemar. He must have travelled to Syria in the legate's company",
+      "confidence": 0.95,
       "source_offset": null
     },
     {
@@ -1033,8 +1020,8 @@
       "role": "count",
       "gender": "m",
       "group": false,
-      "context": "Anjou crusaded in the Angevin company which must have followed either Stephen of Blois or Hugh of Vermandois",
-      "confidence": 0.9,
+      "context": "had originally been chaplain to Stephen of Blois, although he left him in October 1097",
+      "confidence": 0.95,
       "source_offset": null
     },
     {
@@ -1046,8 +1033,8 @@
       "role": "count",
       "gender": "m",
       "group": false,
-      "context": "Anjou crusaded in the Angevin company which must have followed either Stephen of Blois or Hugh of Vermandois",
-      "confidence": 0.9,
+      "context": "had then apparently served with Hugh of Vermandois before transferring his allegiance to Baldwin",
+      "confidence": 0.95,
       "source_offset": null
     },
     {
@@ -1235,7 +1222,7 @@
     {
       "name": "William Peyre",
       "raw_mention": "William Peyre",
-      "title": "lord",
+      "title": "Lord",
       "epithet": null,
       "toponym": "Cunlhat",
       "role": "knight",
@@ -1249,7 +1236,7 @@
       "name": "Peter Bartholomew",
       "raw_mention": "Peter Bartholomew",
       "title": null,
-      "epithet": "the visionary",
+      "epithet": null,
       "toponym": null,
       "role": "visionary",
       "gender": "m",
@@ -1289,7 +1276,7 @@
       "raw_mention": "Bertrand Porcellet",
       "title": null,
       "epithet": null,
-      "toponym": "Arles",
+      "toponym": null,
       "role": "lord",
       "gender": "m",
       "group": false,
@@ -1307,7 +1294,20 @@
       "gender": "m",
       "group": false,
       "context": "Ralph later became a captain of Henry I of England's household troops",
-      "confidence": 0.9,
+      "confidence": 0.95,
+      "source_offset": null
+    },
+    {
+      "name": "the count's constables",
+      "raw_mention": "the count's constables",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": "collective",
+      "gender": "unknown",
+      "group": true,
+      "context": "In I 103 he was still at Raymond's side and was one of the count's constables",
+      "confidence": 0.7,
       "source_offset": null
     },
     {
@@ -1324,19 +1324,6 @@
       "source_offset": null
     },
     {
-      "name": "the Greek emperor",
-      "raw_mention": "the Greek emperor",
-      "title": "emperor",
-      "epithet": null,
-      "toponym": null,
-      "role": "emperor",
-      "gender": "m",
-      "group": false,
-      "context": "but he was wrong to deny the Greek emperor authority over his principality.",
-      "confidence": 0.8,
-      "source_offset": null
-    },
-    {
       "name": "Robert fitz Godwin",
       "raw_mention": "Robert fitz Godwin",
       "title": null,
@@ -1345,7 +1332,7 @@
       "role": "settler",
       "gender": "m",
       "group": false,
-      "context": "and Robert fitz Godwin seems to have been a disinherited AngloSaxon.",
+      "context": "and Robert fitz Godwin seems to have been a disinherited AngloSaxon",
       "confidence": 0.9,
       "source_offset": null
     },
@@ -1358,7 +1345,7 @@
       "role": "crusader",
       "gender": "m",
       "group": false,
-      "context": "Another example was provided by Arpin of Bourges, who sold his property and departed",
+      "context": "Another example was provided by Arpin of Bourges, who sold his property and departed for Palestine",
       "confidence": 0.9,
       "source_offset": null
     },
@@ -1373,6 +1360,19 @@
       "group": true,
       "context": "Wounded and captured by the Egyptians in 1102, he eventually returned home",
       "confidence": 0.8,
+      "source_offset": null
+    },
+    {
+      "name": "the Greek emperor",
+      "raw_mention": "the Greek emperor",
+      "title": "emperor",
+      "epithet": null,
+      "toponym": null,
+      "role": "sovereign",
+      "gender": "m",
+      "group": false,
+      "context": "but he was wrong to deny the Greek emperor authority over his principality",
+      "confidence": 0.85,
       "source_offset": null
     },
     {
@@ -1416,10 +1416,10 @@
     },
     {
       "name": "Eustace",
-      "raw_mention": "his brother Eustace's",
+      "raw_mention": "his brother Eustace's lordship",
       "title": null,
       "epithet": null,
-      "toponym": null,
+      "toponym": "Boulogne",
       "role": "lord",
       "gender": "m",
       "group": false,
@@ -1476,7 +1476,7 @@
       "gender": "m",
       "group": false,
       "context": "Drogo of Nesle had been in Emicho of Leiningen's ill fated company",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "source_offset": null
     },
     {
@@ -1774,14 +1774,6 @@
       },
       "confidence": 0.6087,
       "status": "low"
-    },
-    {
-      "person": "the Egyptian army",
-      "person_group": true,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
     },
     {
       "person": "Fulcher of Chartres",
@@ -3848,6 +3840,30 @@
       "status": "medium"
     },
     {
+      "person": "the count's constables",
+      "person_group": true,
+      "candidates": [
+        {
+          "outremer_id": "AUTH:CR86",
+          "outremer_name": "Constance of Toulouse",
+          "type": "person",
+          "score": 0.619,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'the count s constables' ↔ 'Constance of Toulouse'"
+        }
+      ],
+      "top_candidate": {
+        "outremer_id": "AUTH:CR86",
+        "outremer_name": "Constance of Toulouse",
+        "type": "person",
+        "score": 0.619,
+        "match_type": "fuzzy",
+        "evidence": "fuzzy match: 'the count s constables' ↔ 'Constance of Toulouse'"
+      },
+      "confidence": 0.619,
+      "status": "low"
+    },
+    {
       "person": "Count Raymond",
       "person_group": false,
       "candidates": [
@@ -3886,14 +3902,6 @@
       },
       "confidence": 0.6316,
       "status": "low"
-    },
-    {
-      "person": "the Greek emperor",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
     },
     {
       "person": "Robert fitz Godwin",
@@ -3946,6 +3954,14 @@
     {
       "person": "the Egyptians",
       "person_group": true,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "the Greek emperor",
+      "person_group": false,
       "candidates": [],
       "top_candidate": null,
       "confidence": 0.0,

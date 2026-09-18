@@ -85,7 +85,7 @@
       "gender": "m",
       "group": false,
       "context": "Thomas Fuller, later, put it bluntly, the pope \"got a bag of money by it.\"",
-      "confidence": 0.2,
+      "confidence": 0.3,
       "source_offset": null
     },
     {
@@ -527,19 +527,19 @@
       "gender": "m",
       "group": false,
       "context": "The ruler of Armenia sought to have the title of king bestowed upon him by the Pope",
-      "confidence": 0.7,
+      "confidence": 0.8,
       "source_offset": null
     },
     {
       "name": "St. Louis",
       "raw_mention": "St. Louis",
-      "title": null,
+      "title": "St.",
       "epithet": null,
       "toponym": null,
       "role": "king",
       "gender": "m",
       "group": false,
-      "context": "little or nothing; the heroic St. Louis had been obliged to ransom himself from captivity",
+      "context": "the heroic St. Louis had been obliged to ransom himself from captivity",
       "confidence": 0.95,
       "source_offset": null
     },
@@ -549,7 +549,7 @@
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "pope",
+      "role": "pontiff",
       "gender": "m",
       "group": false,
       "context": "For the First Crusade Urban II. had appointed a papal legate, Ademar of Puy",
@@ -565,7 +565,7 @@
       "role": "papal legate",
       "gender": "m",
       "group": false,
-      "context": "For the First Crusade Urban II. had appointed a papal legate, Ademar of Puy, who proved of great assistance",
+      "context": "For the First Crusade Urban II. had appointed a papal legate, Ademar of Puy, who proved of great",
       "confidence": 0.95,
       "source_offset": null
     },
@@ -601,7 +601,7 @@
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "pope",
+      "role": "pontiff",
       "gender": "m",
       "group": false,
       "context": "With the exceptions of Urban II. and Innocent III., the Popes did not take an active part",
@@ -610,11 +610,11 @@
     },
     {
       "name": "Innocent",
-      "raw_mention": "Innocent",
+      "raw_mention": "Innocent's",
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "pope",
+      "role": "pontiff",
       "gender": "m",
       "group": false,
       "context": "the expedition for which Urban made the plans was successful ; Innocent's orders were not obeyed",
@@ -624,7 +624,7 @@
     {
       "name": "St. Bernard",
       "raw_mention": "St. Bernard",
-      "title": null,
+      "title": "St.",
       "epithet": null,
       "toponym": null,
       "role": "church leader",
@@ -643,7 +643,7 @@
       "role": "commanders",
       "gender": "unknown",
       "group": true,
-      "context": "before its capture in 1099, the leaders gathered to discuss the election of a ruler",
+      "context": "When, before its capture in 1099, the leaders gathered to discuss the election of a ruler",
       "confidence": 0.6,
       "source_offset": null
     },
@@ -682,7 +682,7 @@
       "role": "ruler",
       "gender": "m",
       "group": false,
-      "context": "For the moment the nobles yielded; after the capture of the city they elected Godfrey, Defender of the Holy Sepulcher",
+      "context": "after the capture of the city they elected Godfrey, Defender of the Holy Sepulcher",
       "confidence": 0.95,
       "source_offset": null
     },
@@ -1033,7 +1033,7 @@
       "role": "poet",
       "gender": "m",
       "group": false,
-      "context": "As Walter was a partisan of the Hohenstaufens and opposed to the papacy",
+      "context": "As Walter was a partisan of the Hohenstaufens and opposed to the papacy he might be considered",
       "confidence": 0.9,
       "source_offset": null
     },
@@ -1046,7 +1046,7 @@
       "role": "dynasty",
       "gender": "unknown",
       "group": true,
-      "context": "As Walter was a partisan of the Hohenstaufens and opposed to the papacy",
+      "context": "As Walter was a partisan of the Hohenstaufens and opposed to the papacy he might be considered",
       "confidence": 0.8,
       "source_offset": null
     },
@@ -1059,7 +1059,7 @@
       "role": "historiographer",
       "gender": "m",
       "group": false,
-      "context": "e. g., Matthew Paris, the historiographer of the monastery of St.",
+      "context": "But the same idea was common ; e. g., Matthew Paris, the historiographer of the monastery",
       "confidence": 0.95,
       "source_offset": null
     },
