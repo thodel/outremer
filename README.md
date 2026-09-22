@@ -1,7 +1,7 @@
 # People of the Medieval Levant — OUTREMER
 
 [![CI](https://github.com/thodel/outremer/actions/workflows/Epic5-CI.yml/badge.svg?branch=main)](https://github.com/thodel/outremer/actions/workflows/Epic5-CI.yml)
-[![Docker](https://img.shields.io/docker/v/thodel/outremer?label=docker&sort=semver)](https://hub.docker.com/r/thodel/outremer)
+[![Container](https://img.shields.io/badge/container-ghcr.io%2Fthodel%2Foutremer-blue)](https://github.com/thodel/outremer/pkgs/container/outremer)
 
 A proof-of-concept pipeline for AI-assisted prosopography of the medieval Levant (Crusades era, 11th–14th centuries). Part of a collaborative research project by Jochen Burgtorf (Cal State Fullerton), Tobias Hodel (University of Bern), and Laura Morreale (Harvard / independent scholar).
 
@@ -176,6 +176,22 @@ assertions, identity hypotheses, candidate scores, and generation provenance
 beside the legacy link review. Documents without an evidence artifact continue
 to use the legacy interface. `site/evidence-review.html` remains available as a
 compatibility entry point and uses the same renderer and local review store.
+
+### With Docker
+
+Version tags publish an image to `ghcr.io/thodel/outremer`. It carries the
+pipeline, not the corpus: mount the PDFs to process and a folder for the
+output, and pass the backend settings as an env file.
+
+```bash
+docker run --rm --env-file .env.gpustack \
+  -v "$PWD/pdfs:/app/data/raw:ro" -v "$PWD/site:/app/site" \
+  ghcr.io/thodel/outremer:latest
+```
+
+Without a reachable GPUStack the run still completes, but degraded: recognition
+yields no text and extraction falls back to heuristic NER. Both are logged, and
+the run report records it.
 
 ## Tests
 
