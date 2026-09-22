@@ -67,19 +67,19 @@
     },
     "a monk": {
       "count": 1,
-      "last_context": "sees in the distance the flickering light from the lamp ofa monk reading",
-      "last_seen": "2026-09-20T01:24:52.156452+00:00",
+      "last_context": "sees in the distance the flickering light from the lamp ofa monk reading in his cell and finds shelter",
+      "last_seen": "2026-09-22T01:26:03.544145+00:00",
       "name": "a monk",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
           "count": 1,
           "reasons": {
-            "known_bad_entity": 1
+            "lowercase_non_name": 1
           }
         }
       },
       "reasons": {
-        "known_bad_entity": 1
+        "lowercase_non_name": 1
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
@@ -1967,15 +1967,15 @@
       ]
     },
     "crusaders": {
-      "count": 16,
-      "last_context": "probably in early September after the departure of most of the crusaders",
-      "last_seen": "2026-09-21T01:37:40.816816+00:00",
+      "count": 10,
+      "last_context": "following the expulsion of the Crusaders, the Arabs simply ceased to pay further attention",
+      "last_seen": "2026-09-22T01:26:03.544145+00:00",
       "name": "crusaders",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
-          "count": 10,
+          "count": 4,
           "reasons": {
-            "known_bad_entity": 10
+            "known_bad_entity": 4
           }
         },
         "data/raw/Munro-PopesCrusades-1916.pdf": {
@@ -1992,7 +1992,7 @@
         }
       },
       "reasons": {
-        "known_bad_entity": 16
+        "known_bad_entity": 10
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
@@ -7979,10 +7979,10 @@
       ]
     },
     "the pope": {
-      "count": 17,
+      "count": 14,
       "last_context": "Thomas Fuller, later, put it bluntly, the pope \"got a bag of money by it.\"",
-      "last_seen": "2026-09-21T01:30:32.300541+00:00",
-      "name": "the Pope",
+      "last_seen": "2026-09-22T01:30:48.095856+00:00",
+      "name": "The Pope",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
           "count": 2,
@@ -7991,14 +7991,14 @@
           }
         },
         "data/raw/Munro-PopesCrusades-1916.pdf": {
-          "count": 15,
+          "count": 12,
           "reasons": {
-            "known_bad_entity": 15
+            "known_bad_entity": 12
           }
         }
       },
       "reasons": {
-        "known_bad_entity": 17
+        "known_bad_entity": 14
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
