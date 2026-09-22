@@ -114,6 +114,9 @@ EXTRACTION_DISABLE_THINKING=true
 GPUSTACK_TIMEOUT=300
 ORCHESTRATOR_MODEL=minimax-m2.7
 QWEN3_VL_MODEL=qwen3.8-27b
+# Same for recognition: in thinking mode qwen3.8-27b spends the whole
+# OCR budget reasoning and returns empty text (both switches default on)
+QWEN3_VL_DISABLE_THINKING=true
 
 # OCR engine: qwen3-vl (GPUStack, default; the engine key is historical,
 # the model behind it is QWEN3_VL_MODEL) or mistral (legacy fallback)

@@ -201,7 +201,7 @@ def _page_images_as_data_urls(path: Path, max_pages: int = 8) -> list[str]:
 
 def _qwen3vl_ocr(path: Path) -> str:
     """GPUStack Qwen3-VL for document recognition (multimodal, not text)."""
-    from config import QWEN3_VL_MODEL
+    from config import QWEN3_VL_DISABLE_THINKING, QWEN3_VL_MODEL
 
     # A base64 PDF pasted into the TEXT prompt — the previous implementation —
     # never reached the model: measured on tei it produced 65k input tokens and
@@ -224,6 +224,11 @@ def _qwen3vl_ocr(path: Path) -> str:
         "preserving the original orthography, abbreviations, line breaks and "
         "capitalisation. Expand nothing. Output only the transcription."
     )
+    extra: dict[str, Any] = {}
+    if QWEN3_VL_DISABLE_THINKING:
+        # A reasoning model left in thinking mode spends the whole budget
+        # before answering: an empty transcription, not an error.
+        extra["extra_body"] = {"chat_template_kwargs": {"enable_thinking": False}}
     try:
         text = _llm_generate(
             prompt,
@@ -231,8 +236,15 @@ def _qwen3vl_ocr(path: Path) -> str:
             images=images,
             max_tokens=8192,
             temperature=0.0,
+            **extra,
         )
         if not text.strip():
+            # Empty content arrives as a normal HTTP 200. Say so, or the page
+            # is indistinguishable from one that holds no text.
+            logger.error(
+                "GPUStack VLM OCR (%s) returned no text for %s.",
+                QWEN3_VL_MODEL, path.name,
+            )
             return ""
         logger.info(
             "GPUStack VLM OCR returned %d chars from %d page image(s).",

@@ -1,4 +1,5 @@
 import json
+import logging
 import os
 from pathlib import Path
 
@@ -166,3 +167,51 @@ def test_vlm_ocr_returns_empty_when_no_page_image(monkeypatch, tmp_path):
                         lambda *a, **k: called.__setitem__("n", called["n"] + 1) or "x")
     assert run_pipeline._qwen3vl_ocr(FIXTURE) == ""
     assert called["n"] == 0, "must not call the model without an image"
+
+
+def test_vlm_ocr_sends_the_thinking_switch(monkeypatch):
+    """qwen3.8-27b reasons before it answers. Without the switch the OCR call
+    spent all 8192 tokens thinking and returned 0 characters (tei, 2026-09-21);
+    with it, the same page came back as 12 378 characters of transcription."""
+    import config
+
+    monkeypatch.setattr(config, "QWEN3_VL_DISABLE_THINKING", True)
+    seen = {}
+    monkeypatch.setattr(run_pipeline, "_llm_generate",
+                        lambda prompt, **kw: seen.update(kw) or "Johannes")
+    run_pipeline._qwen3vl_ocr(FIXTURE)
+    assert seen["extra_body"] == {"chat_template_kwargs": {"enable_thinking": False}}
+
+
+def test_vlm_ocr_thinking_switch_can_be_turned_off(monkeypatch):
+    """For a non-reasoning vision model the switch is noise; allow omitting it."""
+    import config
+
+    monkeypatch.setattr(config, "QWEN3_VL_DISABLE_THINKING", False)
+    seen = {}
+    monkeypatch.setattr(run_pipeline, "_llm_generate",
+                        lambda prompt, **kw: seen.update(kw) or "Johannes")
+    run_pipeline._qwen3vl_ocr(FIXTURE)
+    assert "extra_body" not in seen
+
+
+@pytest.mark.skipif(
+    "QWEN3_VL_DISABLE_THINKING" in os.environ
+    or "EXTRACTION_DISABLE_THINKING" in os.environ,
+    reason="explicitly configured in this environment",
+)
+def test_thinking_switches_are_on_unless_configured_off():
+    """The only served text and vision model is a Qwen3 hybrid; a fresh
+    checkout must not need an .env to get non-empty answers."""
+    import config
+
+    assert config.QWEN3_VL_DISABLE_THINKING is True
+    assert config.EXTRACTION_DISABLE_THINKING is True
+
+
+def test_vlm_ocr_logs_an_error_on_empty_content(monkeypatch, caplog):
+    """Empty content is an HTTP 200. Silence made it look like a blank page."""
+    monkeypatch.setattr(run_pipeline, "_llm_generate", lambda prompt, **kw: "")
+    with caplog.at_level(logging.ERROR):
+        assert run_pipeline._qwen3vl_ocr(FIXTURE) == ""
+    assert "returned no text for magna-carta-1215-image-only.pdf" in caplog.text
