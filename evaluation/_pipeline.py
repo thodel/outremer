@@ -33,3 +33,12 @@ def relink(persons: list[str], authority_lookup: list[dict], **kwargs) -> list[d
     """
     person_dicts = [{"name": n} for n in persons if n]
     return linker.link_voyagers_to_outremer(person_dicts, authority_lookup, **kwargs)
+
+
+def recognise(pdf: Path) -> tuple[str, dict[str, int]]:
+    """The production document reader on a scanned PDF → (text, engines used)."""
+    import run_pipeline
+
+    run_pipeline._recognition_engines_used.clear()
+    text = run_pipeline.read_input(pdf)
+    return text, dict(run_pipeline._recognition_engines_used)

@@ -33,9 +33,21 @@ selection, see `evaluation/README.md`).
 Recognition is garbled at this hand: measured with `qwen3-vl-30b-a3b-instruct`,
 "Johannes Dei gracia" does not survive, while `Steph… Archiep` (Stephen Langton,
 in the preamble's witness list) does. Exact substring matching is therefore too
-brittle. The live test instead asserts the transcription is **closer to this
-charter than to an unrelated control text** — a relative comparison that
-tolerates character noise but still fails on refusal, empty output, or noise.
+brittle. The live test — and the weekly tei canary, `evaluation/ocr_canary.py` —
+asks instead whether the output **attests this charter's vocabulary**: at least
+eight distinct output words matching the edition (abbreviation by suspension
+and inflection allowed), and more than twice as many as match an unrelated
+control. That tolerates character noise and fails on refusal, empty output,
+noise, or prose.
+
+An earlier version compared CER against the edition with CER against a control
+text five times shorter. CER divides by the reference length, so any long
+output looked "closer to the charter" — measured on 2026-09-22, the verdict
+ratio (39.0 / 8.6) was simply the length ratio (943 / 211 normalised
+characters). Distinct words are immune to length and to repetition loops:
+`qwen3.8-27b` reads the address clause (`Vicecomitib. … prepositis … omnib
+Ballivis … suis`), then repeats `w.` to its token limit, and attests the same
+14 words with or without the loop.
 
 Set `OUTREMER_LIVE_OCR=1` to run it; it needs GPUStack reachability, i.e. a
 host inside the university network.
