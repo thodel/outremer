@@ -1,0 +1,71 @@
+{
+  "measurement": "M14.5 recognition comparison (#124)",
+  "run_at": "2026-09-22T05:37:27+00:00",
+  "input": {
+    "file": "magna-carta-1215-incipit-page.pdf",
+    "sha256": "b257204a5fa8eca64003275818649eae2f62b76498712f3ed8b89b8ca03df293",
+    "page_image": {
+      "width": 1230,
+      "height": 820
+    }
+  },
+  "engines": [
+    {
+      "engine": "vlm",
+      "backend": "gpustack",
+      "model": "qwen3.8-27b",
+      "seconds": 13.1,
+      "chars": 502,
+      "spec": "vlm",
+      "file": "vlm.txt"
+    },
+    {
+      "engine": "kraken",
+      "backend": "atr-gateway",
+      "model": "kraken-catmus_medieval",
+      "service_version": "7.0.2",
+      "confidence": 0.7772726301241348,
+      "weights": {
+        "zenodo_id": "10.5281/zenodo.7516057"
+      },
+      "seconds": 30.9,
+      "chars": 384,
+      "spec": "kraken:kraken-catmus_medieval",
+      "file": "kraken__kraken-catmus_medieval.txt"
+    },
+    {
+      "engine": "trocr",
+      "backend": "atr-gateway",
+      "model": "trocr-essoins-middle-latin",
+      "service_version": "0.1.0",
+      "confidence": 0.0,
+      "weights": {
+        "hf_repo": "dh-unibe/trocr-essoins-middle-latin"
+      },
+      "seconds": 35.3,
+      "chars": 605,
+      "spec": "trocr:trocr-essoins-middle-latin",
+      "file": "trocr__trocr-essoins-middle-latin.txt"
+    }
+  ],
+  "candidate_distance": {
+    "note": "Candidate distance measures disagreement between engines, not accuracy: symmetric edit distance over the longer normalised transcript.",
+    "pairwise": [
+      {
+        "a": "kraken:kraken-catmus_medieval",
+        "b": "trocr:trocr-essoins-middle-latin",
+        "distance": 0.588
+      },
+      {
+        "a": "kraken:kraken-catmus_medieval",
+        "b": "vlm",
+        "distance": 0.598
+      },
+      {
+        "a": "trocr:trocr-essoins-middle-latin",
+        "b": "vlm",
+        "distance": 0.578
+      }
+    ]
+  }
+}
