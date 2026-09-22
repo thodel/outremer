@@ -42,6 +42,12 @@ class _FakeAtr:
     def __exit__(self, *exc):
         return False
 
+    def list_models(self):
+        return [
+            {"id": "catmus", "zenodo_id": "10.5281/zenodo.7516057", "hf_repo": None},
+            {"id": "essoins", "zenodo_id": None, "hf_repo": "dh-unibe/trocr-essoins"},
+        ]
+
     def transcribe(self, image, *, model, engine):
         _FakeAtr.calls.append((engine, model, len(image)))
         outcome = self.outcomes[model]
@@ -83,6 +89,8 @@ def test_each_transcript_is_stored_with_its_engine_provenance(outcomes, tmp_path
     }
     assert by_spec["kraken:catmus"]["backend"] == "atr-gateway"
     assert by_spec["kraken:catmus"]["service_version"] == "0.1.0"
+    assert by_spec["kraken:catmus"]["weights"] == {"zenodo_id": "10.5281/zenodo.7516057"}
+    assert by_spec["trocr:essoins"]["weights"] == {"hf_repo": "dh-unibe/trocr-essoins"}
     assert (tmp_path / "kraken__catmus.txt").read_text() == outcomes["catmus"]
     # The gateway received the page's own image bytes, once per ATR engine.
     assert [(e, m) for e, m, _ in _FakeAtr.calls] == [("kraken", "catmus"), ("trocr", "essoins")]

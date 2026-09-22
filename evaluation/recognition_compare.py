@@ -62,6 +62,7 @@ def _run(spec: str, pdf: Path, image: bytes) -> tuple[str, dict]:
         engine, _, model = spec.partition(":")
         with _pipeline.atr_client() as client:
             result = client.transcribe(image, model=model, engine=engine)
+            entry = next((m for m in client.list_models() if m.get("id") == model), {})
         text = result.text
         record = {
             "engine": result.engine,
@@ -69,6 +70,9 @@ def _run(spec: str, pdf: Path, image: bytes) -> tuple[str, dict]:
             "model": result.model,
             "service_version": result.service_version,
             "confidence": result.confidence,
+            # Which weights the id resolves to. The id alone is not enough:
+            # several gateway ids name one model and load another.
+            "weights": {k: entry[k] for k in ("zenodo_id", "hf_repo") if entry.get(k)},
         }
     record["seconds"] = round(time.monotonic() - started, 1)
     record["chars"] = len(text.strip())
