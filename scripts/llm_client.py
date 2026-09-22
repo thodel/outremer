@@ -114,4 +114,22 @@ def generate(
         messages=messages,
         **kwargs,
     )
-    return resp.choices[0].message.content or ""
+    choice = resp.choices[0]
+    content = choice.message.content or ""
+    if getattr(choice, "finish_reason", None) == "length":
+        # The budget ran out. Callers only see the content string, so this is
+        # the one place that can tell "truncated" — or, with no content at
+        # all, "a reasoning model spent the budget thinking" — from a normal
+        # short answer.
+        usage = getattr(resp, "usage", None)
+        logger.warning(
+            "%s stopped at the token limit (%s completion tokens) with %d chars "
+            "of content%s",
+            model or EXTRACTION_MODEL,
+            getattr(usage, "completion_tokens", "?"),
+            len(content),
+            "" if content.strip() else
+            " — the budget went to reasoning; send chat_template_kwargs "
+            "enable_thinking=false or raise max_tokens",
+        )
+    return content

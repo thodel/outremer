@@ -7,9 +7,11 @@ Env vars (set in .env.gpustack, git-ignored):
     GPUSTACK_BASE_URL    - defaults to https://gpustack.unibe.ch/v1
     GPUSTACK_API_KEY     - API key for GPUStack authentication
     GPUSTACK_TIMEOUT     - request timeout in seconds (default 120)
-    EXTRACTION_MODEL     - model for person extraction (default qwen3-30b-a3b-instruct)
+    EXTRACTION_MODEL     - model for person extraction (default qwen3.8-27b)
     ORCHESTRATOR_MODEL   - model for orchestration (default minimax-m2.7)
     QWEN3_VL_MODEL       - vision model for document OCR (default qwen3.8-27b)
+    QWEN3_VL_DISABLE_THINKING - send enable_thinking=false with OCR calls (default true)
+    EXTRACTION_DISABLE_THINKING - same switch for extraction calls (default true)
     ATR_GATEWAY_URL      - serving-atr-inference base URL
     ATR_API_KEY          - static X-API-Key credential (empty for local development)
     ATR_HTTP_TIMEOUT     - gateway request timeout in seconds (default 300)
@@ -61,7 +63,9 @@ ATR_API_KEY = _get("ATR_API_KEY", "")
 ATR_HTTP_TIMEOUT = float(_get("ATR_HTTP_TIMEOUT", "300"))
 
 # Model names - must match exactly how models are registered in GPUStack
-EXTRACTION_MODEL   = _get("EXTRACTION_MODEL",   "qwen3-30b-a3b-instruct")
+# The previous default, qwen3-30b-a3b-instruct, is no longer served: a fresh
+# checkout without an .env pointed extraction at a 404.
+EXTRACTION_MODEL   = _get("EXTRACTION_MODEL",   "qwen3.8-27b")
 ORCHESTRATOR_MODEL = _get("ORCHESTRATOR_MODEL", "minimax-m2.7")
 QWEN3_VL_MODEL     = _get("QWEN3_VL_MODEL",     "qwen3.8-27b")
 EXTRACTION_SEED    = int(_get("EXTRACTION_SEED", "42"))
@@ -72,8 +76,14 @@ EXTRACTION_MAX_TOKENS = int(_get("EXTRACTION_MAX_TOKENS", "4096"))
 # Qwen3-family hybrid models default to thinking mode: they reason silently
 # until the token budget is exhausted and return an EMPTY content string
 # (observed as "Unrecoverable JSON (length=0)" on tei, 2026-08-29). Setting
-# this sends vLLM's chat_template_kwargs {"enable_thinking": false}.
-EXTRACTION_DISABLE_THINKING = _get("EXTRACTION_DISABLE_THINKING", "false").lower() == "true"
+# this sends vLLM's chat_template_kwargs {"enable_thinking": false}. On by
+# default because the default model is such a hybrid.
+EXTRACTION_DISABLE_THINKING = _get("EXTRACTION_DISABLE_THINKING", "true").lower() == "true"
+# The same switch for the recognition call. qwen3.8-27b is the only served
+# vision model and it reasons first: measured on tei 2026-09-21 against the
+# hi-res fixture, 8192 tokens went to reasoning and 0 characters to the
+# transcription, with HTTP 200 — so nothing retried and nothing failed.
+QWEN3_VL_DISABLE_THINKING = _get("QWEN3_VL_DISABLE_THINKING", "true").lower() == "true"
 
 # OCR
 # "qwen3-vl" - GPUStack Qwen3 VL (default); falls back to Mistral if empty
