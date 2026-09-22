@@ -57,12 +57,6 @@ def test_image_only_pdf_routes_to_recognition_and_records_engine(monkeypatch, tm
 
 HIRES_FIXTURE = FIXTURE.parent / "magna-carta-1215-incipit-hires.pdf"
 REFERENCE = FIXTURE.parent / "magna-carta-1215-incipit.reference.txt"
-# Unrelated control: modern English scholarly prose, same order of magnitude.
-CONTROL = (
-    "The Popes and the Crusades. The First Crusade was the work of Pope Urban "
-    "the Second, and the movement remained under papal direction throughout "
-    "the twelfth and thirteenth centuries, as the letters of the popes show."
-)
 
 
 def test_hires_fixture_has_no_text_layer_and_a_legible_line_height():
@@ -98,31 +92,25 @@ def test_live_image_only_pdf_returns_non_empty_text():
     reason="set OUTREMER_LIVE_OCR=1 to exercise the live GPUStack backend",
 )
 def test_live_hires_recognition_reads_this_charter_not_noise():
-    """A real quality gate, not a sign of life.
+    """A real quality gate, not a sign of life — the same one the tei canary runs.
 
-    The hand is hard and the transcription is heavily garbled — "Johannes Dei
-    gracia" does not survive, though "Steph… Archiep" (Stephen Langton, in the
-    witness list) does. Exact substring matching is therefore too brittle.
-    Instead: the output must be closer to THIS charter's published text than to
-    unrelated prose. That tolerates character noise while still failing on
-    refusal ("[NOT_A_PAGE]"), empty output, or engine noise.
-
-    Absolute CER is legitimate here because the reference is an independent
-    scholarly edition — not a Human-in-the-Loop selection (see
-    evaluation/README.md).
+    The hand is hard and the transcription heavily abbreviated and garbled —
+    "Johannes Dei gracia" does not survive, "Vicecomitib. … prepositis …
+    Ballivis" and "Steph. Cant. Archiep." do. So the gate asks whether the
+    output attests THIS charter's vocabulary (abbreviations allowed), counted
+    in distinct words so that a runaway repetition loop cannot pass by volume,
+    and fails on refusal, empty output, noise, or unrelated prose. See
+    evaluation/ocr_canary.py for why a CER comparison could not do this.
     """
-    from evaluation.metrics import cer
+    from evaluation.ocr_canary import judge  # same judgement as the tei canary
 
     run_pipeline._recognition_engines_used.clear()
     text = run_pipeline.read_input(HIRES_FIXTURE)
 
-    assert len(text.strip()) > 500, f"only {len(text.strip())} chars recognised"
-    reference = REFERENCE.read_text(encoding="utf-8")
-    d_charter = cer(reference, text)
-    d_control = cer(CONTROL, text)
-    assert d_charter < d_control, (
-        f"transcription is no closer to the charter ({d_charter:.3f}) "
-        f"than to unrelated prose ({d_control:.3f})"
+    verdict = judge(text, REFERENCE.read_text(encoding="utf-8"))
+    assert verdict["ok"], (
+        f"attests {verdict['charter_words']} words of this charter and "
+        f"{verdict['control_words']} of unrelated prose: {verdict['attested']}"
     )
 
 

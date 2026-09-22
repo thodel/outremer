@@ -24,18 +24,19 @@ FB=$(python3 -c "import json;print((json.load(open('$HOME/outremer/work/site/dat
 # 4. OCR canary. Every nightly document has a text layer, so recognition is
 # never exercised: from 2026-09-07 to 2026-09-22 it returned empty text (a
 # reasoning model in thinking mode, #141) while every nightly stayed green.
-# Run the live recognition test once the last pass is a week old; a failure
-# repeats (and alerts) every morning until fixed. "1 passed" is checked, not
-# just the exit code, so a skipped or deselected test cannot count as health.
+# Run evaluation/ocr_canary.py once the last pass is a week old; a failure
+# repeats (and alerts) every morning until fixed. It runs the production reader
+# with no dev dependencies — the venv here is installed from the lockfile and
+# has no pytest, which is exactly what broke the first, pytest-based version.
+# The printed verdict is checked, not just the exit code.
 CANARY_OK="$LOGDIR/ocr-canary.ok"
 if [ ! -f "$CANARY_OK" ] || [ -n "$(find "$CANARY_OK" -mtime +6)" ]; then
   (
     cd "$HOME/outremer/work" || exit 1
     set -a; . "${OUTREMER_ENV:-$HOME/outremer/etc/outremer.env}"; set +a
-    OUTREMER_LIVE_OCR=1 timeout 1200 .venv/bin/python -m pytest -q \
-      -p no:cacheprovider tests/test_scanned_recognition.py -k live_hires
+    timeout 1200 .venv/bin/python -m evaluation.ocr_canary --save "$LOGDIR/ocr-canary.txt"
   ) >"$LOGDIR/ocr-canary.log" 2>&1
-  if grep -q "1 passed" "$LOGDIR/ocr-canary.log"; then
+  if grep -q '"canary": "pass"' "$LOGDIR/ocr-canary.log"; then
     touch "$CANARY_OK"
   else
     FAILS="$FAILS ocr-canary-failed(see ocr-canary.log);"
