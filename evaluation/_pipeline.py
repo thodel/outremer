@@ -35,6 +35,37 @@ def relink(persons: list[str], authority_lookup: list[dict], **kwargs) -> list[d
     return linker.link_voyagers_to_outremer(person_dicts, authority_lookup, **kwargs)
 
 
+# --- Recognition (M14.5, #124) -----------------------------------------------
+
+
+def page_image(pdf: Path) -> bytes:
+    """First page's embedded image, exactly as the production VLM path sends it."""
+    import base64
+
+    import run_pipeline
+
+    urls = run_pipeline._page_images_as_data_urls(pdf, max_pages=1)
+    if not urls:
+        raise ValueError(f"{pdf.name} carries no page image")
+    return base64.b64decode(urls[0].split(",", 1)[1])
+
+
+def vlm_ocr(pdf: Path) -> tuple[str, str]:
+    """Production VLM recognition of an image-only PDF → (text, model id)."""
+    import run_pipeline
+
+    from config import QWEN3_VL_MODEL
+
+    return run_pipeline._qwen3vl_ocr(pdf), QWEN3_VL_MODEL
+
+
+def atr_client():
+    """The production ATR gateway client (URL, key and timeout from config)."""
+    from atr_client import AtrClient
+
+    return AtrClient()
+
+
 def recognise(pdf: Path) -> tuple[str, dict[str, int]]:
     """The production document reader on a scanned PDF → (text, engines used)."""
     import run_pipeline
