@@ -23,10 +23,15 @@ width), embedded unscaled: **4680×820, ~62 px per line** — 5.6× the linear
 detail of the derivative, at 729 KB. Width is cropped rather than the image
 downscaled, because line height is the quantity that decides legibility.
 
-`magna-carta-1215-incipit.reference.txt` holds the corresponding published
-Latin text of the charter's opening (an independent scholarly edition, so
-absolute CER against it is legitimate — unlike CER against a Human-in-the-Loop
-selection, see `evaluation/README.md`).
+`magna-carta-1215-incipit.reference.txt` holds published Latin text of the
+charter's opening (an independent scholarly edition, so absolute CER against it
+is legitimate — unlike CER against a Human-in-the-Loop selection, see
+`evaluation/README.md`). **It covers only part of the band:** its 976
+characters run from the address to the end of the witness list (*…comitis
+Penbrocie*), while the ~12 physical lines continue into clauses 1–4, which
+every engine reads (see `evaluation/recognition/magna-carta-1215-incipit-page/`).
+Readings of those lines earn no credit against it, so checks based on it
+under-count rather than over-count.
 
 ### What the live test asserts
 
@@ -51,3 +56,17 @@ Ballivis … suis`), then repeats `w.` to its token limit, and attests the same
 
 Set `OUTREMER_LIVE_OCR=1` to run it; it needs GPUStack reachability, i.e. a
 host inside the university network.
+
+## `magna-carta-1215-incipit-page.pdf` — page-shaped crop for ATR engines
+
+The left 1230 px of the hi-res fixture: **1230×820**, the same ~12 lines at
+the same ~62 px per line, re-encoded as JPEG (quality 95) in a one-page
+image-only PDF. Every line is cut at the right edge, so **no reference text
+matches it** — use it for engine comparison (candidate distance), not CER.
+
+It exists because the hi-res fixture is a **strip** (4680×820, aspect 5.7).
+kraken's `blla` segmenter scales every input to a fixed height, so its cost
+follows the aspect ratio, not the pixel count: on the same content, 5.8 s
+page-shaped vs ~290 s as a line strip, and the strip's GPU memory is not
+released. **Send strips to the VLM path only.** `evaluation/recognition_compare.py`
+refuses ATR engines for anything wider than 2.5:1 (#124).
