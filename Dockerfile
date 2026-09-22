@@ -12,6 +12,9 @@ COPY requirements.lock.txt .
 RUN pip install --no-cache-dir -r requirements.lock.txt
 
 COPY scripts/ ./scripts/
+# The evidence-first JSON Schema and SHACL shapes: every document is
+# validated against them, so without this directory every run fails.
+COPY schema/ ./schema/
 COPY data/ ./data/
 COPY pyproject.toml .
 
