@@ -1,0 +1,6 @@
+.git
+.venv
+**/__pycache__
+# Not redistributed in a published image: the source PDFs include
+# in-copyright scholarship. Mount inputs at /app/data/raw instead.
+data/raw/*.pdf
