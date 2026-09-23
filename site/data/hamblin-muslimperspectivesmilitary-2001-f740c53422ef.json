@@ -11,7 +11,7 @@
   },
   "persons": [
     {
-      "name": "Saladin, sultan of Egypt and Syria",
+      "name": "Saladin",
       "raw_mention": "Saladin, sultan ofEgypt and Syria",
       "title": "sultan",
       "epithet": null,
@@ -20,7 +20,7 @@
       "gender": "m",
       "group": false,
       "context": "On July 4, 1187, the armies ofSaladin, sultan ofEgypt and Syria, surrounded thousands ofCrusaders",
-      "confidence": 0.95,
+      "confidence": 1.0,
       "source_offset": null
     },
     {
@@ -33,7 +33,7 @@
       "gender": "m",
       "group": false,
       "context": "While King Guy and the Frankish aristocrats who had led their followers to disaster were allowed",
-      "confidence": 0.95,
+      "confidence": 1.0,
       "source_offset": null
     },
     {
@@ -42,24 +42,24 @@
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "aristocrat",
+      "role": "aristocrats",
       "gender": "unknown",
       "group": true,
       "context": "While King Guy and the Frankish aristocrats who had led their followers to disaster were allowed",
-      "confidence": 0.85,
+      "confidence": 0.8,
       "source_offset": null
     },
     {
       "name": "knights of the Military Orders",
-      "raw_mention": "the knights of the Military Orders",
+      "raw_mention": "knights ofthe Military Orders",
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "military order",
+      "role": "knights",
       "gender": "unknown",
       "group": true,
-      "context": "threat to Islam than the knights of the Military Orders",
-      "confidence": 0.95,
+      "context": "the knights ofthe Military Orders faced a different fate.2 After his triumphant victory, Saladin",
+      "confidence": 0.9,
       "source_offset": null
     },
     {
@@ -84,7 +84,7 @@
       "role": "military order",
       "gender": "unknown",
       "group": true,
-      "context": "military prowess of the Templars and Hospitallers were renowned",
+      "context": "prowess of the Templars and Hospitallers were renowned in the West",
       "confidence": 0.95,
       "source_offset": null
     },
@@ -98,7 +98,7 @@
       "gender": "m",
       "group": false,
       "context": "Richard Lionhearťs massacre of 2,700 Arab prisoners  plus their wives and children  following his capture",
-      "confidence": 0.95,
+      "confidence": 1.0,
       "source_offset": null
     },
     {
@@ -107,7 +107,7 @@
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "prisoner",
+      "role": "prisoners",
       "gender": "unknown",
       "group": true,
       "context": "Richard Lionhearťs massacre of 2,700 Arab prisoners  plus their wives and children  following his capture",
@@ -115,68 +115,16 @@
       "source_offset": null
     },
     {
-      "name": "poor Christians",
-      "raw_mention": "poor Christians",
+      "name": "Christians",
+      "raw_mention": "Christians",
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "prisoner",
-      "gender": "unknown",
+      "role": "believers",
+      "gender": "m",
       "group": true,
-      "context": "Saladin paid the ransom for thousands ofpoor Christians and let them go free.4",
-      "confidence": 0.8,
-      "source_offset": null
-    },
-    {
-      "name": "Arabs",
-      "raw_mention": "Arabs",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": "ethnic group",
-      "gender": "unknown",
-      "group": true,
-      "context": "the Arabs nonetheless had extensive contacts with both the Sassanid Persian and Byzantine empires",
-      "confidence": 0.85,
-      "source_offset": null
-    },
-    {
-      "name": "Ghassanid tribe",
-      "raw_mention": "Ghassanid tribe",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": "tribe",
-      "gender": "unknown",
-      "group": true,
-      "context": "Christianized Arab Ghassanid tribe, pagan Arabs first came into contact with Christian monasticism",
-      "confidence": 0.85,
-      "source_offset": null
-    },
-    {
-      "name": "pagan Arabs",
-      "raw_mention": "pagan Arabs",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": "ethnic group",
-      "gender": "unknown",
-      "group": true,
-      "context": "Christianized Arab Ghassanid tribe, pagan Arabs first came into contact with Christian monasticism",
-      "confidence": 0.85,
-      "source_offset": null
-    },
-    {
-      "name": "Christian monks",
-      "raw_mention": "Christian monks",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": "monk",
-      "gender": "unknown",
-      "group": true,
-      "context": "Arab poets make a few references to Christian monks; one perhaps allegorical allusion describes",
-      "confidence": 0.85,
+      "context": "The Christians regularly defiled holyplaces bywearing shoes. The only option was the reconquest and purification of Jerusalem",
+      "confidence": 0.9,
       "source_offset": null
     },
     {
@@ -198,10 +146,10 @@
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "religious group",
+      "role": "ethnic/religious group",
       "gender": "unknown",
       "group": true,
-      "context": "You will find that the most implacable ofmen in their enmity to thefaithful [Muslims] are the Jews",
+      "context": "Known to Jews and Christians as the Temple Mount, the Haram al Sharif served as the headquarters",
       "confidence": 0.9,
       "source_offset": null
     },
@@ -214,59 +162,46 @@
       "role": "religious group",
       "gender": "unknown",
       "group": true,
-      "context": "enmity to thefaithful [Muslims] are the Jewsand the pagans, and that the nearest in affection",
-      "confidence": 0.9,
-      "source_offset": null
-    },
-    {
-      "name": "Christians",
-      "raw_mention": "Christians",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": "religious group",
-      "gender": "unknown",
-      "group": true,
-      "context": "nearest in affection to them arethosewho say: \"We are Christians.\"",
-      "confidence": 0.9,
+      "context": "You will find that the most implacable ofmen in their enmity to thefaithful [Muslims] are the Jewsand the pagans",
+      "confidence": 0.8,
       "source_offset": null
     },
     {
       "name": "priests",
-      "raw_mention": "priests",
+      "raw_mention": "priests [qassisin]",
       "title": null,
       "epithet": null,
       "toponym": null,
       "role": "clergy",
       "gender": "unknown",
       "group": true,
-      "context": "That isbecause there are priests [qassisin] and monks [ruhban] among them; and because they",
-      "confidence": 0.85,
+      "context": "That isbecause there are priests [qassisin] and monks [ruhban] among them; and because they arefreefrom",
+      "confidence": 0.7,
       "source_offset": null
     },
     {
       "name": "monks",
-      "raw_mention": "monks",
+      "raw_mention": "monks [ruhban]",
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "monk",
+      "role": "clergy",
       "gender": "unknown",
       "group": true,
-      "context": "That isbecause there are priests [qassisin] and monks [ruhban] among them; and because they",
-      "confidence": 0.85,
+      "context": "That isbecause there are priests [qassisin] and monks [ruhban] among them; and because they arefreefrom",
+      "confidence": 0.7,
       "source_offset": null
     },
     {
       "name": "Bahira",
       "raw_mention": "Bahira",
-      "title": null,
+      "title": "monk",
       "epithet": null,
       "toponym": null,
       "role": "monk",
       "gender": "m",
       "group": false,
-      "context": "story of the monk Bahira, found in the earliest surviving biography of Muhammad, written byIbn Ishaq",
+      "context": "there was a monk there in his cell by the name of Bahira, who was well versed in the knowledge",
       "confidence": 0.9,
       "source_offset": null
     },
@@ -279,8 +214,8 @@
       "role": "prophet",
       "gender": "m",
       "group": false,
-      "context": "found in the earliest surviving biography of Muhammad, written byIbn Ishaq. As ayoung teenager",
-      "confidence": 0.95,
+      "context": "As ayoung teenager, Muhammadjourneyed with a caravan to Syria: When the caravan reached Busra",
+      "confidence": 1.0,
       "source_offset": null
     },
     {
@@ -289,24 +224,50 @@
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "biographer",
+      "role": "historian",
       "gender": "m",
       "group": false,
-      "context": "surviving biography of Muhammad, written byIbn Ishaq. As ayoung teenager, Muhammadjourneyed",
+      "context": "found in the earliest surviving biography of Muhammad, written byIbn Ishaq. As ayoung teenager",
       "confidence": 0.9,
       "source_offset": null
     },
     {
-      "name": "the apostle of God",
-      "raw_mention": "the apostle ofGod",
+      "name": "Arabs",
+      "raw_mention": "Arabs",
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "prophet",
-      "gender": "m",
-      "group": false,
-      "context": "he saw the apostle ofGod [Muhammad] in the caravan when they approached, with a cloud overshadowing",
+      "role": "ethnic group",
+      "gender": "unknown",
+      "group": true,
+      "context": "the Arabs nonetheless had extensive contacts with both the Sassanid Persian and Byzantine empires",
       "confidence": 0.8,
+      "source_offset": null
+    },
+    {
+      "name": "Ghassanid tribe",
+      "raw_mention": "Ghassanid tribe",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": "tribe",
+      "gender": "unknown",
+      "group": true,
+      "context": "especially through interaction with the Christianized Arab Ghassanid tribe, pagan Arabs first came into",
+      "confidence": 0.8,
+      "source_offset": null
+    },
+    {
+      "name": "Arab poets",
+      "raw_mention": "Arab poets",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": "poets",
+      "gender": "unknown",
+      "group": true,
+      "context": "Arab poets make a few references to Christian monks; one perhaps allegorical allusion describes",
+      "confidence": 0.7,
       "source_offset": null
     },
     {
@@ -375,12 +336,25 @@
       "source_offset": null
     },
     {
+      "name": "Jesus",
+      "raw_mention": "Jesus",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": "prophet/messiah",
+      "gender": "m",
+      "group": false,
+      "context": "We [God] gave him [Jesus] the Gospel, and put compassion and mercy",
+      "confidence": 0.95,
+      "source_offset": null
+    },
+    {
       "name": "the Messiah",
       "raw_mention": "the Messiah",
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "religious figure",
+      "role": "prophet",
       "gender": "m",
       "group": false,
       "context": "and of the Messiah, the son of Mary, lords besides God",
@@ -396,33 +370,20 @@
       "role": "mother of Jesus",
       "gender": "f",
       "group": false,
-      "context": "the Messiah, the son of Mary, lords besides God",
+      "context": "and of the Messiah, the son of Mary, lords besides God",
       "confidence": 0.9,
       "source_offset": null
     },
     {
-      "name": "Jesus",
-      "raw_mention": "Jesus",
-      "title": null,
+      "name": "the caliph 'Umar",
+      "raw_mention": "the caliph 'Umar",
+      "title": "caliph",
       "epithet": null,
       "toponym": null,
-      "role": "prophet",
+      "role": "ruler",
       "gender": "m",
       "group": false,
-      "context": "We [God] gave him [Jesus] the Gospel",
-      "confidence": 0.95,
-      "source_offset": null
-    },
-    {
-      "name": "'Umar",
-      "raw_mention": "'Umar",
-      "title": "Caliph",
-      "epithet": null,
-      "toponym": null,
-      "role": "caliph",
-      "gender": "m",
-      "group": false,
-      "context": "The caliph 'Umar's (ruled 634 644) treaty with Jerusalem",
+      "context": "The caliph 'Umar's (ruled 634 644) treaty with Jerusalem is typical",
       "confidence": 0.95,
       "source_offset": null
     },
@@ -435,7 +396,7 @@
       "role": "citizens",
       "gender": "unknown",
       "group": true,
-      "context": "has granted to the people of Jerusalem. He has given them an assurance of safety",
+      "context": "has granted to the people of Jerusalem. He has given them an assurance",
       "confidence": 0.8,
       "source_offset": null
     },
@@ -448,7 +409,7 @@
       "role": "monk/minister",
       "gender": "m",
       "group": false,
-      "context": "The most famous is perhaps the great defender of icons, John of Damascus (655 750)",
+      "context": "The most famous is perhaps the great defender of icons, John of Damascus",
       "confidence": 0.95,
       "source_offset": null
     },
@@ -458,10 +419,10 @@
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "dynasty",
+      "role": "dynasty/rulers",
       "gender": "unknown",
       "group": true,
-      "context": "originally a prominent minister for the Umayyads at Damascus",
+      "context": "who was originally a prominent minister for the Umayyads at Damascus",
       "confidence": 0.8,
       "source_offset": null
     },
@@ -513,8 +474,8 @@
       "role": "ethnic group",
       "gender": "unknown",
       "group": true,
-      "context": "becoming increasingly willing to make accommodation with the Arabs",
-      "confidence": 0.9,
+      "context": "attacks against monks and monasteries byArabs, these tended to be incidents",
+      "confidence": 0.85,
       "source_offset": null
     },
     {
@@ -526,7 +487,7 @@
       "role": "religious group",
       "gender": "unknown",
       "group": true,
-      "context": "because of their fierce enmity towards the Muslims and their great courage",
+      "context": "because of their fierce enmity towards the Muslims and their great courage.'50",
       "confidence": 0.9,
       "source_offset": null
     },
@@ -552,7 +513,7 @@
       "role": "military order",
       "gender": "unknown",
       "group": true,
-      "context": "sought out the Templars and Hospitallers who had been captured and said",
+      "context": "sought out the Templars and Hospitallers who had been captured and said: 'I shall purify the land'",
       "confidence": 0.95,
       "source_offset": null
     },
@@ -584,14 +545,14 @@
     },
     {
       "name": "the Franks",
-      "raw_mention": "the filthy Franks",
+      "raw_mention": "the Franks",
       "title": null,
       "epithet": null,
       "toponym": null,
       "role": "ethnic/military group",
       "gender": "unknown",
       "group": true,
-      "context": "purified the Haram (Temple Area) and the shrines there from the filthy Franks and the foul Christians",
+      "context": "shrines there from the filthy Franks and the foul Christians.'47",
       "confidence": 0.9,
       "source_offset": null
     },
@@ -674,19 +635,6 @@
       "source_offset": null
     },
     {
-      "name": "Saladin",
-      "raw_mention": "Saladin of Egypt and Syria",
-      "title": "Sultan",
-      "epithet": null,
-      "toponym": "Egypt and Syria",
-      "role": "sultan",
-      "gender": "m",
-      "group": false,
-      "context": "and Saladin of Egypt and Syria (ruled 1171 1193)",
-      "confidence": 0.98,
-      "source_offset": null
-    },
-    {
       "name": "Military Orders",
       "raw_mention": "the Military Orders",
       "title": null,
@@ -757,7 +705,7 @@
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "prisoners",
+      "role": "knights",
       "gender": "unknown",
       "group": true,
       "context": "reflected in the treatment of captive knights",
@@ -770,11 +718,11 @@
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "military order",
+      "role": "military order members",
       "gender": "unknown",
       "group": true,
       "context": "treatment of the knights of the Orders after the battle of Hattin",
-      "confidence": 0.95,
+      "confidence": 0.9,
       "source_offset": null
     },
     {
@@ -861,7 +809,7 @@
       "title": null,
       "epithet": null,
       "toponym": "Ibelin",
-      "role": "noble/prisoner",
+      "role": "noble",
       "gender": "m",
       "group": false,
       "context": "Baldwin of Ibelin was ransomed for 150,000 dinars",
@@ -874,7 +822,7 @@
       "title": null,
       "epithet": null,
       "toponym": "Galilee",
-      "role": "noble/prisoner",
+      "role": "noble",
       "gender": "m",
       "group": false,
       "context": "Hugh of Galilee for 55,000",
@@ -882,7 +830,7 @@
       "source_offset": null
     },
     {
-      "name": "Odo",
+      "name": "Grand Master Odo",
       "raw_mention": "Grand Master Odo",
       "title": "Grand Master",
       "epithet": null,
@@ -904,7 +852,7 @@
       "gender": "unknown",
       "group": false,
       "context": "exchange Grand Master Odo for an influential Muslim prisoner",
-      "confidence": 0.6,
+      "confidence": 0.5,
       "source_offset": null
     },
     {
@@ -929,8 +877,8 @@
       "role": "prisoners",
       "gender": "unknown",
       "group": true,
-      "context": "Saladin captured over seven hundred prisoners and the Templars' castle",
-      "confidence": 0.85,
+      "context": "Saladin captured over seven hundred prisoners and the Templars' newly fortified castle",
+      "confidence": 0.8,
       "source_offset": null
     },
     {
@@ -960,16 +908,16 @@
       "source_offset": null
     },
     {
-      "name": "Crusader service",
-      "raw_mention": "Crusader service",
+      "name": "Crusader",
+      "raw_mention": "Crusader",
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "military service",
+      "role": "crusader",
       "gender": "unknown",
       "group": true,
-      "context": "Muslim apostates who were in Crusader service",
-      "confidence": 0.8,
+      "context": "who were in Crusader service",
+      "confidence": 0.9,
       "source_offset": null
     },
     {
@@ -1108,7 +1056,7 @@
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "ethnic/military group",
+      "role": "military group",
       "gender": "unknown",
       "group": true,
       "context": "Likewise, when the Khwarazmians (a Turkish people) took Jerusalem from the Crusaders in 1244",
@@ -1121,10 +1069,10 @@
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "historian/chronicler",
+      "role": "historian",
       "gender": "m",
       "group": false,
-      "context": "are well summarized by Ibn Zaki: \"I praise [God] ... for his cleansing of His Holy House",
+      "context": "sanctity of Jerusalem are well summarized by Ibn Zaki: 'I praise [God] ... for his cleansing'",
       "confidence": 0.85,
       "source_offset": null
     },
@@ -1134,11 +1082,11 @@
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "historian/chronicler",
+      "role": "historian",
       "gender": "m",
       "group": false,
-      "context": "Imad al Din described the horrible details of execution of the Military Orders after the battle",
-      "confidence": 0.85,
+      "context": "Hattin on July 4, 1187. Imad al Din described the horrible details of execution of the Military Orders",
+      "confidence": 0.9,
       "source_offset": null
     },
     {
@@ -1147,10 +1095,10 @@
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "military collective",
+      "role": "military group",
       "gender": "unknown",
       "group": true,
-      "context": "immediately the army brought forward at least a hundred of them",
+      "context": "prisoner, and immediately the army brought forward at least a hundred of them.",
       "confidence": 0.8,
       "source_offset": null
     },
@@ -1176,21 +1124,8 @@
       "role": "religious group",
       "gender": "m",
       "group": true,
-      "context": "and a certain number of devout men and ascetics; each begged to be allowed to kill one of them",
+      "context": "Sufis [mystics] and a certain number of devout men and ascetics; each begged to be allowed",
       "confidence": 0.7,
-      "source_offset": null
-    },
-    {
-      "name": "the troops",
-      "raw_mention": "the troops",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": "military collective",
-      "gender": "unknown",
-      "group": true,
-      "context": "the unbelievers showed black despair, the troops were drawn up in their ranks",
-      "confidence": 0.8,
       "source_offset": null
     },
     {
@@ -1202,7 +1137,7 @@
       "role": "commanders",
       "gender": "m",
       "group": true,
-      "context": "the troops were drawn up in their ranks, the amirs [commanders] stood in double file",
+      "context": "the troops were drawn up in their ranks, the amirs [commanders] stood in double file.",
       "confidence": 0.85,
       "source_offset": null
     },
@@ -1215,26 +1150,13 @@
       "role": "historian",
       "gender": "m",
       "group": false,
-      "context": "29. Ibn al Athir, quoted in Gabrielli, Arab Historians,118. 30. Ibn al Athir, quoted in Gabrielli, Arab Historians, 124.",
+      "context": "profanation of sacred space. Ibn al Athir succinctly described Saladin's policy towards the Military Orders",
       "confidence": 0.9,
       "source_offset": null
     },
     {
-      "name": "the Military Orders",
-      "raw_mention": "the Military Orders",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": "military order",
-      "gender": "unknown",
-      "group": true,
-      "context": "the Military Orders once again were perceived as just one division of many among the faction ridden Crusaders",
-      "confidence": 0.9,
-      "source_offset": null
-    },
-    {
-      "name": "the Ayyubids",
-      "raw_mention": "the Ayyubids",
+      "name": "Ayyubids",
+      "raw_mention": "Ayyubids",
       "title": null,
       "epithet": null,
       "toponym": null,
@@ -1242,20 +1164,20 @@
       "gender": "unknown",
       "group": true,
       "context": "struggles for predominance among the Ayyubids  Saladin's fractious successors",
-      "confidence": 0.8,
+      "confidence": 0.9,
       "source_offset": null
     },
     {
       "name": "Ayyubid princes",
       "raw_mention": "Ayyubid princes",
-      "title": null,
+      "title": "princes",
       "epithet": null,
       "toponym": null,
       "role": "prince",
       "gender": "m",
       "group": true,
       "context": "Some Ayyubid princes actually began to ally themselves with the Military Orders",
-      "confidence": 0.8,
+      "confidence": 0.85,
       "source_offset": null
     },
     {
@@ -1274,14 +1196,14 @@
     {
       "name": "Frankish barons",
       "raw_mention": "Frankish barons",
-      "title": null,
+      "title": "barons",
       "epithet": null,
       "toponym": null,
       "role": "baron",
       "gender": "m",
       "group": true,
-      "context": "ceded Ascalon to Frankish barons allied with the Templars",
-      "confidence": 0.8,
+      "context": "ceded Ascalon to Frankish barons allied with the Templars, hoping to undermine",
+      "confidence": 0.85,
       "source_offset": null
     },
     {
@@ -1294,19 +1216,6 @@
       "gender": "m",
       "group": false,
       "context": "his rival from Damascus, Isma'il.51 This story demonstrates not only an indifference",
-      "confidence": 0.95,
-      "source_offset": null
-    },
-    {
-      "name": "Sultan Isma'il",
-      "raw_mention": "Sultan Isma'il",
-      "title": "Sultan",
-      "epithet": null,
-      "toponym": "Damascus",
-      "role": "sultan",
-      "gender": "m",
-      "group": false,
-      "context": "when Sultan Isma'il of Damascus allied with the Orders against Egypt",
       "confidence": 0.95,
       "source_offset": null
     },
@@ -1337,126 +1246,35 @@
       "source_offset": null
     },
     {
-      "name": "the plotters",
-      "raw_mention": "the plotters",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": "rebel",
-      "gender": "unknown",
-      "group": true,
-      "context": "rather than offering assistance to the plotters, he revealed the plan to the Templars",
-      "confidence": 0.6,
-      "source_offset": null
-    },
-    {
-      "name": "Muslim slaves",
-      "raw_mention": "Muslim slaves",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": "slave",
-      "gender": "unknown",
-      "group": true,
-      "context": "Isma'il was willing to acquiesce in the death of a thousand Muslim slaves",
-      "confidence": 0.8,
-      "source_offset": null
-    },
-    {
-      "name": "Christian and Muslim princes",
-      "raw_mention": "Christian and Muslim princes",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": "prince",
-      "gender": "unknown",
-      "group": true,
-      "context": "struggle for power among the various Christian and Muslim princes of Palestine",
-      "confidence": 0.8,
-      "source_offset": null
-    },
-    {
-      "name": "the Mamluks",
-      "raw_mention": "the Mamluks",
+      "name": "Mamluks",
+      "raw_mention": "Mamluks",
       "title": null,
       "epithet": null,
       "toponym": null,
       "role": "soldier",
-      "gender": "unknown",
+      "gender": "m",
       "group": true,
       "context": "The Mamluks and the Expulsion of the Military Orders, 1250 1291",
-      "confidence": 0.9,
-      "source_offset": null
-    },
-    {
-      "name": "Mamluk sultans",
-      "raw_mention": "Mamluk sultans",
-      "title": "sultan",
-      "epithet": null,
-      "toponym": "Egypt",
-      "role": "sultan",
-      "gender": "m",
-      "group": true,
-      "context": "inaugurating the era of the Mamluk sultans of Egypt",
-      "confidence": 0.9,
-      "source_offset": null
-    },
-    {
-      "name": "slave soldiers",
-      "raw_mention": "slave soldiers",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": "soldier",
-      "gender": "m",
-      "group": true,
-      "context": "For centuries Muslim princes had been using slave soldiers  mamluk in Arabic  as bodyguards",
-      "confidence": 0.8,
-      "source_offset": null
-    },
-    {
-      "name": "Sultan al Salih",
-      "raw_mention": "Sultan al Salih",
-      "title": "Sultan",
-      "epithet": null,
-      "toponym": "Egypt",
-      "role": "sultan",
-      "gender": "m",
-      "group": false,
-      "context": "struggles that followed the death of Sultan al Salih of Egypt in 1250",
       "confidence": 0.95,
       "source_offset": null
     },
     {
-      "name": "the leaders of these slave soldiers",
-      "raw_mention": "the leaders of these slave soldiers",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": "leader",
-      "gender": "m",
-      "group": true,
-      "context": "the leaders of these slave soldiers managed to seize the throne",
-      "confidence": 0.7,
-      "source_offset": null
-    },
-    {
-      "name": "the Mongols",
-      "raw_mention": "the Mongols",
+      "name": "Mongols",
+      "raw_mention": "Mongols",
       "title": null,
       "epithet": null,
       "toponym": null,
       "role": "invader",
       "gender": "unknown",
       "group": true,
-      "context": "overcome the double threat of the Crusaders and Mongols, who had invaded the Near East",
+      "context": "skilled enough to be able to overcome the double threat of the Crusaders and Mongols",
       "confidence": 0.9,
       "source_offset": null
     },
     {
       "name": "Baybars",
       "raw_mention": "Baybars",
-      "title": "warlord",
+      "title": "sultan",
       "epithet": null,
       "toponym": null,
       "role": "sultan",
@@ -1469,7 +1287,7 @@
     {
       "name": "Qalawun",
       "raw_mention": "Qalawun",
-      "title": "warlord",
+      "title": "sultan",
       "epithet": null,
       "toponym": null,
       "role": "sultan",
@@ -1480,55 +1298,29 @@
       "source_offset": null
     },
     {
-      "name": "the Mamluks of Egypt",
-      "raw_mention": "the Mamluks of Egypt",
+      "name": "Hospitaller",
+      "raw_mention": "Hospitaller",
       "title": null,
       "epithet": null,
-      "toponym": "Egypt",
-      "role": "soldier",
-      "gender": "unknown",
-      "group": true,
-      "context": "Qalawun (1279 1290), the Mamluks of Egypt were able both to prevent the Mongols",
+      "toponym": null,
+      "role": "military order",
+      "gender": "m",
+      "group": false,
+      "context": "Baybars does not seem to have made use of any special anti Templar or Hospitaller propaganda",
       "confidence": 0.9,
       "source_offset": null
     },
     {
-      "name": "the Crusader kingdom",
-      "raw_mention": "the Crusader kingdom",
+      "name": "Templar",
+      "raw_mention": "Templar",
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "state",
-      "gender": "unknown",
-      "group": true,
-      "context": "dismember the remnants of the Crusader kingdom",
-      "confidence": 0.8,
-      "source_offset": null
-    },
-    {
-      "name": "Templar and Hospitaller prisoners",
-      "raw_mention": "Templar and Hospitaller prisoners",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": "prisoner",
-      "gender": "m",
-      "group": true,
-      "context": "Baybars massacred Templar and Hospitaller prisoners after his successful siege",
-      "confidence": 0.8,
-      "source_offset": null
-    },
-    {
-      "name": "a Templar",
-      "raw_mention": "a Templar",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": "knight",
+      "role": "military order",
       "gender": "m",
       "group": false,
       "context": "One Templar, who had once eaten with Baybars and therefore had a right to guest protection",
-      "confidence": 0.7,
+      "confidence": 0.9,
       "source_offset": null
     },
     {
@@ -1545,41 +1337,41 @@
       "source_offset": null
     },
     {
-      "name": "the Grand Master of the Hospitallers",
-      "raw_mention": "the Grand Master ofthe Hospitallers",
+      "name": "Grand Master of the Hospitallers",
+      "raw_mention": "the Grand Master of the Hospitallers",
       "title": "Grand Master",
       "epithet": null,
       "toponym": null,
       "role": "religious military leader",
       "gender": "m",
       "group": false,
-      "context": "Baybars sent a letter taunting the Grand Master ofthe Hospitallers",
+      "context": "Baybars sent a letter taunting the Grand Master of the Hospitallers",
       "confidence": 0.9,
       "source_offset": null
     },
     {
       "name": "frère Hugues",
-      "raw_mention": "frèreHugues",
+      "raw_mention": "frère Hugues",
       "title": "frère",
       "epithet": null,
       "toponym": null,
       "role": "Hospitaller",
       "gender": "m",
       "group": false,
-      "context": "This letter is addressed tofrèreHugues  may God make him one of those",
+      "context": "This letter is addressed to frère Hugues  may God make him one of those",
       "confidence": 0.95,
       "source_offset": null
     },
     {
       "name": "the knights of the Temple",
-      "raw_mention": "The knights ofthe Temple",
+      "raw_mention": "The knights of the Temple",
       "title": "knights",
       "epithet": null,
       "toponym": null,
       "role": "military order",
       "gender": "m",
       "group": true,
-      "context": "The knights ofthe Temple, with many refugee civilians, had shut themselves inside",
+      "context": "The knights of the Temple, with many refugee civilians, had shut themselves inside",
       "confidence": 0.9,
       "source_offset": null
     },
@@ -1593,11 +1385,11 @@
       "gender": "unknown",
       "group": true,
       "context": "with many refugee civilians, had shut themselves inside their huge tower",
-      "confidence": 0.7,
+      "confidence": 0.8,
       "source_offset": null
     },
     {
-      "name": "the Sultan al Ashraf",
+      "name": "Sultan al Ashraf",
       "raw_mention": "the Sultan [al Ashraf]",
       "title": "Sultan",
       "epithet": null,
@@ -1611,19 +1403,45 @@
     },
     {
       "name": "regulars [soldiers]",
-      "raw_mention": "a horde ofregulars [soldiers]",
+      "raw_mention": "a horde of regulars [soldiers]",
       "title": null,
       "epithet": null,
       "toponym": null,
       "role": "soldiers",
       "gender": "m",
       "group": true,
-      "context": "a horde ofregulars [soldiers] and others swarmed in",
+      "context": "a horde of regulars [soldiers] and others swarmed in",
       "confidence": 0.8,
       "source_offset": null
     },
     {
-      "name": "the amir Kitbugha al Mansuri",
+      "name": "the Mamluks",
+      "raw_mention": "the Mamluks",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": "army",
+      "gender": "unknown",
+      "group": true,
+      "context": "as the Mamluks were taking possession",
+      "confidence": 0.9,
+      "source_offset": null
+    },
+    {
+      "name": "the Orders",
+      "raw_mention": "the Orders",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": "military orders",
+      "gender": "unknown",
+      "group": true,
+      "context": "Some members of the Orders who were captured in the siege were executed",
+      "confidence": 0.85,
+      "source_offset": null
+    },
+    {
+      "name": "amir Kitbugha al Mansuri",
       "raw_mention": "the amir Kitbugha al Mansuri",
       "title": "amir",
       "epithet": null,
@@ -1636,15 +1454,54 @@
       "source_offset": null
     },
     {
+      "name": "the Military Orders",
+      "raw_mention": "the Military Orders",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": "military orders",
+      "gender": "unknown",
+      "group": true,
+      "context": "the Military Orders no longer represented an ideological threat",
+      "confidence": 0.9,
+      "source_offset": null
+    },
+    {
+      "name": "Western European Christians",
+      "raw_mention": "Western European Christians",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": "religious group",
+      "gender": "unknown",
+      "group": true,
+      "context": "did not end Arab relations with Western European Christians",
+      "confidence": 0.85,
+      "source_offset": null
+    },
+    {
+      "name": "Western monks",
+      "raw_mention": "Western monks",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": "religious",
+      "gender": "m",
+      "group": true,
+      "context": "Western monks  most notably the Franciscans  continued to live among the Muslims",
+      "confidence": 0.85,
+      "source_offset": null
+    },
+    {
       "name": "the Franciscans",
       "raw_mention": "the Franciscans",
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "monks",
-      "gender": "unknown",
+      "role": "religious order",
+      "gender": "m",
       "group": true,
-      "context": "Western monks  most notably the Franciscans  continued to live among the Muslims",
+      "context": "most notably the Franciscans  continued to live among the Muslims",
       "confidence": 0.9,
       "source_offset": null
     },
@@ -1654,15 +1511,15 @@
       "title": "St.",
       "epithet": null,
       "toponym": null,
-      "role": "religious leader",
+      "role": "religious founder",
       "gender": "m",
       "group": false,
-      "context": "Franciscan tradition maintains that in 1219 St. Francis himselfobtained permission",
+      "context": "Franciscan tradition maintains that in 1219 St. Francis himself obtained permission",
       "confidence": 0.95,
       "source_offset": null
     },
     {
-      "name": "the Sultan Al Salih Isma'il",
+      "name": "Sultan Al Salih Isma'il",
       "raw_mention": "the Sultan Al Salih Isma'il",
       "title": "Sultan",
       "epithet": null,
@@ -1670,7 +1527,7 @@
       "role": "ruler",
       "gender": "m",
       "group": false,
-      "context": "permission from the Sultan Al Salih Isma'il (1245 1249) for the Franciscans",
+      "context": "permission from the Sultan Al Salih Isma'il (1245 1249)",
       "confidence": 0.95,
       "source_offset": null
     },
@@ -1688,6 +1545,19 @@
       "source_offset": null
     },
     {
+      "name": "the sultans",
+      "raw_mention": "the sultans",
+      "title": "sultans",
+      "epithet": null,
+      "toponym": null,
+      "role": "rulers",
+      "gender": "m",
+      "group": true,
+      "context": "afforded special treatment by the sultans",
+      "confidence": 0.9,
+      "source_offset": null
+    },
+    {
       "name": "Pope Nicholas IV",
       "raw_mention": "Pope Nicholas IV",
       "title": "Pope",
@@ -1696,21 +1566,73 @@
       "role": "religious leader",
       "gender": "m",
       "group": false,
-      "context": "After the fall ofAcre in 1291, Pope Nicholas IV (1288 1292), a Franciscan",
+      "context": "After the fall of Acre in 1291, Pope Nicholas IV (1288 1292), a Franciscan",
       "confidence": 0.95,
       "source_offset": null
     },
     {
+      "name": "the Sultan al Ashraf",
+      "raw_mention": "the Sultan al Ashraf",
+      "title": "Sultan",
+      "epithet": null,
+      "toponym": null,
+      "role": "ruler",
+      "gender": "m",
+      "group": false,
+      "context": "begged permission from the Sultan al Ashraf for Latin monks",
+      "confidence": 0.95,
+      "source_offset": null
+    },
+    {
+      "name": "Latin monks",
+      "raw_mention": "Latin monks",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": "religious",
+      "gender": "m",
+      "group": true,
+      "context": "for Latin monks to be allowed to remain in Jerusalem",
+      "confidence": 0.85,
+      "source_offset": null
+    },
+    {
+      "name": "clergy, monks, and men of peace",
+      "raw_mention": "some clergy, monks, and men of peace",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": "religious",
+      "gender": "m",
+      "group": true,
+      "context": "bade him send some clergy, monks, and men of peace to Jerusalem",
+      "confidence": 0.8,
+      "source_offset": null
+    },
+    {
+      "name": "friars",
+      "raw_mention": "friars",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": "religious",
+      "gender": "m",
+      "group": true,
+      "context": "chose some discreet, learned, and faithful friars from his own order",
+      "confidence": 0.8,
+      "source_offset": null
+    },
+    {
       "name": "Rupert of Sicily",
-      "raw_mention": "Rupert ofSicily",
+      "raw_mention": "Rupert of Sicily",
       "title": null,
       "epithet": null,
       "toponym": "Sicily",
-      "role": "patron",
+      "role": "patron/donor",
       "gender": "m",
       "group": false,
-      "context": "payment in 1300 of 32,000 ducats from Rupert ofSicily",
-      "confidence": 0.9,
+      "context": "payment in 1300 of 32,000 ducats from Rupert of Sicily",
+      "confidence": 0.95,
       "source_offset": null
     },
     {
@@ -1727,32 +1649,6 @@
       "source_offset": null
     },
     {
-      "name": "Mamluks",
-      "raw_mention": "the Mamluks",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": "ruling dynasty/group",
-      "gender": "unknown",
-      "group": true,
-      "context": "the Mamluks were permitting Western monks to visit, worship, and remain in the Holy Land",
-      "confidence": 0.9,
-      "source_offset": null
-    },
-    {
-      "name": "Western monks",
-      "raw_mention": "Western monks",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": "religious",
-      "gender": "m",
-      "group": true,
-      "context": "the Mamluks were permitting Western monks to visit, worship, and remain in the Holy Land",
-      "confidence": 0.8,
-      "source_offset": null
-    },
-    {
       "name": "Franciscans",
       "raw_mention": "the Franciscans",
       "title": null,
@@ -1766,16 +1662,16 @@
       "source_offset": null
     },
     {
-      "name": "Mongols",
-      "raw_mention": "Mongols",
-      "title": null,
+      "name": "Mamluk sultans",
+      "raw_mention": "Mamluksultans",
+      "title": "sultans",
       "epithet": null,
       "toponym": null,
-      "role": "ethnic/military group",
-      "gender": "unknown",
+      "role": "ruler",
+      "gender": "m",
       "group": true,
-      "context": "the Mamluks continued to fear a potential alliance between the Franks and Mongols",
-      "confidence": 0.9,
+      "context": "There were manyadvantages thatMamluksultanshoped to obtain from the revitalization",
+      "confidence": 0.8,
       "source_offset": null
     },
     {
@@ -1797,7 +1693,7 @@
       "title": null,
       "epithet": null,
       "toponym": "Cyprus",
-      "role": "king/ruler",
+      "role": "ruler",
       "gender": "m",
       "group": false,
       "context": "this is precisely what happened in 1365, when Peter of Cyprus (1359 1369) attacked Alexandria",
@@ -1837,35 +1733,9 @@
       "epithet": null,
       "toponym": "Venetian",
       "role": "merchants",
-      "gender": "m",
+      "gender": "unknown",
       "group": true,
       "context": "they must have received information on these events from the frequent visits ofVenetian merchants",
-      "confidence": 0.8,
-      "source_offset": null
-    },
-    {
-      "name": "Eastern Christians",
-      "raw_mention": "Eastern and Western Christians",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": "religious group",
-      "gender": "unknown",
-      "group": true,
-      "context": "distinguish both between Eastern and Western Christians and between thevarious monastic orders",
-      "confidence": 0.8,
-      "source_offset": null
-    },
-    {
-      "name": "Western Christians",
-      "raw_mention": "Eastern and Western Christians",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": "religious group",
-      "gender": "unknown",
-      "group": true,
-      "context": "distinguish both between Eastern and Western Christians and between thevarious monastic orders",
       "confidence": 0.8,
       "source_offset": null
     },
@@ -1944,7 +1814,7 @@
       "gender": "m",
       "group": true,
       "context": "On these terms they have alliance with God, and the protection ofHis Prophet, the caliphs, and the believers.",
-      "confidence": 0.8,
+      "confidence": 0.85,
       "source_offset": null
     },
     {
@@ -1957,7 +1827,7 @@
       "gender": "unknown",
       "group": true,
       "context": "On these terms they have alliance with God, and the protection ofHis Prophet, the caliphs, and the believers.",
-      "confidence": 0.7,
+      "confidence": 0.8,
       "source_offset": null
     },
     {
@@ -2065,12 +1935,25 @@
       "source_offset": null
     },
     {
+      "name": "the Hospitallers of Rhodes",
+      "raw_mention": "the Hospitallers of Rhodes",
+      "title": null,
+      "epithet": null,
+      "toponym": "Rhodes",
+      "role": "military order",
+      "gender": "unknown",
+      "group": true,
+      "context": "the Hospitallers of Rhodes and later Malta were continually targeted",
+      "confidence": 0.9,
+      "source_offset": null
+    },
+    {
       "name": "'Ali",
       "raw_mention": "'Ali",
       "title": "caliph",
       "epithet": null,
       "toponym": null,
-      "role": "religious/political leader",
+      "role": "caliph",
       "gender": "m",
       "group": false,
       "context": "a famous symbol of 'Ali, the fourth caliph and cousin of Muhammad",
@@ -2080,12 +1963,28 @@
   ],
   "links": [
     {
-      "person": "Saladin, sultan of Egypt and Syria",
+      "person": "Saladin",
       "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
+      "candidates": [
+        {
+          "outremer_id": "AUTH:CR3",
+          "outremer_name": "Baldwin of Vern d'Anjou",
+          "type": "person",
+          "score": 0.7143,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'saladin' ↔ 'Baldwin of Vern d'Anjou'"
+        }
+      ],
+      "top_candidate": {
+        "outremer_id": "AUTH:CR3",
+        "outremer_name": "Baldwin of Vern d'Anjou",
+        "type": "person",
+        "score": 0.7143,
+        "match_type": "fuzzy",
+        "evidence": "fuzzy match: 'saladin' ↔ 'Baldwin of Vern d'Anjou'"
+      },
+      "confidence": 0.7143,
+      "status": "low"
     },
     {
       "person": "King Guy",
@@ -2144,39 +2043,7 @@
       "status": "no_match"
     },
     {
-      "person": "poor Christians",
-      "person_group": true,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Arabs",
-      "person_group": true,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Ghassanid tribe",
-      "person_group": true,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "pagan Arabs",
-      "person_group": true,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Christian monks",
+      "person": "Christians",
       "person_group": true,
       "candidates": [],
       "top_candidate": null,
@@ -2224,14 +2091,6 @@
       "status": "no_match"
     },
     {
-      "person": "Christians",
-      "person_group": true,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
       "person": "priests",
       "person_group": true,
       "candidates": [],
@@ -2272,36 +2131,28 @@
       "status": "no_match"
     },
     {
-      "person": "the apostle of God",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR68",
-          "outremer_name": "Oddi the Little",
-          "type": "person",
-          "score": 0.6667,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'the apostle of god' ↔ 'Oddi the Little'"
-        },
-        {
-          "outremer_id": "AUTH:CR122",
-          "outremer_name": "Gosuin the Goat",
-          "type": "person",
-          "score": 0.6,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'the apostle of god' ↔ 'Gosuin the Goat'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR68",
-        "outremer_name": "Oddi the Little",
-        "type": "person",
-        "score": 0.6667,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'the apostle of god' ↔ 'Oddi the Little'"
-      },
-      "confidence": 0.6667,
-      "status": "low"
+      "person": "Arabs",
+      "person_group": true,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "Ghassanid tribe",
+      "person_group": true,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "Arab poets",
+      "person_group": true,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
     },
     {
       "person": "Abu Talib",
@@ -2344,22 +2195,6 @@
       "status": "no_match"
     },
     {
-      "person": "the Messiah",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Mary",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
       "person": "Jesus",
       "person_group": false,
       "candidates": [
@@ -2384,7 +2219,23 @@
       "status": "low"
     },
     {
-      "person": "'Umar",
+      "person": "the Messiah",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "Mary",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "the caliph 'Umar",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -2622,30 +2473,6 @@
       "top_candidate": null,
       "confidence": 0.0,
       "status": "no_match"
-    },
-    {
-      "person": "Saladin",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR3",
-          "outremer_name": "Baldwin of Vern d'Anjou",
-          "type": "person",
-          "score": 0.7143,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'saladin' ↔ 'Baldwin of Vern d'Anjou'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR3",
-        "outremer_name": "Baldwin of Vern d'Anjou",
-        "type": "person",
-        "score": 0.7143,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'saladin' ↔ 'Baldwin of Vern d'Anjou'"
-      },
-      "confidence": 0.7143,
-      "status": "low"
     },
     {
       "person": "Military Orders",
@@ -2888,12 +2715,28 @@
       "status": "low"
     },
     {
-      "person": "Odo",
+      "person": "Grand Master Odo",
       "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
+      "candidates": [
+        {
+          "outremer_id": "AUTH:CR54",
+          "outremer_name": "Henry of Grandpré",
+          "type": "person",
+          "score": 0.6061,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'grand master odo' ↔ 'Henry of Grandpré'"
+        }
+      ],
+      "top_candidate": {
+        "outremer_id": "AUTH:CR54",
+        "outremer_name": "Henry of Grandpré",
+        "type": "person",
+        "score": 0.6061,
+        "match_type": "fuzzy",
+        "evidence": "fuzzy match: 'grand master odo' ↔ 'Henry of Grandpré'"
+      },
+      "confidence": 0.6061,
+      "status": "low"
     },
     {
       "person": "Muslim prisoner",
@@ -2936,7 +2779,7 @@
       "status": "no_match"
     },
     {
-      "person": "Crusader service",
+      "person": "Crusader",
       "person_group": true,
       "candidates": [],
       "top_candidate": null,
@@ -3152,14 +2995,6 @@
       "status": "no_match"
     },
     {
-      "person": "the troops",
-      "person_group": true,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
       "person": "the amirs",
       "person_group": true,
       "candidates": [],
@@ -3176,15 +3011,7 @@
       "status": "no_match"
     },
     {
-      "person": "the Military Orders",
-      "person_group": true,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "the Ayyubids",
+      "person": "Ayyubids",
       "person_group": true,
       "candidates": [],
       "top_candidate": null,
@@ -3224,14 +3051,6 @@
       "status": "no_match"
     },
     {
-      "person": "Sultan Isma'il",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
       "person": "Ibrahim",
       "person_group": false,
       "candidates": [],
@@ -3248,7 +3067,7 @@
       "status": "no_match"
     },
     {
-      "person": "the plotters",
+      "person": "Mamluks",
       "person_group": true,
       "candidates": [],
       "top_candidate": null,
@@ -3256,84 +3075,12 @@
       "status": "no_match"
     },
     {
-      "person": "Muslim slaves",
+      "person": "Mongols",
       "person_group": true,
       "candidates": [],
       "top_candidate": null,
       "confidence": 0.0,
       "status": "no_match"
-    },
-    {
-      "person": "Christian and Muslim princes",
-      "person_group": true,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "the Mamluks",
-      "person_group": true,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Mamluk sultans",
-      "person_group": true,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "slave soldiers",
-      "person_group": true,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Sultan al Salih",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "the leaders of these slave soldiers",
-      "person_group": true,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "the Mongols",
-      "person_group": true,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR122",
-          "outremer_name": "Gosuin the Goat",
-          "type": "person",
-          "score": 0.6154,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'the mongols' ↔ 'Gosuin the Goat'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR122",
-        "outremer_name": "Gosuin the Goat",
-        "type": "person",
-        "score": 0.6154,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'the mongols' ↔ 'Gosuin the Goat'"
-      },
-      "confidence": 0.6154,
-      "status": "low"
     },
     {
       "person": "Baybars",
@@ -3352,52 +3099,20 @@
       "status": "no_match"
     },
     {
-      "person": "the Mamluks of Egypt",
-      "person_group": true,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "the Crusader kingdom",
-      "person_group": true,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Templar and Hospitaller prisoners",
-      "person_group": true,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "a Templar",
+      "person": "Hospitaller",
       "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR91",
-          "outremer_name": "Adhémar V of Limoges",
-          "type": "person",
-          "score": 0.625,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'a templar' ↔ 'Adhémar V of Limoges'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR91",
-        "outremer_name": "Adhémar V of Limoges",
-        "type": "person",
-        "score": 0.625,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'a templar' ↔ 'Adhémar V of Limoges'"
-      },
-      "confidence": 0.625,
-      "status": "low"
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "Templar",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
     },
     {
       "person": "the garrison",
@@ -3424,7 +3139,7 @@
       "status": "low"
     },
     {
-      "person": "the Grand Master of the Hospitallers",
+      "person": "Grand Master of the Hospitallers",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -3456,7 +3171,7 @@
       "status": "no_match"
     },
     {
-      "person": "the Sultan al Ashraf",
+      "person": "Sultan al Ashraf",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -3472,15 +3187,7 @@
       "status": "no_match"
     },
     {
-      "person": "the amir Kitbugha al Mansuri",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "the Franciscans",
+      "person": "the Mamluks",
       "person_group": true,
       "candidates": [],
       "top_candidate": null,
@@ -3488,55 +3195,39 @@
       "status": "no_match"
     },
     {
-      "person": "St. Francis",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "the Sultan Al Salih Isma'il",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Pope Innocent IV",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Pope Nicholas IV",
-      "person_group": false,
+      "person": "the Orders",
+      "person_group": true,
       "candidates": [
         {
-          "outremer_id": "AUTH:CR60",
-          "outremer_name": "Nicholas of Montiéramey",
+          "outremer_id": "AUTH:CR16",
+          "outremer_name": "Thierry of Flanders",
           "type": "person",
-          "score": 0.6667,
+          "score": 0.6154,
           "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'pope nicholas iv' ↔ 'Nicholas of Montiéramey'"
+          "evidence": "fuzzy match: 'the orders' ↔ 'Thierry of Flanders'"
+        },
+        {
+          "outremer_id": "AUTH:CR19",
+          "outremer_name": "Chalo the Red",
+          "type": "person",
+          "score": 0.6087,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'the orders' ↔ 'Chalo the Red'"
         }
       ],
       "top_candidate": {
-        "outremer_id": "AUTH:CR60",
-        "outremer_name": "Nicholas of Montiéramey",
+        "outremer_id": "AUTH:CR16",
+        "outremer_name": "Thierry of Flanders",
         "type": "person",
-        "score": 0.6667,
+        "score": 0.6154,
         "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'pope nicholas iv' ↔ 'Nicholas of Montiéramey'"
+        "evidence": "fuzzy match: 'the orders' ↔ 'Thierry of Flanders'"
       },
-      "confidence": 0.6667,
+      "confidence": 0.6154,
       "status": "low"
     },
     {
-      "person": "Rupert of Sicily",
+      "person": "amir Kitbugha al Mansuri",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -3544,15 +3235,15 @@
       "status": "no_match"
     },
     {
-      "person": "Pope Clement VI",
-      "person_group": false,
+      "person": "the Military Orders",
+      "person_group": true,
       "candidates": [],
       "top_candidate": null,
       "confidence": 0.0,
       "status": "no_match"
     },
     {
-      "person": "Mamluks",
+      "person": "Western European Christians",
       "person_group": true,
       "candidates": [],
       "top_candidate": null,
@@ -3584,6 +3275,118 @@
       "status": "low"
     },
     {
+      "person": "the Franciscans",
+      "person_group": true,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "St. Francis",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "Sultan Al Salih Isma'il",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "Pope Innocent IV",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "the sultans",
+      "person_group": true,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "Pope Nicholas IV",
+      "person_group": false,
+      "candidates": [
+        {
+          "outremer_id": "AUTH:CR60",
+          "outremer_name": "Nicholas of Montiéramey",
+          "type": "person",
+          "score": 0.6667,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'pope nicholas iv' ↔ 'Nicholas of Montiéramey'"
+        }
+      ],
+      "top_candidate": {
+        "outremer_id": "AUTH:CR60",
+        "outremer_name": "Nicholas of Montiéramey",
+        "type": "person",
+        "score": 0.6667,
+        "match_type": "fuzzy",
+        "evidence": "fuzzy match: 'pope nicholas iv' ↔ 'Nicholas of Montiéramey'"
+      },
+      "confidence": 0.6667,
+      "status": "low"
+    },
+    {
+      "person": "the Sultan al Ashraf",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "Latin monks",
+      "person_group": true,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "clergy, monks, and men of peace",
+      "person_group": true,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "friars",
+      "person_group": true,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "Rupert of Sicily",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "Pope Clement VI",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
       "person": "Franciscans",
       "person_group": true,
       "candidates": [],
@@ -3592,7 +3395,7 @@
       "status": "no_match"
     },
     {
-      "person": "Mongols",
+      "person": "Mamluk sultans",
       "person_group": true,
       "candidates": [],
       "top_candidate": null,
@@ -3681,22 +3484,6 @@
     },
     {
       "person": "Venetian merchants",
-      "person_group": true,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Eastern Christians",
-      "person_group": true,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Western Christians",
       "person_group": true,
       "candidates": [],
       "top_candidate": null,
@@ -3880,6 +3667,14 @@
       "status": "no_match"
     },
     {
+      "person": "the Hospitallers of Rhodes",
+      "person_group": true,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
       "person": "'Ali",
       "person_group": false,
       "candidates": [
@@ -3917,14 +3712,14 @@
   },
   "language_hint": null,
   "quality": {
-    "filtered_problem_entities": 22,
+    "filtered_problem_entities": 27,
     "feedback_store": "data/entity_feedback.json",
     "noise": {
-      "extracted_total": 181,
-      "kept": 159,
-      "filtered": 22,
+      "extracted_total": 177,
+      "kept": 150,
+      "filtered": 27,
       "filtered_by_reason": {
-        "known_bad_entity": 7,
+        "known_bad_entity": 12,
         "lowercase_non_name": 4,
         "name_too_long": 1,
         "bibliographic_noise": 5,
@@ -3932,7 +3727,7 @@
         "contains_digits": 1
       },
       "low_confidence_kept": 2,
-      "noise_share": 0.1215
+      "noise_share": 0.1525
     }
   }
 }
