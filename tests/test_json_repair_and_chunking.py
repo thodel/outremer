@@ -74,3 +74,36 @@ def test_chunk_offsets_are_monotonic():
     offsets = [off for off, _ in chunks]
     assert offsets == sorted(offsets)
     assert offsets[0] == 0
+
+
+# ── an oversized sentence (outremer#8, M2.2) ─────────────────────────────────
+#
+# A sentence longer than the chunk size used to be emitted twice: once cut to
+# `size` characters mid-word, and once whole in the following chunk. The model
+# then read the same passage twice, and the offsets after it were off by the
+# difference. The comment above the cut said the sentence was "included whole
+# anyway", which is what made it hard to see.
+
+_LONG_SENTENCE = ("A very long medieval charter phrase indeed " * 3).strip()
+_TEXT = ("Brief sentence. " * 3) + _LONG_SENTENCE + " Finished."
+
+
+def test_an_oversized_sentence_is_not_chunked_twice():
+    assert len(_LONG_SENTENCE) > 100
+
+    chunks = _chunk_text(_TEXT, size=100, overlap=10)
+
+    opening = _LONG_SENTENCE[:60]
+    assert sum(opening in chunk for _, chunk in chunks) == 1, chunks
+
+
+def test_only_the_last_chunk_may_end_mid_sentence():
+    chunks = _chunk_text(_TEXT, size=100, overlap=10)
+
+    for _, chunk in chunks[:-1]:
+        assert chunk.rstrip()[-1] in ".!?", chunk
+
+
+def test_offsets_stay_inside_the_text():
+    for _, (off, chunk) in enumerate(_chunk_text(_TEXT, size=100, overlap=10)):
+        assert 0 <= off <= len(_TEXT), (off, len(_TEXT))

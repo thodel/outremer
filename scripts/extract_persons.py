@@ -593,13 +593,13 @@ def _chunk_text(text: str, size: int = _CHUNK_SIZE, overlap: int = _CHUNK_OVERLA
                         if current:
                             chunk_text = " ".join(current)
                             chunks.append((start, chunk_text))
-                            _overlap_text = chunk_text[-overlap:] if chunk_text else ""
                             start += len(chunk_text) - overlap
                             start = max(start, 0)
-                        # Single sentence that exceeds size — include it whole anyway
-                        if sent_len > size:
-                            chunks.append((start, sent[:size]))
-                            start += size
+                        # A sentence longer than the chunk size stays whole: one
+                        # chunk may exceed size, but no chunk ends mid-sentence.
+                        # The old truncation dropped everything after `size`
+                        # characters, so the tail of a long charter phrase never
+                        # reached the model at all.
                         current = [sent]
                         current_len = sent_len + 1
 
