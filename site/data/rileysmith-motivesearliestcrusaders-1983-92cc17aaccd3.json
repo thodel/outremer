@@ -32,7 +32,7 @@
       "role": "priest",
       "gender": "m",
       "group": false,
-      "context": "disguised as a crusader, appeared in a vision to an Italian priest and asked him why there had been such a great response",
+      "context": "appeared in a vision to an Italian priest and asked him why there had been such a great response",
       "confidence": 0.6,
       "source_offset": null
     },
@@ -58,7 +58,7 @@
       "role": "pilgrim",
       "gender": "unknown",
       "group": true,
-      "context": "Some say that in all pilgrims the desire for it has been aroused by God and the Lord Jesus Christ.",
+      "context": "Some say that in all pilgrims the desire for it has been aroused by God and the Lord Jesus Christ",
       "confidence": 0.8,
       "source_offset": null
     },
@@ -90,14 +90,14 @@
     },
     {
       "name": "the people",
-      "raw_mention": "most of the people",
+      "raw_mention": "the people",
       "title": null,
       "epithet": null,
       "toponym": null,
       "role": "commoner",
       "gender": "unknown",
       "group": true,
-      "context": "the Frankish lords and most of the people have begun the journey for superficial reasons and that it was because",
+      "context": "Frankish lords and most of the people have begun the journey for superficial reasons and that it was because",
       "confidence": 0.6,
       "source_offset": null
     },
@@ -110,7 +110,20 @@
       "role": "chronicler",
       "gender": "m",
       "group": false,
-      "context": "shared the view of the Frenchman Guibert of Nogent: We see nations moved by the inspiration of God....",
+      "context": "shared the view of the Frenchman Guibert of Nogent: We see nations moved by the inspiration of God",
+      "confidence": 0.9,
+      "source_offset": null
+    },
+    {
+      "name": "the crusaders",
+      "raw_mention": "crusaders",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": "crusader",
+      "gender": "unknown",
+      "group": true,
+      "context": "little doubt that a desire for earthly glory did motivate crusaders",
       "confidence": 0.9,
       "source_offset": null
     },
@@ -123,7 +136,7 @@
       "role": "chronicler",
       "gender": "m",
       "group": false,
-      "context": "But to the German Ekkehard of Aura, it was easy to persuade the western Franks to leave their farms.",
+      "context": "But to the German Ekkehard of Aura, it was easy to persuade the western Franks to leave their farms",
       "confidence": 0.9,
       "source_offset": null
     },
@@ -134,10 +147,23 @@
       "epithet": null,
       "toponym": "western",
       "role": "frank",
-      "gender": "m",
+      "gender": "unknown",
       "group": true,
       "context": "it was easy to persuade the western Franks to leave their farms. For Gaul had been afflicted for some years",
       "confidence": 0.8,
+      "source_offset": null
+    },
+    {
+      "name": "certain prophets",
+      "raw_mention": "certain prophets",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": "prophet",
+      "gender": "unknown",
+      "group": true,
+      "context": "summoned to go to the Promised Land by certain prophets recently arisen among them or by signs in the heavens",
+      "confidence": 0.5,
       "source_offset": null
     },
     {
@@ -172,10 +198,10 @@
       "title": "Count",
       "epithet": null,
       "toponym": "Flanders",
-      "role": "count",
+      "role": "crusader",
       "gender": "m",
       "group": false,
-      "context": "Count Robert of Flanders, for instance, was treated for the rest of his life with the special respect accorded to a Jerosolimitanus.",
+      "context": "Count Robert of Flanders, for instance, was treated for the rest of his life with the special respect accorded to a Jerosolimitanus",
       "confidence": 0.95,
       "source_offset": null
     },
@@ -185,11 +211,11 @@
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "army",
+      "role": "military",
       "gender": "unknown",
       "group": true,
-      "context": "and the needs of the armies on the march, which seem only to have been met by periodic divisions of spoil.",
-      "confidence": 0.8,
+      "context": "the needs of the armies on the march, which seem only to have been met by periodic divisions of spoil",
+      "confidence": 0.85,
       "source_offset": null
     },
     {
@@ -198,11 +224,11 @@
       "title": null,
       "epithet": null,
       "toponym": "Egyptian",
-      "role": "army",
+      "role": "military",
       "gender": "unknown",
       "group": true,
-      "context": "and the victory over the Egyptian army on I 2 August, most crusaders decided to return home.",
-      "confidence": 0.85,
+      "context": "the victory over the Egyptian army on I 2 August, most crusaders decided to return home",
+      "confidence": 0.9,
       "source_offset": null
     },
     {
@@ -214,7 +240,7 @@
       "role": "chaplain",
       "gender": "m",
       "group": false,
-      "context": "and Fulcher of Chartres, the chaplain of the first king of lerusalem, reported that in",
+      "context": "Fulcher of Chartres, the chaplain of the first king of lerusalem, reported that in",
       "confidence": 0.95,
       "source_offset": null
     },
@@ -222,7 +248,7 @@
       "name": "the first king of Jerusalem",
       "raw_mention": "the first king of lerusalem",
       "title": "king",
-      "epithet": "first",
+      "epithet": null,
       "toponym": "Jerusalem",
       "role": "king",
       "gender": "m",
@@ -240,7 +266,7 @@
       "role": "crusader",
       "gender": "m",
       "group": false,
-      "context": "horse and foot commanded by Tancred in Galilee",
+      "context": "commanded by Tancred in Galilee, Galdemar Carpenel in Hebron",
       "confidence": 0.95,
       "source_offset": null
     },
@@ -253,7 +279,7 @@
       "role": "crusader",
       "gender": "m",
       "group": false,
-      "context": "Tancred held Galilee and Bethsan, Galdemar Carpenel Jericho and Hebron; Garnier of Grez may have held Nablus.",
+      "context": "Galdemar Carpenel in Hebron, perhaps Garnier of Grez's successor",
       "confidence": 0.95,
       "source_offset": null
     },
@@ -267,7 +293,7 @@
       "gender": "m",
       "group": false,
       "context": "perhaps Garnier of Grez's successor in Nablus",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "source_offset": null
     },
     {
@@ -279,8 +305,8 @@
       "role": "crusader",
       "gender": "m",
       "group": false,
-      "context": "Godfrey of Bouillon's domus, his household, accompanied him",
-      "confidence": 0.95,
+      "context": "Godfrey of Bouillon's domus, his household, accompanied him on the crusade",
+      "confidence": 0.98,
       "source_offset": null
     },
     {
@@ -293,7 +319,7 @@
       "gender": "m",
       "group": false,
       "context": "Garnier, Count of Grez in Brabant, who was the most prominent",
-      "confidence": 0.95,
+      "confidence": 0.98,
       "source_offset": null
     },
     {
@@ -305,8 +331,8 @@
       "role": "vassal",
       "gender": "m",
       "group": false,
-      "context": "Franco of Mechelen, Gerard of Avesnes and Lambert of Montaigu",
-      "confidence": 0.9,
+      "context": "Franco of Mechelen,5 Gerard of Avesnes6 and Lambert of Montaigu",
+      "confidence": 0.95,
       "source_offset": null
     },
     {
@@ -318,8 +344,8 @@
       "role": "vassal",
       "gender": "m",
       "group": false,
-      "context": "Franco of Mechelen, Gerard of Avesnes and Lambert of Montaigu",
-      "confidence": 0.9,
+      "context": "Gerard of Avesnes6 and Lambert of Montaigu.7",
+      "confidence": 0.95,
       "source_offset": null
     },
     {
@@ -331,34 +357,21 @@
       "role": "vassal",
       "gender": "m",
       "group": false,
-      "context": "Gerard of Avesnes and Lambert of Montaigu",
-      "confidence": 0.9,
-      "source_offset": null
-    },
-    {
-      "name": "Baldwin of Boulogne",
-      "raw_mention": "Baldwin of Boulogne",
-      "title": null,
-      "epithet": null,
-      "toponym": "Boulogne",
-      "role": "crusader",
-      "gender": "m",
-      "group": false,
-      "context": "Baldwin of Boulogne brought about 400 men to Jerusalem",
+      "context": "Gerard of Avesnes6 and Lambert of Montaigu.7",
       "confidence": 0.95,
       "source_offset": null
     },
     {
       "name": "Geoffrey",
-      "raw_mention": "Geoffrey",
+      "raw_mention": "Geoffreyl",
       "title": null,
       "epithet": null,
       "toponym": null,
       "role": "chamberlain",
       "gender": "m",
       "group": false,
-      "context": "two chamberlains, Geoffrey and Stabelo",
-      "confidence": 0.85,
+      "context": "two chamberlains, Geoffreyl and Stabelo",
+      "confidence": 0.9,
       "source_offset": null
     },
     {
@@ -370,8 +383,8 @@
       "role": "chamberlain",
       "gender": "m",
       "group": false,
-      "context": "two chamberlains, Geoffrey and Stabelo",
-      "confidence": 0.85,
+      "context": "Geoffreyl and Stabelo, the second of whom had certainly been in Godfrey's service",
+      "confidence": 0.9,
       "source_offset": null
     },
     {
@@ -383,8 +396,8 @@
       "role": "seneschal",
       "gender": "m",
       "group": false,
-      "context": "and a seneschal, Matthew",
-      "confidence": 0.85,
+      "context": "and a seneschal, Matthew3   and Godfrey's knights",
+      "confidence": 0.9,
       "source_offset": null
     },
     {
@@ -396,8 +409,8 @@
       "role": "knight",
       "gender": "m",
       "group": false,
-      "context": "Godfrey's knights: Gunter, Wicher the German",
-      "confidence": 0.85,
+      "context": "and Godfrey's knights: Gunter,4 Wicher the German",
+      "confidence": 0.9,
       "source_offset": null
     },
     {
@@ -409,8 +422,8 @@
       "role": "knight",
       "gender": "m",
       "group": false,
-      "context": "Gunter, Wicher the German, Miles of Clermont",
-      "confidence": 0.85,
+      "context": "Gunter,4 Wicher the German,5 Miles of Clermont",
+      "confidence": 0.9,
       "source_offset": null
     },
     {
@@ -422,8 +435,8 @@
       "role": "knight",
       "gender": "m",
       "group": false,
-      "context": "probably also Arnulf the Lorrainer and perhaps Rothold",
-      "confidence": 0.85,
+      "context": "probably also Arnulf the Lorrainer7 and perhaps Rothold",
+      "confidence": 0.9,
       "source_offset": null
     },
     {
@@ -435,8 +448,8 @@
       "role": "knight",
       "gender": "m",
       "group": false,
-      "context": "Arnulf the Lorrainer and perhaps Rothold",
-      "confidence": 0.8,
+      "context": "probably also Arnulf the Lorrainer7 and perhaps Rothold.8",
+      "confidence": 0.85,
       "source_offset": null
     },
     {
@@ -448,8 +461,8 @@
       "role": "knight",
       "gender": "m",
       "group": false,
-      "context": "Ralph of Menonville and Engilbert",
-      "confidence": 0.9,
+      "context": "Ralph of Menonville9 and Engilbert, who came from the ecclesiastical territory",
+      "confidence": 0.95,
       "source_offset": null
     },
     {
@@ -461,8 +474,8 @@
       "role": "knight",
       "gender": "m",
       "group": false,
-      "context": "Ralph of Menonville and Engilbert, who came from the ecclesiastical territory of Tournai",
-      "confidence": 0.9,
+      "context": "Ralph of Menonville9 and Engilbert, who came from the ecclesiastical territory of Tournai",
+      "confidence": 0.95,
       "source_offset": null
     },
     {
@@ -474,8 +487,8 @@
       "role": "knight",
       "gender": "m",
       "group": false,
-      "context": "the Swabian Frederick of Zimmern, who had travelled",
-      "confidence": 0.9,
+      "context": "the Swabian Frederick of Zimmern, who had travelled perhaps with Peter the Hermit",
+      "confidence": 0.95,
       "source_offset": null
     },
     {
@@ -484,10 +497,10 @@
       "title": null,
       "epithet": "the Hermit",
       "toponym": null,
-      "role": "crusader leader",
+      "role": "crusader",
       "gender": "m",
       "group": false,
-      "context": "perhaps with Peter the Hermit or Emicho of Leiningen",
+      "context": "travelled perhaps with Peter the Hermit or Emicho of Leiningen",
       "confidence": 0.95,
       "source_offset": null
     },
@@ -497,10 +510,10 @@
       "title": null,
       "epithet": null,
       "toponym": "Leiningen",
-      "role": "crusader leader",
+      "role": "crusader",
       "gender": "m",
       "group": false,
-      "context": "Peter the Hermit or Emicho of Leiningen",
+      "context": "Peter the Hermit or Emicho of Leiningen and then in Godfrey's company",
       "confidence": 0.95,
       "source_offset": null
     },
@@ -513,21 +526,60 @@
       "role": "prince",
       "gender": "m",
       "group": false,
-      "context": "He returned to Europe with Bohemond of Taranto in 1105",
-      "confidence": 0.95,
+      "context": "He returned to Europe with Bohemond of Taranto in I I o5",
+      "confidence": 0.98,
       "source_offset": null
     },
     {
       "name": "Baldwin II",
-      "raw_mention": "Baldwin II",
+      "raw_mention": "Baldwin 11",
       "title": null,
       "epithet": null,
       "toponym": null,
       "role": "king",
       "gender": "m",
       "group": false,
-      "context": "He lived there into the reign of Baldwin II",
+      "context": "He lived there into the reign of Baldwin 11.",
       "confidence": 0.95,
+      "source_offset": null
+    },
+    {
+      "name": "Baldwin of Boulogne",
+      "raw_mention": "Baldwin of Boulogne",
+      "title": null,
+      "epithet": null,
+      "toponym": "Boulogne",
+      "role": "crusader",
+      "gender": "m",
+      "group": false,
+      "context": "Baldwin of Boulogne brought about 400 men to Jerusalem from Edessa",
+      "confidence": 0.98,
+      "source_offset": null
+    },
+    {
+      "name": "the settlers",
+      "raw_mention": "settlers",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": "collective",
+      "gender": "unknown",
+      "group": true,
+      "context": "the settlers in northern Syria",
+      "confidence": 0.8,
+      "source_offset": null
+    },
+    {
+      "name": "the Lorrainer vassals",
+      "raw_mention": "Lorrainer vassals",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": "collective",
+      "gender": "m",
+      "group": true,
+      "context": "some of the more important Lorrainer vassals or of members of their families",
+      "confidence": 0.8,
       "source_offset": null
     },
     {
@@ -565,8 +617,8 @@
       "role": "crusader",
       "gender": "m",
       "group": false,
-      "context": "For a Louis of Menonville on crusade, see William of Tyre",
-      "confidence": 0.85,
+      "context": "For a Louis of Menonville on crusade, see William of Tyre, p. 263.",
+      "confidence": 0.9,
       "source_offset": null
     },
     {
@@ -591,8 +643,8 @@
       "role": "knight",
       "gender": "m",
       "group": false,
-      "context": "For his brother Lethold of Tournai, see Gesta Francorum",
-      "confidence": 0.85,
+      "context": "For his brother Lethold of Tournai, see Gesta Francorum, p. 9i",
+      "confidence": 0.9,
       "source_offset": null
     },
     {
@@ -635,7 +687,7 @@
       "source_offset": null
     },
     {
-      "name": "Muslims",
+      "name": "the Muslims",
       "raw_mention": "the Muslims",
       "title": null,
       "epithet": null,
@@ -653,11 +705,11 @@
       "title": null,
       "epithet": null,
       "toponym": "St Omer",
-      "role": "crusader",
+      "role": "crusader leader",
       "gender": "m",
       "group": false,
-      "context": "Gotman of Brussels,7 Hugh of St Omer,8 Baldwin of Hemstrut9 and Ralph of Aalst",
-      "confidence": 0.95,
+      "context": "or perhaps by Hugh of St Omer, Tancred's successor",
+      "confidence": 0.9,
       "source_offset": null
     },
     {
@@ -670,19 +722,19 @@
       "gender": "m",
       "group": false,
       "context": "followers of the family of Robert Guiscard, were reported to be serving",
-      "confidence": 0.8,
+      "confidence": 0.9,
       "source_offset": null
     },
     {
-      "name": "Italian Normans",
-      "raw_mention": "Italian Norman army",
+      "name": "Wiscardides",
+      "raw_mention": "Wiscardides",
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "collective group",
+      "role": "collective group (family/followers)",
       "gender": "unknown",
       "group": true,
-      "context": "leading what must have been a section of Bohemond's Italian Norman army",
+      "context": "Wiscardides, or followers of the family of Robert Guiscard, were reported",
       "confidence": 0.8,
       "source_offset": null
     },
@@ -778,7 +830,7 @@
       "source_offset": null
     },
     {
-      "name": "Count of Toulouse",
+      "name": "the Count of Toulouse",
       "raw_mention": "the Count of Toulouse",
       "title": "Count",
       "epithet": null,
@@ -786,8 +838,112 @@
       "role": "count",
       "gender": "m",
       "group": false,
-      "context": "When Raymond of St Gilles, the Count of Toulouse, left Palestine",
+      "context": "Raymond of St Gilles, the Count of Toulouse, left Palestine",
       "confidence": 0.95,
+      "source_offset": null
+    },
+    {
+      "name": "the Latins",
+      "raw_mention": "the Latins",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": "crusader",
+      "gender": "unknown",
+      "group": true,
+      "context": "Two of Bohemond's knights can be identified among the Latins in Palestine",
+      "confidence": 0.9,
+      "source_offset": null
+    },
+    {
+      "name": "the Wiscardides",
+      "raw_mention": "the Wiscardides",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": "soldier",
+      "gender": "unknown",
+      "group": true,
+      "context": "For a reference to the Wiscardides as soldiers of Bohemond's army",
+      "confidence": 0.8,
+      "source_offset": null
+    },
+    {
+      "name": "Bohemond's knights",
+      "raw_mention": "Bohemond's knights",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": "knight",
+      "gender": "unknown",
+      "group": true,
+      "context": "Two of Bohemond's knights can be identified among the Latins",
+      "confidence": 0.8,
+      "source_offset": null
+    },
+    {
+      "name": "the group",
+      "raw_mention": "the group",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": "ambassador",
+      "gender": "unknown",
+      "group": true,
+      "context": "he was one of the group which sent an embassy to Baldwin of Boulogne",
+      "confidence": 0.6,
+      "source_offset": null
+    },
+    {
+      "name": "the ambassadors",
+      "raw_mention": "the ambassadors",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": "ambassador",
+      "gender": "unknown",
+      "group": true,
+      "context": "One of the ambassadors on the same mission was another Robert",
+      "confidence": 0.7,
+      "source_offset": null
+    },
+    {
+      "name": "the Norman company",
+      "raw_mention": "the Norman company",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": "military unit",
+      "gender": "unknown",
+      "group": true,
+      "context": "detached himself from the Norman company, because in July I IOO",
+      "confidence": 0.8,
+      "source_offset": null
+    },
+    {
+      "name": "the Italian Norman crusade",
+      "raw_mention": "the Italian Norman crusade",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": "military campaign",
+      "gender": "unknown",
+      "group": true,
+      "context": "had played a prominent part in the Italian Norman crusade",
+      "confidence": 0.7,
+      "source_offset": null
+    },
+    {
+      "name": "the followers",
+      "raw_mention": "his most important followers",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": "follower",
+      "gender": "unknown",
+      "group": true,
+      "context": "two of his most important followers decided to remain behind",
+      "confidence": 0.6,
       "source_offset": null
     },
     {
@@ -822,7 +978,7 @@
       "title": "Count",
       "epithet": null,
       "toponym": null,
-      "role": "crusader",
+      "role": "nobleman",
       "gender": "m",
       "group": false,
       "context": "But Count Galdemar Carpenel, a rich nobleman who had been persuaded to crusade by Archbishop Hugh of Die of Lyons",
@@ -849,7 +1005,7 @@
       "epithet": null,
       "toponym": null,
       "role": "knights",
-      "gender": "m",
+      "gender": "unknown",
       "group": true,
       "context": "in which Godfrey's followers summoned him to Jerusalem after the duke's death, they referred to themselves",
       "confidence": 0.8,
@@ -869,19 +1025,6 @@
       "source_offset": null
     },
     {
-      "name": "Raymond",
-      "raw_mention": "Raymond",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": "count",
-      "gender": "m",
-      "group": false,
-      "context": "A third member of Raymond's army may have been Roman of Le Puy, who was to play an important part",
-      "confidence": 0.85,
-      "source_offset": null
-    },
-    {
       "name": "Roman of Le Puy",
       "raw_mention": "Roman of Le Puy",
       "title": null,
@@ -892,6 +1035,19 @@
       "group": false,
       "context": "A third member of Raymond's army may have been Roman of Le Puy, who was to play an important part",
       "confidence": 0.9,
+      "source_offset": null
+    },
+    {
+      "name": "Raymond",
+      "raw_mention": "Raymond",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": "count",
+      "gender": "m",
+      "group": false,
+      "context": "A third member of Raymond's army may have been Roman of Le Puy",
+      "confidence": 0.85,
       "source_offset": null
     },
     {
@@ -952,10 +1108,10 @@
       "title": null,
       "epithet": null,
       "toponym": "Quiersy",
-      "role": "noble",
+      "role": "nobleman",
       "gender": "m",
       "group": false,
-      "context": "must have been related to, and may have accompanied, Gerard of Quiersy, who was quite prominent",
+      "context": "but he must have been related to, and may have accompanied, Gerard of Quiersy, who was quite prominent",
       "confidence": 0.9,
       "source_offset": null
     },
@@ -1004,7 +1160,7 @@
       "title": null,
       "epithet": null,
       "toponym": "Blois",
-      "role": "crusader leader",
+      "role": "count",
       "gender": "m",
       "group": false,
       "context": "had originally been chaplain to Stephen of Blois, although he left him in October 1097",
@@ -1017,7 +1173,7 @@
       "title": null,
       "epithet": null,
       "toponym": "Vermandois",
-      "role": "crusader leader",
+      "role": "count",
       "gender": "m",
       "group": false,
       "context": "had then apparently served with Hugh of Vermandois before transferring his allegiance to Baldwin",
@@ -1285,42 +1441,16 @@
       "source_offset": null
     },
     {
-      "name": "the crusaders",
-      "raw_mention": "the crusaders",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": "crusader",
-      "gender": "unknown",
-      "group": true,
-      "context": "appointed him adviser to the new crusaders now arriving from the West",
-      "confidence": 0.9,
-      "source_offset": null
-    },
-    {
       "name": "Count Raymond",
       "raw_mention": "Count Raymond",
       "title": "Count",
       "epithet": null,
       "toponym": null,
-      "role": "leader",
+      "role": "noble",
       "gender": "m",
       "group": false,
       "context": "For Count Raymond and Adhemar'sfamilia, see ibid. p. 85.",
       "confidence": 0.9,
-      "source_offset": null
-    },
-    {
-      "name": "the Greek emperor",
-      "raw_mention": "the Greek emperor",
-      "title": "emperor",
-      "epithet": null,
-      "toponym": null,
-      "role": "emperor",
-      "gender": "m",
-      "group": false,
-      "context": "but he was wrong to deny the Greek emperor authority over his principality.",
-      "confidence": 0.8,
       "source_offset": null
     },
     {
@@ -1329,10 +1459,10 @@
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "settler",
+      "role": "crusader",
       "gender": "m",
       "group": false,
-      "context": "and Robert fitz Godwin seems to have been a disinherited AngloSaxon.",
+      "context": "Ado of Quiersy were younger sons and Robert fitz Godwin seems to have been a disinherited AngloSaxon",
       "confidence": 0.9,
       "source_offset": null
     },
@@ -1345,7 +1475,7 @@
       "role": "crusader",
       "gender": "m",
       "group": false,
-      "context": "Another example was provided by Arpin of Bourges, who sold his property and departed",
+      "context": "Another example was provided by Arpin of Bourges, who sold his property and departed for Palestine",
       "confidence": 0.9,
       "source_offset": null
     },
@@ -1355,11 +1485,11 @@
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "enemy",
+      "role": "collective",
       "gender": "unknown",
       "group": true,
       "context": "Wounded and captured by the Egyptians in 1102, he eventually returned home",
-      "confidence": 0.85,
+      "confidence": 0.8,
       "source_offset": null
     },
     {
@@ -1459,10 +1589,10 @@
       "title": null,
       "epithet": null,
       "toponym": "Nesle",
-      "role": "crusader",
+      "role": "knight",
       "gender": "m",
       "group": false,
-      "context": "Drogo of Nesle had been in Emicho of Leiningen's ill fated company",
+      "context": "Drogo of Nesle had been in Emicho of Leiningen's ill fated company and had then apparently served with Hugh of Vermandois",
       "confidence": 0.95,
       "source_offset": null
     },
@@ -1472,11 +1602,11 @@
       "title": null,
       "epithet": null,
       "toponym": "Biandrate",
-      "role": "crusader",
+      "role": "settler",
       "gender": "m",
       "group": false,
       "context": "settlers from Lombardy   Albert of Biandrate5 and Otto of Altaspata6",
-      "confidence": 0.95,
+      "confidence": 0.9,
       "source_offset": null
     },
     {
@@ -1485,11 +1615,11 @@
       "title": null,
       "epithet": null,
       "toponym": "Altaspata",
-      "role": "crusader",
+      "role": "settler",
       "gender": "m",
       "group": false,
       "context": "Albert of Biandrate5 and Otto of Altaspata6   and from Lower Lorraine",
-      "confidence": 0.95,
+      "confidence": 0.9,
       "source_offset": null
     },
     {
@@ -1498,11 +1628,11 @@
       "title": null,
       "epithet": null,
       "toponym": "Brussels",
-      "role": "crusader",
+      "role": "settler",
       "gender": "m",
       "group": false,
-      "context": "Flanders: Gotman of Brussels,7 Hugh of St Omer,8 Baldwin of Hemstrut9",
-      "confidence": 0.95,
+      "context": "Flanders: Gotman of Brussels,7 Hugh of St Omer,8 Baldwin of Hemstrut9 and Ralph of Aalst",
+      "confidence": 0.9,
       "source_offset": null
     },
     {
@@ -1511,11 +1641,11 @@
       "title": null,
       "epithet": null,
       "toponym": "Hemstrut",
-      "role": "crusader",
+      "role": "settler",
       "gender": "m",
       "group": false,
       "context": "Hugh of St Omer,8 Baldwin of Hemstrut9 and Ralph of Aalst",
-      "confidence": 0.95,
+      "confidence": 0.9,
       "source_offset": null
     },
     {
@@ -1524,11 +1654,11 @@
       "title": null,
       "epithet": null,
       "toponym": "Aalst",
-      "role": "crusader",
+      "role": "settler",
       "gender": "m",
       "group": false,
       "context": "Baldwin of Hemstrut9 and Ralph of Aalst",
-      "confidence": 0.95,
+      "confidence": 0.9,
       "source_offset": null
     },
     {
@@ -1611,6 +1741,30 @@
       "status": "no_match"
     },
     {
+      "person": "the crusaders",
+      "person_group": true,
+      "candidates": [
+        {
+          "outremer_id": "AUTH:CR16",
+          "outremer_name": "Thierry of Flanders",
+          "type": "person",
+          "score": 0.6207,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'the crusaders' ↔ 'Thierry of Flanders'"
+        }
+      ],
+      "top_candidate": {
+        "outremer_id": "AUTH:CR16",
+        "outremer_name": "Thierry of Flanders",
+        "type": "person",
+        "score": 0.6207,
+        "match_type": "fuzzy",
+        "evidence": "fuzzy match: 'the crusaders' ↔ 'Thierry of Flanders'"
+      },
+      "confidence": 0.6207,
+      "status": "low"
+    },
+    {
       "person": "Ekkehard of Aura",
       "person_group": false,
       "candidates": [
@@ -1636,6 +1790,14 @@
     },
     {
       "person": "the western Franks",
+      "person_group": true,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "certain prophets",
       "person_group": true,
       "candidates": [],
       "top_candidate": null,
@@ -1971,30 +2133,6 @@
       "status": "low"
     },
     {
-      "person": "Baldwin of Boulogne",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR3",
-          "outremer_name": "Baldwin of Vern d'Anjou",
-          "type": "person",
-          "score": 0.6087,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'baldwin of boulogne' ↔ 'Baldwin of Vern d'Anjou'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR3",
-        "outremer_name": "Baldwin of Vern d'Anjou",
-        "type": "person",
-        "score": 0.6087,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'baldwin of boulogne' ↔ 'Baldwin of Vern d'Anjou'"
-      },
-      "confidence": 0.6087,
-      "status": "low"
-    },
-    {
       "person": "Geoffrey",
       "person_group": false,
       "candidates": [
@@ -2283,6 +2421,46 @@
       "status": "medium"
     },
     {
+      "person": "Baldwin of Boulogne",
+      "person_group": false,
+      "candidates": [
+        {
+          "outremer_id": "AUTH:CR3",
+          "outremer_name": "Baldwin of Vern d'Anjou",
+          "type": "person",
+          "score": 0.6087,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'baldwin of boulogne' ↔ 'Baldwin of Vern d'Anjou'"
+        }
+      ],
+      "top_candidate": {
+        "outremer_id": "AUTH:CR3",
+        "outremer_name": "Baldwin of Vern d'Anjou",
+        "type": "person",
+        "score": 0.6087,
+        "match_type": "fuzzy",
+        "evidence": "fuzzy match: 'baldwin of boulogne' ↔ 'Baldwin of Vern d'Anjou'"
+      },
+      "confidence": 0.6087,
+      "status": "low"
+    },
+    {
+      "person": "the settlers",
+      "person_group": true,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "the Lorrainer vassals",
+      "person_group": true,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
       "person": "Godfrey",
       "person_group": false,
       "candidates": [
@@ -2459,7 +2637,7 @@
       "status": "no_match"
     },
     {
-      "person": "Muslims",
+      "person": "the Muslims",
       "person_group": true,
       "candidates": [],
       "top_candidate": null,
@@ -2547,7 +2725,7 @@
       "status": "medium"
     },
     {
-      "person": "Italian Normans",
+      "person": "Wiscardides",
       "person_group": true,
       "candidates": [],
       "top_candidate": null,
@@ -2771,28 +2949,156 @@
       "status": "low"
     },
     {
-      "person": "Count of Toulouse",
+      "person": "the Count of Toulouse",
       "person_group": false,
       "candidates": [
         {
           "outremer_id": "AUTH:CR86",
           "outremer_name": "Constance of Toulouse",
           "type": "person",
-          "score": 0.8421,
+          "score": 0.7778,
           "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'count of toulouse' ↔ 'Constance of Toulouse'"
+          "evidence": "fuzzy match: 'the count of toulouse' ↔ 'Constance of Toulouse'"
         }
       ],
       "top_candidate": {
         "outremer_id": "AUTH:CR86",
         "outremer_name": "Constance of Toulouse",
         "type": "person",
-        "score": 0.8421,
+        "score": 0.7778,
         "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'count of toulouse' ↔ 'Constance of Toulouse'"
+        "evidence": "fuzzy match: 'the count of toulouse' ↔ 'Constance of Toulouse'"
       },
-      "confidence": 0.8421,
+      "confidence": 0.7778,
       "status": "medium"
+    },
+    {
+      "person": "the Latins",
+      "person_group": true,
+      "candidates": [
+        {
+          "outremer_id": "AUTH:CR122",
+          "outremer_name": "Gosuin the Goat",
+          "type": "person",
+          "score": 0.64,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'the latins' ↔ 'Gosuin the Goat'"
+        },
+        {
+          "outremer_id": "AUTH:CR16",
+          "outremer_name": "Thierry of Flanders",
+          "type": "person",
+          "score": 0.6154,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'the latins' ↔ 'Thierry of Flanders'"
+        },
+        {
+          "outremer_id": "AUTH:CR53",
+          "outremer_name": "Peter of Langres",
+          "type": "person",
+          "score": 0.6087,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'the latins' ↔ 'Peter of Langres'"
+        }
+      ],
+      "top_candidate": {
+        "outremer_id": "AUTH:CR122",
+        "outremer_name": "Gosuin the Goat",
+        "type": "person",
+        "score": 0.64,
+        "match_type": "fuzzy",
+        "evidence": "fuzzy match: 'the latins' ↔ 'Gosuin the Goat'"
+      },
+      "confidence": 0.64,
+      "status": "low"
+    },
+    {
+      "person": "the Wiscardides",
+      "person_group": true,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "Bohemond's knights",
+      "person_group": true,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "the group",
+      "person_group": true,
+      "candidates": [
+        {
+          "outremer_id": "AUTH:CR23",
+          "outremer_name": "Ralph the Dog",
+          "type": "person",
+          "score": 0.6364,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'the group' ↔ 'Ralph the Dog'"
+        }
+      ],
+      "top_candidate": {
+        "outremer_id": "AUTH:CR23",
+        "outremer_name": "Ralph the Dog",
+        "type": "person",
+        "score": 0.6364,
+        "match_type": "fuzzy",
+        "evidence": "fuzzy match: 'the group' ↔ 'Ralph the Dog'"
+      },
+      "confidence": 0.6364,
+      "status": "low"
+    },
+    {
+      "person": "the ambassadors",
+      "person_group": true,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "the Norman company",
+      "person_group": true,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "the Italian Norman crusade",
+      "person_group": true,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "the followers",
+      "person_group": true,
+      "candidates": [
+        {
+          "outremer_id": "AUTH:CR16",
+          "outremer_name": "Thierry of Flanders",
+          "type": "person",
+          "score": 0.6207,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'the followers' ↔ 'Thierry of Flanders'"
+        }
+      ],
+      "top_candidate": {
+        "outremer_id": "AUTH:CR16",
+        "outremer_name": "Thierry of Flanders",
+        "type": "person",
+        "score": 0.6207,
+        "match_type": "fuzzy",
+        "evidence": "fuzzy match: 'the followers' ↔ 'Thierry of Flanders'"
+      },
+      "confidence": 0.6207,
+      "status": "low"
     },
     {
       "person": "Count William of Montpellier",
@@ -2939,6 +3245,14 @@
       "status": "low"
     },
     {
+      "person": "Roman of Le Puy",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
       "person": "Raymond",
       "person_group": false,
       "candidates": [
@@ -2961,14 +3275,6 @@
       },
       "confidence": 0.6667,
       "status": "low"
-    },
-    {
-      "person": "Roman of Le Puy",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
     },
     {
       "person": "Adhemar",
@@ -3819,30 +4125,6 @@
       "status": "medium"
     },
     {
-      "person": "the crusaders",
-      "person_group": true,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR16",
-          "outremer_name": "Thierry of Flanders",
-          "type": "person",
-          "score": 0.6207,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'the crusaders' ↔ 'Thierry of Flanders'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR16",
-        "outremer_name": "Thierry of Flanders",
-        "type": "person",
-        "score": 0.6207,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'the crusaders' ↔ 'Thierry of Flanders'"
-      },
-      "confidence": 0.6207,
-      "status": "low"
-    },
-    {
       "person": "Count Raymond",
       "person_group": false,
       "candidates": [
@@ -3881,14 +4163,6 @@
       },
       "confidence": 0.6316,
       "status": "low"
-    },
-    {
-      "person": "the Greek emperor",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
     },
     {
       "person": "Robert fitz Godwin",
@@ -4272,19 +4546,18 @@
   },
   "language_hint": null,
   "quality": {
-    "filtered_problem_entities": 11,
+    "filtered_problem_entities": 7,
     "feedback_store": "data/entity_feedback.json",
     "noise": {
-      "extracted_total": 129,
-      "kept": 118,
-      "filtered": 11,
+      "extracted_total": 135,
+      "kept": 128,
+      "filtered": 7,
       "filtered_by_reason": {
-        "known_bad_entity": 4,
         "modern_scholar": 6,
         "lowercase_non_name": 1
       },
       "low_confidence_kept": 1,
-      "noise_share": 0.0853
+      "noise_share": 0.0519
     }
   }
 }
