@@ -91,6 +91,11 @@ QWEN3_VL_DISABLE_THINKING = _get("QWEN3_VL_DISABLE_THINKING", "true").lower() ==
 #              and MISTRAL_API_KEY)
 OCR_ENGINE = _get("OCR_ENGINE", "qwen3-vl")
 
+# Offline QID resolution (M17.1, #83). A path to the pre-1500 Wikidata snapshot
+# built by thodel/wikidata_pre1500_mcp. Set, reconciliation runs without a single
+# outbound request; unset, it falls back to query.wikidata.org and says so.
+WIKIDATA_SNAPSHOT = _get("WIKIDATA_SNAPSHOT", "")
+
 # Linker thresholds (M10.3) - operating point documented in
 # evaluation/THRESHOLDS.md; sweep with `python -m evaluation.sweep`
 LINK_CANDIDATE_FLOOR = float(_get("LINK_CANDIDATE_FLOOR", "0.60"))
