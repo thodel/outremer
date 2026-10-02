@@ -2,18 +2,32 @@
 """
 wikidata_reconcile.py
 ─────────────────────
-For persons with status="no_match" in the pipeline output, query the Wikidata
-Entity Search API and write candidate QIDs to site/data/wikidata_matches.json.
+For persons with status="no_match" in the pipeline output, resolve candidate
+QIDs and write them to site/data/wikidata_matches.json, which the explorer UI
+reads beside the authority-file candidates.
+
+Two backends, and the script says which one it used:
+
+* **The pre-1500 snapshot** (M17.1, #83) when ``WIKIDATA_SNAPSHOT`` points at
+  the SQLite file built by thodel/wikidata_pre1500_mcp. No outbound request at
+  all, and every answer carries the snapshot's build date, so a result can be
+  reproduced against the same data.
+* **query.wikidata.org**, the original path, when it does not. That made a
+  nightly depend on a public endpoint's mood — and its scorer answered *Sanda
+  Mihaela Popescu, researcher* for the word "Popes", which a pre-1500 scope
+  cannot do.
+
+Either way a name that resolved to nothing is stored as ``status:
+"no_candidates"``. Before #83 that case and "never asked" were both an empty
+list, so a document could look reconciled when nothing had happened.
 
 Usage (from repo root):
     python scripts/wikidata_reconcile.py [--site-dir site] [--limit 3]
-
-The output file is fetched by the explorer UI to show Wikidata candidates for
-unmatched persons alongside the authority-file candidates.
 """
 from __future__ import annotations
 
 import argparse
+import datetime as _dt
 import json
 import logging
 import re
@@ -44,6 +58,41 @@ DESCRIPTION_WHITELIST_RE = re.compile(
 
 # Cutoff: exclude persons who lived entirely after 1500 CE
 MEDIEVAL_CUTOFF_YEAR = 1500
+
+#: Set by `_snapshot()` on first use; None means "live endpoint".
+_SNAPSHOT = None
+LIVE = "query.wikidata.org"
+
+
+def _snapshot():
+    """The offline snapshot, or None when none is configured.
+
+    Imported lazily so the module still works where config or the snapshot file
+    is absent — a missing snapshot must degrade to the live path with a warning,
+    not stop the pipeline.
+    """
+    global _SNAPSHOT
+    if _SNAPSHOT is not None:
+        return _SNAPSHOT or None
+    try:
+        from config import WIKIDATA_SNAPSHOT
+    except Exception:                                  # noqa: BLE001
+        WIKIDATA_SNAPSHOT = ""
+    if not WIKIDATA_SNAPSHOT:
+        _SNAPSHOT = False
+        return None
+    try:
+        from wikidata_snapshot import Snapshot
+
+        _SNAPSHOT = Snapshot(WIKIDATA_SNAPSHOT)
+        logger.info(f"Resolving offline against {WIKIDATA_SNAPSHOT} "
+                    f"(snapshot {_SNAPSHOT.version})")
+    except Exception as exc:                           # noqa: BLE001
+        logger.warning(f"WIKIDATA_SNAPSHOT is set but unusable ({exc}); "
+                       f"falling back to {LIVE}")
+        _SNAPSHOT = False
+        return None
+    return _SNAPSHOT
 
 
 def normalise(s: str) -> str:
@@ -201,10 +250,27 @@ def score_candidate(name: str, cand: dict) -> float:
 logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 logger = logging.getLogger(__name__)
 
+def resolve(name: str, limit: int = 3) -> dict[str, Any]:
+    """Candidates for one name, with the backend and its version named.
+
+    The envelope — status, source, snapshot — is what makes a miss legible. A
+    bare list cannot say whether anybody looked.
+    """
+    snapshot = _snapshot()
+    if snapshot is not None:
+        answer = snapshot.resolve(name, limit=limit)
+        return {"status": answer["status"], "source": "wikidata_pre1500_snapshot",
+                "snapshot": answer["snapshot"], "candidates": answer["candidates"]}
+    candidates = reconcile_person(name, limit=limit)
+    return {"status": "match" if candidates else "no_candidates",
+            "source": LIVE, "snapshot": None, "candidates": candidates}
+
+
 def reconcile_person(name: str, limit: int = 3) -> list[dict[str, Any]]:
     """Return top Wikidata human candidates for a person name (P31=Q5 only).
-    
-    Filters out post-medieval persons (born after 1500) when dates are available.
+
+    The live path, kept for a box without the snapshot. Filters out
+    post-medieval persons (born after 1500) when dates are available.
     """
     try:
         results = wd_search_humans(name, limit=limit + 5)
@@ -302,18 +368,31 @@ def run(site_dir: Path, limit: int) -> None:
                 total_skipped += 1
                 continue   # already reconciled
 
-            print(f"  Querying: {person}")
-            candidates = reconcile_person(person, limit=limit)
+            print(f"  Resolving: {person}")
+            answer = resolve(person, limit=limit)
             existing[doc_id][key] = {
                 "person":     person,
-                "candidates": candidates,
-                "queried_at": __import__("datetime").datetime.utcnow().isoformat(),
+                "status":     answer["status"],
+                "source":     answer["source"],
+                "snapshot":   answer["snapshot"],
+                "candidates": answer["candidates"],
+                "queried_at": _dt.datetime.now(_dt.timezone.utc).isoformat(),
             }
             total_queried += 1
-            time.sleep(WD_API_DELAY)
+            if answer["source"] == LIVE:               # the snapshot needs no delay
+                time.sleep(WD_API_DELAY)
 
+    snapshot = _snapshot()
+    existing["status"] = {
+        "source": "wikidata_pre1500_snapshot" if snapshot else LIVE,
+        "snapshot": snapshot.version if snapshot else None,
+        "resolved": total_queried,
+        "cached": total_skipped,
+        "ran_at": _dt.datetime.now(_dt.timezone.utc).isoformat(),
+    }
     out_file.write_text(json.dumps(existing, ensure_ascii=False, indent=2))
-    print(f"\nDone. Queried {total_queried} new persons, skipped {total_skipped} cached.")
+    print(f"\nDone. Resolved {total_queried} new persons, skipped {total_skipped} cached"
+          f" ({existing['status']['source']}).")
     print(f"Output: {out_file}")
 
 
