@@ -121,7 +121,25 @@ QWEN3_VL_DISABLE_THINKING=true
 # OCR engine: qwen3-vl (GPUStack, default; the engine key is historical,
 # the model behind it is QWEN3_VL_MODEL) or mistral (legacy fallback)
 OCR_ENGINE=qwen3-vl
+
+# Offline QID resolution (M17.1, #83). Path to the pre-1500 Wikidata snapshot
+# built by thodel/wikidata_pre1500_mcp. Set, reconciliation runs without a
+# single outbound request and records the snapshot's build date; unset, it
+# falls back to query.wikidata.org and says so in the output.
+WIKIDATA_SNAPSHOT=/home/dh/outremer/data/wd-pre1500.db
 ```
+
+**Wikidata reconciliation, offline.** `scripts/wikidata_reconcile.py` resolved
+every unseen name against `query.wikidata.org` — the last live network
+dependency in the nightly, and a scorer that answered *Sanda Mihaela Popescu,
+researcher* for the word "Popes". With `WIKIDATA_SNAPSHOT` set it resolves
+against a local SQLite snapshot of every Wikidata human with a death date before
+1500, including their aliases, which is what a charter actually spells
+(*Albertus de Morra* for *Gregory VIII*). A name that matches nothing is written
+as `status: "no_candidates"` rather than an empty list, so a miss can be told
+from a name nobody looked up, and every entry carries the snapshot version it
+was resolved against. The same snapshot is served to the rest of the DH fleet at
+`/mcp/wd-pre1500/mcp`.
 
 `.env.gpustack` is git-ignored. Without it, `config.py` uses sensible defaults (tei endpoint, no API key required for public models).
 
