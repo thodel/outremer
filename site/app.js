@@ -139,6 +139,26 @@ function wikidataCandidatesFor(personName) {
   return wikidataMatches[key]?.candidates || [];
 }
 
+// The whole envelope, not only the list: status says whether the snapshot found
+// one person or a crowd, and `fits` how big the crowd is (a lower bound).
+function wikidataEntryFor(personName) {
+  return wikidataMatches[normalise(personName)] || {};
+}
+
+// A QID a reviewer actually accepted — the only kind an export may assert.
+// Before this, both exports took candidates[0]: an arbitrary one of the 21
+// people whose exact name is "Alexander" became <idno type="wikidata"> in the
+// TEI and owl:sameAs in the JSON-LD, with nobody having looked at it.
+function acceptedWikidataQid(docId, personName, decisions) {
+  for (const c of wikidataCandidatesFor(personName)) {
+    const k = decisionKey(docId, personName, `wikidata:${c.qid}`);
+    if (decisions[k]?.decision === "accept" || (communityVotes[k]?.accept || 0) >= 2) {
+      return c.qid;
+    }
+  }
+  return null;
+}
+
 // ── Context comparison helper ──────────────────────────────────────────────
 
 function buildContextComparison(link, candidate, authData) {
@@ -1033,7 +1053,12 @@ function renderLinks(doc) {
       const wdCands = wikidataCandidatesFor(link.person);
       if (wdCands.length) {
         const wdEl = el("div", "wikidata-section");
-        wdEl.innerHTML = `<div class="wd-label">Not in authority file — Wikidata candidates (humans only):</div>`;
+        const wdEntry = wikidataEntryFor(link.person);
+        const tie = wdEntry.status === "ambiguous"
+          ? ` <span class="wd-ambiguous">— the name fits at least ${wdEntry.fits} people`
+            + ` equally well, so none of these is an identification yet</span>`
+          : "";
+        wdEl.innerHTML = `<div class="wd-label">Not in authority file — Wikidata candidates (humans only):${tie}</div>`;
         for (const c of wdCands) {
           wdEl.appendChild(renderWikidataCandidateRow(link, c, docId, decisions));
         }
@@ -1173,8 +1198,8 @@ function exportTei() {
     `    <person xml:id="${l.top_candidate.outremer_id.replace(/:/g,"-")}">` +
     `\n      <persName>${escXml(l.top_candidate.outremer_name)}</persName>` +
     `\n      <note type="outremer_id">${escXml(l.top_candidate.outremer_id)}</note>` +
-    (wikidataCandidatesFor(l.person)[0]?.qid
-      ? `\n      <idno type="wikidata">https://www.wikidata.org/wiki/${escXml(wikidataCandidatesFor(l.person)[0].qid)}</idno>`
+    (acceptedWikidataQid(docId, l.person, decisions)
+      ? `\n      <idno type="wikidata">https://www.wikidata.org/wiki/${escXml(acceptedWikidataQid(docId, l.person, decisions))}</idno>`
       : "") +
     `\n    </person>`
   ))].join("\n");
@@ -1252,8 +1277,17 @@ function exportJsonLd() {
       "outremer:matchStatus":  link.status,
       "outremer:authorityId":  link.top_candidate.outremer_id,
     };
-    if (wdCands.length && wdCands[0].score >= 0.4) {
-      entity["owl:sameAs"] = `http://www.wikidata.org/entity/${wdCands[0].qid}`;
+    // owl:sameAs says "the same entity", so only an accepted candidate earns it.
+    // An unreviewed candidate is still worth publishing — as a candidate.
+    const acceptedQid = acceptedWikidataQid(docId, link.person, decisions);
+    if (acceptedQid) {
+      entity["owl:sameAs"] = `http://www.wikidata.org/entity/${acceptedQid}`;
+    } else if (wdCands.length) {
+      entity["outremer:wikidataCandidate"] =
+        wdCands.map(c => `http://www.wikidata.org/entity/${c.qid}`);
+      const wdEntry = wikidataEntryFor(link.person);
+      if (wdEntry.status) entity["outremer:wikidataStatus"] = wdEntry.status;
+      if (wdEntry.fits)   entity["outremer:wikidataFits"]   = wdEntry.fits;
     }
     if (d?.decision) {
       entity["outremer:humanDecision"] = d.decision;

@@ -1,9 +1,15 @@
 """Offline QID resolution against the pre-1500 Wikidata snapshot (M17.1, #83).
 
-Vendored from `thodel/wikidata_pre1500_mcp` (`db.py`, commit 141f2ac), which is
+Vendored from `thodel/wikidata_pre1500_mcp` (`db.py`, commit 8733ae7), which is
 the source of truth: the MCP server and this file must answer a name the same
 way, or the fleet and the nightly disagree about who a person is. Keep them in
 sync; `tests/test_wikidata_snapshot.py` pins the cases both were measured on.
+
+Vendoring drifts if nobody checks. This copy sat at 141f2ac while upstream
+fixed its query builder, and the two then gave different answers for the same
+name against the same file: the MCP resolved "Salah ad-Din" to Saladin, this
+copy to *Rabghuzi* (measured on tei, 2026-10-03). When upstream changes, port
+the change and re-measure a name that exercises it.
 
 The snapshot is a SQLite file built by that repository's `build_db.py`: every
 Wikidata item that is an instance of human with a date of death before 1500,
@@ -26,9 +32,22 @@ from pathlib import Path
 
 #: A one-word query shorter than this names nobody: it matches by accident.
 SINGLE_TOKEN_MIN = 5
+#: Below this length a token is matched exactly rather than as a prefix. `"ad"*`
+#: alone matched 10,489 rows, which overflowed the candidate window, so Saladin
+#: was never scored for "Salah ad-Din" although that is his alias verbatim.
+PREFIX_MIN = 4
+#: How many rows one resolution may score. Generous, because the AND pass is
+#: narrow; the OR fallback is the one that needs a ceiling.
+ROW_BUDGET = 400
 
 NO_CANDIDATES = "no_candidates"
 MATCH = "match"
+#: Several people fit the name equally well, so the first row is an arbitrary
+#: pick. Measured against the 1,881 names cached here (2026-10-03): 310 of 652
+#: answers fit more than one person — "Alexander" is the exact label of 21,
+#: "Emperor" scores 0.6 against 219 — and the envelope said "match" for all of
+#: them, while the explorer's TEI export wrote candidate[0] as an <idno>.
+AMBIGUOUS = "ambiguous"
 
 #: Connectives that join a name to a place or a father. They may support a match
 #: and must never make one: scoring on them alone returned "Jean de Vaunoise"
@@ -119,26 +138,57 @@ class Snapshot:
         return {row["key"]: row["value"]
                 for row in self._con.execute("SELECT key, value FROM snapshot")}
 
-    def _fts_expression(self, name: str) -> str:
-        tokens = [re.sub(r'"', "", t) for t in normalise(name).split()]
+    @staticmethod
+    def _terms(name: str) -> list[str]:
+        """One FTS term per distinctive token: a prefix if long enough, else exact."""
+        tokens = [re.sub(r'"', "", t) for t in normalise(name).split() if t]
+        # Searching the particles too would pull in every "… de …" in the
+        # snapshot and then rely on the score to throw them away again.
         tokens = sorted(_distinctive(set(tokens))) or tokens
-        return " OR ".join(f'"{t}"*' for t in tokens)
+        return [f'"{t}"*' if len(t) >= PREFIX_MIN else f'"{t}"' for t in tokens]
+
+    def _fts_queries(self, name: str) -> list[str]:
+        """The MATCH expressions to try, narrowest first.
+
+        **AND before OR.** Every token together is what the caller meant, and it
+        keeps the result small enough to score: "Salah ad-Din" matches 49 rows
+        as an AND and 10,489 as an OR. The OR pass stays, because a half-read
+        name shares only some of its words with the entry, but it only runs when
+        the precise question returned nothing.
+        """
+        terms = self._terms(name)
+        if not terms:
+            return []
+        if len(terms) == 1:
+            return [terms[0]]
+        return [" AND ".join(terms), " OR ".join(terms)]
 
     def resolve(self, name: str, limit: int = 3, min_score: float = 0.4) -> dict:
         """Candidates for a name, as a dict that can say "nothing matched".
 
         The envelope is the point: the live path returned `[]` both for "asked,
         and this person is not in Wikidata" and for "never asked", so a document
-        could look reconciled when nothing had happened (#83).
+        could look reconciled when nothing had happened (#83). For the same
+        reason a tie is its own status: "ambiguous" plus `fits` says how many
+        people the name suits, so nothing downstream can mistake the first of
+        twenty-one Alexanders for the Alexander in the charter.
         """
-        expression = self._fts_expression(name)
-        if not expression:
+        expressions = self._fts_queries(name)
+        if not expressions:
             return {"status": NO_CANDIDATES, "snapshot": self.version,
-                    "candidates": [], "reason": "no searchable token in the name"}
-        rows = self._con.execute(
-            "SELECT f.qid, f.name, p.label, p.description, p.birth_year, p.death_year "
-            "FROM names_fts f JOIN persons p ON p.qid = f.qid "
-            "WHERE names_fts MATCH ? LIMIT 400", (expression,)).fetchall()
+                    "candidates": [], "fits": 0,
+                    "reason": "no searchable token in the name"}
+        sql = ("SELECT f.qid, f.name, p.label, p.description, p.birth_year, p.death_year "
+               "FROM names_fts f JOIN persons p ON p.qid = f.qid "
+               "WHERE names_fts MATCH ? "
+               # Ranked, so a truncated window keeps the best rows rather than
+               # the first ones the index happened to store.
+               f"ORDER BY bm25(names_fts) LIMIT {ROW_BUDGET}")
+        rows: list = []
+        for expression in expressions:             # narrowest first
+            rows = self._con.execute(sql, (expression,)).fetchall()
+            if rows:
+                break
 
         best: dict[str, dict] = {}
         for row in rows:
@@ -156,6 +206,12 @@ class Snapshot:
                     "death_year": row["death_year"],
                     "matched": row["name"],
                 }
-        candidates = sorted(best.values(), key=lambda c: (-c["score"], c["qid"]))[:limit]
-        return {"status": MATCH if candidates else NO_CANDIDATES,
-                "snapshot": self.version, "candidates": candidates}
+        ranked = sorted(best.values(), key=lambda c: (-c["score"], c["qid"]))
+        # Counted over every scored person, before `limit` hides the rest — and a
+        # lower bound, because scoring stops after the 400-row window.
+        tied = sum(1 for c in ranked if c["score"] == ranked[0]["score"]) if ranked else 0
+        candidates = ranked[:limit]
+        status = NO_CANDIDATES if not candidates else (
+            AMBIGUOUS if tied > 1 else MATCH)
+        return {"status": status, "snapshot": self.version,
+                "candidates": candidates, "fits": tied}
