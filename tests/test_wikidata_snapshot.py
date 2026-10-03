@@ -249,3 +249,32 @@ def test_no_export_asserts_an_identity_nobody_accepted():
         "an unaccepted candidate is still worth publishing, as a candidate"
     assert 'wdEntry.status === "ambiguous"' in app, \
         "a reviewer has to see that the name fits a crowd"
+
+
+# ── the two copies have to ask the same question ──────────────────────────────
+def test_the_narrow_query_is_tried_before_the_wide_one(offline, snapshot_path):
+    """The drift this caught: outremer's copy stayed at upstream 141f2ac and kept
+    an OR-only query while upstream moved to AND-before-OR, so against the same
+    150,040-person file the MCP answered "Salah ad-Din" with Saladin and this
+    copy with *Rabghuzi* (measured on tei, 2026-10-03). `"ad"*` alone matches
+    10,489 rows; Saladin's were not among the ones that got scored.
+    """
+    snap = wikidata_snapshot.Snapshot(snapshot_path)
+
+    assert snap._fts_queries("Salah ad-Din") == [
+        '"ad" AND "din" AND "salah"*', '"ad" OR "din" OR "salah"*']
+    assert snap.resolve("Salah ad-Din")["candidates"][0]["qid"] == "Q37594"
+
+
+def test_a_short_token_is_matched_exactly_not_as_a_prefix(snapshot_path):
+    snap = wikidata_snapshot.Snapshot(snapshot_path)
+
+    assert snap._terms("Salah ad-Din") == ['"ad"', '"din"', '"salah"*']
+
+
+def test_the_wide_query_still_answers_a_partly_wrong_name(offline, snapshot_path):
+    """The OR pass earns its place: no entry has every word of this."""
+    snap = wikidata_snapshot.Snapshot(snapshot_path)
+
+    assert snap.resolve("Albertus de Morra of Nowhere")["candidates"][0]["qid"] \
+        == "Q101866"
