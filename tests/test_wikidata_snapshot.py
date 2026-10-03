@@ -278,3 +278,61 @@ def test_the_wide_query_still_answers_a_partly_wrong_name(offline, snapshot_path
 
     assert snap.resolve("Albertus de Morra of Nowhere")["candidates"][0]["qid"] \
         == "Q101866"
+
+
+# ── a cached answer is an answer, not a saved question ────────────────────────
+def _site_with_cache(tmp_path, cached_entry):
+    site = tmp_path / "site"
+    (site / "data").mkdir(parents=True)
+    (site / "data" / "doc.json").write_text(json.dumps({
+        "doc_id": "doc", "links": [{"person": "Saladin", "status": "no_match"}]}),
+        encoding="utf-8")
+    (site / "data" / "wikidata_matches.json").write_text(json.dumps({
+        "doc": {wikidata_reconcile.normalise("Saladin"): cached_entry}}),
+        encoding="utf-8")
+    return site
+
+
+def test_an_entry_from_another_backend_is_resolved_again(tmp_path, offline):
+    """Measured 2026-10-03: the published file held 1,881 entries reaching back
+    to August, every one answered by query.wikidata.org, and its status block
+    named one source for all of them. A cached answer comes from a resolver that
+    may no longer exist, so by default it is re-asked."""
+    site = _site_with_cache(tmp_path, {
+        "person": "Saladin", "status": "match", "source": "query.wikidata.org",
+        "snapshot": None, "candidates": [{"qid": "Q_WRONG", "score": 0.4}]})
+
+    offline.run(site, limit=3)
+
+    written = json.loads((site / "data" / "wikidata_matches.json").read_text())
+    entry = written["doc"][wikidata_reconcile.normalise("Saladin")]
+    assert entry["candidates"][0]["qid"] == "Q37594", "the stale answer survived"
+    assert written["status"]["re_resolved"] == 1
+    assert written["status"]["from_an_older_resolver"] == 0
+
+
+def test_an_entry_from_this_backend_is_left_alone(tmp_path, offline):
+    site = _site_with_cache(tmp_path, {
+        "person": "Saladin", "status": "match",
+        "source": "wikidata_pre1500_snapshot",
+        "snapshot": "2026-10-02T21:00:00+00:00",
+        "candidates": [{"qid": "Q37594", "score": 1.0}]})
+
+    offline.run(site, limit=3)
+
+    written = json.loads((site / "data" / "wikidata_matches.json").read_text())
+    assert written["status"]["cached"] == 1 and written["status"]["re_resolved"] == 0
+
+
+def test_refresh_none_keeps_the_old_behaviour_and_says_what_it_kept(tmp_path, offline):
+    """The status block has to count what the file holds, not what this run did."""
+    site = _site_with_cache(tmp_path, {
+        "person": "Saladin", "status": "match", "source": "query.wikidata.org",
+        "snapshot": None, "candidates": [{"qid": "Q_WRONG", "score": 0.4}]})
+
+    offline.run(site, limit=3, refresh="none")
+
+    written = json.loads((site / "data" / "wikidata_matches.json").read_text())
+    assert written["doc"][wikidata_reconcile.normalise("Saladin")][
+        "candidates"][0]["qid"] == "Q_WRONG"
+    assert written["status"]["from_an_older_resolver"] == 1
