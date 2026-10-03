@@ -253,17 +253,22 @@ logger = logging.getLogger(__name__)
 def resolve(name: str, limit: int = 3) -> dict[str, Any]:
     """Candidates for one name, with the backend and its version named.
 
-    The envelope — status, source, snapshot — is what makes a miss legible. A
-    bare list cannot say whether anybody looked.
+    The envelope — status, source, snapshot, fits — is what makes a miss legible.
+    A bare list cannot say whether anybody looked, and a list of three cannot
+    say that the name fits twenty-one people equally well: that is `status ==
+    "ambiguous"`, and nothing downstream may turn it into an identity.
     """
     snapshot = _snapshot()
     if snapshot is not None:
         answer = snapshot.resolve(name, limit=limit)
         return {"status": answer["status"], "source": "wikidata_pre1500_snapshot",
-                "snapshot": answer["snapshot"], "candidates": answer["candidates"]}
+                "snapshot": answer["snapshot"], "candidates": answer["candidates"],
+                "fits": answer["fits"]}
     candidates = reconcile_person(name, limit=limit)
+    # The live path cannot count a tie: it never saw how many people the name
+    # fits, only the three the endpoint chose to return.
     return {"status": "match" if candidates else "no_candidates",
-            "source": LIVE, "snapshot": None, "candidates": candidates}
+            "source": LIVE, "snapshot": None, "candidates": candidates, "fits": None}
 
 
 def reconcile_person(name: str, limit: int = 3) -> list[dict[str, Any]]:
@@ -375,6 +380,7 @@ def run(site_dir: Path, limit: int) -> None:
                 "status":     answer["status"],
                 "source":     answer["source"],
                 "snapshot":   answer["snapshot"],
+                "fits":       answer["fits"],
                 "candidates": answer["candidates"],
                 "queried_at": _dt.datetime.now(_dt.timezone.utc).isoformat(),
             }

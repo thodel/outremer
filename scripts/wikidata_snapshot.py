@@ -29,6 +29,12 @@ SINGLE_TOKEN_MIN = 5
 
 NO_CANDIDATES = "no_candidates"
 MATCH = "match"
+#: Several people fit the name equally well, so the first row is an arbitrary
+#: pick. Measured against the 1,881 names cached here (2026-10-03): 310 of 652
+#: answers fit more than one person — "Alexander" is the exact label of 21,
+#: "Emperor" scores 0.6 against 219 — and the envelope said "match" for all of
+#: them, while the explorer's TEI export wrote candidate[0] as an <idno>.
+AMBIGUOUS = "ambiguous"
 
 #: Connectives that join a name to a place or a father. They may support a match
 #: and must never make one: scoring on them alone returned "Jean de Vaunoise"
@@ -129,7 +135,10 @@ class Snapshot:
 
         The envelope is the point: the live path returned `[]` both for "asked,
         and this person is not in Wikidata" and for "never asked", so a document
-        could look reconciled when nothing had happened (#83).
+        could look reconciled when nothing had happened (#83). For the same
+        reason a tie is its own status: "ambiguous" plus `fits` says how many
+        people the name suits, so nothing downstream can mistake the first of
+        twenty-one Alexanders for the Alexander in the charter.
         """
         expression = self._fts_expression(name)
         if not expression:
@@ -156,6 +165,12 @@ class Snapshot:
                     "death_year": row["death_year"],
                     "matched": row["name"],
                 }
-        candidates = sorted(best.values(), key=lambda c: (-c["score"], c["qid"]))[:limit]
-        return {"status": MATCH if candidates else NO_CANDIDATES,
-                "snapshot": self.version, "candidates": candidates}
+        ranked = sorted(best.values(), key=lambda c: (-c["score"], c["qid"]))
+        # Counted over every scored person, before `limit` hides the rest — and a
+        # lower bound, because scoring stops after the 400-row window.
+        tied = sum(1 for c in ranked if c["score"] == ranked[0]["score"]) if ranked else 0
+        candidates = ranked[:limit]
+        status = NO_CANDIDATES if not candidates else (
+            AMBIGUOUS if tied > 1 else MATCH)
+        return {"status": status, "snapshot": self.version,
+                "candidates": candidates, "fits": tied}

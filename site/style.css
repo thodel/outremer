@@ -542,6 +542,14 @@ select {
   letter-spacing: .05em;
   margin-bottom: .4rem;
 }
+/* A tie is a warning, not a detail: the label above it is uppercase and muted,
+   so the count has to break out of that to be read at all. */
+.wd-ambiguous {
+  text-transform: none;
+  letter-spacing: normal;
+  font-weight: normal;
+  color: var(--low);
+}
 .wd-row {
   display: flex;
   align-items: center;
