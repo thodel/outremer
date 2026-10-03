@@ -114,6 +114,16 @@ def test_the_vendored_scorer_matches_the_upstream_cases():
     assert wikidata_snapshot.normalise("Henry V") == "henry v"
 
 
+def test_extraction_noise_resolves_to_nothing():
+    """The reconciler is fed whatever the extractor could not link, and a lot of
+    that is not a name: of 1,881 cached entries here, "Popes", "Vol", "April",
+    "This" and "First" are typical. The live path answered Voltaire for "Vol".
+    A single word under five letters must carry no match at all."""
+    assert wikidata_snapshot.score("This", "Tuệ Tĩnh") == 0.0
+    assert wikidata_snapshot.score("Vol", "Voltaire") == 0.0
+    assert wikidata_snapshot.score("Morra", "Albertus de Morra") == 0.6
+
+
 # ── degrading, not crashing ───────────────────────────────────────────────────
 def test_an_unusable_snapshot_path_warns_and_uses_the_live_path(monkeypatch, caplog):
     import config

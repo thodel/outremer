@@ -24,6 +24,9 @@ import sqlite3
 import unicodedata
 from pathlib import Path
 
+#: A one-word query shorter than this names nobody: it matches by accident.
+SINGLE_TOKEN_MIN = 5
+
 NO_CANDIDATES = "no_candidates"
 MATCH = "match"
 
@@ -75,8 +78,17 @@ def score(query: str, variant: str) -> float:
     q_core, v_core = _distinctive(set(q.split())), _distinctive(set(v.split()))
     if not q_core or not v_core:
         return 0.0
+    # One short word is not evidence, by either route: it matched "This" to Tuệ
+    # Tĩnh by containment and "Vol" to Voltaire by prefix. Measured against the
+    # 1,881 names outremer had cached, which are largely extraction noise.
+    if len(q_core) == 1 and len(next(iter(q_core))) < SINGLE_TOKEN_MIN:
+        return 0.0
     if q_core <= v_core:
-        return 0.85 if len(q_core) > 1 else 0.7
+        if len(q_core) > 1:
+            return 0.85
+        # One word carries far less. Measured against the 1,881 cached names
+        # here: a single short token produced "This" → Tuệ Tĩnh at 0.7.
+        return 0.6
     shared = q_core & v_core
     if not shared:
         prefixed = sum(any(w.startswith(t) or t.startswith(w) for w in v_core)
