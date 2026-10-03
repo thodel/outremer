@@ -319,7 +319,15 @@ def reconcile_person(name: str, limit: int = 3) -> list[dict[str, Any]]:
     return candidates[:limit]
 
 
-def run(site_dir: Path, limit: int) -> None:
+def run(site_dir: Path, limit: int, refresh: str = "stale") -> None:
+    """Resolve every unmatched person and write site/data/wikidata_matches.json.
+
+    `refresh` decides what a cached entry is worth. "stale" (the default)
+    re-resolves anything a different backend or an older snapshot produced,
+    because such an entry is an answer from a resolver that no longer exists;
+    "all" re-resolves everything; "none" is the old behaviour, which kept every
+    cached entry no matter what had answered it.
+    """
     data_dir   = site_dir / "data"
     out_file   = site_dir / "data" / "wikidata_matches.json"
 
@@ -338,8 +346,27 @@ def run(site_dir: Path, limit: int) -> None:
     doc_files = sorted(data_dir.glob("*.json"))
     doc_files  = [f for f in doc_files if f.name != "wikidata_matches.json"]
 
+    snapshot = _snapshot()
+    backend  = "wikidata_pre1500_snapshot" if snapshot else LIVE
+    version  = snapshot.version if snapshot else None
+
+    def is_current(entry: Any) -> bool:
+        """Was this entry produced by the backend answering today?
+
+        A cached answer is not a saved query, it is a saved *answer*, and the
+        resolver that gave it may no longer exist. Measured 2026-10-03: this
+        file held 1,881 entries reaching back to August, every one from
+        query.wikidata.org, while the file's own status block named a single
+        source for all of them — so the provenance it published was wrong for
+        most of its contents.
+        """
+        return (isinstance(entry, dict)
+                and entry.get("source") == backend
+                and entry.get("snapshot") == version)
+
     total_queried = 0
     total_skipped = 0
+    total_restale = 0
 
     for doc_path in doc_files:
         doc = json.loads(doc_path.read_text())
@@ -369,9 +396,12 @@ def run(site_dir: Path, limit: int) -> None:
 
             key = normalise(person)
 
-            if key in existing[doc_id]:
-                total_skipped += 1
-                continue   # already reconciled
+            cached = existing[doc_id].get(key)
+            if cached is not None:
+                if refresh == "none" or (refresh == "stale" and is_current(cached)):
+                    total_skipped += 1
+                    continue   # already reconciled, by the backend running now
+                total_restale += 1
 
             print(f"  Resolving: {person}")
             answer = resolve(person, limit=limit)
@@ -388,12 +418,19 @@ def run(site_dir: Path, limit: int) -> None:
             if answer["source"] == LIVE:               # the snapshot needs no delay
                 time.sleep(WD_API_DELAY)
 
-    snapshot = _snapshot()
+    # Count what the file actually contains, rather than claiming the backend
+    # of this run produced all of it.
+    carried = sum(1 for doc, entries in existing.items()
+                  if doc != "status" and isinstance(entries, dict)
+                  for entry in entries.values() if not is_current(entry))
     existing["status"] = {
-        "source": "wikidata_pre1500_snapshot" if snapshot else LIVE,
-        "snapshot": snapshot.version if snapshot else None,
+        "source": backend,
+        "snapshot": version,
         "resolved": total_queried,
         "cached": total_skipped,
+        "re_resolved": total_restale,
+        "from_an_older_resolver": carried,
+        "refresh": refresh,
         "ran_at": _dt.datetime.now(_dt.timezone.utc).isoformat(),
     }
     out_file.write_text(json.dumps(existing, ensure_ascii=False, indent=2))
@@ -406,8 +443,12 @@ def main() -> None:
     ap = argparse.ArgumentParser(description="Wikidata reconciliation for unmatched Outremer persons.")
     ap.add_argument("--site-dir", default="site")
     ap.add_argument("--limit", type=int, default=3, help="Max Wikidata candidates per person")
+    ap.add_argument("--refresh", choices=("stale", "all", "none"), default="stale",
+                    help="stale (default): re-resolve entries an older backend or "
+                         "snapshot produced; all: re-resolve everything; none: keep "
+                         "every cached entry, whatever answered it")
     args = ap.parse_args()
-    run(Path(args.site_dir), args.limit)
+    run(Path(args.site_dir), args.limit, refresh=args.refresh)
 
 
 if __name__ == "__main__":
