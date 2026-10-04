@@ -1567,23 +1567,43 @@
     },
     "frederic il": {
       "person": "Frederic IL",
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 127,
       "candidates": [
         {
-          "qid": "Q88545676",
-          "label": "Frédéric Illouz",
-          "description": "researcher",
-          "url": "https://www.wikidata.org/wiki/Q88545676",
-          "score": 0.3
+          "qid": "Q100590",
+          "label": "Frederik I van Münster",
+          "description": "bishop of the Roman Catholic Church",
+          "url": "https://www.wikidata.org/wiki/Q100590",
+          "score": 0.6,
+          "birth_year": 1020,
+          "death_year": 1084,
+          "matched": "Frédéric Ier de Münster"
         },
         {
-          "qid": "Q111228764",
-          "label": "Frederic Iltis",
-          "description": "American politician – Minnesota -- \"Fred\" Senate 1895-98 (District 37)",
-          "url": "https://www.wikidata.org/wiki/Q111228764",
-          "score": 0.0
+          "qid": "Q100760",
+          "label": "Frederick II, Count of Diessen",
+          "description": "Vogt of the cathedral chapter of Regensburg",
+          "url": "https://www.wikidata.org/wiki/Q100760",
+          "score": 0.6,
+          "birth_year": 1005,
+          "death_year": 1075,
+          "matched": "Frédéric II de Ratisbonne"
+        },
+        {
+          "qid": "Q101459",
+          "label": "Friedrich III. von Aufseß",
+          "description": "German Prince-Bishop (1370-1440)",
+          "url": "https://www.wikidata.org/wiki/Q101459",
+          "score": 0.6,
+          "birth_year": 1370,
+          "death_year": 1440,
+          "matched": "Frédéric III d'Aufseß"
         }
       ],
-      "queried_at": "2026-02-22T21:16:42.779201"
+      "queried_at": "2026-10-04T01:38:28.696242+00:00"
     },
     "another crusader": {
       "person": "another crusader",
@@ -18194,8 +18214,23 @@
     },
     "joannitius": {
       "person": "Joannitius",
-      "candidates": [],
-      "queried_at": "2026-06-06T05:50:20.146002"
+      "status": "match",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 1,
+      "candidates": [
+        {
+          "qid": "Q503130",
+          "label": "Hunayn ibn Ishaq",
+          "description": "Arab Christian scholar, physician and scientist (809–873)",
+          "url": "https://www.wikidata.org/wiki/Q503130",
+          "score": 1.0,
+          "birth_year": 808,
+          "death_year": 873,
+          "matched": "Ioannitius"
+        }
+      ],
+      "queried_at": "2026-10-04T01:38:27.909625+00:00"
     },
     "htkma": {
       "person": "Htkma",
@@ -18389,8 +18424,12 @@
     },
     "templar": {
       "person": "Templar",
+      "status": "no_candidates",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 0,
       "candidates": [],
-      "queried_at": "2026-06-06T05:50:35.521271"
+      "queried_at": "2026-10-04T01:38:28.406179+00:00"
     },
     "aqsa": {
       "person": "Aqsa",
@@ -18499,8 +18538,43 @@
     },
     "odo": {
       "person": "Odo",
-      "candidates": [],
-      "queried_at": "2026-06-06T05:50:47.190650"
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 6,
+      "candidates": [
+        {
+          "qid": "Q131364521",
+          "label": "Eudes de Gournay",
+          "description": "noble normando",
+          "url": "https://www.wikidata.org/wiki/Q131364521",
+          "score": 1.0,
+          "birth_year": 860,
+          "death_year": 912,
+          "matched": "Odo"
+        },
+        {
+          "qid": "Q1380805",
+          "label": "Odo, Count of Toulouse",
+          "description": "French noble",
+          "url": "https://www.wikidata.org/wiki/Q1380805",
+          "score": 1.0,
+          "birth_year": 900,
+          "death_year": 918,
+          "matched": "Odo"
+        },
+        {
+          "qid": "Q1385987",
+          "label": "Odo, Count of Nevers",
+          "description": "French noble",
+          "url": "https://www.wikidata.org/wiki/Q1385987",
+          "score": 1.0,
+          "birth_year": 1230,
+          "death_year": 1266,
+          "matched": "Odo"
+        }
+      ],
+      "queried_at": "2026-10-04T01:38:28.007786+00:00"
     },
     "saint": {
       "person": "Saint",
@@ -20679,8 +20753,12 @@
     },
     "west": {
       "person": "West",
+      "status": "no_candidates",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 0,
       "candidates": [],
-      "queried_at": "2026-07-19T05:20:26.478753"
+      "queried_at": "2026-10-04T01:38:28.405952+00:00"
     },
     "university": {
       "person": "University",
@@ -22016,36 +22094,33 @@
     },
     "'umar": {
       "person": "'Umar",
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 2,
       "candidates": [
-        {
-          "qid": "Q5701959",
-          "label": "Abu Hafs Omar al-Nasafi",
-          "description": "Muslim jurist, theologian and historian (1067–1142)",
-          "url": "https://www.wikidata.org/wiki/Q5701959",
-          "score": 0.4,
-          "birth_year": 1068,
-          "death_year": 1142
-        },
-        {
-          "qid": "Q17155769",
-          "label": "'Umar ibn Hafs Hazarmard",
-          "description": "Abbasid provincial governor (died 771)",
-          "url": "https://www.wikidata.org/wiki/Q17155769",
-          "score": 0.3,
-          "birth_year": null,
-          "death_year": null
-        },
         {
           "qid": "Q8467",
           "label": "Umar ibn Al-Khattāb",
           "description": "2nd Rashidun Caliph from 634 to 644",
           "url": "https://www.wikidata.org/wiki/Q8467",
-          "score": 0.0,
+          "score": 1.0,
           "birth_year": 586,
-          "death_year": 644
+          "death_year": 644,
+          "matched": "Umar"
+        },
+        {
+          "qid": "Q928307",
+          "label": "Umor of Bulgaria",
+          "description": "Bulgarian ruler",
+          "url": "https://www.wikidata.org/wiki/Q928307",
+          "score": 1.0,
+          "birth_year": 800,
+          "death_year": 766,
+          "matched": "Umar"
         }
       ],
-      "queried_at": "2026-08-29T08:33:58.163862"
+      "queried_at": "2026-10-04T01:38:27.904879+00:00"
     },
     "john of damascus": {
       "person": "John of Damascus",
@@ -22229,8 +22304,43 @@
     },
     "templar grand master": {
       "person": "Templar grand master",
-      "candidates": [],
-      "queried_at": "2026-08-29T08:34:27.596456"
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 4,
+      "candidates": [
+        {
+          "qid": "Q2057332",
+          "label": "Sancho of Aragon",
+          "description": "master the Order of Alcántara",
+          "url": "https://www.wikidata.org/wiki/Q2057332",
+          "score": 0.6,
+          "birth_year": 1398,
+          "death_year": 1416,
+          "matched": "Sancho de Aragón, Grand Master of Alcantara"
+        },
+        {
+          "qid": "Q3419195",
+          "label": "Raoul III of Vexin",
+          "description": "Count of Valois, Chief advisor of the Royal Council of King Henry I of France",
+          "url": "https://www.wikidata.org/wiki/Q3419195",
+          "score": 0.6,
+          "birth_year": 992,
+          "death_year": 1060,
+          "matched": "Le Grand"
+        },
+        {
+          "qid": "Q587697",
+          "label": "Afonso I of Portugal",
+          "description": "king of Portugal from 1139 to 1185",
+          "url": "https://www.wikidata.org/wiki/Q587697",
+          "score": 0.6,
+          "birth_year": 1109,
+          "death_year": 1185,
+          "matched": "Le Grand"
+        }
+      ],
+      "queried_at": "2026-10-04T01:38:28.310938+00:00"
     },
     "'imad al din al isfahani": {
       "person": "'Imad al Din al Isfahani",
@@ -23012,18 +23122,113 @@
     },
     "the sultan al ashraf": {
       "person": "the Sultan al Ashraf",
-      "candidates": [],
-      "queried_at": "2026-08-29T11:26:01.360490"
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 2,
+      "candidates": [
+        {
+          "qid": "Q309461",
+          "label": "Al-Ashraf",
+          "description": "Sultan of Egypt 1250-1255",
+          "url": "https://www.wikidata.org/wiki/Q309461",
+          "score": 0.85,
+          "birth_year": 1245,
+          "death_year": 1254,
+          "matched": "Al-Ashraf Musa, Sultan of Egypt"
+        },
+        {
+          "qid": "Q4805882",
+          "label": "Ashraf Jahangir Semnani",
+          "description": "Indian Sufi saint",
+          "url": "https://www.wikidata.org/wiki/Q4805882",
+          "score": 0.85,
+          "birth_year": 1309,
+          "death_year": 1405,
+          "matched": "Sultan Makhdoom Ashraf Jahangir Semnani"
+        }
+      ],
+      "queried_at": "2026-10-04T01:38:28.411116+00:00"
     },
     "the amir kitbugha al mansuri": {
       "person": "the amir Kitbugha al Mansuri",
-      "candidates": [],
-      "queried_at": "2026-08-29T11:26:12.281487"
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 4,
+      "candidates": [
+        {
+          "qid": "Q285678",
+          "label": "Al-Amir bi-Ahkam Allah",
+          "description": "Fatimid caliph and imam (1096–1130)",
+          "url": "https://www.wikidata.org/wiki/Q285678",
+          "score": 0.6,
+          "birth_year": 1096,
+          "death_year": 1130,
+          "matched": "Al-Amir"
+        },
+        {
+          "qid": "Q3595521",
+          "label": "Abd Allah ibn Amir",
+          "description": "Rashidun Arab governor of Basra from 647 to 656",
+          "url": "https://www.wikidata.org/wiki/Q3595521",
+          "score": 0.6,
+          "birth_year": 622,
+          "death_year": 678,
+          "matched": "Ibn Amir"
+        },
+        {
+          "qid": "Q558359",
+          "label": "Al-Adil Kitbugha",
+          "description": "Mamluk Sultan of Egypt 1294-1296",
+          "url": "https://www.wikidata.org/wiki/Q558359",
+          "score": 0.6,
+          "birth_year": 1245,
+          "death_year": 1303,
+          "matched": "Kitbugha"
+        }
+      ],
+      "queried_at": "2026-10-04T01:38:28.472263+00:00"
     },
     "the sultan al salih isma'il": {
       "person": "the Sultan Al Salih Isma'il",
-      "candidates": [],
-      "queried_at": "2026-08-29T11:26:13.013705"
+      "status": "match",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 1,
+      "candidates": [
+        {
+          "qid": "Q285519",
+          "label": "As-Salih Ismail al-Malik",
+          "description": "Emir of Damascus",
+          "url": "https://www.wikidata.org/wiki/Q285519",
+          "score": 0.65,
+          "birth_year": 1163,
+          "death_year": 1181,
+          "matched": "Al-Malik al-Salih Isma'il"
+        },
+        {
+          "qid": "Q287848",
+          "label": "As-Salih Ismail",
+          "description": "Ayyubid emir of Damascus 1237,1239–1245",
+          "url": "https://www.wikidata.org/wiki/Q287848",
+          "score": 0.62,
+          "birth_year": 1200,
+          "death_year": 1250,
+          "matched": "Al-Salih 'Imad al-Din Isma'il"
+        },
+        {
+          "qid": "Q86010117",
+          "label": "Isma'il ibn Salih ibn Ali al-Hashimi",
+          "description": "Provincial Abbasid governor",
+          "url": "https://www.wikidata.org/wiki/Q86010117",
+          "score": 0.62,
+          "birth_year": null,
+          "death_year": 805,
+          "matched": "Isma'il ibn Salih ibn Ali al-Hashimi"
+        }
+      ],
+      "queried_at": "2026-10-04T01:38:28.604079+00:00"
     },
     "ibn khallikan": {
       "person": "Ibn Khallikan",
@@ -23162,11 +23367,11 @@
   "status": {
     "source": "wikidata_pre1500_snapshot",
     "snapshot": "2026-10-02T22:51:17+00:00",
-    "resolved": 432,
-    "cached": 0,
-    "re_resolved": 432,
-    "from_an_older_resolver": 1449,
+    "resolved": 10,
+    "cached": 422,
+    "re_resolved": 10,
+    "from_an_older_resolver": 1439,
     "refresh": "stale",
-    "ran_at": "2026-10-03T07:59:02.549539+00:00"
+    "ran_at": "2026-10-04T01:38:28.698275+00:00"
   }
 }
