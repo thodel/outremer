@@ -23320,8 +23320,43 @@
     },
     "the apostle of god [muhammad]": {
       "person": "the apostle of God [Muhammad]",
-      "candidates": [],
-      "queried_at": "2026-09-29T01:36:41.699574"
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 5,
+      "candidates": [
+        {
+          "qid": "Q16202005",
+          "label": "Muhammad",
+          "description": "bavand dynasty ruler (1249–1271)",
+          "url": "https://www.wikidata.org/wiki/Q16202005",
+          "score": 0.6,
+          "birth_year": null,
+          "death_year": 1271,
+          "matched": "Muhammad"
+        },
+        {
+          "qid": "Q2639607",
+          "label": "Muhammad of Khorasan",
+          "description": "the fifth and last Amir of Tahirid Emirate (862–873)",
+          "url": "https://www.wikidata.org/wiki/Q2639607",
+          "score": 0.6,
+          "birth_year": 840,
+          "death_year": 910,
+          "matched": "Muhammad"
+        },
+        {
+          "qid": "Q5964503",
+          "label": "Muhammad Khan (Ilkhan)",
+          "description": "Claimant to the throne of the Ilkhanate",
+          "url": "https://www.wikidata.org/wiki/Q5964503",
+          "score": 0.6,
+          "birth_year": 1350,
+          "death_year": 1339,
+          "matched": "Muhammad"
+        }
+      ],
+      "queried_at": "2026-10-05T01:40:46.730755+00:00"
     },
     "apostle of god": {
       "person": "apostle of God",
@@ -23367,11 +23402,11 @@
   "status": {
     "source": "wikidata_pre1500_snapshot",
     "snapshot": "2026-10-02T22:51:17+00:00",
-    "resolved": 10,
-    "cached": 422,
-    "re_resolved": 10,
-    "from_an_older_resolver": 1439,
+    "resolved": 1,
+    "cached": 433,
+    "re_resolved": 1,
+    "from_an_older_resolver": 1438,
     "refresh": "stale",
-    "ran_at": "2026-10-04T01:38:28.698275+00:00"
+    "ran_at": "2026-10-05T01:40:46.733028+00:00"
   }
 }
