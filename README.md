@@ -89,6 +89,22 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
+### Permitted network hosts
+
+The pipeline is designed to run in a network-air-gapped environment with
+egress restricted to two inference services.  A new outbound dependency
+introduced by any future change must **not** be merged without updating
+`scripts/airgap_test.py` and this list.
+
+| Host | Purpose |
+|------|---------|
+| `gpustack.unibe.ch` | LLM extraction (person extraction + OCR via qwen3.8-27b) |
+| `<atr-gateway-host>` | ATR recognition engines (kraken, TrOCR) — configured via `ATR_GATEWAY_URL` in `.env.gpustack`; resolve the host from that URL at startup |
+
+Run `python scripts/airgap_test.py --subset` to assert air-gap compliance
+in CI.  The test blocks all outbound connections except the two permitted
+hosts above and verifies the pipeline completes with non-empty output.
+
 ### GPUStack configuration
 
 Copy `.env.gpustack` template (or create manually):
