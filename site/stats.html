@@ -388,14 +388,26 @@
       const noise = data.runReport?.noise || null;
       if (noise && noise.extracted_total) {
         const pct = Math.round((noise.noise_share || 0) * 100);
-        fbEl.innerHTML += `
-          <div class="feedback-row" style="margin-top:.6rem;" title="Filtered ${noise.filtered} of ${noise.extracted_total} extracted mentions in the latest run">
-            <span class="fb-badge" style="background:${pct > 30 ? "#f3d9d9" : "#e8efe3"};color:var(--text)">
-              🧹 extraction noise: ${pct}% (${noise.filtered}/${noise.extracted_total} filtered)
+        fbEl.innerHTML += \`
+          <div class="feedback-row" style="margin-top:.6rem;" title="Filtered \${noise.filtered} of \${noise.extracted_total} extracted mentions in the latest run">
+            <span class="fb-badge" style="background:\${pct > 30 ? "#f3d9d9" : "#e8efe3"};color:var(--text)">
+              🧹 extraction noise: \${pct}% (\${noise.filtered}/\${noise.extracted_total} filtered)
             </span>
-          </div>`;
+          </div>\`;
       }
 
+      // Recognition metrics (M15.3): coverage + selection-agreement from evaluation history
+      const ev = data.runReport?.evaluation || null;
+      if (ev && (ev.recognition_coverage != null || ev.recognition_agreement != null)) {
+        const cov = ev.recognition_coverage;
+        const sel = ev.recognition_agreement;
+        fbEl.innerHTML += \`
+          <div class="feedback-row" style="margin-top:.6rem;" title="Recognition: pool coverage and automatic selection agreement">
+            <span class="fb-badge" style="background:#e8eaf6;color:var(--text)">
+              👁 cov \${cov != null ? Math.round(cov * 100) + "%" : "—" } &nbsp; sel \${sel != null ? Math.round(sel * 100) + "%" : "—" }
+            </span>
+          </div>\`;
+      }
       // Per-document breakdown
       document.getElementById("docBreakdown").innerHTML = `
         <table class="top-table">

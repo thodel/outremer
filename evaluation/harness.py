@@ -76,6 +76,35 @@ def load_predictions_live(doc_id: str) -> dict:
     }
 
 
+def _load_recognition_events(doc_id: str) -> dict | None:
+    """Load recognition selection metrics for a document (M15.3).
+
+    Looks for evaluation/recognition/<doc_id>/selection.json and falls
+    back to any JSON array file in that directory that has candidate
+    events.  Returns None when no recognition data exists.
+    """
+    from evaluation.metrics import selection_metrics
+
+    rec_dir = REPO_ROOT / "evaluation" / "recognition" / doc_id
+    if not rec_dir.is_dir():
+        return None
+    sel_file = rec_dir / "selection.json"
+    if sel_file.exists():
+        events = json.loads(sel_file.read_text())
+        if isinstance(events, list) and events:
+            return selection_metrics(events)
+    for f in rec_dir.glob("*.json"):
+        try:
+            data = json.loads(f.read_text())
+            if isinstance(data, list) and all(
+                "candidates" in e and "human_selection" in e for e in data
+            ):
+                return selection_metrics(data) if data else None
+        except Exception:
+            continue
+    return None
+
+
 def evaluate_fixture(fixture: dict, *, live: bool = False, relink: bool = False) -> dict:
     """Evaluate one fixture; returns {mode, extraction?, linking?, wikidata?}.
 
@@ -113,6 +142,10 @@ def evaluate_fixture(fixture: dict, *, live: bool = False, relink: bool = False)
         result["wikidata"] = wikidata_agreement(
             preds.get("wikidata") or {}, acc_wd, rej_wd
         )
+    # M15.3: recognition selection metrics
+    rec = _load_recognition_events(doc_id)
+    if rec is not None:
+        result["recognition"] = rec
     return result
 
 
@@ -176,6 +209,17 @@ def _append_history(
         },
         "noise_share": noise_share,
     }
+    # M15.3: recognition tail — coverage + selection-agreement per doc
+    rec_tail = {}
+    for doc_id, res in doc_results.items():
+        rec = res.get("recognition")
+        if rec:
+            rec_tail[doc_id] = {
+                "coverage": rec.get("coverage"),
+                "selection_agreement": rec.get("selection_agreement"),
+            }
+    if rec_tail:
+        entry["recognition_tail"] = rec_tail
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("a") as fh:
         fh.write(json.dumps(entry, ensure_ascii=False) + "\n")

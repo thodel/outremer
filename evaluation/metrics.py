@@ -506,6 +506,7 @@ def format_report(doc_results: dict[str, dict]) -> str:
     header = (
         f"{'document':<44} {'mode':<12} {'P':>6} {'R':>6} {'F1':>6}"
         f" {'auth':>6} {'wd':>6}"
+        f" {'cov':>6} {'sel':>6}"
     )
     lines.append(header)
     lines.append("-" * len(header))
@@ -513,6 +514,7 @@ def format_report(doc_results: dict[str, dict]) -> str:
         ext = res.get("extraction") or {}
         auth = res.get("linking") or {}
         wd = res.get("wikidata") or {}
+        rec = res.get("recognition") or {}
         lines.append(
             f"{doc_id[:44]:<44} {res.get('mode', '?'):<12}"
             f" {ext.get('precision', '—'):>6}"
@@ -520,5 +522,7 @@ def format_report(doc_results: dict[str, dict]) -> str:
             f" {ext.get('f1', '—'):>6}"
             f" {auth.get('agreement', '—'):>6}"
             f" {wd.get('agreement', '—'):>6}"
+            f" {rec.get('coverage', '—'):>6}"
+            f" {rec.get('selection_agreement', '—'):>6}"
         )
     return "\n".join(lines)
