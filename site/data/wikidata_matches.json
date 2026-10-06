@@ -23315,8 +23315,43 @@
     },
     "sultan baybars i": {
       "person": "Sultan Baybars I",
-      "candidates": [],
-      "queried_at": "2026-09-27T01:42:23.621234"
+      "status": "match",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 1,
+      "candidates": [
+        {
+          "qid": "Q192960",
+          "label": "Baibars",
+          "description": "4th Sultan of Egypt from 1260 to 1277",
+          "url": "https://www.wikidata.org/wiki/Q192960",
+          "score": 0.7,
+          "birth_year": 1223,
+          "death_year": 1277,
+          "matched": "Baybars I"
+        },
+        {
+          "qid": "Q4874373",
+          "label": "Baybars al-Ala'i",
+          "description": "na'ib of Gaza (1307-1310)",
+          "url": "https://www.wikidata.org/wiki/Q4874373",
+          "score": 0.65,
+          "birth_year": null,
+          "death_year": 1313,
+          "matched": "Baybars al-Ala'i"
+        },
+        {
+          "qid": "Q558305",
+          "label": "Baibars II",
+          "description": "Egyptian Mamluk sultan from 1309 to 1310",
+          "url": "https://www.wikidata.org/wiki/Q558305",
+          "score": 0.65,
+          "birth_year": null,
+          "death_year": 1310,
+          "matched": "Sultan Baybars al-Jashankir"
+        }
+      ],
+      "queried_at": "2026-10-06T01:38:10.425770+00:00"
     },
     "the apostle of god [muhammad]": {
       "person": "the apostle of God [Muhammad]",
@@ -23403,10 +23438,10 @@
     "source": "wikidata_pre1500_snapshot",
     "snapshot": "2026-10-02T22:51:17+00:00",
     "resolved": 1,
-    "cached": 433,
+    "cached": 429,
     "re_resolved": 1,
-    "from_an_older_resolver": 1438,
+    "from_an_older_resolver": 1437,
     "refresh": "stale",
-    "ran_at": "2026-10-05T01:40:46.733028+00:00"
+    "ran_at": "2026-10-06T01:38:10.427791+00:00"
   }
 }
