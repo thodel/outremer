@@ -3914,16 +3914,23 @@
     },
     "bartolf of nangis": {
       "person": "Bartolf of Nangis",
+      "status": "match",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 1,
       "candidates": [
         {
           "qid": "Q4865485",
           "label": "Bartolf of Nangis",
           "description": "historian",
           "url": "https://www.wikidata.org/wiki/Q4865485",
-          "score": 0.9
+          "score": 1.0,
+          "birth_year": 1100,
+          "death_year": 1200,
+          "matched": "Bartolf of Nangis"
         }
       ],
-      "queried_at": "2026-02-22T20:54:25.999855"
+      "queried_at": "2026-10-07T01:38:43.644389+00:00"
     },
     "jerusolymam": {
       "person": "Jerusolymam",
@@ -23440,8 +23447,8 @@
     "resolved": 1,
     "cached": 429,
     "re_resolved": 1,
-    "from_an_older_resolver": 1437,
+    "from_an_older_resolver": 1436,
     "refresh": "stale",
-    "ran_at": "2026-10-06T01:38:10.427791+00:00"
+    "ran_at": "2026-10-07T01:38:43.646866+00:00"
   }
 }

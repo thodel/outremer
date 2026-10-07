@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-10-06T01:38:11.108242+00:00",
+  "generated_at": "2026-10-07T01:38:44.142352+00:00",
   "run": {
-    "run_at": "2026-10-06T01:38:10.456966+00:00",
+    "run_at": "2026-10-07T01:38:43.680216+00:00",
     "docs_total": 3,
     "docs_failed": 0,
-    "total_persons": 360,
+    "total_persons": 365,
     "llm_provider": "gpustack",
     "extraction_model": "qwen3.8-27b",
     "extraction_seed": 42,
@@ -12,14 +12,14 @@
       "gpustack": 3
     },
     "fallback_chunks": 0,
-    "noise_share": 0.1304
+    "noise_share": 0.1289
   },
   "gate": {
     "status": "pass",
     "errors": []
   },
   "evaluation": {
-    "run_at": "2026-10-06T01:38:11.072489+00:00",
+    "run_at": "2026-10-07T01:38:44.107249+00:00",
     "combined_agreement": 0.8732394366197183,
     "segments": {
       "linking": {
