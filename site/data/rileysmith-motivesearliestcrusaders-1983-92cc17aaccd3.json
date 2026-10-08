@@ -344,7 +344,7 @@
       "role": "crusader",
       "gender": "m",
       "group": false,
-      "context": "Gerard of Avesnes, who had entered Arsuf as a hostage, was hung",
+      "context": "Gerard of Avesnes, who had entered Arsuf as a hostage",
       "confidence": 0.95,
       "source_offset": null
     },
@@ -357,7 +357,7 @@
       "role": "crusader",
       "gender": "m",
       "group": false,
-      "context": "Lambert of Montaigu and Arnulf the Lorrainer held rear fiefs in Galilee",
+      "context": "Lambert of Montaigu and Arnulf the Lorrainer held rear fiefs",
       "confidence": 0.95,
       "source_offset": null
     },
@@ -422,7 +422,7 @@
       "role": "knight",
       "gender": "m",
       "group": false,
-      "context": "Godfrey's knights: Gunter, Wicher the German",
+      "context": "and Godfrey's knights: Gunter, Wicher the German",
       "confidence": 0.85,
       "source_offset": null
     },
@@ -461,7 +461,7 @@
       "role": "knight",
       "gender": "m",
       "group": false,
-      "context": "Arnulf the Lorrainer and perhaps Rothold",
+      "context": "probably also Arnulf the Lorrainer and perhaps Rothold",
       "confidence": 0.8,
       "source_offset": null
     },
@@ -526,7 +526,7 @@
       "role": "crusader leader",
       "gender": "m",
       "group": false,
-      "context": "Peter the Hermit or Emicho of Leiningen",
+      "context": "perhaps with Peter the Hermit or Emicho of Leiningen",
       "confidence": 0.95,
       "source_offset": null
     },
@@ -679,7 +679,7 @@
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "norman leader",
+      "role": "duke",
       "gender": "m",
       "group": false,
       "context": "followers of the family of Robert Guiscard, were reported to be serving",
@@ -687,7 +687,20 @@
       "source_offset": null
     },
     {
-      "name": "the Muslims",
+      "name": "Wiscardides",
+      "raw_mention": "Wiscardides",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": "followers",
+      "gender": "unknown",
+      "group": true,
+      "context": "Wiscardides, or followers of the family of Robert Guiscard",
+      "confidence": 0.8,
+      "source_offset": null
+    },
+    {
+      "name": "Muslims",
       "raw_mention": "the Muslims",
       "title": null,
       "epithet": null,
@@ -700,7 +713,7 @@
       "source_offset": null
     },
     {
-      "name": "Christian arrows",
+      "name": "Christians",
       "raw_mention": "Christian arrows",
       "title": null,
       "epithet": null,
@@ -708,20 +721,7 @@
       "role": "collective",
       "gender": "unknown",
       "group": true,
-      "context": "injured by Christian arrows when Godfrey, trying to impose a more direct rule",
-      "confidence": 0.8,
-      "source_offset": null
-    },
-    {
-      "name": "Italian Norman followers",
-      "raw_mention": "Italian Norman followers",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": "collective",
-      "gender": "unknown",
-      "group": true,
-      "context": "with eighty of his Italian Norman followers and took the undefended town",
+      "context": "injured by Christian arrows when Godfrey, trying to impose",
       "confidence": 0.8,
       "source_offset": null
     },
@@ -787,7 +787,7 @@
       "gender": "m",
       "group": false,
       "context": "the second son of Count Gerard of Buonalbergo and Bohemond's cousin",
-      "confidence": 0.95,
+      "confidence": 0.9,
       "source_offset": null
     },
     {
@@ -825,7 +825,7 @@
       "role": "count",
       "gender": "m",
       "group": false,
-      "context": "Raymond of St Gilles, the Count of Toulouse, left Palestine",
+      "context": "When Raymond of St Gilles, the Count of Toulouse, left Palestine",
       "confidence": 0.95,
       "source_offset": null
     },
@@ -844,7 +844,7 @@
     },
     {
       "name": "South French army",
-      "raw_mention": "South French army",
+      "raw_mention": "the South French army",
       "title": null,
       "epithet": null,
       "toponym": null,
@@ -900,7 +900,7 @@
       "title": null,
       "epithet": null,
       "toponym": "Jerusalem",
-      "role": "noble",
+      "role": "nobility",
       "gender": "m",
       "group": true,
       "context": "according to Albert of Aachen, as 'knights and prince of the kingdom of Jerusalem': the 'prince' could only have been Galdemar",
@@ -1004,10 +1004,10 @@
       "title": null,
       "epithet": null,
       "toponym": "Quiersy",
-      "role": "noble",
+      "role": "nobleman",
       "gender": "m",
       "group": false,
-      "context": "must have been related to, and may have accompanied, Gerard of Quiersy, who was quite prominent",
+      "context": "but he must have been related to, and may have accompanied, Gerard of Quiersy, who was quite prominent",
       "confidence": 0.9,
       "source_offset": null
     },
@@ -1059,7 +1059,7 @@
       "role": "count",
       "gender": "m",
       "group": false,
-      "context": "Angevin company which must have followed either Stephen of Blois or Hugh of Vermandois. He fled from Antioch",
+      "context": "crusaded in the Angevin company which must have followed either Stephen of Blois or Hugh of Vermandois",
       "confidence": 0.9,
       "source_offset": null
     },
@@ -1072,7 +1072,7 @@
       "role": "count",
       "gender": "m",
       "group": false,
-      "context": "Angevin company which must have followed either Stephen of Blois or Hugh of Vermandois. He fled from Antioch",
+      "context": "crusaded in the Angevin company which must have followed either Stephen of Blois or Hugh of Vermandois",
       "confidence": 0.9,
       "source_offset": null
     },
@@ -1225,11 +1225,11 @@
       "title": null,
       "epithet": null,
       "toponym": "Chartres",
-      "role": "knight",
+      "role": "cleric",
       "gender": "m",
       "group": false,
       "context": "For his brother Bartholomew Boel of Chartres, see Raymond of Aguilers",
-      "confidence": 0.85,
+      "confidence": 0.8,
       "source_offset": null
     },
     {
@@ -1261,7 +1261,7 @@
     {
       "name": "William Peyre",
       "raw_mention": "William Peyre",
-      "title": "lord",
+      "title": "Lord",
       "epithet": null,
       "toponym": "Cunlhat",
       "role": "knight",
@@ -1275,7 +1275,7 @@
       "name": "Peter Bartholomew",
       "raw_mention": "Peter Bartholomew",
       "title": null,
-      "epithet": "the visionary",
+      "epithet": null,
       "toponym": null,
       "role": "visionary",
       "gender": "m",
@@ -1293,7 +1293,7 @@
       "role": "cleric",
       "gender": "m",
       "group": false,
-      "context": "had been a knight of Peter of Narbonne, one of Raymond's clerics",
+      "context": "knight of Peter of Narbonne, one of Raymond's clerics who had been appointed the first Latin bishop",
       "confidence": 0.9,
       "source_offset": null
     },
@@ -1315,7 +1315,7 @@
       "raw_mention": "Bertrand Porcellet",
       "title": null,
       "epithet": null,
-      "toponym": "Arles",
+      "toponym": null,
       "role": "lord",
       "gender": "m",
       "group": false,
@@ -1326,7 +1326,7 @@
     {
       "name": "Henry I of England",
       "raw_mention": "Henry I of England",
-      "title": null,
+      "title": "King",
       "epithet": null,
       "toponym": "England",
       "role": "king",
@@ -1402,19 +1402,6 @@
       "source_offset": null
     },
     {
-      "name": "Count Beugnot",
-      "raw_mention": "Count Beugnot",
-      "title": "Count",
-      "epithet": null,
-      "toponym": null,
-      "role": "historian",
-      "gender": "m",
-      "group": false,
-      "context": "Professor Prawer, following the nineteenth century historian Count Beugnot, has maintained that there were allodial properties",
-      "confidence": 0.1,
-      "source_offset": null
-    },
-    {
       "name": "Hugh of Bethsan",
       "raw_mention": "The Hugh of Bethsan",
       "title": null,
@@ -1423,21 +1410,8 @@
       "role": "vassal",
       "gender": "m",
       "group": false,
-      "context": "The Hugh of Bethsan, who witnessed a charter in II 5 5 as a royal vassal (Rohricht, Regesta, no. 299), was probably never lord",
+      "context": "The Hugh of Bethsan, who witnessed a charter in II 5 5 as a royal vassal (Rohricht, Regesta, no. 299)",
       "confidence": 0.85,
-      "source_offset": null
-    },
-    {
-      "name": "John of Jaffa",
-      "raw_mention": "John of Jaffa",
-      "title": null,
-      "epithet": null,
-      "toponym": "Jaffa",
-      "role": "lawgiver",
-      "gender": "m",
-      "group": false,
-      "context": "Bethsan was certainly regarded as a fief in the i i 8os, the period in which a list of services incorporated into John of Jaffa's lawbook",
-      "confidence": 0.9,
       "source_offset": null
     },
     {
@@ -1459,7 +1433,7 @@
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "knight",
+      "role": "crusader",
       "gender": "m",
       "group": false,
       "context": "Eustace Garnier,3 Fulk of Guines4 and Hugh of i.",
@@ -1472,7 +1446,7 @@
       "title": null,
       "epithet": null,
       "toponym": "Guines",
-      "role": "knight",
+      "role": "crusader",
       "gender": "m",
       "group": false,
       "context": "Eustace Garnier,3 Fulk of Guines4 and Hugh of i.",
@@ -1485,7 +1459,7 @@
       "title": null,
       "epithet": null,
       "toponym": "Robecquel",
-      "role": "knight",
+      "role": "crusader",
       "gender": "m",
       "group": false,
       "context": "Hugh of i. ... Robecquel all came from that district and may have been on the First Crusade",
@@ -1576,37 +1550,11 @@
       "title": null,
       "epithet": "the Orphan",
       "toponym": null,
-      "role": "knight",
+      "role": "crusader",
       "gender": "m",
       "group": false,
       "context": "was he the Fulk the Orphan, born in Flanders according to most manuscripts",
       "confidence": 0.8,
-      "source_offset": null
-    },
-    {
-      "name": "Hugh of Hebron",
-      "raw_mention": "Hugh of Hebron",
-      "title": null,
-      "epithet": null,
-      "toponym": "Hebron",
-      "role": "lord",
-      "gender": "m",
-      "group": false,
-      "context": "For his career, as Hugh of Hebron, in Palestine before i I Io",
-      "confidence": 0.8,
-      "source_offset": null
-    },
-    {
-      "name": "Baldwin III",
-      "raw_mention": "Baldwin III",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": "king",
-      "gender": "m",
-      "group": false,
-      "context": "RHC oc. iii. 563, 568; Baldwin III, 'Historia Nicaena', RHC oc. v. I79",
-      "confidence": 0.7,
       "source_offset": null
     }
   ],
@@ -2636,7 +2584,7 @@
       "status": "medium"
     },
     {
-      "person": "the Muslims",
+      "person": "Wiscardides",
       "person_group": true,
       "candidates": [],
       "top_candidate": null,
@@ -2644,7 +2592,7 @@
       "status": "no_match"
     },
     {
-      "person": "Christian arrows",
+      "person": "Muslims",
       "person_group": true,
       "candidates": [],
       "top_candidate": null,
@@ -2652,7 +2600,7 @@
       "status": "no_match"
     },
     {
-      "person": "Italian Norman followers",
+      "person": "Christians",
       "person_group": true,
       "candidates": [],
       "top_candidate": null,
@@ -4036,14 +3984,6 @@
       "status": "no_match"
     },
     {
-      "person": "Count Beugnot",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
       "person": "Hugh of Bethsan",
       "person_group": false,
       "candidates": [
@@ -4082,14 +4022,6 @@
       },
       "confidence": 0.72,
       "status": "low"
-    },
-    {
-      "person": "John of Jaffa",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
     },
     {
       "person": "Eustace",
@@ -4346,78 +4278,6 @@
       },
       "confidence": 0.72,
       "status": "low"
-    },
-    {
-      "person": "Hugh of Hebron",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR21",
-          "outremer_name": "Hugh III of Le Puisset",
-          "type": "person",
-          "score": 0.72,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'hugh of hebron' ↔ 'Hugh III of Le Puisset'"
-        },
-        {
-          "outremer_id": "AUTH:CR92",
-          "outremer_name": "Hugh III of Burgundy",
-          "type": "person",
-          "score": 0.72,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'hugh of hebron' ↔ 'Hugh III of Burgundy'"
-        },
-        {
-          "outremer_id": "AUTH:CR96",
-          "outremer_name": "Hugh of Matheflon",
-          "type": "person",
-          "score": 0.648,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'hugh of hebron' ↔ 'Hugh of Matheflon'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR21",
-        "outremer_name": "Hugh III of Le Puisset",
-        "type": "person",
-        "score": 0.72,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'hugh of hebron' ↔ 'Hugh III of Le Puisset'"
-      },
-      "confidence": 0.72,
-      "status": "low"
-    },
-    {
-      "person": "Baldwin III",
-      "person_group": false,
-      "candidates": [
-        {
-          "outremer_id": "AUTH:CR3",
-          "outremer_name": "Baldwin of Vern d'Anjou",
-          "type": "person",
-          "score": 0.7778,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'baldwin iii' ↔ 'Baldwin of Vern d'Anjou'"
-        },
-        {
-          "outremer_id": "AUTH:CR111",
-          "outremer_name": "Andrew II of Vitré",
-          "type": "person",
-          "score": 0.6,
-          "match_type": "fuzzy",
-          "evidence": "fuzzy match: 'baldwin iii' ↔ 'Andrew II of Vitré'"
-        }
-      ],
-      "top_candidate": {
-        "outremer_id": "AUTH:CR3",
-        "outremer_name": "Baldwin of Vern d'Anjou",
-        "type": "person",
-        "score": 0.7778,
-        "match_type": "fuzzy",
-        "evidence": "fuzzy match: 'baldwin iii' ↔ 'Baldwin of Vern d'Anjou'"
-      },
-      "confidence": 0.7778,
-      "status": "medium"
     }
   ],
   "text_sha256": "92cc17aaccd31d44795d1a77f0c423d97bca6f4dd157c918a698c381361e51dc",
@@ -4436,15 +4296,15 @@
     "filtered_problem_entities": 9,
     "feedback_store": "data/entity_feedback.json",
     "noise": {
-      "extracted_total": 132,
-      "kept": 123,
+      "extracted_total": 128,
+      "kept": 119,
       "filtered": 9,
       "filtered_by_reason": {
         "known_bad_entity": 4,
         "modern_scholar": 5
       },
-      "low_confidence_kept": 1,
-      "noise_share": 0.0682
+      "low_confidence_kept": 0,
+      "noise_share": 0.0703
     }
   }
 }

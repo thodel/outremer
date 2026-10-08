@@ -1967,15 +1967,15 @@
       ]
     },
     "crusaders": {
-      "count": 16,
+      "count": 11,
       "last_context": "following the expulsion of the Crusaders, the Arabs simply ceased to pay further attention",
-      "last_seen": "2026-10-07T01:26:30.356876+00:00",
+      "last_seen": "2026-10-08T01:26:40.456215+00:00",
       "name": "crusaders",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
-          "count": 10,
+          "count": 5,
           "reasons": {
-            "known_bad_entity": 10
+            "known_bad_entity": 5
           }
         },
         "data/raw/Munro-PopesCrusades-1916.pdf": {
@@ -1992,7 +1992,7 @@
         }
       },
       "reasons": {
-        "known_bad_entity": 16
+        "known_bad_entity": 11
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
@@ -5544,18 +5544,18 @@
     "monk": {
       "count": 2,
       "last_context": "When the caravan reached Busra in Syria, there was a monk there in his cell by the name of Bahira",
-      "last_seen": "2026-10-03T01:26:39.659575+00:00",
+      "last_seen": "2026-10-08T01:26:40.456215+00:00",
       "name": "monk",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
           "count": 2,
           "reasons": {
-            "lowercase_non_name": 2
+            "known_bad_entity": 2
           }
         }
       },
       "reasons": {
-        "lowercase_non_name": 2
+        "known_bad_entity": 2
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
@@ -8026,20 +8026,20 @@
       ]
     },
     "the sultan": {
-      "count": 3,
-      "last_context": "The sultan granted this request of the pope",
-      "last_seen": "2026-10-06T01:25:58.415408+00:00",
-      "name": "The Sultan",
+      "count": 2,
+      "last_context": "One reason for the Sultan's wrath against them",
+      "last_seen": "2026-10-08T01:26:40.456215+00:00",
+      "name": "the Sultan",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
-          "count": 3,
+          "count": 2,
           "reasons": {
-            "known_bad_entity": 3
+            "known_bad_entity": 2
           }
         }
       },
       "reasons": {
-        "known_bad_entity": 3
+        "known_bad_entity": 2
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"

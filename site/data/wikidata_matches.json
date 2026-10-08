@@ -22096,8 +22096,43 @@
     },
     "the messiah, the son of mary": {
       "person": "the Messiah, the son of Mary",
-      "candidates": [],
-      "queried_at": "2026-08-29T08:33:26.411619"
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 8,
+      "candidates": [
+        {
+          "qid": "Q110637154",
+          "label": "Mary",
+          "description": "- Bef 26 Sep 1313",
+          "url": "https://www.wikidata.org/wiki/Q110637154",
+          "score": 0.6,
+          "birth_year": 1235,
+          "death_year": 1313,
+          "matched": "Mary"
+        },
+        {
+          "qid": "Q2575533",
+          "label": "Mary of Waltham",
+          "description": "English princess, Duchess of Britain",
+          "url": "https://www.wikidata.org/wiki/Q2575533",
+          "score": 0.6,
+          "birth_year": 1344,
+          "death_year": 1361,
+          "matched": "Mary"
+        },
+        {
+          "qid": "Q302",
+          "label": "Jesus Christ",
+          "description": "central figure of Christianity (c. 6 or 4 BC – AD 30 or 33)",
+          "url": "https://www.wikidata.org/wiki/Q302",
+          "score": 0.6,
+          "birth_year": -5,
+          "death_year": 30,
+          "matched": "The Messiah"
+        }
+      ],
+      "queried_at": "2026-10-08T01:40:33.596132+00:00"
     },
     "'umar": {
       "person": "'Umar",
@@ -23445,10 +23480,10 @@
     "source": "wikidata_pre1500_snapshot",
     "snapshot": "2026-10-02T22:51:17+00:00",
     "resolved": 1,
-    "cached": 429,
+    "cached": 428,
     "re_resolved": 1,
-    "from_an_older_resolver": 1436,
+    "from_an_older_resolver": 1435,
     "refresh": "stale",
-    "ran_at": "2026-10-07T01:38:43.646866+00:00"
+    "ran_at": "2026-10-08T01:40:33.598353+00:00"
   }
 }
