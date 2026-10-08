@@ -7,7 +7,8 @@ Run:  pytest tests/test_airgap.py
 
 import json
 import socket
-from pathlib import Path
+import subprocess
+import sys
 
 import pytest
 
@@ -42,78 +43,128 @@ class TestSocketBlocking:
     """Smoke tests for the socket-blocking layer — no real network needed."""
 
     def test_blocked_connect_raises_permission_error(self):
-
-        real_socket = socket.socket
+        real_connect = socket.socket.connect
         airgap_test._block_egress()
         try:
             s = socket.socket()
             with pytest.raises(PermissionError, match="EGRESS BLOCKED"):
                 s.connect(("api.openai.com", 443))
+            s.close()
         finally:
             airgap_test._unblock_egress()
-            # verify socket is restored
-            assert socket.socket is real_socket
+        assert socket.socket.connect is real_connect
 
-    def test_permitted_connect_succeeds_to_localhost(self):
-        """Connecting to a permitted host (loopback) should not be blocked."""
+    def test_loopback_is_not_permitted(self):
         airgap_test._block_egress()
         try:
             s = socket.socket()
-            # localhost is not in PERMITTED_HOSTS, but we just check the
-            # error message contains EGRESS BLOCKED for an unknown host
             with pytest.raises(PermissionError, match="EGRESS BLOCKED"):
                 s.connect(("localhost", 9999))
+            s.close()
         finally:
             airgap_test._unblock_egress()
 
-    def test_unblock_restores_real_socket(self):
-        original = socket.socket
+    def test_permitted_address_passes_the_check(self, monkeypatch):
+        """A resolved address of a permitted host is not blocked."""
+        monkeypatch.setattr(airgap_test, "_resolve_permitted_addresses",
+                            lambda: {"gpustack.unibe.ch", "192.0.2.7"})
+        airgap_test._block_egress()
+        try:
+            airgap_test._check(("192.0.2.7", 443))
+            airgap_test._check(("gpustack.unibe.ch", 443))
+            with pytest.raises(PermissionError):
+                airgap_test._check(("192.0.2.8", 443))
+        finally:
+            airgap_test._unblock_egress()
+
+    def test_unix_socket_address_is_not_egress(self):
+        airgap_test._check("/tmp/some.sock")
+
+    def test_unblock_restores_real_connect(self):
+        original = socket.socket.connect
         airgap_test._block_egress()
         airgap_test._unblock_egress()
-        assert socket.socket is original
+        assert socket.socket.connect is original
+
+    def test_block_holds_in_the_child_process(self):
+        """The pipeline runs as a child: the block must reach it."""
+        cmd = airgap_test._child_command([])
+        boot = cmd[2].split("; sys.argv")[0]
+        code = (
+            f"{boot}; import socket\n"
+            "try:\n"
+            "    socket.socket().connect(('example.org', 80))\n"
+            "except PermissionError as e:\n"
+            "    print('BLOCKED' if 'EGRESS BLOCKED' in str(e) else 'OTHER')\n"
+        )
+        out = subprocess.run([sys.executable, "-c", code], capture_output=True,
+                             text=True, timeout=60)
+        assert "BLOCKED" in out.stdout, out.stderr
 
 
 class TestAirgapTestEntry:
     """Tests that run_airgap_test returns the expected verdict structure."""
 
+    def _setup(self, monkeypatch, tmp_path):
+        monkeypatch.setattr(airgap_test, "REPO_ROOT", tmp_path / "repo")
+        (tmp_path / "repo").mkdir()
+        monkeypatch.setattr(airgap_test.tempfile, "mkdtemp",
+                            lambda prefix="": str(tmp_path / "work"))
+        (tmp_path / "work").mkdir()
+
+    def _report(self, tmp_path, **data):
+        staging = tmp_path / "repo" / "data" / "staging"
+        staging.mkdir(parents=True, exist_ok=True)
+        (staging / "run_report.json").write_text(json.dumps(data))
+
     def test_verdict_structure_on_subset_run(self, monkeypatch, tmp_path):
         """Verdict structure is correct regardless of pipeline outcome."""
-        import subprocess
-        import tempfile
+        self._setup(monkeypatch, tmp_path)
+        seen = {}
 
-        import scripts.airgap_test as a
-
-        def fake_mkdtemp(prefix=""):
-            return str(tmp_path)
-
-        def fake_run(cmd, cwd=None, capture_output=False, text=False, timeout=None):
-            stage = Path(str(tmp_path)) / "staging"
-            stage.mkdir(parents=True, exist_ok=True)
-            (stage / "run_report.json").write_text(json.dumps({
-                "docs_total": 1, "docs_ok": 1, "docs_failed": 0,
-                "total_persons": 5, "failures": [],
-            }))
-            out_dir = Path(str(tmp_path)) / "site" / "data"
-            out_dir.mkdir(parents=True, exist_ok=True)
-            (out_dir / "doc.json").write_text(json.dumps({
-                "doc_id": "test", "persons": [{"name": "Peter"}],
-            }))
+        def fake_run(cmd, **kw):
+            seen["cmd"] = cmd
+            self._report(tmp_path, docs_total=1, docs_ok=1, docs_failed=0,
+                         total_persons=5, failures=[])
+            (tmp_path / "work" / "site" / "data" / "doc.json").write_text(
+                json.dumps({"doc_id": "test", "persons": [{"name": "Peter"}]}))
             return type("R", (), {"returncode": 0, "stdout": "", "stderr": ""})()
 
-        # Patch at import location AND at use location
-        monkeypatch.setattr(subprocess, "run", fake_run)
-        monkeypatch.setattr(tempfile, "mkdtemp", fake_mkdtemp)
-        monkeypatch.setattr(a.subprocess, "run", fake_run)
-        monkeypatch.setattr(a, "_collect_subset", lambda d: d)
+        monkeypatch.setattr(airgap_test.subprocess, "run", fake_run)
 
         verdict = airgap_test.run_airgap_test(subset=True, verbose=False)
-        assert "ran_at" in verdict
-        assert "passed" in verdict
-        assert "docs_total" in verdict
-        assert "permitted_hosts" in verdict
+        assert verdict["passed"] is True
         assert verdict["permitted_hosts"] == sorted(PERMITTED)
         assert verdict["docs_ok"] == 1
         assert verdict["total_persons"] == 5
+        assert "--file" in seen["cmd"][2]  # subset narrows the corpus
+        # the run's report is not left behind in the repo
+        assert not (tmp_path / "repo" / "data" / "staging" / "run_report.json").exists()
+
+    def test_empty_document_fails_the_run(self, monkeypatch, tmp_path):
+        self._setup(monkeypatch, tmp_path)
+
+        def fake_run(*a, **k):
+            self._report(tmp_path, docs_total=1, docs_ok=1, total_persons=3)
+            (tmp_path / "work" / "site" / "data" / "d.json").write_text(
+                json.dumps({"persons": []}))
+            return type("R", (), {"returncode": 0, "stdout": "", "stderr": ""})()
+
+        monkeypatch.setattr(airgap_test.subprocess, "run", fake_run)
+        verdict = airgap_test.run_airgap_test(subset=True)
+        assert verdict["passed"] is False
+        assert verdict["empty_documents"] == ["d.json"]
+
+    def test_blocked_egress_in_child_fails_the_run(self, monkeypatch, tmp_path):
+        self._setup(monkeypatch, tmp_path)
+
+        def fake_run(*a, **k):
+            self._report(tmp_path, docs_total=1, docs_ok=1, total_persons=3)
+            return type("R", (), {"returncode": 0, "stdout": "",
+                                  "stderr": "PermissionError: EGRESS BLOCKED: x"})()
+
+        monkeypatch.setattr(airgap_test.subprocess, "run", fake_run)
+        assert airgap_test.run_airgap_test(subset=True)["passed"] is False
 
     def test_main_returns_0_on_pass(self, capsys, monkeypatch):
         """If the test passes, main() exits with status 0."""

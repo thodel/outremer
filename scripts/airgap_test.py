@@ -7,7 +7,7 @@ Usage:
 
 Options
 ───────
-    --subset   run only the smallest fixture (Hamblin) for CI speed
+    --subset   run only the smallest fixture (Hamblin) instead of data/raw
     --verbose  print full run output instead of a one-line verdict
 
 What it tests
@@ -17,166 +17,164 @@ What it tests
 2. The output documents are non-empty: the run did not silently fall back
    to empty text or empty candidate lists.
 
-Permitted hosts (hard-coded, documented in README):
+Permitted hosts (documented in README):
     gpustack.unibe.ch        — LLM extraction and OCR
-    atr-gateway.<domain>     — ATR recognition (kraken / TrOCR)
+    host of ATR_GATEWAY_URL  — ATR recognition (kraken / TrOCR)
 
 If the test fails, a future change introduced an undeclared outbound
 dependency. Fix the code before merging.  Do not add the new host to this
 list without updating README first.
 
-CI note
-───────
-The --subset flag marks this run as CI-targeted (no live-backend dependency
-required in the container).  The regular run (no flag) assumes GPUStack
-is reachable — that is the nightly-run environment, not CI.
+Live-backend note
+─────────────────
+The pipeline run needs GPUStack (and the ATR gateway) to be reachable, with
+or without --subset: --subset only shrinks the corpus.  CI therefore runs
+only tests/test_airgap.py (offline); the live run belongs to the tei nightly.
+
+How the block works
+───────────────────
+The pipeline runs in a child process.  The child is started through this
+module, which resolves the permitted hosts to IPs *first* and then patches
+socket.socket.connect, so the block holds inside the process that does the
+network I/O (a patch in this parent process would not reach it).
 """
 
 from __future__ import annotations
 
 import argparse
 import json
+import os
 import socket
 import subprocess
 import sys
+import tempfile
 from datetime import datetime, timezone
 from pathlib import Path
+from urllib.parse import urlparse
+
+REPO_ROOT = Path(__file__).resolve().parent.parent
 
 # Hosts the pipeline is allowed to contact (must match README documentation).
 # Update README and this list together; never add a host without the other.
+# The ATR gateway host is derived from ATR_GATEWAY_URL at runtime so local
+# development works without hard-coding a deployment hostname.
 PERMITTED_HOSTS = frozenset({
     "gpustack.unibe.ch",
-    # The ATR gateway host is derived from ATR_GATEWAY_URL at runtime so
-    # local development works without hard-coding a deployment hostname.
 })
 
-# Subsets for CI (fast) vs nightly/full run.
 SUBSET_SOURCES = ["Hamblin-MuslimPerspectivesMilitary-2001.pdf"]
+
+_original_connect = socket.socket.connect
+_original_connect_ex = socket.socket.connect_ex
+_allowed_extra: set[str] = set()
 
 
 def _allowed_host(host: str) -> bool:
-    """True when host is in the permitted set (case-insensitive)."""
-    return host.casefold() in {h.casefold() for h in PERMITTED_HOSTS}
+    """True when host is a permitted name or a resolved permitted address."""
+    h = host.casefold()
+    return h in {p.casefold() for p in PERMITTED_HOSTS} or host in _allowed_extra
+
+
+def _atr_host() -> str | None:
+    """Host of ATR_GATEWAY_URL (env first, then scripts.config), or None."""
+    url = os.environ.get("ATR_GATEWAY_URL", "")
+    if not url:
+        try:
+            sys.path.insert(0, str(REPO_ROOT / "scripts"))
+            from config import ATR_GATEWAY_URL as url  # type: ignore[no-redef]
+        except Exception:
+            url = ""
+    return urlparse(url).hostname if url else None
 
 
 def _resolve_atr_host() -> set[str]:
-    """Return the resolved IP(s) for the ATR gateway host so they pass the
-    allow-list check before the DNS lookup is blocked."""
-    try:
-        from scripts.config import ATR_GATEWAY_URL
-
-        if ATR_GATEWAY_URL:
-            host = ATR_GATEWAY_URL.split("://", 1)[1].split("/", 1)[0].split(":")[0]
-            if host and host not in ("", "None"):
-                return {host}
-    except Exception:
-        pass
-    return set()
+    """The ATR gateway host name, if configured."""
+    host = _atr_host()
+    return {host} if host else set()
 
 
-_allowed_extra = _resolve_atr_host()
+def _resolve_permitted_addresses() -> set[str]:
+    """Names and IPs of all permitted hosts, resolved before egress is cut.
+
+    Clients resolve the name and then connect() to the IP, so the allow-list
+    has to know the addresses, not only the names.
+    """
+    allowed: set[str] = set()
+    for host in set(PERMITTED_HOSTS) | _resolve_atr_host():
+        allowed.add(host)
+        try:
+            for info in socket.getaddrinfo(host, None):
+                allowed.add(info[4][0])
+        except OSError:
+            pass  # unresolvable now: the name stays allowed, the run will fail loudly
+    return allowed
+
+
+def _check(address) -> None:
+    # AF_UNIX addresses are str/bytes paths, not (host, port) tuples.
+    if not isinstance(address, tuple) or not address:
+        return
+    host = address[0]
+    if not _allowed_host(str(host)):
+        raise PermissionError(
+            f"EGRESS BLOCKED: connecting to {host}:{address[1:2]} "
+            f"is not in the permitted set {sorted(PERMITTED_HOSTS)} + ATR gateway"
+        )
 
 
 def _block_egress() -> None:
-    """Drop all outbound TCP connections except PERMITTED_HOSTS.
+    """Refuse outbound connect() to anything but the permitted hosts."""
+    _allowed_extra.update(_resolve_permitted_addresses())
 
-    Works by wrapping the Python runtime's socket library: replaces
-    socket.socket() with a wrapper that raises EPERM for non-permitted
-    outbound connections before they are created.
-    """
-    import builtins
-    import socket as _sock
+    def connect(self, address):
+        _check(address)
+        return _original_connect(self, address)
 
-    original_socket = _sock.socket
+    def connect_ex(self, address):
+        _check(address)
+        return _original_connect_ex(self, address)
 
-    class _PermittedSocket:
-        """Socket wrapper that blocks egress to non-permitted hosts."""
-
-        _arch = (original_socket,)  # allow isinstance checks against original type
-
-        def __init__(self, family=2, type=1, proto=0, fileno=None):
-            self._inner = original_socket(family, type, proto, fileno)
-
-        def connect(self, address):
-            host, port = address
-            # Resolve numeric addresses immediately so the permit check
-            # works even after name resolution is blocked.
-            try:
-                if isinstance(port, str):
-                    port = socket.getservbyname(port)
-            except Exception:
-                pass
-            allowed = _allowed_host(host) or host in _allowed_extra
-            if not allowed:
-                raise PermissionError(
-                    f"EGRESS BLOCKED: connecting to {host}:{port} "
-                    f"is not in the permitted set {PERMITTED_HOSTS}"
-                )
-            return self._inner.connect(address)
-
-        def __getattr__(self, name):
-            return getattr(self._inner, name)
-
-        def __enter__(self):
-            return self
-
-        def __exit__(self, *args):
-            return self._inner.__exit__(*args)
-
-    _sock.socket = _PermittedSocket  # type: ignore[assignment]
-    builtins.socket = _PermittedSocket  # type: ignore[assignment]
+    socket.socket.connect = connect  # type: ignore[method-assign]
+    socket.socket.connect_ex = connect_ex  # type: ignore[method-assign]
 
 
-def _unblock_egress():
-    """Restore the real socket after the test."""
-    import builtins
-    import socket as _sock
-
-    _sock.socket = original_socket  # type: ignore[assignment]
-    builtins.socket = original_socket  # type: ignore[assignment]
+def _unblock_egress() -> None:
+    """Restore the real connect()."""
+    socket.socket.connect = _original_connect  # type: ignore[method-assign]
+    socket.socket.connect_ex = _original_connect_ex  # type: ignore[method-assign]
+    _allowed_extra.clear()
 
 
-# Keep a reference so _unblock_egress can restore it
-original_socket = socket.socket
-
-
-def _collect_subset(tmp_dir: Path) -> Path:
-    """Symlink one small source into tmp_dir so the test runs fast in CI."""
-    raw = Path("data/raw")
-    for name in SUBSET_SOURCES:
-        src = raw / name
-        if src.exists():
-            # symlink_to(target) — first arg is the path the symlink POINTS TO
-            (tmp_dir / name).symlink_to(src)  # type: ignore[arg-type]
-    return tmp_dir
+def _child_command(args: list[str]) -> list[str]:
+    """Command that blocks egress inside the child, then runs run_pipeline."""
+    boot = (
+        "import runpy, sys; "
+        f"sys.path.insert(0, {str(REPO_ROOT / 'scripts')!r}); "
+        "import airgap_test; airgap_test._block_egress(); "
+        f"sys.argv = {['run_pipeline.py'] + args!r}; "
+        f"runpy.run_path({str(REPO_ROOT / 'scripts' / 'run_pipeline.py')!r}, run_name='__main__')"
+    )
+    return [sys.executable, "-c", boot]
 
 
 def run_airgap_test(*, subset: bool = False, verbose: bool = False) -> dict:
     """Run the pipeline with egress blocked; return a verdict dict."""
-    import tempfile
-
     tmp = Path(tempfile.mkdtemp(prefix="airgap_test_"))
-    stage = tmp / "staging"
-    stage.mkdir()
     bib = tmp / "bib"
     bib.mkdir()
-
-    if subset:
-        _collect_subset(tmp / "raw")
-    else:
-        # symlink the whole raw dir
-        raw = Path("data/raw")
-        for f in raw.iterdir():
-            (tmp / "raw" / f.name).symlink_to(f.resolve())
-
     out_dir = tmp / "site"
-    out_dir.mkdir()
     data_dir = out_dir / "data"
-    data_dir.mkdir()
+    data_dir.mkdir(parents=True)
 
-    now = datetime.now(timezone.utc).isoformat()
+    raw = REPO_ROOT / "data" / "raw"
+    args = ["--input-dir", str(raw), "--site-dir", str(out_dir),
+            "--bib-dir", str(bib), "--llm-metadata"]
+    if subset:
+        for name in SUBSET_SOURCES:
+            args += ["--file", str(raw / name)]
+
     verdict: dict = {
-        "ran_at": now,
+        "ran_at": datetime.now(timezone.utc).isoformat(),
         "subset": subset,
         "passed": False,
         "docs_ok": 0,
@@ -186,26 +184,24 @@ def run_airgap_test(*, subset: bool = False, verbose: bool = False) -> dict:
         "permitted_hosts": sorted(PERMITTED_HOSTS),
     }
 
-    _block_egress()
+    # run_pipeline writes its report to data/staging/run_report.json under
+    # the working directory.  Run in the repo (the pipeline reads its config
+    # and index relative to it) and keep any existing report intact.
+    report_path = REPO_ROOT / "data" / "staging" / "run_report.json"
+    previous = report_path.read_bytes() if report_path.exists() else None
+    report_path.unlink(missing_ok=True)
+
     try:
-        cmd = [
-            sys.executable, "scripts/run_pipeline.py",
-            "--input-dir", str(tmp / "raw"),
-            "--site-dir", str(out_dir),
-            "--bib-dir", str(bib),
-            "--llm-metadata",
-        ]
         if verbose:
-            print(f"[airgap] running: {' '.join(cmd)}")
+            print(f"[airgap] running: {' '.join(args)}")
 
         result = subprocess.run(
-            cmd,
-            cwd=Path("."),
+            _child_command(args),
+            cwd=REPO_ROOT,
             capture_output=True,
             text=True,
             timeout=600,
         )
-
         verdict["returncode"] = result.returncode
 
         if verbose or result.returncode != 0:
@@ -213,9 +209,9 @@ def run_airgap_test(*, subset: bool = False, verbose: bool = False) -> dict:
                 print("STDOUT:", result.stdout[-2000:])
             if result.stderr:
                 print("STDERR:", result.stderr[-2000:])
+        if "EGRESS BLOCKED" in (result.stderr or "") + (result.stdout or ""):
+            verdict["egress_blocked"] = True
 
-        # Read the run report to check for silent degradation
-        report_path = stage / "run_report.json"
         if report_path.exists():
             report = json.loads(report_path.read_text())
             verdict["docs_total"] = report.get("docs_total", 0)
@@ -224,34 +220,31 @@ def run_airgap_test(*, subset: bool = False, verbose: bool = False) -> dict:
             verdict["total_persons"] = report.get("total_persons", 0)
             verdict["failures"] = report.get("failures", [])
 
-            # Silent degradation check: docs_ok > 0 and total_persons > 0
+            # Silent degradation check: documents succeeded and found persons.
             verdict["passed"] = (
                 result.returncode == 0
                 and verdict["docs_ok"] > 0
                 and verdict["total_persons"] > 0
+                and not verdict.get("egress_blocked")
             )
         else:
-            verdict["passed"] = False
             verdict["no_report"] = True
 
-        # Check that no document was produced with empty persons
         for doc_file in data_dir.glob("*.json"):
             doc = json.loads(doc_file.read_text())
-            persons = doc.get("persons", [])
-            if not persons:
+            if not doc.get("persons", []):
                 verdict.setdefault("empty_documents", []).append(doc_file.name)
-
         if verdict.get("empty_documents"):
             verdict["passed"] = False
 
-    except PermissionError as e:
-        verdict["egress_blocked"] = str(e)
-        verdict["passed"] = False
     except Exception as e:
         verdict["exception"] = str(e)
         verdict["passed"] = False
     finally:
-        _unblock_egress()
+        if previous is not None:
+            report_path.write_bytes(previous)
+        else:
+            report_path.unlink(missing_ok=True)
 
     return verdict
 
@@ -259,7 +252,7 @@ def run_airgap_test(*, subset: bool = False, verbose: bool = False) -> dict:
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     ap.add_argument("--subset", action="store_true",
-                    help="run only the smallest CI-safe fixture (Hamblin PDF)")
+                    help="run only the smallest fixture (Hamblin PDF)")
     ap.add_argument("--verbose", "-v", action="store_true")
     args = ap.parse_args(argv)
 
