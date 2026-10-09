@@ -52,6 +52,14 @@ def build_status(
                 "combined_agreement": h.get("combined_agreement"),
                 "segments": h.get("segments"),
             }
+            tail = h.get("recognition_tail") or {}
+            for key, field in (
+                ("recognition_coverage", "coverage"),
+                ("recognition_agreement", "selection_agreement"),
+            ):
+                vals = [d[field] for d in tail.values() if d.get(field) is not None]
+                if vals:
+                    status["evaluation"][key] = sum(vals) / len(vals)
     return status
 
 
