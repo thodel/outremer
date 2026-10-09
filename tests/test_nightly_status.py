@@ -27,6 +27,27 @@ def test_status_collects_run_gate_and_history(tmp_path):
     assert s["evaluation"]["combined_agreement"] == 0.9014
 
 
+def test_status_averages_recognition_tail(tmp_path):
+    hist = tmp_path / "hist.jsonl"
+    hist.write_text(json.dumps({
+        "run_at": "x", "combined_agreement": 0.9, "segments": {},
+        "recognition_tail": {
+            "a": {"coverage": 1.0, "selection_agreement": 0.5},
+            "b": {"coverage": 0.5, "selection_agreement": 1.0},
+        },
+    }) + "\n")
+    s = build_status(tmp_path / "nope.json", None, hist)
+    assert s["evaluation"]["recognition_coverage"] == 0.75
+    assert s["evaluation"]["recognition_agreement"] == 0.75
+
+
+def test_status_omits_recognition_without_tail(tmp_path):
+    hist = tmp_path / "hist.jsonl"
+    hist.write_text('{"run_at": "x", "combined_agreement": 0.9, "segments": {}}\n')
+    s = build_status(tmp_path / "nope.json", None, hist)
+    assert "recognition_coverage" not in s["evaluation"]
+
+
 def test_status_survives_missing_inputs(tmp_path):
     s = build_status(tmp_path / "nope.json", tmp_path / "nope2.json", None)
     assert s["run"] is None and s["gate"] is None and s["evaluation"] is None
