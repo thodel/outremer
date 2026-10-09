@@ -66,20 +66,20 @@
       ]
     },
     "a monk": {
-      "count": 2,
-      "last_context": "When the caravan reached Busra in Syria, there was a monk there in his cell by the name of Bahira",
-      "last_seen": "2026-10-06T01:25:58.415408+00:00",
+      "count": 1,
+      "last_context": "sees in the distance the flickering light from the lamp ofa monk reading in his cell",
+      "last_seen": "2026-10-09T01:25:32.678940+00:00",
       "name": "a monk",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
-          "count": 2,
+          "count": 1,
           "reasons": {
-            "lowercase_non_name": 2
+            "known_bad_entity": 1
           }
         }
       },
       "reasons": {
-        "lowercase_non_name": 2
+        "known_bad_entity": 1
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
@@ -1967,15 +1967,15 @@
       ]
     },
     "crusaders": {
-      "count": 11,
+      "count": 10,
       "last_context": "following the expulsion of the Crusaders, the Arabs simply ceased to pay further attention",
-      "last_seen": "2026-10-08T01:26:40.456215+00:00",
+      "last_seen": "2026-10-09T01:25:32.678940+00:00",
       "name": "crusaders",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
-          "count": 5,
+          "count": 4,
           "reasons": {
-            "known_bad_entity": 5
+            "known_bad_entity": 4
           }
         },
         "data/raw/Munro-PopesCrusades-1916.pdf": {
@@ -1992,7 +1992,7 @@
         }
       },
       "reasons": {
-        "known_bad_entity": 11
+        "known_bad_entity": 10
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
@@ -7979,15 +7979,15 @@
       ]
     },
     "the pope": {
-      "count": 14,
-      "last_context": "The sultan granted this request of the pope",
-      "last_seen": "2026-10-07T01:26:30.356876+00:00",
+      "count": 15,
+      "last_context": "So the pope chose some discreet, learned, and faithful friars",
+      "last_seen": "2026-10-09T01:25:32.678940+00:00",
       "name": "the Pope",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
-          "count": 1,
+          "count": 2,
           "reasons": {
-            "known_bad_entity": 1
+            "known_bad_entity": 2
           }
         },
         "data/raw/Munro-PopesCrusades-1916.pdf": {
@@ -7998,7 +7998,7 @@
         }
       },
       "reasons": {
-        "known_bad_entity": 14
+        "known_bad_entity": 15
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
@@ -8026,20 +8026,20 @@
       ]
     },
     "the sultan": {
-      "count": 2,
-      "last_context": "One reason for the Sultan's wrath against them",
-      "last_seen": "2026-10-08T01:26:40.456215+00:00",
+      "count": 3,
+      "last_context": "The sultan granted this request of the pope",
+      "last_seen": "2026-10-09T01:25:32.678940+00:00",
       "name": "the Sultan",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
-          "count": 2,
+          "count": 3,
           "reasons": {
-            "known_bad_entity": 2
+            "known_bad_entity": 3
           }
         }
       },
       "reasons": {
-        "known_bad_entity": 2
+        "known_bad_entity": 3
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"

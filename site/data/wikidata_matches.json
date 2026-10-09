@@ -7153,8 +7153,43 @@
     },
     "the emperor alexius": {
       "person": "the emperor Alexius",
-      "candidates": [],
-      "queried_at": "2026-02-22T21:17:23.754281"
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 3,
+      "candidates": [
+        {
+          "qid": "Q37065",
+          "label": "Alexios III Angelos",
+          "description": "Byzantine emperor",
+          "url": "https://www.wikidata.org/wiki/Q37065",
+          "score": 0.85,
+          "birth_year": 1153,
+          "death_year": 1211,
+          "matched": "Alexius III Angelos, Emperor of Constantinople"
+        },
+        {
+          "qid": "Q37069",
+          "label": "Alexios IV Angelos",
+          "description": "Byzantine emperor; (1192-1204)",
+          "url": "https://www.wikidata.org/wiki/Q37069",
+          "score": 0.85,
+          "birth_year": 1182,
+          "death_year": 1204,
+          "matched": "Alexius IV Angelos, Emperor of Constantinople"
+        },
+        {
+          "qid": "Q37076",
+          "label": "Alexios V Doukas",
+          "description": "Byzantine emperor",
+          "url": "https://www.wikidata.org/wiki/Q37076",
+          "score": 0.85,
+          "birth_year": 1140,
+          "death_year": 1204,
+          "matched": "Alexius V Ducas, Emperor of Constantinople"
+        }
+      ],
+      "queried_at": "2026-10-09T01:37:58.448021+00:00"
     },
     "the papal legate adhemar": {
       "person": "the papal legate Adhemar",
@@ -18660,8 +18695,23 @@
     },
     "hospitaller": {
       "person": "Hospitaller",
-      "candidates": [],
-      "queried_at": "2026-06-06T05:50:55.668965"
+      "status": "match",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 1,
+      "candidates": [
+        {
+          "qid": "Q983142",
+          "label": "Julian the Hospitaller",
+          "description": "Roman Catholic saint",
+          "url": "https://www.wikidata.org/wiki/Q983142",
+          "score": 0.6,
+          "birth_year": 700,
+          "death_year": 1000,
+          "matched": "Julian the Hospitaller"
+        }
+      ],
+      "queried_at": "2026-10-09T01:37:58.433130+00:00"
     },
     "frankishwarriors": {
       "person": "Frankishwarriors",
@@ -23479,11 +23529,11 @@
   "status": {
     "source": "wikidata_pre1500_snapshot",
     "snapshot": "2026-10-02T22:51:17+00:00",
-    "resolved": 1,
+    "resolved": 2,
     "cached": 428,
-    "re_resolved": 1,
-    "from_an_older_resolver": 1435,
+    "re_resolved": 2,
+    "from_an_older_resolver": 1433,
     "refresh": "stale",
-    "ran_at": "2026-10-08T01:40:33.598353+00:00"
+    "ran_at": "2026-10-09T01:37:58.448956+00:00"
   }
 }
