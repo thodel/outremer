@@ -29,7 +29,6 @@ def test_image_only_pdf_routes_to_recognition_and_records_engine(monkeypatch, tm
         "_qwen3vl_ocr",
         lambda path: "Johannes Dei gratia rex Anglie",
     )
-    monkeypatch.setattr(run_pipeline, "_mistral_ocr", lambda path: "")
 
     text = run_pipeline.read_input(FIXTURE)
 

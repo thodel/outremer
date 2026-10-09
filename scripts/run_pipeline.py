@@ -19,7 +19,6 @@ import argparse
 import hashlib
 import json
 import logging
-import os
 import re
 import sys
 from collections import Counter
@@ -151,24 +150,18 @@ def read_pdf_file(path: Path) -> str:
 
 def _ocr_image(path: Path) -> str:
     """
-    OCR dispatcher — engine per OCR_ENGINE setting.
-
-      qwen3-vl (default) → GPUStack Qwen3 VL; Mistral as fallback if empty
-      mistral            → Mistral API only (legacy; optional dependency)
+    Recognition for image-only PDFs: the GPUStack vision model (QWEN3_VL_MODEL,
+    qwen3.8-27b) and nothing else.  The former Mistral fallback is gone (M14.2,
+    M17.2): no third-party API key can influence recognition any more.
     """
-    if OCR_ENGINE == "mistral":
-        result = _mistral_ocr(path)
-        if result:
-            _recognition_engines_used["mistral"] += 1
-        return result
+    if OCR_ENGINE != "qwen3-vl":
+        raise RuntimeError(
+            f"OCR_ENGINE={OCR_ENGINE!r} is not available: recognition runs only "
+            "through GPUStack (OCR_ENGINE=qwen3-vl, model QWEN3_VL_MODEL)."
+        )
     result = _qwen3vl_ocr(path)
     if result:
         _recognition_engines_used["qwen3-vl"] += 1
-        return result
-    logger.info("Qwen3 VL OCR empty — trying Mistral as fallback.")
-    result = _mistral_ocr(path)
-    if result:
-        _recognition_engines_used["mistral"] += 1
     return result
 
 
@@ -253,42 +246,6 @@ def _qwen3vl_ocr(path: Path) -> str:
         return text.strip()
     except Exception as exc:
         logger.error("GPUStack VLM OCR error: %s", exc)
-        return ""
-
-
-def _mistral_ocr(path: Path) -> str:
-    """Mistral OCR — legacy fallback; needs `pip install mistralai` + MISTRAL_API_KEY."""
-    import base64
-    api_key = os.environ.get("MISTRAL_API_KEY", "").strip()
-    if not api_key:
-        logger.warning("MISTRAL_API_KEY not set — cannot run OCR fallback.")
-        return ""
-    try:
-        from mistralai import Mistral
-    except ImportError:
-        logger.warning(
-            "mistralai not installed — OCR fallback unavailable "
-            "(pip install mistralai to enable it)."
-        )
-        return ""
-
-    try:
-        client = Mistral(api_key=api_key)
-        b64 = base64.b64encode(path.read_bytes()).decode()
-        resp = client.ocr.process(
-            model="mistral-ocr-latest",
-            document={
-                "type": "document_url",
-                "document_url": f"data:application/pdf;base64,{b64}",
-            },
-        )
-        pages = resp.pages if hasattr(resp, "pages") else []
-        text = "\n\n".join(p.markdown for p in pages if p.markdown).strip()
-        if text:
-            logger.info("Mistral OCR returned %d chars.", len(text))
-        return text
-    except Exception as exc:
-        logger.error("Mistral OCR error: %s", exc)
         return ""
 
 
@@ -580,6 +537,13 @@ def main() -> int:
     _recognition_engines_used.clear()
     ap = argparse.ArgumentParser(description="Outremer NER + KG linking pipeline.")
     ap.add_argument("--input-dir", default="data/raw", help="Folder with .txt/.pdf files")
+    ap.add_argument(
+        "--airgap",
+        action="store_true",
+        help="Refuse every outbound connection except the configured inference "
+             "services (GPUSTACK_BASE_URL, ATR_GATEWAY_URL, MCP_BASE_URL); "
+             "same as OUTREMER_AIRGAP=1. See README 'Permitted network hosts'.",
+    )
     ap.add_argument("--file", action="append", dest="files", metavar="FILE", help="Process specific file(s) only (can be repeated)")
     ap.add_argument("--site-dir", default="site", help="Static site folder")
     ap.add_argument("--bib-dir", default="bib", help="Repo-level BibTeX output folder")
@@ -633,6 +597,19 @@ def main() -> int:
         help="Min accept votes required to add a term to allow_terms",
     )
     args = ap.parse_args()
+
+    import airgap
+    if args.airgap:
+        allowed = airgap.block_egress()
+        logger.info("Air-gap guard on: outbound connections limited to %s", sorted(allowed))
+    elif airgap.install_if_requested():
+        logger.info("Air-gap guard on (OUTREMER_AIRGAP=1).")
+    if OCR_ENGINE != "qwen3-vl":
+        logger.error(
+            "OCR_ENGINE=%r is not available: recognition runs only through "
+            "GPUStack (OCR_ENGINE=qwen3-vl, model QWEN3_VL_MODEL).", OCR_ENGINE,
+        )
+        return 1
 
     in_dir = Path(args.input_dir)
     site_dir = Path(args.site_dir)

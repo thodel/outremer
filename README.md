@@ -12,13 +12,13 @@ A proof-of-concept pipeline for AI-assisted prosopography of the medieval Levant
 > [`data/status.json`](https://tei.dh.unibe.ch/outremer/data/status.json).
 > Die GitHub-Pages-Ausgabe bleibt als offline gebaute Kopie bestehen.
 >
-> **Status:** proof of concept. The pipeline runs end-to-end. All LLM calls route through the local GPUStack instance at `gpustack.unibe.ch` — no external third-party LLM calls (an optional Mistral OCR fallback exists for scanned PDFs, off unless `mistralai` is installed and `MISTRAL_API_KEY` is set).
+> **Status:** proof of concept. The pipeline runs end-to-end. All LLM calls, recognition of scanned pages included, route through the local GPUStack instance at `gpustack.unibe.ch` — no third-party API key exists in the pipeline any more (the Mistral OCR fallback was removed in M17.2), and the nightly run on tei proves it every night by refusing every other outbound connection (see *Permitted network hosts*).
 
 ---
 
 ## Architecture
 
-**Layer 1 — LLM extraction.** Reads historical texts (PDF or plain text) and extracts person-like signals: names, titles, epithets, roles, collective groups. Uses GPUStack-hosted models (`qwen3.8-27b` for extraction, `qwen3.8-27b` for scanned-PDF OCR, `minimax-m2.7` for orchestration). Falls back to heuristic regex NER when GPUStack is unavailable, and optionally to Mistral OCR for scans.
+**Layer 1 — LLM extraction.** Reads historical texts (PDF or plain text) and extracts person-like signals: names, titles, epithets, roles, collective groups. Uses GPUStack-hosted models (`qwen3.8-27b` for extraction, `qwen3.8-27b` for scanned-PDF OCR, `minimax-m2.7` for orchestration). Falls back to heuristic regex NER when GPUStack is unavailable; a scanned page that the vision model cannot read stays empty and is reported as such — there is no external OCR fallback.
 
 > **Which engine produced the published data.** Since 2026-08-29 the nightly
 > run happens on `tei.dh.unibe.ch` inside the university network, where GPUStack
@@ -91,22 +91,34 @@ pip install -r requirements.txt
 
 ### Permitted network hosts
 
-The pipeline is designed to run in a network-air-gapped environment with
-egress restricted to two inference services.  A new outbound dependency
-introduced by any future change must **not** be merged without updating
-`scripts/airgap_test.py` and this list.
+The pipeline is designed to run air-gapped except for the inference services
+it is configured with.  The allow-list is **derived from the configuration**,
+nothing else is ever contacted:
 
-| Host | Purpose |
-|------|---------|
-| `gpustack.unibe.ch` | LLM extraction (person extraction + OCR via qwen3.8-27b) |
-| `<atr-gateway-host>` | ATR recognition engines (kraken, TrOCR) — configured via `ATR_GATEWAY_URL` in `.env.gpustack`; resolve the host from that URL at startup |
+| Setting | Host on tei | Purpose |
+|---|---|---|
+| `GPUSTACK_BASE_URL` | `gpustack.unibe.ch` | LLM extraction and recognition of scanned pages (qwen3.8-27b) |
+| `ATR_GATEWAY_URL` | the ATR gateway (idhefix) | ATR recognition engines (kraken, TrOCR), when configured |
+| `MCP_BASE_URL` | `tei.dh.unibe.ch` | MCP federation candidates (M21.3), when configured and enabled |
 
-`tests/test_airgap.py` checks the blocking logic offline (it runs in CI).
-The end-to-end run needs GPUStack and the ATR gateway, so it belongs to the
-tei nightly, not CI: `python scripts/airgap_test.py` (add `--subset` to run
-only the smallest source). It starts the pipeline in a child process that
-refuses every outbound connection except the two permitted hosts and fails
-if the run does not complete with non-empty output.
+Wikidata is reached only through the local snapshot (`WIKIDATA_SNAPSHOT`, #83);
+with the guard on and no snapshot, reconciliation fails instead of calling
+`query.wikidata.org`.
+
+`run_pipeline.py --airgap` (or `OUTREMER_AIRGAP=1`) installs the guard from
+`scripts/airgap.py` in the pipeline process **and** in the subprocesses it
+starts: every outbound `connect()` to another host raises
+`PermissionError: EGRESS BLOCKED …`, the document is reported as failed and
+the run exits non-zero.  The tei nightly runs the whole corpus under this
+guard (`deploy/tei/nightly.sh`), so a new outbound dependency introduced by
+any future change fails the nightly and the provenance gate publishes nothing.
+
+To add a host: declare it in `scripts/airgap.py` (`PERMITTED_URL_VARS`) and in
+the table above in the same change.
+
+- `tests/test_airgap.py` checks the guard offline (runs in CI).
+- `python scripts/airgap_test.py --subset` runs one source end-to-end under the
+  guard and fails on empty output; it needs GPUStack, so it runs on tei, not in CI.
 
 ### GPUStack configuration
 
@@ -137,8 +149,8 @@ QWEN3_VL_MODEL=qwen3.8-27b
 # OCR budget reasoning and returns empty text (both switches default on)
 QWEN3_VL_DISABLE_THINKING=true
 
-# OCR engine: qwen3-vl (GPUStack, default; the engine key is historical,
-# the model behind it is QWEN3_VL_MODEL) or mistral (legacy fallback)
+# OCR engine: qwen3-vl is the only value (the engine key is historical,
+# the model behind it is QWEN3_VL_MODEL, qwen3.8-27b on GPUStack)
 OCR_ENGINE=qwen3-vl
 
 # Offline QID resolution (M17.1, #83). Path to the pre-1500 Wikidata snapshot
@@ -194,8 +206,10 @@ python scripts/run_pipeline.py --help
 
 | Engine | How it works | Speed | Cost |
 |---|---|---|---|
-| `qwen3-vl` (default) | GPUStack vision model, set by `QWEN3_VL_MODEL` (now `qwen3.8-27b`); falls back to Mistral if empty and available | Fast | Free (local) |
-| `mistral` | Mistral API only (legacy; `pip install -e '.[ocr-mistral]'` + `MISTRAL_API_KEY`) | Fast | Paid |
+| `qwen3-vl` (the only engine) | GPUStack vision model, set by `QWEN3_VL_MODEL` (now `qwen3.8-27b`); an empty reading is reported, never papered over by another service | Fast | Free (local) |
+
+The Mistral OCR fallback and its `MISTRAL_API_KEY` were removed (M14.2, M17.2):
+no external API key can influence recognition.
 
 Output: `site/data/*.json`, `site/bib/*.bib`, `bib/*.bib`.
 

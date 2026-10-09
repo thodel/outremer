@@ -15,7 +15,7 @@ Env vars (set in .env.gpustack, git-ignored):
     ATR_GATEWAY_URL      - serving-atr-inference base URL
     ATR_API_KEY          - static X-API-Key credential (empty for local development)
     ATR_HTTP_TIMEOUT     - gateway request timeout in seconds (default 300)
-    OCR_ENGINE           - qwen3-vl | mistral (default qwen3-vl)
+    OCR_ENGINE           - qwen3-vl (the only engine; GPUStack vision model)
     EXTRACTION_SEED      - fixed chat-completion seed (default 42)
 """
 from __future__ import annotations
@@ -86,9 +86,10 @@ EXTRACTION_DISABLE_THINKING = _get("EXTRACTION_DISABLE_THINKING", "true").lower(
 QWEN3_VL_DISABLE_THINKING = _get("QWEN3_VL_DISABLE_THINKING", "true").lower() == "true"
 
 # OCR
-# "qwen3-vl" - GPUStack Qwen3 VL (default); falls back to Mistral if empty
-# "mistral"  - Mistral API only (legacy; needs `pip install mistralai`
-#              and MISTRAL_API_KEY)
+# "qwen3-vl" - the GPUStack vision model behind QWEN3_VL_MODEL (qwen3.8-27b).
+# It is the only engine: the Mistral API fallback was removed (M14.2/M17.2),
+# so no third-party key can influence recognition. Any other value makes
+# run_pipeline refuse to start.
 OCR_ENGINE = _get("OCR_ENGINE", "qwen3-vl")
 
 # Offline QID resolution (M17.1, #83). A path to the pre-1500 Wikidata snapshot
