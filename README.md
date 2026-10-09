@@ -211,6 +211,12 @@ python scripts/run_pipeline.py --help
 The Mistral OCR fallback and its `MISTRAL_API_KEY` were removed (M14.2, M17.2):
 no external API key can influence recognition.
 
+**A scan that cannot be recognised fails loudly** (#72). When a PDF has no
+usable text layer and GPUStack is unreachable, refuses, or returns no text,
+the document is *not* written with empty text: it is listed under `failures`
+in `data/staging/run_report.json` with the cause and what to check, and the
+run exits 1. A short text PDF without a page image keeps its text.
+
 Output: `site/data/*.json`, `site/bib/*.bib`, `bib/*.bib`.
 
 Every processed document also produces a canonical evidence-first artifact at

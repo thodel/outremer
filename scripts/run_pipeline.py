@@ -118,6 +118,19 @@ def sha256_text(t: str) -> str:
 # I/O helpers
 # ──────────────────────────────────────────────
 
+class RecognitionError(RuntimeError):
+    """Recognition was needed and did not produce text.
+
+    Raised instead of returning "" (M14.2, #72): an empty reading used to
+    degrade into an empty extraction with exit 0 and no trace in the run
+    report. The message names the cause and what to check.
+    """
+
+
+class NoPageImage(RecognitionError):
+    """The PDF carries no embedded page image, so there is nothing to read."""
+
+
 def read_text_file(path: Path) -> str:
     return path.read_text(encoding="utf-8", errors="replace")
 
@@ -139,11 +152,25 @@ def read_pdf_file(path: Path) -> str:
     # Heuristic: if we got very little text, it's probably a scanned/image PDF
     if len(text) < 200:
         logger.info("Low text yield from pypdf (%d chars) — trying OCR (engine=%s)…", len(text), OCR_ENGINE)
-        ocr_text = _ocr_image(path)
-        if ocr_text:
-            logger.info("Recognition returned %d chars.", len(ocr_text))
-            return ocr_text
-        logger.warning("OCR also failed; proceeding with minimal text.")
+        try:
+            ocr_text = _ocr_image(path)
+        except NoPageImage as exc:
+            if text:
+                # A genuinely short text PDF: nothing to recognise, keep it.
+                logger.info("%s: %s — keeping the %d-char text layer.", path.name, exc, len(text))
+                return text
+            raise RecognitionError(
+                f"{path.name} has no text layer and no page image to recognise: {exc}"
+            ) from exc
+        except RecognitionError as exc:
+            # No silent degradation: the document fails with the reason and
+            # the run exits non-zero (run_report.json → failures).
+            raise RecognitionError(
+                f"{path.name} needs recognition ({len(text)} chars of text layer) "
+                f"and recognition failed: {exc}"
+            ) from exc
+        logger.info("Recognition returned %d chars.", len(ocr_text))
+        return ocr_text
 
     return text
 
@@ -202,8 +229,7 @@ def _qwen3vl_ocr(path: Path) -> str:
     # text tokens. Images must travel as image parts.
     images = _page_images_as_data_urls(path)
     if not images:
-        logger.warning("No page image extracted from %s — cannot run VLM OCR.", path.name)
-        return ""
+        raise NoPageImage(f"no page image extracted from {path.name}")
 
     # Give the model NO escape hatch. Measured on the Magna Carta fixture
     # against qwen3-vl-30b-a3b-instruct:
@@ -231,22 +257,34 @@ def _qwen3vl_ocr(path: Path) -> str:
             temperature=0.0,
             **extra,
         )
-        if not text.strip():
-            # Empty content arrives as a normal HTTP 200. Say so, or the page
-            # is indistinguishable from one that holds no text.
-            logger.error(
-                "GPUStack VLM OCR (%s) returned no text for %s.",
-                QWEN3_VL_MODEL, path.name,
-            )
-            return ""
-        logger.info(
-            "GPUStack VLM OCR returned %d chars from %d page image(s).",
-            len(text), len(images),
-        )
-        return text.strip()
+    except RecognitionError:
+        raise
     except Exception as exc:
+        # The backend is unreachable, refuses, or the model is not served.
+        # llm_client has already retried; say what to check.
         logger.error("GPUStack VLM OCR error: %s", exc)
-        return ""
+        raise RecognitionError(
+            f"GPUStack VLM OCR ({QWEN3_VL_MODEL}) failed for {path.name}: {exc} "
+            f"— check GPUSTACK_BASE_URL ({GPUSTACK_BASE_URL}), GPUSTACK_API_KEY "
+            f"and that {QWEN3_VL_MODEL} is served"
+        ) from exc
+    if not text.strip():
+        # Empty content arrives as a normal HTTP 200. Say so, or the page
+        # is indistinguishable from one that holds no text.
+        logger.error(
+            "GPUStack VLM OCR (%s) returned no text for %s.",
+            QWEN3_VL_MODEL, path.name,
+        )
+        raise RecognitionError(
+            f"GPUStack VLM OCR ({QWEN3_VL_MODEL}) returned no text for {path.name} "
+            "— a reasoning model may have spent the budget thinking "
+            "(QWEN3_VL_DISABLE_THINKING=true) or the page is blank"
+        )
+    logger.info(
+        "GPUStack VLM OCR returned %d chars from %d page image(s).",
+        len(text), len(images),
+    )
+    return text.strip()
 
 
 def read_input(path: Path) -> str:
