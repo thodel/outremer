@@ -210,6 +210,19 @@ class TestAirgapTestRunner:
         assert verdict["passed"] is False
         assert verdict["empty_documents"] == ["d.json"]
 
+    def test_timeout_keeps_the_pipeline_output(self, monkeypatch, tmp_path):
+        self._setup(monkeypatch, tmp_path)
+
+        def fake_run(cmd, **kw):
+            raise subprocess.TimeoutExpired(cmd, kw["timeout"], output=b"Processing x.pdf",
+                                            stderr=b"INFO: chunk 3/9")
+
+        monkeypatch.setattr(airgap_test.subprocess, "run", fake_run)
+        verdict = airgap_test.run_airgap_test(subset=True, timeout=42)
+        assert verdict["passed"] is False
+        assert verdict["exception"] == "pipeline exceeded 42s"
+        assert verdict["output_tail"] == ["Processing x.pdf", "INFO: chunk 3/9"]
+
     def test_blocked_egress_in_child_fails_the_run(self, monkeypatch, tmp_path):
         self._setup(monkeypatch, tmp_path)
 

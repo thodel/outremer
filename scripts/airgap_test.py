@@ -8,6 +8,8 @@ Usage:
 Options
 ───────
     --subset   run only the smallest fixture (Hamblin) instead of data/raw
+    --timeout  seconds for the pipeline run (default 3600; one source takes
+               about ten minutes on tei, the nightly corpus about half an hour)
     --verbose  print full run output instead of a one-line verdict
 
 What it tests
@@ -57,7 +59,8 @@ def _child_command(args: list[str]) -> list[str]:
     return [sys.executable, str(REPO_ROOT / "scripts" / "run_pipeline.py"), "--airgap", *args]
 
 
-def run_airgap_test(*, subset: bool = False, verbose: bool = False) -> dict:
+def run_airgap_test(*, subset: bool = False, verbose: bool = False,
+                    timeout: float = 3600) -> dict:
     """Run the pipeline with egress blocked; return a verdict dict."""
     tmp = Path(tempfile.mkdtemp(prefix="airgap_test_"))
     bib = tmp / "bib"
@@ -100,7 +103,7 @@ def run_airgap_test(*, subset: bool = False, verbose: bool = False) -> dict:
             cwd=REPO_ROOT,
             capture_output=True,
             text=True,
-            timeout=600,
+            timeout=timeout,
         )
         verdict["returncode"] = result.returncode
 
@@ -137,6 +140,14 @@ def run_airgap_test(*, subset: bool = False, verbose: bool = False) -> dict:
         if verdict.get("empty_documents"):
             verdict["passed"] = False
 
+    except subprocess.TimeoutExpired as e:
+        # Keep what the pipeline said before it was killed: without it a
+        # slow run and a hung one look the same.
+        verdict["exception"] = f"pipeline exceeded {timeout:.0f}s"
+        tail = (e.stdout or b"")[-2000:], (e.stderr or b"")[-2000:]
+        verdict["output_tail"] = [t.decode(errors="replace") if isinstance(t, bytes) else t
+                                  for t in tail]
+        verdict["passed"] = False
     except Exception as e:
         verdict["exception"] = str(e)
         verdict["passed"] = False
@@ -153,10 +164,13 @@ def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     ap.add_argument("--subset", action="store_true",
                     help="run only the smallest fixture (Hamblin PDF)")
+    ap.add_argument("--timeout", type=float, default=3600,
+                    help="seconds for the pipeline run (default 3600)")
     ap.add_argument("--verbose", "-v", action="store_true")
     args = ap.parse_args(argv)
 
-    verdict = run_airgap_test(subset=args.subset, verbose=args.verbose)
+    verdict = run_airgap_test(subset=args.subset, verbose=args.verbose,
+                              timeout=args.timeout)
 
     print(json.dumps({"airgap": "pass" if verdict["passed"] else "fail", **verdict}, indent=2))
 
