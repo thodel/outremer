@@ -10,9 +10,22 @@ Schema for decisions.json (list format):
     "submitted_at": string, # optional — ISO 8601 timestamp
     "comment":    string,   # optional
     "outremer_id": string,  # optional — specific authority ID targeted
+    "supersedes": bool,     # optional — this decision replaces every earlier
+                            #   decision for the same (doc_id, person,
+                            #   outremer_id), from any reviewer (M19.0, #97)
   }
 
-Valid decisions: reject | accept | not_a_person | wrong_era | is_group
+Valid decisions: reject | accept | not_a_person | wrong_era | is_group | unresolved
+
+``unresolved`` asserts neither identity nor non-identity: the pair is
+retired from the gold (with ``supersedes``) or simply not counted. It is
+for mentions whose identity cannot be established from the evidence at
+hand — a bare given name whose context is lost, for example.
+
+Superseding is explicit and append-only: the historical decision stays in
+the file, the superseding record names the reason in ``comment``, and
+every consumer (fixture builder, worksheet, conflict detection) works on
+``effective_decisions()`` — the records that are still in force.
 
 Multi-reviewer merge rules:
   - Per (doc_id, person, id) key, decisions from different client_ids are tracked separately
@@ -31,9 +44,10 @@ from typing import Any
 logger = logging.getLogger(__name__)
 
 VALID_DECISIONS: frozenset[str] = frozenset(
-    {"reject", "accept", "not_a_person", "wrong_era", "is_group"}
+    {"reject", "accept", "not_a_person", "wrong_era", "is_group", "unresolved"}
 )
 REJECT_DECISIONS: frozenset[str] = frozenset({"reject", "not_a_person", "wrong_era", "is_group"})
+ACCEPT_DECISIONS: frozenset[str] = frozenset({"accept"})
 
 
 @dataclass
@@ -47,6 +61,7 @@ class DecisionRecord:
     submitted_at: str | None = None
     comment: str | None = None
     outremer_id: str | None = None
+    supersedes: bool = False
 
 
 @dataclass
@@ -148,6 +163,14 @@ def _validate_record(raw: dict[str, Any], index: int) -> tuple[DecisionRecord | 
     if outremer_id is not None:
         outremer_id = str(outremer_id).strip() or None
 
+    supersedes = raw.get("supersedes", False)
+    if supersedes not in (True, False, None):
+        errors.append(ValidationError(index, "supersedes", "supersedes must be a boolean"))
+    elif supersedes and not submitted_at:
+        errors.append(
+            ValidationError(index, "supersedes", "a superseding decision needs submitted_at")
+        )
+
     if errors:
         return None, errors
 
@@ -160,9 +183,64 @@ def _validate_record(raw: dict[str, Any], index: int) -> tuple[DecisionRecord | 
             submitted_at=submitted_at or None,
             comment=comment,
             outremer_id=outremer_id,
+            supersedes=bool(supersedes),
         ),
         [],
     )
+
+
+def decision_key(doc_id: str, person: str, outremer_id: str | None) -> str:
+    """The identity of a decision: document, mention (whitespace-collapsed), target id."""
+    return _normalise_key(doc_id, " ".join((person or "").split()), outremer_id or "")
+
+
+def effective_decisions(raw: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """The decisions still in force after superseding (raw dicts, order kept).
+
+    For each key, the latest decision flagged ``supersedes`` retires every
+    decision submitted before it — from any reviewer. Decisions without a
+    usable ``submitted_at`` cannot be superseded by timestamp and are kept.
+    """
+    cutoff: dict[str, str] = {}
+    for d in raw:
+        if not isinstance(d, dict) or not d.get("supersedes"):
+            continue
+        ts = str(d.get("submitted_at") or "").strip()
+        if not ts:
+            continue
+        key = decision_key(str(d.get("doc_id") or ""), str(d.get("person") or ""),
+                           str(d.get("outremer_id") or ""))
+        if ts > cutoff.get(key, ""):
+            cutoff[key] = ts
+    kept: list[dict[str, Any]] = []
+    for d in raw:
+        if not isinstance(d, dict):
+            continue
+        key = decision_key(str(d.get("doc_id") or ""), str(d.get("person") or ""),
+                           str(d.get("outremer_id") or ""))
+        ts = str(d.get("submitted_at") or "").strip()
+        if key in cutoff and ts and ts < cutoff[key]:
+            continue  # superseded
+        kept.append(d)
+    return kept
+
+
+def effective_records(records: list[DecisionRecord]) -> list[DecisionRecord]:
+    """Same rule as effective_decisions(), on validated records."""
+    cutoff: dict[str, str] = {}
+    for r in records:
+        if r.supersedes and r.submitted_at:
+            key = decision_key(r.doc_id, r.person, r.outremer_id)
+            if r.submitted_at > cutoff.get(key, ""):
+                cutoff[key] = r.submitted_at
+    return [
+        r for r in records
+        if not (
+            decision_key(r.doc_id, r.person, r.outremer_id) in cutoff
+            and r.submitted_at
+            and r.submitted_at < cutoff[decision_key(r.doc_id, r.person, r.outremer_id)]
+        )
+    ]
 
 
 def _detect_conflicts(
@@ -175,13 +253,14 @@ def _detect_conflicts(
     Detect conflicting decisions across reviewers.
 
     A conflict exists when the same (doc_id, person, id) receives both
-    accept and reject decisions from DIFFERENT client_ids.
+    accept and reject decisions from DIFFERENT client_ids. Superseded
+    decisions are not in force and cannot conflict.
     """
     # Index by normalised key → {client_id: decision}
     key_clients: dict[str, dict[str, str]] = {}
     key_info: dict[str, tuple] = {}
 
-    for r in records:
+    for r in effective_records(records):
         key = _normalise_key(r.doc_id, r.person, r.outremer_id or "")
         if key not in key_clients:
             key_clients[key] = {}

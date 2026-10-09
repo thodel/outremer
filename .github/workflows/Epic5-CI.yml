@@ -48,12 +48,16 @@ jobs:
       #
       # --min-lift gates on the weakest segment's lift over that null
       # baseline, which is the only part that is evidence the linker works.
-      # Authority lift is +0.018 today, so 0.01 is a "do not get worse than
-      # 2026-07-30" floor. RAISE IT once the gold repair (#98) and gold
-      # growth (#36) land — with six of seven accepts currently linking the
-      # wrong person, this number cannot yet be pushed higher honestly.
+      #
+      # --relink: authority links are recomputed with the linker in THIS
+      # checkout over the fixtures' extracted persons, so the gate measures
+      # the code under review, not the nightly's snapshot (M19.3). After the
+      # M19.0 gold repair (#97: six of seven accepts named the wrong person)
+      # the authority gold is 4 accepts / 54 rejects; the current linker
+      # scores lift +0.052 at floor 0.65. 0.01 stays the floor until
+      # enrichment (#91/#92) adds positive gold worth gating harder on.
       - run: >
-          python -m evaluation.harness --repeat 3
+          python -m evaluation.harness --repeat 3 --relink
           --min-agreement 0.85 --min-lift 0.01
 
   docker:

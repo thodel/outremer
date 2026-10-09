@@ -19,7 +19,7 @@ Matching (M10.1 + M10.2):
   a damped token_set_ratio.
 
 Thresholds are config-backed (M10.3): LINK_CANDIDATE_FLOOR / LINK_MEDIUM /
-LINK_HIGH env vars, defaults 0.60 / 0.75 / 0.90.
+LINK_HIGH env vars, defaults 0.65 / 0.75 / 0.90.
 """
 
 from __future__ import annotations

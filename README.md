@@ -289,28 +289,36 @@ Key metric: **linking agreement** — of the pairs scholars reviewed, how
 many does the responsible system's top proposal agree with. Adjudications
 cover two systems, each judged against its own output: the authority-file
 linker (`AUTH:CR…` ids) and Wikidata reconciliation (`wikidata:Q…` ids).
-Pinned-seed baseline 2026-07-18: **combined 0.9155** over 71 pairs
-(authority 0.8909 over 55, wikidata 1.0 over 16). Before seed pinning,
-unchanged code produced an observed combined band of approximately
-**0.8873–0.9296** (63–66 correct of 71); point differences inside that range
-must not be presented as improvements. The pinned baseline follows the #44
-gold repair (two
-wrong-person accepts re-adjudicated to reject) and the #45 authority
-additions (Godfrey of Bouillon, Robert II of Flanders, Ralph of Caen).
-Residual misses are dominated by extraction drift, not linking — see issue #42.
+Baseline 2026-10-09 after the M19.0 gold repair (#97) and the floor
+re-sweep (`evaluation/baselines/epic19-post-repair.json`): authority
+**0.9828 over 58 pairs** (4 accepts, all hit at 1.00; 54 rejects, 1 still
+proposed), Wikidata 0.8125 over 16 — see the caveat below. CI evaluates
+with `--relink`: the linker in the checkout is run over the fixtures'
+extracted persons, so the gate measures code, not the nightly's snapshot.
+The 2026-07-18 figure (combined 0.9155, authority 0.8909) is superseded: six
+of its seven authority accepts named the wrong person (#98), and the +0.018
+lift it showed over a null linker was carried entirely by those wrong
+matches.
 
 > **Read agreement against the null baseline, not on its own.** Agreement
 > rewards proposing what scholars accepted *and* not proposing what they
-> rejected. The authority gold is 7 accepts against 48 rejects, so a linker
-> that proposes **nothing at all** already scores 48/55 = **0.873** on
-> authority and 0.9014 combined. Measured authority agreement is 0.891 — a
-> lift of just **+0.018** over silence. The harness therefore reports
-> `null`, `lift`, and `accept_rate` per system, and CI gates on
-> `--min-lift` against the *weakest* segment; a combined threshold cannot
-> fail, because Wikidata's accept-only gold (lift +1.0) masks any authority
-> collapse. Until the gold repair (#98 — six of seven accepts link the wrong
-> person) and gold growth (#36) land, treat the authority figure as
-> uninformative about linker quality.
+> rejected. With 4 accepts against 54 rejects a linker that proposes
+> **nothing at all** scores 54/58 = **0.931** on authority. The harness
+> therefore reports `null`, `lift`, and `accept_rate` per system, and CI
+> gates on `--min-lift` against the *weakest* segment; a combined threshold
+> cannot fail, because Wikidata's accept-only gold masks any authority
+> collapse. Four positive examples are not a measurement of linker quality —
+> gold growth (#36, Part 2 of `docs/AUTHORITY_REVIEW_WORKSHEET.md`) is what
+> makes the authority figure mean something.
+
+> **Wikidata 0.8125, not 1.0.** The fixtures now carry the offline resolver's
+> answers (#83/#147). Three of sixteen accepted QIDs are no longer the top
+> candidate: *Baldwin of Ibelin* (Q804832, d. 1187) ties with his namesake
+> Q2891991 (d. 1313) at 1.00 and loses the tie; *Muhammad* (Q9458) ties with
+> a Bavand ruler of the same name (Q16202005); *Ibrahim* (Q1768161) is outside
+> the pre-1500 snapshot and resolves to the caliph Ibrahim ibn al-Walid
+> (Q128416). Label-equal ties need a date or context tiebreak; tracked
+> separately.
 
 Where a backend does not honour `EXTRACTION_SEED`, generate repeated live
 outputs and evaluate them as a band:
