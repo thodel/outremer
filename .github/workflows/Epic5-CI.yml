@@ -81,23 +81,34 @@ jobs:
           tags: outremer:ci
 
       - name: Smoke test (scanned fixtures, no inference backend)
-        # CI cannot reach GPUStack, so recognition has to fail softly: the run
-        # completes, both documents are reported, and no engine is credited.
+        # CI cannot reach GPUStack. Since #72 that is a LOUD failure: both
+        # scanned documents are reported as failed with the reason, no engine
+        # is credited, no document JSON is written, and the run exits 1 —
+        # the opposite of the silent empty-text degradation this step used
+        # to assert.
         run: |
           mkdir -p "$RUNNER_TEMP/staging"
+          set +e
           docker run --rm \
             -v "$PWD/tests/fixtures/scans:/in:ro" \
             -v "$RUNNER_TEMP/staging:/app/data/staging" \
             outremer:ci \
             --file /in/magna-carta-1215-image-only.pdf \
             --file /in/magna-carta-1215-incipit-hires.pdf
+          status=$?
+          set -e
+          echo "pipeline exit status: $status"
+          test "$status" -eq 1
           python3 - <<'EOF'
           import json, os
           path = os.path.join(os.environ["RUNNER_TEMP"], "staging", "run_report.json")
           r = json.load(open(path))
           print({k: r.get(k) for k in ("docs_total", "docs_ok", "docs_failed")}, r.get("recognition"))
-          assert r["docs_total"] == 2 and r["docs_failed"] == 0, r
+          assert r["docs_total"] == 2 and r["docs_failed"] == 2 and r["docs_ok"] == 0, r
           assert r["recognition"]["engines_used"] == {}, r["recognition"]
+          for f in r["failures"]:
+              print(f["error"])
+              assert "needs recognition" in f["error"] and "GPUSTACK_BASE_URL" in f["error"], f
           EOF
 
       - name: Log in to GHCR

@@ -147,12 +147,13 @@ def test_vlm_ocr_passes_images_not_text_blob(monkeypatch):
     assert "illegible" not in seen["prompt"].lower()
 
 
-def test_vlm_ocr_returns_empty_when_no_page_image(monkeypatch, tmp_path):
+def test_vlm_ocr_raises_when_no_page_image(monkeypatch, tmp_path):
     monkeypatch.setattr(run_pipeline, "_page_images_as_data_urls", lambda p, **k: [])
     called = {"n": 0}
     monkeypatch.setattr(run_pipeline, "_llm_generate",
                         lambda *a, **k: called.__setitem__("n", called["n"] + 1) or "x")
-    assert run_pipeline._qwen3vl_ocr(FIXTURE) == ""
+    with pytest.raises(run_pipeline.NoPageImage):
+        run_pipeline._qwen3vl_ocr(FIXTURE)
     assert called["n"] == 0, "must not call the model without an image"
 
 
@@ -196,9 +197,70 @@ def test_thinking_switches_are_on_unless_configured_off():
     assert config.EXTRACTION_DISABLE_THINKING is True
 
 
-def test_vlm_ocr_logs_an_error_on_empty_content(monkeypatch, caplog):
-    """Empty content is an HTTP 200. Silence made it look like a blank page."""
+def test_vlm_ocr_fails_loudly_on_empty_content(monkeypatch, caplog):
+    """Empty content is an HTTP 200. Silence made it look like a blank page;
+    since #72 it is an error that names the likely cause."""
     monkeypatch.setattr(run_pipeline, "_llm_generate", lambda prompt, **kw: "")
-    with caplog.at_level(logging.ERROR):
-        assert run_pipeline._qwen3vl_ocr(FIXTURE) == ""
+    with caplog.at_level(logging.ERROR), pytest.raises(run_pipeline.RecognitionError) as ei:
+        run_pipeline._qwen3vl_ocr(FIXTURE)
     assert "returned no text for magna-carta-1215-image-only.pdf" in caplog.text
+    assert "QWEN3_VL_DISABLE_THINKING" in str(ei.value)
+
+
+def test_unreachable_backend_fails_the_document_with_an_actionable_message(monkeypatch):
+    """M14.2/#72: no backend → the document fails, it does not come back empty."""
+    def down(*a, **k):
+        raise ConnectionError("[Errno 111] Connection refused")
+
+    monkeypatch.setattr(run_pipeline, "_llm_generate", down)
+    run_pipeline._recognition_engines_used.clear()
+    with pytest.raises(run_pipeline.RecognitionError) as ei:
+        run_pipeline.read_input(FIXTURE)
+    msg = str(ei.value)
+    assert "magna-carta-1215-image-only.pdf needs recognition" in msg
+    assert "Connection refused" in msg
+    assert "GPUSTACK_BASE_URL" in msg
+    assert run_pipeline._recognition_engines_used == {}
+
+
+def test_short_text_pdf_without_page_image_keeps_its_text(monkeypatch, tmp_path):
+    """A one-line text PDF is not a scan: nothing to recognise, keep the text."""
+    import pypdf
+
+    class FakePage:
+        def extract_text(self):
+            return "Short note."
+
+    class FakeReader:
+        def __init__(self, path):
+            self.pages = [FakePage()]
+
+    monkeypatch.setattr(pypdf, "PdfReader", FakeReader)
+    monkeypatch.setattr(run_pipeline, "_page_images_as_data_urls", lambda p, **k: [])
+    monkeypatch.setattr(run_pipeline, "_llm_generate",
+                        lambda *a, **k: pytest.fail("must not call the model"))
+    assert run_pipeline.read_input(tmp_path / "short.pdf") == "Short note."
+
+
+def test_failed_recognition_lands_in_the_run_report(monkeypatch, tmp_path):
+    """End to end through main(): docs_failed, the message, exit 1."""
+    import sys
+
+    def down(*a, **k):
+        raise ConnectionError("Connection refused")
+
+    monkeypatch.setattr(run_pipeline, "_llm_generate", down)
+    monkeypatch.chdir(tmp_path)
+    (tmp_path / "scripts").mkdir()
+    monkeypatch.setattr(sys, "argv", [
+        "run_pipeline.py", "--file", str(FIXTURE), "--site-dir", str(tmp_path / "site"),
+        "--bib-dir", str(tmp_path / "bib"), "--evidence-dir", str(tmp_path / "evidence"),
+        "--outremer-index", str(Path(run_pipeline.__file__).parent / "outremer_index.json"),
+    ])
+    assert run_pipeline.main() == 1
+    report = json.loads((tmp_path / "data" / "staging" / "run_report.json").read_text())
+    assert report["docs_total"] == 1 and report["docs_failed"] == 1 and report["docs_ok"] == 0
+    assert "needs recognition" in report["failures"][0]["error"]
+    assert "GPUSTACK_BASE_URL" in report["failures"][0]["error"]
+    assert report["recognition"]["engines_used"] == {}
+    assert not list((tmp_path / "site" / "data").glob("magna-carta*.json"))

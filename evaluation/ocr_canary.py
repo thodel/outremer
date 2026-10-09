@@ -95,7 +95,12 @@ def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     ap.add_argument("--save", type=Path, help="also write the transcription here")
     args = ap.parse_args(argv)
-    text, engines = _pipeline.recognise(FIXTURE)
+    try:
+        text, engines = _pipeline.recognise(FIXTURE)
+    except Exception as exc:  # RecognitionError from the production reader
+        print(json.dumps({"canary": "fail", "engines": {}, "error": str(exc)},
+                         ensure_ascii=False))
+        return 1
     if args.save:
         args.save.write_text(text, encoding="utf-8")
     verdict = judge(text, REFERENCE.read_text(encoding="utf-8"))
