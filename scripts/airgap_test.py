@@ -12,149 +12,49 @@ Options
 
 What it tests
 ─────────────
-1. The pipeline can complete end-to-end without reaching any host except
-   the two permitted inference endpoints (GPUStack and the ATR gateway).
+1. The pipeline completes end-to-end without reaching any host except the
+   configured inference services (see scripts/airgap.py and the README
+   section "Permitted network hosts").
 2. The output documents are non-empty: the run did not silently fall back
    to empty text or empty candidate lists.
 
-Permitted hosts (documented in README):
-    gpustack.unibe.ch        — LLM extraction and OCR
-    host of ATR_GATEWAY_URL  — ATR recognition (kraken / TrOCR)
-
-If the test fails, a future change introduced an undeclared outbound
-dependency. Fix the code before merging.  Do not add the new host to this
-list without updating README first.
+How the block works
+───────────────────
+The pipeline runs as ``run_pipeline.py --airgap``: the child installs the
+guard from scripts/airgap.py in its own process before any network I/O and
+exports OUTREMER_AIRGAP=1, so the Wikidata reconciliation it starts as a
+further subprocess installs the same guard.  A patch in this parent process
+would reach neither of them.
 
 Live-backend note
 ─────────────────
-The pipeline run needs GPUStack (and the ATR gateway) to be reachable, with
-or without --subset: --subset only shrinks the corpus.  CI therefore runs
-only tests/test_airgap.py (offline); the live run belongs to the tei nightly.
-
-How the block works
-───────────────────
-The pipeline runs in a child process.  The child is started through this
-module, which resolves the permitted hosts to IPs *first* and then patches
-socket.socket.connect, so the block holds inside the process that does the
-network I/O (a patch in this parent process would not reach it).
+The run needs GPUStack (and the ATR gateway, when configured) to be
+reachable, with or without --subset: --subset only shrinks the corpus.  CI
+runs tests/test_airgap.py (offline); the tei nightly runs the whole pipeline
+under the same guard every night (deploy/tei/nightly.sh).
 """
 
 from __future__ import annotations
 
 import argparse
 import json
-import os
-import socket
 import subprocess
 import sys
 import tempfile
 from datetime import datetime, timezone
 from pathlib import Path
-from urllib.parse import urlparse
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(REPO_ROOT / "scripts"))
 
-# Hosts the pipeline is allowed to contact (must match README documentation).
-# Update README and this list together; never add a host without the other.
-# The ATR gateway host is derived from ATR_GATEWAY_URL at runtime so local
-# development works without hard-coding a deployment hostname.
-PERMITTED_HOSTS = frozenset({
-    "gpustack.unibe.ch",
-})
+import airgap  # noqa: E402
 
 SUBSET_SOURCES = ["Hamblin-MuslimPerspectivesMilitary-2001.pdf"]
 
-_original_connect = socket.socket.connect
-_original_connect_ex = socket.socket.connect_ex
-_allowed_extra: set[str] = set()
-
-
-def _allowed_host(host: str) -> bool:
-    """True when host is a permitted name or a resolved permitted address."""
-    h = host.casefold()
-    return h in {p.casefold() for p in PERMITTED_HOSTS} or host in _allowed_extra
-
-
-def _atr_host() -> str | None:
-    """Host of ATR_GATEWAY_URL (env first, then scripts.config), or None."""
-    url = os.environ.get("ATR_GATEWAY_URL", "")
-    if not url:
-        try:
-            sys.path.insert(0, str(REPO_ROOT / "scripts"))
-            from config import ATR_GATEWAY_URL as url  # type: ignore[no-redef]
-        except Exception:
-            url = ""
-    return urlparse(url).hostname if url else None
-
-
-def _resolve_atr_host() -> set[str]:
-    """The ATR gateway host name, if configured."""
-    host = _atr_host()
-    return {host} if host else set()
-
-
-def _resolve_permitted_addresses() -> set[str]:
-    """Names and IPs of all permitted hosts, resolved before egress is cut.
-
-    Clients resolve the name and then connect() to the IP, so the allow-list
-    has to know the addresses, not only the names.
-    """
-    allowed: set[str] = set()
-    for host in set(PERMITTED_HOSTS) | _resolve_atr_host():
-        allowed.add(host)
-        try:
-            for info in socket.getaddrinfo(host, None):
-                allowed.add(info[4][0])
-        except OSError:
-            pass  # unresolvable now: the name stays allowed, the run will fail loudly
-    return allowed
-
-
-def _check(address) -> None:
-    # AF_UNIX addresses are str/bytes paths, not (host, port) tuples.
-    if not isinstance(address, tuple) or not address:
-        return
-    host = address[0]
-    if not _allowed_host(str(host)):
-        raise PermissionError(
-            f"EGRESS BLOCKED: connecting to {host}:{address[1:2]} "
-            f"is not in the permitted set {sorted(PERMITTED_HOSTS)} + ATR gateway"
-        )
-
-
-def _block_egress() -> None:
-    """Refuse outbound connect() to anything but the permitted hosts."""
-    _allowed_extra.update(_resolve_permitted_addresses())
-
-    def connect(self, address):
-        _check(address)
-        return _original_connect(self, address)
-
-    def connect_ex(self, address):
-        _check(address)
-        return _original_connect_ex(self, address)
-
-    socket.socket.connect = connect  # type: ignore[method-assign]
-    socket.socket.connect_ex = connect_ex  # type: ignore[method-assign]
-
-
-def _unblock_egress() -> None:
-    """Restore the real connect()."""
-    socket.socket.connect = _original_connect  # type: ignore[method-assign]
-    socket.socket.connect_ex = _original_connect_ex  # type: ignore[method-assign]
-    _allowed_extra.clear()
-
 
 def _child_command(args: list[str]) -> list[str]:
-    """Command that blocks egress inside the child, then runs run_pipeline."""
-    boot = (
-        "import runpy, sys; "
-        f"sys.path.insert(0, {str(REPO_ROOT / 'scripts')!r}); "
-        "import airgap_test; airgap_test._block_egress(); "
-        f"sys.argv = {['run_pipeline.py'] + args!r}; "
-        f"runpy.run_path({str(REPO_ROOT / 'scripts' / 'run_pipeline.py')!r}, run_name='__main__')"
-    )
-    return [sys.executable, "-c", boot]
+    """The pipeline, started with its own egress guard."""
+    return [sys.executable, str(REPO_ROOT / "scripts" / "run_pipeline.py"), "--airgap", *args]
 
 
 def run_airgap_test(*, subset: bool = False, verbose: bool = False) -> dict:
@@ -181,7 +81,7 @@ def run_airgap_test(*, subset: bool = False, verbose: bool = False) -> dict:
         "docs_total": 0,
         "docs_failed": 0,
         "failures": [],
-        "permitted_hosts": sorted(PERMITTED_HOSTS),
+        "permitted_hosts": sorted(airgap.permitted_hosts()),
     }
 
     # run_pipeline writes its report to data/staging/run_report.json under

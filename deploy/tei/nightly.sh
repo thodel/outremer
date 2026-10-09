@@ -38,8 +38,11 @@ VENV="$WORK/.venv/bin"
   --config "$ETC/live-capabilities.json" \
   --output "$LOGDIR/preflight-latest.json"
 
-# 2) The pipeline itself.
-"$VENV/python" scripts/run_pipeline.py --llm-metadata
+# 2) The pipeline itself — under the air-gap guard (M17.3): every outbound
+#    connection except GPUStack, the ATR gateway and the MCP base host is
+#    refused inside the process, so a new outbound dependency fails here,
+#    before the gate, and publishes nothing.
+"$VENV/python" scripts/run_pipeline.py --llm-metadata --airgap
 
 # 3) Provenance gate: refuse to publish anything the model did not produce.
 "$VENV/python" scripts/release_control.py gate \

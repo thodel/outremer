@@ -440,6 +440,11 @@ def run(site_dir: Path, limit: int, refresh: str = "stale") -> None:
 
 
 def main() -> None:
+    # Started by run_pipeline as a subprocess: the air-gap guard of the parent
+    # does not reach this process, so honour OUTREMER_AIRGAP here as well.
+    import airgap
+    if airgap.install_if_requested():
+        logger.info("Air-gap guard on (OUTREMER_AIRGAP=1).")
     ap = argparse.ArgumentParser(description="Wikidata reconciliation for unmatched Outremer persons.")
     ap.add_argument("--site-dir", default="site")
     ap.add_argument("--limit", type=int, default=3, help="Max Wikidata candidates per person")
