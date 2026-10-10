@@ -8,7 +8,15 @@
       "preferred_label": "Conrad III of Germany",
       "identifiers": {
         "project_identifier": "CR1",
-        "omeka_item_id": 149
+        "omeka_item_id": 149,
+        "wikidata_qid": "Q157133",
+        "wikidata_qid_provenance": {
+          "system": "wikidata-pre1500-snapshot",
+          "snapshot": "2026-10-02T22:51:17+00:00",
+          "method": "backfill_authority_qids v1",
+          "status": "asserted",
+          "why": "name match ≥ 0.85 with the toponym verified"
+        }
       },
       "name": {
         "raw": "Conrad III of Germany",
@@ -23,9 +31,17 @@
         "Conrad 3",
         "Conrad 3 of Germany",
         "Conrad III",
+        "Conrad III de Hohenstaufen",
         "Conrad III of Germany",
         "Conrad, Germany",
-        "Germany's Conrad"
+        "Conrado III Hohenstaufen",
+        "Corrado III del Sacro Romano Impero",
+        "Corrado III di Hoenstaufen",
+        "Corrado III di Svevia",
+        "Germany's Conrad",
+        "Koenraad III van het Heilige Roomse Rijk",
+        "Koenraad III van Hohenstaufen",
+        "كونراد الثالث"
       ],
       "normalized": {
         "preferred": "conrad iii of germany",
@@ -35,8 +51,16 @@
           "conrad 3 of germany",
           "conrad germany",
           "conrad iii",
+          "conrad iii de hohenstaufen",
           "conrad iii of germany",
-          "germany s conrad"
+          "conrado iii hohenstaufen",
+          "corrado iii del sacro romano impero",
+          "corrado iii di hoenstaufen",
+          "corrado iii di svevia",
+          "germany s conrad",
+          "koenraad iii van het heilige roomse rijk",
+          "koenraad iii van hohenstaufen",
+          "كونراد الثالث"
         ]
       },
       "type": "person",
@@ -94,6 +118,78 @@
             "system": "omeka-xml",
             "locator": "person/item_149.xml"
           }
+        ],
+        "كونراد الثالث": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q157133",
+            "lang": "ar",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Conrado III Hohenstaufen": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q157133",
+            "lang": "es",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Conrad III de Hohenstaufen": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q157133",
+            "lang": "fr",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Corrado III di Hoenstaufen": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q157133",
+            "lang": "it",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Corrado III di Svevia": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q157133",
+            "lang": "it",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Corrado III del Sacro Romano Impero": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q157133",
+            "lang": "it",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Koenraad III van Hohenstaufen": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q157133",
+            "lang": "nl",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Koenraad III van het Heilige Roomse Rijk": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q157133",
+            "lang": "nl",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
         ]
       }
     },
@@ -102,7 +198,15 @@
       "preferred_label": "Fulk V of Anjou",
       "identifiers": {
         "project_identifier": "CR2",
-        "omeka_item_id": 150
+        "omeka_item_id": 150,
+        "wikidata_qid": "Q312904",
+        "wikidata_qid_provenance": {
+          "system": "wikidata-pre1500-snapshot",
+          "snapshot": "2026-10-02T22:51:17+00:00",
+          "method": "backfill_authority_qids v1",
+          "status": "asserted",
+          "why": "numeral and toponym both verified"
+        }
       },
       "name": {
         "raw": "Fulk V of Anjou",
@@ -113,24 +217,42 @@
       },
       "variants": [
         "Anjou's Fulk",
+        "Folco V d’Angiò",
+        "Foulque le jeune",
+        "Foulque V d'Anjou",
+        "Foulques V d'Anjou",
+        "Fulco V de Anjou",
+        "Fulco V van Anjou",
         "Fulk",
         "Fulk (Anjou)",
         "Fulk 5",
         "Fulk 5 of Anjou",
         "Fulk V",
         "Fulk V of Anjou",
-        "Fulk, Anjou"
+        "Fulk, Anjou",
+        "فولك أنجو",
+        "فولك اوف انجو",
+        "فولك من أنجو"
       ],
       "normalized": {
         "preferred": "fulk v of anjou",
         "variants": [
           "anjou s fulk",
+          "folco v d angio",
+          "foulque le jeune",
+          "foulque v d anjou",
+          "foulques v d anjou",
+          "fulco v de anjou",
+          "fulco v van anjou",
           "fulk",
           "fulk 5",
           "fulk 5 of anjou",
           "fulk anjou",
           "fulk v",
-          "fulk v of anjou"
+          "fulk v of anjou",
+          "فولك انجو",
+          "فولك اوف انجو",
+          "فولك من انجو"
         ]
       },
       "type": "person",
@@ -187,6 +309,87 @@
           {
             "system": "omeka-xml",
             "locator": "person/item_150.xml"
+          }
+        ],
+        "فولك أنجو": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q312904",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "فولك اوف انجو": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q312904",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "فولك من أنجو": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q312904",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Fulco V de Anjou": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q312904",
+            "lang": "es",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Foulque V d'Anjou": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q312904",
+            "lang": "fr",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Foulque le jeune": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q312904",
+            "lang": "fr",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Foulques V d'Anjou": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q312904",
+            "lang": "fr",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Folco V d’Angiò": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q312904",
+            "lang": "it",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Fulco V van Anjou": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q312904",
+            "lang": "nl",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
           }
         ]
       }
@@ -766,7 +969,57 @@
       "preferred_label": "Henry I of Troyes, count of Champagne",
       "identifiers": {
         "project_identifier": "CR12",
-        "omeka_item_id": 160
+        "omeka_item_id": 160,
+        "wikidata_candidates": [
+          {
+            "qid": "Q476331",
+            "label": "Henry I, Count Palatine of Lotharingia",
+            "death_year": 1060,
+            "score": 1.0
+          },
+          {
+            "qid": "Q2581732",
+            "label": "Henry I",
+            "death_year": 1190,
+            "score": 1.0
+          },
+          {
+            "qid": "Q3131313",
+            "label": "Henry I of Rodez",
+            "death_year": 1222,
+            "score": 1.0
+          },
+          {
+            "qid": "Q364517",
+            "label": "Henry I, Count of Champagne",
+            "death_year": 1181,
+            "score": 0.74
+          },
+          {
+            "qid": "Q665222",
+            "label": "Henry I, Count of Bar",
+            "death_year": 1190,
+            "score": 0.68
+          },
+          {
+            "qid": "Q25349763",
+            "label": "Henry I, Count of Durbuy",
+            "death_year": 1097,
+            "score": 0.65
+          },
+          {
+            "qid": "Q2105655",
+            "label": "Henry I, Count of Gorizia",
+            "death_year": 1102,
+            "score": 0.65
+          },
+          {
+            "qid": "Q30301558",
+            "label": "Henry I, Count of Berg",
+            "death_year": 1115,
+            "score": 0.65
+          }
+        ]
       },
       "name": {
         "raw": "Henry I of Troyes, count of Champagne",
@@ -929,7 +1182,15 @@
       "preferred_label": "Erard I of Brienne",
       "identifiers": {
         "project_identifier": "CR14",
-        "omeka_item_id": 162
+        "omeka_item_id": 162,
+        "wikidata_qid": "Q287645",
+        "wikidata_qid_provenance": {
+          "system": "wikidata-pre1500-snapshot",
+          "snapshot": "2026-10-02T22:51:17+00:00",
+          "method": "backfill_authority_qids v1",
+          "status": "asserted",
+          "why": "name match ≥ 0.85 with the toponym verified"
+        }
       },
       "name": {
         "raw": "Erard I of Brienne",
@@ -946,7 +1207,11 @@
         "Erard 1 of Brienne",
         "Erard I",
         "Erard I of Brienne",
-        "Erard, Brienne"
+        "Erard I van Brienne",
+        "Erard, Brienne",
+        "Erardo I de Brienne",
+        "Everhard I van Brienne",
+        "Érard Ier de Brienne"
       ],
       "normalized": {
         "preferred": "erard i of brienne",
@@ -957,7 +1222,11 @@
           "erard 1 of brienne",
           "erard brienne",
           "erard i",
-          "erard i of brienne"
+          "erard i of brienne",
+          "erard i van brienne",
+          "erard ier de brienne",
+          "erardo i de brienne",
+          "everhard i van brienne"
         ]
       },
       "type": "person",
@@ -1015,6 +1284,42 @@
             "system": "omeka-xml",
             "locator": "person/item_162.xml"
           }
+        ],
+        "Erardo I de Brienne": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q287645",
+            "lang": "es",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Érard Ier de Brienne": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q287645",
+            "lang": "fr",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Erard I van Brienne": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q287645",
+            "lang": "nl",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Everhard I van Brienne": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q287645",
+            "lang": "nl",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
         ]
       }
     },
@@ -1023,7 +1328,27 @@
       "preferred_label": "Sigurd Magnússon",
       "identifiers": {
         "project_identifier": "CR15",
-        "omeka_item_id": 163
+        "omeka_item_id": 163,
+        "wikidata_candidates": [
+          {
+            "qid": "Q313005",
+            "label": "Sigurd the Crusader",
+            "death_year": 1130,
+            "score": 1.0
+          },
+          {
+            "qid": "Q463505",
+            "label": "Sigurd Slembe",
+            "death_year": 1139,
+            "score": 1.0
+          },
+          {
+            "qid": "Q681228",
+            "label": "Sigurd Magnusson",
+            "death_year": 1194,
+            "score": 1.0
+          }
+        ]
       },
       "name": {
         "raw": "Sigurd Magnússon",
@@ -1068,7 +1393,15 @@
       "preferred_label": "Thierry of Flanders",
       "identifiers": {
         "project_identifier": "CR16",
-        "omeka_item_id": 164
+        "omeka_item_id": 164,
+        "wikidata_qid": "Q224958",
+        "wikidata_qid_provenance": {
+          "system": "wikidata-pre1500-snapshot",
+          "snapshot": "2026-10-02T22:51:17+00:00",
+          "method": "backfill_authority_qids v1",
+          "status": "asserted",
+          "why": "name match ≥ 0.85 with the toponym verified"
+        }
       },
       "name": {
         "raw": "Thierry of Flanders",
@@ -1077,19 +1410,41 @@
         "pattern": "of"
       },
       "variants": [
+        "Diederik I van den Elzas",
+        "Diederik van de Elzas",
+        "Dietrich von Elsass",
+        "Dirk van den Elzas",
         "Flanders's Thierry",
+        "Teodorico de Alsacia",
+        "Teodorico delle Fiandre",
+        "Teodorico di Alsazia",
         "Thierry",
         "Thierry (Flanders)",
+        "Thierry d'Alsace",
+        "Thierry de Lorraine",
+        "Thierry of Alsace",
         "Thierry of Flanders",
+        "Thierry of Lorraine",
         "Thierry, Flanders"
       ],
       "normalized": {
         "preferred": "thierry of flanders",
         "variants": [
+          "diederik i van den elzas",
+          "diederik van de elzas",
+          "dietrich von elsass",
+          "dirk van den elzas",
           "flanders s thierry",
+          "teodorico de alsacia",
+          "teodorico delle fiandre",
+          "teodorico di alsazia",
           "thierry",
+          "thierry d alsace",
+          "thierry de lorraine",
           "thierry flanders",
-          "thierry of flanders"
+          "thierry of alsace",
+          "thierry of flanders",
+          "thierry of lorraine"
         ]
       },
       "type": "person",
@@ -1129,6 +1484,105 @@
             "system": "omeka-xml",
             "locator": "person/item_164.xml"
           }
+        ],
+        "Dietrich von Elsass": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q224958",
+            "lang": "de",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Thierry d'Alsace": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q224958",
+            "lang": "en",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Thierry of Alsace": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q224958",
+            "lang": "en",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Thierry of Lorraine": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q224958",
+            "lang": "en",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Teodorico de Alsacia": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q224958",
+            "lang": "es",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Thierry de Lorraine": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q224958",
+            "lang": "fr",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Teodorico delle Fiandre": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q224958",
+            "lang": "it",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Teodorico di Alsazia": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q224958",
+            "lang": "it",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Diederik I van den Elzas": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q224958",
+            "lang": "nl",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Dirk van den Elzas": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q224958",
+            "lang": "nl",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Diederik van de Elzas": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q224958",
+            "lang": "nl",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
         ]
       }
     },
@@ -1137,7 +1591,27 @@
       "preferred_label": "Walter of Hereford",
       "identifiers": {
         "project_identifier": "CR17",
-        "omeka_item_id": 165
+        "omeka_item_id": 165,
+        "wikidata_candidates": [
+          {
+            "qid": "Q7966536",
+            "label": "Walter of Lorraine",
+            "death_year": 1079,
+            "score": 1.0
+          },
+          {
+            "qid": "Q7966512",
+            "label": "Walter de Hereford",
+            "death_year": 1160,
+            "score": 1.0
+          },
+          {
+            "qid": "Q140306908",
+            "label": "Walter of Hereford",
+            "death_year": 1309,
+            "score": 1.0
+          }
+        ]
       },
       "name": {
         "raw": "Walter of Hereford",
@@ -1329,7 +1803,15 @@
       "preferred_label": "Manasses of Hierges",
       "identifiers": {
         "project_identifier": "CR20",
-        "omeka_item_id": 168
+        "omeka_item_id": 168,
+        "wikidata_qid": "Q1398284",
+        "wikidata_qid_provenance": {
+          "system": "wikidata-pre1500-snapshot",
+          "snapshot": "2026-10-02T22:51:17+00:00",
+          "method": "backfill_authority_qids v1",
+          "status": "asserted",
+          "why": "name match ≥ 0.85 with the toponym verified"
+        }
       },
       "name": {
         "raw": "Manasses of Hierges",
@@ -1339,18 +1821,26 @@
       },
       "variants": [
         "Hierges's Manasses",
+        "Manasse di Hierges",
         "Manasses",
         "Manasses (Hierges)",
+        "Manasses de Hierges",
         "Manasses of Hierges",
-        "Manasses, Hierges"
+        "Manasses von Hierges",
+        "Manasses, Hierges",
+        "Manasés de Hierges"
       ],
       "normalized": {
         "preferred": "manasses of hierges",
         "variants": [
           "hierges s manasses",
+          "manases de hierges",
+          "manasse di hierges",
           "manasses",
+          "manasses de hierges",
           "manasses hierges",
-          "manasses of hierges"
+          "manasses of hierges",
+          "manasses von hierges"
         ]
       },
       "type": "person",
@@ -1389,6 +1879,42 @@
           {
             "system": "omeka-xml",
             "locator": "person/item_168.xml"
+          }
+        ],
+        "Manasses von Hierges": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q1398284",
+            "lang": "de",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Manasés de Hierges": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q1398284",
+            "lang": "es",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Manasses de Hierges": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q1398284",
+            "lang": "fr",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Manasse di Hierges": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q1398284",
+            "lang": "it",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
           }
         ]
       }
@@ -1778,7 +2304,15 @@
       "preferred_label": "Henry the Lion",
       "identifiers": {
         "project_identifier": "CR26",
-        "omeka_item_id": 174
+        "omeka_item_id": 174,
+        "wikidata_qid": "Q105378",
+        "wikidata_qid_provenance": {
+          "system": "wikidata-pre1500-snapshot",
+          "snapshot": "2026-10-02T22:51:17+00:00",
+          "method": "backfill_authority_qids v1",
+          "status": "asserted",
+          "why": "name match ≥ 0.85 with the toponym verified"
+        }
       },
       "name": {
         "raw": "Henry the Lion",
@@ -1787,16 +2321,44 @@
         "pattern": "the"
       },
       "variants": [
+        "Enrico III di Sassonia",
+        "Enrico il Leone",
+        "Enrico XII di Baviera",
+        "Enrique el Leon",
+        "Heinrich der Löwe",
+        "Hendrik de Leeuw",
+        "Hendrik III van Saksen",
+        "Hendrik XII van Beieren",
+        "Henri III de Saxe",
+        "Henri le Lion",
+        "Henri XII de Baviere",
+        "Henricus Leo",
         "Henry",
         "Henry (Lion)",
-        "Henry the Lion"
+        "Henry the Lion",
+        "هاينريش الأسد",
+        "هنري الأسد"
       ],
       "normalized": {
         "preferred": "henry the lion",
         "variants": [
+          "enrico iii di sassonia",
+          "enrico il leone",
+          "enrico xii di baviera",
+          "enrique el leon",
+          "heinrich der lowe",
+          "hendrik de leeuw",
+          "hendrik iii van saksen",
+          "hendrik xii van beieren",
+          "henri iii de saxe",
+          "henri le lion",
+          "henri xii de baviere",
+          "henricus leo",
           "henry",
           "henry lion",
-          "henry the lion"
+          "henry the lion",
+          "هاينريش الاسد",
+          "هنري الاسد"
         ]
       },
       "type": "person",
@@ -1824,6 +2386,132 @@
             "system": "omeka-xml",
             "locator": "person/item_174.xml"
           }
+        ],
+        "هنري الأسد": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q105378",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "هاينريش الأسد": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q105378",
+            "lang": "ar",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Heinrich der Löwe": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q105378",
+            "lang": "de",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Enrique el Leon": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q105378",
+            "lang": "es",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Henri III de Saxe": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q105378",
+            "lang": "fr",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Henri XII de Baviere": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q105378",
+            "lang": "fr",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Henri le Lion": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q105378",
+            "lang": "fr",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Enrico III di Sassonia": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q105378",
+            "lang": "it",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Enrico XII di Baviera": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q105378",
+            "lang": "it",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Enrico il Leone": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q105378",
+            "lang": "it",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Henricus Leo": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q105378",
+            "lang": "la",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Hendrik III van Saksen": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q105378",
+            "lang": "nl",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Hendrik XII van Beieren": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q105378",
+            "lang": "nl",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Hendrik de Leeuw": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q105378",
+            "lang": "nl",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
         ]
       }
     },
@@ -1832,7 +2520,15 @@
       "preferred_label": "Philip of Flanders",
       "identifiers": {
         "project_identifier": "CR27",
-        "omeka_item_id": 175
+        "omeka_item_id": 175,
+        "wikidata_candidates": [
+          {
+            "qid": "Q469588",
+            "label": "Philip I, Count of Flanders",
+            "death_year": 1191,
+            "score": 0.85
+          }
+        ]
       },
       "name": {
         "raw": "Philip of Flanders",
@@ -1901,7 +2597,15 @@
       "preferred_label": "Rudolf of Pfullendorf",
       "identifiers": {
         "project_identifier": "CR28",
-        "omeka_item_id": 176
+        "omeka_item_id": 176,
+        "wikidata_qid": "Q1523252",
+        "wikidata_qid_provenance": {
+          "system": "wikidata-pre1500-snapshot",
+          "snapshot": "2026-10-02T22:51:17+00:00",
+          "method": "backfill_authority_qids v1",
+          "status": "asserted",
+          "why": "name match ≥ 0.85 with the toponym verified"
+        }
       },
       "name": {
         "raw": "Rudolf of Pfullendorf",
@@ -1914,6 +2618,8 @@
         "Rudolf",
         "Rudolf (Pfullendorf)",
         "Rudolf of Pfullendorf",
+        "Rudolf van Pfullendorf",
+        "Rudolf von Pfullendorf",
         "Rudolf, Pfullendorf"
       ],
       "normalized": {
@@ -1922,7 +2628,9 @@
           "pfullendorf s rudolf",
           "rudolf",
           "rudolf of pfullendorf",
-          "rudolf pfullendorf"
+          "rudolf pfullendorf",
+          "rudolf van pfullendorf",
+          "rudolf von pfullendorf"
         ]
       },
       "type": "person",
@@ -1962,6 +2670,24 @@
             "system": "omeka-xml",
             "locator": "person/item_176.xml"
           }
+        ],
+        "Rudolf von Pfullendorf": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q1523252",
+            "lang": "de",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Rudolf van Pfullendorf": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q1523252",
+            "lang": "nl",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
         ]
       }
     },
@@ -1970,7 +2696,15 @@
       "preferred_label": "Rognvald of Orkney",
       "identifiers": {
         "project_identifier": "CR30",
-        "omeka_item_id": 178
+        "omeka_item_id": 178,
+        "wikidata_qid": "Q2109400",
+        "wikidata_qid_provenance": {
+          "system": "wikidata-pre1500-snapshot",
+          "snapshot": "2026-10-02T22:51:17+00:00",
+          "method": "backfill_authority_qids v1",
+          "status": "asserted",
+          "why": "name match ≥ 0.85 with the toponym verified"
+        }
       },
       "name": {
         "raw": "Rognvald of Orkney",
@@ -1979,19 +2713,33 @@
         "pattern": "of"
       },
       "variants": [
+        "Kali Kollson",
         "Orkney's Rognvald",
+        "Ragnvald Kale Kolsson",
+        "Ragnvald Kali Kolsson",
         "Rognvald",
         "Rognvald (Orkney)",
+        "Rognvald Kolsson",
         "Rognvald of Orkney",
-        "Rognvald, Orkney"
+        "Rognvald, Orkney",
+        "Ronald van Kirkwall",
+        "Rögnvald Kali Kolsson",
+        "Rögnvaldr Kali Kolsson"
       ],
       "normalized": {
         "preferred": "rognvald of orkney",
         "variants": [
+          "kali kollson",
           "orkney s rognvald",
+          "ragnvald kale kolsson",
+          "ragnvald kali kolsson",
           "rognvald",
+          "rognvald kali kolsson",
+          "rognvald kolsson",
           "rognvald of orkney",
-          "rognvald orkney"
+          "rognvald orkney",
+          "rognvaldr kali kolsson",
+          "ronald van kirkwall"
         ]
       },
       "type": "person",
@@ -2031,6 +2779,69 @@
             "system": "omeka-xml",
             "locator": "person/item_178.xml"
           }
+        ],
+        "Kali Kollson": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q2109400",
+            "lang": "de",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Ragnvald Kale Kolsson": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q2109400",
+            "lang": "de",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Rögnvaldr Kali Kolsson": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q2109400",
+            "lang": "de",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Rögnvald Kali Kolsson": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q2109400",
+            "lang": "de",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Rognvald Kolsson": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q2109400",
+            "lang": "en",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Ragnvald Kali Kolsson": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q2109400",
+            "lang": "es",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Ronald van Kirkwall": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q2109400",
+            "lang": "nl",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
         ]
       }
     },
@@ -2039,7 +2850,15 @@
       "preferred_label": "William of Tortosa",
       "identifiers": {
         "project_identifier": "CR32",
-        "omeka_item_id": 180
+        "omeka_item_id": 180,
+        "wikidata_qid": "Q75384552",
+        "wikidata_qid_provenance": {
+          "system": "wikidata-pre1500-snapshot",
+          "snapshot": "2026-10-02T22:51:17+00:00",
+          "method": "backfill_authority_qids v1",
+          "status": "asserted",
+          "why": "name match ≥ 0.85 with the toponym verified"
+        }
       },
       "name": {
         "raw": "William of Tortosa",
@@ -2177,7 +2996,33 @@
       "preferred_label": "William Marshal",
       "identifiers": {
         "project_identifier": "CR34",
-        "omeka_item_id": 182
+        "omeka_item_id": 182,
+        "wikidata_candidates": [
+          {
+            "qid": "Q348911",
+            "label": "William Marshal, 1st Earl of Pembroke",
+            "death_year": 1219,
+            "score": 1.0
+          },
+          {
+            "qid": "Q24008616",
+            "label": "William Marshal",
+            "death_year": 1265,
+            "score": 1.0
+          },
+          {
+            "qid": "Q731389",
+            "label": "William Marshal, 2nd Earl of Pembroke",
+            "death_year": 1231,
+            "score": 0.85
+          },
+          {
+            "qid": "Q23770668",
+            "label": "William Marshal, 1st Baron Marshal",
+            "death_year": 1314,
+            "score": 0.85
+          }
+        ]
       },
       "name": {
         "raw": "William Marshal",
@@ -2215,7 +3060,15 @@
       "preferred_label": "Sancho Martin",
       "identifiers": {
         "project_identifier": "CR36",
-        "omeka_item_id": 183
+        "omeka_item_id": 183,
+        "wikidata_candidates": [
+          {
+            "qid": "Q60826877",
+            "label": "Sancho Martínez de Jódar",
+            "death_year": 1275,
+            "score": 0.575
+          }
+        ]
       },
       "name": {
         "raw": "Sancho Martin",
@@ -2253,7 +3106,15 @@
       "preferred_label": "Conrad of Montferrat",
       "identifiers": {
         "project_identifier": "CR37",
-        "omeka_item_id": 184
+        "omeka_item_id": 184,
+        "wikidata_qid": "Q169329",
+        "wikidata_qid_provenance": {
+          "system": "wikidata-pre1500-snapshot",
+          "snapshot": "2026-10-02T22:51:17+00:00",
+          "method": "backfill_authority_qids v1",
+          "status": "asserted",
+          "why": "name match ≥ 0.85 with the toponym verified"
+        }
       },
       "name": {
         "raw": "Conrad of Montferrat",
@@ -2264,17 +3125,43 @@
       "variants": [
         "Conrad",
         "Conrad (Montferrat)",
+        "Conrad de Montferrat",
         "Conrad of Montferrat",
         "Conrad, Montferrat",
-        "Montferrat's Conrad"
+        "Conrado de Montferrato",
+        "Conrado I de Monferrato",
+        "Conradus Montisferrati",
+        "Corrado degli Aleramici",
+        "Corrado del Monferrato",
+        "Corrado di Monferrato",
+        "Koenraad van Monferrato",
+        "Koenraad van Montferat",
+        "Koenraad van Montferrato",
+        "Konrad von Montferrat",
+        "Montferrat's Conrad",
+        "قنرادس المنفراتي",
+        "كونراد المونفيراتي"
       ],
       "normalized": {
         "preferred": "conrad of montferrat",
         "variants": [
           "conrad",
+          "conrad de montferrat",
           "conrad montferrat",
           "conrad of montferrat",
-          "montferrat s conrad"
+          "conrado de montferrato",
+          "conrado i de monferrato",
+          "conradus montisferrati",
+          "corrado degli aleramici",
+          "corrado del monferrato",
+          "corrado di monferrato",
+          "koenraad van monferrato",
+          "koenraad van montferat",
+          "koenraad van montferrato",
+          "konrad von montferrat",
+          "montferrat s conrad",
+          "قنرادس المنفراتي",
+          "كونراد المونفيراتي"
         ]
       },
       "type": "person",
@@ -2313,6 +3200,123 @@
           {
             "system": "omeka-xml",
             "locator": "person/item_184.xml"
+          }
+        ],
+        "كونراد المونفيراتي": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q169329",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "قنرادس المنفراتي": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q169329",
+            "lang": "ar",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Konrad von Montferrat": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q169329",
+            "lang": "de",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Conrado I de Monferrato": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q169329",
+            "lang": "es",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Conrado de Montferrato": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q169329",
+            "lang": "es",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Conrad de Montferrat": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q169329",
+            "lang": "fr",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Corrado degli Aleramici": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q169329",
+            "lang": "it",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Corrado di Monferrato": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q169329",
+            "lang": "it",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Corrado del Monferrato": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q169329",
+            "lang": "it",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Conradus Montisferrati": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q169329",
+            "lang": "la",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Koenraad van Montferat": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q169329",
+            "lang": "nl",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Koenraad van Montferrato": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q169329",
+            "lang": "nl",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Koenraad van Monferrato": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q169329",
+            "lang": "nl",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
           }
         ]
       }
@@ -2557,7 +3561,15 @@
       "preferred_label": "Rainald of St Valéry",
       "identifiers": {
         "project_identifier": "CR43",
-        "omeka_item_id": 190
+        "omeka_item_id": 190,
+        "wikidata_qid": "Q1516535",
+        "wikidata_qid_provenance": {
+          "system": "wikidata-pre1500-snapshot",
+          "snapshot": "2026-10-02T22:51:17+00:00",
+          "method": "backfill_authority_qids v1",
+          "status": "asserted",
+          "why": "name match ≥ 0.85 with the toponym verified"
+        }
       },
       "name": {
         "raw": "Rainald of St Valéry",
@@ -2570,7 +3582,12 @@
         "Rainald (St Valéry)",
         "Rainald of St Valery",
         "Rainald of St Valéry",
+        "Rainald von Saint-Valery",
         "Rainald, St Valéry",
+        "Reginald of Saint-Valery",
+        "Reinaldo de Saint-Valery",
+        "Renaud de Saint-Valery",
+        "Renaud de St. Valerie",
         "St Valéry's Rainald"
       ],
       "normalized": {
@@ -2579,6 +3596,11 @@
           "rainald",
           "rainald of st valery",
           "rainald st valery",
+          "rainald von saint valery",
+          "reginald of saint valery",
+          "reinaldo de saint valery",
+          "renaud de saint valery",
+          "renaud de st valerie",
           "st valery s rainald"
         ]
       },
@@ -2624,6 +3646,51 @@
           {
             "system": "omeka-xml",
             "locator": "person/item_190.xml"
+          }
+        ],
+        "Rainald von Saint-Valery": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q1516535",
+            "lang": "de",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Renaud de St. Valerie": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q1516535",
+            "lang": "en",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Reginald of Saint-Valery": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q1516535",
+            "lang": "en",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Reinaldo de Saint-Valery": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q1516535",
+            "lang": "es",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Renaud de Saint-Valery": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q1516535",
+            "lang": "fr",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
           }
         ]
       }
@@ -2867,7 +3934,15 @@
       "preferred_label": "William Rex",
       "identifiers": {
         "project_identifier": "CR49",
-        "omeka_item_id": 196
+        "omeka_item_id": 196,
+        "wikidata_candidates": [
+          {
+            "qid": "Q102005",
+            "label": "William II of England",
+            "death_year": 1100,
+            "score": 0.6
+          }
+        ]
       },
       "name": {
         "raw": "William Rex",
@@ -3463,7 +4538,15 @@
       "preferred_label": "William of Sainte-Maure",
       "identifiers": {
         "project_identifier": "CR58",
-        "omeka_item_id": 205
+        "omeka_item_id": 205,
+        "wikidata_candidates": [
+          {
+            "qid": "Q8020902",
+            "label": "William of Sainte-Mère-Église",
+            "death_year": 1224,
+            "score": 0.62
+          }
+        ]
       },
       "name": {
         "raw": "William of Sainte-Maure",
@@ -3601,7 +4684,15 @@
       "preferred_label": "Nicholas of Montiéramey",
       "identifiers": {
         "project_identifier": "CR60",
-        "omeka_item_id": 207
+        "omeka_item_id": 207,
+        "wikidata_qid": "Q3340916",
+        "wikidata_qid_provenance": {
+          "system": "wikidata-pre1500-snapshot",
+          "snapshot": "2026-10-02T22:51:17+00:00",
+          "method": "backfill_authority_qids v1",
+          "status": "asserted",
+          "why": "name match ≥ 0.85 with the toponym verified"
+        }
       },
       "name": {
         "raw": "Nicholas of Montiéramey",
@@ -3613,9 +4704,15 @@
         "Montiéramey's Nicholas",
         "Nicholas",
         "Nicholas (Montiéramey)",
+        "Nicholas of Clairvaux",
         "Nicholas of Montieramey",
         "Nicholas of Montiéramey",
-        "Nicholas, Montiéramey"
+        "Nicholas, Montiéramey",
+        "Nicola di Chiaravalle",
+        "Nicolas de Clairvaux",
+        "Nicolaus Aremarensis",
+        "Nicolaus Claraevallensis",
+        "Nikolaus von Clairvaux"
       ],
       "normalized": {
         "preferred": "nicholas of montieramey",
@@ -3623,7 +4720,13 @@
           "montieramey s nicholas",
           "nicholas",
           "nicholas montieramey",
-          "nicholas of montieramey"
+          "nicholas of clairvaux",
+          "nicholas of montieramey",
+          "nicola di chiaravalle",
+          "nicolas de clairvaux",
+          "nicolaus aremarensis",
+          "nicolaus claraevallensis",
+          "nikolaus von clairvaux"
         ]
       },
       "type": "person",
@@ -3668,6 +4771,60 @@
           {
             "system": "omeka-xml",
             "locator": "person/item_207.xml"
+          }
+        ],
+        "Nikolaus von Clairvaux": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q3340916",
+            "lang": "de",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Nicholas of Clairvaux": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q3340916",
+            "lang": "en",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Nicolas de Clairvaux": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q3340916",
+            "lang": "fr",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Nicola di Chiaravalle": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q3340916",
+            "lang": "it",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Nicolaus Aremarensis": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q3340916",
+            "lang": "la",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Nicolaus Claraevallensis": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q3340916",
+            "lang": "la",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
           }
         ]
       }
@@ -3715,7 +4872,15 @@
       "preferred_label": "Peter I of Courtenay",
       "identifiers": {
         "project_identifier": "CR62",
-        "omeka_item_id": 209
+        "omeka_item_id": 209,
+        "wikidata_qid": "Q531495",
+        "wikidata_qid_provenance": {
+          "system": "wikidata-pre1500-snapshot",
+          "snapshot": "2026-10-02T22:51:17+00:00",
+          "method": "backfill_authority_qids v1",
+          "status": "asserted",
+          "why": "name match ≥ 0.85 with the toponym verified"
+        }
       },
       "name": {
         "raw": "Peter I of Courtenay",
@@ -3726,24 +4891,36 @@
       },
       "variants": [
         "Courtenay's Peter",
+        "Pedro de Courtenay",
         "Peter",
         "Peter (Courtenay)",
         "Peter 1",
         "Peter 1 of Courtenay",
         "Peter I",
         "Peter I of Courtenay",
-        "Peter, Courtenay"
+        "Peter I van Courtenay",
+        "Peter I. von Courtenay",
+        "Peter, Courtenay",
+        "Pierre Ier de Courtenay",
+        "Pietro I di Courtenay",
+        "بيير الأول من كورتيناي"
       ],
       "normalized": {
         "preferred": "peter i of courtenay",
         "variants": [
           "courtenay s peter",
+          "pedro de courtenay",
           "peter",
           "peter 1",
           "peter 1 of courtenay",
           "peter courtenay",
           "peter i",
-          "peter i of courtenay"
+          "peter i of courtenay",
+          "peter i van courtenay",
+          "peter i von courtenay",
+          "pierre ier de courtenay",
+          "pietro i di courtenay",
+          "بيير الاول من كورتيناي"
         ]
       },
       "type": "person",
@@ -3801,6 +4978,60 @@
             "system": "omeka-xml",
             "locator": "person/item_209.xml"
           }
+        ],
+        "بيير الأول من كورتيناي": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q531495",
+            "lang": "ar",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Peter I. von Courtenay": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q531495",
+            "lang": "de",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Pedro de Courtenay": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q531495",
+            "lang": "es",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Pierre Ier de Courtenay": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q531495",
+            "lang": "fr",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Pietro I di Courtenay": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q531495",
+            "lang": "it",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Peter I van Courtenay": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q531495",
+            "lang": "nl",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
         ]
       }
     },
@@ -3809,7 +5040,15 @@
       "preferred_label": "Philip of Dreux, bishop of Beavais",
       "identifiers": {
         "project_identifier": "CR63",
-        "omeka_item_id": 210
+        "omeka_item_id": 210,
+        "wikidata_candidates": [
+          {
+            "qid": "Q574815",
+            "label": "Philip of Dreux",
+            "death_year": 1217,
+            "score": 0.65
+          }
+        ]
       },
       "name": {
         "raw": "Philip of Dreux, bishop of Beavais",
@@ -4176,7 +5415,15 @@
       "preferred_label": "James of Chacenay",
       "identifiers": {
         "project_identifier": "CR71",
-        "omeka_item_id": 218
+        "omeka_item_id": 218,
+        "wikidata_candidates": [
+          {
+            "qid": "Q17123777",
+            "label": "James I of Chacenay",
+            "death_year": 1158,
+            "score": 0.85
+          }
+        ]
       },
       "name": {
         "raw": "James of Chacenay",
@@ -4477,7 +5724,27 @@
       "preferred_label": "Hugh de Beauchamp",
       "identifiers": {
         "project_identifier": "CR75",
-        "omeka_item_id": 2327
+        "omeka_item_id": 2327,
+        "wikidata_candidates": [
+          {
+            "qid": "Q18730449",
+            "label": "Hugh de Beauchamp",
+            "death_year": 1114,
+            "score": 1.0
+          },
+          {
+            "qid": "Q16197364",
+            "label": "Hugh de Beauchamp",
+            "death_year": 1173,
+            "score": 1.0
+          },
+          {
+            "qid": "Q110612876",
+            "label": "Sir Hugh de Beauchamp, of Lillesdon",
+            "death_year": 1337,
+            "score": 0.85
+          }
+        ]
       },
       "name": {
         "raw": "Hugh de Beauchamp",
@@ -4515,7 +5782,33 @@
       "preferred_label": "Roger de Mowbray",
       "identifiers": {
         "project_identifier": "CR76",
-        "omeka_item_id": 2328
+        "omeka_item_id": 2328,
+        "wikidata_candidates": [
+          {
+            "qid": "Q4395698",
+            "label": "Roger de Mowbray",
+            "death_year": 1188,
+            "score": 1.0
+          },
+          {
+            "qid": "Q18710325",
+            "label": "Roger de Mowbrey",
+            "death_year": 1266,
+            "score": 1.0
+          },
+          {
+            "qid": "Q7359206",
+            "label": "Roger de Mowbray, 1st Baron Mowbray",
+            "death_year": 1297,
+            "score": 1.0
+          },
+          {
+            "qid": "Q41641911",
+            "label": "Roger de Mowbray",
+            "death_year": 1320,
+            "score": 1.0
+          }
+        ]
       },
       "name": {
         "raw": "Roger de Mowbray",
@@ -4553,7 +5846,15 @@
       "preferred_label": "Jon Petersson",
       "identifiers": {
         "project_identifier": "CR77",
-        "omeka_item_id": 2337
+        "omeka_item_id": 2337,
+        "wikidata_candidates": [
+          {
+            "qid": "Q141610263",
+            "label": "Jon Petersson Sandven",
+            "death_year": 1316,
+            "score": 0.85
+          }
+        ]
       },
       "name": {
         "raw": "Jon Petersson",
@@ -4591,7 +5892,15 @@
       "preferred_label": "Godfrey III of Louvain",
       "identifiers": {
         "project_identifier": "CR78",
-        "omeka_item_id": 2339
+        "omeka_item_id": 2339,
+        "wikidata_qid": "Q280016",
+        "wikidata_qid_provenance": {
+          "system": "wikidata-pre1500-snapshot",
+          "snapshot": "2026-10-02T22:51:17+00:00",
+          "method": "backfill_authority_qids v1",
+          "status": "asserted",
+          "why": "name match ≥ 0.85 with the toponym verified"
+        }
       },
       "name": {
         "raw": "Godfrey III of Louvain",
@@ -4601,6 +5910,8 @@
         "pattern": "regnal_of"
       },
       "variants": [
+        "Godefroy III de Louvain",
+        "Godefroy VIII de Basse-Lotharingie",
         "Godfrey",
         "Godfrey (Louvain)",
         "Godfrey 3",
@@ -4608,17 +5919,25 @@
         "Godfrey III",
         "Godfrey III of Louvain",
         "Godfrey, Louvain",
+        "Godfried III van Leuven",
+        "Godofredo III de Lovaina",
+        "Goffredo III di Lovanio",
         "Louvain's Godfrey"
       ],
       "normalized": {
         "preferred": "godfrey iii of louvain",
         "variants": [
+          "godefroy iii de louvain",
+          "godefroy viii de basse lotharingie",
           "godfrey",
           "godfrey 3",
           "godfrey 3 of louvain",
           "godfrey iii",
           "godfrey iii of louvain",
           "godfrey louvain",
+          "godfried iii van leuven",
+          "godofredo iii de lovaina",
+          "goffredo iii di lovanio",
           "louvain s godfrey"
         ]
       },
@@ -4676,6 +5995,51 @@
           {
             "system": "omeka-xml",
             "locator": "person/item_2339.xml"
+          }
+        ],
+        "Godofredo III de Lovaina": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q280016",
+            "lang": "es",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Godefroy III de Louvain": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q280016",
+            "lang": "fr",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Godefroy VIII de Basse-Lotharingie": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q280016",
+            "lang": "fr",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Goffredo III di Lovanio": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q280016",
+            "lang": "it",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Godfried III van Leuven": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q280016",
+            "lang": "nl",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
           }
         ]
       }
@@ -4754,7 +6118,15 @@
       "preferred_label": "Gerard II of Looz",
       "identifiers": {
         "project_identifier": "CR120",
-        "omeka_item_id": 2341
+        "omeka_item_id": 2341,
+        "wikidata_qid": "Q603991",
+        "wikidata_qid_provenance": {
+          "system": "wikidata-pre1500-snapshot",
+          "snapshot": "2026-10-02T22:51:17+00:00",
+          "method": "backfill_authority_qids v1",
+          "status": "asserted",
+          "why": "name match ≥ 0.85 with the toponym verified"
+        }
       },
       "name": {
         "raw": "Gerard II of Looz",
@@ -4770,7 +6142,9 @@
         "Gerard 2 of Looz",
         "Gerard II",
         "Gerard II of Looz",
+        "Gerard van Loon",
         "Gerard, Looz",
+        "Gérard II de Looz",
         "Looz's Gerard"
       ],
       "normalized": {
@@ -4780,8 +6154,10 @@
           "gerard 2",
           "gerard 2 of looz",
           "gerard ii",
+          "gerard ii de looz",
           "gerard ii of looz",
           "gerard looz",
+          "gerard van loon",
           "looz s gerard"
         ]
       },
@@ -4840,6 +6216,24 @@
             "system": "omeka-xml",
             "locator": "person/item_2341.xml"
           }
+        ],
+        "Gérard II de Looz": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q603991",
+            "lang": "fr",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Gerard van Loon": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q603991",
+            "lang": "nl",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
         ]
       }
     },
@@ -4848,7 +6242,15 @@
       "preferred_label": "Rodrigo Álvarez de Sarria",
       "identifiers": {
         "project_identifier": "CR118",
-        "omeka_item_id": 2344
+        "omeka_item_id": 2344,
+        "wikidata_qid": "Q972287",
+        "wikidata_qid_provenance": {
+          "system": "wikidata-pre1500-snapshot",
+          "snapshot": "2026-10-02T22:51:17+00:00",
+          "method": "backfill_authority_qids v1",
+          "status": "asserted",
+          "why": "name match ≥ 0.85 with the toponym verified"
+        }
       },
       "name": {
         "raw": "Rodrigo Álvarez de Sarria",
@@ -4858,11 +6260,13 @@
       },
       "variants": [
         "Rodrigo Alvarez de Sarria",
+        "Rodrigo Álvarez",
         "Rodrigo Álvarez de Sarria"
       ],
       "normalized": {
         "preferred": "rodrigo alvarez de sarria",
         "variants": [
+          "rodrigo alvarez",
           "rodrigo alvarez de sarria"
         ]
       },
@@ -4885,6 +6289,15 @@
             "system": "omeka-xml",
             "locator": "person/item_2344.xml"
           }
+        ],
+        "Rodrigo Álvarez": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q972287",
+            "lang": "de",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
         ]
       }
     },
@@ -4893,7 +6306,15 @@
       "preferred_label": "Henry of Portugal",
       "identifiers": {
         "project_identifier": "CR117",
-        "omeka_item_id": 2345
+        "omeka_item_id": 2345,
+        "wikidata_qid": "Q10294700",
+        "wikidata_qid_provenance": {
+          "system": "wikidata-pre1500-snapshot",
+          "snapshot": "2026-10-02T22:51:17+00:00",
+          "method": "backfill_authority_qids v1",
+          "status": "asserted",
+          "why": "name match ≥ 0.85 with the toponym verified"
+        }
       },
       "name": {
         "raw": "Henry of Portugal",
@@ -4902,6 +6323,8 @@
         "pattern": "of"
       },
       "variants": [
+        "Enrique de Portugal",
+        "Henri de Portugal",
         "Henry",
         "Henry (Portugal)",
         "Henry of Portugal",
@@ -4911,6 +6334,8 @@
       "normalized": {
         "preferred": "henry of portugal",
         "variants": [
+          "enrique de portugal",
+          "henri de portugal",
           "henry",
           "henry of portugal",
           "henry portugal",
@@ -4954,6 +6379,24 @@
             "system": "omeka-xml",
             "locator": "person/item_2345.xml"
           }
+        ],
+        "Enrique de Portugal": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q10294700",
+            "lang": "es",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Henri de Portugal": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q10294700",
+            "lang": "fr",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
         ]
       }
     },
@@ -4962,7 +6405,15 @@
       "preferred_label": "Maurice II of Craon",
       "identifiers": {
         "project_identifier": "CR115",
-        "omeka_item_id": 2350
+        "omeka_item_id": 2350,
+        "wikidata_qid": "Q511542",
+        "wikidata_qid_provenance": {
+          "system": "wikidata-pre1500-snapshot",
+          "snapshot": "2026-10-02T22:51:17+00:00",
+          "method": "backfill_authority_qids v1",
+          "status": "asserted",
+          "why": "name match ≥ 0.85 with the toponym verified"
+        }
       },
       "name": {
         "raw": "Maurice II of Craon",
@@ -4978,6 +6429,7 @@
         "Maurice 2",
         "Maurice 2 of Craon",
         "Maurice II",
+        "Maurice II de Craon",
         "Maurice II of Craon",
         "Maurice, Craon"
       ],
@@ -4990,6 +6442,7 @@
           "maurice 2 of craon",
           "maurice craon",
           "maurice ii",
+          "maurice ii de craon",
           "maurice ii of craon"
         ]
       },
@@ -5047,6 +6500,15 @@
           {
             "system": "omeka-xml",
             "locator": "person/item_2350.xml"
+          }
+        ],
+        "Maurice II de Craon": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q511542",
+            "lang": "de",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
           }
         ]
       }
@@ -5226,7 +6688,15 @@
       "preferred_label": "Andrew II of Vitré",
       "identifiers": {
         "project_identifier": "CR111",
-        "omeka_item_id": 2356
+        "omeka_item_id": 2356,
+        "wikidata_qid": "Q41964321",
+        "wikidata_qid_provenance": {
+          "system": "wikidata-pre1500-snapshot",
+          "snapshot": "2026-10-02T22:51:17+00:00",
+          "method": "backfill_authority_qids v1",
+          "status": "asserted",
+          "why": "name match ≥ 0.85 with the toponym verified"
+        }
       },
       "name": {
         "raw": "Andrew II of Vitré",
@@ -5244,11 +6714,13 @@
         "Andrew II of Vitre",
         "Andrew II of Vitré",
         "Andrew, Vitré",
+        "André II de Vitré",
         "Vitré's Andrew"
       ],
       "normalized": {
         "preferred": "andrew ii of vitre",
         "variants": [
+          "andre ii de vitre",
           "andrew",
           "andrew 2",
           "andrew 2 of vitre",
@@ -5319,6 +6791,15 @@
             "system": "omeka-xml",
             "locator": "person/item_2356.xml"
           }
+        ],
+        "André II de Vitré": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q41964321",
+            "lang": "fr",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
         ]
       }
     },
@@ -5327,7 +6808,15 @@
       "preferred_label": "Walter of St. Omer",
       "identifiers": {
         "project_identifier": "CR110",
-        "omeka_item_id": 2358
+        "omeka_item_id": 2358,
+        "wikidata_qid": "Q2544921",
+        "wikidata_qid_provenance": {
+          "system": "wikidata-pre1500-snapshot",
+          "snapshot": "2026-10-02T22:51:17+00:00",
+          "method": "backfill_authority_qids v1",
+          "status": "asserted",
+          "why": "name match ≥ 0.85 with the toponym verified"
+        }
       },
       "name": {
         "raw": "Walter of St. Omer",
@@ -5336,19 +6825,35 @@
         "pattern": "of"
       },
       "variants": [
+        "Gautier de Saint-Omer",
+        "Gualterio de Saint Omer",
+        "Gualtiero di Saint-Omer",
         "St. Omer's Walter",
         "Walter",
         "Walter (St. Omer)",
+        "Walter of Saint Omer",
         "Walter of St. Omer",
+        "Walter van Sint-Omaars",
+        "Walter van Sint-Omer",
+        "Walter von Saint-Omer",
+        "Walter von Tiberias",
         "Walter, St. Omer"
       ],
       "normalized": {
         "preferred": "walter of st omer",
         "variants": [
+          "gautier de saint omer",
+          "gualterio de saint omer",
+          "gualtiero di saint omer",
           "st omer s walter",
           "walter",
+          "walter of saint omer",
           "walter of st omer",
-          "walter st omer"
+          "walter st omer",
+          "walter van sint omaars",
+          "walter van sint omer",
+          "walter von saint omer",
+          "walter von tiberias"
         ]
       },
       "type": "person",
@@ -5387,6 +6892,78 @@
           {
             "system": "omeka-xml",
             "locator": "person/item_2358.xml"
+          }
+        ],
+        "Walter von Tiberias": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q2544921",
+            "lang": "de",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Walter von Saint-Omer": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q2544921",
+            "lang": "de",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Walter of Saint Omer": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q2544921",
+            "lang": "en",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Gualterio de Saint Omer": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q2544921",
+            "lang": "es",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Gautier de Saint-Omer": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q2544921",
+            "lang": "fr",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Gualtiero di Saint-Omer": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q2544921",
+            "lang": "it",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Walter van Sint-Omaars": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q2544921",
+            "lang": "nl",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Walter van Sint-Omer": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q2544921",
+            "lang": "nl",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
           }
         ]
       }
@@ -5490,7 +7067,15 @@
       "preferred_label": "William IV of Nevers",
       "identifiers": {
         "project_identifier": "CR108",
-        "omeka_item_id": 2360
+        "omeka_item_id": 2360,
+        "wikidata_qid": "Q2063139",
+        "wikidata_qid_provenance": {
+          "system": "wikidata-pre1500-snapshot",
+          "snapshot": "2026-10-02T22:51:17+00:00",
+          "method": "backfill_authority_qids v1",
+          "status": "asserted",
+          "why": "name match ≥ 0.85 with the toponym verified"
+        }
       },
       "name": {
         "raw": "William IV of Nevers",
@@ -5500,7 +7085,13 @@
         "pattern": "regnal_of"
       },
       "variants": [
+        "Guglielmo IV di Nevers",
+        "Guillaume de Nevers",
+        "Guillaume IV de Nevers",
+        "Guillem IV de Nevers",
         "Nevers's William",
+        "Wilhelm IV. von Nevers",
+        "Willem IV van Nevers",
         "William",
         "William (Nevers)",
         "William 4",
@@ -5512,7 +7103,13 @@
       "normalized": {
         "preferred": "william iv of nevers",
         "variants": [
+          "guglielmo iv di nevers",
+          "guillaume de nevers",
+          "guillaume iv de nevers",
+          "guillem iv de nevers",
           "nevers s william",
+          "wilhelm iv von nevers",
+          "willem iv van nevers",
           "william",
           "william 4",
           "william 4 of nevers",
@@ -5575,6 +7172,60 @@
           {
             "system": "omeka-xml",
             "locator": "person/item_2360.xml"
+          }
+        ],
+        "Wilhelm IV. von Nevers": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q2063139",
+            "lang": "de",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Guillem IV de Nevers": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q2063139",
+            "lang": "es",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Guillaume de Nevers": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q2063139",
+            "lang": "fr",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Guillaume IV de Nevers": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q2063139",
+            "lang": "fr",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Guglielmo IV di Nevers": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q2063139",
+            "lang": "it",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Willem IV van Nevers": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q2063139",
+            "lang": "nl",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
           }
         ]
       }
@@ -5685,7 +7336,15 @@
       "preferred_label": "Peire Bremon lo Tort",
       "identifiers": {
         "project_identifier": "CR106",
-        "omeka_item_id": 2362
+        "omeka_item_id": 2362,
+        "wikidata_candidates": [
+          {
+            "qid": "Q3898798",
+            "label": "Peire Bremon Ricas Novas",
+            "death_year": 1270,
+            "score": 0.65
+          }
+        ]
       },
       "name": {
         "raw": "Peire Bremon lo Tort",
@@ -5723,7 +7382,15 @@
       "preferred_label": "Giraut de Borneil",
       "identifiers": {
         "project_identifier": "CR105",
-        "omeka_item_id": 2363
+        "omeka_item_id": 2363,
+        "wikidata_qid": "Q673799",
+        "wikidata_qid_provenance": {
+          "system": "wikidata-pre1500-snapshot",
+          "snapshot": "2026-10-02T22:51:17+00:00",
+          "method": "backfill_authority_qids v1",
+          "status": "asserted",
+          "why": "name match ≥ 0.85 with the toponym verified"
+        }
       },
       "name": {
         "raw": "Giraut de Borneil",
@@ -5732,12 +7399,18 @@
         "pattern": "space"
       },
       "variants": [
-        "Giraut de Borneil"
+        "Gerardus de Borneil",
+        "Giraut de Borneil",
+        "Giraut de Bornelh",
+        "Guiraut de Bornelh"
       ],
       "normalized": {
         "preferred": "giraut de borneil",
         "variants": [
-          "giraut de borneil"
+          "gerardus de borneil",
+          "giraut de borneil",
+          "giraut de bornelh",
+          "guiraut de bornelh"
         ]
       },
       "type": "person",
@@ -5753,6 +7426,33 @@
             "system": "omeka-xml",
             "locator": "person/item_2363.xml"
           }
+        ],
+        "Giraut de Bornelh": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q673799",
+            "lang": "de",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Guiraut de Bornelh": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q673799",
+            "lang": "en",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Gerardus de Borneil": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q673799",
+            "lang": "la",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
         ]
       }
     },
@@ -5761,7 +7461,15 @@
       "preferred_label": "Peire Vidal",
       "identifiers": {
         "project_identifier": "CR104",
-        "omeka_item_id": 2364
+        "omeka_item_id": 2364,
+        "wikidata_candidates": [
+          {
+            "qid": "Q5269",
+            "label": "Peire Vidal",
+            "death_year": 1205,
+            "score": 1.0
+          }
+        ]
       },
       "name": {
         "raw": "Peire Vidal",
@@ -6412,7 +8120,21 @@
       "preferred_label": "William V of Montferrat",
       "identifiers": {
         "project_identifier": "CR98",
-        "omeka_item_id": 2376
+        "omeka_item_id": 2376,
+        "wikidata_candidates": [
+          {
+            "qid": "Q255101",
+            "label": "William of Montferrat",
+            "death_year": 1177,
+            "score": 0.85
+          },
+          {
+            "qid": "Q778149",
+            "label": "William V, Marquess of Montferrat",
+            "death_year": 1191,
+            "score": 0.85
+          }
+        ]
       },
       "name": {
         "raw": "William V of Montferrat",
@@ -6629,7 +8351,21 @@
       "preferred_label": "Sibylla of Anjou",
       "identifiers": {
         "project_identifier": "CR95",
-        "omeka_item_id": 2379
+        "omeka_item_id": 2379,
+        "wikidata_candidates": [
+          {
+            "qid": "Q466230",
+            "label": "Sibylla of Anjou",
+            "death_year": 1165,
+            "score": 1.0
+          },
+          {
+            "qid": "Q234782",
+            "label": "Sibylla",
+            "death_year": 1190,
+            "score": 1.0
+          }
+        ]
       },
       "name": {
         "raw": "Sibylla of Anjou",
@@ -6698,7 +8434,15 @@
       "preferred_label": "Stephen I of Sancerre",
       "identifiers": {
         "project_identifier": "CR94",
-        "omeka_item_id": 2380
+        "omeka_item_id": 2380,
+        "wikidata_qid": "Q301217",
+        "wikidata_qid_provenance": {
+          "system": "wikidata-pre1500-snapshot",
+          "snapshot": "2026-10-02T22:51:17+00:00",
+          "method": "backfill_authority_qids v1",
+          "status": "asserted",
+          "why": "name match ≥ 0.85 with the toponym verified"
+        }
       },
       "name": {
         "raw": "Stephen I of Sancerre",
@@ -6708,25 +8452,37 @@
         "pattern": "regnal_of"
       },
       "variants": [
+        "Esteban I de Sancerre",
+        "Etienne Ier de Sancerre",
         "Sancerre's Stephen",
+        "Stefano I di Sancerre",
+        "Stephan I van Sancerre",
         "Stephen",
         "Stephen (Sancerre)",
         "Stephen 1",
         "Stephen 1 of Sancerre",
+        "Stephen de Sancerre",
         "Stephen I",
         "Stephen I of Sancerre",
-        "Stephen, Sancerre"
+        "Stephen, Sancerre",
+        "ستيفن الأول دي سانسير"
       ],
       "normalized": {
         "preferred": "stephen i of sancerre",
         "variants": [
+          "esteban i de sancerre",
+          "etienne ier de sancerre",
           "sancerre s stephen",
+          "stefano i di sancerre",
+          "stephan i van sancerre",
           "stephen",
           "stephen 1",
           "stephen 1 of sancerre",
+          "stephen de sancerre",
           "stephen i",
           "stephen i of sancerre",
-          "stephen sancerre"
+          "stephen sancerre",
+          "ستيفن الاول دي سانسير"
         ]
       },
       "type": "person",
@@ -6784,6 +8540,60 @@
             "system": "omeka-xml",
             "locator": "person/item_2380.xml"
           }
+        ],
+        "ستيفن الأول دي سانسير": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q301217",
+            "lang": "ar",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Stephen de Sancerre": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q301217",
+            "lang": "en",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Esteban I de Sancerre": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q301217",
+            "lang": "es",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Etienne Ier de Sancerre": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q301217",
+            "lang": "fr",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Stefano I di Sancerre": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q301217",
+            "lang": "it",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Stephan I van Sancerre": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q301217",
+            "lang": "nl",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
         ]
       }
     },
@@ -6792,7 +8602,15 @@
       "preferred_label": "Stephen II of Auxonne",
       "identifiers": {
         "project_identifier": "CR93",
-        "omeka_item_id": 2381
+        "omeka_item_id": 2381,
+        "wikidata_qid": "Q11920998",
+        "wikidata_qid_provenance": {
+          "system": "wikidata-pre1500-snapshot",
+          "snapshot": "2026-10-02T22:51:17+00:00",
+          "method": "backfill_authority_qids v1",
+          "status": "asserted",
+          "why": "name match ≥ 0.85 with the toponym verified"
+        }
       },
       "name": {
         "raw": "Stephen II of Auxonne",
@@ -6803,18 +8621,26 @@
       },
       "variants": [
         "Auxonne's Stephen",
+        "Stefano II di Auxonne",
+        "Stefanus I van Auxonne",
         "Stephen",
         "Stephen (Auxonne)",
         "Stephen 2",
         "Stephen 2 of Auxonne",
         "Stephen II",
         "Stephen II of Auxonne",
-        "Stephen, Auxonne"
+        "Stephen, Auxonne",
+        "Étienne I d'Auxonne",
+        "Étienne II de Bourgogne"
       ],
       "normalized": {
         "preferred": "stephen ii of auxonne",
         "variants": [
           "auxonne s stephen",
+          "etienne i d auxonne",
+          "etienne ii de bourgogne",
+          "stefano ii di auxonne",
+          "stefanus i van auxonne",
           "stephen",
           "stephen 2",
           "stephen 2 of auxonne",
@@ -6878,6 +8704,42 @@
             "system": "omeka-xml",
             "locator": "person/item_2381.xml"
           }
+        ],
+        "Étienne II de Bourgogne": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q11920998",
+            "lang": "fr",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Étienne I d'Auxonne": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q11920998",
+            "lang": "fr",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Stefano II di Auxonne": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q11920998",
+            "lang": "it",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Stefanus I van Auxonne": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q11920998",
+            "lang": "nl",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
         ]
       }
     },
@@ -6886,7 +8748,15 @@
       "preferred_label": "Hugh III of Burgundy",
       "identifiers": {
         "project_identifier": "CR92",
-        "omeka_item_id": 2382
+        "omeka_item_id": 2382,
+        "wikidata_qid": "Q464908",
+        "wikidata_qid_provenance": {
+          "system": "wikidata-pre1500-snapshot",
+          "snapshot": "2026-10-02T22:51:17+00:00",
+          "method": "backfill_authority_qids v1",
+          "status": "asserted",
+          "why": "name match ≥ 0.85 with the toponym verified"
+        }
       },
       "name": {
         "raw": "Hugh III of Burgundy",
@@ -6903,7 +8773,12 @@
         "Hugh 3 of Burgundy",
         "Hugh III",
         "Hugh III of Burgundy",
-        "Hugh, Burgundy"
+        "Hugh, Burgundy",
+        "Hugo III de Borgoña",
+        "Hugo III van Boergondie",
+        "Hugo III van Bourgondie",
+        "Hugues III de Bourgogne",
+        "Ugo III di Borgogna"
       ],
       "normalized": {
         "preferred": "hugh iii of burgundy",
@@ -6914,7 +8789,12 @@
           "hugh 3 of burgundy",
           "hugh burgundy",
           "hugh iii",
-          "hugh iii of burgundy"
+          "hugh iii of burgundy",
+          "hugo iii de borgona",
+          "hugo iii van boergondie",
+          "hugo iii van bourgondie",
+          "hugues iii de bourgogne",
+          "ugo iii di borgogna"
         ]
       },
       "type": "person",
@@ -6971,6 +8851,51 @@
           {
             "system": "omeka-xml",
             "locator": "person/item_2382.xml"
+          }
+        ],
+        "Hugo III de Borgoña": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q464908",
+            "lang": "es",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Hugues III de Bourgogne": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q464908",
+            "lang": "fr",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Ugo III di Borgogna": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q464908",
+            "lang": "it",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Hugo III van Boergondie": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q464908",
+            "lang": "nl",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Hugo III van Bourgondie": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q464908",
+            "lang": "nl",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
           }
         ]
       }
@@ -7081,7 +9006,15 @@
       "preferred_label": "Dedo IV of Wettin",
       "identifiers": {
         "project_identifier": "CR90",
-        "omeka_item_id": 2384
+        "omeka_item_id": 2384,
+        "wikidata_qid": "Q875452",
+        "wikidata_qid_provenance": {
+          "system": "wikidata-pre1500-snapshot",
+          "snapshot": "2026-10-02T22:51:17+00:00",
+          "method": "backfill_authority_qids v1",
+          "status": "asserted",
+          "why": "name match ≥ 0.85 with the toponym verified"
+        }
       },
       "name": {
         "raw": "Dedo IV of Wettin",
@@ -7096,7 +9029,9 @@
         "Dedo 4",
         "Dedo 4 of Wettin",
         "Dedo IV",
+        "Dedo IV di Wettin",
         "Dedo IV of Wettin",
+        "Dedo IV. von Wettin",
         "Dedo, Wettin",
         "Wettin's Dedo"
       ],
@@ -7107,7 +9042,9 @@
           "dedo 4",
           "dedo 4 of wettin",
           "dedo iv",
+          "dedo iv di wettin",
           "dedo iv of wettin",
+          "dedo iv von wettin",
           "dedo wettin",
           "wettin s dedo"
         ]
@@ -7166,6 +9103,24 @@
           {
             "system": "omeka-xml",
             "locator": "person/item_2384.xml"
+          }
+        ],
+        "Dedo IV. von Wettin": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q875452",
+            "lang": "de",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Dedo IV di Wettin": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q875452",
+            "lang": "it",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
           }
         ]
       }
@@ -7251,7 +9206,15 @@
       "preferred_label": "Robert V of Béthune",
       "identifiers": {
         "project_identifier": "CR88",
-        "omeka_item_id": 2387
+        "omeka_item_id": 2387,
+        "wikidata_qid": "Q1392290",
+        "wikidata_qid_provenance": {
+          "system": "wikidata-pre1500-snapshot",
+          "snapshot": "2026-10-02T22:51:17+00:00",
+          "method": "backfill_authority_qids v1",
+          "status": "asserted",
+          "why": "name match ≥ 0.85 with the toponym verified"
+        }
       },
       "name": {
         "raw": "Robert V of Béthune",
@@ -7266,10 +9229,13 @@
         "Robert (Béthune)",
         "Robert 5",
         "Robert 5 of Béthune",
+        "Robert de Béthune",
         "Robert V",
+        "Robert V de Béthune",
         "Robert V of Bethune",
         "Robert V of Béthune",
-        "Robert, Béthune"
+        "Robert, Béthune",
+        "Robrecht V van Bethune"
       ],
       "normalized": {
         "preferred": "robert v of bethune",
@@ -7279,8 +9245,11 @@
           "robert 5",
           "robert 5 of bethune",
           "robert bethune",
+          "robert de bethune",
           "robert v",
-          "robert v of bethune"
+          "robert v de bethune",
+          "robert v of bethune",
+          "robrecht v van bethune"
         ]
       },
       "type": "person",
@@ -7344,6 +9313,33 @@
             "system": "omeka-xml",
             "locator": "person/item_2387.xml"
           }
+        ],
+        "Robert de Béthune": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q1392290",
+            "lang": "en",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Robrecht V van Bethune": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q1392290",
+            "lang": "en",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Robert V de Béthune": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q1392290",
+            "lang": "es",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
         ]
       }
     },
@@ -7352,7 +9348,33 @@
       "preferred_label": "Ermengarde of Anjou",
       "identifiers": {
         "project_identifier": "CR87",
-        "omeka_item_id": 2388
+        "omeka_item_id": 2388,
+        "wikidata_candidates": [
+          {
+            "qid": "Q75243063",
+            "label": "Ermengarde de Bourbon",
+            "death_year": 1076,
+            "score": 1.0
+          },
+          {
+            "qid": "Q75243069",
+            "label": "Orengarde de Châtelaillon",
+            "death_year": 1087,
+            "score": 1.0
+          },
+          {
+            "qid": "Q3056729",
+            "label": "Ermengarde of Anjou",
+            "death_year": 1146,
+            "score": 1.0
+          },
+          {
+            "qid": "Q263343",
+            "label": "Ermengarde of Anjou, Duchess of Burgundy",
+            "death_year": 1076,
+            "score": 0.85
+          }
+        ]
       },
       "name": {
         "raw": "Ermengarde of Anjou",
@@ -7421,7 +9443,15 @@
       "preferred_label": "Constance of Toulouse",
       "identifiers": {
         "project_identifier": "CR86",
-        "omeka_item_id": 2389
+        "omeka_item_id": 2389,
+        "wikidata_qid": "Q1186147",
+        "wikidata_qid_provenance": {
+          "system": "wikidata-pre1500-snapshot",
+          "snapshot": "2026-10-02T22:51:17+00:00",
+          "method": "backfill_authority_qids v1",
+          "status": "asserted",
+          "why": "name match ≥ 0.85 with the toponym verified"
+        }
       },
       "name": {
         "raw": "Constance of Toulouse",
@@ -7432,17 +9462,21 @@
       "variants": [
         "Constance",
         "Constance (Toulouse)",
+        "Constance Capet",
         "Constance of Toulouse",
         "Constance, Toulouse",
-        "Toulouse's Constance"
+        "Toulouse's Constance",
+        "كونستانس الفرنسية"
       ],
       "normalized": {
         "preferred": "constance of toulouse",
         "variants": [
           "constance",
+          "constance capet",
           "constance of toulouse",
           "constance toulouse",
-          "toulouse s constance"
+          "toulouse s constance",
+          "كونستانس الفرنسية"
         ]
       },
       "type": "person",
@@ -7482,6 +9516,24 @@
             "system": "omeka-xml",
             "locator": "person/item_2389.xml"
           }
+        ],
+        "كونستانس الفرنسية": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q1186147",
+            "lang": "ar",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Constance Capet": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q1186147",
+            "lang": "nl",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
         ]
       }
     },
@@ -7490,7 +9542,45 @@
       "preferred_label": "Fernando Pérez",
       "identifiers": {
         "project_identifier": "CR85",
-        "omeka_item_id": 2390
+        "omeka_item_id": 2390,
+        "wikidata_candidates": [
+          {
+            "qid": "Q5801647",
+            "label": "Fernando Pérez",
+            "death_year": 1289,
+            "score": 1.0
+          },
+          {
+            "qid": "Q47464142",
+            "label": "Fernando Pérez de Lara",
+            "death_year": 1150,
+            "score": 0.85
+          },
+          {
+            "qid": "Q3327207",
+            "label": "Fernando Perez de Traba",
+            "death_year": 1155,
+            "score": 0.85
+          },
+          {
+            "qid": "Q121298043",
+            "label": "Fernando Pérez de Funes",
+            "death_year": 1223,
+            "score": 0.85
+          },
+          {
+            "qid": "Q108481058",
+            "label": "Fernando Pérez de Páramo",
+            "death_year": 1290,
+            "score": 0.85
+          },
+          {
+            "qid": "Q8961430",
+            "label": "Fernando Perez Ponce de Leão",
+            "death_year": 1291,
+            "score": 0.85
+          }
+        ]
       },
       "name": {
         "raw": "Fernando Pérez",
@@ -7580,7 +9670,15 @@
       "preferred_label": "Henry de Lacy",
       "identifiers": {
         "project_identifier": "CR83",
-        "omeka_item_id": 2392
+        "omeka_item_id": 2392,
+        "wikidata_qid": "Q1237622",
+        "wikidata_qid_provenance": {
+          "system": "wikidata-pre1500-snapshot",
+          "snapshot": "2026-10-02T22:51:17+00:00",
+          "method": "backfill_authority_qids v1",
+          "status": "asserted",
+          "why": "name match ≥ 0.85 with the toponym verified"
+        }
       },
       "name": {
         "raw": "Henry de Lacy",
@@ -7589,12 +9687,30 @@
         "pattern": "space"
       },
       "variants": [
-        "Henry de Lacy"
+        "Enrico di Lacy",
+        "Henri Cuens de Nicole",
+        "Henri de Lacy",
+        "Henri de Lacy Cuens de Nicole",
+        "Henri de Nichole",
+        "Henri de Nicole",
+        "Henricus de Lacy",
+        "Henry de Lacy",
+        "Henry de Nichole",
+        "Henry de Nicole"
       ],
       "normalized": {
         "preferred": "henry de lacy",
         "variants": [
-          "henry de lacy"
+          "enrico di lacy",
+          "henri cuens de nicole",
+          "henri de lacy",
+          "henri de lacy cuens de nicole",
+          "henri de nichole",
+          "henri de nicole",
+          "henricus de lacy",
+          "henry de lacy",
+          "henry de nichole",
+          "henry de nicole"
         ]
       },
       "type": "person",
@@ -7609,6 +9725,87 @@
           {
             "system": "omeka-xml",
             "locator": "person/item_2392.xml"
+          }
+        ],
+        "Henri de Lacy": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q1237622",
+            "lang": "en",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Henri de Nichole": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q1237622",
+            "lang": "en",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Henri de Nicole": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q1237622",
+            "lang": "en",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Henry de Nichole": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q1237622",
+            "lang": "en",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Henry de Nicole": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q1237622",
+            "lang": "en",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Henri Cuens de Nicole": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q1237622",
+            "lang": "fr",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Henri de Lacy Cuens de Nicole": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q1237622",
+            "lang": "fr",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Enrico di Lacy": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q1237622",
+            "lang": "it",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Henricus de Lacy": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q1237622",
+            "lang": "la",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
           }
         ]
       }
@@ -7687,7 +9884,15 @@
       "preferred_label": "Rodrigo González de Lara",
       "identifiers": {
         "project_identifier": "CR 145",
-        "omeka_item_id": 2401
+        "omeka_item_id": 2401,
+        "wikidata_qid": "Q7357345",
+        "wikidata_qid_provenance": {
+          "system": "wikidata-pre1500-snapshot",
+          "snapshot": "2026-10-02T22:51:17+00:00",
+          "method": "backfill_authority_qids v1",
+          "status": "asserted",
+          "why": "name match ≥ 0.85 with the toponym verified"
+        }
       },
       "name": {
         "raw": "Rodrigo González de Lara",
@@ -7697,12 +9902,14 @@
       },
       "variants": [
         "Rodrigo Gonzalez de Lara",
-        "Rodrigo González de Lara"
+        "Rodrigo González de Lara",
+        "رودريغو غونثالث دي لارا"
       ],
       "normalized": {
         "preferred": "rodrigo gonzalez de lara",
         "variants": [
-          "rodrigo gonzalez de lara"
+          "rodrigo gonzalez de lara",
+          "رودريغو غونثالث دي لارا"
         ]
       },
       "type": "person",
@@ -7724,6 +9931,15 @@
             "system": "omeka-xml",
             "locator": "person/item_2401.xml"
           }
+        ],
+        "رودريغو غونثالث دي لارا": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q7357345",
+            "lang": "ar",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
         ]
       }
     },
@@ -7732,7 +9948,15 @@
       "preferred_label": "Albert the Bear",
       "identifiers": {
         "project_identifier": "CR 165",
-        "omeka_item_id": 2402
+        "omeka_item_id": 2402,
+        "wikidata_qid": "Q156041",
+        "wikidata_qid_provenance": {
+          "system": "wikidata-pre1500-snapshot",
+          "snapshot": "2026-10-02T22:51:17+00:00",
+          "method": "backfill_authority_qids v1",
+          "status": "asserted",
+          "why": "name match ≥ 0.85 with the toponym verified"
+        }
       },
       "name": {
         "raw": "Albert the Bear",
@@ -7743,14 +9967,50 @@
       "variants": [
         "Albert",
         "Albert (Bear)",
-        "Albert the Bear"
+        "Albert Ier",
+        "Albert Ier de Brandebourg",
+        "Albert Ier l'Ours",
+        "Albert l'Ours",
+        "Albert the Bear",
+        "Alberto di Ballenstedt",
+        "Alberto el Oso",
+        "Alberto I de Brandeburgo",
+        "Alberto I de Brandemburgo",
+        "Alberto I de Brandenburgo",
+        "Alberto I di Brandeburgo",
+        "Alberto l'Orso",
+        "Albertus ursus",
+        "Albrecht de Beer",
+        "Albrecht I de Beer",
+        "Albrecht I van Brandenburg",
+        "Albrecht I. von Brandenburg",
+        "Albrecht von Ballenstedt",
+        "ألبرشت الأول، مرغريف براندبورغ"
       ],
       "normalized": {
         "preferred": "albert the bear",
         "variants": [
           "albert",
           "albert bear",
-          "albert the bear"
+          "albert ier",
+          "albert ier de brandebourg",
+          "albert ier l ours",
+          "albert l ours",
+          "albert the bear",
+          "alberto di ballenstedt",
+          "alberto el oso",
+          "alberto i de brandeburgo",
+          "alberto i de brandemburgo",
+          "alberto i de brandenburgo",
+          "alberto i di brandeburgo",
+          "alberto l orso",
+          "albertus ursus",
+          "albrecht de beer",
+          "albrecht i de beer",
+          "albrecht i van brandenburg",
+          "albrecht i von brandenburg",
+          "albrecht von ballenstedt",
+          "البرشت الاول مرغريف براندبورغ"
         ]
       },
       "type": "person",
@@ -7778,6 +10038,168 @@
             "system": "omeka-xml",
             "locator": "person/item_2402.xml"
           }
+        ],
+        "ألبرشت الأول، مرغريف براندبورغ": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q156041",
+            "lang": "ar",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Albrecht I. von Brandenburg": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q156041",
+            "lang": "de",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Albrecht von Ballenstedt": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q156041",
+            "lang": "de",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Alberto I de Brandemburgo": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q156041",
+            "lang": "es",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Alberto I de Brandenburgo": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q156041",
+            "lang": "es",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Alberto el Oso": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q156041",
+            "lang": "es",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Alberto I de Brandeburgo": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q156041",
+            "lang": "es",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Albert Ier de Brandebourg": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q156041",
+            "lang": "fr",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Albert Ier l'Ours": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q156041",
+            "lang": "fr",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Albert l'Ours": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q156041",
+            "lang": "fr",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Albert Ier": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q156041",
+            "lang": "fr",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Alberto di Ballenstedt": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q156041",
+            "lang": "it",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Alberto l'Orso": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q156041",
+            "lang": "it",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Alberto I di Brandeburgo": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q156041",
+            "lang": "it",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Albertus ursus": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q156041",
+            "lang": "la",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Albrecht I de Beer": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q156041",
+            "lang": "nl",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Albrecht I van Brandenburg": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q156041",
+            "lang": "nl",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Albrecht de Beer": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q156041",
+            "lang": "nl",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
         ]
       }
     },
@@ -7786,7 +10208,15 @@
       "preferred_label": "Sophie of Winzenburg",
       "identifiers": {
         "project_identifier": "CR166",
-        "omeka_item_id": 2403
+        "omeka_item_id": 2403,
+        "wikidata_qid": "Q1481103",
+        "wikidata_qid_provenance": {
+          "system": "wikidata-pre1500-snapshot",
+          "snapshot": "2026-10-02T22:51:17+00:00",
+          "method": "backfill_authority_qids v1",
+          "status": "asserted",
+          "why": "name match ≥ 0.85 with the toponym verified"
+        }
       },
       "name": {
         "raw": "Sophie of Winzenburg",
@@ -7795,17 +10225,25 @@
         "pattern": "of"
       },
       "variants": [
+        "Sofia di Winzenburg",
         "Sophie",
         "Sophie (Winzenburg)",
+        "Sophie de Winzenbourg",
         "Sophie of Winzenburg",
+        "Sophie van Winzenburg",
+        "Sophie von Winzenburg",
         "Sophie, Winzenburg",
         "Winzenburg's Sophie"
       ],
       "normalized": {
         "preferred": "sophie of winzenburg",
         "variants": [
+          "sofia di winzenburg",
           "sophie",
+          "sophie de winzenbourg",
           "sophie of winzenburg",
+          "sophie van winzenburg",
+          "sophie von winzenburg",
           "sophie winzenburg",
           "winzenburg s sophie"
         ]
@@ -7846,6 +10284,42 @@
           {
             "system": "omeka-xml",
             "locator": "person/item_2403.xml"
+          }
+        ],
+        "Sophie von Winzenburg": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q1481103",
+            "lang": "de",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Sophie de Winzenbourg": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q1481103",
+            "lang": "fr",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Sofia di Winzenburg": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q1481103",
+            "lang": "it",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Sophie van Winzenburg": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q1481103",
+            "lang": "nl",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
           }
         ]
       }
@@ -8031,7 +10505,15 @@
       "preferred_label": "Leopold V of Austria",
       "identifiers": {
         "project_identifier": "CR170",
-        "omeka_item_id": 2408
+        "omeka_item_id": 2408,
+        "wikidata_qid": "Q319713",
+        "wikidata_qid_provenance": {
+          "system": "wikidata-pre1500-snapshot",
+          "snapshot": "2026-10-02T22:51:17+00:00",
+          "method": "backfill_authority_qids v1",
+          "status": "asserted",
+          "why": "name match ≥ 0.85 with the toponym verified"
+        }
       },
       "name": {
         "raw": "Leopold V of Austria",
@@ -8047,8 +10529,14 @@
         "Leopold 5",
         "Leopold 5 of Austria",
         "Leopold V",
+        "Leopold V d'Autriche",
         "Leopold V of Austria",
-        "Leopold, Austria"
+        "Leopold V van Oostenrijk",
+        "Leopold V. von Österreich",
+        "Leopold, Austria",
+        "Leopoldo V \"el Virtuoso\"",
+        "Leopoldo V di Babenberg",
+        "Léopold V de Babenberg"
       ],
       "normalized": {
         "preferred": "leopold v of austria",
@@ -8059,7 +10547,13 @@
           "leopold 5 of austria",
           "leopold austria",
           "leopold v",
-          "leopold v of austria"
+          "leopold v d autriche",
+          "leopold v de babenberg",
+          "leopold v of austria",
+          "leopold v van oostenrijk",
+          "leopold v von osterreich",
+          "leopoldo v di babenberg",
+          "leopoldo v el virtuoso"
         ]
       },
       "type": "person",
@@ -8117,6 +10611,60 @@
             "system": "omeka-xml",
             "locator": "person/item_2408.xml"
           }
+        ],
+        "Leopold V. von Österreich": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q319713",
+            "lang": "de",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Leopoldo V \"el Virtuoso\"": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q319713",
+            "lang": "es",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Leopold V d'Autriche": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q319713",
+            "lang": "fr",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Léopold V de Babenberg": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q319713",
+            "lang": "fr",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Leopoldo V di Babenberg": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q319713",
+            "lang": "it",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Leopold V van Oostenrijk": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q319713",
+            "lang": "nl",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
         ]
       }
     },
@@ -8125,7 +10673,15 @@
       "preferred_label": "Conrad of Meissen",
       "identifiers": {
         "project_identifier": "CR175",
-        "omeka_item_id": 2409
+        "omeka_item_id": 2409,
+        "wikidata_qid": "Q531805",
+        "wikidata_qid_provenance": {
+          "system": "wikidata-pre1500-snapshot",
+          "snapshot": "2026-10-02T22:51:17+00:00",
+          "method": "backfill_authority_qids v1",
+          "status": "asserted",
+          "why": "name match ≥ 0.85 with the toponym verified"
+        }
       },
       "name": {
         "raw": "Conrad of Meissen",
@@ -8136,16 +10692,26 @@
       "variants": [
         "Conrad",
         "Conrad (Meissen)",
+        "Conrad Ier le Pieux",
         "Conrad of Meissen",
+        "Conrad the Great",
         "Conrad, Meissen",
+        "Conrado I de Wettin",
+        "Corrado di Meissen",
+        "Koenraad de Grote",
         "Meissen's Conrad"
       ],
       "normalized": {
         "preferred": "conrad of meissen",
         "variants": [
           "conrad",
+          "conrad ier le pieux",
           "conrad meissen",
           "conrad of meissen",
+          "conrad the great",
+          "conrado i de wettin",
+          "corrado di meissen",
+          "koenraad de grote",
           "meissen s conrad"
         ]
       },
@@ -8186,6 +10752,51 @@
             "system": "omeka-xml",
             "locator": "person/item_2409.xml"
           }
+        ],
+        "Conrad the Great": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q531805",
+            "lang": "en",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Conrado I de Wettin": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q531805",
+            "lang": "es",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Conrad Ier le Pieux": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q531805",
+            "lang": "fr",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Corrado di Meissen": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q531805",
+            "lang": "it",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Koenraad de Grote": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q531805",
+            "lang": "nl",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
         ]
       }
     },
@@ -8194,7 +10805,21 @@
       "preferred_label": "Stephen of Perche",
       "identifiers": {
         "project_identifier": "CR176",
-        "omeka_item_id": 2410
+        "omeka_item_id": 2410,
+        "wikidata_candidates": [
+          {
+            "qid": "Q433390",
+            "label": "Stephen du Perche",
+            "death_year": 1169,
+            "score": 0.85
+          },
+          {
+            "qid": "Q78535853",
+            "label": "Stephen du Perche",
+            "death_year": 1205,
+            "score": 0.85
+          }
+        ]
       },
       "name": {
         "raw": "Stephen of Perche",
@@ -8263,7 +10888,15 @@
       "preferred_label": "William Gouet",
       "identifiers": {
         "project_identifier": "CR178",
-        "omeka_item_id": 2411
+        "omeka_item_id": 2411,
+        "wikidata_candidates": [
+          {
+            "qid": "Q76066403",
+            "label": "William IV Gouet",
+            "death_year": 1170,
+            "score": 0.85
+          }
+        ]
       },
       "name": {
         "raw": "William Gouet",
@@ -8450,19 +11083,49 @@
       "variants": [
         "Bouillon's Godfrey",
         "Duke Godfrey",
+        "Galfridus Bullioniensis",
+        "Godefridus Bullionensis",
+        "Godefridus Bullonius",
+        "Godefroi de Bouillon",
+        "Godefroi IV de Bouillon",
+        "Godefroid de Bouillon",
+        "Godefroy de Bouillon",
+        "Godefroy de Boulogne",
+        "Godefroy V de Bouillon",
         "Godfrey",
         "Godfrey (Bouillon)",
         "Godfrey of Bouillon",
-        "Godfrey, Bouillon"
+        "Godfrey, Bouillon",
+        "Godfried IV van Bouillon",
+        "Godfried van Bouillon",
+        "Godofredo de Bouillon",
+        "Goffredo da Buglione",
+        "Goffredo di Buglione",
+        "Gottfried von Bouillon"
       ],
       "normalized": {
         "preferred": "godfrey of bouillon",
         "variants": [
           "bouillon s godfrey",
           "duke godfrey",
+          "galfridus bullioniensis",
+          "godefridus bullionensis",
+          "godefridus bullonius",
+          "godefroi de bouillon",
+          "godefroi iv de bouillon",
+          "godefroid de bouillon",
+          "godefroy de bouillon",
+          "godefroy de boulogne",
+          "godefroy v de bouillon",
           "godfrey",
           "godfrey bouillon",
-          "godfrey of bouillon"
+          "godfrey of bouillon",
+          "godfried iv van bouillon",
+          "godfried van bouillon",
+          "godofredo de bouillon",
+          "goffredo da buglione",
+          "goffredo di buglione",
+          "gottfried von bouillon"
         ]
       },
       "type": "person",
@@ -8493,7 +11156,8 @@
         "Godfrey": [
           {
             "system": "github-issue",
-            "locator": "issue:45"
+            "locator": "issue:45",
+            "bare": "attested"
           }
         ],
         "Godfrey (Bouillon)": [
@@ -8506,6 +11170,141 @@
           {
             "system": "github-issue",
             "locator": "issue:45"
+          }
+        ],
+        "Gottfried von Bouillon": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q76721",
+            "lang": "de",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Godefroy V de Bouillon": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q76721",
+            "lang": "en",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Godefridus Bullonius": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q76721",
+            "lang": "es",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Godofredo de Bouillon": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q76721",
+            "lang": "es",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Godefroi de Bouillon": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q76721",
+            "lang": "fr",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Godefroid de Bouillon": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q76721",
+            "lang": "fr",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Godefroy de Boulogne": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q76721",
+            "lang": "fr",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Godefroy de Bouillon": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q76721",
+            "lang": "fr",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Goffredo da Buglione": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q76721",
+            "lang": "it",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Goffredo di Buglione": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q76721",
+            "lang": "it",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Galfridus Bullioniensis": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q76721",
+            "lang": "la",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Godefridus Bullionensis": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q76721",
+            "lang": "la",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Godefroi IV de Bouillon": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q76721",
+            "lang": "nl",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Godfried IV van Bouillon": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q76721",
+            "lang": "nl",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Godfried van Bouillon": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q76721",
+            "lang": "nl",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
           }
         ]
       }
@@ -8532,9 +11331,14 @@
         "Robert 2",
         "Robert 2 of Flanders",
         "Robert II",
+        "Robert II de Flandre",
         "Robert II of Flanders",
         "Robert of Flanders",
-        "Robert, Flanders"
+        "Robert, Flanders",
+        "Roberto II de Flandes",
+        "Roberto II di Fiandra",
+        "Roberto II el Hierosolimitano",
+        "Robrecht II van Vlaanderen"
       ],
       "normalized": {
         "preferred": "robert ii of flanders",
@@ -8546,8 +11350,13 @@
           "robert 2 of flanders",
           "robert flanders",
           "robert ii",
+          "robert ii de flandre",
           "robert ii of flanders",
-          "robert of flanders"
+          "robert of flanders",
+          "roberto ii de flandes",
+          "roberto ii di fiandra",
+          "roberto ii el hierosolimitano",
+          "robrecht ii van vlaanderen"
         ]
       },
       "type": "person",
@@ -8616,6 +11425,51 @@
             "system": "github-issue",
             "locator": "issue:45"
           }
+        ],
+        "Roberto II el Hierosolimitano": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q333306",
+            "lang": "de",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Roberto II de Flandes": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q333306",
+            "lang": "es",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Robert II de Flandre": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q333306",
+            "lang": "fr",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Roberto II di Fiandra": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q333306",
+            "lang": "it",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Robrecht II van Vlaanderen": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q333306",
+            "lang": "nl",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
         ]
       }
     },
@@ -8634,20 +11488,36 @@
       },
       "variants": [
         "Caen's Ralph",
+        "Radulf Cadomensis",
+        "Radulf von Caen",
+        "Radulfo di Caen",
+        "Radulfus Cadomensis",
         "Radulph of Caen",
+        "Radulphus Cadomensis",
         "Ralph",
         "Ralph (Caen)",
         "Ralph of Caen",
-        "Ralph, Caen"
+        "Ralph, Caen",
+        "Raoul de Caen",
+        "Raoul of Caen",
+        "Rudolfo de Caen"
       ],
       "normalized": {
         "preferred": "ralph of caen",
         "variants": [
           "caen s ralph",
+          "radulf cadomensis",
+          "radulf von caen",
+          "radulfo di caen",
+          "radulfus cadomensis",
           "radulph of caen",
+          "radulphus cadomensis",
           "ralph",
           "ralph caen",
-          "ralph of caen"
+          "ralph of caen",
+          "raoul de caen",
+          "raoul of caen",
+          "rudolfo de caen"
         ]
       },
       "type": "person",
@@ -8691,6 +11561,2175 @@
           {
             "system": "github-issue",
             "locator": "issue:45"
+          }
+        ],
+        "Radulf von Caen": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q266447",
+            "lang": "de",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Radulphus Cadomensis": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q266447",
+            "lang": "en",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Raoul of Caen": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q266447",
+            "lang": "en",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Rudolfo de Caen": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q266447",
+            "lang": "es",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Radulf Cadomensis": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q266447",
+            "lang": "fr",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Radulfus Cadomensis": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q266447",
+            "lang": "fr",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Raoul de Caen": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q266447",
+            "lang": "fr",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Radulfo di Caen": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q266447",
+            "lang": "it",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ]
+      }
+    },
+    {
+      "authority_id": "AUTH:CR187",
+      "preferred_label": "Urban II",
+      "identifiers": {
+        "project_identifier": "CR187",
+        "wikidata_qid": "Q30578",
+        "wikidata_qid_provenance": {
+          "system": "github-issue",
+          "locator": "issue:99",
+          "status": "asserted",
+          "why": "benchmark list of #99 (Wikidata entity search, checked 2026-07-30)"
+        }
+      },
+      "name": {
+        "raw": "Urban II",
+        "given": "Urban",
+        "rest": "II",
+        "pattern": "space"
+      },
+      "variants": [
+        "Beatus Urbanus PP. II",
+        "Eudes de Châtillon",
+        "Eudes de Lagery",
+        "Odo de Chatillon",
+        "Odo de Lagery",
+        "Odo von Châtillon",
+        "Odo von Lagery",
+        "Odo von Ostia",
+        "Odon de Lagery",
+        "Odón de Châtillon",
+        "Otho de Lagery",
+        "Otton de Châtillon",
+        "Ottone dei conti di Châtillon",
+        "Ottone di Lagery",
+        "Papa Urbano II",
+        "Paus Urbanus II",
+        "Pope Blessed Urban II",
+        "Pope Urban II",
+        "أربانوس الثاني",
+        "أوربان الثاني",
+        "أوربانوس الثاني",
+        "البابا أوربان الثاني",
+        "البابا أوربانوس الثاني"
+      ],
+      "normalized": {
+        "preferred": "urban ii",
+        "variants": [
+          "beatus urbanus pp ii",
+          "eudes de chatillon",
+          "eudes de lagery",
+          "odo de chatillon",
+          "odo de lagery",
+          "odo von chatillon",
+          "odo von lagery",
+          "odo von ostia",
+          "odon de chatillon",
+          "odon de lagery",
+          "otho de lagery",
+          "otton de chatillon",
+          "ottone dei conti di chatillon",
+          "ottone di lagery",
+          "papa urbano ii",
+          "paus urbanus ii",
+          "pope blessed urban ii",
+          "pope urban ii",
+          "اربانوس الثاني",
+          "البابا اوربان الثاني",
+          "البابا اوربانوس الثاني",
+          "اوربان الثاني",
+          "اوربانوس الثاني"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [],
+        "source_system": "manual",
+        "note": "added 2026-10-10 per issue #92 (M19.2 tranche A: benchmark figure of #99, Latin Christian, pope)"
+      },
+      "variant_provenance": {
+        "Urban II": [
+          {
+            "system": "github-issue",
+            "locator": "issue:92"
+          }
+        ],
+        "Pope Urban II": [
+          {
+            "system": "github-issue",
+            "locator": "issue:92"
+          }
+        ],
+        "أوربان الثاني": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q30578",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "أوربانوس الثاني": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q30578",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "البابا أوربان الثاني": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q30578",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "البابا أوربانوس الثاني": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q30578",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "أربانوس الثاني": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q30578",
+            "lang": "ar",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Eudes de Châtillon": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q30578",
+            "lang": "de",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Odo de Chatillon": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q30578",
+            "lang": "de",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Odo de Lagery": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q30578",
+            "lang": "de",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Odo von Châtillon": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q30578",
+            "lang": "de",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Odo von Lagery": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q30578",
+            "lang": "de",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Odo von Ostia": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q30578",
+            "lang": "de",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Pope Blessed Urban II": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q30578",
+            "lang": "en",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Eudes de Lagery": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q30578",
+            "lang": "es",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Odon de Lagery": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q30578",
+            "lang": "es",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Odón de Châtillon": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q30578",
+            "lang": "es",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Otton de Châtillon": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q30578",
+            "lang": "es",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Papa Urbano II": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q30578",
+            "lang": "es",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Otho de Lagery": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q30578",
+            "lang": "fr",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Ottone dei conti di Châtillon": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q30578",
+            "lang": "it",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Ottone di Lagery": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q30578",
+            "lang": "it",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Beatus Urbanus PP. II": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q30578",
+            "lang": "la",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Paus Urbanus II": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q30578",
+            "lang": "nl",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ]
+      }
+    },
+    {
+      "authority_id": "AUTH:CR188",
+      "preferred_label": "Albert of Aachen",
+      "identifiers": {
+        "project_identifier": "CR188",
+        "wikidata_qid": "Q4323",
+        "wikidata_qid_provenance": {
+          "system": "github-issue",
+          "locator": "issue:99",
+          "status": "asserted",
+          "why": "benchmark list of #99 (Wikidata entity search, checked 2026-07-30)"
+        }
+      },
+      "name": {
+        "raw": "Albert of Aachen",
+        "name": "Albert",
+        "toponym": "Aachen",
+        "pattern": "of"
+      },
+      "variants": [
+        "Alberic of Aix-la-Chapelle",
+        "Albericus Aquensis",
+        "Albert d'Aix",
+        "Albert of Aix",
+        "Albert of Aix-la-Chapelle",
+        "Albert van Aken",
+        "Albert von Aachen",
+        "Alberto de Aquisgran",
+        "Alberto di Aquisgrana",
+        "Albertus Aquensis"
+      ],
+      "normalized": {
+        "preferred": "albert of aachen",
+        "variants": [
+          "alberic of aix la chapelle",
+          "albericus aquensis",
+          "albert d aix",
+          "albert of aix",
+          "albert of aix la chapelle",
+          "albert van aken",
+          "albert von aachen",
+          "alberto de aquisgran",
+          "alberto di aquisgrana",
+          "albertus aquensis"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [],
+        "source_system": "manual",
+        "note": "added 2026-10-10 per issue #92 (M19.2 tranche A: benchmark figure of #99, Latin Christian, chronicler)"
+      },
+      "variant_provenance": {
+        "Albert of Aachen": [
+          {
+            "system": "github-issue",
+            "locator": "issue:92"
+          }
+        ],
+        "Albert of Aix": [
+          {
+            "system": "github-issue",
+            "locator": "issue:92"
+          }
+        ],
+        "Albert von Aachen": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q4323",
+            "lang": "de",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Alberic of Aix-la-Chapelle": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q4323",
+            "lang": "en",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Albert of Aix-la-Chapelle": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q4323",
+            "lang": "en",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Alberto de Aquisgran": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q4323",
+            "lang": "es",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Albert d'Aix": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q4323",
+            "lang": "fr",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Alberto di Aquisgrana": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q4323",
+            "lang": "it",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Albertus Aquensis": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q4323",
+            "lang": "la",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Albericus Aquensis": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q4323",
+            "lang": "la",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Albert van Aken": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q4323",
+            "lang": "nl",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ]
+      }
+    },
+    {
+      "authority_id": "AUTH:CR189",
+      "preferred_label": "Ekkehard of Aura",
+      "identifiers": {
+        "project_identifier": "CR189",
+        "wikidata_qid": "Q66673",
+        "wikidata_qid_provenance": {
+          "system": "github-issue",
+          "locator": "issue:99",
+          "status": "asserted",
+          "why": "benchmark list of #99 (Wikidata entity search, checked 2026-07-30)"
+        }
+      },
+      "name": {
+        "raw": "Ekkehard of Aura",
+        "name": "Ekkehard",
+        "toponym": "Aura",
+        "pattern": "of"
+      },
+      "variants": [
+        "Eccardus de Uraugia",
+        "Eccheardo d'Aura",
+        "Ekkehard",
+        "Ekkehard d’Aura",
+        "Ekkehard von Aura",
+        "Ekkehardus Uraugiensis"
+      ],
+      "normalized": {
+        "preferred": "ekkehard of aura",
+        "variants": [
+          "eccardus de uraugia",
+          "eccheardo d aura",
+          "ekkehard",
+          "ekkehard d aura",
+          "ekkehard von aura",
+          "ekkehardus uraugiensis"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [],
+        "source_system": "manual",
+        "note": "added 2026-10-10 per issue #92 (M19.2 tranche A: benchmark figure of #99, Latin Christian, chronicler)"
+      },
+      "variant_provenance": {
+        "Ekkehard of Aura": [
+          {
+            "system": "github-issue",
+            "locator": "issue:92"
+          }
+        ],
+        "Ekkehard": [
+          {
+            "system": "github-issue",
+            "locator": "issue:92",
+            "bare": "attested"
+          }
+        ],
+        "Ekkehardus Uraugiensis": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q66673",
+            "lang": "de",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Ekkehard von Aura": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q66673",
+            "lang": "de",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Ekkehard d’Aura": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q66673",
+            "lang": "fr",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Eccheardo d'Aura": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q66673",
+            "lang": "it",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Eccardus de Uraugia": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q66673",
+            "lang": "la",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ]
+      }
+    },
+    {
+      "authority_id": "AUTH:CR190",
+      "preferred_label": "Fulcher of Chartres",
+      "identifiers": {
+        "project_identifier": "CR190",
+        "wikidata_qid": "Q5630",
+        "wikidata_qid_provenance": {
+          "system": "github-issue",
+          "locator": "issue:99",
+          "status": "asserted",
+          "why": "benchmark list of #99 (Wikidata entity search, checked 2026-07-30)"
+        }
+      },
+      "name": {
+        "raw": "Fulcher of Chartres",
+        "name": "Fulcher",
+        "toponym": "Chartres",
+        "pattern": "of"
+      },
+      "variants": [
+        "Foucher de Chartres",
+        "Fulcher van Chartres",
+        "Fulcher von Chartres",
+        "Fulcherio di Chartres",
+        "Fulcherius Carnotensis",
+        "Fulquerio de Chartres",
+        "فوشي دو شارتر",
+        "فوشيه الشارتري"
+      ],
+      "normalized": {
+        "preferred": "fulcher of chartres",
+        "variants": [
+          "foucher de chartres",
+          "fulcher van chartres",
+          "fulcher von chartres",
+          "fulcherio di chartres",
+          "fulcherius carnotensis",
+          "fulquerio de chartres",
+          "فوشي دو شارتر",
+          "فوشيه الشارتري"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [],
+        "source_system": "manual",
+        "note": "added 2026-10-10 per issue #92 (M19.2 tranche A: benchmark figure of #99, Latin Christian, chronicler)"
+      },
+      "variant_provenance": {
+        "Fulcher of Chartres": [
+          {
+            "system": "github-issue",
+            "locator": "issue:92"
+          }
+        ],
+        "فوشي دو شارتر": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q5630",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "فوشيه الشارتري": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q5630",
+            "lang": "ar",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Fulcher von Chartres": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q5630",
+            "lang": "de",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Fulquerio de Chartres": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q5630",
+            "lang": "es",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Fulcherius Carnotensis": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q5630",
+            "lang": "fr",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Foucher de Chartres": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q5630",
+            "lang": "fr",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Fulcherio di Chartres": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q5630",
+            "lang": "it",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Fulcher van Chartres": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q5630",
+            "lang": "nl",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ]
+      }
+    },
+    {
+      "authority_id": "AUTH:CR191",
+      "preferred_label": "Guibert of Nogent",
+      "identifiers": {
+        "project_identifier": "CR191",
+        "wikidata_qid": "Q4289",
+        "wikidata_qid_provenance": {
+          "system": "github-issue",
+          "locator": "issue:99",
+          "status": "asserted",
+          "why": "benchmark list of #99 (Wikidata entity search, checked 2026-07-30)"
+        }
+      },
+      "name": {
+        "raw": "Guibert of Nogent",
+        "name": "Guibert",
+        "toponym": "Nogent",
+        "pattern": "of"
+      },
+      "variants": [
+        "Guibert de Nogent",
+        "Guibert von Nogent",
+        "Guiberto de Nogent",
+        "Guiberto di Nogent",
+        "Guibertus Novigentensis",
+        "Guibertus Sanctae Mariae de Novigento",
+        "Gvibert Nozjanskiy",
+        "غيبرت النوجنتي"
+      ],
+      "normalized": {
+        "preferred": "guibert of nogent",
+        "variants": [
+          "guibert de nogent",
+          "guibert von nogent",
+          "guiberto de nogent",
+          "guiberto di nogent",
+          "guibertus novigentensis",
+          "guibertus sanctae mariae de novigento",
+          "gvibert nozjanskiy",
+          "غيبرت النوجنتي"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [],
+        "source_system": "manual",
+        "note": "added 2026-10-10 per issue #92 (M19.2 tranche A: benchmark figure of #99, Latin Christian, chronicler)"
+      },
+      "variant_provenance": {
+        "Guibert of Nogent": [
+          {
+            "system": "github-issue",
+            "locator": "issue:92"
+          }
+        ],
+        "غيبرت النوجنتي": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q4289",
+            "lang": "ar",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Guibert von Nogent": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q4289",
+            "lang": "de",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Guiberto de Nogent": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q4289",
+            "lang": "es",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Guibert de Nogent": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q4289",
+            "lang": "fr",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Guiberto di Nogent": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q4289",
+            "lang": "it",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Guibertus Novigentensis": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q4289",
+            "lang": "la",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Guibertus Sanctae Mariae de Novigento": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q4289",
+            "lang": "la",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Gvibert Nozjanskiy": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q4289",
+            "lang": "nl",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ]
+      }
+    },
+    {
+      "authority_id": "AUTH:CR192",
+      "preferred_label": "Orderic Vitalis",
+      "identifiers": {
+        "project_identifier": "CR192",
+        "wikidata_qid": "Q356298",
+        "wikidata_qid_provenance": {
+          "system": "github-issue",
+          "locator": "issue:99",
+          "status": "asserted",
+          "why": "benchmark list of #99 (Wikidata entity search, checked 2026-07-30)"
+        }
+      },
+      "name": {
+        "raw": "Orderic Vitalis",
+        "given": "Orderic",
+        "rest": "Vitalis",
+        "pattern": "space"
+      },
+      "variants": [
+        "Orderic Vital",
+        "Orderic Vitale",
+        "Orderico Vital",
+        "Orderico Vitale",
+        "Orderico Vitalis",
+        "Ordericus Vitalis",
+        "أورديريك فيتاليس"
+      ],
+      "normalized": {
+        "preferred": "orderic vitalis",
+        "variants": [
+          "orderic vital",
+          "orderic vitale",
+          "orderico vital",
+          "orderico vitale",
+          "orderico vitalis",
+          "ordericus vitalis",
+          "اورديريك فيتاليس"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [],
+        "source_system": "manual",
+        "note": "added 2026-10-10 per issue #92 (M19.2 tranche A: benchmark figure of #99, Latin Christian, chronicler)"
+      },
+      "variant_provenance": {
+        "Orderic Vitalis": [
+          {
+            "system": "github-issue",
+            "locator": "issue:92"
+          }
+        ],
+        "أورديريك فيتاليس": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q356298",
+            "lang": "ar",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Orderic Vital": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q356298",
+            "lang": "de",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Ordericus Vitalis": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q356298",
+            "lang": "de",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Orderic Vitale": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q356298",
+            "lang": "es",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Orderico Vitalis": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q356298",
+            "lang": "es",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Orderico Vital": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q356298",
+            "lang": "es",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Orderico Vitale": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q356298",
+            "lang": "it",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ]
+      }
+    },
+    {
+      "authority_id": "AUTH:CR193",
+      "preferred_label": "William of Tyre",
+      "identifiers": {
+        "project_identifier": "CR193",
+        "wikidata_qid": "Q311822",
+        "wikidata_qid_provenance": {
+          "system": "github-issue",
+          "locator": "issue:99",
+          "status": "asserted",
+          "why": "benchmark list of #99 (Wikidata entity search, checked 2026-07-30)"
+        }
+      },
+      "name": {
+        "raw": "William of Tyre",
+        "name": "William",
+        "toponym": "Tyre",
+        "pattern": "of"
+      },
+      "variants": [
+        "Guglielmo di Tiro",
+        "Guillaume de Tyr",
+        "Guillelmus Tyrensis",
+        "Guillermo de Tiro",
+        "Wilhelm II. von Tyrus",
+        "Wilhelm von Tyros",
+        "Wilhelm von Tyrus",
+        "Willelmus Tyrensis",
+        "Willem van Tyrus",
+        "وليام الصورى",
+        "وليم الصوري"
+      ],
+      "normalized": {
+        "preferred": "william of tyre",
+        "variants": [
+          "guglielmo di tiro",
+          "guillaume de tyr",
+          "guillelmus tyrensis",
+          "guillermo de tiro",
+          "wilhelm ii von tyrus",
+          "wilhelm von tyros",
+          "wilhelm von tyrus",
+          "willelmus tyrensis",
+          "willem van tyrus",
+          "وليام الصورى",
+          "وليم الصوري"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [],
+        "source_system": "manual",
+        "note": "added 2026-10-10 per issue #92 (M19.2 tranche A: benchmark figure of #99, Latin Christian, chronicler)"
+      },
+      "variant_provenance": {
+        "William of Tyre": [
+          {
+            "system": "github-issue",
+            "locator": "issue:92"
+          }
+        ],
+        "وليام الصورى": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q311822",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "وليم الصوري": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q311822",
+            "lang": "ar",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Wilhelm II. von Tyrus": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q311822",
+            "lang": "de",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Wilhelm von Tyros": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q311822",
+            "lang": "de",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Wilhelm von Tyrus": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q311822",
+            "lang": "de",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Guillermo de Tiro": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q311822",
+            "lang": "es",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Guillaume de Tyr": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q311822",
+            "lang": "fr",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Guglielmo di Tiro": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q311822",
+            "lang": "it",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Guillelmus Tyrensis": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q311822",
+            "lang": "la",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Willelmus Tyrensis": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q311822",
+            "lang": "la",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Willem van Tyrus": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q311822",
+            "lang": "nl",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ]
+      }
+    },
+    {
+      "authority_id": "AUTH:CR194",
+      "preferred_label": "Anna Komnene",
+      "identifiers": {
+        "project_identifier": "CR194",
+        "wikidata_qid": "Q179284",
+        "wikidata_qid_provenance": {
+          "system": "github-issue",
+          "locator": "issue:99",
+          "status": "asserted",
+          "why": "benchmark list of #99 (Wikidata entity search, checked 2026-07-30)"
+        }
+      },
+      "name": {
+        "raw": "Anna Komnene",
+        "given": "Anna",
+        "rest": "Komnene",
+        "pattern": "space"
+      },
+      "variants": [
+        "Ana Commeno",
+        "Ana Comnena",
+        "Ana Comneno",
+        "Anna Comnena",
+        "Anna Komnena",
+        "Anne Comnene",
+        "انا كومنينا"
+      ],
+      "normalized": {
+        "preferred": "anna komnene",
+        "variants": [
+          "ana commeno",
+          "ana comnena",
+          "ana comneno",
+          "anna comnena",
+          "anna komnena",
+          "anne comnene",
+          "انا كومنينا"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [],
+        "source_system": "manual",
+        "note": "added 2026-10-10 per issue #92 (M19.2 tranche A: benchmark figure of #99, Byzantine, historian)"
+      },
+      "variant_provenance": {
+        "Anna Komnene": [
+          {
+            "system": "github-issue",
+            "locator": "issue:92"
+          }
+        ],
+        "انا كومنينا": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q179284",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Anna Komnena": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q179284",
+            "lang": "de",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Anna Comnena": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q179284",
+            "lang": "en",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Ana Commeno": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q179284",
+            "lang": "es",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Ana Comnena": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q179284",
+            "lang": "es",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Ana Comneno": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q179284",
+            "lang": "es",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Anne Comnene": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q179284",
+            "lang": "fr",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ]
+      }
+    },
+    {
+      "authority_id": "AUTH:CR195",
+      "preferred_label": "Alexios I Komnenos",
+      "identifiers": {
+        "project_identifier": "CR195",
+        "wikidata_qid": "Q41600",
+        "wikidata_qid_provenance": {
+          "system": "github-issue",
+          "locator": "issue:92",
+          "status": "asserted",
+          "why": "hand-verified in #92: Byzantine emperor 1081–1118, †1118; the resolver finds the exact name but a bare two-token name never asserts"
+        }
+      },
+      "name": {
+        "raw": "Alexios I Komnenos",
+        "given": "Alexios",
+        "rest": "I Komnenos",
+        "pattern": "space"
+      },
+      "variants": [
+        "Alejo Comneno",
+        "Alejo I Comneno",
+        "Alessio I Comneno",
+        "Alessio I Conmeno",
+        "Alessio I di Bisanzio",
+        "Alexios Comnenos",
+        "Alexios I van Byzantium",
+        "Alexis Comnène",
+        "Alexis Ier Comnene",
+        "Alexius Comnenus",
+        "Alexius I Comnenus",
+        "Alexius I van Byzantium",
+        "ألكسيوس الأول كومنين",
+        "ألكسيوس الأول كومنينوس",
+        "أليكسيوس الأول",
+        "أليكسيوس الأول كومنينوس"
+      ],
+      "normalized": {
+        "preferred": "alexios i komnenos",
+        "variants": [
+          "alejo comneno",
+          "alejo i comneno",
+          "alessio i comneno",
+          "alessio i conmeno",
+          "alessio i di bisanzio",
+          "alexios comnenos",
+          "alexios i van byzantium",
+          "alexis comnene",
+          "alexis ier comnene",
+          "alexius comnenus",
+          "alexius i comnenus",
+          "alexius i van byzantium",
+          "الكسيوس الاول كومنين",
+          "الكسيوس الاول كومنينوس",
+          "اليكسيوس الاول",
+          "اليكسيوس الاول كومنينوس"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [],
+        "source_system": "manual",
+        "note": "added 2026-10-10 per issue #92 (M19.2 tranche A: benchmark figure of #99, Byzantine, ruler)"
+      },
+      "variant_provenance": {
+        "Alexios I Komnenos": [
+          {
+            "system": "github-issue",
+            "locator": "issue:92"
+          }
+        ],
+        "ألكسيوس الأول كومنينوس": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q41600",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "أليكسيوس الأول": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q41600",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "أليكسيوس الأول كومنينوس": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q41600",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "ألكسيوس الأول كومنين": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q41600",
+            "lang": "ar",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Alexius Comnenus": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q41600",
+            "lang": "en",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Alejo Comneno": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q41600",
+            "lang": "es",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Alexios Comnenos": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q41600",
+            "lang": "es",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Alejo I Comneno": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q41600",
+            "lang": "es",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Alexis Comnène": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q41600",
+            "lang": "fr",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Alexis Ier Comnene": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q41600",
+            "lang": "fr",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Alessio I Comneno": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q41600",
+            "lang": "it",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Alessio I Conmeno": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q41600",
+            "lang": "it",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Alessio I di Bisanzio": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q41600",
+            "lang": "it",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Alexius I Comnenus": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q41600",
+            "lang": "la",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Alexios I van Byzantium": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q41600",
+            "lang": "nl",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Alexius I van Byzantium": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q41600",
+            "lang": "nl",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ]
+      }
+    },
+    {
+      "authority_id": "AUTH:CR196",
+      "preferred_label": "Ibn al-Qalanisi",
+      "identifiers": {
+        "project_identifier": "CR196",
+        "wikidata_qid": "Q1356575",
+        "wikidata_qid_provenance": {
+          "system": "github-issue",
+          "locator": "issue:92",
+          "status": "asserted",
+          "why": "hand-verified in #92: Abū Yaʿlā Ḥamza ibn al-Qalānisī, Damascus chronicler (†1160); the resolver finds the exact label but reads 'Ibn' as a given name"
+        }
+      },
+      "name": {
+        "raw": "Ibn al-Qalanisi",
+        "name": "Ibn al-Qalanisi",
+        "pattern": null
+      },
+      "variants": [
+        "أبو يعلى حمزة بن اسد بن علي بن محمد التميمي المعروف بابن القلانسي",
+        "ابن القلانسي، أبو يعلى حمزة بن أسد",
+        "ابن القَلاَنِسي"
+      ],
+      "normalized": {
+        "preferred": "ibn al qalanisi",
+        "variants": [
+          "ابن القلانسي",
+          "ابن القلانسي ابو يعلى حمزة بن اسد",
+          "ابو يعلى حمزة بن اسد بن علي بن محمد التميمي المعروف بابن القلانسي"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [],
+        "source_system": "manual",
+        "note": "added 2026-10-10 per issue #92 (M19.2 tranche A: benchmark figure of #99, Arabic-Islamic, chronicler)"
+      },
+      "variant_provenance": {
+        "Ibn al-Qalanisi": [
+          {
+            "system": "github-issue",
+            "locator": "issue:92"
+          }
+        ],
+        "أبو يعلى حمزة بن اسد بن علي بن محمد التميمي المعروف بابن القلانسي": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q1356575",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "ابن القلانسي، أبو يعلى حمزة بن أسد": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q1356575",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "ابن القَلاَنِسي": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q1356575",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ]
+      }
+    },
+    {
+      "authority_id": "AUTH:CR197",
+      "preferred_label": "Ibn al-Athir",
+      "identifiers": {
+        "project_identifier": "CR197",
+        "wikidata_qid": "Q334854",
+        "wikidata_qid_provenance": {
+          "system": "github-issue",
+          "locator": "issue:92",
+          "status": "asserted",
+          "why": "hand-verified in #92: ʿAlī ʿIzz al-Dīn ibn al-Athīr, historian (1160–1233), author of al-Kāmil fī al-tārīkh; the resolver ties three brothers of the name"
+        }
+      },
+      "name": {
+        "raw": "Ibn al-Athir",
+        "name": "Ibn al-Athir",
+        "pattern": null
+      },
+      "variants": [
+        "Abu al-Hasan Ali Izz al-Din Ibn al-Athir",
+        "Abu al-Hassan Ali ibn Muhammad ibn Muhammad ash-Shaybani",
+        "Ali ibn al-Athir",
+        "ʻAli ibn Muḥammad ʻIzzaddîn Ibn al-Aṯîr",
+        "ʿIzz ad-Dīn Abū ăl Ḥusayn ʿAlī Ibn Abū ăl-Karam Muḥammad Ibn Muḥammad Ibn ʿAbd al-Karīm Ibn ʿAbd al-Wāḥid aš-Šaybānī",
+        "ابن الأثير",
+        "ابن الأثير الجزري",
+        "عز الدين أبو الحسن الجزري الموصلي",
+        "عز الدين أبو الحسن علي بن محمد بن عبد الكريم الجزري الموصلي الشيباني",
+        "عز الدين بن الأثير",
+        "علي بن محمد بن عبد الكريم بن عبد الواحد الشيباني الجزري"
+      ],
+      "normalized": {
+        "preferred": "ibn al athir",
+        "variants": [
+          "abu al hasan ali izz al din ibn al athir",
+          "abu al hassan ali ibn muhammad ibn muhammad ash shaybani",
+          "ali ibn al athir",
+          "ʻali ibn muhammad ʻizzaddin ibn al atir",
+          "ʿizz ad din abu al husayn ʿali ibn abu al karam muhammad ibn muhammad ibn ʿabd al karim ibn ʿabd al wahid as saybani",
+          "ابن الاثير",
+          "ابن الاثير الجزري",
+          "عز الدين ابو الحسن الجزري الموصلي",
+          "عز الدين ابو الحسن علي بن محمد بن عبد الكريم الجزري الموصلي الشيباني",
+          "عز الدين بن الاثير",
+          "علي بن محمد بن عبد الكريم بن عبد الواحد الشيباني الجزري"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [],
+        "source_system": "manual",
+        "note": "added 2026-10-10 per issue #92 (M19.2 tranche A: benchmark figure of #99, Arabic-Islamic, chronicler)"
+      },
+      "variant_provenance": {
+        "Ibn al-Athir": [
+          {
+            "system": "github-issue",
+            "locator": "issue:92"
+          }
+        ],
+        "ابن الأثير": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q334854",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "عز الدين أبو الحسن الجزري الموصلي": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q334854",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "عز الدين أبو الحسن علي بن محمد بن عبد الكريم الجزري الموصلي الشيباني": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q334854",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "عز الدين بن الأثير": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q334854",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "علي بن محمد بن عبد الكريم بن عبد الواحد الشيباني الجزري": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q334854",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "ابن الأثير الجزري": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q334854",
+            "lang": "ar",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "ʿIzz ad-Dīn Abū ăl Ḥusayn ʿAlī Ibn Abū ăl-Karam Muḥammad Ibn Muḥammad Ibn ʿAbd al-Karīm Ibn ʿAbd al-Wāḥid aš-Šaybānī": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q334854",
+            "lang": "de",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Abu al-Hasan Ali Izz al-Din Ibn al-Athir": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q334854",
+            "lang": "en",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Abu al-Hassan Ali ibn Muhammad ibn Muhammad ash-Shaybani": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q334854",
+            "lang": "en",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "ʻAli ibn Muḥammad ʻIzzaddîn Ibn al-Aṯîr": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q334854",
+            "lang": "en",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Ali ibn al-Athir": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q334854",
+            "lang": "es",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ]
+      }
+    },
+    {
+      "authority_id": "AUTH:CR198",
+      "preferred_label": "Usama ibn Munqidh",
+      "identifiers": {
+        "project_identifier": "CR198",
+        "wikidata_qid": "Q451427",
+        "wikidata_qid_provenance": {
+          "system": "wikidata-pre1500-snapshot",
+          "snapshot": "2026-10-02T22:51:17+00:00",
+          "method": "backfill_authority_qids v1",
+          "status": "asserted",
+          "why": "name match ≥ 0.85 with the toponym verified"
+        }
+      },
+      "name": {
+        "raw": "Usama ibn Munqidh",
+        "given": "Usama",
+        "rest": "ibn Munqidh",
+        "pattern": "space"
+      },
+      "variants": [
+        "Osama Bin Munqiz",
+        "Oussama Ibn Mounqidh",
+        "Usama Ibn Munquid",
+        "Usamah ibn-Munqidh",
+        "Ussama Ibn Munqidh",
+        "أبو المظفر",
+        "أبو المظفر أسامة بن مرشد بن منقذ",
+        "أبو المظفر أسامة بن مرشد بنِ علي بنِ مقلد بنِ نصر بنِ منقذ الكناني الكلبي الشيزرِي",
+        "أسامة بن مرشد بن علي بن مقلد بن نصر بن منقذ الكناني الكلبي الشيزري",
+        "أسامة بن منقذ",
+        "أسامه بن منقذ",
+        "ابن مُنْقِذ",
+        "عز الدين أسامة",
+        "مؤيد الدولة"
+      ],
+      "normalized": {
+        "preferred": "usama ibn munqidh",
+        "variants": [
+          "osama bin munqiz",
+          "oussama ibn mounqidh",
+          "usama ibn munquid",
+          "usamah ibn munqidh",
+          "ussama ibn munqidh",
+          "ابن منقذ",
+          "ابو المظفر",
+          "ابو المظفر اسامة بن مرشد بن علي بن مقلد بن نصر بن منقذ الكناني الكلبي الشيزري",
+          "ابو المظفر اسامة بن مرشد بن منقذ",
+          "اسامة بن مرشد بن علي بن مقلد بن نصر بن منقذ الكناني الكلبي الشيزري",
+          "اسامة بن منقذ",
+          "اسامه بن منقذ",
+          "عز الدين اسامة",
+          "مويد الدولة"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [],
+        "source_system": "manual",
+        "note": "added 2026-10-10 per issue #92 (M19.2 tranche A: benchmark figure of #99, Arabic-Islamic, author and participant)"
+      },
+      "variant_provenance": {
+        "Usama ibn Munqidh": [
+          {
+            "system": "github-issue",
+            "locator": "issue:92"
+          }
+        ],
+        "أبو المظفر": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q451427",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "أبو المظفر أسامة بن مرشد بن منقذ": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q451427",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "أبو المظفر أسامة بن مرشد بنِ علي بنِ مقلد بنِ نصر بنِ منقذ الكناني الكلبي الشيزرِي": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q451427",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "أسامة بن مرشد بن علي بن مقلد بن نصر بن منقذ الكناني الكلبي الشيزري": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q451427",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "أسامه بن منقذ": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q451427",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "ابن مُنْقِذ": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q451427",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "عز الدين أسامة": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q451427",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "مؤيد الدولة": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q451427",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "أسامة بن منقذ": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q451427",
+            "lang": "ar",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Usama Ibn Munquid": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q451427",
+            "lang": "de",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Ussama Ibn Munqidh": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q451427",
+            "lang": "de",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Osama Bin Munqiz": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q451427",
+            "lang": "en",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Oussama Ibn Mounqidh": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q451427",
+            "lang": "fr",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Usamah ibn-Munqidh": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q451427",
+            "lang": "it",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ]
+      }
+    },
+    {
+      "authority_id": "AUTH:CR199",
+      "preferred_label": "Matthew of Edessa",
+      "identifiers": {
+        "project_identifier": "CR199",
+        "wikidata_qid": "Q302586",
+        "wikidata_qid_provenance": {
+          "system": "wikidata-pre1500-snapshot",
+          "snapshot": "2026-10-02T22:51:17+00:00",
+          "method": "backfill_authority_qids v1",
+          "status": "asserted",
+          "why": "name match ≥ 0.85 with the toponym verified"
+        }
+      },
+      "name": {
+        "raw": "Matthew of Edessa",
+        "name": "Matthew",
+        "toponym": "Edessa",
+        "pattern": "of"
+      },
+      "variants": [
+        "Mateo de Edesa",
+        "Matheos van Edessa",
+        "Mathieu d'Édesse",
+        "Matteo di Edessa",
+        "Matteos Uṛhayetsi",
+        "Matthias von Edessa"
+      ],
+      "normalized": {
+        "preferred": "matthew of edessa",
+        "variants": [
+          "mateo de edesa",
+          "matheos van edessa",
+          "mathieu d edesse",
+          "matteo di edessa",
+          "matteos urhayetsi",
+          "matthias von edessa"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [],
+        "source_system": "manual",
+        "note": "added 2026-10-10 per issue #92 (M19.2 tranche A: benchmark figure of #99, Armenian, chronicler)"
+      },
+      "variant_provenance": {
+        "Matthew of Edessa": [
+          {
+            "system": "github-issue",
+            "locator": "issue:92"
+          }
+        ],
+        "Matthias von Edessa": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q302586",
+            "lang": "de",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Matteos Uṛhayetsi": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q302586",
+            "lang": "en",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Mateo de Edesa": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q302586",
+            "lang": "es",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Mathieu d'Édesse": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q302586",
+            "lang": "fr",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Matteo di Edessa": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q302586",
+            "lang": "it",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Matheos van Edessa": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q302586",
+            "lang": "nl",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ]
+      }
+    },
+    {
+      "authority_id": "AUTH:CR200",
+      "preferred_label": "Tancred, Prince of Galilee",
+      "identifiers": {
+        "project_identifier": "CR200",
+        "wikidata_qid": "Q51720",
+        "wikidata_qid_provenance": {
+          "system": "github-issue",
+          "locator": "issue:92",
+          "status": "asserted",
+          "why": "hand-verified in #92: the crusader (c. 1075–1112); the resolver ties him with his grandfather Tancred of Hauteville (†1041)"
+        }
+      },
+      "name": {
+        "raw": "Tancred, Prince of Galilee",
+        "name": "Tancred",
+        "pattern": null
+      },
+      "variants": [
+        "Tancred",
+        "Tancred of Galilee",
+        "Tancred of Hauteville",
+        "Tancred van Galilea",
+        "Tancredi d'Altavilla",
+        "Tancredi di Galilea",
+        "Tancrède de Hauteville",
+        "Tankred der Kreuzfahrer",
+        "Tankred von Tarent",
+        "Tankred von Tiberias"
+      ],
+      "normalized": {
+        "preferred": "tancred prince of galilee",
+        "variants": [
+          "tancred",
+          "tancred of galilee",
+          "tancred of hauteville",
+          "tancred van galilea",
+          "tancrede de hauteville",
+          "tancredi d altavilla",
+          "tancredi di galilea",
+          "tankred der kreuzfahrer",
+          "tankred von tarent",
+          "tankred von tiberias"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [],
+        "source_system": "manual",
+        "note": "added 2026-10-10 per issue #92 (M19.2 tranche A: benchmark figure of #99, Latin Christian, participant)"
+      },
+      "variant_provenance": {
+        "Tancred, Prince of Galilee": [
+          {
+            "system": "github-issue",
+            "locator": "issue:92"
+          }
+        ],
+        "Tancred": [
+          {
+            "system": "github-issue",
+            "locator": "issue:92",
+            "bare": "attested"
+          }
+        ],
+        "Tancred of Galilee": [
+          {
+            "system": "github-issue",
+            "locator": "issue:92"
+          }
+        ],
+        "Tancred of Hauteville": [
+          {
+            "system": "github-issue",
+            "locator": "issue:92"
+          }
+        ],
+        "Tankred der Kreuzfahrer": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q51720",
+            "lang": "de",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Tankred von Tarent": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q51720",
+            "lang": "de",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Tankred von Tiberias": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q51720",
+            "lang": "de",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Tancrède de Hauteville": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q51720",
+            "lang": "fr",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Tancredi d'Altavilla": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q51720",
+            "lang": "it",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Tancredi di Galilea": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q51720",
+            "lang": "it",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Tancred van Galilea": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q51720",
+            "lang": "nl",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
           }
         ]
       }
