@@ -224,6 +224,17 @@ run exits 1. A short text PDF without a page image keeps its text.
 
 Output: `site/data/*.json`, `site/bib/*.bib`, `bib/*.bib`.
 
+**Authority QIDs (M19.4, #94).** `python scripts/backfill_authority_qids.py
+--snapshot <pre-1500 snapshot>` resolves every authority record offline and
+records the outcome per record in `data/audits/authority_qid_backfill.json`:
+*asserted* (one candidate agrees on given name, numeral, toponym and period
+and stands alone) goes into `identifiers.wikidata_qid` with
+`identifiers.wikidata_qid_provenance` (snapshot, method, why);
+*hypothesised* (a tie, a bare two-token name, a numeral the record lacks)
+goes into `identifiers.wikidata_candidates` and nowhere else; *none* writes
+nothing. A label-equal tie is never asserted (#158). Existing QIDs are kept
+and re-verified, never replaced.
+
 **Document identity.** A document's `doc_id` is the slug of its source file
 name (`rileysmith-motivesearliestcrusaders-1983`) and nothing else; the text
 state it was built from is the document's `text_sha256` field. Until
