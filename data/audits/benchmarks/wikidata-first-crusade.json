@@ -1,0 +1,598 @@
+{
+  "schema_version": 1,
+  "id": "wikidata-first-crusade",
+  "source": "wikidata",
+  "licence": "CC0 1.0",
+  "scope": "humans linked to first crusade (Q51649) by P607, P1344 or P710",
+  "query": "SELECT DISTINCT ?p ?pLabel ?birth ?death ?desc WHERE { { ?p wdt:P607 wd:Q51649 } UNION { ?p wdt:P1344 wd:Q51649 } UNION { wd:Q51649 wdt:P710 ?p } ?p wdt:P31 wd:Q5 . OPTIONAL { ?p wdt:P569 ?birth } OPTIONAL { ?p wdt:P570 ?death } OPTIONAL { ?p schema:description ?desc FILTER(LANG(?desc)=\"en\") } SERVICE wikibase:label { bd:serviceParam wikibase:language \"en,fr,de,la\". } }",
+  "endpoint": "https://query.wikidata.org/sparql",
+  "fetched_at": "2026-10-10T19:14:12.542710+00:00",
+  "status": "ok",
+  "match_by": [
+    "wikidata",
+    "preferred_label"
+  ],
+  "figures": [
+    {
+      "preferred_label": "Danishmend Gazi",
+      "wikidata": "Q714771",
+      "birth_year": 1100,
+      "death_year": 1085,
+      "description": "Muslim crusader"
+    },
+    {
+      "preferred_label": "William de Percy",
+      "wikidata": "Q3120417",
+      "birth_year": 1050,
+      "death_year": 1090,
+      "description": "Norman feudal baron of Topcliffe in Yorkshire"
+    },
+    {
+      "preferred_label": "Ralph de Gael",
+      "wikidata": "Q1382635",
+      "birth_year": 1039,
+      "death_year": 1096,
+      "description": "Earl of East Anglia"
+    },
+    {
+      "preferred_label": "Guillaume Ier de Forez",
+      "wikidata": "Q2573382",
+      "birth_year": 1001,
+      "death_year": 1097,
+      "description": "1057 -"
+    },
+    {
+      "preferred_label": "Philip de Montgomery",
+      "wikidata": "Q18530643",
+      "birth_year": null,
+      "death_year": 1097,
+      "description": "noble Anglo-Norman crusader knight (1056-1099)"
+    },
+    {
+      "preferred_label": "Sweyn the Crusader",
+      "wikidata": "Q1498722",
+      "birth_year": 1050,
+      "death_year": 1097,
+      "description": "Danish crusader"
+    },
+    {
+      "preferred_label": "Adhemar of Le Puy",
+      "wikidata": "Q49967",
+      "birth_year": 1055,
+      "death_year": 1098,
+      "description": "French bishop"
+    },
+    {
+      "preferred_label": "Baldwin II, Count of Hainaut",
+      "wikidata": "Q704403",
+      "birth_year": 1056,
+      "death_year": 1098,
+      "description": "Count of Hainaut (1056-1098)"
+    },
+    {
+      "preferred_label": "Ernulf de Hesdin",
+      "wikidata": "Q19873044",
+      "birth_year": 1038,
+      "death_year": 1098,
+      "description": "(1001-1097)"
+    },
+    {
+      "preferred_label": "Roger de Barnaville",
+      "wikidata": "Q6113557",
+      "birth_year": 1100,
+      "death_year": 1098,
+      "description": "French noble"
+    },
+    {
+      "preferred_label": "Walter of Saint-Valéry",
+      "wikidata": "Q27958565",
+      "birth_year": 1031,
+      "death_year": 1098,
+      "description": "1035 - est. 1097"
+    },
+    {
+      "preferred_label": "Yaghi-Siyan",
+      "wikidata": "Q943749",
+      "birth_year": 1100,
+      "death_year": 1098,
+      "description": "11th Century Commander and Seljuk Governor of Antioch"
+    },
+    {
+      "preferred_label": "Hugh Bunel",
+      "wikidata": "Q130349207",
+      "birth_year": null,
+      "death_year": 1099,
+      "description": "Norman warrior (fl. 1077–1099)"
+    },
+    {
+      "preferred_label": "Pons of Balazun",
+      "wikidata": "Q81232113",
+      "birth_year": 1050,
+      "death_year": 1099,
+      "description": ""
+    },
+    {
+      "preferred_label": "Q136409037",
+      "wikidata": "Q136409037",
+      "birth_year": null,
+      "death_year": 1099,
+      "description": ""
+    },
+    {
+      "preferred_label": "Tatikios",
+      "wikidata": "Q289677",
+      "birth_year": 1048,
+      "death_year": 1099,
+      "description": "Byzantine general during the reign of Alexius I Comnenus"
+    },
+    {
+      "preferred_label": "William Fitz-Ansculf",
+      "wikidata": "Q8009085",
+      "birth_year": 1044,
+      "death_year": 1099,
+      "description": "Norman-French landowner"
+    },
+    {
+      "preferred_label": "Garnier z Gray",
+      "wikidata": "Q9266039",
+      "birth_year": 1050,
+      "death_year": 1100,
+      "description": ""
+    },
+    {
+      "preferred_label": "Godfrey of Bouillon",
+      "wikidata": "Q76721",
+      "birth_year": 1060,
+      "death_year": 1100,
+      "description": "Medieval Frankish knight"
+    },
+    {
+      "preferred_label": "Hugh I, Count of Vermandois",
+      "wikidata": "Q328755",
+      "birth_year": 1057,
+      "death_year": 1101,
+      "description": "French noble"
+    },
+    {
+      "preferred_label": "Q136513970",
+      "wikidata": "Q136513970",
+      "birth_year": 1080,
+      "death_year": 1101,
+      "description": ""
+    },
+    {
+      "preferred_label": "Constantine I, Prince of Armenia",
+      "wikidata": "Q2299869",
+      "birth_year": null,
+      "death_year": 1102,
+      "description": "Armenian noble"
+    },
+    {
+      "preferred_label": "Geoffrey II of Vendôme",
+      "wikidata": "Q461480",
+      "birth_year": 1100,
+      "death_year": 1102,
+      "description": "French noble"
+    },
+    {
+      "preferred_label": "Guglielmo Embriaco",
+      "wikidata": "Q1776320",
+      "birth_year": 1040,
+      "death_year": 1102,
+      "description": "Italian crusader"
+    },
+    {
+      "preferred_label": "Ivo de Grandmesnil",
+      "wikidata": "Q11802201",
+      "birth_year": null,
+      "death_year": 1102,
+      "description": "High Sheriff of Leicestershire"
+    },
+    {
+      "preferred_label": "Kerbogha",
+      "wikidata": "Q365543",
+      "birth_year": 1100,
+      "death_year": 1102,
+      "description": "11/12th-century ruler of Mosul"
+    },
+    {
+      "preferred_label": "Stephen",
+      "wikidata": "Q316006",
+      "birth_year": 1045,
+      "death_year": 1102,
+      "description": "Count of Blois from 1089 to 1102"
+    },
+    {
+      "preferred_label": "Duqaq",
+      "wikidata": "Q261366",
+      "birth_year": 1080,
+      "death_year": 1104,
+      "description": "Emir of Damascus"
+    },
+    {
+      "preferred_label": "Raymond IV, Count of Toulouse",
+      "wikidata": "Q299612",
+      "birth_year": 1041,
+      "death_year": 1105,
+      "description": "Count of Toulouse (1094-1105) and Count of Tripoli (1102-1105)"
+    },
+    {
+      "preferred_label": "Hugh of Saint Omer",
+      "wikidata": "Q51722",
+      "birth_year": 1100,
+      "death_year": 1106,
+      "description": "Flemish noble"
+    },
+    {
+      "preferred_label": "Robert d'Estouteville",
+      "wikidata": "Q75891206",
+      "birth_year": 1040,
+      "death_year": 1106,
+      "description": "Peerage person ID=384497"
+    },
+    {
+      "preferred_label": "Kilij Arslan I",
+      "wikidata": "Q345544",
+      "birth_year": 1079,
+      "death_year": 1107,
+      "description": "Seljuk sultan (1079–1107)"
+    },
+    {
+      "preferred_label": "Guy of Hauteville",
+      "wikidata": "Q1747051",
+      "birth_year": 1060,
+      "death_year": 1108,
+      "description": "Italo-Norman duke of Amalfi"
+    },
+    {
+      "preferred_label": "Oshin of Lampron",
+      "wikidata": "Q7106625",
+      "birth_year": null,
+      "death_year": 1110,
+      "description": "Armenian nobleman"
+    },
+    {
+      "preferred_label": "Q136761819",
+      "wikidata": "Q136761819",
+      "birth_year": null,
+      "death_year": 1110,
+      "description": ""
+    },
+    {
+      "preferred_label": "William de Grandmesnil",
+      "wikidata": "Q3120338",
+      "birth_year": 1055,
+      "death_year": 1110,
+      "description": "Italo-Norman noble"
+    },
+    {
+      "preferred_label": "Bohemond I of Antioch",
+      "wikidata": "Q220806",
+      "birth_year": 1054,
+      "death_year": 1111,
+      "description": "Prince of Taranto and Prince of Antioch"
+    },
+    {
+      "preferred_label": "Robert II",
+      "wikidata": "Q333306",
+      "birth_year": 1065,
+      "death_year": 1111,
+      "description": "Count of Flanders (1065-1111)"
+    },
+    {
+      "preferred_label": "Baldwin de Boulers",
+      "wikidata": "Q4850616",
+      "birth_year": 1075,
+      "death_year": 1112,
+      "description": "Flemish noble"
+    },
+    {
+      "preferred_label": "Manuel Boutoumites",
+      "wikidata": "Q2055803",
+      "birth_year": 1086,
+      "death_year": 1112,
+      "description": "Byzantine general and diplomat"
+    },
+    {
+      "preferred_label": "Tancred, Prince of Galilee",
+      "wikidata": "Q51720",
+      "birth_year": 1075,
+      "death_year": 1112,
+      "description": "Italo-Norman leader of the First Crusade (1075-1112)"
+    },
+    {
+      "preferred_label": "William Pantulf",
+      "wikidata": "Q18757220",
+      "birth_year": 1036,
+      "death_year": 1112,
+      "description": "Anglo-Norman baron (1035-1112)"
+    },
+    {
+      "preferred_label": "Aicard",
+      "wikidata": "Q2827762",
+      "birth_year": 1045,
+      "death_year": 1113,
+      "description": "Roman Catholic archbishop"
+    },
+    {
+      "preferred_label": "Fakhr al-Mulk Ridwan",
+      "wikidata": "Q918971",
+      "birth_year": 1180,
+      "death_year": 1113,
+      "description": "Seljuk ruler"
+    },
+    {
+      "preferred_label": "Girard I of Roussillon",
+      "wikidata": "Q593052",
+      "birth_year": 1100,
+      "death_year": 1113,
+      "description": "Catalan noble"
+    },
+    {
+      "preferred_label": "Ramiro Sánchez, Lord of Monzón",
+      "wikidata": "Q2064782",
+      "birth_year": 1070,
+      "death_year": 1116,
+      "description": "Spanish nobleman"
+    },
+    {
+      "preferred_label": "Alexios I Komnenos",
+      "wikidata": "Q41600",
+      "birth_year": 1048,
+      "death_year": 1118,
+      "description": "Byzantine emperor (1048–1118)"
+    },
+    {
+      "preferred_label": "Baldwin I of Jerusalem",
+      "wikidata": "Q51717",
+      "birth_year": 1058,
+      "death_year": 1118,
+      "description": "King of Jerusalem from 1100 to 1118"
+    },
+    {
+      "preferred_label": "Alan IV",
+      "wikidata": "Q453613",
+      "birth_year": 1060,
+      "death_year": 1119,
+      "description": "Duke of Brittany (1060-1119)"
+    },
+    {
+      "preferred_label": "Ralph the Red of Pont-Echanfray",
+      "wikidata": "Q26763938",
+      "birth_year": 1070,
+      "death_year": 1120,
+      "description": ""
+    },
+    {
+      "preferred_label": "Raymond Pelet",
+      "wikidata": "Q3421083",
+      "birth_year": 1075,
+      "death_year": 1120,
+      "description": "occitan lord of Alés and knight during the First Crusade"
+    },
+    {
+      "preferred_label": "Al-Afdal Shahanshah",
+      "wikidata": "Q551601",
+      "birth_year": 1066,
+      "death_year": 1121,
+      "description": "vizier of the Fatimid Caliphate from 1094 to 1121"
+    },
+    {
+      "preferred_label": "Eustace III, Count of Boulogne",
+      "wikidata": "Q354338",
+      "birth_year": 1050,
+      "death_year": 1125,
+      "description": "Count of Boulogne"
+    },
+    {
+      "preferred_label": "Fulcher of Chartres",
+      "wikidata": "Q5630",
+      "birth_year": 1059,
+      "death_year": 1127,
+      "description": "French chronicler of the First Crusade"
+    },
+    {
+      "preferred_label": "Stephen of Aumale",
+      "wikidata": "Q2344017",
+      "birth_year": 1061,
+      "death_year": 1127,
+      "description": "Count of Aumale (c. 1070–1127)"
+    },
+    {
+      "preferred_label": "Centule II of Bigorre",
+      "wikidata": "Q2489729",
+      "birth_year": null,
+      "death_year": 1129,
+      "description": "Count of Bigorre"
+    },
+    {
+      "preferred_label": "Guillaume I de Sabran",
+      "wikidata": "Q99304038",
+      "birth_year": 1094,
+      "death_year": 1129,
+      "description": "(1094-1129)"
+    },
+    {
+      "preferred_label": "Gaston IV, Viscount of Béarn",
+      "wikidata": "Q427591",
+      "birth_year": 1074,
+      "death_year": 1130,
+      "description": "noble from Béarn, Gascony (1074-1130)"
+    },
+    {
+      "preferred_label": "William Meschin",
+      "wikidata": "Q16201585",
+      "birth_year": 1072,
+      "death_year": 1130,
+      "description": "Anglo-Norman nobleman; Baron Skipton; Baron Egremont"
+    },
+    {
+      "preferred_label": "Gilles de Chin",
+      "wikidata": "Q3106567",
+      "birth_year": 1080,
+      "death_year": 1133,
+      "description": ""
+    },
+    {
+      "preferred_label": "Q135742535",
+      "wikidata": "Q135742535",
+      "birth_year": 1060,
+      "death_year": 1133,
+      "description": ""
+    },
+    {
+      "preferred_label": "Philip de Braose",
+      "wikidata": "Q998314",
+      "birth_year": 1072,
+      "death_year": 1134,
+      "description": "Anglo-Norman noble"
+    },
+    {
+      "preferred_label": "Robert Curthose",
+      "wikidata": "Q220994",
+      "birth_year": 1054,
+      "death_year": 1134,
+      "description": "Duke of Normandy"
+    },
+    {
+      "preferred_label": "Nikephoros Bryennios the Younger",
+      "wikidata": "Q383003",
+      "birth_year": 1062,
+      "death_year": 1137,
+      "description": "Byzantine general, statesman and historian (1062–1137)"
+    },
+    {
+      "preferred_label": "Rotrou III, Count of Perche",
+      "wikidata": "Q365872",
+      "birth_year": 1100,
+      "death_year": 1144,
+      "description": "French noble"
+    },
+    {
+      "preferred_label": "Stephen, King of England",
+      "wikidata": "Q60849",
+      "birth_year": 1095,
+      "death_year": 1154,
+      "description": "King of England from 1135 to 1154"
+    },
+    {
+      "preferred_label": "Raymond of Aguilers",
+      "wikidata": "Q4273",
+      "birth_year": 1100,
+      "death_year": 1200,
+      "description": "chronicler of the First Crusade"
+    },
+    {
+      "preferred_label": "Firouz",
+      "wikidata": "Q3072917",
+      "birth_year": null,
+      "death_year": null,
+      "description": "Armenian convert to Islam"
+    },
+    {
+      "preferred_label": "Galéran du Puiset",
+      "wikidata": "Q2309317",
+      "birth_year": null,
+      "death_year": null,
+      "description": "quoted in a donation made circa 1102 by his brother Hugh to the abbey of Saint-Martin-des-Champs"
+    },
+    {
+      "preferred_label": "Gerard of Avesnes",
+      "wikidata": "Q3124389",
+      "birth_year": null,
+      "death_year": null,
+      "description": "French knight"
+    },
+    {
+      "preferred_label": "Guillain de Banville",
+      "wikidata": "Q131681088",
+      "birth_year": null,
+      "death_year": null,
+      "description": ""
+    },
+    {
+      "preferred_label": "Guillaume Ier de Chanaleilles",
+      "wikidata": "Q3119960",
+      "birth_year": 1050,
+      "death_year": null,
+      "description": ""
+    },
+    {
+      "preferred_label": "Guynemer of Boulogne",
+      "wikidata": "Q5622843",
+      "birth_year": 1100,
+      "death_year": null,
+      "description": "pirate"
+    },
+    {
+      "preferred_label": "Hugues de Ripert",
+      "wikidata": "Q24933610",
+      "birth_year": null,
+      "death_year": null,
+      "description": ""
+    },
+    {
+      "preferred_label": "Iftikhar ad-Daula",
+      "wikidata": "Q2604029",
+      "birth_year": 1050,
+      "death_year": null,
+      "description": "11th c. Fatimid governor of Jerusalem"
+    },
+    {
+      "preferred_label": "Jehan d'Estaires",
+      "wikidata": "Q3176794",
+      "birth_year": null,
+      "death_year": null,
+      "description": ""
+    },
+    {
+      "preferred_label": "Laugier d'Agoult",
+      "wikidata": "Q3218607",
+      "birth_year": null,
+      "death_year": null,
+      "description": "Roman Catholic bishop"
+    },
+    {
+      "preferred_label": "Peter Tudebode",
+      "wikidata": "Q3387185",
+      "birth_year": null,
+      "death_year": null,
+      "description": "Poitevin priest and historian"
+    },
+    {
+      "preferred_label": "Pierre de Montmorillon",
+      "wikidata": "Q3387641",
+      "birth_year": 1050,
+      "death_year": null,
+      "description": ""
+    },
+    {
+      "preferred_label": "Pierre de Narbonne",
+      "wikidata": "Q1665164",
+      "birth_year": null,
+      "death_year": null,
+      "description": "French archbishop"
+    },
+    {
+      "preferred_label": "Q137673983",
+      "wikidata": "Q137673983",
+      "birth_year": null,
+      "death_year": null,
+      "description": ""
+    },
+    {
+      "preferred_label": "Robert de Sourdeval",
+      "wikidata": "Q3436734",
+      "birth_year": 1050,
+      "death_year": null,
+      "description": "Norman knight and crusader"
+    },
+    {
+      "preferred_label": "Salomon van Maldeghem",
+      "wikidata": "Q51714332",
+      "birth_year": null,
+      "death_year": null,
+      "description": ""
+    }
+  ]
+}

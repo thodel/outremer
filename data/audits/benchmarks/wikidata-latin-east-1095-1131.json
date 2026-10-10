@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "id": "wikidata-latin-east-1095-1131",
+  "source": "wikidata",
+  "licence": "CC0 1.0",
+  "scope": "humans †1095–1131 holding an office (P39) or noble title (P97) of the Latin East: King of Jerusalem, Queen of Jerusalem, Prince of Antioch, Count of Tripoli, Count of Edessa, Prince of Galilee, Latin Patriarch of Jerusalem, Constable of Jerusalem, Lord of Sidon, Lord of Beirut, Lord of Caesarea, Lord of Oultrejordain, Lord of Toron, Lord of Ramla, Count of Jaffa and Ascalon",
+  "query": "SELECT DISTINCT ?p ?pLabel ?birth ?death ?desc WHERE { ?pos rdfs:label ?pl . FILTER(?pl IN (\"King of Jerusalem\"@en, \"Queen of Jerusalem\"@en, \"Prince of Antioch\"@en, \"Count of Tripoli\"@en, \"Count of Edessa\"@en, \"Prince of Galilee\"@en, \"Latin Patriarch of Jerusalem\"@en, \"Constable of Jerusalem\"@en, \"Lord of Sidon\"@en, \"Lord of Beirut\"@en, \"Lord of Caesarea\"@en, \"Lord of Oultrejordain\"@en, \"Lord of Toron\"@en, \"Lord of Ramla\"@en, \"Count of Jaffa and Ascalon\"@en)) { ?p wdt:P39 ?pos } UNION { ?p wdt:P97 ?pos } ?p wdt:P31 wd:Q5 . ?p wdt:P570 ?d . FILTER(YEAR(?d) >= 1095 && YEAR(?d) <= 1131) OPTIONAL { ?p wdt:P569 ?birth } OPTIONAL { ?p wdt:P570 ?death } OPTIONAL { ?p schema:description ?desc FILTER(LANG(?desc)=\"en\") } SERVICE wikibase:label { bd:serviceParam wikibase:language \"en,fr,de,la\". } }",
+  "endpoint": "https://query.wikidata.org/sparql",
+  "fetched_at": "2026-10-10T19:14:57.402768+00:00",
+  "status": "ok",
+  "match_by": [
+    "wikidata",
+    "preferred_label"
+  ],
+  "figures": [
+    {
+      "preferred_label": "Dagobert of Pisa",
+      "wikidata": "Q598142",
+      "birth_year": 1100,
+      "death_year": 1105,
+      "description": "Roman Catholic archbishop"
+    },
+    {
+      "preferred_label": "William-Jordan",
+      "wikidata": "Q960341",
+      "birth_year": 1079,
+      "death_year": 1110,
+      "description": "count"
+    },
+    {
+      "preferred_label": "Bertrand I, Count of Toulouse",
+      "wikidata": "Q547970",
+      "birth_year": 1065,
+      "death_year": 1112,
+      "description": "Count of Toulouse and of Tripoli"
+    },
+    {
+      "preferred_label": "Ghibbelin of Arles",
+      "wikidata": "Q979451",
+      "birth_year": 1045,
+      "death_year": 1112,
+      "description": "Roman Catholic archbishop"
+    },
+    {
+      "preferred_label": "Arnulf of Chocques",
+      "wikidata": "Q608772",
+      "birth_year": 1060,
+      "death_year": 1118,
+      "description": "Latin Patriarch of Jerusalem in 1099 and from 1112 to 1118"
+    },
+    {
+      "preferred_label": "Baldwin I of Jerusalem",
+      "wikidata": "Q51717",
+      "birth_year": 1058,
+      "death_year": 1118,
+      "description": "King of Jerusalem from 1100 to 1118"
+    },
+    {
+      "preferred_label": "Ebremaro di Thérouanne",
+      "wikidata": "Q975832",
+      "birth_year": 1100,
+      "death_year": 1123,
+      "description": "French priest"
+    },
+    {
+      "preferred_label": "Eustache I Granier",
+      "wikidata": "Q114324",
+      "birth_year": 1001,
+      "death_year": 1123,
+      "description": "Flemish Crusader, lord of Caesarea and Sidon"
+    },
+    {
+      "preferred_label": "Morphia of Melitene",
+      "wikidata": "Q53116",
+      "birth_year": null,
+      "death_year": 1127,
+      "description": "Armenian noblewoman, queen consort of Jerusalem"
+    },
+    {
+      "preferred_label": "Warmund",
+      "wikidata": "Q1357094",
+      "birth_year": 1100,
+      "death_year": 1128,
+      "description": "Patriarch of Jerusalem"
+    },
+    {
+      "preferred_label": "Beatrice of Armenia",
+      "wikidata": "Q15648993",
+      "birth_year": 1075,
+      "death_year": 1130,
+      "description": "Peerage person ID=248204"
+    },
+    {
+      "preferred_label": "Stefano di Chartres",
+      "wikidata": "Q3592411",
+      "birth_year": 1001,
+      "death_year": 1130,
+      "description": ""
+    },
+    {
+      "preferred_label": "Baldwin II of Jerusalem",
+      "wikidata": "Q51718",
+      "birth_year": 1060,
+      "death_year": 1131,
+      "description": "Count of Edessa (r. 1100-1118) and King of Jerusalem (r. 1118–1131)"
+    },
+    {
+      "preferred_label": "Joscelin I, Count of Edessa",
+      "wikidata": "Q51719",
+      "birth_year": 1072,
+      "death_year": 1131,
+      "description": "Prince of Galilee (1112-1119) and Count of Edessa (1072-1131)"
+    }
+  ]
+}

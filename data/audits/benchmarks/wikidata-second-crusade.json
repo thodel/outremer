@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "id": "wikidata-second-crusade",
+  "source": "wikidata",
+  "licence": "CC0 1.0",
+  "scope": "humans linked to second crusade (Q51654) by P607, P1344 or P710",
+  "query": "SELECT DISTINCT ?p ?pLabel ?birth ?death ?desc WHERE { { ?p wdt:P607 wd:Q51654 } UNION { ?p wdt:P1344 wd:Q51654 } UNION { wd:Q51654 wdt:P710 ?p } ?p wdt:P31 wd:Q5 . OPTIONAL { ?p wdt:P569 ?birth } OPTIONAL { ?p wdt:P570 ?death } OPTIONAL { ?p schema:description ?desc FILTER(LANG(?desc)=\"en\") } SERVICE wikibase:label { bd:serviceParam wikibase:language \"en,fr,de,la\". } }",
+  "endpoint": "https://query.wikidata.org/sparql",
+  "fetched_at": "2026-10-10T19:14:13.161338+00:00",
+  "status": "ok",
+  "match_by": [
+    "wikidata",
+    "preferred_label"
+  ],
+  "figures": [
+    {
+      "preferred_label": "William de Warenne, 3rd Earl of Surrey",
+      "wikidata": "Q716129",
+      "birth_year": 1119,
+      "death_year": 1148,
+      "description": "Anglo-Norman nobleman"
+    },
+    {
+      "preferred_label": "James I of Chacenay",
+      "wikidata": "Q17123777",
+      "birth_year": 1118,
+      "death_year": 1158,
+      "description": "French Lord"
+    },
+    {
+      "preferred_label": "Walter de Hereford",
+      "wikidata": "Q7966512",
+      "birth_year": 1129,
+      "death_year": 1160,
+      "description": "Welsh Marcher lord"
+    },
+    {
+      "preferred_label": "Gilbert de Lacy",
+      "wikidata": "Q3105904",
+      "birth_year": null,
+      "death_year": 1162,
+      "description": "Norman nobleman"
+    },
+    {
+      "preferred_label": "Odo of Deuil",
+      "wikidata": "Q5626",
+      "birth_year": 1110,
+      "death_year": 1162,
+      "description": "historian and participant of the Second Crusade"
+    },
+    {
+      "preferred_label": "Thierry of Lorraine, Count of Flanders",
+      "wikidata": "Q224958",
+      "birth_year": 1100,
+      "death_year": 1168,
+      "description": "Count of Flanders (1100-1168)"
+    },
+    {
+      "preferred_label": "Mujir ad-Din Abaq",
+      "wikidata": "Q584468",
+      "birth_year": 1101,
+      "death_year": 1169,
+      "description": "Governor of Damascus"
+    },
+    {
+      "preferred_label": "Everard des Barres",
+      "wikidata": "Q439794",
+      "birth_year": 1113,
+      "death_year": 1174,
+      "description": "Grand Master of the Knights Templar"
+    },
+    {
+      "preferred_label": "Jaufré Rudel",
+      "wikidata": "Q5260",
+      "birth_year": 1000,
+      "death_year": 1181,
+      "description": "prince of Blaye and troubadour"
+    },
+    {
+      "preferred_label": "Adhémar de Beynac",
+      "wikidata": "Q2824342",
+      "birth_year": 1120,
+      "death_year": 1194,
+      "description": "French military personnel"
+    },
+    {
+      "preferred_label": "Bertrand of Toulouse",
+      "wikidata": "Q131808025",
+      "birth_year": 1101,
+      "death_year": 1199,
+      "description": "12th century crusader"
+    },
+    {
+      "preferred_label": "Guglielmo II Adelardi",
+      "wikidata": "Q17453181",
+      "birth_year": 1120,
+      "death_year": null,
+      "description": "Italian politician"
+    },
+    {
+      "preferred_label": "Jean Montgolfier",
+      "wikidata": "Q3173587",
+      "birth_year": null,
+      "death_year": null,
+      "description": "learned paper making while captured in Damascus and started the first paper mill in France"
+    },
+    {
+      "preferred_label": "Philip of Milly",
+      "wikidata": "Q456888",
+      "birth_year": 1120,
+      "death_year": null,
+      "description": "seventh Grand Master of the Knights Templar"
+    }
+  ]
+}
