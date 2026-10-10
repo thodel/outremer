@@ -1,0 +1,1554 @@
+{
+  "schema_version": 1,
+  "method": "enrich_authority_variants v1",
+  "snapshot": "2026-10-02T22:51:17+00:00",
+  "ran_at": "2026-10-10T14:05:01.850456+00:00",
+  "counts": {
+    "records_with_qid": 37,
+    "records_enriched": 36,
+    "forms_added": 211,
+    "forms_skipped_bare": 38,
+    "forms_skipped_title": 35,
+    "forms_skipped_known": 35,
+    "by_lang": {
+      "ar": 13,
+      "es": 28,
+      "fr": 44,
+      "it": 33,
+      "nl": 37,
+      "de": 26,
+      "en": 21,
+      "la": 9
+    }
+  },
+  "records": [
+    {
+      "authority_id": "AUTH:CR1",
+      "preferred_label": "Conrad III of Germany",
+      "qid": "Q157133",
+      "added": [
+        {
+          "form": "كونراد الثالث",
+          "lang": "ar",
+          "kind": "label"
+        },
+        {
+          "form": "Conrado III Hohenstaufen",
+          "lang": "es",
+          "kind": "alias"
+        },
+        {
+          "form": "Conrad III de Hohenstaufen",
+          "lang": "fr",
+          "kind": "label"
+        },
+        {
+          "form": "Corrado III di Hoenstaufen",
+          "lang": "it",
+          "kind": "alias"
+        },
+        {
+          "form": "Corrado III di Svevia",
+          "lang": "it",
+          "kind": "alias"
+        },
+        {
+          "form": "Corrado III del Sacro Romano Impero",
+          "lang": "it",
+          "kind": "label"
+        },
+        {
+          "form": "Koenraad III van Hohenstaufen",
+          "lang": "nl",
+          "kind": "alias"
+        },
+        {
+          "form": "Koenraad III van het Heilige Roomse Rijk",
+          "lang": "nl",
+          "kind": "alias"
+        }
+      ],
+      "skipped_bare": [
+        "Konrad III.",
+        "Conrado III",
+        "Corrado III",
+        "Conradus III",
+        "Koenraad III"
+      ],
+      "skipped_title": [
+        "Konrad III König Staufer",
+        "Conrado III de Alemania",
+        "Conrad III du Saint-Empire",
+        "Corrado III di Germania",
+        "Rooms-koning Koenraad III"
+      ],
+      "skipped_known": 2
+    },
+    {
+      "authority_id": "AUTH:CR2",
+      "preferred_label": "Fulk V of Anjou",
+      "qid": "Q312904",
+      "added": [
+        {
+          "form": "فولك أنجو",
+          "lang": "ar",
+          "kind": "alias"
+        },
+        {
+          "form": "فولك اوف انجو",
+          "lang": "ar",
+          "kind": "alias"
+        },
+        {
+          "form": "فولك من أنجو",
+          "lang": "ar",
+          "kind": "alias"
+        },
+        {
+          "form": "Fulco V de Anjou",
+          "lang": "es",
+          "kind": "alias"
+        },
+        {
+          "form": "Foulque V d'Anjou",
+          "lang": "fr",
+          "kind": "alias"
+        },
+        {
+          "form": "Foulque le jeune",
+          "lang": "fr",
+          "kind": "alias"
+        },
+        {
+          "form": "Foulques V d'Anjou",
+          "lang": "fr",
+          "kind": "label"
+        },
+        {
+          "form": "Folco V d’Angiò",
+          "lang": "it",
+          "kind": "alias"
+        },
+        {
+          "form": "Fulco V van Anjou",
+          "lang": "nl",
+          "kind": "label"
+        }
+      ],
+      "skipped_bare": [
+        "فولك",
+        "Fulko V.",
+        "Fulko"
+      ],
+      "skipped_title": [
+        "فولك ملك بيت المقدس",
+        "Fulko von Jerusalem",
+        "Fulco I de Jerusalen",
+        "Fulco de Jerusalen",
+        "Folco I di Gerusalemme",
+        "Folco di Gerusalemme"
+      ],
+      "skipped_known": 1
+    },
+    {
+      "authority_id": "AUTH:CR14",
+      "preferred_label": "Erard I of Brienne",
+      "qid": "Q287645",
+      "added": [
+        {
+          "form": "Erardo I de Brienne",
+          "lang": "es",
+          "kind": "label"
+        },
+        {
+          "form": "Érard Ier de Brienne",
+          "lang": "fr",
+          "kind": "label"
+        },
+        {
+          "form": "Erard I van Brienne",
+          "lang": "nl",
+          "kind": "alias"
+        },
+        {
+          "form": "Everhard I van Brienne",
+          "lang": "nl",
+          "kind": "label"
+        }
+      ],
+      "skipped_bare": [],
+      "skipped_title": [],
+      "skipped_known": 2
+    },
+    {
+      "authority_id": "AUTH:CR16",
+      "preferred_label": "Thierry of Flanders",
+      "qid": "Q224958",
+      "added": [
+        {
+          "form": "Dietrich von Elsass",
+          "lang": "de",
+          "kind": "label"
+        },
+        {
+          "form": "Thierry d'Alsace",
+          "lang": "en",
+          "kind": "alias"
+        },
+        {
+          "form": "Thierry of Alsace",
+          "lang": "en",
+          "kind": "alias"
+        },
+        {
+          "form": "Thierry of Lorraine",
+          "lang": "en",
+          "kind": "label"
+        },
+        {
+          "form": "Teodorico de Alsacia",
+          "lang": "es",
+          "kind": "label"
+        },
+        {
+          "form": "Thierry de Lorraine",
+          "lang": "fr",
+          "kind": "label"
+        },
+        {
+          "form": "Teodorico delle Fiandre",
+          "lang": "it",
+          "kind": "alias"
+        },
+        {
+          "form": "Teodorico di Alsazia",
+          "lang": "it",
+          "kind": "label"
+        },
+        {
+          "form": "Diederik I van den Elzas",
+          "lang": "nl",
+          "kind": "alias"
+        },
+        {
+          "form": "Dirk van den Elzas",
+          "lang": "nl",
+          "kind": "alias"
+        },
+        {
+          "form": "Diederik van de Elzas",
+          "lang": "nl",
+          "kind": "label"
+        }
+      ],
+      "skipped_bare": [
+        "Dietrich I.",
+        "Dirk"
+      ],
+      "skipped_title": [
+        "تيودوريكو، كونت فلاندرز",
+        "تييري كونت فلاندرز"
+      ],
+      "skipped_known": 1
+    },
+    {
+      "authority_id": "AUTH:CR20",
+      "preferred_label": "Manasses of Hierges",
+      "qid": "Q1398284",
+      "added": [
+        {
+          "form": "Manasses von Hierges",
+          "lang": "de",
+          "kind": "label"
+        },
+        {
+          "form": "Manasés de Hierges",
+          "lang": "es",
+          "kind": "label"
+        },
+        {
+          "form": "Manasses de Hierges",
+          "lang": "fr",
+          "kind": "alias"
+        },
+        {
+          "form": "Manasse di Hierges",
+          "lang": "it",
+          "kind": "label"
+        }
+      ],
+      "skipped_bare": [],
+      "skipped_title": [],
+      "skipped_known": 1
+    },
+    {
+      "authority_id": "AUTH:CR26",
+      "preferred_label": "Henry the Lion",
+      "qid": "Q105378",
+      "added": [
+        {
+          "form": "هنري الأسد",
+          "lang": "ar",
+          "kind": "alias"
+        },
+        {
+          "form": "هاينريش الأسد",
+          "lang": "ar",
+          "kind": "label"
+        },
+        {
+          "form": "Heinrich der Löwe",
+          "lang": "de",
+          "kind": "label"
+        },
+        {
+          "form": "Enrique el Leon",
+          "lang": "es",
+          "kind": "alias"
+        },
+        {
+          "form": "Henri III de Saxe",
+          "lang": "fr",
+          "kind": "alias"
+        },
+        {
+          "form": "Henri XII de Baviere",
+          "lang": "fr",
+          "kind": "alias"
+        },
+        {
+          "form": "Henri le Lion",
+          "lang": "fr",
+          "kind": "alias"
+        },
+        {
+          "form": "Enrico III di Sassonia",
+          "lang": "it",
+          "kind": "alias"
+        },
+        {
+          "form": "Enrico XII di Baviera",
+          "lang": "it",
+          "kind": "alias"
+        },
+        {
+          "form": "Enrico il Leone",
+          "lang": "it",
+          "kind": "label"
+        },
+        {
+          "form": "Henricus Leo",
+          "lang": "la",
+          "kind": "alias"
+        },
+        {
+          "form": "Hendrik III van Saksen",
+          "lang": "nl",
+          "kind": "alias"
+        },
+        {
+          "form": "Hendrik XII van Beieren",
+          "lang": "nl",
+          "kind": "alias"
+        },
+        {
+          "form": "Hendrik de Leeuw",
+          "lang": "nl",
+          "kind": "label"
+        }
+      ],
+      "skipped_bare": [
+        "Heinrich III.",
+        "Heinrich XII.",
+        "Henry III",
+        "Henry XII",
+        "Enrico III, Duca di Sassonia",
+        "Henricus"
+      ],
+      "skipped_title": [],
+      "skipped_known": 1
+    },
+    {
+      "authority_id": "AUTH:CR28",
+      "preferred_label": "Rudolf of Pfullendorf",
+      "qid": "Q1523252",
+      "added": [
+        {
+          "form": "Rudolf von Pfullendorf",
+          "lang": "de",
+          "kind": "label"
+        },
+        {
+          "form": "Rudolf van Pfullendorf",
+          "lang": "nl",
+          "kind": "alias"
+        }
+      ],
+      "skipped_bare": [],
+      "skipped_title": [],
+      "skipped_known": 0
+    },
+    {
+      "authority_id": "AUTH:CR30",
+      "preferred_label": "Rognvald of Orkney",
+      "qid": "Q2109400",
+      "added": [
+        {
+          "form": "Kali Kollson",
+          "lang": "de",
+          "kind": "alias"
+        },
+        {
+          "form": "Ragnvald Kale Kolsson",
+          "lang": "de",
+          "kind": "alias"
+        },
+        {
+          "form": "Rögnvaldr Kali Kolsson",
+          "lang": "de",
+          "kind": "alias"
+        },
+        {
+          "form": "Rögnvald Kali Kolsson",
+          "lang": "de",
+          "kind": "label"
+        },
+        {
+          "form": "Rognvald Kolsson",
+          "lang": "en",
+          "kind": "alias"
+        },
+        {
+          "form": "Ragnvald Kali Kolsson",
+          "lang": "es",
+          "kind": "label"
+        },
+        {
+          "form": "Ronald van Kirkwall",
+          "lang": "nl",
+          "kind": "alias"
+        }
+      ],
+      "skipped_bare": [],
+      "skipped_title": [],
+      "skipped_known": 0
+    },
+    {
+      "authority_id": "AUTH:CR32",
+      "preferred_label": "William of Tortosa",
+      "qid": "Q75384552",
+      "added": [],
+      "skipped_bare": [],
+      "skipped_title": [],
+      "skipped_known": 1
+    },
+    {
+      "authority_id": "AUTH:CR37",
+      "preferred_label": "Conrad of Montferrat",
+      "qid": "Q169329",
+      "added": [
+        {
+          "form": "كونراد المونفيراتي",
+          "lang": "ar",
+          "kind": "alias"
+        },
+        {
+          "form": "قنرادس المنفراتي",
+          "lang": "ar",
+          "kind": "label"
+        },
+        {
+          "form": "Konrad von Montferrat",
+          "lang": "de",
+          "kind": "alias"
+        },
+        {
+          "form": "Conrado I de Monferrato",
+          "lang": "es",
+          "kind": "alias"
+        },
+        {
+          "form": "Conrado de Montferrato",
+          "lang": "es",
+          "kind": "label"
+        },
+        {
+          "form": "Conrad de Montferrat",
+          "lang": "fr",
+          "kind": "label"
+        },
+        {
+          "form": "Corrado degli Aleramici",
+          "lang": "it",
+          "kind": "alias"
+        },
+        {
+          "form": "Corrado di Monferrato",
+          "lang": "it",
+          "kind": "alias"
+        },
+        {
+          "form": "Corrado del Monferrato",
+          "lang": "it",
+          "kind": "label"
+        },
+        {
+          "form": "Conradus Montisferrati",
+          "lang": "la",
+          "kind": "alias"
+        },
+        {
+          "form": "Koenraad van Montferat",
+          "lang": "nl",
+          "kind": "alias"
+        },
+        {
+          "form": "Koenraad van Montferrato",
+          "lang": "nl",
+          "kind": "alias"
+        },
+        {
+          "form": "Koenraad van Monferrato",
+          "lang": "nl",
+          "kind": "label"
+        }
+      ],
+      "skipped_bare": [
+        "قنرادس (ملك بيت المقدس)",
+        "Konrad",
+        "Conradus",
+        "Conradus I"
+      ],
+      "skipped_title": [
+        "قنرادس الأول ملك بيت المقدس",
+        "كونراد الأول ملك أورشليم",
+        "كونراد الأول ملك بيت المقدس",
+        "Conrad I of Jerusalem"
+      ],
+      "skipped_known": 1
+    },
+    {
+      "authority_id": "AUTH:CR43",
+      "preferred_label": "Rainald of St Valéry",
+      "qid": "Q1516535",
+      "added": [
+        {
+          "form": "Rainald von Saint-Valery",
+          "lang": "de",
+          "kind": "label"
+        },
+        {
+          "form": "Renaud de St. Valerie",
+          "lang": "en",
+          "kind": "alias"
+        },
+        {
+          "form": "Reginald of Saint-Valery",
+          "lang": "en",
+          "kind": "label"
+        },
+        {
+          "form": "Reinaldo de Saint-Valery",
+          "lang": "es",
+          "kind": "label"
+        },
+        {
+          "form": "Renaud de Saint-Valery",
+          "lang": "fr",
+          "kind": "label"
+        }
+      ],
+      "skipped_bare": [],
+      "skipped_title": [],
+      "skipped_known": 0
+    },
+    {
+      "authority_id": "AUTH:CR60",
+      "preferred_label": "Nicholas of Montiéramey",
+      "qid": "Q3340916",
+      "added": [
+        {
+          "form": "Nikolaus von Clairvaux",
+          "lang": "de",
+          "kind": "label"
+        },
+        {
+          "form": "Nicholas of Clairvaux",
+          "lang": "en",
+          "kind": "label"
+        },
+        {
+          "form": "Nicolas de Clairvaux",
+          "lang": "fr",
+          "kind": "label"
+        },
+        {
+          "form": "Nicola di Chiaravalle",
+          "lang": "it",
+          "kind": "label"
+        },
+        {
+          "form": "Nicolaus Aremarensis",
+          "lang": "la",
+          "kind": "alias"
+        },
+        {
+          "form": "Nicolaus Claraevallensis",
+          "lang": "la",
+          "kind": "label"
+        }
+      ],
+      "skipped_bare": [],
+      "skipped_title": [
+        "Nicolaus Aremarensis Monachus"
+      ],
+      "skipped_known": 1
+    },
+    {
+      "authority_id": "AUTH:CR62",
+      "preferred_label": "Peter I of Courtenay",
+      "qid": "Q531495",
+      "added": [
+        {
+          "form": "بيير الأول من كورتيناي",
+          "lang": "ar",
+          "kind": "label"
+        },
+        {
+          "form": "Peter I. von Courtenay",
+          "lang": "de",
+          "kind": "label"
+        },
+        {
+          "form": "Pedro de Courtenay",
+          "lang": "es",
+          "kind": "label"
+        },
+        {
+          "form": "Pierre Ier de Courtenay",
+          "lang": "fr",
+          "kind": "label"
+        },
+        {
+          "form": "Pietro I di Courtenay",
+          "lang": "it",
+          "kind": "label"
+        },
+        {
+          "form": "Peter I van Courtenay",
+          "lang": "nl",
+          "kind": "label"
+        }
+      ],
+      "skipped_bare": [
+        "Petrus"
+      ],
+      "skipped_title": [
+        "Pierre I de France, Sire de Courtenay",
+        "Pierre de France",
+        "Pedro de Francia"
+      ],
+      "skipped_known": 1
+    },
+    {
+      "authority_id": "AUTH:CR78",
+      "preferred_label": "Godfrey III of Louvain",
+      "qid": "Q280016",
+      "added": [
+        {
+          "form": "Godofredo III de Lovaina",
+          "lang": "es",
+          "kind": "label"
+        },
+        {
+          "form": "Godefroy III de Louvain",
+          "lang": "fr",
+          "kind": "alias"
+        },
+        {
+          "form": "Godefroy VIII de Basse-Lotharingie",
+          "lang": "fr",
+          "kind": "label"
+        },
+        {
+          "form": "Goffredo III di Lovanio",
+          "lang": "it",
+          "kind": "label"
+        },
+        {
+          "form": "Godfried III van Leuven",
+          "lang": "nl",
+          "kind": "label"
+        }
+      ],
+      "skipped_bare": [
+        "Gottfried III."
+      ],
+      "skipped_title": [],
+      "skipped_known": 1
+    },
+    {
+      "authority_id": "AUTH:CR120",
+      "preferred_label": "Gerard II of Looz",
+      "qid": "Q603991",
+      "added": [
+        {
+          "form": "Gérard II de Looz",
+          "lang": "fr",
+          "kind": "label"
+        },
+        {
+          "form": "Gerard van Loon",
+          "lang": "nl",
+          "kind": "alias"
+        }
+      ],
+      "skipped_bare": [],
+      "skipped_title": [
+        "Gerard Graaf van Loon en Rieneck Heer van Bocholt"
+      ],
+      "skipped_known": 1
+    },
+    {
+      "authority_id": "AUTH:CR118",
+      "preferred_label": "Rodrigo Álvarez de Sarria",
+      "qid": "Q972287",
+      "added": [
+        {
+          "form": "Rodrigo Álvarez",
+          "lang": "de",
+          "kind": "label"
+        }
+      ],
+      "skipped_bare": [],
+      "skipped_title": [],
+      "skipped_known": 1
+    },
+    {
+      "authority_id": "AUTH:CR117",
+      "preferred_label": "Henry of Portugal",
+      "qid": "Q10294700",
+      "added": [
+        {
+          "form": "Enrique de Portugal",
+          "lang": "es",
+          "kind": "label"
+        },
+        {
+          "form": "Henri de Portugal",
+          "lang": "fr",
+          "kind": "label"
+        }
+      ],
+      "skipped_bare": [],
+      "skipped_title": [],
+      "skipped_known": 1
+    },
+    {
+      "authority_id": "AUTH:CR115",
+      "preferred_label": "Maurice II of Craon",
+      "qid": "Q511542",
+      "added": [
+        {
+          "form": "Maurice II de Craon",
+          "lang": "de",
+          "kind": "label"
+        }
+      ],
+      "skipped_bare": [],
+      "skipped_title": [],
+      "skipped_known": 0
+    },
+    {
+      "authority_id": "AUTH:CR111",
+      "preferred_label": "Andrew II of Vitré",
+      "qid": "Q41964321",
+      "added": [
+        {
+          "form": "André II de Vitré",
+          "lang": "fr",
+          "kind": "label"
+        }
+      ],
+      "skipped_bare": [],
+      "skipped_title": [],
+      "skipped_known": 1
+    },
+    {
+      "authority_id": "AUTH:CR110",
+      "preferred_label": "Walter of St. Omer",
+      "qid": "Q2544921",
+      "added": [
+        {
+          "form": "Walter von Tiberias",
+          "lang": "de",
+          "kind": "alias"
+        },
+        {
+          "form": "Walter von Saint-Omer",
+          "lang": "de",
+          "kind": "label"
+        },
+        {
+          "form": "Walter of Saint Omer",
+          "lang": "en",
+          "kind": "label"
+        },
+        {
+          "form": "Gualterio de Saint Omer",
+          "lang": "es",
+          "kind": "label"
+        },
+        {
+          "form": "Gautier de Saint-Omer",
+          "lang": "fr",
+          "kind": "label"
+        },
+        {
+          "form": "Gualtiero di Saint-Omer",
+          "lang": "it",
+          "kind": "label"
+        },
+        {
+          "form": "Walter van Sint-Omaars",
+          "lang": "nl",
+          "kind": "alias"
+        },
+        {
+          "form": "Walter van Sint-Omer",
+          "lang": "nl",
+          "kind": "label"
+        }
+      ],
+      "skipped_bare": [],
+      "skipped_title": [],
+      "skipped_known": 0
+    },
+    {
+      "authority_id": "AUTH:CR108",
+      "preferred_label": "William IV of Nevers",
+      "qid": "Q2063139",
+      "added": [
+        {
+          "form": "Wilhelm IV. von Nevers",
+          "lang": "de",
+          "kind": "label"
+        },
+        {
+          "form": "Guillem IV de Nevers",
+          "lang": "es",
+          "kind": "label"
+        },
+        {
+          "form": "Guillaume de Nevers",
+          "lang": "fr",
+          "kind": "alias"
+        },
+        {
+          "form": "Guillaume IV de Nevers",
+          "lang": "fr",
+          "kind": "label"
+        },
+        {
+          "form": "Guglielmo IV di Nevers",
+          "lang": "it",
+          "kind": "label"
+        },
+        {
+          "form": "Willem IV van Nevers",
+          "lang": "nl",
+          "kind": "label"
+        }
+      ],
+      "skipped_bare": [
+        "Wilhelm IV."
+      ],
+      "skipped_title": [],
+      "skipped_known": 1
+    },
+    {
+      "authority_id": "AUTH:CR105",
+      "preferred_label": "Giraut de Borneil",
+      "qid": "Q673799",
+      "added": [
+        {
+          "form": "Giraut de Bornelh",
+          "lang": "de",
+          "kind": "label"
+        },
+        {
+          "form": "Guiraut de Bornelh",
+          "lang": "en",
+          "kind": "label"
+        },
+        {
+          "form": "Gerardus de Borneil",
+          "lang": "la",
+          "kind": "label"
+        }
+      ],
+      "skipped_bare": [],
+      "skipped_title": [],
+      "skipped_known": 1
+    },
+    {
+      "authority_id": "AUTH:CR94",
+      "preferred_label": "Stephen I of Sancerre",
+      "qid": "Q301217",
+      "added": [
+        {
+          "form": "ستيفن الأول دي سانسير",
+          "lang": "ar",
+          "kind": "label"
+        },
+        {
+          "form": "Stephen de Sancerre",
+          "lang": "en",
+          "kind": "alias"
+        },
+        {
+          "form": "Esteban I de Sancerre",
+          "lang": "es",
+          "kind": "label"
+        },
+        {
+          "form": "Etienne Ier de Sancerre",
+          "lang": "fr",
+          "kind": "alias"
+        },
+        {
+          "form": "Stefano I di Sancerre",
+          "lang": "it",
+          "kind": "label"
+        },
+        {
+          "form": "Stephan I van Sancerre",
+          "lang": "nl",
+          "kind": "label"
+        }
+      ],
+      "skipped_bare": [
+        "Stephan I.",
+        "Stephanus"
+      ],
+      "skipped_title": [],
+      "skipped_known": 1
+    },
+    {
+      "authority_id": "AUTH:CR93",
+      "preferred_label": "Stephen II of Auxonne",
+      "qid": "Q11920998",
+      "added": [
+        {
+          "form": "Étienne II de Bourgogne",
+          "lang": "fr",
+          "kind": "alias"
+        },
+        {
+          "form": "Étienne I d'Auxonne",
+          "lang": "fr",
+          "kind": "label"
+        },
+        {
+          "form": "Stefano II di Auxonne",
+          "lang": "it",
+          "kind": "label"
+        },
+        {
+          "form": "Stefanus I van Auxonne",
+          "lang": "nl",
+          "kind": "label"
+        }
+      ],
+      "skipped_bare": [
+        "Etienne II, Comte d'Auxonne"
+      ],
+      "skipped_title": [],
+      "skipped_known": 1
+    },
+    {
+      "authority_id": "AUTH:CR92",
+      "preferred_label": "Hugh III of Burgundy",
+      "qid": "Q464908",
+      "added": [
+        {
+          "form": "Hugo III de Borgoña",
+          "lang": "es",
+          "kind": "label"
+        },
+        {
+          "form": "Hugues III de Bourgogne",
+          "lang": "fr",
+          "kind": "label"
+        },
+        {
+          "form": "Ugo III di Borgogna",
+          "lang": "it",
+          "kind": "label"
+        },
+        {
+          "form": "Hugo III van Boergondie",
+          "lang": "nl",
+          "kind": "alias"
+        },
+        {
+          "form": "Hugo III van Bourgondie",
+          "lang": "nl",
+          "kind": "alias"
+        }
+      ],
+      "skipped_bare": [
+        "Hugo III."
+      ],
+      "skipped_title": [
+        "هيو الثالث، دوق بورغندي"
+      ],
+      "skipped_known": 2
+    },
+    {
+      "authority_id": "AUTH:CR90",
+      "preferred_label": "Dedo IV of Wettin",
+      "qid": "Q875452",
+      "added": [
+        {
+          "form": "Dedo IV. von Wettin",
+          "lang": "de",
+          "kind": "label"
+        },
+        {
+          "form": "Dedo IV di Wettin",
+          "lang": "it",
+          "kind": "label"
+        }
+      ],
+      "skipped_bare": [],
+      "skipped_title": [
+        "Dedo IV Graf von Brehna"
+      ],
+      "skipped_known": 1
+    },
+    {
+      "authority_id": "AUTH:CR88",
+      "preferred_label": "Robert V of Béthune",
+      "qid": "Q1392290",
+      "added": [
+        {
+          "form": "Robert de Béthune",
+          "lang": "en",
+          "kind": "alias"
+        },
+        {
+          "form": "Robrecht V van Bethune",
+          "lang": "en",
+          "kind": "alias"
+        },
+        {
+          "form": "Robert V de Béthune",
+          "lang": "es",
+          "kind": "label"
+        }
+      ],
+      "skipped_bare": [],
+      "skipped_title": [],
+      "skipped_known": 1
+    },
+    {
+      "authority_id": "AUTH:CR86",
+      "preferred_label": "Constance of Toulouse",
+      "qid": "Q1186147",
+      "added": [
+        {
+          "form": "كونستانس الفرنسية",
+          "lang": "ar",
+          "kind": "label"
+        },
+        {
+          "form": "Constance Capet",
+          "lang": "nl",
+          "kind": "label"
+        }
+      ],
+      "skipped_bare": [
+        "Constantia"
+      ],
+      "skipped_title": [
+        "Konstanze von Frankreich",
+        "Constance of France, Countess of Toulouse",
+        "Constanza de Francia",
+        "Constance de France",
+        "Costanza di Francia"
+      ],
+      "skipped_known": 0
+    },
+    {
+      "authority_id": "AUTH:CR83",
+      "preferred_label": "Henry de Lacy",
+      "qid": "Q1237622",
+      "added": [
+        {
+          "form": "Henri de Lacy",
+          "lang": "en",
+          "kind": "alias"
+        },
+        {
+          "form": "Henri de Nichole",
+          "lang": "en",
+          "kind": "alias"
+        },
+        {
+          "form": "Henri de Nicole",
+          "lang": "en",
+          "kind": "alias"
+        },
+        {
+          "form": "Henry de Nichole",
+          "lang": "en",
+          "kind": "alias"
+        },
+        {
+          "form": "Henry de Nicole",
+          "lang": "en",
+          "kind": "alias"
+        },
+        {
+          "form": "Henri Cuens de Nicole",
+          "lang": "fr",
+          "kind": "alias"
+        },
+        {
+          "form": "Henri de Lacy Cuens de Nicole",
+          "lang": "fr",
+          "kind": "alias"
+        },
+        {
+          "form": "Enrico di Lacy",
+          "lang": "it",
+          "kind": "alias"
+        },
+        {
+          "form": "Henricus de Lacy",
+          "lang": "la",
+          "kind": "label"
+        }
+      ],
+      "skipped_bare": [
+        "Henri, Count of Lincoln",
+        "Henry, Count of Lincoln"
+      ],
+      "skipped_title": [],
+      "skipped_known": 1
+    },
+    {
+      "authority_id": "AUTH:CR 145",
+      "preferred_label": "Rodrigo González de Lara",
+      "qid": "Q7357345",
+      "added": [
+        {
+          "form": "رودريغو غونثالث دي لارا",
+          "lang": "ar",
+          "kind": "label"
+        }
+      ],
+      "skipped_bare": [],
+      "skipped_title": [],
+      "skipped_known": 1
+    },
+    {
+      "authority_id": "AUTH:CR 165",
+      "preferred_label": "Albert the Bear",
+      "qid": "Q156041",
+      "added": [
+        {
+          "form": "ألبرشت الأول، مرغريف براندبورغ",
+          "lang": "ar",
+          "kind": "label"
+        },
+        {
+          "form": "Albrecht I. von Brandenburg",
+          "lang": "de",
+          "kind": "alias"
+        },
+        {
+          "form": "Albrecht von Ballenstedt",
+          "lang": "de",
+          "kind": "alias"
+        },
+        {
+          "form": "Alberto I de Brandemburgo",
+          "lang": "es",
+          "kind": "alias"
+        },
+        {
+          "form": "Alberto I de Brandenburgo",
+          "lang": "es",
+          "kind": "alias"
+        },
+        {
+          "form": "Alberto el Oso",
+          "lang": "es",
+          "kind": "alias"
+        },
+        {
+          "form": "Alberto I de Brandeburgo",
+          "lang": "es",
+          "kind": "label"
+        },
+        {
+          "form": "Albert Ier de Brandebourg",
+          "lang": "fr",
+          "kind": "alias"
+        },
+        {
+          "form": "Albert Ier l'Ours",
+          "lang": "fr",
+          "kind": "alias"
+        },
+        {
+          "form": "Albert l'Ours",
+          "lang": "fr",
+          "kind": "alias"
+        },
+        {
+          "form": "Albert Ier",
+          "lang": "fr",
+          "kind": "label"
+        },
+        {
+          "form": "Alberto di Ballenstedt",
+          "lang": "it",
+          "kind": "alias"
+        },
+        {
+          "form": "Alberto l'Orso",
+          "lang": "it",
+          "kind": "alias"
+        },
+        {
+          "form": "Alberto I di Brandeburgo",
+          "lang": "it",
+          "kind": "label"
+        },
+        {
+          "form": "Albertus ursus",
+          "lang": "la",
+          "kind": "label"
+        },
+        {
+          "form": "Albrecht I de Beer",
+          "lang": "nl",
+          "kind": "alias"
+        },
+        {
+          "form": "Albrecht I van Brandenburg",
+          "lang": "nl",
+          "kind": "alias"
+        },
+        {
+          "form": "Albrecht de Beer",
+          "lang": "nl",
+          "kind": "label"
+        }
+      ],
+      "skipped_bare": [
+        "Adalbert I.",
+        "Albrecht der Bär",
+        "Albrecht I."
+      ],
+      "skipped_title": [
+        "Albrecht I 'the Bear' Markgraf von Brandenburg",
+        "Albrecht I Markgraf von Brandenburg"
+      ],
+      "skipped_known": 1
+    },
+    {
+      "authority_id": "AUTH:CR166",
+      "preferred_label": "Sophie of Winzenburg",
+      "qid": "Q1481103",
+      "added": [
+        {
+          "form": "Sophie von Winzenburg",
+          "lang": "de",
+          "kind": "label"
+        },
+        {
+          "form": "Sophie de Winzenbourg",
+          "lang": "fr",
+          "kind": "label"
+        },
+        {
+          "form": "Sofia di Winzenburg",
+          "lang": "it",
+          "kind": "label"
+        },
+        {
+          "form": "Sophie van Winzenburg",
+          "lang": "nl",
+          "kind": "label"
+        }
+      ],
+      "skipped_bare": [],
+      "skipped_title": [],
+      "skipped_known": 1
+    },
+    {
+      "authority_id": "AUTH:CR170",
+      "preferred_label": "Leopold V of Austria",
+      "qid": "Q319713",
+      "added": [
+        {
+          "form": "Leopold V. von Österreich",
+          "lang": "de",
+          "kind": "alias"
+        },
+        {
+          "form": "Leopoldo V \"el Virtuoso\"",
+          "lang": "es",
+          "kind": "label"
+        },
+        {
+          "form": "Leopold V d'Autriche",
+          "lang": "fr",
+          "kind": "alias"
+        },
+        {
+          "form": "Léopold V de Babenberg",
+          "lang": "fr",
+          "kind": "alias"
+        },
+        {
+          "form": "Leopoldo V di Babenberg",
+          "lang": "it",
+          "kind": "label"
+        },
+        {
+          "form": "Leopold V van Oostenrijk",
+          "lang": "nl",
+          "kind": "label"
+        }
+      ],
+      "skipped_bare": [
+        "Luitpold",
+        "Leopoldo V"
+      ],
+      "skipped_title": [
+        "ليوبولد الخامس دوق النمسا"
+      ],
+      "skipped_known": 1
+    },
+    {
+      "authority_id": "AUTH:CR175",
+      "preferred_label": "Conrad of Meissen",
+      "qid": "Q531805",
+      "added": [
+        {
+          "form": "Conrad the Great",
+          "lang": "en",
+          "kind": "alias"
+        },
+        {
+          "form": "Conrado I de Wettin",
+          "lang": "es",
+          "kind": "label"
+        },
+        {
+          "form": "Conrad Ier le Pieux",
+          "lang": "fr",
+          "kind": "label"
+        },
+        {
+          "form": "Corrado di Meissen",
+          "lang": "it",
+          "kind": "label"
+        },
+        {
+          "form": "Koenraad de Grote",
+          "lang": "nl",
+          "kind": "label"
+        }
+      ],
+      "skipped_bare": [
+        "Konrad I."
+      ],
+      "skipped_title": [],
+      "skipped_known": 1
+    },
+    {
+      "authority_id": "AUTH:CR184",
+      "preferred_label": "Godfrey of Bouillon",
+      "qid": "Q76721",
+      "added": [
+        {
+          "form": "Gottfried von Bouillon",
+          "lang": "de",
+          "kind": "label"
+        },
+        {
+          "form": "Godefroy V de Bouillon",
+          "lang": "en",
+          "kind": "alias"
+        },
+        {
+          "form": "Godefridus Bullonius",
+          "lang": "es",
+          "kind": "alias"
+        },
+        {
+          "form": "Godofredo de Bouillon",
+          "lang": "es",
+          "kind": "alias"
+        },
+        {
+          "form": "Godefroi de Bouillon",
+          "lang": "fr",
+          "kind": "alias"
+        },
+        {
+          "form": "Godefroid de Bouillon",
+          "lang": "fr",
+          "kind": "alias"
+        },
+        {
+          "form": "Godefroy de Boulogne",
+          "lang": "fr",
+          "kind": "alias"
+        },
+        {
+          "form": "Godefroy de Bouillon",
+          "lang": "fr",
+          "kind": "label"
+        },
+        {
+          "form": "Goffredo da Buglione",
+          "lang": "it",
+          "kind": "alias"
+        },
+        {
+          "form": "Goffredo di Buglione",
+          "lang": "it",
+          "kind": "label"
+        },
+        {
+          "form": "Galfridus Bullioniensis",
+          "lang": "la",
+          "kind": "alias"
+        },
+        {
+          "form": "Godefridus Bullionensis",
+          "lang": "la",
+          "kind": "label"
+        },
+        {
+          "form": "Godefroi IV de Bouillon",
+          "lang": "nl",
+          "kind": "alias"
+        },
+        {
+          "form": "Godfried IV van Bouillon",
+          "lang": "nl",
+          "kind": "alias"
+        },
+        {
+          "form": "Godfried van Bouillon",
+          "lang": "nl",
+          "kind": "label"
+        }
+      ],
+      "skipped_bare": [
+        "جودفري"
+      ],
+      "skipped_title": [],
+      "skipped_known": 1
+    },
+    {
+      "authority_id": "AUTH:CR185",
+      "preferred_label": "Robert II of Flanders",
+      "qid": "Q333306",
+      "added": [
+        {
+          "form": "Roberto II el Hierosolimitano",
+          "lang": "de",
+          "kind": "alias"
+        },
+        {
+          "form": "Roberto II de Flandes",
+          "lang": "es",
+          "kind": "label"
+        },
+        {
+          "form": "Robert II de Flandre",
+          "lang": "fr",
+          "kind": "label"
+        },
+        {
+          "form": "Roberto II di Fiandra",
+          "lang": "it",
+          "kind": "label"
+        },
+        {
+          "form": "Robrecht II van Vlaanderen",
+          "lang": "nl",
+          "kind": "alias"
+        }
+      ],
+      "skipped_bare": [],
+      "skipped_title": [
+        "روبرت الثاني كونت فلاندر",
+        "Robrecht II van Jerusalem",
+        "Robrecht II van Jeruzalem"
+      ],
+      "skipped_known": 1
+    },
+    {
+      "authority_id": "AUTH:CR186",
+      "preferred_label": "Ralph of Caen",
+      "qid": "Q266447",
+      "added": [
+        {
+          "form": "Radulf von Caen",
+          "lang": "de",
+          "kind": "label"
+        },
+        {
+          "form": "Radulphus Cadomensis",
+          "lang": "en",
+          "kind": "alias"
+        },
+        {
+          "form": "Raoul of Caen",
+          "lang": "en",
+          "kind": "alias"
+        },
+        {
+          "form": "Rudolfo de Caen",
+          "lang": "es",
+          "kind": "label"
+        },
+        {
+          "form": "Radulf Cadomensis",
+          "lang": "fr",
+          "kind": "alias"
+        },
+        {
+          "form": "Radulfus Cadomensis",
+          "lang": "fr",
+          "kind": "alias"
+        },
+        {
+          "form": "Raoul de Caen",
+          "lang": "fr",
+          "kind": "label"
+        },
+        {
+          "form": "Radulfo di Caen",
+          "lang": "it",
+          "kind": "alias"
+        }
+      ],
+      "skipped_bare": [
+        "Radulf"
+      ],
+      "skipped_title": [],
+      "skipped_known": 2
+    }
+  ]
+}
