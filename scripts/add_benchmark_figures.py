@@ -38,7 +38,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 from backfill_authority_qids import Checker  # noqa: E402
 from enrich_authority_variants import enrich_record  # noqa: E402
-from linker import normalise  # noqa: E402
+from linker import is_bare_name, normalise  # noqa: E402
 from wikidata_snapshot import Snapshot  # noqa: E402
 
 DEFAULT_INDEX = ROOT / "scripts" / "outremer_index.json"
@@ -147,7 +147,13 @@ def add_figures(index: dict, figures: list[dict], snapshot: Snapshot) -> tuple[d
                            "note": f"added {datetime.now(timezone.utc).date().isoformat()} per issue #92 "
                                    f"(M19.2 tranche A: benchmark figure of #99, {figure.get('tradition', '')}, "
                                    f"{figure.get('role', '')})"},
-            "variant_provenance": {n: [{"system": "github-issue", "locator": ISSUE}] for n in [label, *variants]},
+            "variant_provenance": {
+                n: [{"system": "github-issue", "locator": ISSUE,
+                     # a bare form listed here is meant (#93): the linker
+                     # ignores bare forms without this marker
+                     **({"bare": "attested"} if is_bare_name(n) else {})}]
+                for n in [label, *variants]
+            },
         }
         qid, prov, decision = identity(figure, checker, record)
         if qid:

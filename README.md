@@ -325,27 +325,25 @@ Key metric: **linking agreement** — of the pairs scholars reviewed, how
 many does the responsible system's top proposal agree with. Adjudications
 cover two systems, each judged against its own output: the authority-file
 linker (`AUTH:CR…` ids) and Wikidata reconciliation (`wikidata:Q…` ids).
-Baseline 2026-10-09 after the M19.0 gold repair (#97) and the floor
-re-sweep (`evaluation/baselines/epic19-post-repair.json`): authority
-**0.9828 over 58 pairs** (4 accepts, all hit at 1.00; 54 rejects, 1 still
-proposed), Wikidata 0.8125 over 16 — see the caveat below. CI evaluates
-with `--relink`: the linker in the checkout is run over the fixtures'
-extracted persons, so the gate measures code, not the nightly's snapshot.
-The 2026-07-18 figure (combined 0.9155, authority 0.8909) is superseded: six
-of its seven authority accepts named the wrong person (#98), and the +0.018
-lift it showed over a null linker was carried entirely by those wrong
-matches.
+Baseline 2026-10-10 after the M19.0 gold repair (#97), the M19.2 growth
+(#165) and the M19.3 operating point (#93; `evaluation/THRESHOLDS.md`):
+authority **0.9577 over 71 pairs** (14 accepts, all hit at 1.00; 57
+rejects, 3 still proposed), lift over a null linker **+0.155**; Wikidata
+0.75 over 16 — see the caveat below. CI evaluates with `--relink` and gates
+on `--min-lift 0.10`. The 2026-07-18 figure (combined 0.9155, authority
+0.8909) is superseded: six of its seven authority accepts named the wrong
+person (#98).
 
 > **Read agreement against the null baseline, not on its own.** Agreement
 > rewards proposing what scholars accepted *and* not proposing what they
-> rejected. With 4 accepts against 54 rejects a linker that proposes
-> **nothing at all** scores 54/58 = **0.931** on authority. The harness
+> rejected. With 14 accepts against 57 rejects a linker that proposes
+> **nothing at all** scores 57/71 = **0.803** on authority. The harness
 > therefore reports `null`, `lift`, and `accept_rate` per system, and CI
 > gates on `--min-lift` against the *weakest* segment; a combined threshold
 > cannot fail, because Wikidata's accept-only gold masks any authority
-> collapse. Four positive examples are not a measurement of linker quality —
-> gold growth (#36, Part 2 of `docs/AUTHORITY_REVIEW_WORKSHEET.md`) is what
-> makes the authority figure mean something.
+> collapse. Fourteen positive examples, all exact names, measure recall of
+> the easy case; gold growth (#36, Part 2 of `docs/AUTHORITY_REVIEW_WORKSHEET.md`)
+> is what makes the authority figure mean more.
 
 > **Wikidata 0.8125, not 1.0.** The fixtures now carry the offline resolver's
 > answers (#83/#147). Three of sixteen accepted QIDs are no longer the top
