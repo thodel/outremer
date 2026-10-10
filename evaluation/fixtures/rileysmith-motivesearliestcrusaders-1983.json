@@ -1,5 +1,5 @@
 {
-  "doc_id": "rileysmith-motivesearliestcrusaders-1983-92cc17aaccd3",
+  "doc_id": "rileysmith-motivesearliestcrusaders-1983",
   "mode": "adjudicated",
   "accepted": [
     [
@@ -321,14 +321,14 @@
       "the Frankish lords",
       "the people",
       "Guibert of Nogent",
-      "the crusaders",
       "Ekkehard of Aura",
       "the western Franks",
-      "certain prophets",
+      "prophets",
       "Pope Urban",
       "the French bishops",
       "Count Robert of Flanders",
       "the armies",
+      "the Egyptian army",
       "Fulcher of Chartres",
       "the first king of Jerusalem",
       "Tancred",
@@ -362,16 +362,16 @@
       "Robert of Rheims",
       "Baldwin",
       "Eustace of Boulogne",
+      "Muslims",
       "Hugh of St Omer",
       "Robert Guiscard",
-      "Wiscardides",
-      "Muslims",
-      "Christians",
+      "Italian Normans",
       "Lambert",
       "Bohemond",
       "Duke Godfrey",
       "Robert fitz Gerard",
       "Count Gerard of Buonalbergo",
+      "Robert",
       "Robert of Anzi",
       "Raymond of St Gilles",
       "Count of Toulouse",
@@ -380,9 +380,10 @@
       "Count Galdemar Carpenel",
       "Archbishop Hugh of Die of Lyons",
       "Godfrey's followers",
+      "knights and prince of the kingdom of Jerusalem",
       "King Baldwin I",
-      "Raymond",
       "Roman of Le Puy",
+      "Raymond",
       "Adhemar",
       "Roger of Rozoy",
       "Winrich",
@@ -406,15 +407,18 @@
       "Robert fitzTristan",
       "Bartholomew Boel of Chartres",
       "William of Montpellier",
-      "the army of Raymond of St Gilles",
-      "the new crusaders",
+      "Emperor Alexius",
       "William Peyre",
       "Peter Bartholomew",
       "Peter of Narbonne",
       "William Hugo of Monteil",
       "Bertrand Porcellet",
       "Henry I of England",
-      "the emperor Alexius",
+      "the crusaders",
+      "the new crusaders",
+      "a newly formed band of crusaders",
+      "some of his original companions",
+      "groups of dependents",
       "Count Raymond",
       "the Greek emperor",
       "Robert fitz Godwin",
@@ -477,11 +481,6 @@
         "candidates": []
       },
       {
-        "person": "the crusaders",
-        "top_candidate": null,
-        "candidates": []
-      },
-      {
         "person": "Ekkehard of Aura",
         "top_candidate": null,
         "candidates": []
@@ -492,7 +491,7 @@
         "candidates": []
       },
       {
-        "person": "certain prophets",
+        "person": "prophets",
         "top_candidate": null,
         "candidates": []
       },
@@ -525,6 +524,11 @@
       },
       {
         "person": "the armies",
+        "top_candidate": null,
+        "candidates": []
+      },
+      {
+        "person": "the Egyptian army",
         "top_candidate": null,
         "candidates": []
       },
@@ -808,6 +812,11 @@
         "candidates": []
       },
       {
+        "person": "Muslims",
+        "top_candidate": null,
+        "candidates": []
+      },
+      {
         "person": "Hugh of St Omer",
         "top_candidate": {
           "outremer_id": "AUTH:CR13"
@@ -839,17 +848,7 @@
         ]
       },
       {
-        "person": "Wiscardides",
-        "top_candidate": null,
-        "candidates": []
-      },
-      {
-        "person": "Muslims",
-        "top_candidate": null,
-        "candidates": []
-      },
-      {
-        "person": "Christians",
+        "person": "Italian Normans",
         "top_candidate": null,
         "candidates": []
       },
@@ -911,6 +910,23 @@
         "candidates": [
           {
             "outremer_id": "AUTH:CR120"
+          }
+        ]
+      },
+      {
+        "person": "Robert",
+        "top_candidate": {
+          "outremer_id": "AUTH:CR56"
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR56"
+          },
+          {
+            "outremer_id": "AUTH:CR100"
+          },
+          {
+            "outremer_id": "AUTH:CR88"
           }
         ]
       },
@@ -1003,6 +1019,11 @@
         ]
       },
       {
+        "person": "knights and prince of the kingdom of Jerusalem",
+        "top_candidate": null,
+        "candidates": []
+      },
+      {
         "person": "King Baldwin I",
         "top_candidate": {
           "outremer_id": "AUTH:CR3"
@@ -1014,6 +1035,11 @@
         ]
       },
       {
+        "person": "Roman of Le Puy",
+        "top_candidate": null,
+        "candidates": []
+      },
+      {
         "person": "Raymond",
         "top_candidate": {
           "outremer_id": "AUTH:CR46"
@@ -1023,11 +1049,6 @@
             "outremer_id": "AUTH:CR46"
           }
         ]
-      },
-      {
-        "person": "Roman of Le Puy",
-        "top_candidate": null,
-        "candidates": []
       },
       {
         "person": "Adhemar",
@@ -1277,12 +1298,7 @@
         ]
       },
       {
-        "person": "the army of Raymond of St Gilles",
-        "top_candidate": null,
-        "candidates": []
-      },
-      {
-        "person": "the new crusaders",
+        "person": "Emperor Alexius",
         "top_candidate": null,
         "candidates": []
       },
@@ -1365,7 +1381,27 @@
         ]
       },
       {
-        "person": "the emperor Alexius",
+        "person": "the crusaders",
+        "top_candidate": null,
+        "candidates": []
+      },
+      {
+        "person": "the new crusaders",
+        "top_candidate": null,
+        "candidates": []
+      },
+      {
+        "person": "a newly formed band of crusaders",
+        "top_candidate": null,
+        "candidates": []
+      },
+      {
+        "person": "some of his original companions",
+        "top_candidate": null,
+        "candidates": []
+      },
+      {
+        "person": "groups of dependents",
         "top_candidate": null,
         "candidates": []
       },

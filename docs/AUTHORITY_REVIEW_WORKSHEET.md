@@ -22,7 +22,7 @@ Return decisions through the Explorer's **Export decisions** button so
 they flow back via `data/decisions.json`. No file here needs editing
 by hand.
 
-**Corpus:** 4 documents · **authority file:** 129 records
+**Corpus:** 3 documents · **authority file:** 129 records
  · **already adjudicated:** 75 pairs
 
 ---
@@ -40,7 +40,7 @@ record exists — that becomes an authority-coverage item for #92).
 ### Count Robert of Flanders → `AUTH:CR185`
 
 - **Authority record says:** Robert II of Flanders  — 🔴 **name mismatch**
-- **Document:** `rileysmith-motivesearliestcrusaders-1983-92cc17aaccd3`
+- **Document:** `rileysmith-motivesearliestcrusaders-1983`
 - **Source context:** “…Count Robert of Flanders, for instance, was treated for the rest of his life with the special respect accorded to a Jerosolimitanus.…”
 - **Recorded variants:** Count Robert of Flanders, Flanders's Robert, Robert, Robert (Flanders), Robert 2, Robert 2 of Flanders
 - **Other candidates the linker offered:**
@@ -54,7 +54,7 @@ record exists — that becomes an authority-coverage item for #92).
 ### Duke Godfrey → `AUTH:CR184`
 
 - **Authority record says:** Godfrey of Bouillon  — 🔴 **name mismatch**
-- **Document:** `rileysmith-motivesearliestcrusaders-1983-92cc17aaccd3`
+- **Document:** `rileysmith-motivesearliestcrusaders-1983`
 - **Source context:** “…received Tiberias with all Galilee and its appurtenances from Duke Godfrey…”
 - **Recorded variants:** Bouillon's Godfrey, Duke Godfrey, Godfrey, Godfrey (Bouillon), Godfrey of Bouillon, Godfrey, Bouillon
 - **Other candidates the linker offered:**
@@ -68,7 +68,7 @@ record exists — that becomes an authority-coverage item for #92).
 ### Godfrey of Bouillon → `AUTH:CR184`
 
 - **Authority record says:** Godfrey of Bouillon  — 🟢 names agree
-- **Document:** `rileysmith-motivesearliestcrusaders-1983-92cc17aaccd3`
+- **Document:** `rileysmith-motivesearliestcrusaders-1983`
 - **Source context:** “…Godfrey of Bouillon's domus, his household, accompanied him…”
 - **Recorded variants:** Bouillon's Godfrey, Duke Godfrey, Godfrey, Godfrey (Bouillon), Godfrey of Bouillon, Godfrey, Bouillon
 - **Other candidates the linker offered:**
@@ -81,7 +81,7 @@ record exists — that becomes an authority-coverage item for #92).
 ### Ralph of Caen → `AUTH:CR186`
 
 - **Authority record says:** Ralph of Caen  — 🟢 names agree
-- **Document:** `rileysmith-motivesearliestcrusaders-1983-92cc17aaccd3`
+- **Document:** `rileysmith-motivesearliestcrusaders-1983`
 - **Source context:** “…Ralph of Caen, p. 693; Bartolf of Nangis, p. 5I5…”
 - **Recorded variants:** Caen's Ralph, Radulph of Caen, Ralph, Ralph (Caen), Ralph of Caen, Ralph, Caen
 - **Other candidates the linker offered:**
@@ -96,7 +96,7 @@ record exists — that becomes an authority-coverage item for #92).
 
 ## Part 2 — Grow: unreviewed candidates, highest confidence first
 
-241 unreviewed authority proposals exist; the 30 strongest are listed. Reviewing these is the fastest way to create
+130 unreviewed authority proposals exist; the 30 strongest are listed. Reviewing these is the fastest way to create
 **positive** gold, which is what the evaluation currently lacks —
 7 accepts against 48 rejects means a linker proposing nothing already
 scores 0.873.
@@ -105,34 +105,34 @@ Accepting or rejecting each is useful; accepts are worth more.
 
 | # | mention | proposed authority record | score | document | context |
 |---|---|---|---|---|---|
-| 1 | **Geoffrey** | `AUTH:CR55` Geoffrey of Grandpré | 1.00 | rileysmith-motivesearliest | two chamberlains, Geoffrey and Stabelo |
-| 2 | **Godfrey** | `AUTH:CR78` Godfrey III of Louvain | 1.00 | rileysmith-motivesearliest | ON CRUSADE (in which he was Godfrey's standard bearer) |
-| 3 | **Baldwin** | `AUTH:CR3` Baldwin of Vern d'Anjou | 1.00 | rileysmith-motivesearliest | preserve the settlement for his brother Baldwin and it still had |
-| 4 | **Adhemar** | `AUTH:CR91` Adhémar V of Limoges | 1.00 | rileysmith-motivesearliest | William Hugo of Monteil was a brother of the papal legate Adhemar |
-| 5 | **Nicholas** | `AUTH:CR60` Nicholas of Montiéramey | 1.00 | hamblin-muslimperspectives | Franks and Mongols, and their accommodation with Nicholas IV over a Fr… |
-| 6 | **Robert** | `AUTH:CR56` Robert of Milly | 1.00 | hamblin-muslimperspectives | s, Ayyubids,5. 53.Humphreys, Damascus,267-68. 54. Robert Irwin, The Mi… |
-| 7 | **Bernard** | `AUTH:CR183` Bernard of Dorat | 1.00 | munro-popescrusades-1916-2 | sermons and states that Bernard sent all who were fit into monasteries |
-| 8 | **Godfrey** | `AUTH:CR78` Godfrey III of Louvain | 1.00 | munro-popescrusades-1916-2 | demanded that Godfrey should give up the Holy City, the latter tempori… |
-| 9 | **Walter** | `AUTH:CR17` Walter of Hereford | 1.00 | munro-popescrusades-1916-2 | As Walter was a partisan of the Hohenstaufens and opposed to the papac… |
-| 10 | **Count of Toulouse** | `AUTH:CR86` Constance of Toulouse | 0.84 | rileysmith-motivesearliest | When Raymond of St Gilles, the Count of Toulouse, left Palestine |
-| 11 | **William Peyre** | `AUTH:CR49` William Rex | 0.83 | rileysmith-motivesearliest | William Peyre, lord of Cunlhat, had been the employer of Peter Barthol… |
+| 1 | **Bernard** | `AUTH:CR183` Bernard of Dorat | 1.00 | munro-popescrusades-1916 | sermons and states that Bernard sent all who were fit into monasteries |
+| 2 | **Godfrey** | `AUTH:CR78` Godfrey III of Louvain | 1.00 | munro-popescrusades-1916 | demanded that Godfrey should give up the Holy City, the latter tempori… |
+| 3 | **Walter** | `AUTH:CR17` Walter of Hereford | 1.00 | munro-popescrusades-1916 | As Walter was a partisan of the Hohenstaufens and opposed to the papac… |
+| 4 | **Geoffrey** | `AUTH:CR55` Geoffrey of Grandpré | 1.00 | rileysmith-motivesearliest | two chamberlains, Geoffrey and Stabelo |
+| 5 | **Godfrey** | `AUTH:CR78` Godfrey III of Louvain | 1.00 | rileysmith-motivesearliest | ON CRUSADE (in which he was Godfrey's standard bearer) |
+| 6 | **Baldwin** | `AUTH:CR3` Baldwin of Vern d'Anjou | 1.00 | rileysmith-motivesearliest | preserve the settlement for his brother Baldwin and it still had |
+| 7 | **Robert** | `AUTH:CR56` Robert of Milly | 1.00 | rileysmith-motivesearliest | One of the ambassadors on the same mission was another Robert |
+| 8 | **Adhemar** | `AUTH:CR91` Adhémar V of Limoges | 1.00 | rileysmith-motivesearliest | accompanied the papal legate Adhemar and had transferred his allegianc… |
+| 9 | **Count of Toulouse** | `AUTH:CR86` Constance of Toulouse | 0.84 | rileysmith-motivesearliest | Raymond of St Gilles, the Count of Toulouse, left Palestine |
+| 10 | **William Peyre** | `AUTH:CR49` William Rex | 0.83 | rileysmith-motivesearliest | William Peyre, lord of Cunlhat, had been the employer of Peter Barthol… |
+| 11 | **St. Bernard** | `AUTH:CR183` Bernard of Dorat | 0.82 | munro-popescrusades-1916 | The leaders in the Church, like St. Bernard, were able to throw the bl… |
 | 12 | **Baldwin II** | `AUTH:CR3` Baldwin of Vern d'Anjou | 0.82 | rileysmith-motivesearliest | He lived there into the reign of Baldwin II |
-| 13 | **St. Bernard** | `AUTH:CR183` Bernard of Dorat | 0.82 | munro-popescrusades-1916-2 | The leaders in the Church, like St. Bernard, were able to throw the bl… |
-| 14 | **Stephen of Blois** | `AUTH:CR94` Stephen I of Sancerre | 0.82 | rileysmith-motivesearliest | crusaded in the Angevin company which must have followed either Stephe… |
-| 15 | **Count William of Montpellier** | `AUTH:CR89` William VI, count of Angoulême | 0.81 | rileysmith-motivesearliest | Count William of Montpellier, who had played a leading role in the Sou… |
-| 16 | **Rothold** | `AUTH:CR99` Berthold of Sperberseck | 0.80 | rileysmith-motivesearliest | Arnulf the Lorrainer and perhaps Rothold |
-| 17 | **Robert of Anzi** | `AUTH:CR185` Robert II of Flanders | 0.80 | rileysmith-motivesearliest | two, Robert fitz Gerard and Robert of Anzi, accompanied Tancred to Jer… |
-| 18 | **Godfrey's followers** | `AUTH:CR78` Godfrey III of Louvain | 0.79 | rileysmith-motivesearliest | in which Godfrey's followers summoned him to Jerusalem after the duke'… |
-| 19 | **William the Carpenter** | `AUTH:CR112` William III of Mâcon | 0.79 | rileysmith-motivesearliest | William the Carpenter, Viscount of Melun, was from the Ile de France |
-| 20 | **William of Montpellier** | `AUTH:CR112` William III of Mâcon | 0.79 | rileysmith-motivesearliest | leaving behind, as we have seen, William of Montpellier, Galdemar Carp… |
-| 21 | **William Hugo of Monteil** | `AUTH:CR112` William III of Mâcon | 0.79 | rileysmith-motivesearliest | William Hugo of Monteil was a brother of the papal legate Adhemar |
-| 22 | **Godfrey, Defender of the Holy Sepulcher** | `AUTH:CR78` Godfrey III of Louvain | 0.79 | munro-popescrusades-1916-2 | For the moment the nobles yielded; after the capture of the city they … |
-| 23 | **William of Malmesbury** | `AUTH:CR112` William III of Mâcon | 0.79 | munro-popescrusades-1916-2 | for William of Malmesbury reports that the Pope said: the Turks are |
-| 24 | **Albert of Biandrate** | `AUTH:CR 165` Albert the Bear | 0.77 | rileysmith-motivesearliest | settlers from Lombardy Albert of Biandrate5 and Otto of Altaspata6 |
-| 25 | **Gerard of Avesnes** | `AUTH:CR120` Gerard II of Looz | 0.77 | rileysmith-motivesearliest | Franco of Mechelen, Gerard of Avesnes and Lambert of Montaigu |
-| 26 | **Robert of Rheims** | `AUTH:CR88` Robert V of Béthune | 0.77 | rileysmith-motivesearliest | Robert of Rheims, p. 867; Bartolf of Nangis, p. 515 |
-| 27 | **Robert Guiscard** | `AUTH:CR88` Robert V of Béthune | 0.77 | rileysmith-motivesearliest | followers of the family of Robert Guiscard, were reported to be servin… |
-| 28 | **Robert fitz Gerard** | `AUTH:CR120` Gerard II of Looz | 0.77 | rileysmith-motivesearliest | Robert fitz Gerard, the second son of Count Gerard of Buonalbergo |
-| 29 | **Count Gerard of Buonalbergo** | `AUTH:CR120` Gerard II of Looz | 0.77 | rileysmith-motivesearliest | the second son of Count Gerard of Buonalbergo and Bohemond's cousin |
-| 30 | **Gerard of Quiersy** | `AUTH:CR120` Gerard II of Looz | 0.77 | rileysmith-motivesearliest | but he must have been related to, and may have accompanied, Gerard of … |
+| 13 | **Stephen of Blois** | `AUTH:CR94` Stephen I of Sancerre | 0.82 | rileysmith-motivesearliest | Anjou crusaded in the Angevin company which must have followed either … |
+| 14 | **Count William of Montpellier** | `AUTH:CR89` William VI, count of Angoulême | 0.81 | rileysmith-motivesearliest | Count William of Montpellier, who had played a leading role in the Sou… |
+| 15 | **Rothold** | `AUTH:CR99` Berthold of Sperberseck | 0.80 | rileysmith-motivesearliest | probably also Arnulf the Lorrainer and perhaps Rothold |
+| 16 | **Robert of Anzi** | `AUTH:CR185` Robert II of Flanders | 0.80 | rileysmith-motivesearliest | two, Robert fitz Gerard and Robert of Anzi, accompanied Tancred to Jer… |
+| 17 | **Godfrey, Defender of the Holy Sepulcher** | `AUTH:CR78` Godfrey III of Louvain | 0.79 | munro-popescrusades-1916 | For the moment the nobles yielded; after the capture of the city they … |
+| 18 | **William of Malmesbury** | `AUTH:CR112` William III of Mâcon | 0.79 | munro-popescrusades-1916 | for William of Malmesbury reports that the Pope said: the Turks are |
+| 19 | **Godfrey's followers** | `AUTH:CR78` Godfrey III of Louvain | 0.79 | rileysmith-motivesearliest | in which Godfrey's followers summoned him to Jerusalem after the duke'… |
+| 20 | **William the Carpenter** | `AUTH:CR112` William III of Mâcon | 0.79 | rileysmith-motivesearliest | one, William the Carpenter, Viscount of Melun, was from the Ile de Fra… |
+| 21 | **William of Montpellier** | `AUTH:CR112` William III of Mâcon | 0.79 | rileysmith-motivesearliest | leaving behind, as we have seen, William of Montpellier, Galdemar Carp… |
+| 22 | **William Hugo of Monteil** | `AUTH:CR112` William III of Mâcon | 0.79 | rileysmith-motivesearliest | William Hugo of Monteil was a brother of the papal legate Adhemar |
+| 23 | **Albert of Biandrate** | `AUTH:CR 165` Albert the Bear | 0.77 | rileysmith-motivesearliest | brought in a new generation of settlers from Lombardy Albert of Biandr… |
+| 24 | **Gerard of Avesnes** | `AUTH:CR120` Gerard II of Looz | 0.77 | rileysmith-motivesearliest | Franco of Mechelen, Gerard of Avesnes and Lambert of Montaigu |
+| 25 | **Robert of Rheims** | `AUTH:CR88` Robert V of Béthune | 0.77 | rileysmith-motivesearliest | Robert of Rheims, p. 867; Bartolf of Nangis, p. 515 |
+| 26 | **Robert Guiscard** | `AUTH:CR88` Robert V of Béthune | 0.77 | rileysmith-motivesearliest | followers of the family of Robert Guiscard, were reported to be servin… |
+| 27 | **Robert fitz Gerard** | `AUTH:CR120` Gerard II of Looz | 0.77 | rileysmith-motivesearliest | Robert fitz Gerard, the second son of Count Gerard of Buonalbergo |
+| 28 | **Count Gerard of Buonalbergo** | `AUTH:CR120` Gerard II of Looz | 0.77 | rileysmith-motivesearliest | the second son of Count Gerard of Buonalbergo and Bohemond's cousin |
+| 29 | **Gerard of Quiersy** | `AUTH:CR120` Gerard II of Looz | 0.77 | rileysmith-motivesearliest | but he must have been related to, and may have accompanied, Gerard of … |
+| 30 | **Duke Robert of Normandy** | `AUTH:CR88` Robert V of Béthune | 0.77 | rileysmith-motivesearliest | Ralph of Montpinson in Normandy probably arrived with Duke Robert of N… |
 

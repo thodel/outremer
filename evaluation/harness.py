@@ -6,7 +6,7 @@ Run the OUTREMER evaluation over gold fixtures and print/store a report.
 Fixture format (one JSON file per document in evaluation/fixtures/):
 
     {
-      "doc_id": "rileysmith-motivesearliestcrusaders-1983-92cc17aaccd3",
+      "doc_id": "rileysmith-motivesearliestcrusaders-1983",
       "mode": "adjudicated",            # or "full"
       "gold_persons": ["..."],          # full mode only
       "accepted": [["Miles of Clermont", "AUTH:CR115"]],   # adjudicated mode

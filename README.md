@@ -224,6 +224,15 @@ run exits 1. A short text PDF without a page image keeps its text.
 
 Output: `site/data/*.json`, `site/bib/*.bib`, `bib/*.bib`.
 
+**Document identity.** A document's `doc_id` is the slug of its source file
+name (`rileysmith-motivesearliestcrusaders-1983`) and nothing else; the text
+state it was built from is the document's `text_sha256` field. Until
+2026-10-10 the id also carried twelve characters of that hash, so a changed
+extraction gave the same source a new id and orphaned every adjudication
+keyed on the old one (#161). `data/doc_id_aliases.json` maps the former ids
+to the current ones; `site/index.json` publishes the map as `aliases`, and
+the Explorer carries locally stored decisions over by it.
+
 Every processed document also produces a canonical evidence-first artifact at
 `data/evidence/<document-id>.evidence.json`. These records separate immutable
 source snapshots and passages from extracted mentions, assertions, identity
@@ -405,7 +414,7 @@ If two different reviewers disagree on the same person in the same document (one
 ```json
 [
   {
-    "doc_id":     "rileysmith-motivesearliestcrusaders-1983-92cc17aaccd3",
+    "doc_id":     "rileysmith-motivesearliestcrusaders-1983",
     "person":     "Baldwin I",
     "decision":   "accept",          // accept | reject | not_a_person | wrong_era | is_group
     "client_id":  "anon-abc123xyz",  // optional, auto-generated per browser

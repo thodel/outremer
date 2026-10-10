@@ -1128,8 +1128,32 @@ async function loadEvidenceReview(docId) {
   }
 }
 
+// #161: a document's id used to change with its text. Decisions a reviewer
+// stored locally under a former id are moved to the current one, once.
+function migrateDecisionKeys(aliases) {
+  if (!aliases || !Object.keys(aliases).length) return 0;
+  const d = loadDecisions();
+  let moved = 0;
+  for (const key of Object.keys(d)) {
+    const sep = key.indexOf("::");
+    if (sep < 0) continue;
+    const docId = key.slice(0, sep);
+    const target = aliases[docId];
+    if (!target || target === docId) continue;
+    const newKey = target + key.slice(sep);
+    if (!(newKey in d)) {
+      d[newKey] = { ...d[key], doc_id: target, migrated_from: docId };
+      moved++;
+    }
+    delete d[key];
+  }
+  if (moved) saveDecisions(d);
+  return moved;
+}
+
 async function loadIndex() {
   const idx = await fetchJson("./index.json");
+  migrateDecisionKeys(idx.aliases || {});
   const sel = document.getElementById("docSelect");
   sel.innerHTML = "";
 
