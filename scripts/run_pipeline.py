@@ -37,6 +37,9 @@ from config import EXTRACTION_MODEL, EXTRACTION_SEED, GPUSTACK_BASE_URL, OCR_ENG
 logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 logger = logging.getLogger(__name__)
 _recognition_engines_used: Counter[str] = Counter()
+# Per-document recognition provenance (#73): set by the recogniser, consumed
+# by process_file, keyed by the input path.
+_last_recognition: dict[str, dict[str, Any]] = {}
 
 
 # ──────────────────────────────────────────────
@@ -221,7 +224,12 @@ def _page_images_as_data_urls(path: Path, max_pages: int = 8) -> list[str]:
 
 def _qwen3vl_ocr(path: Path) -> str:
     """GPUStack Qwen3-VL for document recognition (multimodal, not text)."""
-    from config import QWEN3_VL_DISABLE_THINKING, QWEN3_VL_MODEL
+    from config import (
+        QWEN3_VL_DISABLE_THINKING,
+        QWEN3_VL_MODEL,
+        VLM_FREQUENCY_PENALTY,
+        VLM_PRESENCE_PENALTY,
+    )
 
     # A base64 PDF pasted into the TEXT prompt — the previous implementation —
     # never reached the model: measured on tei it produced 65k input tokens and
@@ -243,23 +251,40 @@ def _qwen3vl_ocr(path: Path) -> str:
         "preserving the original orthography, abbreviations, line breaks and "
         "capitalisation. Expand nothing. Output only the transcription."
     )
+    # Decoding for recognition ONLY (#73): the penalties damp the repetition
+    # loop a VLM falls into on transcription; extraction never sees them.
+    decoding: dict[str, Any] = {
+        "max_tokens": 8192,
+        "temperature": 0.0,
+        "frequency_penalty": VLM_FREQUENCY_PENALTY,
+        "presence_penalty": VLM_PRESENCE_PENALTY,
+    }
     extra: dict[str, Any] = {}
     if QWEN3_VL_DISABLE_THINKING:
         # A reasoning model left in thinking mode spends the whole budget
         # before answering: an empty transcription, not an error.
         extra["extra_body"] = {"chat_template_kwargs": {"enable_thinking": False}}
+    # What produced this transcription, for the document's provenance block.
+    _last_recognition[str(path)] = {
+        "engine": "qwen3-vl",
+        "backend": "gpustack",
+        "model": QWEN3_VL_MODEL,
+        "pages": len(images),
+        "decoding": {**decoding, "enable_thinking": not QWEN3_VL_DISABLE_THINKING},
+    }
     try:
         text = _llm_generate(
             prompt,
             model=QWEN3_VL_MODEL,
             images=images,
-            max_tokens=8192,
-            temperature=0.0,
+            **decoding,
             **extra,
         )
     except RecognitionError:
+        _last_recognition.pop(str(path), None)
         raise
     except Exception as exc:
+        _last_recognition.pop(str(path), None)
         # The backend is unreachable, refuses, or the model is not served.
         # llm_client has already retried; say what to check.
         logger.error("GPUStack VLM OCR error: %s", exc)
@@ -269,6 +294,7 @@ def _qwen3vl_ocr(path: Path) -> str:
             f"and that {QWEN3_VL_MODEL} is served"
         ) from exc
     if not text.strip():
+        _last_recognition.pop(str(path), None)
         # Empty content arrives as a normal HTTP 200. Say so, or the page
         # is indistinguishable from one that holds no text.
         logger.error(
@@ -506,6 +532,9 @@ def process_file(
         # source and prefers the latest run (#152).
         "run_at": datetime.now(timezone.utc).isoformat(),
         # Provenance: which engine actually produced these persons
+        # Provenance: how the text itself was read when the PDF had no text
+        # layer — engine, model and decoding settings (#73); null otherwise.
+        "recognition": _last_recognition.pop(str(in_path), None),
         "extraction_mode": (result.get("engine") or {}).get("provider", "unknown"),
         "extraction_engine": result.get("engine") or {},
         "language_hint": language,

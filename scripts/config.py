@@ -11,6 +11,8 @@ Env vars (set in .env.gpustack, git-ignored):
     ORCHESTRATOR_MODEL   - model for orchestration (default minimax-m2.7)
     QWEN3_VL_MODEL       - vision model for document OCR (default qwen3.8-27b)
     QWEN3_VL_DISABLE_THINKING - send enable_thinking=false with OCR calls (default true)
+    VLM_FREQUENCY_PENALTY - frequency_penalty for the recognition call only (default 0.2)
+    VLM_PRESENCE_PENALTY  - presence_penalty for the recognition call only (default 0.0)
     EXTRACTION_DISABLE_THINKING - same switch for extraction calls (default true)
     ATR_GATEWAY_URL      - serving-atr-inference base URL
     ATR_API_KEY          - static X-API-Key credential (empty for local development)
@@ -84,6 +86,14 @@ EXTRACTION_DISABLE_THINKING = _get("EXTRACTION_DISABLE_THINKING", "true").lower(
 # hi-res fixture, 8192 tokens went to reasoning and 0 characters to the
 # transcription, with HTTP 200 — so nothing retried and nothing failed.
 QWEN3_VL_DISABLE_THINKING = _get("QWEN3_VL_DISABLE_THINKING", "true").lower() == "true"
+# Anti-repetition decoding for the RECOGNITION call only (M14.3, #73). VLMs
+# loop on transcription specifically: measured on tei 2026-09-21, qwen3.8-27b
+# read two abbreviated lines of the hi-res charter strip and then emitted
+# "w. w. w." to the token limit (~97 % of the output). Extraction, metadata
+# and reconciliation keep their own decoding; agentic_historian carries the
+# same split (its #275).
+VLM_FREQUENCY_PENALTY = float(_get("VLM_FREQUENCY_PENALTY", "0.2"))
+VLM_PRESENCE_PENALTY = float(_get("VLM_PRESENCE_PENALTY", "0.0"))
 
 # OCR
 # "qwen3-vl" - the GPUStack vision model behind QWEN3_VL_MODEL (qwen3.8-27b).

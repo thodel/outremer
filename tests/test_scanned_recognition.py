@@ -264,3 +264,82 @@ def test_failed_recognition_lands_in_the_run_report(monkeypatch, tmp_path):
     assert "GPUSTACK_BASE_URL" in report["failures"][0]["error"]
     assert report["recognition"]["engines_used"] == {}
     assert not list((tmp_path / "site" / "data").glob("magna-carta*.json"))
+
+
+def test_recognition_call_carries_the_anti_repetition_penalties(monkeypatch):
+    """#73: frequency/presence penalties ride on the recognition call …"""
+    import config
+
+    monkeypatch.setattr(config, "VLM_FREQUENCY_PENALTY", 0.2)
+    monkeypatch.setattr(config, "VLM_PRESENCE_PENALTY", 0.0)
+    seen = {}
+    monkeypatch.setattr(run_pipeline, "_llm_generate",
+                        lambda prompt, **kw: seen.update(kw) or "Johannes")
+    run_pipeline._qwen3vl_ocr(FIXTURE)
+    assert seen["frequency_penalty"] == 0.2
+    assert seen["presence_penalty"] == 0.0
+    assert seen["temperature"] == 0.0 and seen["max_tokens"] == 8192
+
+
+def test_extraction_call_does_not_carry_the_penalties(monkeypatch):
+    """… and the extraction call demonstrably does not (#73 'done when')."""
+    import extract_persons
+
+    seen = {}
+
+    def fake(prompt, **kw):
+        seen.update(kw)
+        return '{"persons": [], "metadata": {}}'
+
+    monkeypatch.setattr(extract_persons, "_llm_generate", fake)
+    extract_persons._extract_gpustack_chunk("Godfrey of Bouillon took Jerusalem.")
+    assert seen, "the extraction call was made"
+    assert "frequency_penalty" not in seen
+    assert "presence_penalty" not in seen
+
+
+def test_recognition_provenance_lands_in_the_document(monkeypatch, tmp_path):
+    """The decoding settings that produced a transcription are traceable."""
+    import config
+
+    monkeypatch.setattr(config, "VLM_FREQUENCY_PENALTY", 0.2)
+    monkeypatch.setattr(run_pipeline, "_llm_generate",
+                        lambda prompt, **kw: "Johannes Dei gratia rex Anglie")
+    run_pipeline._last_recognition.clear()
+    text = run_pipeline.read_input(FIXTURE)
+    assert text
+    prov = run_pipeline._last_recognition[str(FIXTURE)]
+    assert prov["engine"] == "qwen3-vl" and prov["backend"] == "gpustack"
+    assert prov["model"] == config.QWEN3_VL_MODEL
+    assert prov["pages"] == 1
+    assert prov["decoding"]["frequency_penalty"] == 0.2
+    assert prov["decoding"]["enable_thinking"] is False
+
+
+def test_failed_recognition_leaves_no_provenance_behind(monkeypatch):
+    def down(*a, **k):
+        raise ConnectionError("refused")
+
+    monkeypatch.setattr(run_pipeline, "_llm_generate", down)
+    run_pipeline._last_recognition.clear()
+    with pytest.raises(run_pipeline.RecognitionError):
+        run_pipeline.read_input(FIXTURE)
+    assert run_pipeline._last_recognition == {}
+
+
+def test_text_layer_document_has_null_recognition_provenance(monkeypatch, tmp_path):
+    """A PDF with a text layer was never recognised: the field says so."""
+    import pypdf
+
+    class FakePage:
+        def extract_text(self):
+            return "A" * 300
+
+    class FakeReader:
+        def __init__(self, path):
+            self.pages = [FakePage()]
+
+    monkeypatch.setattr(pypdf, "PdfReader", FakeReader)
+    run_pipeline._last_recognition.clear()
+    assert run_pipeline.read_input(tmp_path / "text.pdf") == "A" * 300
+    assert run_pipeline._last_recognition.pop(str(tmp_path / "text.pdf"), None) is None
