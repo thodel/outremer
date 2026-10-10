@@ -319,6 +319,27 @@ def reconcile_person(name: str, limit: int = 3) -> list[dict[str, Any]]:
     return candidates[:limit]
 
 
+def _current_documents(site_dir: Path) -> list[Path]:
+    """The documents site/index.json lists — not every file in site/data.
+
+    Until #152 this walked the directory, so superseded extraction states of
+    the same source (and anything else lying there) were resolved and
+    published too: 432 entries on 2026-10-03, part of them from documents
+    nobody was meant to see any more. Without an index, fall back to the
+    directory minus the known non-documents.
+    """
+    index_path = site_dir / "index.json"
+    data_dir = site_dir / "data"
+    if index_path.exists():
+        try:
+            names = json.loads(index_path.read_text(encoding="utf-8")).get("documents") or []
+            return [data_dir / n for n in names if (data_dir / n).exists()]
+        except (OSError, json.JSONDecodeError):
+            pass
+    skip = {"wikidata_matches.json", "authority.json", "status.json"}
+    return sorted(f for f in data_dir.glob("*.json") if f.name not in skip)
+
+
 def run(site_dir: Path, limit: int, refresh: str = "stale") -> None:
     """Resolve every unmatched person and write site/data/wikidata_matches.json.
 
@@ -343,8 +364,7 @@ def run(site_dir: Path, limit: int, refresh: str = "stale") -> None:
         except Exception:
             existing = {}
 
-    doc_files = sorted(data_dir.glob("*.json"))
-    doc_files  = [f for f in doc_files if f.name != "wikidata_matches.json"]
+    doc_files = _current_documents(site_dir)
 
     snapshot = _snapshot()
     backend  = "wikidata_pre1500_snapshot" if snapshot else LIVE
