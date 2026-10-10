@@ -235,6 +235,17 @@ goes into `identifiers.wikidata_candidates` and nowhere else; *none* writes
 nothing. A label-equal tie is never asserted (#158). Existing QIDs are kept
 and re-verified, never replaced.
 
+**Authority name forms (M19.1, #91).** `python scripts/enrich_authority_variants.py
+--snapshot <pre-1500 snapshot>` adds the snapshot's labels and aliases in
+every language it holds to each record with a QID — *Radulfus Cadomensis*,
+*Fulko von Jerusalem*, *روبرت الثاني كونت فلاندر* — each form with its own
+provenance (`variant_provenance`: system, QID, language, label/alias,
+snapshot build) and precomputed in `normalized.variants`. A form that is a
+given name alone, with or without a numeral (*Robert II*, *Heinrich III.*),
+is left out: it would raise the hit rate of the wrong record. Outcome per
+record in `data/audits/authority_variant_enrichment.json`; measure with
+`python -m evaluation.authority_enrichment_report`.
+
 **Document identity.** A document's `doc_id` is the slug of its source file
 name (`rileysmith-motivesearliestcrusaders-1983`) and nothing else; the text
 state it was built from is the document's `text_sha256` field. Until
