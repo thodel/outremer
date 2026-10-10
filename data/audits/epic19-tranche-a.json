@@ -1,0 +1,359 @@
+{
+  "schema_version": 1,
+  "issue": "issue:92",
+  "snapshot": "2026-10-02T22:51:17+00:00",
+  "ran_at": "2026-10-10T14:24:45.405396+00:00",
+  "counts": {
+    "added": 14,
+    "skipped_present": 1,
+    "forms_from_snapshot": 134
+  },
+  "added": [
+    {
+      "authority_id": "AUTH:CR187",
+      "preferred_label": "Urban II",
+      "qid": "Q30578",
+      "identity": "github-issue",
+      "resolver": {
+        "verdict": "hypothesised",
+        "qid": null,
+        "why": "an exact two-token name, but nothing pins the person"
+      },
+      "variants_listed": [
+        "Pope Urban II"
+      ],
+      "forms_from_snapshot": [
+        "أوربان الثاني",
+        "أوربانوس الثاني",
+        "البابا أوربان الثاني",
+        "البابا أوربانوس الثاني",
+        "أربانوس الثاني",
+        "Eudes de Châtillon",
+        "Odo de Chatillon",
+        "Odo de Lagery",
+        "Odo von Châtillon",
+        "Odo von Lagery",
+        "Odo von Ostia",
+        "Pope Blessed Urban II",
+        "Eudes de Lagery",
+        "Odon de Lagery",
+        "Odón de Châtillon",
+        "Otton de Châtillon",
+        "Papa Urbano II",
+        "Otho de Lagery",
+        "Ottone dei conti di Châtillon",
+        "Ottone di Lagery",
+        "Beatus Urbanus PP. II",
+        "Paus Urbanus II"
+      ]
+    },
+    {
+      "authority_id": "AUTH:CR188",
+      "preferred_label": "Albert of Aachen",
+      "qid": "Q4323",
+      "identity": "github-issue",
+      "resolver": {
+        "verdict": "asserted",
+        "qid": "Q4323",
+        "why": "name match ≥ 0.85 with the toponym verified"
+      },
+      "variants_listed": [
+        "Albert of Aix"
+      ],
+      "forms_from_snapshot": [
+        "Albert von Aachen",
+        "Alberic of Aix-la-Chapelle",
+        "Albert of Aix-la-Chapelle",
+        "Alberto de Aquisgran",
+        "Albert d'Aix",
+        "Alberto di Aquisgrana",
+        "Albertus Aquensis",
+        "Albericus Aquensis",
+        "Albert van Aken"
+      ]
+    },
+    {
+      "authority_id": "AUTH:CR189",
+      "preferred_label": "Ekkehard of Aura",
+      "qid": "Q66673",
+      "identity": "github-issue",
+      "resolver": {
+        "verdict": "asserted",
+        "qid": "Q66673",
+        "why": "name match ≥ 0.85 with the toponym verified"
+      },
+      "variants_listed": [
+        "Ekkehard"
+      ],
+      "forms_from_snapshot": [
+        "Ekkehardus Uraugiensis",
+        "Ekkehard von Aura",
+        "Ekkehard d’Aura",
+        "Eccheardo d'Aura",
+        "Eccardus de Uraugia"
+      ]
+    },
+    {
+      "authority_id": "AUTH:CR190",
+      "preferred_label": "Fulcher of Chartres",
+      "qid": "Q5630",
+      "identity": "github-issue",
+      "resolver": {
+        "verdict": "asserted",
+        "qid": "Q5630",
+        "why": "name match ≥ 0.85 with the toponym verified"
+      },
+      "variants_listed": [],
+      "forms_from_snapshot": [
+        "فوشي دو شارتر",
+        "فوشيه الشارتري",
+        "Fulcher von Chartres",
+        "Fulquerio de Chartres",
+        "Fulcherius Carnotensis",
+        "Foucher de Chartres",
+        "Fulcherio di Chartres",
+        "Fulcher van Chartres"
+      ]
+    },
+    {
+      "authority_id": "AUTH:CR191",
+      "preferred_label": "Guibert of Nogent",
+      "qid": "Q4289",
+      "identity": "github-issue",
+      "resolver": {
+        "verdict": "asserted",
+        "qid": "Q4289",
+        "why": "name match ≥ 0.85 with the toponym verified"
+      },
+      "variants_listed": [],
+      "forms_from_snapshot": [
+        "غيبرت النوجنتي",
+        "Guibert von Nogent",
+        "Guiberto de Nogent",
+        "Guibert de Nogent",
+        "Guiberto di Nogent",
+        "Guibertus Novigentensis",
+        "Guibertus Sanctae Mariae de Novigento",
+        "Gvibert Nozjanskiy"
+      ]
+    },
+    {
+      "authority_id": "AUTH:CR192",
+      "preferred_label": "Orderic Vitalis",
+      "qid": "Q356298",
+      "identity": "github-issue",
+      "resolver": {
+        "verdict": "hypothesised",
+        "qid": null,
+        "why": "an exact two-token name, but nothing pins the person"
+      },
+      "variants_listed": [],
+      "forms_from_snapshot": [
+        "أورديريك فيتاليس",
+        "Orderic Vital",
+        "Ordericus Vitalis",
+        "Orderic Vitale",
+        "Orderico Vitalis",
+        "Orderico Vital",
+        "Orderico Vitale"
+      ]
+    },
+    {
+      "authority_id": "AUTH:CR193",
+      "preferred_label": "William of Tyre",
+      "qid": "Q311822",
+      "identity": "github-issue",
+      "resolver": {
+        "verdict": "asserted",
+        "qid": "Q311822",
+        "why": "name match ≥ 0.85 with the toponym verified"
+      },
+      "variants_listed": [],
+      "forms_from_snapshot": [
+        "وليام الصورى",
+        "وليم الصوري",
+        "Wilhelm II. von Tyrus",
+        "Wilhelm von Tyros",
+        "Wilhelm von Tyrus",
+        "Guillermo de Tiro",
+        "Guillaume de Tyr",
+        "Guglielmo di Tiro",
+        "Guillelmus Tyrensis",
+        "Willelmus Tyrensis",
+        "Willem van Tyrus"
+      ]
+    },
+    {
+      "authority_id": "AUTH:CR194",
+      "preferred_label": "Anna Komnene",
+      "qid": "Q179284",
+      "identity": "github-issue",
+      "resolver": {
+        "verdict": "hypothesised",
+        "qid": null,
+        "why": "2 candidates agree equally well"
+      },
+      "variants_listed": [],
+      "forms_from_snapshot": [
+        "انا كومنينا",
+        "Anna Komnena",
+        "Anna Comnena",
+        "Ana Commeno",
+        "Ana Comnena",
+        "Ana Comneno",
+        "Anne Comnene"
+      ]
+    },
+    {
+      "authority_id": "AUTH:CR195",
+      "preferred_label": "Alexios I Komnenos",
+      "qid": "Q41600",
+      "identity": "github-issue",
+      "resolver": {
+        "verdict": "hypothesised",
+        "qid": null,
+        "why": "an exact two-token name, but nothing pins the person"
+      },
+      "variants_listed": [],
+      "forms_from_snapshot": [
+        "ألكسيوس الأول كومنينوس",
+        "أليكسيوس الأول",
+        "أليكسيوس الأول كومنينوس",
+        "ألكسيوس الأول كومنين",
+        "Alexius Comnenus",
+        "Alejo Comneno",
+        "Alexios Comnenos",
+        "Alejo I Comneno",
+        "Alexis Comnène",
+        "Alexis Ier Comnene",
+        "Alessio I Comneno",
+        "Alessio I Conmeno",
+        "Alessio I di Bisanzio",
+        "Alexius I Comnenus",
+        "Alexios I van Byzantium",
+        "Alexius I van Byzantium"
+      ]
+    },
+    {
+      "authority_id": "AUTH:CR196",
+      "preferred_label": "Ibn al-Qalanisi",
+      "qid": "Q1356575",
+      "identity": "github-issue",
+      "resolver": {
+        "verdict": "none",
+        "qid": null,
+        "why": "no candidate agrees with the record's structured fields"
+      },
+      "variants_listed": [],
+      "forms_from_snapshot": [
+        "أبو يعلى حمزة بن اسد بن علي بن محمد التميمي المعروف بابن القلانسي",
+        "ابن القلانسي، أبو يعلى حمزة بن أسد",
+        "ابن القَلاَنِسي"
+      ]
+    },
+    {
+      "authority_id": "AUTH:CR197",
+      "preferred_label": "Ibn al-Athir",
+      "qid": "Q334854",
+      "identity": "github-issue",
+      "resolver": {
+        "verdict": "none",
+        "qid": null,
+        "why": "no candidate agrees with the record's structured fields"
+      },
+      "variants_listed": [],
+      "forms_from_snapshot": [
+        "ابن الأثير",
+        "عز الدين أبو الحسن الجزري الموصلي",
+        "عز الدين أبو الحسن علي بن محمد بن عبد الكريم الجزري الموصلي الشيباني",
+        "عز الدين بن الأثير",
+        "علي بن محمد بن عبد الكريم بن عبد الواحد الشيباني الجزري",
+        "ابن الأثير الجزري",
+        "ʿIzz ad-Dīn Abū ăl Ḥusayn ʿAlī Ibn Abū ăl-Karam Muḥammad Ibn Muḥammad Ibn ʿAbd al-Karīm Ibn ʿAbd al-Wāḥid aš-Šaybānī",
+        "Abu al-Hasan Ali Izz al-Din Ibn al-Athir",
+        "Abu al-Hassan Ali ibn Muhammad ibn Muhammad ash-Shaybani",
+        "ʻAli ibn Muḥammad ʻIzzaddîn Ibn al-Aṯîr",
+        "Ali ibn al-Athir"
+      ]
+    },
+    {
+      "authority_id": "AUTH:CR198",
+      "preferred_label": "Usama ibn Munqidh",
+      "qid": "Q451427",
+      "identity": "wikidata-pre1500-snapshot",
+      "resolver": {
+        "verdict": "asserted",
+        "qid": "Q451427",
+        "why": "name match ≥ 0.85 with the toponym verified"
+      },
+      "variants_listed": [],
+      "forms_from_snapshot": [
+        "أبو المظفر",
+        "أبو المظفر أسامة بن مرشد بن منقذ",
+        "أبو المظفر أسامة بن مرشد بنِ علي بنِ مقلد بنِ نصر بنِ منقذ الكناني الكلبي الشيزرِي",
+        "أسامة بن مرشد بن علي بن مقلد بن نصر بن منقذ الكناني الكلبي الشيزري",
+        "أسامه بن منقذ",
+        "ابن مُنْقِذ",
+        "عز الدين أسامة",
+        "مؤيد الدولة",
+        "أسامة بن منقذ",
+        "Usama Ibn Munquid",
+        "Ussama Ibn Munqidh",
+        "Osama Bin Munqiz",
+        "Oussama Ibn Mounqidh",
+        "Usamah ibn-Munqidh"
+      ]
+    },
+    {
+      "authority_id": "AUTH:CR199",
+      "preferred_label": "Matthew of Edessa",
+      "qid": "Q302586",
+      "identity": "wikidata-pre1500-snapshot",
+      "resolver": {
+        "verdict": "asserted",
+        "qid": "Q302586",
+        "why": "name match ≥ 0.85 with the toponym verified"
+      },
+      "variants_listed": [],
+      "forms_from_snapshot": [
+        "Matthias von Edessa",
+        "Matteos Uṛhayetsi",
+        "Mateo de Edesa",
+        "Mathieu d'Édesse",
+        "Matteo di Edessa",
+        "Matheos van Edessa"
+      ]
+    },
+    {
+      "authority_id": "AUTH:CR200",
+      "preferred_label": "Tancred, Prince of Galilee",
+      "qid": "Q51720",
+      "identity": "github-issue",
+      "resolver": {
+        "verdict": "hypothesised",
+        "qid": null,
+        "why": "2 candidates agree equally well"
+      },
+      "variants_listed": [
+        "Tancred",
+        "Tancred of Galilee",
+        "Tancred of Hauteville"
+      ],
+      "forms_from_snapshot": [
+        "Tankred der Kreuzfahrer",
+        "Tankred von Tarent",
+        "Tankred von Tiberias",
+        "Tancrède de Hauteville",
+        "Tancredi d'Altavilla",
+        "Tancredi di Galilea",
+        "Tancred van Galilea"
+      ]
+    }
+  ],
+  "skipped": [
+    {
+      "preferred_label": "Godfrey of Bouillon",
+      "present_as": "AUTH:CR184"
+    }
+  ]
+}

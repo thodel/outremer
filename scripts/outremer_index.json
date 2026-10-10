@@ -11635,6 +11635,2101 @@
           }
         ]
       }
+    },
+    {
+      "authority_id": "AUTH:CR187",
+      "preferred_label": "Urban II",
+      "identifiers": {
+        "project_identifier": "CR187",
+        "wikidata_qid": "Q30578",
+        "wikidata_qid_provenance": {
+          "system": "github-issue",
+          "locator": "issue:99",
+          "status": "asserted",
+          "why": "benchmark list of #99 (Wikidata entity search, checked 2026-07-30)"
+        }
+      },
+      "name": {
+        "raw": "Urban II",
+        "given": "Urban",
+        "rest": "II",
+        "pattern": "space"
+      },
+      "variants": [
+        "Beatus Urbanus PP. II",
+        "Eudes de Châtillon",
+        "Eudes de Lagery",
+        "Odo de Chatillon",
+        "Odo de Lagery",
+        "Odo von Châtillon",
+        "Odo von Lagery",
+        "Odo von Ostia",
+        "Odon de Lagery",
+        "Odón de Châtillon",
+        "Otho de Lagery",
+        "Otton de Châtillon",
+        "Ottone dei conti di Châtillon",
+        "Ottone di Lagery",
+        "Papa Urbano II",
+        "Paus Urbanus II",
+        "Pope Blessed Urban II",
+        "Pope Urban II",
+        "أربانوس الثاني",
+        "أوربان الثاني",
+        "أوربانوس الثاني",
+        "البابا أوربان الثاني",
+        "البابا أوربانوس الثاني"
+      ],
+      "normalized": {
+        "preferred": "urban ii",
+        "variants": [
+          "beatus urbanus pp ii",
+          "eudes de chatillon",
+          "eudes de lagery",
+          "odo de chatillon",
+          "odo de lagery",
+          "odo von chatillon",
+          "odo von lagery",
+          "odo von ostia",
+          "odon de chatillon",
+          "odon de lagery",
+          "otho de lagery",
+          "otton de chatillon",
+          "ottone dei conti di chatillon",
+          "ottone di lagery",
+          "papa urbano ii",
+          "paus urbanus ii",
+          "pope blessed urban ii",
+          "pope urban ii",
+          "اربانوس الثاني",
+          "البابا اوربان الثاني",
+          "البابا اوربانوس الثاني",
+          "اوربان الثاني",
+          "اوربانوس الثاني"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [],
+        "source_system": "manual",
+        "note": "added 2026-10-10 per issue #92 (M19.2 tranche A: benchmark figure of #99, Latin Christian, pope)"
+      },
+      "variant_provenance": {
+        "Urban II": [
+          {
+            "system": "github-issue",
+            "locator": "issue:92"
+          }
+        ],
+        "Pope Urban II": [
+          {
+            "system": "github-issue",
+            "locator": "issue:92"
+          }
+        ],
+        "أوربان الثاني": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q30578",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "أوربانوس الثاني": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q30578",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "البابا أوربان الثاني": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q30578",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "البابا أوربانوس الثاني": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q30578",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "أربانوس الثاني": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q30578",
+            "lang": "ar",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Eudes de Châtillon": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q30578",
+            "lang": "de",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Odo de Chatillon": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q30578",
+            "lang": "de",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Odo de Lagery": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q30578",
+            "lang": "de",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Odo von Châtillon": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q30578",
+            "lang": "de",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Odo von Lagery": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q30578",
+            "lang": "de",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Odo von Ostia": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q30578",
+            "lang": "de",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Pope Blessed Urban II": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q30578",
+            "lang": "en",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Eudes de Lagery": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q30578",
+            "lang": "es",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Odon de Lagery": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q30578",
+            "lang": "es",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Odón de Châtillon": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q30578",
+            "lang": "es",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Otton de Châtillon": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q30578",
+            "lang": "es",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Papa Urbano II": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q30578",
+            "lang": "es",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Otho de Lagery": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q30578",
+            "lang": "fr",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Ottone dei conti di Châtillon": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q30578",
+            "lang": "it",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Ottone di Lagery": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q30578",
+            "lang": "it",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Beatus Urbanus PP. II": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q30578",
+            "lang": "la",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Paus Urbanus II": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q30578",
+            "lang": "nl",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ]
+      }
+    },
+    {
+      "authority_id": "AUTH:CR188",
+      "preferred_label": "Albert of Aachen",
+      "identifiers": {
+        "project_identifier": "CR188",
+        "wikidata_qid": "Q4323",
+        "wikidata_qid_provenance": {
+          "system": "github-issue",
+          "locator": "issue:99",
+          "status": "asserted",
+          "why": "benchmark list of #99 (Wikidata entity search, checked 2026-07-30)"
+        }
+      },
+      "name": {
+        "raw": "Albert of Aachen",
+        "name": "Albert",
+        "toponym": "Aachen",
+        "pattern": "of"
+      },
+      "variants": [
+        "Alberic of Aix-la-Chapelle",
+        "Albericus Aquensis",
+        "Albert d'Aix",
+        "Albert of Aix",
+        "Albert of Aix-la-Chapelle",
+        "Albert van Aken",
+        "Albert von Aachen",
+        "Alberto de Aquisgran",
+        "Alberto di Aquisgrana",
+        "Albertus Aquensis"
+      ],
+      "normalized": {
+        "preferred": "albert of aachen",
+        "variants": [
+          "alberic of aix la chapelle",
+          "albericus aquensis",
+          "albert d aix",
+          "albert of aix",
+          "albert of aix la chapelle",
+          "albert van aken",
+          "albert von aachen",
+          "alberto de aquisgran",
+          "alberto di aquisgrana",
+          "albertus aquensis"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [],
+        "source_system": "manual",
+        "note": "added 2026-10-10 per issue #92 (M19.2 tranche A: benchmark figure of #99, Latin Christian, chronicler)"
+      },
+      "variant_provenance": {
+        "Albert of Aachen": [
+          {
+            "system": "github-issue",
+            "locator": "issue:92"
+          }
+        ],
+        "Albert of Aix": [
+          {
+            "system": "github-issue",
+            "locator": "issue:92"
+          }
+        ],
+        "Albert von Aachen": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q4323",
+            "lang": "de",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Alberic of Aix-la-Chapelle": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q4323",
+            "lang": "en",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Albert of Aix-la-Chapelle": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q4323",
+            "lang": "en",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Alberto de Aquisgran": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q4323",
+            "lang": "es",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Albert d'Aix": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q4323",
+            "lang": "fr",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Alberto di Aquisgrana": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q4323",
+            "lang": "it",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Albertus Aquensis": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q4323",
+            "lang": "la",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Albericus Aquensis": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q4323",
+            "lang": "la",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Albert van Aken": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q4323",
+            "lang": "nl",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ]
+      }
+    },
+    {
+      "authority_id": "AUTH:CR189",
+      "preferred_label": "Ekkehard of Aura",
+      "identifiers": {
+        "project_identifier": "CR189",
+        "wikidata_qid": "Q66673",
+        "wikidata_qid_provenance": {
+          "system": "github-issue",
+          "locator": "issue:99",
+          "status": "asserted",
+          "why": "benchmark list of #99 (Wikidata entity search, checked 2026-07-30)"
+        }
+      },
+      "name": {
+        "raw": "Ekkehard of Aura",
+        "name": "Ekkehard",
+        "toponym": "Aura",
+        "pattern": "of"
+      },
+      "variants": [
+        "Eccardus de Uraugia",
+        "Eccheardo d'Aura",
+        "Ekkehard",
+        "Ekkehard d’Aura",
+        "Ekkehard von Aura",
+        "Ekkehardus Uraugiensis"
+      ],
+      "normalized": {
+        "preferred": "ekkehard of aura",
+        "variants": [
+          "eccardus de uraugia",
+          "eccheardo d aura",
+          "ekkehard",
+          "ekkehard d aura",
+          "ekkehard von aura",
+          "ekkehardus uraugiensis"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [],
+        "source_system": "manual",
+        "note": "added 2026-10-10 per issue #92 (M19.2 tranche A: benchmark figure of #99, Latin Christian, chronicler)"
+      },
+      "variant_provenance": {
+        "Ekkehard of Aura": [
+          {
+            "system": "github-issue",
+            "locator": "issue:92"
+          }
+        ],
+        "Ekkehard": [
+          {
+            "system": "github-issue",
+            "locator": "issue:92"
+          }
+        ],
+        "Ekkehardus Uraugiensis": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q66673",
+            "lang": "de",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Ekkehard von Aura": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q66673",
+            "lang": "de",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Ekkehard d’Aura": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q66673",
+            "lang": "fr",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Eccheardo d'Aura": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q66673",
+            "lang": "it",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Eccardus de Uraugia": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q66673",
+            "lang": "la",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ]
+      }
+    },
+    {
+      "authority_id": "AUTH:CR190",
+      "preferred_label": "Fulcher of Chartres",
+      "identifiers": {
+        "project_identifier": "CR190",
+        "wikidata_qid": "Q5630",
+        "wikidata_qid_provenance": {
+          "system": "github-issue",
+          "locator": "issue:99",
+          "status": "asserted",
+          "why": "benchmark list of #99 (Wikidata entity search, checked 2026-07-30)"
+        }
+      },
+      "name": {
+        "raw": "Fulcher of Chartres",
+        "name": "Fulcher",
+        "toponym": "Chartres",
+        "pattern": "of"
+      },
+      "variants": [
+        "Foucher de Chartres",
+        "Fulcher van Chartres",
+        "Fulcher von Chartres",
+        "Fulcherio di Chartres",
+        "Fulcherius Carnotensis",
+        "Fulquerio de Chartres",
+        "فوشي دو شارتر",
+        "فوشيه الشارتري"
+      ],
+      "normalized": {
+        "preferred": "fulcher of chartres",
+        "variants": [
+          "foucher de chartres",
+          "fulcher van chartres",
+          "fulcher von chartres",
+          "fulcherio di chartres",
+          "fulcherius carnotensis",
+          "fulquerio de chartres",
+          "فوشي دو شارتر",
+          "فوشيه الشارتري"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [],
+        "source_system": "manual",
+        "note": "added 2026-10-10 per issue #92 (M19.2 tranche A: benchmark figure of #99, Latin Christian, chronicler)"
+      },
+      "variant_provenance": {
+        "Fulcher of Chartres": [
+          {
+            "system": "github-issue",
+            "locator": "issue:92"
+          }
+        ],
+        "فوشي دو شارتر": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q5630",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "فوشيه الشارتري": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q5630",
+            "lang": "ar",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Fulcher von Chartres": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q5630",
+            "lang": "de",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Fulquerio de Chartres": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q5630",
+            "lang": "es",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Fulcherius Carnotensis": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q5630",
+            "lang": "fr",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Foucher de Chartres": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q5630",
+            "lang": "fr",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Fulcherio di Chartres": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q5630",
+            "lang": "it",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Fulcher van Chartres": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q5630",
+            "lang": "nl",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ]
+      }
+    },
+    {
+      "authority_id": "AUTH:CR191",
+      "preferred_label": "Guibert of Nogent",
+      "identifiers": {
+        "project_identifier": "CR191",
+        "wikidata_qid": "Q4289",
+        "wikidata_qid_provenance": {
+          "system": "github-issue",
+          "locator": "issue:99",
+          "status": "asserted",
+          "why": "benchmark list of #99 (Wikidata entity search, checked 2026-07-30)"
+        }
+      },
+      "name": {
+        "raw": "Guibert of Nogent",
+        "name": "Guibert",
+        "toponym": "Nogent",
+        "pattern": "of"
+      },
+      "variants": [
+        "Guibert de Nogent",
+        "Guibert von Nogent",
+        "Guiberto de Nogent",
+        "Guiberto di Nogent",
+        "Guibertus Novigentensis",
+        "Guibertus Sanctae Mariae de Novigento",
+        "Gvibert Nozjanskiy",
+        "غيبرت النوجنتي"
+      ],
+      "normalized": {
+        "preferred": "guibert of nogent",
+        "variants": [
+          "guibert de nogent",
+          "guibert von nogent",
+          "guiberto de nogent",
+          "guiberto di nogent",
+          "guibertus novigentensis",
+          "guibertus sanctae mariae de novigento",
+          "gvibert nozjanskiy",
+          "غيبرت النوجنتي"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [],
+        "source_system": "manual",
+        "note": "added 2026-10-10 per issue #92 (M19.2 tranche A: benchmark figure of #99, Latin Christian, chronicler)"
+      },
+      "variant_provenance": {
+        "Guibert of Nogent": [
+          {
+            "system": "github-issue",
+            "locator": "issue:92"
+          }
+        ],
+        "غيبرت النوجنتي": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q4289",
+            "lang": "ar",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Guibert von Nogent": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q4289",
+            "lang": "de",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Guiberto de Nogent": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q4289",
+            "lang": "es",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Guibert de Nogent": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q4289",
+            "lang": "fr",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Guiberto di Nogent": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q4289",
+            "lang": "it",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Guibertus Novigentensis": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q4289",
+            "lang": "la",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Guibertus Sanctae Mariae de Novigento": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q4289",
+            "lang": "la",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Gvibert Nozjanskiy": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q4289",
+            "lang": "nl",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ]
+      }
+    },
+    {
+      "authority_id": "AUTH:CR192",
+      "preferred_label": "Orderic Vitalis",
+      "identifiers": {
+        "project_identifier": "CR192",
+        "wikidata_qid": "Q356298",
+        "wikidata_qid_provenance": {
+          "system": "github-issue",
+          "locator": "issue:99",
+          "status": "asserted",
+          "why": "benchmark list of #99 (Wikidata entity search, checked 2026-07-30)"
+        }
+      },
+      "name": {
+        "raw": "Orderic Vitalis",
+        "given": "Orderic",
+        "rest": "Vitalis",
+        "pattern": "space"
+      },
+      "variants": [
+        "Orderic Vital",
+        "Orderic Vitale",
+        "Orderico Vital",
+        "Orderico Vitale",
+        "Orderico Vitalis",
+        "Ordericus Vitalis",
+        "أورديريك فيتاليس"
+      ],
+      "normalized": {
+        "preferred": "orderic vitalis",
+        "variants": [
+          "orderic vital",
+          "orderic vitale",
+          "orderico vital",
+          "orderico vitale",
+          "orderico vitalis",
+          "ordericus vitalis",
+          "اورديريك فيتاليس"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [],
+        "source_system": "manual",
+        "note": "added 2026-10-10 per issue #92 (M19.2 tranche A: benchmark figure of #99, Latin Christian, chronicler)"
+      },
+      "variant_provenance": {
+        "Orderic Vitalis": [
+          {
+            "system": "github-issue",
+            "locator": "issue:92"
+          }
+        ],
+        "أورديريك فيتاليس": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q356298",
+            "lang": "ar",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Orderic Vital": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q356298",
+            "lang": "de",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Ordericus Vitalis": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q356298",
+            "lang": "de",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Orderic Vitale": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q356298",
+            "lang": "es",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Orderico Vitalis": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q356298",
+            "lang": "es",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Orderico Vital": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q356298",
+            "lang": "es",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Orderico Vitale": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q356298",
+            "lang": "it",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ]
+      }
+    },
+    {
+      "authority_id": "AUTH:CR193",
+      "preferred_label": "William of Tyre",
+      "identifiers": {
+        "project_identifier": "CR193",
+        "wikidata_qid": "Q311822",
+        "wikidata_qid_provenance": {
+          "system": "github-issue",
+          "locator": "issue:99",
+          "status": "asserted",
+          "why": "benchmark list of #99 (Wikidata entity search, checked 2026-07-30)"
+        }
+      },
+      "name": {
+        "raw": "William of Tyre",
+        "name": "William",
+        "toponym": "Tyre",
+        "pattern": "of"
+      },
+      "variants": [
+        "Guglielmo di Tiro",
+        "Guillaume de Tyr",
+        "Guillelmus Tyrensis",
+        "Guillermo de Tiro",
+        "Wilhelm II. von Tyrus",
+        "Wilhelm von Tyros",
+        "Wilhelm von Tyrus",
+        "Willelmus Tyrensis",
+        "Willem van Tyrus",
+        "وليام الصورى",
+        "وليم الصوري"
+      ],
+      "normalized": {
+        "preferred": "william of tyre",
+        "variants": [
+          "guglielmo di tiro",
+          "guillaume de tyr",
+          "guillelmus tyrensis",
+          "guillermo de tiro",
+          "wilhelm ii von tyrus",
+          "wilhelm von tyros",
+          "wilhelm von tyrus",
+          "willelmus tyrensis",
+          "willem van tyrus",
+          "وليام الصورى",
+          "وليم الصوري"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [],
+        "source_system": "manual",
+        "note": "added 2026-10-10 per issue #92 (M19.2 tranche A: benchmark figure of #99, Latin Christian, chronicler)"
+      },
+      "variant_provenance": {
+        "William of Tyre": [
+          {
+            "system": "github-issue",
+            "locator": "issue:92"
+          }
+        ],
+        "وليام الصورى": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q311822",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "وليم الصوري": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q311822",
+            "lang": "ar",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Wilhelm II. von Tyrus": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q311822",
+            "lang": "de",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Wilhelm von Tyros": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q311822",
+            "lang": "de",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Wilhelm von Tyrus": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q311822",
+            "lang": "de",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Guillermo de Tiro": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q311822",
+            "lang": "es",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Guillaume de Tyr": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q311822",
+            "lang": "fr",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Guglielmo di Tiro": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q311822",
+            "lang": "it",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Guillelmus Tyrensis": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q311822",
+            "lang": "la",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Willelmus Tyrensis": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q311822",
+            "lang": "la",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Willem van Tyrus": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q311822",
+            "lang": "nl",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ]
+      }
+    },
+    {
+      "authority_id": "AUTH:CR194",
+      "preferred_label": "Anna Komnene",
+      "identifiers": {
+        "project_identifier": "CR194",
+        "wikidata_qid": "Q179284",
+        "wikidata_qid_provenance": {
+          "system": "github-issue",
+          "locator": "issue:99",
+          "status": "asserted",
+          "why": "benchmark list of #99 (Wikidata entity search, checked 2026-07-30)"
+        }
+      },
+      "name": {
+        "raw": "Anna Komnene",
+        "given": "Anna",
+        "rest": "Komnene",
+        "pattern": "space"
+      },
+      "variants": [
+        "Ana Commeno",
+        "Ana Comnena",
+        "Ana Comneno",
+        "Anna Comnena",
+        "Anna Komnena",
+        "Anne Comnene",
+        "انا كومنينا"
+      ],
+      "normalized": {
+        "preferred": "anna komnene",
+        "variants": [
+          "ana commeno",
+          "ana comnena",
+          "ana comneno",
+          "anna comnena",
+          "anna komnena",
+          "anne comnene",
+          "انا كومنينا"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [],
+        "source_system": "manual",
+        "note": "added 2026-10-10 per issue #92 (M19.2 tranche A: benchmark figure of #99, Byzantine, historian)"
+      },
+      "variant_provenance": {
+        "Anna Komnene": [
+          {
+            "system": "github-issue",
+            "locator": "issue:92"
+          }
+        ],
+        "انا كومنينا": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q179284",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Anna Komnena": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q179284",
+            "lang": "de",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Anna Comnena": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q179284",
+            "lang": "en",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Ana Commeno": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q179284",
+            "lang": "es",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Ana Comnena": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q179284",
+            "lang": "es",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Ana Comneno": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q179284",
+            "lang": "es",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Anne Comnene": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q179284",
+            "lang": "fr",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ]
+      }
+    },
+    {
+      "authority_id": "AUTH:CR195",
+      "preferred_label": "Alexios I Komnenos",
+      "identifiers": {
+        "project_identifier": "CR195",
+        "wikidata_qid": "Q41600",
+        "wikidata_qid_provenance": {
+          "system": "github-issue",
+          "locator": "issue:92",
+          "status": "asserted",
+          "why": "hand-verified in #92: Byzantine emperor 1081–1118, †1118; the resolver finds the exact name but a bare two-token name never asserts"
+        }
+      },
+      "name": {
+        "raw": "Alexios I Komnenos",
+        "given": "Alexios",
+        "rest": "I Komnenos",
+        "pattern": "space"
+      },
+      "variants": [
+        "Alejo Comneno",
+        "Alejo I Comneno",
+        "Alessio I Comneno",
+        "Alessio I Conmeno",
+        "Alessio I di Bisanzio",
+        "Alexios Comnenos",
+        "Alexios I van Byzantium",
+        "Alexis Comnène",
+        "Alexis Ier Comnene",
+        "Alexius Comnenus",
+        "Alexius I Comnenus",
+        "Alexius I van Byzantium",
+        "ألكسيوس الأول كومنين",
+        "ألكسيوس الأول كومنينوس",
+        "أليكسيوس الأول",
+        "أليكسيوس الأول كومنينوس"
+      ],
+      "normalized": {
+        "preferred": "alexios i komnenos",
+        "variants": [
+          "alejo comneno",
+          "alejo i comneno",
+          "alessio i comneno",
+          "alessio i conmeno",
+          "alessio i di bisanzio",
+          "alexios comnenos",
+          "alexios i van byzantium",
+          "alexis comnene",
+          "alexis ier comnene",
+          "alexius comnenus",
+          "alexius i comnenus",
+          "alexius i van byzantium",
+          "الكسيوس الاول كومنين",
+          "الكسيوس الاول كومنينوس",
+          "اليكسيوس الاول",
+          "اليكسيوس الاول كومنينوس"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [],
+        "source_system": "manual",
+        "note": "added 2026-10-10 per issue #92 (M19.2 tranche A: benchmark figure of #99, Byzantine, ruler)"
+      },
+      "variant_provenance": {
+        "Alexios I Komnenos": [
+          {
+            "system": "github-issue",
+            "locator": "issue:92"
+          }
+        ],
+        "ألكسيوس الأول كومنينوس": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q41600",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "أليكسيوس الأول": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q41600",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "أليكسيوس الأول كومنينوس": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q41600",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "ألكسيوس الأول كومنين": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q41600",
+            "lang": "ar",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Alexius Comnenus": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q41600",
+            "lang": "en",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Alejo Comneno": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q41600",
+            "lang": "es",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Alexios Comnenos": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q41600",
+            "lang": "es",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Alejo I Comneno": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q41600",
+            "lang": "es",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Alexis Comnène": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q41600",
+            "lang": "fr",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Alexis Ier Comnene": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q41600",
+            "lang": "fr",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Alessio I Comneno": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q41600",
+            "lang": "it",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Alessio I Conmeno": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q41600",
+            "lang": "it",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Alessio I di Bisanzio": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q41600",
+            "lang": "it",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Alexius I Comnenus": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q41600",
+            "lang": "la",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Alexios I van Byzantium": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q41600",
+            "lang": "nl",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Alexius I van Byzantium": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q41600",
+            "lang": "nl",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ]
+      }
+    },
+    {
+      "authority_id": "AUTH:CR196",
+      "preferred_label": "Ibn al-Qalanisi",
+      "identifiers": {
+        "project_identifier": "CR196",
+        "wikidata_qid": "Q1356575",
+        "wikidata_qid_provenance": {
+          "system": "github-issue",
+          "locator": "issue:92",
+          "status": "asserted",
+          "why": "hand-verified in #92: Abū Yaʿlā Ḥamza ibn al-Qalānisī, Damascus chronicler (†1160); the resolver finds the exact label but reads 'Ibn' as a given name"
+        }
+      },
+      "name": {
+        "raw": "Ibn al-Qalanisi",
+        "name": "Ibn al-Qalanisi",
+        "pattern": null
+      },
+      "variants": [
+        "أبو يعلى حمزة بن اسد بن علي بن محمد التميمي المعروف بابن القلانسي",
+        "ابن القلانسي، أبو يعلى حمزة بن أسد",
+        "ابن القَلاَنِسي"
+      ],
+      "normalized": {
+        "preferred": "ibn al qalanisi",
+        "variants": [
+          "ابن القلانسي",
+          "ابن القلانسي ابو يعلى حمزة بن اسد",
+          "ابو يعلى حمزة بن اسد بن علي بن محمد التميمي المعروف بابن القلانسي"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [],
+        "source_system": "manual",
+        "note": "added 2026-10-10 per issue #92 (M19.2 tranche A: benchmark figure of #99, Arabic-Islamic, chronicler)"
+      },
+      "variant_provenance": {
+        "Ibn al-Qalanisi": [
+          {
+            "system": "github-issue",
+            "locator": "issue:92"
+          }
+        ],
+        "أبو يعلى حمزة بن اسد بن علي بن محمد التميمي المعروف بابن القلانسي": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q1356575",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "ابن القلانسي، أبو يعلى حمزة بن أسد": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q1356575",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "ابن القَلاَنِسي": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q1356575",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ]
+      }
+    },
+    {
+      "authority_id": "AUTH:CR197",
+      "preferred_label": "Ibn al-Athir",
+      "identifiers": {
+        "project_identifier": "CR197",
+        "wikidata_qid": "Q334854",
+        "wikidata_qid_provenance": {
+          "system": "github-issue",
+          "locator": "issue:92",
+          "status": "asserted",
+          "why": "hand-verified in #92: ʿAlī ʿIzz al-Dīn ibn al-Athīr, historian (1160–1233), author of al-Kāmil fī al-tārīkh; the resolver ties three brothers of the name"
+        }
+      },
+      "name": {
+        "raw": "Ibn al-Athir",
+        "name": "Ibn al-Athir",
+        "pattern": null
+      },
+      "variants": [
+        "Abu al-Hasan Ali Izz al-Din Ibn al-Athir",
+        "Abu al-Hassan Ali ibn Muhammad ibn Muhammad ash-Shaybani",
+        "Ali ibn al-Athir",
+        "ʻAli ibn Muḥammad ʻIzzaddîn Ibn al-Aṯîr",
+        "ʿIzz ad-Dīn Abū ăl Ḥusayn ʿAlī Ibn Abū ăl-Karam Muḥammad Ibn Muḥammad Ibn ʿAbd al-Karīm Ibn ʿAbd al-Wāḥid aš-Šaybānī",
+        "ابن الأثير",
+        "ابن الأثير الجزري",
+        "عز الدين أبو الحسن الجزري الموصلي",
+        "عز الدين أبو الحسن علي بن محمد بن عبد الكريم الجزري الموصلي الشيباني",
+        "عز الدين بن الأثير",
+        "علي بن محمد بن عبد الكريم بن عبد الواحد الشيباني الجزري"
+      ],
+      "normalized": {
+        "preferred": "ibn al athir",
+        "variants": [
+          "abu al hasan ali izz al din ibn al athir",
+          "abu al hassan ali ibn muhammad ibn muhammad ash shaybani",
+          "ali ibn al athir",
+          "ʻali ibn muhammad ʻizzaddin ibn al atir",
+          "ʿizz ad din abu al husayn ʿali ibn abu al karam muhammad ibn muhammad ibn ʿabd al karim ibn ʿabd al wahid as saybani",
+          "ابن الاثير",
+          "ابن الاثير الجزري",
+          "عز الدين ابو الحسن الجزري الموصلي",
+          "عز الدين ابو الحسن علي بن محمد بن عبد الكريم الجزري الموصلي الشيباني",
+          "عز الدين بن الاثير",
+          "علي بن محمد بن عبد الكريم بن عبد الواحد الشيباني الجزري"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [],
+        "source_system": "manual",
+        "note": "added 2026-10-10 per issue #92 (M19.2 tranche A: benchmark figure of #99, Arabic-Islamic, chronicler)"
+      },
+      "variant_provenance": {
+        "Ibn al-Athir": [
+          {
+            "system": "github-issue",
+            "locator": "issue:92"
+          }
+        ],
+        "ابن الأثير": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q334854",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "عز الدين أبو الحسن الجزري الموصلي": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q334854",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "عز الدين أبو الحسن علي بن محمد بن عبد الكريم الجزري الموصلي الشيباني": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q334854",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "عز الدين بن الأثير": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q334854",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "علي بن محمد بن عبد الكريم بن عبد الواحد الشيباني الجزري": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q334854",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "ابن الأثير الجزري": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q334854",
+            "lang": "ar",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "ʿIzz ad-Dīn Abū ăl Ḥusayn ʿAlī Ibn Abū ăl-Karam Muḥammad Ibn Muḥammad Ibn ʿAbd al-Karīm Ibn ʿAbd al-Wāḥid aš-Šaybānī": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q334854",
+            "lang": "de",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Abu al-Hasan Ali Izz al-Din Ibn al-Athir": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q334854",
+            "lang": "en",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Abu al-Hassan Ali ibn Muhammad ibn Muhammad ash-Shaybani": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q334854",
+            "lang": "en",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "ʻAli ibn Muḥammad ʻIzzaddîn Ibn al-Aṯîr": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q334854",
+            "lang": "en",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Ali ibn al-Athir": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q334854",
+            "lang": "es",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ]
+      }
+    },
+    {
+      "authority_id": "AUTH:CR198",
+      "preferred_label": "Usama ibn Munqidh",
+      "identifiers": {
+        "project_identifier": "CR198",
+        "wikidata_qid": "Q451427",
+        "wikidata_qid_provenance": {
+          "system": "wikidata-pre1500-snapshot",
+          "snapshot": "2026-10-02T22:51:17+00:00",
+          "method": "backfill_authority_qids v1",
+          "status": "asserted",
+          "why": "name match ≥ 0.85 with the toponym verified"
+        }
+      },
+      "name": {
+        "raw": "Usama ibn Munqidh",
+        "given": "Usama",
+        "rest": "ibn Munqidh",
+        "pattern": "space"
+      },
+      "variants": [
+        "Osama Bin Munqiz",
+        "Oussama Ibn Mounqidh",
+        "Usama Ibn Munquid",
+        "Usamah ibn-Munqidh",
+        "Ussama Ibn Munqidh",
+        "أبو المظفر",
+        "أبو المظفر أسامة بن مرشد بن منقذ",
+        "أبو المظفر أسامة بن مرشد بنِ علي بنِ مقلد بنِ نصر بنِ منقذ الكناني الكلبي الشيزرِي",
+        "أسامة بن مرشد بن علي بن مقلد بن نصر بن منقذ الكناني الكلبي الشيزري",
+        "أسامة بن منقذ",
+        "أسامه بن منقذ",
+        "ابن مُنْقِذ",
+        "عز الدين أسامة",
+        "مؤيد الدولة"
+      ],
+      "normalized": {
+        "preferred": "usama ibn munqidh",
+        "variants": [
+          "osama bin munqiz",
+          "oussama ibn mounqidh",
+          "usama ibn munquid",
+          "usamah ibn munqidh",
+          "ussama ibn munqidh",
+          "ابن منقذ",
+          "ابو المظفر",
+          "ابو المظفر اسامة بن مرشد بن علي بن مقلد بن نصر بن منقذ الكناني الكلبي الشيزري",
+          "ابو المظفر اسامة بن مرشد بن منقذ",
+          "اسامة بن مرشد بن علي بن مقلد بن نصر بن منقذ الكناني الكلبي الشيزري",
+          "اسامة بن منقذ",
+          "اسامه بن منقذ",
+          "عز الدين اسامة",
+          "مويد الدولة"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [],
+        "source_system": "manual",
+        "note": "added 2026-10-10 per issue #92 (M19.2 tranche A: benchmark figure of #99, Arabic-Islamic, author and participant)"
+      },
+      "variant_provenance": {
+        "Usama ibn Munqidh": [
+          {
+            "system": "github-issue",
+            "locator": "issue:92"
+          }
+        ],
+        "أبو المظفر": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q451427",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "أبو المظفر أسامة بن مرشد بن منقذ": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q451427",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "أبو المظفر أسامة بن مرشد بنِ علي بنِ مقلد بنِ نصر بنِ منقذ الكناني الكلبي الشيزرِي": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q451427",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "أسامة بن مرشد بن علي بن مقلد بن نصر بن منقذ الكناني الكلبي الشيزري": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q451427",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "أسامه بن منقذ": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q451427",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "ابن مُنْقِذ": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q451427",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "عز الدين أسامة": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q451427",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "مؤيد الدولة": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q451427",
+            "lang": "ar",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "أسامة بن منقذ": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q451427",
+            "lang": "ar",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Usama Ibn Munquid": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q451427",
+            "lang": "de",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Ussama Ibn Munqidh": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q451427",
+            "lang": "de",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Osama Bin Munqiz": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q451427",
+            "lang": "en",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Oussama Ibn Mounqidh": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q451427",
+            "lang": "fr",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Usamah ibn-Munqidh": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q451427",
+            "lang": "it",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ]
+      }
+    },
+    {
+      "authority_id": "AUTH:CR199",
+      "preferred_label": "Matthew of Edessa",
+      "identifiers": {
+        "project_identifier": "CR199",
+        "wikidata_qid": "Q302586",
+        "wikidata_qid_provenance": {
+          "system": "wikidata-pre1500-snapshot",
+          "snapshot": "2026-10-02T22:51:17+00:00",
+          "method": "backfill_authority_qids v1",
+          "status": "asserted",
+          "why": "name match ≥ 0.85 with the toponym verified"
+        }
+      },
+      "name": {
+        "raw": "Matthew of Edessa",
+        "name": "Matthew",
+        "toponym": "Edessa",
+        "pattern": "of"
+      },
+      "variants": [
+        "Mateo de Edesa",
+        "Matheos van Edessa",
+        "Mathieu d'Édesse",
+        "Matteo di Edessa",
+        "Matteos Uṛhayetsi",
+        "Matthias von Edessa"
+      ],
+      "normalized": {
+        "preferred": "matthew of edessa",
+        "variants": [
+          "mateo de edesa",
+          "matheos van edessa",
+          "mathieu d edesse",
+          "matteo di edessa",
+          "matteos urhayetsi",
+          "matthias von edessa"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [],
+        "source_system": "manual",
+        "note": "added 2026-10-10 per issue #92 (M19.2 tranche A: benchmark figure of #99, Armenian, chronicler)"
+      },
+      "variant_provenance": {
+        "Matthew of Edessa": [
+          {
+            "system": "github-issue",
+            "locator": "issue:92"
+          }
+        ],
+        "Matthias von Edessa": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q302586",
+            "lang": "de",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Matteos Uṛhayetsi": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q302586",
+            "lang": "en",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Mateo de Edesa": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q302586",
+            "lang": "es",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Mathieu d'Édesse": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q302586",
+            "lang": "fr",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Matteo di Edessa": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q302586",
+            "lang": "it",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Matheos van Edessa": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q302586",
+            "lang": "nl",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ]
+      }
+    },
+    {
+      "authority_id": "AUTH:CR200",
+      "preferred_label": "Tancred, Prince of Galilee",
+      "identifiers": {
+        "project_identifier": "CR200",
+        "wikidata_qid": "Q51720",
+        "wikidata_qid_provenance": {
+          "system": "github-issue",
+          "locator": "issue:92",
+          "status": "asserted",
+          "why": "hand-verified in #92: the crusader (c. 1075–1112); the resolver ties him with his grandfather Tancred of Hauteville (†1041)"
+        }
+      },
+      "name": {
+        "raw": "Tancred, Prince of Galilee",
+        "name": "Tancred",
+        "pattern": null
+      },
+      "variants": [
+        "Tancred",
+        "Tancred of Galilee",
+        "Tancred of Hauteville",
+        "Tancred van Galilea",
+        "Tancredi d'Altavilla",
+        "Tancredi di Galilea",
+        "Tancrède de Hauteville",
+        "Tankred der Kreuzfahrer",
+        "Tankred von Tarent",
+        "Tankred von Tiberias"
+      ],
+      "normalized": {
+        "preferred": "tancred prince of galilee",
+        "variants": [
+          "tancred",
+          "tancred of galilee",
+          "tancred of hauteville",
+          "tancred van galilea",
+          "tancrede de hauteville",
+          "tancredi d altavilla",
+          "tancredi di galilea",
+          "tankred der kreuzfahrer",
+          "tankred von tarent",
+          "tankred von tiberias"
+        ]
+      },
+      "type": "person",
+      "provenance": {
+        "source_files": [],
+        "source_system": "manual",
+        "note": "added 2026-10-10 per issue #92 (M19.2 tranche A: benchmark figure of #99, Latin Christian, participant)"
+      },
+      "variant_provenance": {
+        "Tancred, Prince of Galilee": [
+          {
+            "system": "github-issue",
+            "locator": "issue:92"
+          }
+        ],
+        "Tancred": [
+          {
+            "system": "github-issue",
+            "locator": "issue:92"
+          }
+        ],
+        "Tancred of Galilee": [
+          {
+            "system": "github-issue",
+            "locator": "issue:92"
+          }
+        ],
+        "Tancred of Hauteville": [
+          {
+            "system": "github-issue",
+            "locator": "issue:92"
+          }
+        ],
+        "Tankred der Kreuzfahrer": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q51720",
+            "lang": "de",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Tankred von Tarent": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q51720",
+            "lang": "de",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Tankred von Tiberias": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q51720",
+            "lang": "de",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Tancrède de Hauteville": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q51720",
+            "lang": "fr",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Tancredi d'Altavilla": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q51720",
+            "lang": "it",
+            "kind": "alias",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Tancredi di Galilea": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q51720",
+            "lang": "it",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ],
+        "Tancred van Galilea": [
+          {
+            "system": "wikidata-pre1500-snapshot",
+            "locator": "Q51720",
+            "lang": "nl",
+            "kind": "label",
+            "snapshot": "2026-10-02T22:51:17+00:00"
+          }
+        ]
+      }
     }
   ]
 }

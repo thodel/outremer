@@ -11,7 +11,7 @@ def test_all_authority_name_forms_have_attributed_provenance():
         (ROOT / "scripts" / "outremer_index.json").read_text(encoding="utf-8")
     )
     assert not validate(data)
-    assert len(data["persons"]) == 129
+    assert len(data["persons"]) == 143
     assert all(record["variant_provenance"] for record in data["persons"])
 
 
