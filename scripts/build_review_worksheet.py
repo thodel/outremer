@@ -38,6 +38,8 @@ import json
 from pathlib import Path
 from typing import Any
 
+from validate_decisions import effective_decisions
+
 REPO_ROOT = Path(__file__).resolve().parent.parent
 ACCEPT = {"accept"}
 REJECT = {"reject", "not_a_person", "wrong_era", "is_group"}
@@ -66,7 +68,11 @@ def load_documents(site_data: Path) -> dict[str, dict[str, Any]]:
 
 
 def adjudicated_keys(decisions: list[dict]) -> set[tuple[str, str, str]]:
-    """(doc_id, normalised person, authority id) already reviewed."""
+    """(doc_id, normalised person, authority id) already reviewed.
+
+    A retired pair (superseded by ``unresolved``) counts as reviewed: it was
+    looked at and found undecidable, so it does not go back into the queue.
+    """
     return {
         (
             (d.get("doc_id") or "").strip(),
@@ -79,9 +85,9 @@ def adjudicated_keys(decisions: list[dict]) -> set[tuple[str, str, str]]:
 
 
 def collect_accepts(decisions: list[dict]) -> list[dict]:
-    """Accepted authority pairs, majority vote, ties dropped as disputes."""
+    """Accepted authority pairs still in force, majority vote, ties dropped."""
     votes: dict[tuple[str, str, str], int] = {}
-    for d in decisions:
+    for d in effective_decisions(decisions):
         aid = (d.get("outremer_id") or "").strip()
         if not aid.startswith("AUTH:"):
             continue
@@ -119,12 +125,20 @@ def candidates_for(doc: dict[str, Any], person: str) -> list[dict]:
 def build_repair_section(
     accepts: list[dict], docs: dict[str, dict], authority: dict[str, dict]
 ) -> list[str]:
+    def _mismatch(a: dict) -> bool:
+        rec = authority.get(a["authority_id"], {})
+        names = [rec.get("preferred_label", ""), *(rec.get("variants") or [])]
+        return not any(_norm(n) == _norm(a["person"]) for n in names if n)
+
+    flagged = sum(1 for a in accepts if _mismatch(a))
     lines = [
         "## Part 1 — Repair: re-adjudicate the accepted pairs",
         "",
         "These are every currently-**accepted** authority pair. #98 found the",
         "mention and the linked authority record name different people in six",
-        "of seven cases. Each row needs one of: **confirm**, **reject**, or",
+        "of seven cases; those were superseded in M19.0 (#97, 2026-10-09).",
+        f"Today **{flagged}** of {len(accepts)} accepted pairs carry a name",
+        "mismatch (🔴). Each row needs one of: **confirm**, **reject**, or",
         "**relink** to a different `AUTH:` id (or a note that no suitable",
         "record exists — that becomes an authority-coverage item for #92).",
         "",
@@ -263,15 +277,14 @@ def main(argv: list[str] | None = None) -> int:
         "",
         "The pipeline's linking quality is scored against pairs you previously",
         "adjudicated. An audit (#98) found that **six of the seven accepted**",
-        "authority pairs link a mention to the record of a *different person*.",
-        "Because accepted pairs are the only positive evidence in the gold, the",
-        "evaluation currently cannot tell a working linker from one that",
-        "proposes nothing at all — both score about 0.87.",
+        "authority pairs linked a mention to the record of a *different person*;",
+        "M19.0 (#97) superseded them on 2026-10-09, so the accepted pairs listed",
+        "in Part 1 are the ones in force now. Accepted pairs are the only",
+        "positive evidence in the gold, and there are very few of them.",
         "",
-        "Repairing Part 1 restores the metric's meaning. Part 2 grows it, which",
-        "matters just as much: 7 positive examples is too few to measure",
-        "anything, and authority enrichment (#91/#92) is blocked until both are",
-        "done.",
+        "Part 1 confirms what is there. Part 2 grows it, which matters just as",
+        "much: a handful of positive examples is too few to measure anything,",
+        "and authority enrichment (#91/#92) needs that measurement.",
         "",
         "Return decisions through the Explorer's **Export decisions** button so",
         "they flow back via `data/decisions.json`. No file here needs editing",

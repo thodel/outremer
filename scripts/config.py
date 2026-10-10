@@ -108,7 +108,12 @@ OCR_ENGINE = _get("OCR_ENGINE", "qwen3-vl")
 WIKIDATA_SNAPSHOT = _get("WIKIDATA_SNAPSHOT", "")
 
 # Linker thresholds (M10.3) - operating point documented in
-# evaluation/THRESHOLDS.md; sweep with `python -m evaluation.sweep`
-LINK_CANDIDATE_FLOOR = float(_get("LINK_CANDIDATE_FLOOR", "0.60"))
+# evaluation/THRESHOLDS.md; sweep with `python -m evaluation.sweep`.
+# Floor 0.60 -> 0.65 on 2026-10-09 (M19.0/M19.3): the four "correct" matches
+# that kept it at 0.60 were the wrong-person accepts repaired in #97; against
+# the repaired gold 0.65 avoids four of five rejected proposals and costs no
+# accepted one. The corpus band [0.60, 0.65) held 215 links, none of them a
+# person correctly linked.
+LINK_CANDIDATE_FLOOR = float(_get("LINK_CANDIDATE_FLOOR", "0.65"))
 LINK_MEDIUM          = float(_get("LINK_MEDIUM", "0.75"))
 LINK_HIGH            = float(_get("LINK_HIGH", "0.90"))
