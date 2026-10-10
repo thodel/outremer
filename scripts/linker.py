@@ -19,7 +19,7 @@ Matching (M10.1 + M10.2):
   a damped token_set_ratio.
 
 Thresholds are config-backed (M10.3): LINK_CANDIDATE_FLOOR / LINK_MEDIUM /
-LINK_HIGH env vars, defaults 0.65 / 0.75 / 0.90.
+LINK_HIGH env vars, defaults 0.75 / 0.75 / 0.90.
 """
 
 from __future__ import annotations
@@ -54,6 +54,35 @@ def fold_particles(norm: str) -> str:
     if len(tokens) < 2:
         return norm
     return " ".join(tokens)
+
+
+_ROMAN = re.compile(r"^(?=[ivxlc]+$)m*(c[md]|d?c{0,3})(x[cl]|l?x{0,3})(i[xv]|v?i{0,3})$")
+#: A bare form takes part only when its provenance entry says
+#: ``"bare": "attested"`` — a person listed it for this record on purpose
+#: ("Tancred" for the Prince of Galilee, "Godfrey" for Godfrey of Bouillon,
+#: #92/#93). Every other bare form, Omeka-generated or pattern-copied into a
+#: hand-made record, is a mechanical derivation and matches by accident.
+
+
+def is_bare_name(form: str) -> bool:
+    """A given name alone, with or without a regnal numeral.
+
+    Measured 2026-10-10 (#93): of the 23 corpus links scored 1.00, nine were
+    a bare mention ("Robert", "Baldwin", "Godfrey") matching the bare
+    Omeka-generated variant of an arbitrary record — Munro's Godfrey of
+    Bouillon became Godfrey III of Louvain at full confidence, and the TEI
+    export calls 1.00 "high" certainty. 145 of the 592 Omeka variants are
+    such forms; eight records share "william", eight "hugh".
+    """
+    tokens = [t for t in normalise(form).split()
+              if t not in _PARTICLES and not _ROMAN.match(t) and not t.isdigit()]
+    return len(tokens) < 2
+
+
+def _bare_form_is_attested(record: dict[str, Any], form: str) -> bool:
+    """True when a person listed this bare form for this record on purpose."""
+    provenance = record.get("variant_provenance") or {}
+    return any(src.get("bare") == "attested" for src in (provenance.get(form) or []))
 
 
 def _fuzzy_score(a: str, b: str) -> float:
@@ -115,13 +144,18 @@ def build_authority_lookup(outremer: dict[str, Any]) -> list[dict[str, Any]]:
 
         for v in e.get("variants") or []:
             if isinstance(v, str) and v.strip():
-                raw_variants.append(v.strip())
+                v = v.strip()
+                # A bare given name matches every namesake at 1.00 (#93).
+                # Only a bare form a person listed on purpose takes part.
+                if is_bare_name(v) and not _bare_form_is_attested(e, v):
+                    continue
+                raw_variants.append(v)
 
         norm_block = e.get("normalized") or {}
         if norm_block.get("preferred"):
             raw_variants.append(norm_block["preferred"])
         for v in norm_block.get("variants") or []:
-            if isinstance(v, str) and v.strip():
+            if isinstance(v, str) and v.strip() and not is_bare_name(v):
                 raw_variants.append(v.strip())
 
         name_block = e.get("name") or {}
