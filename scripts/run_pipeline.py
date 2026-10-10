@@ -502,6 +502,9 @@ def process_file(
         "persons": persons,
         "links": links,
         "text_sha256": sha256_text(text),
+        # When this document was produced: the index keeps one document per
+        # source and prefers the latest run (#152).
+        "run_at": datetime.now(timezone.utc).isoformat(),
         # Provenance: which engine actually produced these persons
         "extraction_mode": (result.get("engine") or {}).get("provider", "unknown"),
         "extraction_engine": result.get("engine") or {},
@@ -556,15 +559,83 @@ def process_file(
     return json_path, bib_path_repo, bib_path_site, evidence_path, doc_stats
 
 
-def build_site_index(site_data_dir: Path, site_dir: Path) -> None:
-    _EXCLUDE = {"wikidata_matches.json", "authority.json"}
-    files = sorted(f for f in site_data_dir.glob("*.json") if f.name not in _EXCLUDE)
-    index = {
+def _is_document(path: Path, data: Any) -> str | None:
+    """None when *data* is a pipeline document, else why it is not one.
+
+    A document is what process_file writes: a dict whose doc_id is the file
+    name, that names its source file and carries a persons list. Everything
+    else in site/data (status.json, authority.json, wikidata_matches.json,
+    hand-made exports) is served, but not listed as a document.
+    """
+    if not isinstance(data, dict):
+        return "not an object"
+    if data.get("doc_id") != path.stem:
+        return "doc_id does not match the file name"
+    if not data.get("source_file"):
+        return "no source_file"
+    persons = data.get("persons")
+    if not isinstance(persons, list):
+        return "no persons list"
+    if not persons:
+        return "no persons"
+    return None
+
+
+def build_site_index(site_data_dir: Path, site_dir: Path) -> dict[str, Any]:
+    """Write site/index.json: the current documents, one per source (#152).
+
+    The index is derived from the documents, not from the directory: a file
+    is listed only if it is a pipeline document, and when several documents
+    come from the same source file (a re-extraction writes a new doc_id,
+    because the id carries the text hash) only the latest run is listed.
+    Superseded and excluded files stay on disk and are named in the index
+    with the reason, so nothing disappears silently.
+    """
+    documents: dict[str, dict[str, Any]] = {}
+    excluded: dict[str, str] = {}
+    for path in sorted(site_data_dir.glob("*.json")):
+        try:
+            data = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError) as exc:
+            excluded[path.name] = f"unreadable: {exc}"
+            continue
+        reason = _is_document(path, data)
+        if reason:
+            excluded[path.name] = reason
+            continue
+        documents[path.name] = {
+            "source_file": data["source_file"],
+            # Prefer the recorded run time; older documents have none, so
+            # fall back to the file's modification time.
+            "run_at": data.get("run_at") or "",
+            "mtime": path.stat().st_mtime,
+        }
+
+    by_source: dict[str, list[str]] = {}
+    for name, info in documents.items():
+        by_source.setdefault(info["source_file"], []).append(name)
+
+    current: list[str] = []
+    superseded: dict[str, str] = {}
+    for source, names in sorted(by_source.items()):
+        names.sort(key=lambda n: (documents[n]["run_at"], documents[n]["mtime"]), reverse=True)
+        current.append(names[0])
+        for older in names[1:]:
+            superseded[older] = names[0]
+            logger.warning(
+                "%s: %s is superseded by %s — same source, older run (#152)",
+                source, older, names[0],
+            )
+
+    index: dict[str, Any] = {
         "generated_from": "run_pipeline.py",
-        "count": len(files),
-        "documents": [f.name for f in files],
+        "count": len(current),
+        "documents": sorted(current),
+        "superseded": dict(sorted(superseded.items())),
+        "excluded": dict(sorted(excluded.items())),
     }
     (site_dir / "index.json").write_text(json.dumps(index, indent=2), encoding="utf-8")
+    return index
 
 
 # ──────────────────────────────────────────────
