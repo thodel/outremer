@@ -235,6 +235,14 @@ goes into `identifiers.wikidata_candidates` and nowhere else; *none* writes
 nothing. A label-equal tie is never asserted (#158). Existing QIDs are kept
 and re-verified, never replaced.
 
+**Coverage against sourced lists (M19.2, #92).** `python scripts/audit_authority_coverage.py
+--benchmark data/audits/benchmarks/*.json` counts how many figures of each
+list the authority file identifies — by QID (exact), as a hypothesis, or by a
+whole name. `scripts/fetch_wikidata_benchmarks.py` refreshes the CC0 lists
+(crusade participants, Latin East office-holders 1095–1131); printed
+prosopographies are `reference-only` in the source registry and enter only
+as a scholar's name list (see `docs/SOURCE_INGESTION_POLICY.md`).
+
 **Authority name forms (M19.1, #91).** `python scripts/enrich_authority_variants.py
 --snapshot <pre-1500 snapshot>` adds the snapshot's labels and aliases in
 every language it holds to each record with a QID — *Radulfus Cadomensis*,

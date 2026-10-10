@@ -1,0 +1,227 @@
+{
+  "schema_version": 1,
+  "id": "wikidata-third-crusade",
+  "source": "wikidata",
+  "licence": "CC0 1.0",
+  "scope": "humans linked to third crusade (Q51655) by P607, P1344 or P710",
+  "query": "SELECT DISTINCT ?p ?pLabel ?birth ?death ?desc WHERE { { ?p wdt:P607 wd:Q51655 } UNION { ?p wdt:P1344 wd:Q51655 } UNION { wd:Q51655 wdt:P710 ?p } ?p wdt:P31 wd:Q5 . OPTIONAL { ?p wdt:P569 ?birth } OPTIONAL { ?p wdt:P570 ?death } OPTIONAL { ?p schema:description ?desc FILTER(LANG(?desc)=\"en\") } SERVICE wikibase:label { bd:serviceParam wikibase:language \"en,fr,de,la\". } }",
+  "endpoint": "https://query.wikidata.org/sparql",
+  "fetched_at": "2026-10-10T19:14:13.795472+00:00",
+  "status": "ok",
+  "match_by": [
+    "wikidata",
+    "preferred_label"
+  ],
+  "figures": [
+    {
+      "preferred_label": "Louis III, Count of Chiny",
+      "wikidata": "Q23615837",
+      "birth_year": 1150,
+      "death_year": 1189,
+      "description": "(1150-1189)"
+    },
+    {
+      "preferred_label": "Stephen I of Sancerre",
+      "wikidata": "Q301217",
+      "birth_year": 1200,
+      "death_year": 1190,
+      "description": "Count of Sancerre from 1151 to 1190"
+    },
+    {
+      "preferred_label": "Alberic Clement",
+      "wikidata": "Q1974166",
+      "birth_year": 1165,
+      "death_year": 1191,
+      "description": "Marshal of France"
+    },
+    {
+      "preferred_label": "Galeran V de Beaumont, Comte of Meulant",
+      "wikidata": "Q1492837",
+      "birth_year": 1166,
+      "death_year": 1191,
+      "description": "French noble"
+    },
+    {
+      "preferred_label": "Hellin de Wavrin",
+      "wikidata": "Q1602860",
+      "birth_year": 1200,
+      "death_year": 1191,
+      "description": "- 1191 in Palestine"
+    },
+    {
+      "preferred_label": "Jean de Chastenay",
+      "wikidata": "Q3175352",
+      "birth_year": 1150,
+      "death_year": 1191,
+      "description": ""
+    },
+    {
+      "preferred_label": "Richard de Camville",
+      "wikidata": "Q252336",
+      "birth_year": 1142,
+      "death_year": 1191,
+      "description": "English crusader knight"
+    },
+    {
+      "preferred_label": "Roger de Wavrin",
+      "wikidata": "Q1675266",
+      "birth_year": 1200,
+      "death_year": 1191,
+      "description": "bishop of the Roman Catholic Church"
+    },
+    {
+      "preferred_label": "Rotrou IV, Count of Perche",
+      "wikidata": "Q729501",
+      "birth_year": 1135,
+      "death_year": 1191,
+      "description": "French aristocrat"
+    },
+    {
+      "preferred_label": "Conrad of Montferrat",
+      "wikidata": "Q169329",
+      "birth_year": 1146,
+      "death_year": 1192,
+      "description": "12th century Italian nobleman and major participant in the Third Crusade"
+    },
+    {
+      "preferred_label": "Rashid ad-Din Sinan",
+      "wikidata": "Q124746531",
+      "birth_year": 1130,
+      "death_year": 1193,
+      "description": "leader of the Syrian wing of the Hashshashin sect and figure in the history of the Crusades"
+    },
+    {
+      "preferred_label": "Robert de Sablé",
+      "wikidata": "Q353081",
+      "birth_year": 1150,
+      "death_year": 1193,
+      "description": "Grand Master of the Knights Templar"
+    },
+    {
+      "preferred_label": "William I de Forz",
+      "wikidata": "Q1553949",
+      "birth_year": 1155,
+      "death_year": 1194,
+      "description": "Anglo-Norman noble"
+    },
+    {
+      "preferred_label": "Henry II, Count of Champagne",
+      "wikidata": "Q354422",
+      "birth_year": 1166,
+      "death_year": 1197,
+      "description": "Count of Champagne from 1181 to 1197, and King of Jerusalem from 1192 to 1197"
+    },
+    {
+      "preferred_label": "Walchelin de Ferriers",
+      "wikidata": "Q3565292",
+      "birth_year": null,
+      "death_year": 1201,
+      "description": "Anglo-Norman crusader"
+    },
+    {
+      "preferred_label": "Alain IV de Rohan",
+      "wikidata": "Q2829920",
+      "birth_year": 1166,
+      "death_year": 1205,
+      "description": ""
+    },
+    {
+      "preferred_label": "Hugh IV, Count of Saint-Pol",
+      "wikidata": "Q444799",
+      "birth_year": 1200,
+      "death_year": 1205,
+      "description": "crusader"
+    },
+    {
+      "preferred_label": "Phillipe de Plessis",
+      "wikidata": "Q439774",
+      "birth_year": 1165,
+      "death_year": 1209,
+      "description": "13th Grand Master of the Knights Templar"
+    },
+    {
+      "preferred_label": "Géza, royal prince of Hungary",
+      "wikidata": "Q573248",
+      "birth_year": 1151,
+      "death_year": 1210,
+      "description": "Prince of Hungary"
+    },
+    {
+      "preferred_label": "Robert de Thurnham",
+      "wikidata": "Q117067493",
+      "birth_year": 1200,
+      "death_year": 1211,
+      "description": "Anglo-Norman knight"
+    },
+    {
+      "preferred_label": "Geoffrey I of Lusignan (Lord of Vouvant)",
+      "wikidata": "Q940005",
+      "birth_year": 1150,
+      "death_year": 1216,
+      "description": "lord of Vouvant and Mervent, Moncontour and Soubise. Count of Jaffa and Ascalon"
+    },
+    {
+      "preferred_label": "Reginald of Bar",
+      "wikidata": "Q543608",
+      "birth_year": 1200,
+      "death_year": 1217,
+      "description": "Roman Catholic bishop of Chartres"
+    },
+    {
+      "preferred_label": "Raymond-Roger, Count of Foix",
+      "wikidata": "Q1245486",
+      "birth_year": 1152,
+      "death_year": 1223,
+      "description": "Occitan noble, Count of Foix (1152-1223)"
+    },
+    {
+      "preferred_label": "Walter van Bierbeek",
+      "wikidata": "Q2115039",
+      "birth_year": null,
+      "death_year": 1224,
+      "description": ""
+    },
+    {
+      "preferred_label": "Al-Afdal ibn Salah ad-Din",
+      "wikidata": "Q767220",
+      "birth_year": 1169,
+      "death_year": 1225,
+      "description": "Son of Saladin; Ayyubid Emir of Damascus 1193-1196"
+    },
+    {
+      "preferred_label": "Guy de Montfort, Lord of Sidon",
+      "wikidata": "Q1227371",
+      "birth_year": 1200,
+      "death_year": 1228,
+      "description": "French crusader"
+    },
+    {
+      "preferred_label": "Ugo IV di Empúries",
+      "wikidata": "Q9005288",
+      "birth_year": 1170,
+      "death_year": 1230,
+      "description": ""
+    },
+    {
+      "preferred_label": "Ralph, Count of Soissons",
+      "wikidata": "Q2131262",
+      "birth_year": 1150,
+      "death_year": 1235,
+      "description": "French noble"
+    },
+    {
+      "preferred_label": "Guillaume de Sainte-Maure",
+      "wikidata": "Q3120446",
+      "birth_year": 1140,
+      "death_year": null,
+      "description": ""
+    },
+    {
+      "preferred_label": "Guy I of Til-Châtel",
+      "wikidata": "Q124934907",
+      "birth_year": null,
+      "death_year": null,
+      "description": "French Lord"
+    }
+  ]
+}
