@@ -116,6 +116,18 @@ def sha256_text(t: str) -> str:
     return hashlib.sha256(t.encode("utf-8")).hexdigest()
 
 
+def document_id(in_path: Path) -> str:
+    """The stable identity of a source: its file name, slugified (#161).
+
+    Until 2026-10-10 the id carried sha256(text)[:12] as well, so any change
+    in the extracted text gave the same source a new id and orphaned every
+    adjudication, fixture and Wikidata answer keyed on the old one (15 of
+    Hamblin's decisions, after the #142 OCR fix). The text state is a field
+    of the document (`text_sha256`), not part of its name.
+    """
+    return slugify(in_path.stem)
+
+
 
 # ──────────────────────────────────────────────
 # I/O helpers
@@ -503,9 +515,7 @@ def process_file(
     logger.info("Processing %s …", in_path.name)
     text = read_input(in_path)
 
-    base = slugify(in_path.stem)
-    doc_hash = sha256_text(text)[:12]
-    doc_id = f"{base}-{doc_hash}"
+    doc_id = document_id(in_path)
 
     result = extract_persons_and_metadata(
         text,
@@ -610,7 +620,20 @@ def _is_document(path: Path, data: Any) -> str | None:
     return None
 
 
-def build_site_index(site_data_dir: Path, site_dir: Path) -> dict[str, Any]:
+ALIASES_PATH = Path("data/doc_id_aliases.json")
+
+
+def load_doc_id_aliases(path: Path = ALIASES_PATH) -> dict[str, str]:
+    """old doc_id → current doc_id, written by scripts/migrate_doc_ids.py (#161)."""
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {}
+    return {str(k): str(v) for k, v in (data.get("aliases") or {}).items()}
+
+
+def build_site_index(site_data_dir: Path, site_dir: Path,
+                     aliases_path: Path = ALIASES_PATH) -> dict[str, Any]:
     """Write site/index.json: the current documents, one per source (#152).
 
     The index is derived from the documents, not from the directory: a file
@@ -662,6 +685,9 @@ def build_site_index(site_data_dir: Path, site_dir: Path) -> dict[str, Any]:
         "documents": sorted(current),
         "superseded": dict(sorted(superseded.items())),
         "excluded": dict(sorted(excluded.items())),
+        # Former ids of the current documents (#161): the Explorer uses them
+        # to carry a reviewer's locally stored decisions over to the new id.
+        "aliases": dict(sorted(load_doc_id_aliases(aliases_path).items())),
     }
     (site_dir / "index.json").write_text(json.dumps(index, indent=2), encoding="utf-8")
     return index

@@ -2,16 +2,20 @@
   "generated_from": "run_pipeline.py",
   "count": 3,
   "documents": [
-    "hamblin-muslimperspectivesmilitary-2001-f740c53422ef.json",
-    "munro-popescrusades-1916-28b5e7f7d267.json",
-    "rileysmith-motivesearliestcrusaders-1983-92cc17aaccd3.json"
+    "hamblin-muslimperspectivesmilitary-2001.json",
+    "munro-popescrusades-1916.json",
+    "rileysmith-motivesearliestcrusaders-1983.json"
   ],
-  "superseded": {
-    "hamblin-muslimperspectivesmilitary-2001-afcdfde6edd6.json": "hamblin-muslimperspectivesmilitary-2001-f740c53422ef.json"
-  },
+  "superseded": {},
   "excluded": {
     "authority.json": "doc_id does not match the file name",
     "status.json": "doc_id does not match the file name",
     "wikidata_matches.json": "doc_id does not match the file name"
+  },
+  "aliases": {
+    "hamblin-muslimperspectivesmilitary-2001-afcdfde6edd6": "hamblin-muslimperspectivesmilitary-2001",
+    "hamblin-muslimperspectivesmilitary-2001-f740c53422ef": "hamblin-muslimperspectivesmilitary-2001",
+    "munro-popescrusades-1916-28b5e7f7d267": "munro-popescrusades-1916",
+    "rileysmith-motivesearliestcrusaders-1983-92cc17aaccd3": "rileysmith-motivesearliestcrusaders-1983"
   }
 }
