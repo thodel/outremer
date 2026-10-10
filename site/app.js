@@ -104,8 +104,12 @@ let authorityCache = {};   // outremer_id → { bio, roles, places, etc. }
 async function fetchAuthorityFile() {
   try {
     const auth = await fetchJson("./data/authority.json");
-    for (const person of auth) {
-      const id = person.outremer_id || `AUTH:${person.id}`;
+    // authority.json is the pipeline's outremer_index.json: {"persons": [...]}
+    // keyed by authority_id. Iterating the object (the previous code) threw
+    // and left the cache empty, so no candidate ever showed authority data.
+    const people = Array.isArray(auth) ? auth : (auth.persons || []);
+    for (const person of people) {
+      const id = person.authority_id || person.outremer_id || `AUTH:${person.id}`;
       authorityCache[id] = person;
     }
   } catch {
@@ -115,6 +119,67 @@ async function fetchAuthorityFile() {
 
 function loadAuthorityData(outremer_id) {
   return authorityCache[outremer_id] || {};
+}
+
+// ── Identity evidence for a candidate (M19.4 part 2, #94) ──────────────────
+// What the reviewer adjudicates against: the record's QID and how it was
+// established, and the name forms that make the mention reach this record.
+
+function normName(s) {
+  return String(s || "").normalize("NFKD").replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase().replace(/[^\w\s]/g, " ").replace(/\s+/g, " ").trim();
+}
+
+function provenanceTitle(entries) {
+  return (entries || []).map(e => {
+    const bits = [e.system, e.locator, e.lang, e.kind, e.snapshot ? `snapshot ${e.snapshot.slice(0, 10)}` : "",
+                  e.bare === "attested" ? "bare form listed on purpose" : ""].filter(Boolean);
+    return bits.join(" · ");
+  }).join("\n");
+}
+
+function qidHtml(ids) {
+  if (!ids) return "";
+  if (ids.wikidata_qid) {
+    const prov = ids.wikidata_qid_provenance || {};
+    const how = prov.system === "wikidata-pre1500-snapshot" ? "resolver, offline snapshot"
+              : prov.system === "github-issue" ? `hand-verified (${prov.locator || ""})`
+              : prov.system || "recorded";
+    return `<a class="auth-qid" href="https://www.wikidata.org/wiki/${esc(ids.wikidata_qid)}" target="_blank" rel="noopener"
+               title="${esc(prov.why || "")}">${esc(ids.wikidata_qid)}</a>
+            <span class="auth-status auth-asserted" title="${esc(prov.why || "")}">asserted · ${esc(how)}</span>`;
+  }
+  if (ids.wikidata_candidates?.length) {
+    const c = ids.wikidata_candidates;
+    const list = c.slice(0, 3).map(x => `${x.qid} ${x.label}${x.death_year ? " †" + x.death_year : ""}`).join("; ");
+    return `<span class="auth-status auth-hypothesised" title="${esc(list)}">QID hypothesised · ${c.length} candidate${c.length > 1 ? "s" : ""}</span>`;
+  }
+  return `<span class="auth-status auth-none">no QID</span>`;
+}
+
+function authorityEvidenceHtml(link, candidate, authData) {
+  if (!authData || !authData.authority_id) return "";
+  const mention = normName(link.person);
+  const forms = [authData.preferred_label, ...(authData.variants || [])].filter(Boolean);
+  const prov = authData.variant_provenance || {};
+  const matching = forms.filter(f => normName(f) === mention);
+  const shown = matching.length ? matching : forms.slice(0, 4);
+  const chips = shown.map(f => {
+    const entries = prov[f] || [];
+    const sys = entries[0]?.system || "";
+    const cls = sys === "wikidata-pre1500-snapshot" ? "auth-form-snapshot"
+              : sys === "github-issue" || sys === "manual" ? "auth-form-hand" : "auth-form-omeka";
+    const exact = normName(f) === mention ? " auth-form-exact" : "";
+    return `<span class="auth-form ${cls}${exact}" title="${esc(provenanceTitle(entries) || "no provenance")}">${esc(f)}</span>`;
+  }).join("");
+  const note = matching.length
+    ? `the mention equals ${matching.length > 1 ? "these recorded forms" : "this recorded form"}`
+    : `no recorded form equals the mention — fuzzy match; ${forms.length} forms on record`;
+  return `<div class="auth-evidence">
+      <span class="auth-evidence-label">identity</span> ${qidHtml(authData.identifiers)}
+      <span class="auth-evidence-label">forms</span> ${chips}
+      <span class="muted auth-evidence-note">${esc(note)}</span>
+    </div>`;
 }
 
 // ── Wikidata matches (loaded from site/data/wikidata_matches.json) ─────────
@@ -672,6 +737,7 @@ function renderCandidateRow(link, candidate, docId, decisions) {
       <span class="candidate-type muted">${esc(candidate.type)}</span>
       <span class="outremer-id muted">${esc(candidate.outremer_id)}</span>
       ${contextHtml}
+      ${authorityEvidenceHtml(link, candidate, authData)}
       ${communityBadgeHtml(k)}
     </div>
     <div class="adjudication">

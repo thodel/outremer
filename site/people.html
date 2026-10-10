@@ -205,7 +205,23 @@
     .variant-chip {
       display: inline-block; background: var(--border); border-radius: 10px;
       padding: .1rem .55rem; margin: .1rem .15rem; font-size: .75rem;
+      border: 1px solid transparent;
     }
+    .variant-chip.src-hand     { background: #e0e7ff; color: #3730a3; }
+    .variant-chip.src-snapshot { background: #ecfdf5; color: #065f46; }
+    .variant-chip.src-omeka    { background: #f1f5f9; color: #334155; }
+    .variant-chip.bare-attested { border-color: currentColor; }
+    .variant-group-title { font-size: .72rem; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); margin: .5rem 0 .15rem; }
+
+    /* identity (M19.4 part 2) */
+    .identity-row { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem; font-size: .84rem; }
+    .id-status { border-radius: 10px; padding: .1rem .6rem; font-size: .74rem; }
+    .id-asserted { background: #dcfce7; color: #166534; }
+    .id-hypothesised { background: #fef3c7; color: #854d0e; }
+    .id-none { background: var(--border); color: var(--muted); }
+    .id-why { font-size: .78rem; color: var(--muted); margin-top: .3rem; }
+    .id-candidate { display: block; font-size: .8rem; margin: .15rem 0; }
+    .pi-badge.qid { background: #dcfce7; color: #166534; }
 
     /* confidence reuse from style.css */
     .status-high { color: #166534; }
@@ -771,10 +787,16 @@ SELECT * WHERE {
         ? `<span class="pi-badge mentions">📄 ${item.mentionCount} mention${item.mentionCount > 1 ? 's' : ''}</span>`
         : `<span class="pi-badge no-mention">not yet extracted</span>`;
 
+      const qidBadge = p.identifiers?.wikidata_qid
+        ? `<span class="pi-badge qid" title="Wikidata QID, asserted">${esc(p.identifiers.wikidata_qid)}</span>`
+        : (p.identifiers?.wikidata_candidates?.length
+            ? `<span class="pi-badge" title="QID hypothesised">${p.identifiers.wikidata_candidates.length} QID candidate${p.identifiers.wikidata_candidates.length > 1 ? 's' : ''}</span>`
+            : '');
       li.innerHTML = `
         <div class="pi-name">${esc(p.preferred_label)}</div>
         <div class="pi-meta">
           <span class="pi-badge authority">${esc(p.authority_id)}</span>
+          ${qidBadge}
           ${mentionBadge}
         </div>`;
       li.addEventListener('click', () => showProfile(p.authority_id));
@@ -859,15 +881,7 @@ SELECT * WHERE {
           <p style="font-size:.84rem;color:var(--muted);">Not yet found in processed documents.</p>
         </div>`}
 
-      ${wd ? `
-        <div class="profile-section">
-          <h4>🌐 External links</h4>
-          <div class="ext-links">
-            <a class="ext-link" href="https://www.wikidata.org/wiki/${esc(wd.qid)}" target="_blank" rel="noopener">
-              Wikidata ${esc(wd.qid)}
-            </a>
-          </div>
-        </div>` : ''}
+      ${identityHtml(p, wd)}
 
       ${p.identifiers?.omeka_item_id ? `
         <div class="profile-section" style="margin-top:${wd ? '.5rem' : '.9rem'}">
@@ -879,11 +893,89 @@ SELECT * WHERE {
         </div>` : ''}
 
       <div class="profile-section">
-        <h4>📛 Name variants (${p.variants?.length || 0})</h4>
-        <div class="variants-wrap">
-          ${(p.variants || []).map(v => `<span class="variant-chip">${esc(v)}</span>`).join('')}
-        </div>
+        <h4>📛 Name forms (${p.variants?.length || 0})</h4>
+        ${nameFormsHtml(p)}
       </div>`;
+  }
+
+  // ── Identity and provenance (M19.4 part 2, #94) ─────────────────────────
+  function identityHtml(p, wd) {
+    const ids = p.identifiers || {};
+    const prov = ids.wikidata_qid_provenance || {};
+    let body;
+    if (ids.wikidata_qid) {
+      const how = prov.system === 'wikidata-pre1500-snapshot'
+        ? `resolved offline against the pre-1500 snapshot${prov.snapshot ? ' of ' + esc(prov.snapshot.slice(0, 10)) : ''}`
+        : prov.system === 'github-issue' ? `hand-verified (${esc(prov.locator || '')})`
+        : prov.system ? esc(prov.system) : 'recorded with the record';
+      body = `
+        <div class="identity-row">
+          <a class="ext-link" href="https://www.wikidata.org/wiki/${esc(ids.wikidata_qid)}" target="_blank" rel="noopener">Wikidata ${esc(ids.wikidata_qid)}</a>
+          <span class="id-status id-asserted">asserted</span>
+          <span class="id-why">${how}</span>
+        </div>
+        ${prov.why ? `<div class="id-why">${esc(prov.why)}</div>` : ''}`;
+    } else if (ids.wikidata_candidates?.length) {
+      body = `
+        <div class="identity-row">
+          <span class="id-status id-hypothesised">hypothesised</span>
+          <span class="id-why">${ids.wikidata_candidates.length} candidate${ids.wikidata_candidates.length > 1 ? 's' : ''} agree with the record's name, numeral and period; none stands alone</span>
+        </div>
+        ${ids.wikidata_candidates.map(c => `
+          <a class="id-candidate" href="https://www.wikidata.org/wiki/${esc(c.qid)}" target="_blank" rel="noopener">
+            ${esc(c.qid)} ${esc(c.label || '')}${c.death_year ? ' †' + esc(String(c.death_year)) : ''} · score ${esc(String(c.score ?? ''))}
+          </a>`).join('')}`;
+    } else {
+      body = `
+        <div class="identity-row">
+          <span class="id-status id-none">no QID</span>
+          <span class="id-why">no Wikidata candidate agrees with the record's structured fields</span>
+        </div>
+        ${wd ? `<div class="id-why">A document mention of this name resolved to
+          <a href="https://www.wikidata.org/wiki/${esc(wd.qid)}" target="_blank" rel="noopener">${esc(wd.qid)}</a>
+          (${esc(wd.label || '')}) — that is the mention's identity, not the record's.</div>` : ''}`;
+    }
+    return `
+      <div class="profile-section">
+        <h4>🪪 Identity</h4>
+        ${body}
+      </div>`;
+  }
+
+  const SOURCE_LABEL = {
+    'omeka-xml': 'from the Omeka export (generated name patterns)',
+    'github-issue': 'listed by a person in a GitHub issue',
+    'manual': 'added by hand',
+    'wikidata-pre1500-snapshot': 'labels and aliases of the QID in the pre-1500 Wikidata snapshot',
+  };
+
+  function provenanceTitle(entries) {
+    return (entries || []).map(e => [e.system, e.locator, e.lang, e.kind,
+      e.snapshot ? 'snapshot ' + e.snapshot.slice(0, 10) : '',
+      e.bare === 'attested' ? 'bare form listed on purpose (takes part in matching)' : ''
+    ].filter(Boolean).join(' · ')).join('\n');
+  }
+
+  function nameFormsHtml(p) {
+    const prov = p.variant_provenance || {};
+    const groups = {};
+    for (const v of (p.variants || [])) {
+      const entries = prov[v] || [];
+      const sys = entries[0]?.system || 'unknown';
+      (groups[sys] = groups[sys] || []).push({ form: v, entries });
+    }
+    const order = ['github-issue', 'manual', 'wikidata-pre1500-snapshot', 'omeka-xml', 'unknown'];
+    return Object.keys(groups).sort((a, b) => order.indexOf(a) - order.indexOf(b)).map(sys => {
+      const cls = sys === 'wikidata-pre1500-snapshot' ? 'src-snapshot'
+                : (sys === 'github-issue' || sys === 'manual') ? 'src-hand' : 'src-omeka';
+      const chips = groups[sys].map(({ form, entries }) => {
+        const bare = entries.some(e => e.bare === 'attested') ? ' bare-attested' : '';
+        const lang = entries[0]?.lang ? ` <small>${esc(entries[0].lang)}</small>` : '';
+        return `<span class="variant-chip ${cls}${bare}" title="${esc(provenanceTitle(entries))}">${esc(form)}${lang}</span>`;
+      }).join('');
+      return `<div class="variant-group-title">${esc(SOURCE_LABEL[sys] || sys)} (${groups[sys].length})</div>
+              <div class="variants-wrap">${chips}</div>`;
+    }).join('') || '<div class="variants-wrap"><span style="color:var(--muted)">none</span></div>';
   }
 
   // ── Profile: Extracted-only person ────────────────────────────────────
@@ -941,7 +1033,12 @@ SELECT * WHERE {
     const seen = new Set();
     for (const [key, data] of Object.entries(personIndex)) {
       const matchesId = data.authority_id === authId;
-      const matchesName = key === prefNorm || key.includes(prefNorm.split(' ')[0]);
+      // By name: the exact label, or the given name as a whole word. The
+      // previous substring test on the first token gave "R. Gabard" every
+      // mention containing the letter r (150 of them) (#94).
+      const first = prefNorm.split(' ')[0];
+      const matchesName = key === prefNorm
+        || (first.length >= 3 && key.split(' ').includes(first));
       if (!matchesId && !matchesName) continue;
       for (const doc of data.docs) {
         const dedupeKey = `${doc.doc_id}::${doc.as_name}`;
