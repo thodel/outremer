@@ -67,19 +67,19 @@
     },
     "a monk": {
       "count": 1,
-      "last_context": "sees in the distance the flickering light from the lamp ofa monk reading in his cell",
-      "last_seen": "2026-10-09T01:25:32.678940+00:00",
+      "last_context": "sees in the distance the flickering light from the lamp ofa monk reading in his cell and finds shelter",
+      "last_seen": "2026-10-10T01:26:08.414327+00:00",
       "name": "a monk",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
           "count": 1,
           "reasons": {
-            "known_bad_entity": 1
+            "lowercase_non_name": 1
           }
         }
       },
       "reasons": {
-        "known_bad_entity": 1
+        "lowercase_non_name": 1
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
@@ -7979,15 +7979,15 @@
       ]
     },
     "the pope": {
-      "count": 15,
-      "last_context": "So the pope chose some discreet, learned, and faithful friars",
-      "last_seen": "2026-10-09T01:25:32.678940+00:00",
+      "count": 14,
+      "last_context": "The sultan granted this request of the pope and bade him send some clergy",
+      "last_seen": "2026-10-10T01:26:08.414327+00:00",
       "name": "the Pope",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
-          "count": 2,
+          "count": 1,
           "reasons": {
-            "known_bad_entity": 2
+            "known_bad_entity": 1
           }
         },
         "data/raw/Munro-PopesCrusades-1916.pdf": {
@@ -7998,7 +7998,7 @@
         }
       },
       "reasons": {
-        "known_bad_entity": 15
+        "known_bad_entity": 14
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
@@ -8026,20 +8026,20 @@
       ]
     },
     "the sultan": {
-      "count": 3,
-      "last_context": "The sultan granted this request of the pope",
-      "last_seen": "2026-10-09T01:25:32.678940+00:00",
+      "count": 2,
+      "last_context": "One reason for the Sultan's wrath against them",
+      "last_seen": "2026-10-10T01:26:08.414327+00:00",
       "name": "the Sultan",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
-          "count": 3,
+          "count": 2,
           "reasons": {
-            "known_bad_entity": 3
+            "known_bad_entity": 2
           }
         }
       },
       "reasons": {
-        "known_bad_entity": 3
+        "known_bad_entity": 2
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
