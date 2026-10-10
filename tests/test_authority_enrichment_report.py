@@ -4,13 +4,16 @@ from evaluation.authority_enrichment_report import build_report
 def test_epic19_report_contains_comparable_metrics():
     report = build_report()
     authority = report["authority"]
-    assert authority["reviewed_pairs"] == 58
-    assert authority["accept_hit"] + authority["accept_miss"] == 4
-    assert authority["reject_hit"] + authority["reject_avoided"] == 54
+    # 58 pairs after the M19.0 repair; 71 after M19.2 tranche A added ten
+    # accepts against the new records and three rejects for medium-band
+    # string-similarity errors they exposed (#92).
+    assert authority["reviewed_pairs"] == 71
+    assert authority["accept_hit"] + authority["accept_miss"] == 14
+    assert authority["reject_hit"] + authority["reject_avoided"] == 57
     assert report["accepted_pair_diagnosis"]
     assert report["correct_match_score_distribution"]
     audit = report["accepted_authority_pair_audit"]
-    assert len(audit) == 4
+    assert len(audit) == 14
     assert [row["floor"] for row in report["candidate_floor_sweep"]] == [
         0.55,
         0.60,

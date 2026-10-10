@@ -22,8 +22,8 @@ Return decisions through the Explorer's **Export decisions** button so
 they flow back via `data/decisions.json`. No file here needs editing
 by hand.
 
-**Corpus:** 3 documents · **authority file:** 129 records
- · **already adjudicated:** 75 pairs
+**Corpus:** 3 documents · **authority file:** 143 records
+ · **already adjudicated:** 88 pairs
 
 ---
 
@@ -32,7 +32,7 @@ by hand.
 These are every currently-**accepted** authority pair. #98 found the
 mention and the linked authority record name different people in six
 of seven cases; those were superseded in M19.0 (#97, 2026-10-09).
-Today **0** of 4 accepted pairs carry a name
+Today **3** of 14 accepted pairs carry a name
 mismatch (🔴). Each row needs one of: **confirm**, **reject**, or
 **relink** to a different `AUTH:` id (or a note that no suitable
 record exists — that becomes an authority-coverage item for #92).
@@ -56,10 +56,36 @@ record exists — that becomes an authority-coverage item for #92).
 - **Authority record says:** Godfrey of Bouillon  — 🔴 **name mismatch**
 - **Document:** `rileysmith-motivesearliestcrusaders-1983`
 - **Source context:** “…received Tiberias with all Galilee and its appurtenances from Duke Godfrey…”
-- **Recorded variants:** Bouillon's Godfrey, Duke Godfrey, Godfrey, Godfrey (Bouillon), Godfrey of Bouillon, Godfrey, Bouillon
+- **Recorded variants:** Bouillon's Godfrey, Duke Godfrey, Galfridus Bullioniensis, Godefridus Bullionensis, Godefridus Bullonius, Godefroi de Bouillon
 - **Other candidates the linker offered:**
     - `AUTH:CR78` Godfrey III of Louvain (score 0.7875)
     - `AUTH:CR55` Geoffrey of Grandpré (score 0.6)
+
+| verdict | relink to | note |
+|---|---|---|
+| confirm / reject / relink | `AUTH:____` | |
+
+### Ekkehard of Aura → `AUTH:CR189`
+
+- **Authority record says:** Ekkehard of Aura  — 🟢 names agree
+- **Document:** `rileysmith-motivesearliestcrusaders-1983`
+- **Source context:** “…But to the German Ekkehard of Aura, it was easy to persuade the western Franks to leave their farms.…”
+- **Recorded variants:** Eccardus de Uraugia, Eccheardo d'Aura, Ekkehard, Ekkehard d’Aura, Ekkehard von Aura, Ekkehardus Uraugiensis
+- **Other candidates the linker offered:**
+    - `AUTH:CR87` Ermengarde of Anjou (score 0.6286)
+
+| verdict | relink to | note |
+|---|---|---|
+| confirm / reject / relink | `AUTH:____` | |
+
+### Fulcher of Chartres → `AUTH:CR190`
+
+- **Authority record says:** Fulcher of Chartres  — 🟢 names agree
+- **Document:** `rileysmith-motivesearliestcrusaders-1983`
+- **Source context:** “…and Fulcher of Chartres, the chaplain of the first king of lerusalem, reported that in…”
+- **Recorded variants:** Foucher de Chartres, Fulcher van Chartres, Fulcher von Chartres, Fulcherio di Chartres, Fulcherius Carnotensis, Fulquerio de Chartres
+- **Other candidates the linker offered:**
+    - `AUTH:CR33` Charles of Denmark (score 0.6486)
 
 | verdict | relink to | note |
 |---|---|---|
@@ -70,9 +96,64 @@ record exists — that becomes an authority-coverage item for #92).
 - **Authority record says:** Godfrey of Bouillon  — 🟢 names agree
 - **Document:** `rileysmith-motivesearliestcrusaders-1983`
 - **Source context:** “…Godfrey of Bouillon's domus, his household, accompanied him…”
-- **Recorded variants:** Bouillon's Godfrey, Duke Godfrey, Godfrey, Godfrey (Bouillon), Godfrey of Bouillon, Godfrey, Bouillon
+- **Recorded variants:** Bouillon's Godfrey, Duke Godfrey, Galfridus Bullioniensis, Godefridus Bullionensis, Godefridus Bullonius, Godefroi de Bouillon
 - **Other candidates the linker offered:**
     - `AUTH:CR78` Godfrey III of Louvain (score 0.7875)
+
+| verdict | relink to | note |
+|---|---|---|
+| confirm / reject / relink | `AUTH:____` | |
+
+### Guibert of Nogent → `AUTH:CR191`
+
+- **Authority record says:** Guibert of Nogent  — 🟢 names agree
+- **Document:** `rileysmith-motivesearliestcrusaders-1983`
+- **Source context:** “…shared the view of the Frenchman Guibert of Nogent: We see nations moved by the inspiration of God....…”
+- **Recorded variants:** Guibert de Nogent, Guibert von Nogent, Guiberto de Nogent, Guiberto di Nogent, Guibertus Novigentensis, Guibertus Sanctae Mariae de Novigento
+
+| verdict | relink to | note |
+|---|---|---|
+| confirm / reject / relink | `AUTH:____` | |
+
+### Ibn al Athir → `AUTH:CR197`
+
+- **Authority record says:** Ibn al-Athir  — 🔴 **name mismatch**
+- **Document:** `hamblin-muslimperspectivesmilitary-2001`
+- **Source context:** “…Ibn al Athir succinctly described Saladin's policy towards the Military Orders…”
+- **Recorded variants:** Abu al-Hasan Ali Izz al-Din Ibn al-Athir, Abu al-Hassan Ali ibn Muhammad ibn Muhammad ash-Shaybani, Ali ibn al-Athir, ʻAli ibn Muḥammad ʻIzzaddîn Ibn al-Aṯîr, ʿIzz ad-Dīn Abū ăl Ḥusayn ʿAlī Ibn Abū ăl-Karam Muḥammad Ibn Muḥammad Ibn ʿAbd al-Karīm Ibn ʿAbd al-Wāḥid aš-Šaybānī, ابن الأثير
+
+| verdict | relink to | note |
+|---|---|---|
+| confirm / reject / relink | `AUTH:____` | |
+
+### Ibn al Qalanisi → `AUTH:CR196`
+
+- **Authority record says:** Ibn al-Qalanisi  — 🔴 **name mismatch**
+- **Document:** `hamblin-muslimperspectivesmilitary-2001`
+- **Source context:** “…The first surviving mention ofthe Orders is found in Ibn al Qalanisis History of Damascus…”
+- **Recorded variants:** أبو يعلى حمزة بن اسد بن علي بن محمد التميمي المعروف بابن القلانسي, ابن القلانسي، أبو يعلى حمزة بن أسد, ابن القَلاَنِسي
+
+| verdict | relink to | note |
+|---|---|---|
+| confirm / reject / relink | `AUTH:____` | |
+
+### Pope Urban II → `AUTH:CR187`
+
+- **Authority record says:** Urban II  — 🔴 **name mismatch**
+- **Document:** `rileysmith-motivesearliestcrusaders-1983`
+- **Source context:** “…response to the appeal of Pope Urban II for crusaders. The priest replied that he was troubled…”
+- **Recorded variants:** Beatus Urbanus PP. II, Eudes de Châtillon, Eudes de Lagery, Odo de Chatillon, Odo de Lagery, Odo von Châtillon
+
+| verdict | relink to | note |
+|---|---|---|
+| confirm / reject / relink | `AUTH:____` | |
+
+### Pope Urban II → `AUTH:CR187`
+
+- **Authority record says:** Urban II  — 🔴 **name mismatch**
+- **Document:** `munro-popescrusades-1916`
+- **Source context:** “…The First Crusade was the work of Pope Urban IL, whose wonderful speech at the Council of Clermont…”
+- **Recorded variants:** Beatus Urbanus PP. II, Eudes de Châtillon, Eudes de Lagery, Odo de Chatillon, Odo de Lagery, Odo von Châtillon
 
 | verdict | relink to | note |
 |---|---|---|
@@ -83,10 +164,49 @@ record exists — that becomes an authority-coverage item for #92).
 - **Authority record says:** Ralph of Caen  — 🟢 names agree
 - **Document:** `rileysmith-motivesearliestcrusaders-1983`
 - **Source context:** “…Ralph of Caen, p. 693; Bartolf of Nangis, p. 5I5…”
-- **Recorded variants:** Caen's Ralph, Radulph of Caen, Ralph, Ralph (Caen), Ralph of Caen, Ralph, Caen
+- **Recorded variants:** Caen's Ralph, Radulf Cadomensis, Radulf von Caen, Radulfo di Caen, Radulfus Cadomensis, Radulph of Caen
 - **Other candidates the linker offered:**
     - `AUTH:CR107` Ralph II of Fougères (score 0.75)
     - `AUTH:CR24` Ralph of Dury (score 0.6923)
+
+| verdict | relink to | note |
+|---|---|---|
+| confirm / reject / relink | `AUTH:____` | |
+
+### Tancred → `AUTH:CR200`
+
+- **Authority record says:** Tancred, Prince of Galilee  — 🔴 **name mismatch**
+- **Document:** `rileysmith-motivesearliestcrusaders-1983`
+- **Source context:** “…horse and foot commanded by Tancred in Galilee…”
+- **Recorded variants:** Tancred, Tancred of Galilee, Tancred of Hauteville, Tancred van Galilea, Tancredi d'Altavilla, Tancredi di Galilea
+- **Other candidates the linker offered:**
+    - `AUTH:CR86` Constance of Toulouse (score 0.625)
+    - `AUTH:CR111` Andrew II of Vitré (score 0.6154)
+
+| verdict | relink to | note |
+|---|---|---|
+| confirm / reject / relink | `AUTH:____` | |
+
+### Urban II → `AUTH:CR187`
+
+- **Authority record says:** Urban II  — 🟢 names agree
+- **Document:** `munro-popescrusades-1916`
+- **Source context:** “…For the First Crusade Urban II. had appointed a papal legate, Ademar of Puy, who proved of great assistance…”
+- **Recorded variants:** Beatus Urbanus PP. II, Eudes de Châtillon, Eudes de Lagery, Odo de Chatillon, Odo de Lagery, Odo von Châtillon
+- **Other candidates the linker offered:**
+    - `AUTH:CR25` Enguerran II of Coucy (score 0.63)
+    - `AUTH:CR107` Ralph II of Fougères (score 0.625)
+
+| verdict | relink to | note |
+|---|---|---|
+| confirm / reject / relink | `AUTH:____` | |
+
+### Usamah ibn Munqidh → `AUTH:CR198`
+
+- **Authority record says:** Usama ibn Munqidh  — 🔴 **name mismatch**
+- **Document:** `hamblin-muslimperspectivesmilitary-2001`
+- **Source context:** “…comes from Usamah ibn Munqidh, a Syrian nobleman and lord ofShayzar Castle…”
+- **Recorded variants:** Osama Bin Munqiz, Oussama Ibn Mounqidh, Usama Ibn Munquid, Usamah ibn-Munqidh, Ussama Ibn Munqidh, أبو المظفر
 
 | verdict | relink to | note |
 |---|---|---|

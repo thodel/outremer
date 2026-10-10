@@ -11,6 +11,14 @@
       "AUTH:CR184"
     ],
     [
+      "Ekkehard of Aura",
+      "AUTH:CR189"
+    ],
+    [
+      "Fulcher of Chartres",
+      "AUTH:CR190"
+    ],
+    [
       "Godfrey of Bouillon",
       "AUTH:CR184"
     ],
@@ -20,11 +28,19 @@
     ],
     [
       "Guibert of Nogent",
+      "AUTH:CR191"
+    ],
+    [
+      "Guibert of Nogent",
       "wikidata:Q4289"
     ],
     [
       "Orderic Vitalis",
       "wikidata:Q356298"
+    ],
+    [
+      "Pope Urban II",
+      "AUTH:CR187"
     ],
     [
       "Pope Urban II",
@@ -37,6 +53,10 @@
     [
       "St Ambrose",
       "wikidata:Q43689"
+    ],
+    [
+      "Tancred",
+      "AUTH:CR200"
     ]
   ],
   "rejected": [
@@ -251,6 +271,10 @@
     [
       "When",
       "_not_a_person"
+    ],
+    [
+      "William Peyre",
+      "AUTH:CR193"
     ]
   ],
   "predictions": {
@@ -452,8 +476,14 @@
       },
       {
         "person": "Pope Urban II",
-        "top_candidate": null,
-        "candidates": []
+        "top_candidate": {
+          "outremer_id": "AUTH:CR187"
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR187"
+          }
+        ]
       },
       {
         "person": "pilgrims",
@@ -477,13 +507,25 @@
       },
       {
         "person": "Guibert of Nogent",
-        "top_candidate": null,
-        "candidates": []
+        "top_candidate": {
+          "outremer_id": "AUTH:CR191"
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR191"
+          }
+        ]
       },
       {
         "person": "Ekkehard of Aura",
-        "top_candidate": null,
-        "candidates": []
+        "top_candidate": {
+          "outremer_id": "AUTH:CR189"
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR189"
+          }
+        ]
       },
       {
         "person": "the western Franks",
@@ -497,8 +539,14 @@
       },
       {
         "person": "Pope Urban",
-        "top_candidate": null,
-        "candidates": []
+        "top_candidate": {
+          "outremer_id": "AUTH:CR187"
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR187"
+          }
+        ]
       },
       {
         "person": "the French bishops",
@@ -534,8 +582,14 @@
       },
       {
         "person": "Fulcher of Chartres",
-        "top_candidate": null,
-        "candidates": []
+        "top_candidate": {
+          "outremer_id": "AUTH:CR190"
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR190"
+          }
+        ]
       },
       {
         "person": "the first king of Jerusalem",
@@ -544,8 +598,14 @@
       },
       {
         "person": "Tancred",
-        "top_candidate": null,
-        "candidates": []
+        "top_candidate": {
+          "outremer_id": "AUTH:CR200"
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR200"
+          }
+        ]
       },
       {
         "person": "Galdemar Carpenel",
@@ -641,6 +701,9 @@
         "candidates": [
           {
             "outremer_id": "AUTH:CR103"
+          },
+          {
+            "outremer_id": "AUTH:CR199"
           }
         ]
       },
@@ -656,8 +719,14 @@
       },
       {
         "person": "Arnulf the Lorrainer",
-        "top_candidate": null,
-        "candidates": []
+        "top_candidate": {
+          "outremer_id": "AUTH:CR16"
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR16"
+          }
+        ]
       },
       {
         "person": "Rothold",
@@ -808,8 +877,14 @@
       },
       {
         "person": "Eustace of Boulogne",
-        "top_candidate": null,
-        "candidates": []
+        "top_candidate": {
+          "outremer_id": "AUTH:CR184"
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR184"
+          }
+        ]
       },
       {
         "person": "Muslims",
@@ -1305,17 +1380,17 @@
       {
         "person": "William Peyre",
         "top_candidate": {
-          "outremer_id": "AUTH:CR49"
+          "outremer_id": "AUTH:CR193"
         },
         "candidates": [
+          {
+            "outremer_id": "AUTH:CR193"
+          },
           {
             "outremer_id": "AUTH:CR49"
           },
           {
             "outremer_id": "AUTH:CR112"
-          },
-          {
-            "outremer_id": "AUTH:CR108"
           }
         ]
       },
@@ -1517,6 +1592,9 @@
         "candidates": [
           {
             "outremer_id": "AUTH:CR 165"
+          },
+          {
+            "outremer_id": "AUTH:CR188"
           }
         ]
       },
