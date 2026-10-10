@@ -148,6 +148,11 @@ QWEN3_VL_MODEL=qwen3.8-27b
 # Same for recognition: in thinking mode qwen3.8-27b spends the whole
 # OCR budget reasoning and returns empty text (both switches default on)
 QWEN3_VL_DISABLE_THINKING=true
+# Anti-repetition decoding for the recognition call ONLY (#73): the VLM
+# loops on transcription ("w. w. w." to the token limit, tei 2026-09-21).
+# Extraction, metadata and reconciliation never carry these.
+VLM_FREQUENCY_PENALTY=0.2
+VLM_PRESENCE_PENALTY=0.0
 
 # OCR engine: qwen3-vl is the only value (the engine key is historical,
 # the model behind it is QWEN3_VL_MODEL, qwen3.8-27b on GPUStack)
