@@ -1,16 +1,56 @@
 {
   "authority": {
-    "agreement": 0.9828,
-    "reviewed_pairs": 58,
-    "accept_hit": 4,
+    "agreement": 0.9437,
+    "reviewed_pairs": 71,
+    "accept_hit": 14,
     "accept_miss": 0,
-    "reject_hit": 1,
+    "reject_hit": 4,
     "reject_avoided": 53
   },
   "accepted_pair_diagnosis": {
-    "HIT": 4
+    "HIT": 14
   },
   "accepted_authority_pair_audit": [
+    {
+      "document": "hamblin-muslimperspectivesmilitary-2001",
+      "mention": "Ibn al Athir",
+      "authority_id": "AUTH:CR197",
+      "authority_label": "Ibn al-Athir",
+      "exact_attested_variant": true,
+      "status": "attested"
+    },
+    {
+      "document": "hamblin-muslimperspectivesmilitary-2001",
+      "mention": "Ibn al Qalanisi",
+      "authority_id": "AUTH:CR196",
+      "authority_label": "Ibn al-Qalanisi",
+      "exact_attested_variant": true,
+      "status": "attested"
+    },
+    {
+      "document": "hamblin-muslimperspectivesmilitary-2001",
+      "mention": "Usamah ibn Munqidh",
+      "authority_id": "AUTH:CR198",
+      "authority_label": "Usama ibn Munqidh",
+      "exact_attested_variant": true,
+      "status": "attested"
+    },
+    {
+      "document": "munro-popescrusades-1916",
+      "mention": "Pope Urban II",
+      "authority_id": "AUTH:CR187",
+      "authority_label": "Urban II",
+      "exact_attested_variant": true,
+      "status": "attested"
+    },
+    {
+      "document": "munro-popescrusades-1916",
+      "mention": "Urban II",
+      "authority_id": "AUTH:CR187",
+      "authority_label": "Urban II",
+      "exact_attested_variant": true,
+      "status": "attested"
+    },
     {
       "document": "rileysmith-motivesearliestcrusaders-1983",
       "mention": "Count Robert of Flanders",
@@ -29,9 +69,41 @@
     },
     {
       "document": "rileysmith-motivesearliestcrusaders-1983",
+      "mention": "Ekkehard of Aura",
+      "authority_id": "AUTH:CR189",
+      "authority_label": "Ekkehard of Aura",
+      "exact_attested_variant": true,
+      "status": "attested"
+    },
+    {
+      "document": "rileysmith-motivesearliestcrusaders-1983",
+      "mention": "Fulcher of Chartres",
+      "authority_id": "AUTH:CR190",
+      "authority_label": "Fulcher of Chartres",
+      "exact_attested_variant": true,
+      "status": "attested"
+    },
+    {
+      "document": "rileysmith-motivesearliestcrusaders-1983",
       "mention": "Godfrey of Bouillon",
       "authority_id": "AUTH:CR184",
       "authority_label": "Godfrey of Bouillon",
+      "exact_attested_variant": true,
+      "status": "attested"
+    },
+    {
+      "document": "rileysmith-motivesearliestcrusaders-1983",
+      "mention": "Guibert of Nogent",
+      "authority_id": "AUTH:CR191",
+      "authority_label": "Guibert of Nogent",
+      "exact_attested_variant": true,
+      "status": "attested"
+    },
+    {
+      "document": "rileysmith-motivesearliestcrusaders-1983",
+      "mention": "Pope Urban II",
+      "authority_id": "AUTH:CR187",
+      "authority_label": "Urban II",
       "exact_attested_variant": true,
       "status": "attested"
     },
@@ -42,74 +114,82 @@
       "authority_label": "Ralph of Caen",
       "exact_attested_variant": true,
       "status": "attested"
+    },
+    {
+      "document": "rileysmith-motivesearliestcrusaders-1983",
+      "mention": "Tancred",
+      "authority_id": "AUTH:CR200",
+      "authority_label": "Tancred, Prince of Galilee",
+      "exact_attested_variant": true,
+      "status": "attested"
     }
   ],
   "correct_match_score_distribution": {
-    "[1.00]": 4
+    "[1.00]": 14
   },
   "candidate_floor_sweep": [
     {
       "floor": 0.55,
-      "agreement": 0.9138,
-      "reviewed_pairs": 58,
-      "accept_hit": 4,
+      "agreement": 0.9296,
+      "reviewed_pairs": 71,
+      "accept_hit": 14,
       "accept_miss": 0,
       "reject_hit": 5,
-      "reject_avoided": 49
+      "reject_avoided": 52
     },
     {
       "floor": 0.6,
-      "agreement": 0.9138,
-      "reviewed_pairs": 58,
-      "accept_hit": 4,
+      "agreement": 0.9296,
+      "reviewed_pairs": 71,
+      "accept_hit": 14,
       "accept_miss": 0,
       "reject_hit": 5,
-      "reject_avoided": 49
+      "reject_avoided": 52
     },
     {
       "floor": 0.65,
-      "agreement": 0.9828,
-      "reviewed_pairs": 58,
-      "accept_hit": 4,
+      "agreement": 0.9437,
+      "reviewed_pairs": 71,
+      "accept_hit": 14,
       "accept_miss": 0,
-      "reject_hit": 1,
+      "reject_hit": 4,
       "reject_avoided": 53
     },
     {
       "floor": 0.7,
-      "agreement": 0.9828,
-      "reviewed_pairs": 58,
-      "accept_hit": 4,
+      "agreement": 0.9437,
+      "reviewed_pairs": 71,
+      "accept_hit": 14,
       "accept_miss": 0,
-      "reject_hit": 1,
+      "reject_hit": 4,
       "reject_avoided": 53
     },
     {
       "floor": 0.75,
-      "agreement": 0.9828,
-      "reviewed_pairs": 58,
-      "accept_hit": 4,
+      "agreement": 0.9437,
+      "reviewed_pairs": 71,
+      "accept_hit": 14,
       "accept_miss": 0,
-      "reject_hit": 1,
+      "reject_hit": 4,
       "reject_avoided": 53
     },
     {
       "floor": 0.8,
-      "agreement": 0.9828,
-      "reviewed_pairs": 58,
-      "accept_hit": 4,
+      "agreement": 0.9718,
+      "reviewed_pairs": 71,
+      "accept_hit": 14,
       "accept_miss": 0,
-      "reject_hit": 1,
-      "reject_avoided": 53
+      "reject_hit": 2,
+      "reject_avoided": 55
     },
     {
       "floor": 0.85,
-      "agreement": 0.9828,
-      "reviewed_pairs": 58,
-      "accept_hit": 4,
+      "agreement": 0.9718,
+      "reviewed_pairs": 71,
+      "accept_hit": 14,
       "accept_miss": 0,
-      "reject_hit": 1,
-      "reject_avoided": 53
+      "reject_hit": 2,
+      "reject_avoided": 55
     }
   ]
 }

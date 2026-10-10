@@ -23,6 +23,14 @@
       "wikidata:Q503130"
     ],
     [
+      "Ibn al Athir",
+      "AUTH:CR197"
+    ],
+    [
+      "Ibn al Qalanisi",
+      "AUTH:CR196"
+    ],
+    [
       "Ibrahim",
       "wikidata:Q1768161"
     ],
@@ -33,12 +41,24 @@
     [
       "Muhammad",
       "wikidata:Q9458"
+    ],
+    [
+      "Usamah ibn Munqidh",
+      "AUTH:CR198"
     ]
   ],
   "rejected": [
     [
+      "Ibn al Qaysarani",
+      "AUTH:CR196"
+    ],
+    [
       "Jesus",
       "AUTH:CR71"
+    ],
+    [
+      "Reynald de Chatillon",
+      "AUTH:CR187"
     ]
   ],
   "predictions": {
@@ -111,6 +131,46 @@
           }
         ]
       },
+      "ibn al qalanisi": {
+        "candidates": [
+          {
+            "qid": "Q1356575",
+            "score": 1.0
+          },
+          {
+            "qid": "Q133884725",
+            "score": 0.6
+          },
+          {
+            "qid": "Q2822107",
+            "score": 0.6
+          }
+        ]
+      },
+      "usamah ibn munqidh": {
+        "candidates": [
+          {
+            "qid": "Q451427",
+            "score": 1.0
+          }
+        ]
+      },
+      "ibn al athir": {
+        "candidates": [
+          {
+            "qid": "Q141125934",
+            "score": 1.0
+          },
+          {
+            "qid": "Q141127512",
+            "score": 1.0
+          },
+          {
+            "qid": "Q334854",
+            "score": 1.0
+          }
+        ]
+      },
       "ibrahim": {
         "candidates": [
           {
@@ -140,6 +200,22 @@
           {
             "qid": "Q349370",
             "score": 0.85
+          }
+        ]
+      },
+      "ibn al qaysarani": {
+        "candidates": [
+          {
+            "qid": "Q141126429",
+            "score": 1.0
+          },
+          {
+            "qid": "Q141126585",
+            "score": 1.0
+          },
+          {
+            "qid": "Q141127510",
+            "score": 1.0
           }
         ]
       }
@@ -504,13 +580,25 @@
       },
       {
         "person": "Ibn al Qalanisi",
-        "top_candidate": null,
-        "candidates": []
+        "top_candidate": {
+          "outremer_id": "AUTH:CR196"
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR196"
+          }
+        ]
       },
       {
         "person": "Usamah ibn Munqidh",
-        "top_candidate": null,
-        "candidates": []
+        "top_candidate": {
+          "outremer_id": "AUTH:CR198"
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR198"
+          }
+        ]
       },
       {
         "person": "the Franks",
@@ -554,8 +642,14 @@
       },
       {
         "person": "Nur al Din",
-        "top_candidate": null,
-        "candidates": []
+        "top_candidate": {
+          "outremer_id": "AUTH:CR197"
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR197"
+          }
+        ]
       },
       {
         "person": "Military Orders",
@@ -644,6 +738,9 @@
           },
           {
             "outremer_id": "AUTH:CR92"
+          },
+          {
+            "outremer_id": "AUTH:CR200"
           }
         ]
       },
@@ -812,8 +909,14 @@
       },
       {
         "person": "Ibn al Athir",
-        "top_candidate": null,
-        "candidates": []
+        "top_candidate": {
+          "outremer_id": "AUTH:CR197"
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR197"
+          }
+        ]
       },
       {
         "person": "Ayyubids",
@@ -1038,9 +1141,12 @@
       {
         "person": "Reynald de Chatillon",
         "top_candidate": {
-          "outremer_id": "AUTH:CR19"
+          "outremer_id": "AUTH:CR187"
         },
         "candidates": [
+          {
+            "outremer_id": "AUTH:CR187"
+          },
           {
             "outremer_id": "AUTH:CR19"
           }
@@ -1053,8 +1159,14 @@
       },
       {
         "person": "Khalid ibn al Walid",
-        "top_candidate": null,
-        "candidates": []
+        "top_candidate": {
+          "outremer_id": "AUTH:CR197"
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR197"
+          }
+        ]
       },
       {
         "person": "the inhabitants of Damascus",
@@ -1089,8 +1201,14 @@
       },
       {
         "person": "Ibn al Qaysarani",
-        "top_candidate": null,
-        "candidates": []
+        "top_candidate": {
+          "outremer_id": "AUTH:CR196"
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR196"
+          }
+        ]
       },
       {
         "person": "Al Maqrizi",

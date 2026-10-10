@@ -1,31 +1,30 @@
 {
   "schema_version": 1,
-  "authority_records": 129,
+  "authority_records": 143,
   "benchmark_figures": 14,
   "summary": {
-    "missing": 13,
-    "present": 1
+    "present": 14
   },
   "by_tradition": {
     "Arabic-Islamic": {
       "total": 3,
-      "present": 0,
-      "missing": 3
+      "present": 3,
+      "missing": 0
     },
     "Armenian": {
       "total": 1,
-      "present": 0,
-      "missing": 1
+      "present": 1,
+      "missing": 0
     },
     "Byzantine": {
       "total": 2,
-      "present": 0,
-      "missing": 2
+      "present": 2,
+      "missing": 0
     },
     "Latin Christian": {
       "total": 8,
-      "present": 1,
-      "missing": 7
+      "present": 8,
+      "missing": 0
     }
   },
   "figures": [
@@ -55,8 +54,8 @@
         "outremer-corpus",
         "wikidata-cc0"
       ],
-      "status": "missing",
-      "authority_id": null
+      "status": "present",
+      "authority_id": "AUTH:CR187"
     },
     {
       "preferred_label": "Albert of Aachen",
@@ -70,8 +69,8 @@
         "outremer-corpus",
         "wikidata-cc0"
       ],
-      "status": "missing",
-      "authority_id": null
+      "status": "present",
+      "authority_id": "AUTH:CR188"
     },
     {
       "preferred_label": "Ekkehard of Aura",
@@ -85,8 +84,8 @@
         "outremer-corpus",
         "wikidata-cc0"
       ],
-      "status": "missing",
-      "authority_id": null
+      "status": "present",
+      "authority_id": "AUTH:CR189"
     },
     {
       "preferred_label": "Fulcher of Chartres",
@@ -97,8 +96,8 @@
         "outremer-corpus",
         "wikidata-cc0"
       ],
-      "status": "missing",
-      "authority_id": null
+      "status": "present",
+      "authority_id": "AUTH:CR190"
     },
     {
       "preferred_label": "Guibert of Nogent",
@@ -109,8 +108,8 @@
         "outremer-corpus",
         "wikidata-cc0"
       ],
-      "status": "missing",
-      "authority_id": null
+      "status": "present",
+      "authority_id": "AUTH:CR191"
     },
     {
       "preferred_label": "Orderic Vitalis",
@@ -121,8 +120,8 @@
         "outremer-corpus",
         "wikidata-cc0"
       ],
-      "status": "missing",
-      "authority_id": null
+      "status": "present",
+      "authority_id": "AUTH:CR192"
     },
     {
       "preferred_label": "William of Tyre",
@@ -132,8 +131,8 @@
       "sources": [
         "wikidata-cc0"
       ],
-      "status": "missing",
-      "authority_id": null
+      "status": "present",
+      "authority_id": "AUTH:CR193"
     },
     {
       "preferred_label": "Anna Komnene",
@@ -143,8 +142,8 @@
       "sources": [
         "wikidata-cc0"
       ],
-      "status": "missing",
-      "authority_id": null
+      "status": "present",
+      "authority_id": "AUTH:CR194"
     },
     {
       "preferred_label": "Alexios I Komnenos",
@@ -153,8 +152,8 @@
       "sources": [
         "riley-smith-first-crusaders"
       ],
-      "status": "missing",
-      "authority_id": null
+      "status": "present",
+      "authority_id": "AUTH:CR195"
     },
     {
       "preferred_label": "Ibn al-Qalanisi",
@@ -163,8 +162,8 @@
       "sources": [
         "riley-smith-first-crusaders"
       ],
-      "status": "missing",
-      "authority_id": null
+      "status": "present",
+      "authority_id": "AUTH:CR196"
     },
     {
       "preferred_label": "Ibn al-Athir",
@@ -173,8 +172,8 @@
       "sources": [
         "riley-smith-first-crusaders"
       ],
-      "status": "missing",
-      "authority_id": null
+      "status": "present",
+      "authority_id": "AUTH:CR197"
     },
     {
       "preferred_label": "Usama ibn Munqidh",
@@ -183,8 +182,8 @@
       "sources": [
         "riley-smith-first-crusaders"
       ],
-      "status": "missing",
-      "authority_id": null
+      "status": "present",
+      "authority_id": "AUTH:CR198"
     },
     {
       "preferred_label": "Matthew of Edessa",
@@ -193,8 +192,8 @@
       "sources": [
         "riley-smith-first-crusaders"
       ],
-      "status": "missing",
-      "authority_id": null
+      "status": "present",
+      "authority_id": "AUTH:CR199"
     }
   ]
 }
