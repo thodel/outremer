@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-10-10T01:40:06.663472+00:00",
+  "generated_at": "2026-10-11T01:40:46.071304+00:00",
   "run": {
-    "run_at": "2026-10-10T01:40:06.151636+00:00",
+    "run_at": "2026-10-11T01:40:45.389998+00:00",
     "docs_total": 3,
     "docs_failed": 0,
-    "total_persons": 364,
+    "total_persons": 360,
     "llm_provider": "gpustack",
     "extraction_model": "qwen3.8-27b",
     "extraction_seed": 42,
@@ -12,31 +12,31 @@
       "gpustack": 3
     },
     "fallback_chunks": 0,
-    "noise_share": 0.1208
+    "noise_share": 0.1388
   },
   "gate": {
     "status": "pass",
     "errors": []
   },
   "evaluation": {
-    "run_at": "2026-10-10T01:40:06.626671+00:00",
-    "combined_agreement": 0.8732394366197183,
+    "run_at": "2026-10-11T01:40:46.003293+00:00",
+    "combined_agreement": 0.9195402298850575,
     "segments": {
       "linking": {
-        "pairs": 55,
-        "good": 49,
-        "accepts": 7,
-        "rejects": 48,
-        "null": 0.8727,
-        "lift": 0.0182
+        "pairs": 71,
+        "good": 68,
+        "accepts": 14,
+        "rejects": 57,
+        "null": 0.8028,
+        "lift": 0.1549
       },
       "wikidata": {
         "pairs": 16,
-        "good": 13,
+        "good": 12,
         "accepts": 16,
         "rejects": 0,
         "null": 0.0,
-        "lift": 0.8125
+        "lift": 0.75
       }
     }
   }

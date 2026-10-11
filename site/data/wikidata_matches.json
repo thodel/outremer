@@ -229,23 +229,12 @@
     },
     "god": {
       "person": "God",
-      "candidates": [
-        {
-          "qid": "Q874868",
-          "label": "Godfried Schalcken",
-          "description": "painter from the Northern Netherlands (1643–1706)",
-          "url": "https://www.wikidata.org/wiki/Q874868",
-          "score": 0.3
-        },
-        {
-          "qid": "Q302",
-          "label": "Jesus Christ",
-          "description": "central figure of Christianity (6 or 4 BC – AD 30 or 33)",
-          "url": "https://www.wikidata.org/wiki/Q302",
-          "score": 0.0
-        }
-      ],
-      "queried_at": "2026-02-22T20:51:06.621426"
+      "status": "no_candidates",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 0,
+      "candidates": [],
+      "queried_at": "2026-10-11T01:40:44.157441+00:00"
     },
     "his": {
       "person": "His",
@@ -495,16 +484,23 @@
     },
     "fulk of neuilly": {
       "person": "Fulk of Neuilly",
+      "status": "match",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 1,
       "candidates": [
         {
           "qid": "Q594334",
           "label": "Fulk of Neuilly",
           "description": "French priest",
           "url": "https://www.wikidata.org/wiki/Q594334",
-          "score": 0.5
+          "score": 1.0,
+          "birth_year": 1200,
+          "death_year": 1201,
+          "matched": "Fulk of Neuilly"
         }
       ],
-      "queried_at": "2026-02-22T20:51:28.067673"
+      "queried_at": "2026-10-11T01:40:44.163939+00:00"
     },
     "such": {
       "person": "Such",
@@ -1612,30 +1608,23 @@
     },
     "matthew paris": {
       "person": "Matthew Paris",
+      "status": "match",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 1,
       "candidates": [
         {
           "qid": "Q369366",
           "label": "Matthew Paris",
           "description": "medieval English chronicler and artist (c.1200-1259)",
           "url": "https://www.wikidata.org/wiki/Q369366",
-          "score": 0.9
-        },
-        {
-          "qid": "Q6791054",
-          "label": "Matthew Parish",
-          "description": "American legal scholar",
-          "url": "https://www.wikidata.org/wiki/Q6791054",
-          "score": 0.3
-        },
-        {
-          "qid": "Q47482440",
-          "label": "Matthew Parish",
-          "description": "British rower",
-          "url": "https://www.wikidata.org/wiki/Q47482440",
-          "score": 0.3
+          "score": 1.0,
+          "birth_year": 1200,
+          "death_year": 1259,
+          "matched": "Matthew Paris"
         }
       ],
-      "queried_at": "2026-02-22T21:16:44.245448"
+      "queried_at": "2026-10-11T01:40:44.744341+00:00"
     },
     "the greek empire": {
       "person": "the Greek Empire",
@@ -1708,9 +1697,44 @@
       "queried_at": "2026-02-24T21:08:38.738077"
     },
     "godfrey, defender of the holy sepulcher": {
-      "person": "Godfrey, Defender of the Holy \n Sepulcher",
-      "candidates": [],
-      "queried_at": "2026-02-24T21:08:39.363062"
+      "person": "Godfrey, Defender of the Holy Sepulcher",
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 6,
+      "candidates": [
+        {
+          "qid": "Q16199037",
+          "label": "Godfrey of Bath",
+          "description": "Bishop of Bath",
+          "url": "https://www.wikidata.org/wiki/Q16199037",
+          "score": 0.575,
+          "birth_year": null,
+          "death_year": 1135,
+          "matched": "Godfrey"
+        },
+        {
+          "qid": "Q2041170",
+          "label": "Guðrøðr Magnússon",
+          "description": "13th-century Manx rebel",
+          "url": "https://www.wikidata.org/wiki/Q2041170",
+          "score": 0.575,
+          "birth_year": null,
+          "death_year": 1275,
+          "matched": "Godfrey"
+        },
+        {
+          "qid": "Q2718796",
+          "label": "Godred Crovan",
+          "description": "King of Dublin and the Isles",
+          "url": "https://www.wikidata.org/wiki/Q2718796",
+          "score": 0.575,
+          "birth_year": 1050,
+          "death_year": 1095,
+          "matched": "Godfrey"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:44.650899+00:00"
     },
     "one chronicler": {
       "person": "One chronicler",
@@ -1898,6 +1922,646 @@
         }
       ],
       "queried_at": "2026-10-03T07:59:02.325879+00:00"
+    },
+    "christ": {
+      "person": "Christ",
+      "status": "match",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 1,
+      "candidates": [
+        {
+          "qid": "Q302",
+          "label": "Jesus Christ",
+          "description": "central figure of Christianity (c. 6 or 4 BC – AD 30 or 33)",
+          "url": "https://www.wikidata.org/wiki/Q302",
+          "score": 1.0,
+          "birth_year": -5,
+          "death_year": 30,
+          "matched": "Christ"
+        },
+        {
+          "qid": "Q27518173",
+          "label": "Saint Arnoux",
+          "description": "French bishop",
+          "url": "https://www.wikidata.org/wiki/Q27518173",
+          "score": 0.6,
+          "birth_year": 1050,
+          "death_year": 1079,
+          "matched": "jesus christ"
+        },
+        {
+          "qid": "Q104012528",
+          "label": "Christian Latimer",
+          "description": "(est. 1268 - uncertain 1320)",
+          "url": "https://www.wikidata.org/wiki/Q104012528",
+          "score": 0.4,
+          "birth_year": 1268,
+          "death_year": 1320,
+          "matched": "Christian Latimer"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:44.154378+00:00"
+    },
+    "peter the hermit": {
+      "person": "Peter the Hermit",
+      "status": "match",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 1,
+      "candidates": [
+        {
+          "qid": "Q311845",
+          "label": "Peter the Hermit",
+          "description": "11th century French Christian priest and key figure during the First Crusade",
+          "url": "https://www.wikidata.org/wiki/Q311845",
+          "score": 1.0,
+          "birth_year": 1050,
+          "death_year": 1115,
+          "matched": "Peter the Hermit"
+        },
+        {
+          "qid": "Q21587884",
+          "label": "Saint Peter the Hermit",
+          "description": "Santo della chiesa cattolica ed eremita",
+          "url": "https://www.wikidata.org/wiki/Q21587884",
+          "score": 0.85,
+          "birth_year": 1001,
+          "death_year": 1052,
+          "matched": "Saint Peter the Hermit"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:44.161073+00:00"
+    },
+    "richard the lion hearted": {
+      "person": "Richard the Lion Hearted",
+      "status": "match",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 1,
+      "candidates": [
+        {
+          "qid": "Q42305",
+          "label": "Richard I of England",
+          "description": "King of England from 1189 to 1199 (1157–1199)",
+          "url": "https://www.wikidata.org/wiki/Q42305",
+          "score": 0.65,
+          "birth_year": 1157,
+          "death_year": 1199,
+          "matched": "Richard Cœur de Lion"
+        },
+        {
+          "qid": "Q108447307",
+          "label": "Richard",
+          "description": "bishop of the Roman Catholic Church",
+          "url": "https://www.wikidata.org/wiki/Q108447307",
+          "score": 0.6,
+          "birth_year": null,
+          "death_year": 1320,
+          "matched": "Richard"
+        },
+        {
+          "qid": "Q118351517",
+          "label": "Richard",
+          "description": "Abt von Amorbach, Abt von Fulda",
+          "url": "https://www.wikidata.org/wiki/Q118351517",
+          "score": 0.6,
+          "birth_year": null,
+          "death_year": 1039,
+          "matched": "Richard"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:44.304995+00:00"
+    },
+    "bernard of clairvaux": {
+      "person": "Bernard of Clairvaux",
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 25,
+      "candidates": [
+        {
+          "qid": "Q108546916",
+          "label": "Bernard",
+          "description": "bishop of the roman-catholic church",
+          "url": "https://www.wikidata.org/wiki/Q108546916",
+          "score": 0.65,
+          "birth_year": null,
+          "death_year": 1330,
+          "matched": "Bernard"
+        },
+        {
+          "qid": "Q108583641",
+          "label": "Bernard",
+          "description": "14th-century Bishop of Oloron",
+          "url": "https://www.wikidata.org/wiki/Q108583641",
+          "score": 0.65,
+          "birth_year": null,
+          "death_year": 1345,
+          "matched": "Bernard"
+        },
+        {
+          "qid": "Q1184942",
+          "label": "Bernard, son of Charles Martel",
+          "description": "Frankish noble",
+          "url": "https://www.wikidata.org/wiki/Q1184942",
+          "score": 0.65,
+          "birth_year": 725,
+          "death_year": 787,
+          "matched": "Bernard"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:44.391045+00:00"
+    },
+    "bernard": {
+      "person": "Bernard",
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 24,
+      "candidates": [
+        {
+          "qid": "Q108546916",
+          "label": "Bernard",
+          "description": "bishop of the roman-catholic church",
+          "url": "https://www.wikidata.org/wiki/Q108546916",
+          "score": 1.0,
+          "birth_year": null,
+          "death_year": 1330,
+          "matched": "Bernard"
+        },
+        {
+          "qid": "Q108583641",
+          "label": "Bernard",
+          "description": "14th-century Bishop of Oloron",
+          "url": "https://www.wikidata.org/wiki/Q108583641",
+          "score": 1.0,
+          "birth_year": null,
+          "death_year": 1345,
+          "matched": "Bernard"
+        },
+        {
+          "qid": "Q1184942",
+          "label": "Bernard, son of Charles Martel",
+          "description": "Frankish noble",
+          "url": "https://www.wikidata.org/wiki/Q1184942",
+          "score": 1.0,
+          "birth_year": 725,
+          "death_year": 787,
+          "matched": "Bernard"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:44.402053+00:00"
+    },
+    "eugene iii.": {
+      "person": "Eugene III.",
+      "status": "match",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 1,
+      "candidates": [
+        {
+          "qid": "Q167610",
+          "label": "Eugene III",
+          "description": "pope of the Catholic Church from 1145 to 1153",
+          "url": "https://www.wikidata.org/wiki/Q167610",
+          "score": 1.0,
+          "birth_year": 1200,
+          "death_year": 1153,
+          "matched": "Eugène III"
+        },
+        {
+          "qid": "Q596910",
+          "label": "Eugenius III of Toledo",
+          "description": "Spanish priest",
+          "url": "https://www.wikidata.org/wiki/Q596910",
+          "score": 0.85,
+          "birth_year": null,
+          "death_year": 657,
+          "matched": "Eugène III de Tolède"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:44.405218+00:00"
+    },
+    "the german emperor": {
+      "person": "the German emperor",
+      "status": "match",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 1,
+      "candidates": [
+        {
+          "qid": "Q1409",
+          "label": "Caligula",
+          "description": "third Roman emperor (37–41)",
+          "url": "https://www.wikidata.org/wiki/Q1409",
+          "score": 0.55,
+          "birth_year": 12,
+          "death_year": 41,
+          "matched": "Emperor of Rome Gaius Caesar Germanicus"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:44.408037+00:00"
+    },
+    "the french king": {
+      "person": "the French king",
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 64,
+      "candidates": [
+        {
+          "qid": "Q1039538",
+          "label": "Shi Zhi",
+          "description": "Government Minister of Eastern Wu",
+          "url": "https://www.wikidata.org/wiki/Q1039538",
+          "score": 0.6,
+          "birth_year": null,
+          "death_year": 226,
+          "matched": "King Sĩ"
+        },
+        {
+          "qid": "Q107283731",
+          "label": "Ningthou Kangba",
+          "description": "Emperor who ascended the throne of Ancient Manipur (Antique Kangleipak) in 1405 BC",
+          "url": "https://www.wikidata.org/wiki/Q107283731",
+          "score": 0.6,
+          "birth_year": null,
+          "death_year": -1359,
+          "matched": "King Kangba"
+        },
+        {
+          "qid": "Q11096099",
+          "label": "Li Xian",
+          "description": "self-proclaimed emperor after Xin dynasty collapsed in 27 AD",
+          "url": "https://www.wikidata.org/wiki/Q11096099",
+          "score": 0.6,
+          "birth_year": 0,
+          "death_year": 30,
+          "matched": "King Huainan"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:44.525216+00:00"
+    },
+    "philip augustus": {
+      "person": "Philip Augustus",
+      "status": "match",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 1,
+      "candidates": [
+        {
+          "qid": "Q34428",
+          "label": "Philip II of France",
+          "description": "King of France, and the first to be called by that title (1165–1223)",
+          "url": "https://www.wikidata.org/wiki/Q34428",
+          "score": 1.0,
+          "birth_year": 1165,
+          "death_year": 1223,
+          "matched": "Philip Augustus"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:44.527272+00:00"
+    },
+    "frederic ii.": {
+      "person": "Frederic II.",
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 6,
+      "candidates": [
+        {
+          "qid": "Q130221",
+          "label": "Frederick II, Holy Roman Emperor",
+          "description": "King of Sicily, Holy Roman Emperor (1194–1250, 1220–1250)",
+          "url": "https://www.wikidata.org/wiki/Q130221",
+          "score": 1.0,
+          "birth_year": 1195,
+          "death_year": 1250,
+          "matched": "Frédéric II"
+        },
+        {
+          "qid": "Q372579",
+          "label": "Frederick II, Count of Celje",
+          "description": "noble (1379-1454)",
+          "url": "https://www.wikidata.org/wiki/Q372579",
+          "score": 1.0,
+          "birth_year": 1379,
+          "death_year": 1454,
+          "matched": "Frédéric II"
+        },
+        {
+          "qid": "Q64548",
+          "label": "Frederick II, Duke of Brunswick-Lüneburg",
+          "description": "German noble",
+          "url": "https://www.wikidata.org/wiki/Q64548",
+          "score": 1.0,
+          "birth_year": 1418,
+          "death_year": 1478,
+          "matched": "Frédéric II"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:44.538632+00:00"
+    },
+    "the ruler of armenia": {
+      "person": "the ruler of Armenia",
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 5,
+      "candidates": [
+        {
+          "qid": "Q112130624",
+          "label": "Lady K’awiil Ek'",
+          "description": "Maya ruler of Coba",
+          "url": "https://www.wikidata.org/wiki/Q112130624",
+          "score": 0.65,
+          "birth_year": 617,
+          "death_year": 682,
+          "matched": "Ruler B"
+        },
+        {
+          "qid": "Q123762412",
+          "label": "Lady K'awiil Yopaat",
+          "description": "ajaw of Tonina",
+          "url": "https://www.wikidata.org/wiki/Q123762412",
+          "score": 0.65,
+          "birth_year": null,
+          "death_year": 774,
+          "matched": "Ruler 7"
+        },
+        {
+          "qid": "Q17180891",
+          "label": "Ruler 3",
+          "description": "Ajaw of Copán",
+          "url": "https://www.wikidata.org/wiki/Q17180891",
+          "score": 0.65,
+          "birth_year": null,
+          "death_year": 465,
+          "matched": "Ruler 3"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:44.572125+00:00"
+    },
+    "st. louis": {
+      "person": "St. Louis",
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 112,
+      "candidates": [
+        {
+          "qid": "Q101469384",
+          "label": "Louis I de Beaujeu, Sire de Beaujeu et de Dombes",
+          "description": "- 23 Aug 1296",
+          "url": "https://www.wikidata.org/wiki/Q101469384",
+          "score": 0.6,
+          "birth_year": null,
+          "death_year": 1295,
+          "matched": "Louis de Beaujeu"
+        },
+        {
+          "qid": "Q101519043",
+          "label": "Louis de Looz",
+          "description": "lord of Neufchâteau and Warcq (- Bef 12 Oct 1346)",
+          "url": "https://www.wikidata.org/wiki/Q101519043",
+          "score": 0.6,
+          "birth_year": 1290,
+          "death_year": 1346,
+          "matched": "Louis de Looz"
+        },
+        {
+          "qid": "Q10321767",
+          "label": "Louis of Portugal",
+          "description": "son of Peter I of Portugal",
+          "url": "https://www.wikidata.org/wiki/Q10321767",
+          "score": 0.6,
+          "birth_year": 1340,
+          "death_year": 1340,
+          "matched": "Louis of Portugal"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:44.615310+00:00"
+    },
+    "ademar of puy": {
+      "person": "Ademar of Puy",
+      "status": "match",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 1,
+      "candidates": [
+        {
+          "qid": "Q380400",
+          "label": "Adhemar, Count of Angoulême",
+          "description": "count of Poitiers and Angoulême",
+          "url": "https://www.wikidata.org/wiki/Q380400",
+          "score": 0.65,
+          "birth_year": 850,
+          "death_year": 926,
+          "matched": "Adémar"
+        },
+        {
+          "qid": "Q106873794",
+          "label": "Othmar of Sassenage",
+          "description": "roman catholic bishop",
+          "url": "https://www.wikidata.org/wiki/Q106873794",
+          "score": 0.6,
+          "birth_year": null,
+          "death_year": 1151,
+          "matched": "Adémar de Sassenage"
+        },
+        {
+          "qid": "Q108480203",
+          "label": "Gérald du Puy",
+          "description": "bishop of the Roman Catholic Church",
+          "url": "https://www.wikidata.org/wiki/Q108480203",
+          "score": 0.6,
+          "birth_year": null,
+          "death_year": 1360,
+          "matched": "Gérald du Puy"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:44.629690+00:00"
+    },
+    "patriarch dagobert": {
+      "person": "Patriarch Dagobert",
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 2,
+      "candidates": [
+        {
+          "qid": "Q22968296",
+          "label": "Dagobert",
+          "description": "frankish prince son of Childeric I",
+          "url": "https://www.wikidata.org/wiki/Q22968296",
+          "score": 0.65,
+          "birth_year": 580,
+          "death_year": 580,
+          "matched": "Dagobert"
+        },
+        {
+          "qid": "Q22979283",
+          "label": "Dagobert",
+          "description": "frankish prince",
+          "url": "https://www.wikidata.org/wiki/Q22979283",
+          "score": 0.65,
+          "birth_year": 670,
+          "death_year": 675,
+          "matched": "Dagobert"
+        },
+        {
+          "qid": "Q104029195",
+          "label": "Matthew",
+          "description": "Latin patriarch of Constantinople",
+          "url": "https://www.wikidata.org/wiki/Q104029195",
+          "score": 0.6,
+          "birth_year": null,
+          "death_year": 1226,
+          "matched": "Patriarch Matteo"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:44.685182+00:00"
+    },
+    "king baldwin": {
+      "person": "King Baldwin",
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 3,
+      "candidates": [
+        {
+          "qid": "Q146465",
+          "label": "Baldwin III of Jerusalem",
+          "description": "King of Jerusalem (1130-1163) (r. 1143-1163)",
+          "url": "https://www.wikidata.org/wiki/Q146465",
+          "score": 0.85,
+          "birth_year": 1130,
+          "death_year": 1163,
+          "matched": "Baldwin III, King of Jerusalem"
+        },
+        {
+          "qid": "Q345687",
+          "label": "Baldwin V of Jerusalem",
+          "description": "King of Jerusalem (1177-1186) (r. 1185-1186)",
+          "url": "https://www.wikidata.org/wiki/Q345687",
+          "score": 0.85,
+          "birth_year": 1177,
+          "death_year": 1186,
+          "matched": "Baldwin V, King of Jerusalem"
+        },
+        {
+          "qid": "Q51717",
+          "label": "Baldwin I of Jerusalem",
+          "description": "King of Jerusalem from 1100 to 1118",
+          "url": "https://www.wikidata.org/wiki/Q51717",
+          "score": 0.85,
+          "birth_year": 1058,
+          "death_year": 1118,
+          "matched": "Baldwin I de Boulogne, King of Jerusalem"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:44.686024+00:00"
+    },
+    "william of malmesbury": {
+      "person": "William of Malmesbury",
+      "status": "match",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 1,
+      "candidates": [
+        {
+          "qid": "Q345524",
+          "label": "William of Malmesbury",
+          "description": "English monk and chronicler (c.1095 – c.1143)",
+          "url": "https://www.wikidata.org/wiki/Q345524",
+          "score": 1.0,
+          "birth_year": 1095,
+          "death_year": 1143,
+          "matched": "William of Malmesbury"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:44.691251+00:00"
+    },
+    "walter von der vogelweide": {
+      "person": "Walter von der Vogelweide",
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 13,
+      "candidates": [
+        {
+          "qid": "Q109853176",
+          "label": "Sir Walter (de Vere) de Drayton",
+          "description": "1210",
+          "url": "https://www.wikidata.org/wiki/Q109853176",
+          "score": 0.6,
+          "birth_year": null,
+          "death_year": 1210,
+          "matched": "Sir Walter"
+        },
+        {
+          "qid": "Q110520916",
+          "label": "Walter",
+          "description": "Erstmals erw. 1185, 18.1.1213 Gurk (K",
+          "url": "https://www.wikidata.org/wiki/Q110520916",
+          "score": 0.6,
+          "birth_year": null,
+          "death_year": 1213,
+          "matched": "Walter"
+        },
+        {
+          "qid": "Q19826349",
+          "label": "Gualterio",
+          "description": "cardinal bishop of Albano",
+          "url": "https://www.wikidata.org/wiki/Q19826349",
+          "score": 0.6,
+          "birth_year": 1110,
+          "death_year": 1170,
+          "matched": "Walter"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:44.733754+00:00"
+    },
+    "walter": {
+      "person": "Walter",
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 11,
+      "candidates": [
+        {
+          "qid": "Q110520916",
+          "label": "Walter",
+          "description": "Erstmals erw. 1185, 18.1.1213 Gurk (K",
+          "url": "https://www.wikidata.org/wiki/Q110520916",
+          "score": 1.0,
+          "birth_year": null,
+          "death_year": 1213,
+          "matched": "Walter"
+        },
+        {
+          "qid": "Q19826349",
+          "label": "Gualterio",
+          "description": "cardinal bishop of Albano",
+          "url": "https://www.wikidata.org/wiki/Q19826349",
+          "score": 1.0,
+          "birth_year": 1110,
+          "death_year": 1170,
+          "matched": "Walter"
+        },
+        {
+          "qid": "Q2185834",
+          "label": "Walter I of Brienne",
+          "description": "11th century count of Brienne",
+          "url": "https://www.wikidata.org/wiki/Q2185834",
+          "score": 1.0,
+          "birth_year": 1020,
+          "death_year": 1089,
+          "matched": "Walter"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:44.743120+00:00"
     }
   },
   "rileysmith-motivesearliestcrusaders-1983": {
@@ -3371,9 +4035,44 @@
       "queried_at": "2026-10-03T07:59:02.388203+00:00"
     },
     "baldwin of boulogne": {
-      "person": "Baldwin of \n Boulogne",
-      "candidates": [],
-      "queried_at": "2026-02-22T20:53:58.217323"
+      "person": "Baldwin of Boulogne",
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 3,
+      "candidates": [
+        {
+          "qid": "Q51717",
+          "label": "Baldwin I of Jerusalem",
+          "description": "King of Jerusalem from 1100 to 1118",
+          "url": "https://www.wikidata.org/wiki/Q51717",
+          "score": 0.85,
+          "birth_year": 1058,
+          "death_year": 1118,
+          "matched": "Baldwin de Boulogne"
+        },
+        {
+          "qid": "Q600483",
+          "label": "Baldwin II, Count of Boulogne",
+          "description": "Count of Boulogne",
+          "url": "https://www.wikidata.org/wiki/Q600483",
+          "score": 0.85,
+          "birth_year": 1000,
+          "death_year": 1033,
+          "matched": "Baldwin II, Count of Boulogne"
+        },
+        {
+          "qid": "Q75382118",
+          "label": "Baldwin de Boulogne",
+          "description": "(1133-1135)",
+          "url": "https://www.wikidata.org/wiki/Q75382118",
+          "score": 0.85,
+          "birth_year": 1133,
+          "death_year": 1135,
+          "matched": "Baldwin de Boulogne"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:44.923763+00:00"
     },
     "edessa": {
       "person": "Edessa",
@@ -3591,8 +4290,43 @@
     },
     "ralph of menonville": {
       "person": "Ralph of Menonville",
-      "candidates": [],
-      "queried_at": "2026-02-22T20:54:10.509376"
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 4,
+      "candidates": [
+        {
+          "qid": "Q18530687",
+          "label": "Ralph",
+          "description": "chancellor of the Kingdom of Jerusalem and bishop of Bethlehem",
+          "url": "https://www.wikidata.org/wiki/Q18530687",
+          "score": 0.65,
+          "birth_year": 1110,
+          "death_year": 1174,
+          "matched": "Ralph"
+        },
+        {
+          "qid": "Q7281741",
+          "label": "Radulf",
+          "description": "Bishop of Dunblane",
+          "url": "https://www.wikidata.org/wiki/Q7281741",
+          "score": 0.65,
+          "birth_year": 1101,
+          "death_year": 1201,
+          "matched": "Ralph"
+        },
+        {
+          "qid": "Q75715458",
+          "label": "Ralph (?)",
+          "description": "Peerage person ID=299515",
+          "url": "https://www.wikidata.org/wiki/Q75715458",
+          "score": 0.65,
+          "birth_year": null,
+          "death_year": 1182,
+          "matched": "Ralph (?)"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:44.954224+00:00"
     },
     "tournai": {
       "person": "Tournai",
@@ -4233,9 +4967,44 @@
       "queried_at": "2026-02-22T20:54:46.197995"
     },
     "count gerard of buonalbergo": {
-      "person": "Count Gerard of \n Buonalbergo",
-      "candidates": [],
-      "queried_at": "2026-02-22T20:54:46.908223"
+      "person": "Count Gerard of Buonalbergo",
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 3,
+      "candidates": [
+        {
+          "qid": "Q2702855",
+          "label": "Gerard, Count of Auvergne",
+          "description": "Frankish noble",
+          "url": "https://www.wikidata.org/wiki/Q2702855",
+          "score": 0.65,
+          "birth_year": null,
+          "death_year": 841,
+          "matched": "Gerard, Count of Auvergne"
+        },
+        {
+          "qid": "Q3124402",
+          "label": "Gerard of Guelders",
+          "description": "(c.1149-1181)",
+          "url": "https://www.wikidata.org/wiki/Q3124402",
+          "score": 0.65,
+          "birth_year": 1140,
+          "death_year": 1182,
+          "matched": "Gerard, Count of Boulogne"
+        },
+        {
+          "qid": "Q476318",
+          "label": "Gerard, Count of Vaudémont",
+          "description": "Peerage person ID=228676",
+          "url": "https://www.wikidata.org/wiki/Q476318",
+          "score": 0.65,
+          "birth_year": 1057,
+          "death_year": 1108,
+          "matched": "Gerard, Count of Vaudémont"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:45.060602+00:00"
     },
     "one of": {
       "person": "One of",
@@ -4552,8 +5321,23 @@
     },
     "roger of rozoy": {
       "person": "Roger of Rozoy",
-      "candidates": [],
-      "queried_at": "2026-02-22T20:55:10.981718"
+      "status": "match",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 1,
+      "candidates": [
+        {
+          "qid": "Q98156621",
+          "label": "Roger de Rozoy",
+          "description": "bishop of the Roman Catholic Church",
+          "url": "https://www.wikidata.org/wiki/Q98156621",
+          "score": 0.85,
+          "birth_year": null,
+          "death_year": 1201,
+          "matched": "Roger de Rozoy"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:45.111016+00:00"
     },
     "winrich": {
       "person": "Winrich",
@@ -4634,8 +5418,43 @@
     },
     "ralph of montpinson": {
       "person": "Ralph of Montpinson",
-      "candidates": [],
-      "queried_at": "2026-02-22T20:55:14.674456"
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 4,
+      "candidates": [
+        {
+          "qid": "Q18530687",
+          "label": "Ralph",
+          "description": "chancellor of the Kingdom of Jerusalem and bishop of Bethlehem",
+          "url": "https://www.wikidata.org/wiki/Q18530687",
+          "score": 0.65,
+          "birth_year": 1110,
+          "death_year": 1174,
+          "matched": "Ralph"
+        },
+        {
+          "qid": "Q7281741",
+          "label": "Radulf",
+          "description": "Bishop of Dunblane",
+          "url": "https://www.wikidata.org/wiki/Q7281741",
+          "score": 0.65,
+          "birth_year": 1101,
+          "death_year": 1201,
+          "matched": "Ralph"
+        },
+        {
+          "qid": "Q75715458",
+          "label": "Ralph (?)",
+          "description": "Peerage person ID=299515",
+          "url": "https://www.wikidata.org/wiki/Q75715458",
+          "score": 0.65,
+          "birth_year": null,
+          "death_year": 1182,
+          "matched": "Ralph (?)"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:45.132678+00:00"
     },
     "normandy": {
       "person": "Normandy",
@@ -5146,8 +5965,43 @@
     },
     "robert of sourdeval": {
       "person": "Robert of Sourdeval",
-      "candidates": [],
-      "queried_at": "2026-02-22T20:55:43.170612"
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 25,
+      "candidates": [
+        {
+          "qid": "Q108573158",
+          "label": "Robert",
+          "description": "bishop of the Roman Catholic Church",
+          "url": "https://www.wikidata.org/wiki/Q108573158",
+          "score": 0.65,
+          "birth_year": null,
+          "death_year": 1224,
+          "matched": "Robert"
+        },
+        {
+          "qid": "Q109043415",
+          "label": "Robert",
+          "description": "bishop of Rennes",
+          "url": "https://www.wikidata.org/wiki/Q109043415",
+          "score": 0.65,
+          "birth_year": null,
+          "death_year": 1167,
+          "matched": "Robert"
+        },
+        {
+          "qid": "Q110252821",
+          "label": "Robert",
+          "description": "évêque breton du XIIe siècle",
+          "url": "https://www.wikidata.org/wiki/Q110252821",
+          "score": 0.65,
+          "birth_year": null,
+          "death_year": 1130,
+          "matched": "Robert"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:45.218024+00:00"
     },
     "tristan": {
       "person": "Tristan",
@@ -6131,16 +6985,23 @@
     },
     "fulk of guines": {
       "person": "Fulk of Guines",
+      "status": "match",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 1,
       "candidates": [
         {
           "qid": "Q433803",
           "label": "Fulk of Guînes",
           "description": "First Crusader Lord of Beirut",
           "url": "https://www.wikidata.org/wiki/Q433803",
-          "score": 0.5
+          "score": 1.0,
+          "birth_year": 1100,
+          "death_year": 1125,
+          "matched": "Fulk of Guînes"
         }
       ],
-      "queried_at": "2026-02-22T20:56:45.952608"
+      "queried_at": "2026-10-11T01:40:45.332576+00:00"
     },
     "livre": {
       "person": "Livre",
@@ -6357,9 +7218,44 @@
       "queried_at": "2026-10-03T07:59:02.548917+00:00"
     },
     "baldwin of hemstrut": {
-      "person": "Baldwin of \n Hemstrut",
-      "candidates": [],
-      "queried_at": "2026-02-22T20:56:56.446232"
+      "person": "Baldwin of Hemstrut",
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 7,
+      "candidates": [
+        {
+          "qid": "Q1155146",
+          "label": "Baldwin",
+          "description": "Archbishop of Pisa",
+          "url": "https://www.wikidata.org/wiki/Q1155146",
+          "score": 0.65,
+          "birth_year": 1100,
+          "death_year": 1145,
+          "matched": "Baldwin"
+        },
+        {
+          "qid": "Q23581384",
+          "label": "Baldwin",
+          "description": "11th-century English monk, doctor, and abbot",
+          "url": "https://www.wikidata.org/wiki/Q23581384",
+          "score": 0.65,
+          "birth_year": null,
+          "death_year": 1097,
+          "matched": "Baldwin"
+        },
+        {
+          "qid": "Q31053952",
+          "label": "Baldwin",
+          "description": "bishop of the Roman Catholic Church",
+          "url": "https://www.wikidata.org/wiki/Q31053952",
+          "score": 0.65,
+          "birth_year": 1150,
+          "death_year": 1216,
+          "matched": "Baldwin"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:45.349422+00:00"
     },
     "holloway": {
       "person": "Holloway",
@@ -6400,8 +7296,43 @@
     },
     "fulk the orphan": {
       "person": "Fulk the Orphan",
-      "candidates": [],
-      "queried_at": "2026-02-22T20:56:59.417268"
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 4,
+      "candidates": [
+        {
+          "qid": "Q18214781",
+          "label": "Foulques d'Amiens",
+          "description": "Peerage person ID=106651",
+          "url": "https://www.wikidata.org/wiki/Q18214781",
+          "score": 0.65,
+          "birth_year": 1050,
+          "death_year": 1058,
+          "matched": "Fulk (?)"
+        },
+        {
+          "qid": "Q3747052",
+          "label": "Saint Fulk",
+          "description": "",
+          "url": "https://www.wikidata.org/wiki/Q3747052",
+          "score": 0.65,
+          "birth_year": 650,
+          "death_year": 1101,
+          "matched": "Saint Fulk"
+        },
+        {
+          "qid": "Q512325",
+          "label": "Fulk of Reims",
+          "description": "Roman Catholic archbishop",
+          "url": "https://www.wikidata.org/wiki/Q512325",
+          "score": 0.65,
+          "birth_year": 900,
+          "death_year": 900,
+          "matched": "Fulk"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:45.365486+00:00"
     },
     "outremer": {
       "person": "Outremer",
@@ -6831,9 +7762,44 @@
       "queried_at": "2026-02-22T21:17:03.204602"
     },
     "garnier, count of grez": {
-      "person": "Garnier, Count of \n Grez",
-      "candidates": [],
-      "queried_at": "2026-02-22T21:17:03.827993"
+      "person": "Garnier, Count of Grez",
+      "status": "match",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 1,
+      "candidates": [
+        {
+          "qid": "Q2109429",
+          "label": "Warner of Grez",
+          "description": "Lotharingian nobleman and crusader",
+          "url": "https://www.wikidata.org/wiki/Q2109429",
+          "score": 0.7,
+          "birth_year": 1001,
+          "death_year": 1100,
+          "matched": "Garnier de Grez"
+        },
+        {
+          "qid": "Q18589912",
+          "label": "Garnier de Laon",
+          "description": "catholic bishop",
+          "url": "https://www.wikidata.org/wiki/Q18589912",
+          "score": 0.6,
+          "birth_year": null,
+          "death_year": 1249,
+          "matched": "Garnier"
+        },
+        {
+          "qid": "Q10292591",
+          "label": "Garnier de Sens",
+          "description": "French noble",
+          "url": "https://www.wikidata.org/wiki/Q10292591",
+          "score": 0.575,
+          "birth_year": null,
+          "death_year": 924,
+          "matched": "Garnier de Sens"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:44.876419+00:00"
     },
     "j. 0. prestwich": {
       "person": "J. 0. \nPrestwich",
@@ -6917,8 +7883,33 @@
     },
     "raymond of st gilles": {
       "person": "Raymond of St Gilles",
-      "candidates": [],
-      "queried_at": "2026-02-22T21:17:11.638884"
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 2,
+      "candidates": [
+        {
+          "qid": "Q180073",
+          "label": "Raymond VII, Count of Toulouse",
+          "description": "Occitan noble (1197-1249)",
+          "url": "https://www.wikidata.org/wiki/Q180073",
+          "score": 0.85,
+          "birth_year": 1197,
+          "death_year": 1249,
+          "matched": "Raymond VII de Saint Gilles"
+        },
+        {
+          "qid": "Q299612",
+          "label": "Raymond IV, Count of Toulouse",
+          "description": "Count of Toulouse (1094-1105) and Count of Tripoli (1102-1105)",
+          "url": "https://www.wikidata.org/wiki/Q299612",
+          "score": 0.85,
+          "birth_year": 1041,
+          "death_year": 1105,
+          "matched": "Raymond de St-Gilles"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:45.062086+00:00"
     },
     "count galdemar carpenel": {
       "person": "Count Galdemar Carpenel",
@@ -6962,8 +7953,43 @@
     },
     "archbishop hugh of die of lyons": {
       "person": "Archbishop Hugh of Die of Lyons",
-      "candidates": [],
-      "queried_at": "2026-02-22T21:17:13.007586"
+      "status": "match",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 1,
+      "candidates": [
+        {
+          "qid": "Q1773290",
+          "label": "Hugh of Die",
+          "description": "Roman Catholic archbishop",
+          "url": "https://www.wikidata.org/wiki/Q1773290",
+          "score": 0.65,
+          "birth_year": 1040,
+          "death_year": 1106,
+          "matched": "Hugh of Die"
+        },
+        {
+          "qid": "Q124425401",
+          "label": "Hugh III, Archbishop of Rouen",
+          "description": "Norman bishop",
+          "url": "https://www.wikidata.org/wiki/Q124425401",
+          "score": 0.6,
+          "birth_year": null,
+          "death_year": 989,
+          "matched": "Hugh III, Archbishop of Rouen"
+        },
+        {
+          "qid": "Q3142702",
+          "label": "Hugh III, Archbishop of Rouen",
+          "description": "Frans prelaat (-989)",
+          "url": "https://www.wikidata.org/wiki/Q3142702",
+          "score": 0.6,
+          "birth_year": 912,
+          "death_year": 989,
+          "matched": "Hugh III, Archbishop of Rouen"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:45.090174+00:00"
     },
     "c. devic": {
       "person": "C. Devic",
@@ -6995,8 +8021,23 @@
     },
     "king baldwin i": {
       "person": "King Baldwin I",
-      "candidates": [],
-      "queried_at": "2026-02-22T21:17:16.789336"
+      "status": "match",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 1,
+      "candidates": [
+        {
+          "qid": "Q51717",
+          "label": "Baldwin I of Jerusalem",
+          "description": "King of Jerusalem from 1100 to 1118",
+          "url": "https://www.wikidata.org/wiki/Q51717",
+          "score": 0.85,
+          "birth_year": 1058,
+          "death_year": 1118,
+          "matched": "Baldwin I de Boulogne, King of Jerusalem"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:45.094050+00:00"
     },
     "roman of le puy": {
       "person": "Roman of Le Puy",
@@ -8039,6 +9080,1235 @@
         }
       ],
       "queried_at": "2026-10-03T07:59:02.413919+00:00"
+    },
+    "galdemar carpenel": {
+      "person": "Galdemar Carpenel",
+      "status": "match",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 1,
+      "candidates": [
+        {
+          "qid": "Q28606943",
+          "label": "Geldemar Carpenel, Lord of Haifa",
+          "description": "Herr von Haifa",
+          "url": "https://www.wikidata.org/wiki/Q28606943",
+          "score": 0.65,
+          "birth_year": 1100,
+          "death_year": 1101,
+          "matched": "Carpenel"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:44.746471+00:00"
+    },
+    "gerard of avesnes": {
+      "person": "Gerard of Avesnes",
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 11,
+      "candidates": [
+        {
+          "qid": "Q108482976",
+          "label": "Gérard",
+          "description": "catholic bishop",
+          "url": "https://www.wikidata.org/wiki/Q108482976",
+          "score": 0.65,
+          "birth_year": null,
+          "death_year": 1369,
+          "matched": "Gérard"
+        },
+        {
+          "qid": "Q111429939",
+          "label": "Gerard",
+          "description": "Bishop of Autun",
+          "url": "https://www.wikidata.org/wiki/Q111429939",
+          "score": 0.65,
+          "birth_year": null,
+          "death_year": 976,
+          "matched": "Gerard"
+        },
+        {
+          "qid": "Q117759",
+          "label": "Gerard of Csanád",
+          "description": "Italian Benedictine monk, founder bishop of Roman Catholic Diocese of (Szeged-)Csanád, and martyr",
+          "url": "https://www.wikidata.org/wiki/Q117759",
+          "score": 0.65,
+          "birth_year": 977,
+          "death_year": 1046,
+          "matched": "Saint Gerard"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:44.902684+00:00"
+    },
+    "lambert of montaigu": {
+      "person": "Lambert of Montaigu",
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 14,
+      "candidates": [
+        {
+          "qid": "Q11752682",
+          "label": "Lambert III",
+          "description": "Bishop of Kraków",
+          "url": "https://www.wikidata.org/wiki/Q11752682",
+          "score": 0.65,
+          "birth_year": 1001,
+          "death_year": 1101,
+          "matched": "Lambert"
+        },
+        {
+          "qid": "Q121766813",
+          "label": "Lambert",
+          "description": "bishop of the roman-catholic church",
+          "url": "https://www.wikidata.org/wiki/Q121766813",
+          "score": 0.65,
+          "birth_year": null,
+          "death_year": 1148,
+          "matched": "Lambert"
+        },
+        {
+          "qid": "Q1257700",
+          "label": "Lantbert von Lyon",
+          "description": "abbot of Abbey of Fontenelle and Bishop of Lyon",
+          "url": "https://www.wikidata.org/wiki/Q1257700",
+          "score": 0.65,
+          "birth_year": 625,
+          "death_year": 688,
+          "matched": "Lambert"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:44.922489+00:00"
+    },
+    "matthew": {
+      "person": "Matthew",
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 6,
+      "candidates": [
+        {
+          "qid": "Q104029195",
+          "label": "Matthew",
+          "description": "Latin patriarch of Constantinople",
+          "url": "https://www.wikidata.org/wiki/Q104029195",
+          "score": 1.0,
+          "birth_year": null,
+          "death_year": 1226,
+          "matched": "Matthew"
+        },
+        {
+          "qid": "Q43600",
+          "label": "Matthew the Apostle",
+          "description": "Christian evangelist and apostle (10-74)",
+          "url": "https://www.wikidata.org/wiki/Q43600",
+          "score": 1.0,
+          "birth_year": 10,
+          "death_year": 74,
+          "matched": "Matthew"
+        },
+        {
+          "qid": "Q6789809",
+          "label": "Matthew",
+          "description": "Roman Catholic archbishop",
+          "url": "https://www.wikidata.org/wiki/Q6789809",
+          "score": 1.0,
+          "birth_year": null,
+          "death_year": 1199,
+          "matched": "Matthew"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:44.931225+00:00"
+    },
+    "rothold": {
+      "person": "Rothold",
+      "status": "no_candidates",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 0,
+      "candidates": [],
+      "queried_at": "2026-10-11T01:40:44.931815+00:00"
+    },
+    "engilbert": {
+      "person": "Engilbert",
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 3,
+      "candidates": [
+        {
+          "qid": "Q1342334",
+          "label": "Engilbert",
+          "description": "Mönch",
+          "url": "https://www.wikidata.org/wiki/Q1342334",
+          "score": 1.0,
+          "birth_year": 800,
+          "death_year": 900,
+          "matched": "Engilbert"
+        },
+        {
+          "qid": "Q2024534",
+          "label": "Engelbert I, Count of Brienne",
+          "description": "aristocrat (900-969)",
+          "url": "https://www.wikidata.org/wiki/Q2024534",
+          "score": 1.0,
+          "birth_year": 875,
+          "death_year": 969,
+          "matched": "Engilbert"
+        },
+        {
+          "qid": "Q75402867",
+          "label": "Engilbert (?)",
+          "description": "(1060-1085)",
+          "url": "https://www.wikidata.org/wiki/Q75402867",
+          "score": 1.0,
+          "birth_year": 1060,
+          "death_year": 1085,
+          "matched": "Engilbert (?)"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:44.955255+00:00"
+    },
+    "peter the hermit": {
+      "person": "Peter the Hermit",
+      "status": "match",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 1,
+      "candidates": [
+        {
+          "qid": "Q311845",
+          "label": "Peter the Hermit",
+          "description": "11th century French Christian priest and key figure during the First Crusade",
+          "url": "https://www.wikidata.org/wiki/Q311845",
+          "score": 1.0,
+          "birth_year": 1050,
+          "death_year": 1115,
+          "matched": "Peter the Hermit"
+        },
+        {
+          "qid": "Q21587884",
+          "label": "Saint Peter the Hermit",
+          "description": "Santo della chiesa cattolica ed eremita",
+          "url": "https://www.wikidata.org/wiki/Q21587884",
+          "score": 0.85,
+          "birth_year": 1001,
+          "death_year": 1052,
+          "matched": "Saint Peter the Hermit"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:44.955876+00:00"
+    },
+    "baldwin ii": {
+      "person": "Baldwin II",
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 4,
+      "candidates": [
+        {
+          "qid": "Q269573",
+          "label": "Baldwin II of Constantinople",
+          "description": "Emperor of Constantinople",
+          "url": "https://www.wikidata.org/wiki/Q269573",
+          "score": 1.0,
+          "birth_year": 1217,
+          "death_year": 1273,
+          "matched": "Baldwin II"
+        },
+        {
+          "qid": "Q366998",
+          "label": "Baldwin II",
+          "description": "margrave of Flanders",
+          "url": "https://www.wikidata.org/wiki/Q366998",
+          "score": 1.0,
+          "birth_year": 863,
+          "death_year": 918,
+          "matched": "Baldwin II"
+        },
+        {
+          "qid": "Q51718",
+          "label": "Baldwin II of Jerusalem",
+          "description": "Count of Edessa (r. 1100-1118) and King of Jerusalem (r. 1118–1131)",
+          "url": "https://www.wikidata.org/wiki/Q51718",
+          "score": 1.0,
+          "birth_year": 1060,
+          "death_year": 1131,
+          "matched": "Baldwin II"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:44.957865+00:00"
+    },
+    "robert of rheims": {
+      "person": "Robert of Rheims",
+      "status": "match",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 1,
+      "candidates": [
+        {
+          "qid": "Q5376",
+          "label": "Robert the Monk",
+          "description": "chronicler of the First Crusade",
+          "url": "https://www.wikidata.org/wiki/Q5376",
+          "score": 1.0,
+          "birth_year": 1055,
+          "death_year": 1122,
+          "matched": "Robert of Rheims"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:44.959465+00:00"
+    },
+    "baldwin": {
+      "person": "Baldwin",
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 7,
+      "candidates": [
+        {
+          "qid": "Q1155146",
+          "label": "Baldwin",
+          "description": "Archbishop of Pisa",
+          "url": "https://www.wikidata.org/wiki/Q1155146",
+          "score": 1.0,
+          "birth_year": 1100,
+          "death_year": 1145,
+          "matched": "Baldwin"
+        },
+        {
+          "qid": "Q23581384",
+          "label": "Baldwin",
+          "description": "11th-century English monk, doctor, and abbot",
+          "url": "https://www.wikidata.org/wiki/Q23581384",
+          "score": 1.0,
+          "birth_year": null,
+          "death_year": 1097,
+          "matched": "Baldwin"
+        },
+        {
+          "qid": "Q31053952",
+          "label": "Baldwin",
+          "description": "bishop of the Roman Catholic Church",
+          "url": "https://www.wikidata.org/wiki/Q31053952",
+          "score": 1.0,
+          "birth_year": 1150,
+          "death_year": 1216,
+          "matched": "Baldwin"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:44.967566+00:00"
+    },
+    "robert guiscard": {
+      "person": "Robert Guiscard",
+      "status": "match",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 1,
+      "candidates": [
+        {
+          "qid": "Q203792",
+          "label": "Robert Guiscard",
+          "description": "Duke of Apulia and Calabria",
+          "url": "https://www.wikidata.org/wiki/Q203792",
+          "score": 1.0,
+          "birth_year": 1016,
+          "death_year": 1085,
+          "matched": "Robert Guiscard"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:44.969275+00:00"
+    },
+    "lambert": {
+      "person": "Lambert",
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 12,
+      "candidates": [
+        {
+          "qid": "Q11752682",
+          "label": "Lambert III",
+          "description": "Bishop of Kraków",
+          "url": "https://www.wikidata.org/wiki/Q11752682",
+          "score": 1.0,
+          "birth_year": 1001,
+          "death_year": 1101,
+          "matched": "Lambert"
+        },
+        {
+          "qid": "Q121766813",
+          "label": "Lambert",
+          "description": "bishop of the roman-catholic church",
+          "url": "https://www.wikidata.org/wiki/Q121766813",
+          "score": 1.0,
+          "birth_year": null,
+          "death_year": 1148,
+          "matched": "Lambert"
+        },
+        {
+          "qid": "Q1257700",
+          "label": "Lantbert von Lyon",
+          "description": "abbot of Abbey of Fontenelle and Bishop of Lyon",
+          "url": "https://www.wikidata.org/wiki/Q1257700",
+          "score": 1.0,
+          "birth_year": 625,
+          "death_year": 688,
+          "matched": "Lambert"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:44.977858+00:00"
+    },
+    "robert fitz gerard": {
+      "person": "Robert fitz Gerard",
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 19,
+      "candidates": [
+        {
+          "qid": "Q1169789",
+          "label": "Robert Fitzwalter",
+          "description": "English feudal baron and one of the sureties of the Magna Carta (1180-1235)",
+          "url": "https://www.wikidata.org/wiki/Q1169789",
+          "score": 0.65,
+          "birth_year": 1180,
+          "death_year": 1235,
+          "matched": "Robert fitz Walter"
+        },
+        {
+          "qid": "Q1187113",
+          "label": "Robert Fitz Richard",
+          "description": "English noble",
+          "url": "https://www.wikidata.org/wiki/Q1187113",
+          "score": 0.65,
+          "birth_year": 1064,
+          "death_year": 1134,
+          "matched": "Robert Fitz Richard"
+        },
+        {
+          "qid": "Q1255756",
+          "label": "Robert Fitzhamon",
+          "description": "Norman nobleman, conqueror of Glamorganshire (1050–1107)",
+          "url": "https://www.wikidata.org/wiki/Q1255756",
+          "score": 0.65,
+          "birth_year": 1050,
+          "death_year": 1107,
+          "matched": "Robert fitz Haimon"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:45.039654+00:00"
+    },
+    "raymond": {
+      "person": "Raymond",
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 112,
+      "candidates": [
+        {
+          "qid": "Q10357150",
+          "label": "Raymond I of Narbonne",
+          "description": "Viscount of Narbonne",
+          "url": "https://www.wikidata.org/wiki/Q10357150",
+          "score": 0.6,
+          "birth_year": 1000,
+          "death_year": 1100,
+          "matched": "Raymond de Narbonne"
+        },
+        {
+          "qid": "Q108436636",
+          "label": "Raimondo de Mausaco",
+          "description": "bishop of the Roman Catholic Church",
+          "url": "https://www.wikidata.org/wiki/Q108436636",
+          "score": 0.6,
+          "birth_year": null,
+          "death_year": 1336,
+          "matched": "Raymond de Mausac"
+        },
+        {
+          "qid": "Q108446708",
+          "label": "Raymond de Salles",
+          "description": "bishop of the Roman Catholic Church",
+          "url": "https://www.wikidata.org/wiki/Q108446708",
+          "score": 0.6,
+          "birth_year": null,
+          "death_year": 1247,
+          "matched": "Raymond de Salles"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:45.107937+00:00"
+    },
+    "adhemar": {
+      "person": "Adhemar",
+      "status": "match",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 1,
+      "candidates": [
+        {
+          "qid": "Q4057590",
+          "label": "Adimaro",
+          "description": "cardinale italiano",
+          "url": "https://www.wikidata.org/wiki/Q4057590",
+          "score": 1.0,
+          "birth_year": null,
+          "death_year": 1073,
+          "matched": "Adhémar"
+        },
+        {
+          "qid": "Q108446766",
+          "label": "Aimaro di Rossiglione",
+          "description": "archbishop of the Roman Catholic Church",
+          "url": "https://www.wikidata.org/wiki/Q108446766",
+          "score": 0.6,
+          "birth_year": null,
+          "death_year": 1283,
+          "matched": "Adhémar de Roussillon"
+        },
+        {
+          "qid": "Q108446956",
+          "label": "Adhémar Robert",
+          "description": "archbishop of the Roman Catholic Church",
+          "url": "https://www.wikidata.org/wiki/Q108446956",
+          "score": 0.6,
+          "birth_year": null,
+          "death_year": 1385,
+          "matched": "Adhémar Robert"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:45.110035+00:00"
+    },
+    "ado of quiersy": {
+      "person": "Ado of Quiersy",
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 2,
+      "candidates": [
+        {
+          "qid": "Q2609419",
+          "label": "Ado of Friuli",
+          "description": "Duke of Friuli",
+          "url": "https://www.wikidata.org/wiki/Q2609419",
+          "score": 0.65,
+          "birth_year": 601,
+          "death_year": 700,
+          "matched": "Ado"
+        },
+        {
+          "qid": "Q359951",
+          "label": "Ado of Vienne",
+          "description": "Archbishop of Vienne",
+          "url": "https://www.wikidata.org/wiki/Q359951",
+          "score": 0.65,
+          "birth_year": 800,
+          "death_year": 875,
+          "matched": "Ado"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:45.112089+00:00"
+    },
+    "gerard of quiersy": {
+      "person": "Gerard of Quiersy",
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 11,
+      "candidates": [
+        {
+          "qid": "Q108482976",
+          "label": "Gérard",
+          "description": "catholic bishop",
+          "url": "https://www.wikidata.org/wiki/Q108482976",
+          "score": 0.65,
+          "birth_year": null,
+          "death_year": 1369,
+          "matched": "Gérard"
+        },
+        {
+          "qid": "Q111429939",
+          "label": "Gerard",
+          "description": "Bishop of Autun",
+          "url": "https://www.wikidata.org/wiki/Q111429939",
+          "score": 0.65,
+          "birth_year": null,
+          "death_year": 976,
+          "matched": "Gerard"
+        },
+        {
+          "qid": "Q117759",
+          "label": "Gerard of Csanád",
+          "description": "Italian Benedictine monk, founder bishop of Roman Catholic Diocese of (Szeged-)Csanád, and martyr",
+          "url": "https://www.wikidata.org/wiki/Q117759",
+          "score": 0.65,
+          "birth_year": 977,
+          "death_year": 1046,
+          "matched": "Saint Gerard"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:45.122700+00:00"
+    },
+    "duke robert of normandy": {
+      "person": "Duke Robert of Normandy",
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 2,
+      "candidates": [
+        {
+          "qid": "Q220994",
+          "label": "Robert Curthose",
+          "description": "Duke of Normandy",
+          "url": "https://www.wikidata.org/wiki/Q220994",
+          "score": 0.85,
+          "birth_year": 1051,
+          "death_year": 1134,
+          "matched": "Robert II, Duke of Normandy"
+        },
+        {
+          "qid": "Q41380",
+          "label": "Robert I, Duke of Normandy",
+          "description": "Robert \"The Magnificent\"",
+          "url": "https://www.wikidata.org/wiki/Q41380",
+          "score": 0.85,
+          "birth_year": 1004,
+          "death_year": 1035,
+          "matched": "Robert I, Duke of Normandy"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:45.135206+00:00"
+    },
+    "ralph of fontenelles": {
+      "person": "Ralph of Fontenelles",
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 4,
+      "candidates": [
+        {
+          "qid": "Q18530687",
+          "label": "Ralph",
+          "description": "chancellor of the Kingdom of Jerusalem and bishop of Bethlehem",
+          "url": "https://www.wikidata.org/wiki/Q18530687",
+          "score": 0.65,
+          "birth_year": 1110,
+          "death_year": 1174,
+          "matched": "Ralph"
+        },
+        {
+          "qid": "Q7281741",
+          "label": "Radulf",
+          "description": "Bishop of Dunblane",
+          "url": "https://www.wikidata.org/wiki/Q7281741",
+          "score": 0.65,
+          "birth_year": 1101,
+          "death_year": 1201,
+          "matched": "Ralph"
+        },
+        {
+          "qid": "Q75715458",
+          "label": "Ralph (?)",
+          "description": "Peerage person ID=299515",
+          "url": "https://www.wikidata.org/wiki/Q75715458",
+          "score": 0.65,
+          "birth_year": null,
+          "death_year": 1182,
+          "matched": "Ralph (?)"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:45.145392+00:00"
+    },
+    "stephen of blois": {
+      "person": "Stephen of Blois",
+      "status": "match",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 1,
+      "candidates": [
+        {
+          "qid": "Q60849",
+          "label": "Stephen, King of England",
+          "description": "King of England from 1135 to 1154",
+          "url": "https://www.wikidata.org/wiki/Q60849",
+          "score": 1.0,
+          "birth_year": 1095,
+          "death_year": 1154,
+          "matched": "Stephen of Blois"
+        },
+        {
+          "qid": "Q316006",
+          "label": "Stephen",
+          "description": "Count of Blois from 1089 to 1102",
+          "url": "https://www.wikidata.org/wiki/Q316006",
+          "score": 0.85,
+          "birth_year": 1045,
+          "death_year": 1102,
+          "matched": "Stephen II, Count of Blois"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:45.146900+00:00"
+    },
+    "hugh of vermandois": {
+      "person": "Hugh of Vermandois",
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 9,
+      "candidates": [
+        {
+          "qid": "Q23614021",
+          "label": "Hugh",
+          "description": "archbishop of Edessa",
+          "url": "https://www.wikidata.org/wiki/Q23614021",
+          "score": 0.65,
+          "birth_year": null,
+          "death_year": 1144,
+          "matched": "Hugh"
+        },
+        {
+          "qid": "Q25642",
+          "label": "Hugh, Count of Suio",
+          "description": "Count of Suio",
+          "url": "https://www.wikidata.org/wiki/Q25642",
+          "score": 0.65,
+          "birth_year": null,
+          "death_year": 1001,
+          "matched": "Hugh"
+        },
+        {
+          "qid": "Q3142598",
+          "label": "Hugues I",
+          "description": "bishop of Coutances",
+          "url": "https://www.wikidata.org/wiki/Q3142598",
+          "score": 0.65,
+          "birth_year": null,
+          "death_year": 1025,
+          "matched": "Hugh"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:45.158444+00:00"
+    },
+    "robert fitzgodwin": {
+      "person": "Robert fitzGodwin",
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 25,
+      "candidates": [
+        {
+          "qid": "Q108573158",
+          "label": "Robert",
+          "description": "bishop of the Roman Catholic Church",
+          "url": "https://www.wikidata.org/wiki/Q108573158",
+          "score": 0.65,
+          "birth_year": null,
+          "death_year": 1224,
+          "matched": "Robert"
+        },
+        {
+          "qid": "Q109043415",
+          "label": "Robert",
+          "description": "bishop of Rennes",
+          "url": "https://www.wikidata.org/wiki/Q109043415",
+          "score": 0.65,
+          "birth_year": null,
+          "death_year": 1167,
+          "matched": "Robert"
+        },
+        {
+          "qid": "Q110252821",
+          "label": "Robert",
+          "description": "évêque breton du XIIe siècle",
+          "url": "https://www.wikidata.org/wiki/Q110252821",
+          "score": 0.65,
+          "birth_year": null,
+          "death_year": 1130,
+          "matched": "Robert"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:45.178544+00:00"
+    },
+    "peter lombard": {
+      "person": "Peter Lombard",
+      "status": "match",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 1,
+      "candidates": [
+        {
+          "qid": "Q315347",
+          "label": "Peter Lombard",
+          "description": "medieval priest and theologian",
+          "url": "https://www.wikidata.org/wiki/Q315347",
+          "score": 1.0,
+          "birth_year": 1100,
+          "death_year": 1160,
+          "matched": "Peter Lombard"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:45.180152+00:00"
+    },
+    "william the carpenter": {
+      "person": "William the Carpenter",
+      "status": "match",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 1,
+      "candidates": [
+        {
+          "qid": "Q1553956",
+          "label": "William the Carpenter",
+          "description": "Viscount of Melun",
+          "url": "https://www.wikidata.org/wiki/Q1553956",
+          "score": 1.0,
+          "birth_year": 1042,
+          "death_year": 1100,
+          "matched": "William the Carpenter"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:45.181207+00:00"
+    },
+    "humphrey fitz ralph": {
+      "person": "Humphrey fitz Ralph",
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 5,
+      "candidates": [
+        {
+          "qid": "Q18922198",
+          "label": "Ralph fitz Stephen",
+          "description": "Ralph fitz Stephen (d. 1202), courtier and administrator",
+          "url": "https://www.wikidata.org/wiki/Q18922198",
+          "score": 0.65,
+          "birth_year": null,
+          "death_year": 1200,
+          "matched": "Ralph fitz Stephen"
+        },
+        {
+          "qid": "Q7325689",
+          "label": "Richard FitzRalph",
+          "description": "archbishop, university administrator (1295–1360)",
+          "url": "https://www.wikidata.org/wiki/Q7325689",
+          "score": 0.65,
+          "birth_year": 1295,
+          "death_year": 1360,
+          "matched": "Richard Fitz Ralph"
+        },
+        {
+          "qid": "Q75101180",
+          "label": "Ralph FitzRanulf",
+          "description": "(1206-1258)",
+          "url": "https://www.wikidata.org/wiki/Q75101180",
+          "score": 0.65,
+          "birth_year": 1206,
+          "death_year": 1258,
+          "matched": "Ralph fitz Ranulph"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:45.198823+00:00"
+    },
+    "robert fitztristan": {
+      "person": "Robert fitzTristan",
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 25,
+      "candidates": [
+        {
+          "qid": "Q108573158",
+          "label": "Robert",
+          "description": "bishop of the Roman Catholic Church",
+          "url": "https://www.wikidata.org/wiki/Q108573158",
+          "score": 0.65,
+          "birth_year": null,
+          "death_year": 1224,
+          "matched": "Robert"
+        },
+        {
+          "qid": "Q109043415",
+          "label": "Robert",
+          "description": "bishop of Rennes",
+          "url": "https://www.wikidata.org/wiki/Q109043415",
+          "score": 0.65,
+          "birth_year": null,
+          "death_year": 1167,
+          "matched": "Robert"
+        },
+        {
+          "qid": "Q110252821",
+          "label": "Robert",
+          "description": "évêque breton du XIIe siècle",
+          "url": "https://www.wikidata.org/wiki/Q110252821",
+          "score": 0.65,
+          "birth_year": null,
+          "death_year": 1130,
+          "matched": "Robert"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:45.236555+00:00"
+    },
+    "peter bartholomew": {
+      "person": "Peter Bartholomew",
+      "status": "match",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 1,
+      "candidates": [
+        {
+          "qid": "Q450666",
+          "label": "Peter Bartholomew",
+          "description": "French monk",
+          "url": "https://www.wikidata.org/wiki/Q450666",
+          "score": 1.0,
+          "birth_year": 1075,
+          "death_year": 1099,
+          "matched": "Peter Bartholomew"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:45.237849+00:00"
+    },
+    "peter of narbonne": {
+      "person": "Peter of Narbonne",
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 3,
+      "candidates": [
+        {
+          "qid": "Q30902464",
+          "label": "Peter of Narbonne",
+          "description": "saint",
+          "url": "https://www.wikidata.org/wiki/Q30902464",
+          "score": 1.0,
+          "birth_year": 1350,
+          "death_year": 1391,
+          "matched": "Peter of Narbonne"
+        },
+        {
+          "qid": "Q69818334",
+          "label": "Peter of Narbonne",
+          "description": "French bishop and coprince of Andorre",
+          "url": "https://www.wikidata.org/wiki/Q69818334",
+          "score": 1.0,
+          "birth_year": null,
+          "death_year": 1348,
+          "matched": "Peter of Narbonne"
+        },
+        {
+          "qid": "Q7159750",
+          "label": "Pedro Manrique de Lara",
+          "description": "Spanish noble",
+          "url": "https://www.wikidata.org/wiki/Q7159750",
+          "score": 1.0,
+          "birth_year": 1101,
+          "death_year": 1202,
+          "matched": "Peter of Narbonne"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:45.238950+00:00"
+    },
+    "william hugo of monteil": {
+      "person": "William Hugo of Monteil",
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 42,
+      "candidates": [
+        {
+          "qid": "Q108588475",
+          "label": "William",
+          "description": "bishop of Moray, Scotland, Great Britain",
+          "url": "https://www.wikidata.org/wiki/Q108588475",
+          "score": 0.6,
+          "birth_year": null,
+          "death_year": 1162,
+          "matched": "William"
+        },
+        {
+          "qid": "Q108589338",
+          "label": "William",
+          "description": "roman-catholic bishop of Waterford and Lismore",
+          "url": "https://www.wikidata.org/wiki/Q108589338",
+          "score": 0.6,
+          "birth_year": null,
+          "death_year": 1272,
+          "matched": "William"
+        },
+        {
+          "qid": "Q126391397",
+          "label": "Hugo von Reichenau",
+          "description": "Abt des Klosters Reichenau.",
+          "url": "https://www.wikidata.org/wiki/Q126391397",
+          "score": 0.6,
+          "birth_year": null,
+          "death_year": 914,
+          "matched": "Hugo"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:45.288022+00:00"
+    },
+    "henry i of england": {
+      "person": "Henry I of England",
+      "status": "match",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 1,
+      "candidates": [
+        {
+          "qid": "Q101384",
+          "label": "Henry I of England",
+          "description": "King of England from 1100 to 1135 (1068–1135)",
+          "url": "https://www.wikidata.org/wiki/Q101384",
+          "score": 1.0,
+          "birth_year": 1068,
+          "death_year": 1135,
+          "matched": "Henry I of England"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:45.290399+00:00"
+    },
+    "count raymond": {
+      "person": "Count Raymond",
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 10,
+      "candidates": [
+        {
+          "qid": "Q1245486",
+          "label": "Raymond-Roger, Count of Foix",
+          "description": "Occitan noble, Count of Foix (1152-1223)",
+          "url": "https://www.wikidata.org/wiki/Q1245486",
+          "score": 0.85,
+          "birth_year": 1152,
+          "death_year": 1223,
+          "matched": "Raymond-Roger, Count of Foix"
+        },
+        {
+          "qid": "Q1338833",
+          "label": "Raymond Pons, Count of Toulouse",
+          "description": "Count of Toulouse",
+          "url": "https://www.wikidata.org/wiki/Q1338833",
+          "score": 0.85,
+          "birth_year": 900,
+          "death_year": 1000,
+          "matched": "Raymond Pons, Count of Toulouse"
+        },
+        {
+          "qid": "Q1379074",
+          "label": "Raymond I, Count of Toulouse",
+          "description": "French count",
+          "url": "https://www.wikidata.org/wiki/Q1379074",
+          "score": 0.85,
+          "birth_year": 801,
+          "death_year": 865,
+          "matched": "Raymond I, Count of Toulouse"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:45.291581+00:00"
+    },
+    "robert fitz godwin": {
+      "person": "Robert fitz Godwin",
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 19,
+      "candidates": [
+        {
+          "qid": "Q1169789",
+          "label": "Robert Fitzwalter",
+          "description": "English feudal baron and one of the sureties of the Magna Carta (1180-1235)",
+          "url": "https://www.wikidata.org/wiki/Q1169789",
+          "score": 0.65,
+          "birth_year": 1180,
+          "death_year": 1235,
+          "matched": "Robert fitz Walter"
+        },
+        {
+          "qid": "Q1187113",
+          "label": "Robert Fitz Richard",
+          "description": "English noble",
+          "url": "https://www.wikidata.org/wiki/Q1187113",
+          "score": 0.65,
+          "birth_year": 1064,
+          "death_year": 1134,
+          "matched": "Robert Fitz Richard"
+        },
+        {
+          "qid": "Q1255756",
+          "label": "Robert Fitzhamon",
+          "description": "Norman nobleman, conqueror of Glamorganshire (1050–1107)",
+          "url": "https://www.wikidata.org/wiki/Q1255756",
+          "score": 0.65,
+          "birth_year": 1050,
+          "death_year": 1107,
+          "matched": "Robert fitz Haimon"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:45.317514+00:00"
+    },
+    "hugh of bethsan": {
+      "person": "Hugh of Bethsan",
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 9,
+      "candidates": [
+        {
+          "qid": "Q23614021",
+          "label": "Hugh",
+          "description": "archbishop of Edessa",
+          "url": "https://www.wikidata.org/wiki/Q23614021",
+          "score": 0.65,
+          "birth_year": null,
+          "death_year": 1144,
+          "matched": "Hugh"
+        },
+        {
+          "qid": "Q25642",
+          "label": "Hugh, Count of Suio",
+          "description": "Count of Suio",
+          "url": "https://www.wikidata.org/wiki/Q25642",
+          "score": 0.65,
+          "birth_year": null,
+          "death_year": 1001,
+          "matched": "Hugh"
+        },
+        {
+          "qid": "Q3142598",
+          "label": "Hugues I",
+          "description": "bishop of Coutances",
+          "url": "https://www.wikidata.org/wiki/Q3142598",
+          "score": 0.65,
+          "birth_year": null,
+          "death_year": 1025,
+          "matched": "Hugh"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:45.328782+00:00"
+    },
+    "eustace": {
+      "person": "Eustace",
+      "status": "match",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 1,
+      "candidates": [
+        {
+          "qid": "Q1378695",
+          "label": "Eustace",
+          "description": "Lord Chancellor of England; Bishop of Ely",
+          "url": "https://www.wikidata.org/wiki/Q1378695",
+          "score": 1.0,
+          "birth_year": 1200,
+          "death_year": 1215,
+          "matched": "Eustace"
+        },
+        {
+          "qid": "Q107721699",
+          "label": "Eustace d’Aubrichecourt",
+          "description": "French knight",
+          "url": "https://www.wikidata.org/wiki/Q107721699",
+          "score": 0.6,
+          "birth_year": 1334,
+          "death_year": 1373,
+          "matched": "Eustace d’Aubrichecourt"
+        },
+        {
+          "qid": "Q114324",
+          "label": "Eustache I Granier",
+          "description": "Flemish Crusader, lord of Caesarea and Sidon",
+          "url": "https://www.wikidata.org/wiki/Q114324",
+          "score": 0.6,
+          "birth_year": 1001,
+          "death_year": 1123,
+          "matched": "Eustace Garnier"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:45.332142+00:00"
+    },
+    "hugh of robecquel": {
+      "person": "Hugh of Robecquel",
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 9,
+      "candidates": [
+        {
+          "qid": "Q23614021",
+          "label": "Hugh",
+          "description": "archbishop of Edessa",
+          "url": "https://www.wikidata.org/wiki/Q23614021",
+          "score": 0.65,
+          "birth_year": null,
+          "death_year": 1144,
+          "matched": "Hugh"
+        },
+        {
+          "qid": "Q25642",
+          "label": "Hugh, Count of Suio",
+          "description": "Count of Suio",
+          "url": "https://www.wikidata.org/wiki/Q25642",
+          "score": 0.65,
+          "birth_year": null,
+          "death_year": 1001,
+          "matched": "Hugh"
+        },
+        {
+          "qid": "Q3142598",
+          "label": "Hugues I",
+          "description": "bishop of Coutances",
+          "url": "https://www.wikidata.org/wiki/Q3142598",
+          "score": 0.65,
+          "birth_year": null,
+          "death_year": 1025,
+          "matched": "Hugh"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:45.343466+00:00"
+    },
+    "ralph of aalst": {
+      "person": "Ralph of Aalst",
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 4,
+      "candidates": [
+        {
+          "qid": "Q18530687",
+          "label": "Ralph",
+          "description": "chancellor of the Kingdom of Jerusalem and bishop of Bethlehem",
+          "url": "https://www.wikidata.org/wiki/Q18530687",
+          "score": 0.65,
+          "birth_year": 1110,
+          "death_year": 1174,
+          "matched": "Ralph"
+        },
+        {
+          "qid": "Q7281741",
+          "label": "Radulf",
+          "description": "Bishop of Dunblane",
+          "url": "https://www.wikidata.org/wiki/Q7281741",
+          "score": 0.65,
+          "birth_year": 1101,
+          "death_year": 1201,
+          "matched": "Ralph"
+        },
+        {
+          "qid": "Q75715458",
+          "label": "Ralph (?)",
+          "description": "Peerage person ID=299515",
+          "url": "https://www.wikidata.org/wiki/Q75715458",
+          "score": 0.65,
+          "birth_year": null,
+          "death_year": 1182,
+          "matched": "Ralph (?)"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:45.359620+00:00"
     }
   },
   "hamblin-muslimperspectivesmilitary-2001": {
@@ -13827,16 +16097,416 @@
         }
       ],
       "queried_at": "2026-10-03T07:59:02.071416+00:00"
+    },
+    "jesus": {
+      "person": "Jesus",
+      "status": "match",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 1,
+      "candidates": [
+        {
+          "qid": "Q302",
+          "label": "Jesus Christ",
+          "description": "central figure of Christianity (c. 6 or 4 BC – AD 30 or 33)",
+          "url": "https://www.wikidata.org/wiki/Q302",
+          "score": 1.0,
+          "birth_year": -5,
+          "death_year": 30,
+          "matched": "Iesus"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:43.253674+00:00"
+    },
+    "one of the franks": {
+      "person": "one of the Franks",
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 3,
+      "candidates": [
+        {
+          "qid": "Q551700",
+          "label": "Kennewick Man",
+          "description": "Prehistoric Paleoamerican man found in Kennewick, Washington, US in 1996",
+          "url": "https://www.wikidata.org/wiki/Q551700",
+          "score": 0.6,
+          "birth_year": null,
+          "death_year": -7300,
+          "matched": "The Ancient One"
+        },
+        {
+          "qid": "Q552414",
+          "label": "Frederick II, Duke of Swabia",
+          "description": "second Hohenstaufen duke of Swabia from 1105",
+          "url": "https://www.wikidata.org/wiki/Q552414",
+          "score": 0.6,
+          "birth_year": 1090,
+          "death_year": 1147,
+          "matched": "the One-Eyed"
+        },
+        {
+          "qid": "Q876674",
+          "label": "John II, Count of Holstein-Kiel",
+          "description": "Count of Holstein-Kiel",
+          "url": "https://www.wikidata.org/wiki/Q876674",
+          "score": 0.6,
+          "birth_year": 1253,
+          "death_year": 1321,
+          "matched": "\"the one-eyed\""
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:43.302864+00:00"
+    },
+    "saladin": {
+      "person": "Saladin",
+      "status": "match",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 1,
+      "candidates": [
+        {
+          "qid": "Q8581",
+          "label": "Saladin",
+          "description": "Sultan of Egypt and founder of the Ayyubid dynasty (1137–1193)",
+          "url": "https://www.wikidata.org/wiki/Q8581",
+          "score": 1.0,
+          "birth_year": 1138,
+          "death_year": 1193,
+          "matched": "Saladin"
+        },
+        {
+          "qid": "Q3351358",
+          "label": "Olivier Salahadin",
+          "description": "prelaat",
+          "url": "https://www.wikidata.org/wiki/Q3351358",
+          "score": 0.6,
+          "birth_year": null,
+          "death_year": 1353,
+          "matched": "Olivier Saladin"
+        },
+        {
+          "qid": "Q3547817",
+          "label": "Ugo Saladini",
+          "description": "",
+          "url": "https://www.wikidata.org/wiki/Q3547817",
+          "score": 0.4,
+          "birth_year": 1150,
+          "death_year": 1184,
+          "matched": "Ugo Saladini"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:43.310239+00:00"
+    },
+    "bertrand of blancfort": {
+      "person": "Bertrand of Blancfort",
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 3,
+      "candidates": [
+        {
+          "qid": "Q41603055",
+          "label": "Bertrand",
+          "description": "Roman Catholic archbishop",
+          "url": "https://www.wikidata.org/wiki/Q41603055",
+          "score": 0.65,
+          "birth_year": null,
+          "death_year": 1333,
+          "matched": "Bertrand"
+        },
+        {
+          "qid": "Q547970",
+          "label": "Bertrand I, Count of Toulouse",
+          "description": "Count of Toulouse and of Tripoli",
+          "url": "https://www.wikidata.org/wiki/Q547970",
+          "score": 0.65,
+          "birth_year": 1065,
+          "death_year": 1112,
+          "matched": "Bertrand"
+        },
+        {
+          "qid": "Q64762003",
+          "label": "Bertrand de Bertrandis",
+          "description": "Roman Catholic archbishop",
+          "url": "https://www.wikidata.org/wiki/Q64762003",
+          "score": 0.65,
+          "birth_year": null,
+          "death_year": 1334,
+          "matched": "Bertrand de Bertrand"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:43.455432+00:00"
+    },
+    "manuel": {
+      "person": "Manuel",
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 3,
+      "candidates": [
+        {
+          "qid": "Q11934909",
+          "label": "Manuel",
+          "description": "Manuel (Abat de Sant Quirze)",
+          "url": "https://www.wikidata.org/wiki/Q11934909",
+          "score": 1.0,
+          "birth_year": null,
+          "death_year": 1000,
+          "matched": "Manuel"
+        },
+        {
+          "qid": "Q135798354",
+          "label": "Manuel",
+          "description": "7th-century Armenian-Byzantine general",
+          "url": "https://www.wikidata.org/wiki/Q135798354",
+          "score": 1.0,
+          "birth_year": null,
+          "death_year": 646,
+          "matched": "Manuel"
+        },
+        {
+          "qid": "Q3947575",
+          "label": "Manuel",
+          "description": "saint",
+          "url": "https://www.wikidata.org/wiki/Q3947575",
+          "score": 1.0,
+          "birth_year": null,
+          "death_year": 362,
+          "matched": "Manuel"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:43.555684+00:00"
+    },
+    "odo of saint amand": {
+      "person": "Odo of Saint Amand",
+      "status": "match",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 1,
+      "candidates": [
+        {
+          "qid": "Q440248",
+          "label": "Odo de St Amand",
+          "description": "Grand Master of the Knights Templar",
+          "url": "https://www.wikidata.org/wiki/Q440248",
+          "score": 0.85,
+          "birth_year": 1110,
+          "death_year": 1179,
+          "matched": "Odo de St Amand"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:43.562086+00:00"
+    },
+    "baldwin of ibelin": {
+      "person": "Baldwin of Ibelin",
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 2,
+      "candidates": [
+        {
+          "qid": "Q2891991",
+          "label": "Baldwin of Ibelin",
+          "description": "French nobleman",
+          "url": "https://www.wikidata.org/wiki/Q2891991",
+          "score": 1.0,
+          "birth_year": null,
+          "death_year": 1313,
+          "matched": "Baldwin of Ibelin"
+        },
+        {
+          "qid": "Q804832",
+          "label": "Baldwin of Ibelin",
+          "description": "noble",
+          "url": "https://www.wikidata.org/wiki/Q804832",
+          "score": 1.0,
+          "birth_year": 1133,
+          "death_year": 1187,
+          "matched": "Baldwin of Ibelin"
+        },
+        {
+          "qid": "Q459322",
+          "label": "Baldwin of Ibelin, Seneschal of Cyprus",
+          "description": "French nobleman",
+          "url": "https://www.wikidata.org/wiki/Q459322",
+          "score": 0.85,
+          "birth_year": 1250,
+          "death_year": 1267,
+          "matched": "Baldwin of Ibelin, Seneschal of Cyprus"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:43.571379+00:00"
+    },
+    "hugh of galilee": {
+      "person": "Hugh of Galilee",
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 9,
+      "candidates": [
+        {
+          "qid": "Q23614021",
+          "label": "Hugh",
+          "description": "archbishop of Edessa",
+          "url": "https://www.wikidata.org/wiki/Q23614021",
+          "score": 0.65,
+          "birth_year": null,
+          "death_year": 1144,
+          "matched": "Hugh"
+        },
+        {
+          "qid": "Q25642",
+          "label": "Hugh, Count of Suio",
+          "description": "Count of Suio",
+          "url": "https://www.wikidata.org/wiki/Q25642",
+          "score": 0.65,
+          "birth_year": null,
+          "death_year": 1001,
+          "matched": "Hugh"
+        },
+        {
+          "qid": "Q3142598",
+          "label": "Hugues I",
+          "description": "bishop of Coutances",
+          "url": "https://www.wikidata.org/wiki/Q3142598",
+          "score": 0.65,
+          "birth_year": null,
+          "death_year": 1025,
+          "matched": "Hugh"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:43.814322+00:00"
+    },
+    "al harawi": {
+      "person": "al Harawi",
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 3,
+      "candidates": [
+        {
+          "qid": "Q141126607",
+          "label": "al-Harawī",
+          "description": "قاضي بلاد الروم، من فقهاء الحنفية، درّس في بغداد والبصرة وهمذان وبلاد الروم",
+          "url": "https://www.wikidata.org/wiki/Q141126607",
+          "score": 1.0,
+          "birth_year": null,
+          "death_year": 1142,
+          "matched": "al-Harawī"
+        },
+        {
+          "qid": "Q141127003",
+          "label": "al-Harawī",
+          "description": "قاض وفقيه شافعي من ذرية الفخر الرازي، تولى القضاء بمصر وتدريس الصلاحية في القدس",
+          "url": "https://www.wikidata.org/wiki/Q141127003",
+          "score": 1.0,
+          "birth_year": 1365,
+          "death_year": 1426,
+          "matched": "al-Harawī"
+        },
+        {
+          "qid": "Q25453563",
+          "label": "al-Harawī",
+          "description": "فقيه سني شافعي",
+          "url": "https://www.wikidata.org/wiki/Q25453563",
+          "score": 1.0,
+          "birth_year": null,
+          "death_year": 1095,
+          "matched": "al-Harawī"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:43.826264+00:00"
+    },
+    "pope nicholas iv": {
+      "person": "Pope Nicholas IV",
+      "status": "match",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 1,
+      "candidates": [
+        {
+          "qid": "Q103625",
+          "label": "Nicholas IV",
+          "description": "pope of the Catholic Church from 1288 to 1292 (1227–1292)",
+          "url": "https://www.wikidata.org/wiki/Q103625",
+          "score": 1.0,
+          "birth_year": 1227,
+          "death_year": 1292,
+          "matched": "Pope Nicholas IV"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:43.832737+00:00"
+    },
+    "peter of cyprus": {
+      "person": "Peter of Cyprus",
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 2,
+      "candidates": [
+        {
+          "qid": "Q546469",
+          "label": "Peter I of Cyprus",
+          "description": "King of Cyprus and King of Armenia",
+          "url": "https://www.wikidata.org/wiki/Q546469",
+          "score": 0.85,
+          "birth_year": 1328,
+          "death_year": 1369,
+          "matched": "Peter I of Cyprus"
+        },
+        {
+          "qid": "Q546544",
+          "label": "Peter II of Cyprus",
+          "description": "King of Cyprus",
+          "url": "https://www.wikidata.org/wiki/Q546544",
+          "score": 0.85,
+          "birth_year": 1357,
+          "death_year": 1382,
+          "matched": "Peter II of Cyprus"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:43.837690+00:00"
+    },
+    "'ali": {
+      "person": "'Ali",
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 2,
+      "candidates": [
+        {
+          "qid": "Q2293179",
+          "label": "Onela",
+          "description": "semi-legendary Swedish king",
+          "url": "https://www.wikidata.org/wiki/Q2293179",
+          "score": 1.0,
+          "birth_year": null,
+          "death_year": 501,
+          "matched": "Ali"
+        },
+        {
+          "qid": "Q39619",
+          "label": "Alī ibn Abī Ṭālib",
+          "description": "4th Rashidun Caliph (r. 656–661) and first Shia Imam",
+          "url": "https://www.wikidata.org/wiki/Q39619",
+          "score": 1.0,
+          "birth_year": 599,
+          "death_year": 661,
+          "matched": "Alī"
+        }
+      ],
+      "queried_at": "2026-10-11T01:40:44.067602+00:00"
     }
   },
   "status": {
     "source": "wikidata_pre1500_snapshot",
     "snapshot": "2026-10-02T22:51:17+00:00",
-    "resolved": 0,
-    "cached": 430,
-    "re_resolved": 0,
-    "from_an_older_resolver": 1433,
+    "resolved": 83,
+    "cached": 97,
+    "re_resolved": 17,
+    "from_an_older_resolver": 1154,
     "refresh": "stale",
-    "ran_at": "2026-10-10T01:40:06.124148+00:00"
+    "ran_at": "2026-10-11T01:40:45.365729+00:00"
   }
 }
