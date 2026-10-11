@@ -175,6 +175,7 @@ def build_authority_lookup(outremer: dict[str, Any]) -> list[dict[str, Any]]:
 
         lookup.append({
             "authority_id": auth_id,
+                "record": e,
             "preferred_label": label,
             "type": etype,
             "all_norms": all_norms,
@@ -188,11 +189,16 @@ def link_voyagers_to_outremer(
     authority_lookup: list[dict[str, Any]],
     top_k: int = 3,
     min_score: float | None = None,
+    rerank: bool | None = None,
 ) -> list[dict[str, Any]]:
     """
     Link extracted person mentions to Outremer authority entries using fuzzy matching.
 
     Returns one link object per person mention, each containing ranked candidates.
+
+    ``rerank`` (default: OUTREMER_CAPABILITY_RERANKER) runs the reranker veto
+    of M21.2 afterwards (#126): a mention whose best candidate does not fit it
+    in context becomes no_match, candidates kept. OFF is byte-identical.
     """
     if min_score is None:
         min_score = LINK_CANDIDATE_FLOOR
@@ -282,4 +288,13 @@ def link_voyagers_to_outremer(
             seen[key] = len(deduped)
             deduped.append(link)
 
+    if rerank is None:
+        import reranker as _reranker
+
+        rerank = _reranker.enabled()
+    if rerank:
+        import reranker as _reranker
+
+        records = {e["authority_id"]: e["record"] for e in authority_lookup if e.get("record")}
+        _reranker.apply_veto(deduped, persons, records)
     return deduped

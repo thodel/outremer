@@ -19,6 +19,10 @@ Env vars (set in .env.gpustack, git-ignored):
     ATR_HTTP_TIMEOUT     - gateway request timeout in seconds (default 300)
     OCR_ENGINE           - qwen3-vl (the only engine; GPUStack vision model)
     EXTRACTION_SEED      - fixed chat-completion seed (default 42)
+    OUTREMER_CAPABILITY_RERANKER - run the reranker veto after fuzzy linking (default false)
+    GPUSTACK_MODEL_RERANKER - reranker model id (default jina-reranker-v2-base-multilingual)
+    RERANK_MIN_RELEVANCE - below this relevance of the best candidate the link is
+                           no_match (default 0.25, calibrated 2026-10-11, #126)
 """
 from __future__ import annotations
 
