@@ -235,6 +235,17 @@ goes into `identifiers.wikidata_candidates` and nowhere else; *none* writes
 nothing. A label-equal tie is never asserted (#158). Existing QIDs are kept
 and re-verified, never replaced.
 
+**Reranker veto (M21.2, #126).** With `OUTREMER_CAPABILITY_RERANKER=true`
+the linker asks `jina-reranker-v2-base-multilingual` on GPUStack one question
+per mention with candidates: does the best candidate fit the mention in its
+context at all? Below `RERANK_MIN_RELEVANCE` (0.25, calibrated on the corpus
+2026-10-11) the link becomes `no_match`; its candidates stay, each with its
+`relevance`, for review. The reranker never reorders: measured, the fuzzy
+top was already right wherever a right record existed, and reordering only
+lost two. OFF (the default) is byte-identical to the fuzzy linker. Measure
+with `python -m evaluation.rerank_report` on tei; each document records the
+run under `linking_engine`.
+
 **Coverage against sourced lists (M19.2, #92).** `python scripts/audit_authority_coverage.py
 --benchmark data/audits/benchmarks/*.json` counts how many figures of each
 list the authority file identifies — by QID (exact), as a hypothesis, or by a

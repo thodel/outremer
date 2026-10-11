@@ -32,7 +32,13 @@ from linker import build_authority_lookup, link_voyagers_to_outremer, normalise
 from llm_client import generate as _llm_generate
 from validate_decisions import validate_decisions_file
 
-from config import EXTRACTION_MODEL, EXTRACTION_SEED, GPUSTACK_BASE_URL, OCR_ENGINE
+from config import (
+    EXTRACTION_MODEL,
+    EXTRACTION_SEED,
+    GPUSTACK_BASE_URL,
+    LINK_CANDIDATE_FLOOR,
+    OCR_ENGINE,
+)
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 logger = logging.getLogger(__name__)
@@ -529,6 +535,19 @@ def process_file(
     bibtex: str = result.get("bibtex") or ""
 
     links = link_voyagers_to_outremer(persons, authority_lookup)
+    rerank_runs = [lk["rerank"] for lk in links if lk.get("rerank")]
+    linking_engine = {
+        "linker": "rapidfuzz",
+        "candidate_floor": LINK_CANDIDATE_FLOOR,
+        "reranker": (
+            {"model": rerank_runs[0].get("model"),
+             "min_relevance": rerank_runs[0].get("min_relevance"),
+             "checked": sum(1 for r in rerank_runs if "veto" in r),
+             "vetoed": sum(1 for r in rerank_runs if r.get("veto")),
+             "errors": sum(1 for r in rerank_runs if r.get("error"))}
+            if rerank_runs else None
+        ),
+    }
 
     payload: dict[str, Any] = {
         "doc_id": doc_id,
@@ -537,6 +556,9 @@ def process_file(
         "metadata": metadata,
         "persons": persons,
         "links": links,
+        # Provenance: how the links were made — fuzzy floor, and whether the
+        # reranker veto ran (#126); null means the fuzzy linker alone.
+        "linking_engine": linking_engine,
         "text_sha256": sha256_text(text),
         # When this document was produced: the index keeps one document per
         # source and prefers the latest run (#152).
