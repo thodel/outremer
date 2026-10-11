@@ -27,14 +27,18 @@
   "predictions": {
     "wikidata": {
       "fulk of neuilly": {
+        "status": "match",
+        "fits": 1,
         "candidates": [
           {
             "qid": "Q594334",
-            "score": 0.5
+            "score": 1.0
           }
         ]
       },
       "caesar of heisterbach": {
+        "status": "match",
+        "fits": 1,
         "candidates": [
           {
             "qid": "Q649722",
@@ -43,6 +47,8 @@
         ]
       },
       "pope urban ii": {
+        "status": "match",
+        "fits": 1,
         "candidates": [
           {
             "qid": "Q30578",
@@ -74,17 +80,11 @@
       "the monarchs",
       "Eugene III.",
       "vassals",
-      "their suzerains",
       "the German emperor",
       "the French king",
       "Philip Augustus",
-      "the creditors",
       "Jews",
-      "individual crusaders",
-      "their enemies",
       "the nobility",
-      "all participants",
-      "the clergy",
       "Innocent III.",
       "Frederic II.",
       "Pope Gregory IX",
@@ -114,11 +114,12 @@
       "the military Orders",
       "the French",
       "the Venetians",
-      "Frederic II",
+      "Frederic IL",
       "the leading churchmen",
       "the Mohammedans",
       "the natives",
-      "the heretics",
+      "heretics",
+      "Moslems",
       "the Templars",
       "the monastic chroniclers",
       "the Christians",
@@ -270,11 +271,6 @@
         "candidates": []
       },
       {
-        "person": "their suzerains",
-        "top_candidate": null,
-        "candidates": []
-      },
-      {
         "person": "the German emperor",
         "top_candidate": null,
         "candidates": []
@@ -290,37 +286,12 @@
         "candidates": []
       },
       {
-        "person": "the creditors",
-        "top_candidate": null,
-        "candidates": []
-      },
-      {
         "person": "Jews",
         "top_candidate": null,
         "candidates": []
       },
       {
-        "person": "individual crusaders",
-        "top_candidate": null,
-        "candidates": []
-      },
-      {
-        "person": "their enemies",
-        "top_candidate": null,
-        "candidates": []
-      },
-      {
         "person": "the nobility",
-        "top_candidate": null,
-        "candidates": []
-      },
-      {
-        "person": "all participants",
-        "top_candidate": null,
-        "candidates": []
-      },
-      {
-        "person": "the clergy",
         "top_candidate": null,
         "candidates": []
       },
@@ -488,9 +459,15 @@
         "candidates": []
       },
       {
-        "person": "Frederic II",
-        "top_candidate": null,
-        "candidates": []
+        "person": "Frederic IL",
+        "top_candidate": {
+          "outremer_id": "AUTH:CR192"
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR192"
+          }
+        ]
       },
       {
         "person": "the leading churchmen",
@@ -508,7 +485,12 @@
         "candidates": []
       },
       {
-        "person": "the heretics",
+        "person": "heretics",
+        "top_candidate": null,
+        "candidates": []
+      },
+      {
+        "person": "Moslems",
         "top_candidate": null,
         "candidates": []
       },

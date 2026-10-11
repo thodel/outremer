@@ -353,14 +353,18 @@ person (#98).
 > the easy case; gold growth (#36, Part 2 of `docs/AUTHORITY_REVIEW_WORKSHEET.md`)
 > is what makes the authority figure mean more.
 
-> **Wikidata 0.8125, not 1.0.** The fixtures now carry the offline resolver's
-> answers (#83/#147). Three of sixteen accepted QIDs are no longer the top
-> candidate: *Baldwin of Ibelin* (Q804832, d. 1187) ties with his namesake
-> Q2891991 (d. 1313) at 1.00 and loses the tie; *Muhammad* (Q9458) ties with
-> a Bavand ruler of the same name (Q16202005); *Ibrahim* (Q1768161) is outside
-> the pre-1500 snapshot and resolves to the caliph Ibrahim ibn al-Walid
-> (Q128416). Label-equal ties need a date or context tiebreak; tracked
-> separately.
+> **Wikidata 0.75, not 1.0 — four declined, none wrong.** The fixtures carry
+> the offline resolver's answers (#83/#147) with their status. Four of the
+> sixteen accepted QIDs are names the snapshot cannot tell apart: *Baldwin of
+> Ibelin* (Q804832, †1187) and his namesake Q2891991 (†1313) both score 1.00;
+> *Muhammad* (Q9458) ties with four namesakes; *Abu Talib* with two; *Ibrahim*
+> (Q1768161) is outside the pre-1500 snapshot and ties with two Ibrahims who
+> are in it. For a tie the pipeline publishes **no** identity (`status:
+> ambiguous`, #150), and since #158 the metric scores that as a declined
+> proposal, not as the wrong namesake it had read off `candidates[0]`. A
+> period tiebreak was considered and rejected: it would pick the Bavand
+> ruler (†1271) over the Prophet (†632) for Hamblin's *Muhammad*. The four
+> stay misses until a context-aware tiebreak exists (Epic 21).
 
 Where a backend does not honour `EXTRACTION_SEED`, generate repeated live
 outputs and evaluate them as a band:

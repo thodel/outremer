@@ -361,16 +361,22 @@ def main(argv: list[str] | None = None) -> int:
     null_aggregate = (null_good / total_pairs) if total_pairs else None
     print()
     seg_lifts: dict[str, float] = {}
+    # Pairs the Wikidata resolver declined on a tie (#158): counted as misses
+    # above, named here so a low figure reads as "declined", not "wrong".
+    ambiguous = sum(
+        (res.get("wikidata") or {}).get("ambiguous", 0) for res in doc_results.values()
+    )
     for seg, label in (("linking", "authority linking"), ("wikidata", "wikidata reconciliation")):
         t, g = seg_totals[seg]
         if t:
             acc, rej = seg_gold[seg]
             null_seg = rej / t
             seg_lifts[seg] = g / t - null_seg
+            tie_note = f"; {ambiguous} declined as ambiguous" if seg == "wikidata" and ambiguous else ""
             print(
                 f"{label:>24}: {g/t:.4f} over {t} pairs "
                 f"(null {null_seg:.4f}, lift {seg_lifts[seg]:+.4f}; "
-                f"{acc} accepts / {rej} rejects)"
+                f"{acc} accepts / {rej} rejects{tie_note})"
             )
     # A segment whose lift is near zero carries no positive signal, however
     # healthy the combined figure looks — combining a reject-dominated system

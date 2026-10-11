@@ -122,3 +122,20 @@ def test_build_fixture_relink_uses_the_current_linker(tmp_path, monkeypatch):
     by_person = {link["person"]: link for link in relinked}
     assert set(by_person) == {"Godfrey of Bouillon", "Someone"}
     assert by_person["Godfrey of Bouillon"]["top_candidate"] == {"outremer_id": "AUTH:CR184"}
+
+
+def test_fixture_wikidata_snapshot_keeps_the_resolver_envelope(tmp_path):
+    """#158: status and fits travel into the fixture with the candidates."""
+    decisions = tmp_path / "decisions.json"
+    decisions.write_text(json.dumps([{"doc_id": "doc1", "person": "Baldwin of Ibelin",
+                                      "outremer_id": "wikidata:Q804832", "decision": "accept"}]))
+    site = tmp_path / "site"
+    site.mkdir()
+    (site / "doc1.json").write_text(json.dumps({"persons": [{"name": "Baldwin of Ibelin"}], "links": []}))
+    (site / "wikidata_matches.json").write_text(json.dumps({"doc1": {"baldwin of ibelin": {
+        "status": "ambiguous", "fits": 2, "source": "wikidata_pre1500_snapshot",
+        "candidates": [{"qid": "Q2891991", "score": 1.0, "label": "x"}, {"qid": "Q804832", "score": 1.0}]}}}))
+    fx = build_fixtures(decisions, site)[0]
+    entry = fx["predictions"]["wikidata"]["baldwin of ibelin"]
+    assert entry["status"] == "ambiguous" and entry["fits"] == 2
+    assert entry["candidates"] == [{"qid": "Q2891991", "score": 1.0}, {"qid": "Q804832", "score": 1.0}]

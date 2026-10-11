@@ -451,12 +451,18 @@ def wikidata_agreement(
     Agreement between Wikidata reconciliation output and human adjudication.
 
     ``wd_entries`` maps a normalised mention to its reconciliation record
-    (``{"candidates": [{"qid", "score", ...}]}``), as in
+    (``{"status", "candidates": [{"qid", "score", ...}]}``), as in
     ``site/data/wikidata_matches.json[doc_id]``. The system's proposal is the
-    highest-scoring candidate.
+    highest-scoring candidate — unless the entry's status says the resolver
+    proposed nobody: ``ambiguous`` (several people fit the name equally
+    well, #150) or ``no_candidates``. Then there is no proposal: an accepted
+    pair is a miss, a rejected pair is avoided, and the pair is counted
+    under ``ambiguous`` so the honest state stays visible (#158). Before
+    this, the metric took ``candidates[0]`` of a tie — an identity the
+    pipeline never published — and scored it as the wrong namesake.
     """
 
-    def top_qid(person: str) -> str | None:
+    def entry_for(person: str) -> dict | None:
         entry = wd_entries.get(normalise_name(person))
         if not entry:
             # fall back to fuzzy lookup over keys
@@ -464,28 +470,42 @@ def wikidata_agreement(
                 if _fuzzy_equal(key, person, DEFAULT_FUZZY_THRESHOLD):
                     entry = val
                     break
+        return entry
+
+    def proposal(person: str) -> tuple[str | None, bool]:
+        """(proposed qid or None, whether the resolver declined on a tie)."""
+        entry = entry_for(person)
+        status = (entry or {}).get("status")
+        if status == "ambiguous":
+            return None, True
+        if status == "no_candidates":
+            return None, False
         candidates = (entry or {}).get("candidates") or []
         if not candidates:
-            return None
+            return None, False
         best = max(candidates, key=lambda c: c.get("score") or 0.0)
-        return best.get("qid")
+        return best.get("qid"), False
 
     def _strip(pid: str) -> str:
         return pid.removeprefix("wikidata:")
 
-    accept_hit = accept_miss = 0
+    accept_hit = accept_miss = ambiguous = 0
     for person, pid in accepted:
-        if top_qid(person) == _strip(pid):
+        qid, tie = proposal(person)
+        if qid == _strip(pid):
             accept_hit += 1
         else:
             accept_miss += 1
+            ambiguous += tie
 
     reject_hit = reject_avoided = 0
     for person, pid in rejected:
-        if top_qid(person) == _strip(pid):
+        qid, tie = proposal(person)
+        if qid == _strip(pid):
             reject_hit += 1
         else:
             reject_avoided += 1
+            ambiguous += tie
 
     reviewed = accept_hit + accept_miss + reject_hit + reject_avoided
     agreement = (accept_hit + reject_avoided) / reviewed if reviewed else 0.0
@@ -495,6 +515,7 @@ def wikidata_agreement(
         "accept_miss": accept_miss,
         "reject_hit": reject_hit,
         "reject_avoided": reject_avoided,
+        "ambiguous": ambiguous,
         "agreement": round(agreement, 4),
         **null_reference(len(accepted), len(rejected), agreement, accept_hit),
     }

@@ -280,6 +280,8 @@
   "predictions": {
     "wikidata": {
       "guibert of nogent": {
+        "status": "match",
+        "fits": 1,
         "candidates": [
           {
             "qid": "Q4289",
@@ -288,6 +290,8 @@
         ]
       },
       "godfrey of bouillon": {
+        "status": null,
+        "fits": null,
         "candidates": [
           {
             "qid": "Q76721",
@@ -296,6 +300,8 @@
         ]
       },
       "st ambrose": {
+        "status": "match",
+        "fits": 1,
         "candidates": [
           {
             "qid": "Q43689",
@@ -312,6 +318,8 @@
         ]
       },
       "pope urban ii": {
+        "status": "match",
+        "fits": 1,
         "candidates": [
           {
             "qid": "Q30578",
@@ -320,6 +328,8 @@
         ]
       },
       "orderic vitalis": {
+        "status": null,
+        "fits": null,
         "candidates": [
           {
             "qid": "Q356298",
@@ -328,10 +338,30 @@
         ]
       },
       "georges duby": {
+        "status": null,
+        "fits": null,
         "candidates": [
           {
             "qid": "Q271295",
             "score": 0.9
+          }
+        ]
+      },
+      "matthew": {
+        "status": "ambiguous",
+        "fits": 6,
+        "candidates": [
+          {
+            "qid": "Q104029195",
+            "score": 1.0
+          },
+          {
+            "qid": "Q43600",
+            "score": 1.0
+          },
+          {
+            "qid": "Q6789809",
+            "score": 1.0
           }
         ]
       }
@@ -345,14 +375,14 @@
       "the Frankish lords",
       "the people",
       "Guibert of Nogent",
+      "the crusaders",
       "Ekkehard of Aura",
       "the western Franks",
-      "prophets",
+      "certain prophets",
       "Pope Urban",
       "the French bishops",
       "Count Robert of Flanders",
       "the armies",
-      "the Egyptian army",
       "Fulcher of Chartres",
       "the first king of Jerusalem",
       "Tancred",
@@ -386,16 +416,15 @@
       "Robert of Rheims",
       "Baldwin",
       "Eustace of Boulogne",
-      "Muslims",
+      "the Muslims",
       "Hugh of St Omer",
       "Robert Guiscard",
-      "Italian Normans",
+      "the Italian Norman army",
       "Lambert",
       "Bohemond",
       "Duke Godfrey",
       "Robert fitz Gerard",
       "Count Gerard of Buonalbergo",
-      "Robert",
       "Robert of Anzi",
       "Raymond of St Gilles",
       "Count of Toulouse",
@@ -404,10 +433,9 @@
       "Count Galdemar Carpenel",
       "Archbishop Hugh of Die of Lyons",
       "Godfrey's followers",
-      "knights and prince of the kingdom of Jerusalem",
       "King Baldwin I",
-      "Roman of Le Puy",
       "Raymond",
+      "Roman of Le Puy",
       "Adhemar",
       "Roger of Rozoy",
       "Winrich",
@@ -438,11 +466,6 @@
       "William Hugo of Monteil",
       "Bertrand Porcellet",
       "Henry I of England",
-      "the crusaders",
-      "the new crusaders",
-      "a newly formed band of crusaders",
-      "some of his original companions",
-      "groups of dependents",
       "Count Raymond",
       "the Greek emperor",
       "Robert fitz Godwin",
@@ -517,6 +540,11 @@
         ]
       },
       {
+        "person": "the crusaders",
+        "top_candidate": null,
+        "candidates": []
+      },
+      {
         "person": "Ekkehard of Aura",
         "top_candidate": {
           "outremer_id": "AUTH:CR189"
@@ -533,7 +561,7 @@
         "candidates": []
       },
       {
-        "person": "prophets",
+        "person": "certain prophets",
         "top_candidate": null,
         "candidates": []
       },
@@ -560,11 +588,6 @@
       },
       {
         "person": "the armies",
-        "top_candidate": null,
-        "candidates": []
-      },
-      {
-        "person": "the Egyptian army",
         "top_candidate": null,
         "candidates": []
       },
@@ -770,7 +793,7 @@
         "candidates": []
       },
       {
-        "person": "Muslims",
+        "person": "the Muslims",
         "top_candidate": null,
         "candidates": []
       },
@@ -791,7 +814,7 @@
         "candidates": []
       },
       {
-        "person": "Italian Normans",
+        "person": "the Italian Norman army",
         "top_candidate": null,
         "candidates": []
       },
@@ -823,11 +846,6 @@
       },
       {
         "person": "Count Gerard of Buonalbergo",
-        "top_candidate": null,
-        "candidates": []
-      },
-      {
-        "person": "Robert",
         "top_candidate": null,
         "candidates": []
       },
@@ -902,22 +920,17 @@
         ]
       },
       {
-        "person": "knights and prince of the kingdom of Jerusalem",
-        "top_candidate": null,
-        "candidates": []
-      },
-      {
         "person": "King Baldwin I",
         "top_candidate": null,
         "candidates": []
       },
       {
-        "person": "Roman of Le Puy",
+        "person": "Raymond",
         "top_candidate": null,
         "candidates": []
       },
       {
-        "person": "Raymond",
+        "person": "Roman of Le Puy",
         "top_candidate": null,
         "candidates": []
       },
@@ -1086,31 +1099,6 @@
       },
       {
         "person": "Henry I of England",
-        "top_candidate": null,
-        "candidates": []
-      },
-      {
-        "person": "the crusaders",
-        "top_candidate": null,
-        "candidates": []
-      },
-      {
-        "person": "the new crusaders",
-        "top_candidate": null,
-        "candidates": []
-      },
-      {
-        "person": "a newly formed band of crusaders",
-        "top_candidate": null,
-        "candidates": []
-      },
-      {
-        "person": "some of his original companions",
-        "top_candidate": null,
-        "candidates": []
-      },
-      {
-        "person": "groups of dependents",
         "top_candidate": null,
         "candidates": []
       },
