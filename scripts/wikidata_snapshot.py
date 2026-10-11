@@ -116,6 +116,20 @@ def score(query: str, variant: str) -> float:
     return 0.5 + 0.3 * len(shared) / len(q_core | v_core)
 
 
+#: Two candidates this close in score fit the name equally well: the scorer
+#: works in steps of 0.05 and rounds to three decimals, so anything inside
+#: 0.01 is the same evidence, and the order between them is arbitrary (#158).
+TIE_TOLERANCE = 0.01
+
+
+def count_tied(ranked: list[dict]) -> int:
+    """How many of the ranked candidates fit as well as the first one."""
+    if not ranked:
+        return 0
+    top = ranked[0]["score"]
+    return sum(1 for c in ranked if top - c["score"] <= TIE_TOLERANCE)
+
+
 class Snapshot:
     """A read-only handle on the snapshot file."""
 
@@ -209,7 +223,7 @@ class Snapshot:
         ranked = sorted(best.values(), key=lambda c: (-c["score"], c["qid"]))
         # Counted over every scored person, before `limit` hides the rest — and a
         # lower bound, because scoring stops after the 400-row window.
-        tied = sum(1 for c in ranked if c["score"] == ranked[0]["score"]) if ranked else 0
+        tied = count_tied(ranked)
         candidates = ranked[:limit]
         status = NO_CANDIDATES if not candidates else (
             AMBIGUOUS if tied > 1 else MATCH)

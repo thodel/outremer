@@ -182,3 +182,35 @@ def test_wikidata_agreement_missing_mention_is_a_miss():
         WD_ENTRIES, accepted=[("Unknown Person", "wikidata:Q1")], rejected=[]
     )
     assert res["accept_miss"] == 1
+
+
+def test_wikidata_agreement_an_ambiguous_entry_is_no_proposal():
+    """#158: Baldwin of Ibelin (†1187) and his namesake (†1313) both score 1.00.
+    The pipeline publishes no identity for a tie (#150); the metric must not
+    invent one from candidates[0] and call it the wrong namesake."""
+    entries = {
+        "baldwin of ibelin": {"status": "ambiguous", "fits": 2, "candidates": [
+            {"qid": "Q2891991", "score": 1.0}, {"qid": "Q804832", "score": 1.0}]},
+        "saladin": {"status": "match", "fits": 1, "candidates": [{"qid": "Q8581", "score": 1.0}]},
+        "nobody": {"status": "no_candidates", "fits": 0, "candidates": []},
+    }
+    res = wikidata_agreement(entries,
+                             accepted=[("Baldwin of Ibelin", "wikidata:Q804832"), ("Saladin", "wikidata:Q8581")],
+                             rejected=[("Nobody", "wikidata:Q1")])
+    assert res["accept_hit"] == 1 and res["accept_miss"] == 1
+    assert res["reject_avoided"] == 1 and res["reject_hit"] == 0
+    assert res["ambiguous"] == 1
+    # before #158 the tie counted as a proposal of Q2891991 → the same miss,
+    # but a rejected pair whose candidates[0] happened to be the rejected
+    # QID was scored as reject_hit although nothing had been proposed:
+    res2 = wikidata_agreement(
+        {"x": {"status": "ambiguous", "candidates": [{"qid": "Q1", "score": 1.0}, {"qid": "Q2", "score": 1.0}]}},
+        accepted=[], rejected=[("X", "wikidata:Q1")])
+    assert res2["reject_hit"] == 0 and res2["reject_avoided"] == 1 and res2["ambiguous"] == 1
+
+
+def test_wikidata_agreement_without_a_status_keeps_the_old_reading():
+    """Fixtures written before #158 carry candidates only."""
+    res = wikidata_agreement({"x": {"candidates": [{"qid": "Q1", "score": 0.9}, {"qid": "Q2", "score": 0.5}]}},
+                             accepted=[("X", "wikidata:Q1")], rejected=[])
+    assert res["accept_hit"] == 1 and res["ambiguous"] == 0

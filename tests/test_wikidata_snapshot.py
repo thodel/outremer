@@ -336,3 +336,13 @@ def test_refresh_none_keeps_the_old_behaviour_and_says_what_it_kept(tmp_path, of
     assert written["doc"][wikidata_reconcile.normalise("Saladin")][
         "candidates"][0]["qid"] == "Q_WRONG"
     assert written["status"]["from_an_older_resolver"] == 1
+
+
+def test_a_near_tie_counts_as_a_tie():
+    """#158: scores are steps of 0.05 rounded to three decimals; two people
+    within 0.01 fit the name equally well and their order is arbitrary."""
+    from scripts.wikidata_snapshot import count_tied
+
+    assert count_tied([]) == 0
+    assert count_tied([{"score": 1.0}, {"score": 0.995}, {"score": 0.85}]) == 2
+    assert count_tied([{"score": 1.0}, {"score": 0.98}]) == 1

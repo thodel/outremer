@@ -60,10 +60,15 @@ def _wikidata_snapshot(
     wanted = {normalise_name(m) for m in mentions}
     return {
         key: {
+            # The envelope travels with the candidates (#158): "ambiguous"
+            # means the resolver proposed nobody, and the metric must not
+            # turn candidates[0] into a proposal the pipeline never made.
+            "status": entry.get("status"),
+            "fits": entry.get("fits"),
             "candidates": [
                 {"qid": c.get("qid"), "score": c.get("score")}
                 for c in (entry.get("candidates") or [])
-            ]
+            ],
         }
         for key, entry in doc_matches.items()
         if normalise_name(key) in wanted

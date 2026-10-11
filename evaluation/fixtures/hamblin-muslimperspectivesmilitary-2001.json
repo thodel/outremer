@@ -64,6 +64,8 @@
   "predictions": {
     "wikidata": {
       "bahira": {
+        "status": "match",
+        "fits": 1,
         "candidates": [
           {
             "qid": "Q551599",
@@ -72,6 +74,8 @@
         ]
       },
       "muhammad": {
+        "status": "ambiguous",
+        "fits": 5,
         "candidates": [
           {
             "qid": "Q16202005",
@@ -88,6 +92,8 @@
         ]
       },
       "hunayn ibn ishaq": {
+        "status": "match",
+        "fits": 1,
         "candidates": [
           {
             "qid": "Q503130",
@@ -100,6 +106,8 @@
         ]
       },
       "abu talib": {
+        "status": "ambiguous",
+        "fits": 3,
         "candidates": [
           {
             "qid": "Q141126646",
@@ -116,6 +124,8 @@
         ]
       },
       "john of damascus": {
+        "status": "match",
+        "fits": 1,
         "candidates": [
           {
             "qid": "Q51884",
@@ -132,6 +142,8 @@
         ]
       },
       "ibn al qalanisi": {
+        "status": "match",
+        "fits": 1,
         "candidates": [
           {
             "qid": "Q1356575",
@@ -148,6 +160,8 @@
         ]
       },
       "usamah ibn munqidh": {
+        "status": "match",
+        "fits": 1,
         "candidates": [
           {
             "qid": "Q451427",
@@ -156,6 +170,8 @@
         ]
       },
       "ibn al athir": {
+        "status": "ambiguous",
+        "fits": 3,
         "candidates": [
           {
             "qid": "Q141125934",
@@ -172,6 +188,8 @@
         ]
       },
       "ibrahim": {
+        "status": "ambiguous",
+        "fits": 2,
         "candidates": [
           {
             "qid": "Q128416",
@@ -188,6 +206,8 @@
         ]
       },
       "baybars i": {
+        "status": "match",
+        "fits": 1,
         "candidates": [
           {
             "qid": "Q192960",
@@ -204,6 +224,8 @@
         ]
       },
       "ibn al qaysarani": {
+        "status": "ambiguous",
+        "fits": 4,
         "candidates": [
           {
             "qid": "Q141126429",
@@ -218,57 +240,92 @@
             "score": 1.0
           }
         ]
+      },
+      "jesus": {
+        "status": "match",
+        "fits": 1,
+        "candidates": [
+          {
+            "qid": "Q302",
+            "score": 1.0
+          }
+        ]
+      },
+      "baldwin of ibelin": {
+        "status": "ambiguous",
+        "fits": 2,
+        "candidates": [
+          {
+            "qid": "Q2891991",
+            "score": 1.0
+          },
+          {
+            "qid": "Q804832",
+            "score": 1.0
+          },
+          {
+            "qid": "Q459322",
+            "score": 0.85
+          }
+        ]
       }
     },
     "persons": [
-      "Saladin",
-      "the Crusaders",
+      "Saladin, sultan of Egypt and Syria",
       "King Guy",
-      "the Frankish aristocrats",
-      "the knights of the Military Orders",
-      "the Templars",
-      "the Hospitallers",
+      "Frankish aristocrats",
+      "knights of the Military Orders",
+      "Templars",
+      "Hospitallers",
       "Richard Lionheart",
       "Arab prisoners",
       "poor Christians",
-      "the Arabs",
-      "the Ghassanid tribe",
+      "Arabs",
+      "Ghassanid tribe",
       "pagan Arabs",
-      "the Jews",
-      "the pagans",
+      "Christian monks",
+      "Jews",
+      "pagans",
       "Christians",
-      "priests",
-      "monks",
-      "the monk Bahira",
+      "priests [qassisin]",
+      "monks [ruhban]",
+      "Bahira",
       "Muhammad",
       "Ibn Ishaq",
-      "the apostle of God",
-      "Bahira",
       "Abu Talib",
+      "the Jews",
       "Gabriel",
       "the clerics",
       "the monks",
       "the Messiah",
-      "the son of Mary",
+      "Mary",
       "Jesus",
+      "the followers",
+      "the true believers",
+      "the evil doers",
       "the clerics and the monks",
-      "'Umar",
+      "the caliph 'Umar",
       "the people of Jerusalem",
       "John of Damascus",
+      "the Umayyads",
       "Hunayn ibn Ishaq",
       "Sultan Baybars",
+      "the Crusaders",
+      "the Arabs",
       "the Muslims",
       "Ibn al Qalanisi",
+      "the Hospitallers",
+      "the Templars",
       "Usamah ibn Munqidh",
       "the Franks",
       "the Moslems",
       "one of the Franks",
       "a group of Templars",
-      "Templars",
       "Muslims",
       "Usamah",
       "knights Templar",
       "Nur al Din",
+      "Saladin",
       "Military Orders",
       "Franks",
       "warrior monks",
@@ -286,17 +343,15 @@
       "Hugh of Galilee",
       "Odo",
       "Muslim prisoner",
-      "Grand Master",
       "Templar grand master",
       "prisoners",
       "crossbowmen",
       "Muslim apostates",
       "Crusader service",
-      "Islam",
-      "knights of the Military Orders",
       "Orders",
-      "Hospitallers",
-      "West",
+      "Ibn al Athir",
+      "Templar and Hospitaller prisoners",
+      "Frankish armies",
       "Frankish knights",
       "Assassins",
       "Christian rulers",
@@ -304,7 +359,6 @@
       "al Harawi",
       "Latin clergy",
       "'Imad al Din al Isfahani",
-      "Jews",
       "the Khwarazmians",
       "Ibn Zaki",
       "Imad al Din",
@@ -313,7 +367,6 @@
       "devout men and ascetics",
       "the troops",
       "the amirs",
-      "Ibn al Athir",
       "Ayyubids",
       "Ayyubid princes",
       "al Salih Ayyub",
@@ -322,34 +375,42 @@
       "Sultan Isma'il",
       "Ibrahim",
       "Arab slaves",
+      "Muslim slaves",
+      "Christian and Muslim princes",
       "Mamluks",
-      "Mongols",
-      "Sultan al Salih",
+      "Mamluk sultans",
+      "Muslim princes",
       "slave soldiers",
+      "Sultan al Salih",
+      "Mongols",
       "Baybars",
       "Qalawun",
-      "Hospitaller",
-      "Templar",
+      "Crusader cities and castles",
       "the garrison",
       "Grand Master of the Hospitallers",
       "frère Hugues",
       "the knights of the Temple",
       "refugee civilians",
-      "the Sultan al Ashraf",
+      "Sultan al Ashraf",
       "regulars [soldiers]",
       "the Mamluks",
-      "the amir Kitbugha al Mansuri",
+      "the Orders",
+      "amir Kitbugha al Mansuri",
+      "the Military Orders",
+      "Western European Christians",
       "the Franciscans",
       "St. Francis",
-      "the Sultan Al Salih Isma'il",
+      "Sultan Al Salih Isma'il",
       "Pope Innocent IV",
+      "the sultans",
       "Pope Nicholas IV",
+      "Latin monks",
+      "clergy, monks, and men of peace",
+      "friars",
       "Rupert of Sicily",
       "Pope Clement VI",
       "Western monks",
-      "Arabs",
       "Franciscans",
-      "Mamluk sultans",
       "Western pilgrims",
       "Peter of Cyprus",
       "Sultan al Ashraf Sha'ban",
@@ -358,30 +419,22 @@
       "Reynald de Chatillon",
       "Muslim pilgrims",
       "Khalid ibn al Walid",
-      "the inhabitants of Damascus",
+      "inhabitants of Damascus",
       "the caliphs",
       "the believers",
       "Baybars I",
       "Abu Shama",
       "Ibn al Qaysarani",
       "Al Maqrizi",
-      "Sultan Baybars I",
-      "the Military Orders",
+      "the Frankish or Latin Clergy",
+      "Abraham",
       "the Ottoman sultans",
-      "Greek Christians",
-      "Armenian Christians",
-      "Georgian Christians",
-      "Syrian Christians",
+      "Greek, Armenian, Georgian, and Syrian Christians and monks",
       "'Ali"
     ],
     "links": [
       {
-        "person": "Saladin",
-        "top_candidate": null,
-        "candidates": []
-      },
-      {
-        "person": "the Crusaders",
+        "person": "Saladin, sultan of Egypt and Syria",
         "top_candidate": null,
         "candidates": []
       },
@@ -391,22 +444,22 @@
         "candidates": []
       },
       {
-        "person": "the Frankish aristocrats",
+        "person": "Frankish aristocrats",
         "top_candidate": null,
         "candidates": []
       },
       {
-        "person": "the knights of the Military Orders",
+        "person": "knights of the Military Orders",
         "top_candidate": null,
         "candidates": []
       },
       {
-        "person": "the Templars",
+        "person": "Templars",
         "top_candidate": null,
         "candidates": []
       },
       {
-        "person": "the Hospitallers",
+        "person": "Hospitallers",
         "top_candidate": null,
         "candidates": []
       },
@@ -426,12 +479,12 @@
         "candidates": []
       },
       {
-        "person": "the Arabs",
+        "person": "Arabs",
         "top_candidate": null,
         "candidates": []
       },
       {
-        "person": "the Ghassanid tribe",
+        "person": "Ghassanid tribe",
         "top_candidate": null,
         "candidates": []
       },
@@ -441,12 +494,17 @@
         "candidates": []
       },
       {
-        "person": "the Jews",
+        "person": "Christian monks",
         "top_candidate": null,
         "candidates": []
       },
       {
-        "person": "the pagans",
+        "person": "Jews",
+        "top_candidate": null,
+        "candidates": []
+      },
+      {
+        "person": "pagans",
         "top_candidate": null,
         "candidates": []
       },
@@ -456,17 +514,17 @@
         "candidates": []
       },
       {
-        "person": "priests",
+        "person": "priests [qassisin]",
         "top_candidate": null,
         "candidates": []
       },
       {
-        "person": "monks",
+        "person": "monks [ruhban]",
         "top_candidate": null,
         "candidates": []
       },
       {
-        "person": "the monk Bahira",
+        "person": "Bahira",
         "top_candidate": null,
         "candidates": []
       },
@@ -481,17 +539,12 @@
         "candidates": []
       },
       {
-        "person": "the apostle of God",
-        "top_candidate": null,
-        "candidates": []
-      },
-      {
-        "person": "Bahira",
-        "top_candidate": null,
-        "candidates": []
-      },
-      {
         "person": "Abu Talib",
+        "top_candidate": null,
+        "candidates": []
+      },
+      {
+        "person": "the Jews",
         "top_candidate": null,
         "candidates": []
       },
@@ -516,7 +569,7 @@
         "candidates": []
       },
       {
-        "person": "the son of Mary",
+        "person": "Mary",
         "top_candidate": null,
         "candidates": []
       },
@@ -526,12 +579,27 @@
         "candidates": []
       },
       {
+        "person": "the followers",
+        "top_candidate": null,
+        "candidates": []
+      },
+      {
+        "person": "the true believers",
+        "top_candidate": null,
+        "candidates": []
+      },
+      {
+        "person": "the evil doers",
+        "top_candidate": null,
+        "candidates": []
+      },
+      {
         "person": "the clerics and the monks",
         "top_candidate": null,
         "candidates": []
       },
       {
-        "person": "'Umar",
+        "person": "the caliph 'Umar",
         "top_candidate": null,
         "candidates": []
       },
@@ -546,12 +614,27 @@
         "candidates": []
       },
       {
+        "person": "the Umayyads",
+        "top_candidate": null,
+        "candidates": []
+      },
+      {
         "person": "Hunayn ibn Ishaq",
         "top_candidate": null,
         "candidates": []
       },
       {
         "person": "Sultan Baybars",
+        "top_candidate": null,
+        "candidates": []
+      },
+      {
+        "person": "the Crusaders",
+        "top_candidate": null,
+        "candidates": []
+      },
+      {
+        "person": "the Arabs",
         "top_candidate": null,
         "candidates": []
       },
@@ -570,6 +653,16 @@
             "outremer_id": "AUTH:CR196"
           }
         ]
+      },
+      {
+        "person": "the Hospitallers",
+        "top_candidate": null,
+        "candidates": []
+      },
+      {
+        "person": "the Templars",
+        "top_candidate": null,
+        "candidates": []
       },
       {
         "person": "Usamah ibn Munqidh",
@@ -603,11 +696,6 @@
         "candidates": []
       },
       {
-        "person": "Templars",
-        "top_candidate": null,
-        "candidates": []
-      },
-      {
         "person": "Muslims",
         "top_candidate": null,
         "candidates": []
@@ -624,6 +712,11 @@
       },
       {
         "person": "Nur al Din",
+        "top_candidate": null,
+        "candidates": []
+      },
+      {
+        "person": "Saladin",
         "top_candidate": null,
         "candidates": []
       },
@@ -713,11 +806,6 @@
         "candidates": []
       },
       {
-        "person": "Grand Master",
-        "top_candidate": null,
-        "candidates": []
-      },
-      {
         "person": "Templar grand master",
         "top_candidate": null,
         "candidates": []
@@ -743,27 +831,28 @@
         "candidates": []
       },
       {
-        "person": "Islam",
-        "top_candidate": null,
-        "candidates": []
-      },
-      {
-        "person": "knights of the Military Orders",
-        "top_candidate": null,
-        "candidates": []
-      },
-      {
         "person": "Orders",
         "top_candidate": null,
         "candidates": []
       },
       {
-        "person": "Hospitallers",
+        "person": "Ibn al Athir",
+        "top_candidate": {
+          "outremer_id": "AUTH:CR197"
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR197"
+          }
+        ]
+      },
+      {
+        "person": "Templar and Hospitaller prisoners",
         "top_candidate": null,
         "candidates": []
       },
       {
-        "person": "West",
+        "person": "Frankish armies",
         "top_candidate": null,
         "candidates": []
       },
@@ -799,11 +888,6 @@
       },
       {
         "person": "'Imad al Din al Isfahani",
-        "top_candidate": null,
-        "candidates": []
-      },
-      {
-        "person": "Jews",
         "top_candidate": null,
         "candidates": []
       },
@@ -848,17 +932,6 @@
         "candidates": []
       },
       {
-        "person": "Ibn al Athir",
-        "top_candidate": {
-          "outremer_id": "AUTH:CR197"
-        },
-        "candidates": [
-          {
-            "outremer_id": "AUTH:CR197"
-          }
-        ]
-      },
-      {
         "person": "Ayyubids",
         "top_candidate": null,
         "candidates": []
@@ -899,12 +972,32 @@
         "candidates": []
       },
       {
+        "person": "Muslim slaves",
+        "top_candidate": null,
+        "candidates": []
+      },
+      {
+        "person": "Christian and Muslim princes",
+        "top_candidate": null,
+        "candidates": []
+      },
+      {
         "person": "Mamluks",
         "top_candidate": null,
         "candidates": []
       },
       {
-        "person": "Mongols",
+        "person": "Mamluk sultans",
+        "top_candidate": null,
+        "candidates": []
+      },
+      {
+        "person": "Muslim princes",
+        "top_candidate": null,
+        "candidates": []
+      },
+      {
+        "person": "slave soldiers",
         "top_candidate": null,
         "candidates": []
       },
@@ -914,7 +1007,7 @@
         "candidates": []
       },
       {
-        "person": "slave soldiers",
+        "person": "Mongols",
         "top_candidate": null,
         "candidates": []
       },
@@ -929,12 +1022,7 @@
         "candidates": []
       },
       {
-        "person": "Hospitaller",
-        "top_candidate": null,
-        "candidates": []
-      },
-      {
-        "person": "Templar",
+        "person": "Crusader cities and castles",
         "top_candidate": null,
         "candidates": []
       },
@@ -964,7 +1052,7 @@
         "candidates": []
       },
       {
-        "person": "the Sultan al Ashraf",
+        "person": "Sultan al Ashraf",
         "top_candidate": null,
         "candidates": []
       },
@@ -979,7 +1067,22 @@
         "candidates": []
       },
       {
-        "person": "the amir Kitbugha al Mansuri",
+        "person": "the Orders",
+        "top_candidate": null,
+        "candidates": []
+      },
+      {
+        "person": "amir Kitbugha al Mansuri",
+        "top_candidate": null,
+        "candidates": []
+      },
+      {
+        "person": "the Military Orders",
+        "top_candidate": null,
+        "candidates": []
+      },
+      {
+        "person": "Western European Christians",
         "top_candidate": null,
         "candidates": []
       },
@@ -994,7 +1097,7 @@
         "candidates": []
       },
       {
-        "person": "the Sultan Al Salih Isma'il",
+        "person": "Sultan Al Salih Isma'il",
         "top_candidate": null,
         "candidates": []
       },
@@ -1004,7 +1107,27 @@
         "candidates": []
       },
       {
+        "person": "the sultans",
+        "top_candidate": null,
+        "candidates": []
+      },
+      {
         "person": "Pope Nicholas IV",
+        "top_candidate": null,
+        "candidates": []
+      },
+      {
+        "person": "Latin monks",
+        "top_candidate": null,
+        "candidates": []
+      },
+      {
+        "person": "clergy, monks, and men of peace",
+        "top_candidate": null,
+        "candidates": []
+      },
+      {
+        "person": "friars",
         "top_candidate": null,
         "candidates": []
       },
@@ -1024,17 +1147,7 @@
         "candidates": []
       },
       {
-        "person": "Arabs",
-        "top_candidate": null,
-        "candidates": []
-      },
-      {
         "person": "Franciscans",
-        "top_candidate": null,
-        "candidates": []
-      },
-      {
-        "person": "Mamluk sultans",
         "top_candidate": null,
         "candidates": []
       },
@@ -1085,7 +1198,7 @@
         "candidates": []
       },
       {
-        "person": "the inhabitants of Damascus",
+        "person": "inhabitants of Damascus",
         "top_candidate": null,
         "candidates": []
       },
@@ -1126,12 +1239,12 @@
         "candidates": []
       },
       {
-        "person": "Sultan Baybars I",
+        "person": "the Frankish or Latin Clergy",
         "top_candidate": null,
         "candidates": []
       },
       {
-        "person": "the Military Orders",
+        "person": "Abraham",
         "top_candidate": null,
         "candidates": []
       },
@@ -1141,22 +1254,7 @@
         "candidates": []
       },
       {
-        "person": "Greek Christians",
-        "top_candidate": null,
-        "candidates": []
-      },
-      {
-        "person": "Armenian Christians",
-        "top_candidate": null,
-        "candidates": []
-      },
-      {
-        "person": "Georgian Christians",
-        "top_candidate": null,
-        "candidates": []
-      },
-      {
-        "person": "Syrian Christians",
+        "person": "Greek, Armenian, Georgian, and Syrian Christians and monks",
         "top_candidate": null,
         "candidates": []
       },
