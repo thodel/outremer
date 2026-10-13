@@ -2642,6 +2642,46 @@
         }
       ],
       "queried_at": "2026-10-12T01:37:37.847630+00:00"
+    },
+    "frederic ii": {
+      "person": "Frederic II",
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 6,
+      "candidates": [
+        {
+          "qid": "Q130221",
+          "label": "Frederick II, Holy Roman Emperor",
+          "description": "King of Sicily, Holy Roman Emperor (1194–1250, 1220–1250)",
+          "url": "https://www.wikidata.org/wiki/Q130221",
+          "score": 1.0,
+          "birth_year": 1195,
+          "death_year": 1250,
+          "matched": "Frédéric II"
+        },
+        {
+          "qid": "Q372579",
+          "label": "Frederick II, Count of Celje",
+          "description": "noble (1379-1454)",
+          "url": "https://www.wikidata.org/wiki/Q372579",
+          "score": 1.0,
+          "birth_year": 1379,
+          "death_year": 1454,
+          "matched": "Frédéric II"
+        },
+        {
+          "qid": "Q64548",
+          "label": "Frederick II, Duke of Brunswick-Lüneburg",
+          "description": "German noble",
+          "url": "https://www.wikidata.org/wiki/Q64548",
+          "score": 1.0,
+          "birth_year": 1418,
+          "death_year": 1478,
+          "matched": "Frédéric II"
+        }
+      ],
+      "queried_at": "2026-10-13T01:39:53.784964+00:00"
     }
   },
   "rileysmith-motivesearliestcrusaders-1983": {
@@ -10799,6 +10839,46 @@
         }
       ],
       "queried_at": "2026-10-12T01:37:38.679543+00:00"
+    },
+    "the count of toulouse": {
+      "person": "the Count of Toulouse",
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 19,
+      "candidates": [
+        {
+          "qid": "Q1185376",
+          "label": "William III, Count of Toulouse",
+          "description": "Count of Toulouse",
+          "url": "https://www.wikidata.org/wiki/Q1185376",
+          "score": 0.85,
+          "birth_year": 975,
+          "death_year": 1037,
+          "matched": "William III, Count of Toulouse"
+        },
+        {
+          "qid": "Q1186093",
+          "label": "Pons, Count of Toulouse",
+          "description": "Count of Toulouse",
+          "url": "https://www.wikidata.org/wiki/Q1186093",
+          "score": 0.85,
+          "birth_year": 997,
+          "death_year": 1060,
+          "matched": "Pons, Count of Toulouse"
+        },
+        {
+          "qid": "Q1338833",
+          "label": "Raymond Pons, Count of Toulouse",
+          "description": "Count of Toulouse",
+          "url": "https://www.wikidata.org/wiki/Q1338833",
+          "score": 0.85,
+          "birth_year": 900,
+          "death_year": 1000,
+          "matched": "Raymond Pons, Count of Toulouse"
+        }
+      ],
+      "queried_at": "2026-10-13T01:39:53.788351+00:00"
     }
   },
   "hamblin-muslimperspectivesmilitary-2001": {
@@ -17027,16 +17107,86 @@
         }
       ],
       "queried_at": "2026-10-12T01:37:37.512434+00:00"
+    },
+    "grand master": {
+      "person": "Grand Master",
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 2,
+      "candidates": [
+        {
+          "qid": "Q2057332",
+          "label": "Sancho of Aragon",
+          "description": "master the Order of Alcántara",
+          "url": "https://www.wikidata.org/wiki/Q2057332",
+          "score": 0.85,
+          "birth_year": 1398,
+          "death_year": 1416,
+          "matched": "Sancho de Aragón, Grand Master of Alcantara"
+        },
+        {
+          "qid": "Q7159573",
+          "label": "Pedro Fernández de Castro",
+          "description": "Spanish nobleman (c. 1115–1184)",
+          "url": "https://www.wikidata.org/wiki/Q7159573",
+          "score": 0.85,
+          "birth_year": 1115,
+          "death_year": 1184,
+          "matched": "Pedro Fernández de Castro (Grand Master of the Order of Santiago)"
+        }
+      ],
+      "queried_at": "2026-10-13T01:39:53.751765+00:00"
+    },
+    "one templar": {
+      "person": "One Templar",
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 3,
+      "candidates": [
+        {
+          "qid": "Q551700",
+          "label": "Kennewick Man",
+          "description": "Prehistoric Paleoamerican man found in Kennewick, Washington, US in 1996",
+          "url": "https://www.wikidata.org/wiki/Q551700",
+          "score": 0.6,
+          "birth_year": null,
+          "death_year": -7300,
+          "matched": "The Ancient One"
+        },
+        {
+          "qid": "Q552414",
+          "label": "Frederick II, Duke of Swabia",
+          "description": "second Hohenstaufen duke of Swabia from 1105",
+          "url": "https://www.wikidata.org/wiki/Q552414",
+          "score": 0.6,
+          "birth_year": 1090,
+          "death_year": 1147,
+          "matched": "the One-Eyed"
+        },
+        {
+          "qid": "Q876674",
+          "label": "John II, Count of Holstein-Kiel",
+          "description": "Count of Holstein-Kiel",
+          "url": "https://www.wikidata.org/wiki/Q876674",
+          "score": 0.6,
+          "birth_year": 1253,
+          "death_year": 1321,
+          "matched": "\"the one-eyed\""
+        }
+      ],
+      "queried_at": "2026-10-13T01:39:53.759621+00:00"
     }
   },
   "status": {
     "source": "wikidata_pre1500_snapshot",
     "snapshot": "2026-10-02T22:51:17+00:00",
-    "resolved": 14,
-    "cached": 183,
+    "resolved": 4,
+    "cached": 193,
     "re_resolved": 0,
     "from_an_older_resolver": 1154,
     "refresh": "stale",
-    "ran_at": "2026-10-12T01:37:38.679858+00:00"
+    "ran_at": "2026-10-13T01:39:53.788803+00:00"
   }
 }
