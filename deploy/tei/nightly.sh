@@ -71,7 +71,11 @@ if [ -d "$PUBLIC_SITE" ] && [ -w "$PUBLIC_SITE" ]; then
   # then exits 23 and, under `set -e`, killed the whole run *before* the
   # publish step — the files copied, but nothing reached GitHub (2026-08-30).
   # The setgid directory assigns the right group by itself.
-  if rsync -rlptD --delete --exclude '.git' site/ "$PUBLIC_SITE"/; then
+  # -O (omit-dir-times): the directories are owned by `outremer` too, so
+  # setting their mtime fails the same way. Without -O every night ended in
+  # "failed to set times" + exit 23 and the warning below, although all files
+  # had arrived (log 2026-08-30 … 2026-10-14).
+  if rsync -rlptDO --delete --exclude '.git' site/ "$PUBLIC_SITE"/; then
     echo "mirrored site/ → $PUBLIC_SITE"
   else
     # The mirror is a view; the git publish below is the durable record.
