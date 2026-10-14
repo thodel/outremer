@@ -134,17 +134,22 @@ ATR_GATEWAY_URL=http://localhost:8200
 ATR_API_KEY=your-gateway-token
 ATR_HTTP_TIMEOUT=300
 
-# Model names (check GPUStack dashboard for exact names)
+# Model roles (M18.2, #88): the code names a role, the env names the model.
+# TEXT = extraction and metadata, VISION = recognition of scanned pages,
+# ORCHESTRATOR = reserved. Exact ids as registered in GPUStack; the legacy
+# keys EXTRACTION_MODEL / QWEN3_VL_MODEL / ORCHESTRATOR_MODEL are still read
+# when a role key is unset. The run report and status.json record which key
+# supplied each role.
 # NB: qwen3-30b-a3b-instruct no longer exists on the stack (checked 2026-08-29)
-EXTRACTION_MODEL=qwen3.8-27b
+GPUSTACK_MODEL_TEXT=qwen3.8-27b
+GPUSTACK_MODEL_VISION=qwen3.8-27b
+GPUSTACK_MODEL_ORCHESTRATOR=minimax-m2.7
 EXTRACTION_SEED=42
 EXTRACTION_MAX_TOKENS=6000
 # Qwen3 hybrids think silently until the budget is gone and return empty
 # content unless plain-answer mode is forced:
 EXTRACTION_DISABLE_THINKING=true
 GPUSTACK_TIMEOUT=300
-ORCHESTRATOR_MODEL=minimax-m2.7
-QWEN3_VL_MODEL=qwen3.8-27b
 # Same for recognition: in thinking mode qwen3.8-27b spends the whole
 # OCR budget reasoning and returns empty text (both switches default on)
 QWEN3_VL_DISABLE_THINKING=true
@@ -155,7 +160,7 @@ VLM_FREQUENCY_PENALTY=0.2
 VLM_PRESENCE_PENALTY=0.0
 
 # OCR engine: qwen3-vl is the only value (the engine key is historical,
-# the model behind it is QWEN3_VL_MODEL, qwen3.8-27b on GPUStack)
+# the model behind it is the VISION role, qwen3.8-27b on GPUStack)
 OCR_ENGINE=qwen3-vl
 
 # Offline QID resolution (M17.1, #83). Path to the pre-1500 Wikidata snapshot
@@ -211,7 +216,7 @@ python scripts/run_pipeline.py --help
 
 | Engine | How it works | Speed | Cost |
 |---|---|---|---|
-| `qwen3-vl` (the only engine) | GPUStack vision model, set by `QWEN3_VL_MODEL` (now `qwen3.8-27b`); an empty reading is reported, never papered over by another service | Fast | Free (local) |
+| `qwen3-vl` (the only engine) | GPUStack vision model, the VISION role (`GPUSTACK_MODEL_VISION`, now `qwen3.8-27b`); an empty reading is reported, never papered over by another service | Fast | Free (local) |
 
 The Mistral OCR fallback and its `MISTRAL_API_KEY` were removed (M14.2, M17.2):
 no external API key can influence recognition.

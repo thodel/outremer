@@ -7,9 +7,12 @@ Env vars (set in .env.gpustack, git-ignored):
     GPUSTACK_BASE_URL    - defaults to https://gpustack.unibe.ch/v1
     GPUSTACK_API_KEY     - API key for GPUStack authentication
     GPUSTACK_TIMEOUT     - request timeout in seconds (default 120)
-    EXTRACTION_MODEL     - model for person extraction (default qwen3.8-27b)
-    ORCHESTRATOR_MODEL   - model for orchestration (default minimax-m2.7)
-    QWEN3_VL_MODEL       - vision model for document OCR (default qwen3.8-27b)
+    GPUSTACK_MODEL_TEXT  - TEXT role: person extraction, metadata (default qwen3.8-27b)
+    GPUSTACK_MODEL_VISION - VISION role: recognition of scanned pages (default qwen3.8-27b)
+    GPUSTACK_MODEL_ORCHESTRATOR - ORCH role: orchestration (default minimax-m2.7)
+    EXTRACTION_MODEL / QWEN3_VL_MODEL / ORCHESTRATOR_MODEL
+                         - deprecated aliases of the three roles, still read
+                           when the role key is unset (M18.2, #88)
     QWEN3_VL_DISABLE_THINKING - send enable_thinking=false with OCR calls (default true)
     VLM_FREQUENCY_PENALTY - frequency_penalty for the recognition call only (default 0.2)
     VLM_PRESENCE_PENALTY  - presence_penalty for the recognition call only (default 0.0)
@@ -68,12 +71,53 @@ ATR_GATEWAY_URL = _get("ATR_GATEWAY_URL", "")
 ATR_API_KEY = _get("ATR_API_KEY", "")
 ATR_HTTP_TIMEOUT = float(_get("ATR_HTTP_TIMEOUT", "300"))
 
-# Model names - must match exactly how models are registered in GPUStack
-# The previous default, qwen3-30b-a3b-instruct, is no longer served: a fresh
-# checkout without an .env pointed extraction at a 404.
-EXTRACTION_MODEL   = _get("EXTRACTION_MODEL",   "qwen3.8-27b")
-ORCHESTRATOR_MODEL = _get("ORCHESTRATOR_MODEL", "minimax-m2.7")
-QWEN3_VL_MODEL     = _get("QWEN3_VL_MODEL",     "qwen3.8-27b")
+# Model roles (M18.2, #88). Call sites name a ROLE, never a model: swapping a
+# model is then an env change, not a code change — the discipline
+# agentic_historian adopted on 2026-06-26. Each role resolves in this order:
+#   1. GPUSTACK_MODEL_<ROLE>   (the role key, shared with the capability adapters)
+#   2. the legacy key          (EXTRACTION_MODEL / QWEN3_VL_MODEL / ORCHESTRATOR_MODEL,
+#                               what the tei env and older .env files set)
+#   3. the default below
+# Model ids must match exactly how models are registered in GPUStack. The
+# previous default, qwen3-30b-a3b-instruct, is no longer served: a fresh
+# checkout without an .env pointed extraction at a 404. The run report
+# records which key supplied each role (``models``), so a published run
+# states its mapping instead of implying it.
+MODEL_ROLES: dict[str, tuple[str, str, str]] = {
+    # role: (role key, legacy key, default)
+    "text": ("GPUSTACK_MODEL_TEXT", "EXTRACTION_MODEL", "qwen3.8-27b"),
+    "vision": ("GPUSTACK_MODEL_VISION", "QWEN3_VL_MODEL", "qwen3.8-27b"),
+    "orchestrator": ("GPUSTACK_MODEL_ORCHESTRATOR", "ORCHESTRATOR_MODEL", "minimax-m2.7"),
+}
+
+
+def resolve_model_role(role: str, environ=None) -> tuple[str, str]:
+    """(model id, the env key that supplied it — or "default") for a role."""
+    env = os.environ if environ is None else environ
+    role_key, legacy_key, default = MODEL_ROLES[role]
+    for key in (role_key, legacy_key):
+        if env.get(key):
+            return env[key], key
+    return default, "default"
+
+
+def model_roles(environ=None) -> dict[str, dict[str, str]]:
+    """The resolved role → model mapping, with its source, for provenance."""
+    out = {}
+    for role in MODEL_ROLES:
+        model, source = resolve_model_role(role, environ)
+        out[role] = {"model": model, "source": source}
+    return out
+
+
+GPUSTACK_MODEL_TEXT, _ = resolve_model_role("text")
+GPUSTACK_MODEL_VISION, _ = resolve_model_role("vision")
+GPUSTACK_MODEL_ORCHESTRATOR, _ = resolve_model_role("orchestrator")
+# Deprecated aliases: the names code outside this repo may still import.
+# Inside the repo every call site names the role.
+EXTRACTION_MODEL = GPUSTACK_MODEL_TEXT
+QWEN3_VL_MODEL = GPUSTACK_MODEL_VISION
+ORCHESTRATOR_MODEL = GPUSTACK_MODEL_ORCHESTRATOR
 EXTRACTION_SEED    = int(_get("EXTRACTION_SEED", "42"))
 # Reasoning models (gpt-oss-120b) spend tokens on reasoning before emitting
 # content; a tight budget truncates the JSON mid-array. agentic_historian
@@ -100,7 +144,7 @@ VLM_FREQUENCY_PENALTY = float(_get("VLM_FREQUENCY_PENALTY", "0.2"))
 VLM_PRESENCE_PENALTY = float(_get("VLM_PRESENCE_PENALTY", "0.0"))
 
 # OCR
-# "qwen3-vl" - the GPUStack vision model behind QWEN3_VL_MODEL (qwen3.8-27b).
+# "qwen3-vl" - the GPUStack vision model behind the VISION role (qwen3.8-27b).
 # It is the only engine: the Mistral API fallback was removed (M14.2/M17.2),
 # so no third-party key can influence recognition. Any other value makes
 # run_pipeline refuse to start.

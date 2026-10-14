@@ -9,14 +9,14 @@ import sys
 
 from llm_client import generate
 
-from config import EXTRACTION_MODEL, ORCHESTRATOR_MODEL
+from config import GPUSTACK_MODEL_ORCHESTRATOR, GPUSTACK_MODEL_TEXT
 
 
 def main():
     errors = []
 
-    # Test 1: EXTRACTION_MODEL responds
-    print(f"[1/4] Testing EXTRACTION_MODEL={EXTRACTION_MODEL}…")
+    # Test 1: GPUSTACK_MODEL_TEXT responds
+    print(f"[1/4] Testing GPUSTACK_MODEL_TEXT={GPUSTACK_MODEL_TEXT}…")
     try:
         out = generate(
             'Say "Hello from Qwen" in exactly those words. No other text.',
@@ -24,24 +24,24 @@ def main():
         )
         print(f"    Response: {out[:100]}")
     except Exception as e:
-        errors.append(f"EXTRACTION_MODEL failed: {e}")
+        errors.append(f"GPUSTACK_MODEL_TEXT failed: {e}")
         print(f"    ERROR: {e}")
 
-    # Test 2: ORCHESTRATOR_MODEL responds
-    print(f"\n[2/4] Testing ORCHESTRATOR_MODEL={ORCHESTRATOR_MODEL}…")
+    # Test 2: GPUSTACK_MODEL_ORCHESTRATOR responds
+    print(f"\n[2/4] Testing GPUSTACK_MODEL_ORCHESTRATOR={GPUSTACK_MODEL_ORCHESTRATOR}…")
     try:
         out2 = generate(
             'Say "Hello from MiniMax" in exactly those words. No other text.',
-            model=ORCHESTRATOR_MODEL,
+            model=GPUSTACK_MODEL_ORCHESTRATOR,
             max_tokens=32,
         )
         print(f"    Response: {out2[:100]}")
     except Exception as e:
-        errors.append(f"ORCHESTRATOR_MODEL failed: {e}")
+        errors.append(f"GPUSTACK_MODEL_ORCHESTRATOR failed: {e}")
         print(f"    ERROR: {e}")
 
     # Test 3: JSON output parses
-    print("\n[3/4] Testing JSON output from EXTRACTION_MODEL…")
+    print("\n[3/4] Testing JSON output from GPUSTACK_MODEL_TEXT…")
     try:
         out3 = generate(
             'Return valid JSON: [{"king": "Baldwin I", "years": "1100-1118"}]',

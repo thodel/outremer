@@ -33,11 +33,12 @@ from llm_client import generate as _llm_generate
 from validate_decisions import validate_decisions_file
 
 from config import (
-    EXTRACTION_MODEL,
     EXTRACTION_SEED,
     GPUSTACK_BASE_URL,
+    GPUSTACK_MODEL_TEXT,
     LINK_CANDIDATE_FLOOR,
     OCR_ENGINE,
+    model_roles,
 )
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
@@ -63,6 +64,7 @@ def _write_run_report(
     extraction_seed: int,
     ocr_engine: str,
     failures: list[dict],
+    models: dict[str, dict[str, str]] | None = None,
     feedback_applied: dict[str, int] | None = None,
     llm_provider: str = "unknown",
     noise: dict[str, int] | None = None,
@@ -80,6 +82,9 @@ def _write_run_report(
         "llm_provider": llm_provider,
         "extraction_model": extraction_model,
         "extraction_seed": extraction_seed,
+        # The resolved role → model mapping and which env key supplied each
+        # (M18.2, #88): a run states what it ran, call sites only name roles.
+        "models": models or {},
         "ocr_engine": ocr_engine,
         "failures": failures,
         "recognition": {"engines_used": recognition_engines or {}},
@@ -198,14 +203,14 @@ def read_pdf_file(path: Path) -> str:
 
 def _ocr_image(path: Path) -> str:
     """
-    Recognition for image-only PDFs: the GPUStack vision model (QWEN3_VL_MODEL,
-    qwen3.8-27b) and nothing else.  The former Mistral fallback is gone (M14.2,
+    Recognition for image-only PDFs: the GPUStack VISION role model
+    (GPUSTACK_MODEL_VISION, qwen3.8-27b) and nothing else.  The former Mistral fallback is gone (M14.2,
     M17.2): no third-party API key can influence recognition any more.
     """
     if OCR_ENGINE != "qwen3-vl":
         raise RuntimeError(
             f"OCR_ENGINE={OCR_ENGINE!r} is not available: recognition runs only "
-            "through GPUStack (OCR_ENGINE=qwen3-vl, model QWEN3_VL_MODEL)."
+            "through GPUStack (OCR_ENGINE=qwen3-vl, model GPUSTACK_MODEL_VISION)."
         )
     result = _qwen3vl_ocr(path)
     if result:
@@ -242,9 +247,10 @@ def _page_images_as_data_urls(path: Path, max_pages: int = 8) -> list[str]:
 
 def _qwen3vl_ocr(path: Path) -> str:
     """GPUStack Qwen3-VL for document recognition (multimodal, not text)."""
+    # Recognition is the VISION role (M18.2, #88).
     from config import (
+        GPUSTACK_MODEL_VISION,
         QWEN3_VL_DISABLE_THINKING,
-        QWEN3_VL_MODEL,
         VLM_FREQUENCY_PENALTY,
         VLM_PRESENCE_PENALTY,
     )
@@ -286,14 +292,15 @@ def _qwen3vl_ocr(path: Path) -> str:
     _last_recognition[str(path)] = {
         "engine": "qwen3-vl",
         "backend": "gpustack",
-        "model": QWEN3_VL_MODEL,
+        "role": "vision",
+        "model": GPUSTACK_MODEL_VISION,
         "pages": len(images),
         "decoding": {**decoding, "enable_thinking": not QWEN3_VL_DISABLE_THINKING},
     }
     try:
         text = _llm_generate(
             prompt,
-            model=QWEN3_VL_MODEL,
+            model=GPUSTACK_MODEL_VISION,
             images=images,
             **decoding,
             **extra,
@@ -307,9 +314,9 @@ def _qwen3vl_ocr(path: Path) -> str:
         # llm_client has already retried; say what to check.
         logger.error("GPUStack VLM OCR error: %s", exc)
         raise RecognitionError(
-            f"GPUStack VLM OCR ({QWEN3_VL_MODEL}) failed for {path.name}: {exc} "
+            f"GPUStack VLM OCR ({GPUSTACK_MODEL_VISION}) failed for {path.name}: {exc} "
             f"— check GPUSTACK_BASE_URL ({GPUSTACK_BASE_URL}), GPUSTACK_API_KEY "
-            f"and that {QWEN3_VL_MODEL} is served"
+            f"and that {GPUSTACK_MODEL_VISION} is served"
         ) from exc
     if not text.strip():
         _last_recognition.pop(str(path), None)
@@ -317,10 +324,10 @@ def _qwen3vl_ocr(path: Path) -> str:
         # is indistinguishable from one that holds no text.
         logger.error(
             "GPUStack VLM OCR (%s) returned no text for %s.",
-            QWEN3_VL_MODEL, path.name,
+            GPUSTACK_MODEL_VISION, path.name,
         )
         raise RecognitionError(
-            f"GPUStack VLM OCR ({QWEN3_VL_MODEL}) returned no text for {path.name} "
+            f"GPUStack VLM OCR ({GPUSTACK_MODEL_VISION}) returned no text for {path.name} "
             "— a reasoning model may have spent the budget thinking "
             "(QWEN3_VL_DISABLE_THINKING=true) or the page is blank"
         )
@@ -793,7 +800,7 @@ def main() -> int:
     if OCR_ENGINE != "qwen3-vl":
         logger.error(
             "OCR_ENGINE=%r is not available: recognition runs only through "
-            "GPUStack (OCR_ENGINE=qwen3-vl, model QWEN3_VL_MODEL).", OCR_ENGINE,
+            "GPUStack (OCR_ENGINE=qwen3-vl, model GPUSTACK_MODEL_VISION).", OCR_ENGINE,
         )
         return 1
 
@@ -953,10 +960,11 @@ def main() -> int:
         docs_ok=len(inputs) - len(errors),
         docs_failed=len(errors),
         total_persons=total_persons,
-        extraction_model=EXTRACTION_MODEL,
+        extraction_model=GPUSTACK_MODEL_TEXT,
         extraction_seed=EXTRACTION_SEED,
         ocr_engine=OCR_ENGINE,
         failures=[{"file": str(p), "error": str(e)} for p, e in errors],
+        models=model_roles(),
         feedback_applied=feedback_stats,
         # Derived from what actually ran, not from what was configured: with
         # GPUSTACK_BASE_URL set but unreachable this previously reported

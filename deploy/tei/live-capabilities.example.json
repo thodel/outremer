@@ -10,11 +10,7 @@
       "health_path": "/models",
       "auth": "bearer",
       "credential_env": "GPUSTACK_API_KEY",
-      "required_model_envs": [
-        "EXTRACTION_MODEL",
-        "QWEN3_VL_MODEL",
-        "ORCHESTRATOR_MODEL"
-      ],
+      "required_model_roles": ["text", "vision", "orchestrator"],
       "timeout_seconds": 15
     },
     {

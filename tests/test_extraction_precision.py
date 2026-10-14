@@ -223,7 +223,7 @@ def _raise_403(*args, **kwargs):
 
 
 def test_chunk_extraction_resolves_model_at_call_time(monkeypatch):
-    """The chunk call must use config.EXTRACTION_MODEL at CALL time.
+    """The chunk call must use config.GPUSTACK_MODEL_TEXT at CALL time.
 
     A module-level constant was hardcoded to a model that no longer exists
     on the stack ("qwen3-30b-a3b-instruct") while its comment claimed it
@@ -234,7 +234,7 @@ def test_chunk_extraction_resolves_model_at_call_time(monkeypatch):
 
     import config
 
-    monkeypatch.setattr(config, "EXTRACTION_MODEL", "model-set-after-import")
+    monkeypatch.setattr(config, "GPUSTACK_MODEL_TEXT", "model-set-after-import")
     seen = {}
 
     def fake_generate(prompt, *, model=None, **kw):

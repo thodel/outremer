@@ -70,9 +70,9 @@ def vlm_ocr(pdf: Path) -> tuple[str, str]:
     """Production VLM recognition of an image-only PDF → (text, model id)."""
     import run_pipeline
 
-    from config import QWEN3_VL_MODEL
+    from config import GPUSTACK_MODEL_VISION
 
-    return run_pipeline._qwen3vl_ocr(pdf), QWEN3_VL_MODEL
+    return run_pipeline._qwen3vl_ocr(pdf), GPUSTACK_MODEL_VISION
 
 
 def atr_client():

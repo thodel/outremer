@@ -18,6 +18,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+import config
+
 SECRET_MARKERS = ("key", "token", "password", "secret", "credential")
 ALLOWED_CAPABILITY_KINDS = {"http", "http_json", "openai_models", "atr"}
 
@@ -157,6 +159,18 @@ def check_capability(
             f"{cap_id}: required model environment value(s) missing: {missing_model_envs}"
         )
     required_models = {environ[name] for name in required_model_envs}
+    # ``required_model_roles`` (M18.2, #88): a role is satisfied by its role
+    # key or its legacy key, exactly as config resolves it — so the preflight
+    # checks the model the pipeline will actually call. A role left to the
+    # config default is still "unset" here: production must name its models.
+    for role in capability.get("required_model_roles", []):
+        model, source = config.resolve_model_role(role, environ)
+        if source == "default":
+            role_key, legacy_key, _ = config.MODEL_ROLES[role]
+            raise ReleaseControlError(
+                f"{cap_id}: model role {role!r} not configured (set {role_key} or {legacy_key})"
+            )
+        required_models.add(model)
     missing_models = sorted(required_models - models)
     if missing_models:
         raise ReleaseControlError(f"{cap_id}: required model(s) missing: {missing_models}")
@@ -344,11 +358,9 @@ def build_manifest(
             "lock_sha256": sha256_file(lock),
             "installed": dependency_versions(),
         },
-        "models": {
-            "text": os.environ.get("GPUSTACK_MODEL_TEXT") or os.environ.get("EXTRACTION_MODEL"),
-            "vision": os.environ.get("GPUSTACK_MODEL_VISION") or os.environ.get("QWEN3_VL_MODEL"),
-            "orchestrator": os.environ.get("GPUSTACK_MODEL_ORCHESTRATOR") or os.environ.get("ORCHESTRATOR_MODEL"),
-        },
+        # One resolution for roles everywhere (M18.2, #88): the manifest
+        # names the same models the pipeline called.
+        "models": {role: info["model"] for role, info in config.model_roles().items()},
         "capabilities": capabilities,
         "schemas": preflight_result.get("schemas", {}),
         "migrations": {"status": "validated", "evidence_schema": preflight_result.get("schemas", {}).get("evidence")},
