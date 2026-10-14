@@ -364,6 +364,42 @@
             "score": 1.0
           }
         ]
+      },
+      "duke godfrey": {
+        "status": "ambiguous",
+        "fits": 4,
+        "candidates": [
+          {
+            "qid": "Q552234",
+            "score": 0.85
+          },
+          {
+            "qid": "Q571506",
+            "score": 0.85
+          },
+          {
+            "qid": "Q683340",
+            "score": 0.85
+          }
+        ]
+      },
+      "william peyre": {
+        "status": "ambiguous",
+        "fits": 21,
+        "candidates": [
+          {
+            "qid": "Q108588475",
+            "score": 0.65
+          },
+          {
+            "qid": "Q108589338",
+            "score": 0.65
+          },
+          {
+            "qid": "Q131759155",
+            "score": 0.65
+          }
+        ]
       }
     },
     "persons": [
@@ -375,14 +411,13 @@
       "the Frankish lords",
       "the people",
       "Guibert of Nogent",
-      "the crusaders",
       "Ekkehard of Aura",
       "the western Franks",
-      "certain prophets",
       "Pope Urban",
       "the French bishops",
       "Count Robert of Flanders",
       "the armies",
+      "the Egyptian army",
       "Fulcher of Chartres",
       "the first king of Jerusalem",
       "Tancred",
@@ -416,10 +451,11 @@
       "Robert of Rheims",
       "Baldwin",
       "Eustace of Boulogne",
-      "the Muslims",
       "Hugh of St Omer",
       "Robert Guiscard",
-      "the Italian Norman army",
+      "Wiscardides",
+      "Muslims",
+      "Christians",
       "Lambert",
       "Bohemond",
       "Duke Godfrey",
@@ -466,6 +502,7 @@
       "William Hugo of Monteil",
       "Bertrand Porcellet",
       "Henry I of England",
+      "the crusaders",
       "Count Raymond",
       "the Greek emperor",
       "Robert fitz Godwin",
@@ -486,6 +523,127 @@
       "Ralph of Aalst",
       "Fulk the Orphan"
     ],
+    "contexts": {
+      "St Ambrose": "ACCORDING to one early twelfth century story St Ambrose, disguised as a crusader, appeared in a vision",
+      "an Italian priest": "disguised as a crusader, appeared in a vision to an Italian priest and asked him why there had been such a great response",
+      "Pope Urban II": "response to the appeal of Pope Urban II for crusaders. The priest replied that he was troubled",
+      "pilgrims": "Some say that in all pilgrims the desire for it has been aroused by God and the Lord Jesus Christ.",
+      "the Lord Jesus Christ": "aroused by God and the Lord Jesus Christ. Others maintain that the Frankish lords and most of the people",
+      "the Frankish lords": "Others maintain that the Frankish lords and most of the people have begun the journey for superficial reasons",
+      "the people": "the Frankish lords and most of the people have begun the journey for superficial reasons and that it was because",
+      "Guibert of Nogent": "shared the view of the Frenchman Guibert of Nogent: We see nations moved by the inspiration of God....",
+      "Ekkehard of Aura": "But to the German Ekkehard of Aura, it was easy to persuade the western Franks to leave their farms.",
+      "the western Franks": "it was easy to persuade the western Franks to leave their farms. For Gaul had been afflicted for some years",
+      "Pope Urban": "it may well be that Pope Urban drew his audience's attention in the sermons in which he preached the cross",
+      "the French bishops": "is evidence that the pope and the French bishops were aware that some at least would take the cross for material reasons",
+      "Count Robert of Flanders": "Count Robert of Flanders, for instance, was treated for the rest of his life with the special respect accorded to a Jerosolimitanus.",
+      "the armies": "and the needs of the armies on the march, which seem only to have been met by periodic divisions of spoil.",
+      "the Egyptian army": "and the victory over the Egyptian army on I 2 August, most crusaders decided to return home.",
+      "Fulcher of Chartres": "and Fulcher of Chartres, the chaplain of the first king of lerusalem, reported that in",
+      "the first king of Jerusalem": "Fulcher of Chartres, the chaplain of the first king of lerusalem, reported that in",
+      "Tancred": "horse and foot commanded by Tancred in Galilee",
+      "Galdemar Carpenel": "Tancred held Galilee and Bethsan, Galdemar Carpenel Jericho and Hebron; Garnier of Grez may have held Nablus.",
+      "Garnier of Grez": "perhaps Garnier of Grez's successor in Nablus",
+      "Godfrey of Bouillon": "Godfrey of Bouillon's domus, his household, accompanied him",
+      "Garnier, Count of Grez": "Garnier, Count of Grez in Brabant, who was the most prominent",
+      "Franco of Mechelen": "Franco of Mechelen, Gerard of Avesnes and Lambert of Montaigu",
+      "Gerard of Avesnes": "Franco of Mechelen, Gerard of Avesnes and Lambert of Montaigu",
+      "Lambert of Montaigu": "Gerard of Avesnes and Lambert of Montaigu",
+      "Baldwin of Boulogne": "Baldwin of Boulogne brought about 400 men to Jerusalem",
+      "Geoffrey": "two chamberlains, Geoffrey and Stabelo",
+      "Stabelo": "two chamberlains, Geoffrey and Stabelo",
+      "Matthew": "and a seneschal, Matthew",
+      "Gunter": "Godfrey's knights: Gunter, Wicher the German",
+      "Wicher the German": "Gunter, Wicher the German, Miles of Clermont",
+      "Arnulf the Lorrainer": "probably also Arnulf the Lorrainer and perhaps Rothold",
+      "Rothold": "Arnulf the Lorrainer and perhaps Rothold",
+      "Ralph of Menonville": "Ralph of Menonville and Engilbert",
+      "Engilbert": "Ralph of Menonville and Engilbert, who came from the ecclesiastical territory of Tournai",
+      "Frederick of Zimmern": "the Swabian Frederick of Zimmern, who had travelled",
+      "Peter the Hermit": "perhaps with Peter the Hermit or Emicho of Leiningen",
+      "Emicho of Leiningen": "Peter the Hermit or Emicho of Leiningen",
+      "Bohemond of Taranto": "He returned to Europe with Bohemond of Taranto in 1105",
+      "Baldwin II": "He lived there into the reign of Baldwin II",
+      "Godfrey": "ON CRUSADE (in which he was Godfrey's standard bearer)",
+      "Alberic of Trois Fontaines": "Alberic of TroisFontaines, 'Chronica', MGHS, xxiii. 8 i i",
+      "Louis of Menonville": "For a Louis of Menonville on crusade, see William of Tyre, p. 263.",
+      "Ralph of Caen": "Ralph of Caen, p. 693; Bartolf of Nangis, p. 5I5",
+      "Lethold of Tournai": "For his brother Lethold of Tournai, see Gesta Francorum, p. 9i",
+      "Robert of Rheims": "Robert of Rheims, p. 867; Bartolf of Nangis, p. 515",
+      "Baldwin": "preserve the settlement for his brother Baldwin and it still had",
+      "Eustace of Boulogne": "surrendered to Godfrey's representatives, Eustace of Boulogne and Tancred",
+      "Hugh of St Omer": "or perhaps by Hugh of St Omer, Tancred's successor",
+      "Robert Guiscard": "followers of the family of Robert Guiscard, were reported to be serving",
+      "Wiscardides": "Wiscardides, or followers of the family of Robert Guiscard, were reported",
+      "Muslims": "On Gerard's release by the Muslims he was rewarded by Godfrey",
+      "Christians": "injured by Christian arrows when Godfrey, trying to impose a more direct rule",
+      "Lambert": "Lambert is also to be found as a donor of land in R6hricht, Regesta, no. 576",
+      "Bohemond": "Leaving aside Bohemond himself and Tancred, we have the names of io members",
+      "Duke Godfrey": "received Tiberias with all Galilee and its appurtenances from Duke Godfrey",
+      "Robert fitz Gerard": "Robert fitz Gerard, the second son of Count Gerard of Buonalbergo",
+      "Count Gerard of Buonalbergo": "the second son of Count Gerard of Buonalbergo and Bohemond's cousin",
+      "Robert of Anzi": "two, Robert fitz Gerard and Robert of Anzi, accompanied Tancred to Jerusalem",
+      "Raymond of St Gilles": "When Raymond of St Gilles, the Count of Toulouse, left Palestine",
+      "Count of Toulouse": "When Raymond of St Gilles, the Count of Toulouse, left Palestine",
+      "Count William of Montpellier": "Count William of Montpellier, who had played a leading role in the South French army, clearly intended to stay only temporarily",
+      "the South French army": "played a leading role in the South French army, clearly intended to stay only temporarily",
+      "Count Galdemar Carpenel": "But Count Galdemar Carpenel, a rich nobleman who had been persuaded to crusade by Archbishop Hugh of Die of Lyons",
+      "Archbishop Hugh of Die of Lyons": "persuaded to crusade by Archbishop Hugh of Die of Lyons, was admired for his decision not to return",
+      "Godfrey's followers": "in which Godfrey's followers summoned him to Jerusalem after the duke's death, they referred to themselves",
+      "King Baldwin I": "resolved in Galdemar's favour by King Baldwin I, one of whose first acts was to visit Hebron",
+      "Raymond": "A third member of Raymond's army may have been Roman of Le Puy, who was to play an important part",
+      "Roman of Le Puy": "A third member of Raymond's army may have been Roman of Le Puy, who was to play an important part",
+      "Adhemar": "accompanied the papal legate Adhemar and had transferred his allegiance directly to Raymond after Adhemar's death",
+      "Roger of Rozoy": "From Count Robert of Flanders's army came Roger of Rozoy in the Laonnois, who became prominent after Godfrey's death",
+      "Winrich": "and perhaps Winrich from Flanders itself and Ado of Quiersy, also in the Laonnois. Winrich was Godfrey's butler",
+      "Ado of Quiersy": "and perhaps Winrich from Flanders itself and Ado of Quiersy, also in the Laonnois. Winrich was Godfrey's butler",
+      "Gerard of Quiersy": "must have been related to, and may have accompanied, Gerard of Quiersy, who was quite prominent",
+      "Ralph of Montpinson": "Ralph of Montpinson in Normandy probably arrived with Duke Robert of Normandy's forces, although he too could have been",
+      "Duke Robert of Normandy": "Ralph of Montpinson in Normandy probably arrived with Duke Robert of Normandy's forces, although he too could have been",
+      "Ralph of Fontenelles": "Ralph of Fontenelles (or Fontenay) in Anjou crusaded in the Angevin company which must have followed either Stephen",
+      "Stephen of Blois": "Angevin company which must have followed either Stephen of Blois or Hugh of Vermandois. He fled from Antioch",
+      "Hugh of Vermandois": "must have followed either Stephen of Blois or Hugh of Vermandois. He fled from Antioch in the summer of IO98",
+      "Roman": "Roman was later to be lord of Oultrejourdain",
+      "Robert fitzGodwin": "Robert fitzGodwin was an English knight who had served in the Anglo Saxon fleet",
+      "Edgar Atheling": "operating on behalf of the Byzantine Empire under Edgar Atheling",
+      "Peter Lombard": "The knight Peter Lombard had presumably joined one of the armies",
+      "Richard of the Principality": "at least two of them, Richard of the Principality and Robert fitz Gerard, being Bohemond's relatives",
+      "Ilger Bigod": "One, Ilger Bigod, was from Normandy proper",
+      "William the Carpenter": "one, William the Carpenter, Viscount of Melun, was from the Ile de France",
+      "Adam fitz Michael": "settled with Bohemond in Antioch: Adam fitz Michael, Humphrey fitz Ralph",
+      "Humphrey fitz Ralph": "Adam fitz Michael, Humphrey fitz Ralph, Ilger Bigod, Richard of the Principality",
+      "Robert of Sourdeval": "Richard of the Principality, Robert of Sourdeval, Robert fitzTristan",
+      "Robert fitzTristan": "Robert of Sourdeval, Robert fitzTristan and William the Carpenter",
+      "Bartholomew Boel of Chartres": "For his brother Bartholomew Boel of Chartres, see Raymond of Aguilers",
+      "William of Montpellier": "leaving behind, as we have seen, William of Montpellier, Galdemar Carpenel and perhaps Roman of Le Puy",
+      "Emperor Alexius": "Constantinople, where the emperor Alexius appointed him adviser to the new crusaders",
+      "William Peyre": "William Peyre, lord of Cunlhat, had been the employer of Peter Bartholomew",
+      "Peter Bartholomew": "had been the employer of Peter Bartholomew, the visionary and discoverer of the relic",
+      "Peter of Narbonne": "knight of Peter of Narbonne, one of Raymond's clerics who had been appointed the first Latin bishop",
+      "William Hugo of Monteil": "William Hugo of Monteil was a brother of the papal legate Adhemar",
+      "Bertrand Porcellet": "It is possible that another member of this group was Bertrand Porcellet, who came from Arles",
+      "Henry I of England": "Ralph later became a captain of Henry I of England's household troops",
+      "the crusaders": "appointed him adviser to the new crusaders now arriving from the West",
+      "Count Raymond": "For Count Raymond and Adhemar'sfamilia, see ibid. p. 85.",
+      "the Greek emperor": "but he was wrong to deny the Greek emperor authority over his principality.",
+      "Robert fitz Godwin": "and Robert fitz Godwin seems to have been a disinherited AngloSaxon.",
+      "Arpin of Bourges": "Another example was provided by Arpin of Bourges, who sold his property and departed",
+      "the Egyptians": "Wounded and captured by the Egyptians in 1102, he eventually returned home",
+      "Count Beugnot": "Professor Prawer, following the nineteenth century historian Count Beugnot, has maintained that there were allodial properties",
+      "Hugh of Bethsan": "The Hugh of Bethsan, who witnessed a charter in II 5 5 as a royal vassal (Rohricht, Regesta, no. 299), was probably never lord",
+      "John of Jaffa": "Bethsan was certainly regarded as a fief in the i i 8os, the period in which a list of services incorporated into John of Jaffa's lawbook",
+      "Eustace": "Among them may have been a body of men from his brother Eustace's lordship of Boulogne",
+      "Eustace Garnier": "Eustace Garnier,3 Fulk of Guines4 and Hugh of i.",
+      "Fulk of Guines": "Eustace Garnier,3 Fulk of Guines4 and Hugh of i.",
+      "Hugh of Robecquel": "Hugh of i. ... Robecquel all came from that district and may have been on the First Crusade",
+      "Drogo of Nesle": "Drogo of Nesle had been in Emicho of Leiningen's ill fated company",
+      "Albert of Biandrate": "brought in a new generation of settlers from Lombardy   Albert of Biandrate5 and Otto of Altaspata6",
+      "Otto of Altaspata": "Albert of Biandrate5 and Otto of Altaspata6   and from Lower Lorraine",
+      "Gotman of Brussels": "Flanders: Gotman of Brussels,7 Hugh of St Omer,8 Baldwin of Hemstrut9 and Ralph of Aalst",
+      "Baldwin of Hemstrut": "Hugh of St Omer,8 Baldwin of Hemstrut9 and Ralph of Aalst",
+      "Ralph of Aalst": "Baldwin of Hemstrut9 and Ralph of Aalst",
+      "Fulk the Orphan": "was he the Fulk the Orphan, born in Flanders according to most manuscripts"
+    },
     "links": [
       {
         "person": "St Ambrose",
@@ -540,11 +698,6 @@
         ]
       },
       {
-        "person": "the crusaders",
-        "top_candidate": null,
-        "candidates": []
-      },
-      {
         "person": "Ekkehard of Aura",
         "top_candidate": {
           "outremer_id": "AUTH:CR189"
@@ -557,11 +710,6 @@
       },
       {
         "person": "the western Franks",
-        "top_candidate": null,
-        "candidates": []
-      },
-      {
-        "person": "certain prophets",
         "top_candidate": null,
         "candidates": []
       },
@@ -588,6 +736,11 @@
       },
       {
         "person": "the armies",
+        "top_candidate": null,
+        "candidates": []
+      },
+      {
+        "person": "the Egyptian army",
         "top_candidate": null,
         "candidates": []
       },
@@ -793,11 +946,6 @@
         "candidates": []
       },
       {
-        "person": "the Muslims",
-        "top_candidate": null,
-        "candidates": []
-      },
-      {
         "person": "Hugh of St Omer",
         "top_candidate": {
           "outremer_id": "AUTH:CR13"
@@ -814,7 +962,17 @@
         "candidates": []
       },
       {
-        "person": "the Italian Norman army",
+        "person": "Wiscardides",
+        "top_candidate": null,
+        "candidates": []
+      },
+      {
+        "person": "Muslims",
+        "top_candidate": null,
+        "candidates": []
+      },
+      {
+        "person": "Christians",
         "top_candidate": null,
         "candidates": []
       },
@@ -1099,6 +1257,11 @@
       },
       {
         "person": "Henry I of England",
+        "top_candidate": null,
+        "candidates": []
+      },
+      {
+        "person": "the crusaders",
         "top_candidate": null,
         "candidates": []
       },

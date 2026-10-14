@@ -268,6 +268,24 @@
             "score": 0.85
           }
         ]
+      },
+      "reynald de chatillon": {
+        "status": "ambiguous",
+        "fits": 42,
+        "candidates": [
+          {
+            "qid": "Q10299237",
+            "score": 0.6
+          },
+          {
+            "qid": "Q10330024",
+            "score": 0.6
+          },
+          {
+            "qid": "Q108858816",
+            "score": 0.6
+          }
+        ]
       }
     },
     "persons": [
@@ -284,14 +302,17 @@
       "Ghassanid tribe",
       "pagan Arabs",
       "Christian monks",
+      "Muslims",
       "Jews",
       "pagans",
       "Christians",
       "priests [qassisin]",
       "monks [ruhban]",
-      "Bahira",
+      "the monk Bahira",
       "Muhammad",
       "Ibn Ishaq",
+      "Bahira",
+      "the apostle of God [Muhammad]",
       "Abu Talib",
       "the Jews",
       "Gabriel",
@@ -300,28 +321,27 @@
       "the Messiah",
       "Mary",
       "Jesus",
-      "the followers",
-      "the true believers",
-      "the evil doers",
+      "the believers",
       "the clerics and the monks",
-      "the caliph 'Umar",
+      "the Christians",
+      "'Umar",
       "the people of Jerusalem",
       "John of Damascus",
-      "the Umayyads",
       "Hunayn ibn Ishaq",
       "Sultan Baybars",
       "the Crusaders",
-      "the Arabs",
       "the Muslims",
+      "the Arabs",
+      "the Coptic monks",
+      "the Franks",
       "Ibn al Qalanisi",
       "the Hospitallers",
       "the Templars",
       "Usamah ibn Munqidh",
-      "the Franks",
+      "the Templar knights",
       "the Moslems",
       "one of the Franks",
       "a group of Templars",
-      "Muslims",
       "Usamah",
       "knights Templar",
       "Nur al Din",
@@ -348,10 +368,8 @@
       "crossbowmen",
       "Muslim apostates",
       "Crusader service",
+      "Islam",
       "Orders",
-      "Ibn al Athir",
-      "Templar and Hospitaller prisoners",
-      "Frankish armies",
       "Frankish knights",
       "Assassins",
       "Christian rulers",
@@ -367,6 +385,7 @@
       "devout men and ascetics",
       "the troops",
       "the amirs",
+      "Ibn al Athir",
       "Ayyubids",
       "Ayyubid princes",
       "al Salih Ayyub",
@@ -375,63 +394,214 @@
       "Sultan Isma'il",
       "Ibrahim",
       "Arab slaves",
-      "Muslim slaves",
-      "Christian and Muslim princes",
       "Mamluks",
-      "Mamluk sultans",
-      "Muslim princes",
-      "slave soldiers",
-      "Sultan al Salih",
       "Mongols",
       "Baybars",
       "Qalawun",
-      "Crusader cities and castles",
+      "Hospitaller",
+      "Templar",
       "the garrison",
-      "Grand Master of the Hospitallers",
+      "the Grand Master of the Hospitallers",
       "frère Hugues",
       "the knights of the Temple",
       "refugee civilians",
-      "Sultan al Ashraf",
+      "the Sultan al Ashraf",
       "regulars [soldiers]",
       "the Mamluks",
-      "the Orders",
-      "amir Kitbugha al Mansuri",
-      "the Military Orders",
+      "the amir Kitbugha al Mansuri",
       "Western European Christians",
       "the Franciscans",
       "St. Francis",
-      "Sultan Al Salih Isma'il",
+      "the Sultan Al Salih Isma'il",
       "Pope Innocent IV",
-      "the sultans",
       "Pope Nicholas IV",
       "Latin monks",
-      "clergy, monks, and men of peace",
-      "friars",
       "Rupert of Sicily",
       "Pope Clement VI",
       "Western monks",
       "Franciscans",
+      "Mamluk sultans",
       "Western pilgrims",
       "Peter of Cyprus",
       "Sultan al Ashraf Sha'ban",
       "Franciscans of Jerusalem",
       "Venetian merchants",
+      "Eastern Christians",
+      "Western Christians",
       "Reynald de Chatillon",
       "Muslim pilgrims",
       "Khalid ibn al Walid",
-      "inhabitants of Damascus",
+      "Khalid b. Walid",
+      "the inhabitants of Damascus",
       "the caliphs",
-      "the believers",
       "Baybars I",
       "Abu Shama",
       "Ibn al Qaysarani",
       "Al Maqrizi",
       "the Frankish or Latin Clergy",
       "Abraham",
+      "the Military Orders",
       "the Ottoman sultans",
       "Greek, Armenian, Georgian, and Syrian Christians and monks",
       "'Ali"
     ],
+    "contexts": {
+      "Saladin, sultan of Egypt and Syria": "On July 4, 1187, the armies ofSaladin, sultan ofEgypt and Syria, surrounded thousands ofCrusaders",
+      "King Guy": "While King Guy and the Frankish aristocrats who had led their followers to disaster were allowed",
+      "Frankish aristocrats": "While King Guy and the Frankish aristocrats who had led their followers to disaster were allowed",
+      "knights of the Military Orders": "threat to Islam than the knights ofthe Military Orders",
+      "Templars": "it seems the Templars allowed Muslims to pray at the al Aqsa Mosque",
+      "Hospitallers": "prowess of the Templars and Hospitallers were renowned in theWest",
+      "Richard Lionheart": "Richard Lionhearťs massacre of 2,700 Arab prisoners  plus their wives and children  following his capture",
+      "Arab prisoners": "Richard Lionhearťs massacre of 2,700 Arab prisoners  plus their wives and children  following his capture",
+      "poor Christians": "Saladin paid the ransom for thousands ofpoor Christians and let them go free.4",
+      "Arabs": "the Arabs nonetheless had extensive contacts with both the Sassanid Persian and Byzantine empires",
+      "Ghassanid tribe": "Christianized Arab Ghassanid tribe, pagan Arabs first came into contact with Christian monasticism",
+      "pagan Arabs": "Christianized Arab Ghassanid tribe, pagan Arabs first came into contact with Christian monasticism",
+      "Christian monks": "Arab poets make a few references to Christian monks; one perhaps allegorical allusion describes a bedouin",
+      "Muslims": "allowed Muslims to pray at the al Aqsa Mosque",
+      "Jews": "Known to Jews and Christians as the Temple Mount, the Haram al Sharif served as the headquarters",
+      "pagans": "thefaithful [Muslims] are the Jewsand the pagans, and that the nearest in affection to them arethose",
+      "Christians": "The Christians regularly defiled holyplaces bywearing shoes",
+      "priests [qassisin]": "That isbecause there are priests [qassisin] and monks [ruhban] among them; and because they arefreefrom",
+      "monks [ruhban]": "there are priests [qassisin] and monks [ruhban] among them; and because they arefreefrom pride. (5:82)",
+      "the monk Bahira": "story of the monk Bahira, found in the earliest surviving biography of Muhammad, written byIbn Ishaq",
+      "Muhammad": "found in the earliest surviving biography of Muhammad, written byIbn Ishaq. As ayoung teenager, Muhammadjourneyed",
+      "Ibn Ishaq": "surviving biography of Muhammad, written byIbn Ishaq. As ayoung teenager, Muhammadjourneyed with a caravan",
+      "Bahira": "there was a monk there in his cell by the name of Bahira, who was well versed in the knowledge of Christians",
+      "the apostle of God [Muhammad]": "he saw the apostle ofGod [Muhammad] in the caravan when they approached, with a cloud overshadowing him",
+      "Abu Talib": "The monk Bahira told Muhammad's uncle and guardian Abu Talib",
+      "the Jews": "guard him carefully against the Jews, for by Allah! if they see him",
+      "Gabriel": "This is where he received his first vision of Gabriel and revelation of the Qur'an",
+      "the clerics": "They make of their clerics [qassisin] and monks [ruhban]",
+      "the monks": "was a guest of the monks at a monastery ofDair Abu Maqar",
+      "the Messiah": "and of the Messiah, the son of Mary, lords besides God",
+      "Mary": "and of the Messiah, the son of Mary, lords besides God",
+      "Jesus": "We [God] gave him [Jesus] the Gospel, and put compassion and mercy",
+      "the believers": "We rewarded only those who were true believers; for many of them were evil doers",
+      "the clerics and the monks": "Believers, many are the clerics and the monks who defraud men of their possessions",
+      "the Christians": "monks  and Christians in general  were considered \"People of the Book\"",
+      "'Umar": "The caliph 'Umar's (ruled 634 644) treaty with Jerusalem is typical",
+      "the people of Jerusalem": "has granted to the people of Jerusalem. He has given them an assurance of safety",
+      "John of Damascus": "The most famous is perhaps the great defender of icons, John of Damascus (655 750)",
+      "Hunayn ibn Ishaq": "Christians such as Hunayn ibn Ishaq (Joannitius) were the leaders of the famous translation academy",
+      "Sultan Baybars": "the late thirteenth centuryEgyptian Mamluk sultan Baybars Inoted for his pursuit ofjihad",
+      "the Crusaders": "pursuit ofjihad, or holy war, against the Crusaders  was a guest of the monks",
+      "the Muslims": "whereas it was tolerated by the Muslims. Although there were certainly attacks",
+      "the Arabs": "attacks against monks and monasteries byArabs, these tended to be incidents",
+      "the Coptic monks": "relations between the Egyptian government and the Coptic monks generallyremained good",
+      "the Franks": "MostArab texts from 1157 to 1180 simplymention the Orders as Frankish militaryunits",
+      "Ibn al Qalanisi": "The first surviving mention ofthe Orders is found in Ibn al Qalanisis History of Damascus",
+      "the Hospitallers": "sought out the Templars and Hospitallers who had been captured and said: 'I shall purify the land'",
+      "the Templars": "the Haram al Sharif served as the headquarters for the Templars from about 1119 until it",
+      "Usamah ibn Munqidh": "comes from Usamah ibn Munqidh, a Syrian nobleman and lord ofShayzar Castle",
+      "the Templar knights": "describes the following encounter with the Templar knights at the Arab al Aqsa Mosque",
+      "the Moslems": "have held long association with the Moslems. Here is an illustration oftheir rude character",
+      "one of the Franks": "upon which one ofthe Franks rushed on me, got hold ofme and turned my face eastward",
+      "a group of Templars": "A group ofTemplars hastened to him, seized him and repelled him from me",
+      "Usamah": "for Usamah the knights Templar are examples of moderate toleration",
+      "knights Templar": "for Usamah the knights Templar are examples of moderate toleration",
+      "Nur al Din": "rise of the two great countercrusading Sultans, Nur al Din of Syria",
+      "Saladin": "and Saladin of Egypt and Syria (ruled 1171 1193)",
+      "Military Orders": "the Military Orders were apparently not viewed as a special threat",
+      "Franks": "Arab sources recognize the Military Orders as distinct groups among the Franks",
+      "warrior monks": "They correctly note that the warrior monks are called \"brothers\"",
+      "Frankish soldiers": "perceived differently than other Frankish soldiers and nobles",
+      "Frankish nobles": "perceived differently than other Frankish soldiers and nobles",
+      "captive knights": "reflected in the treatment of captive knights",
+      "knights of the Orders": "treatment of the knights of the Orders after the battle of Hattin",
+      "Bertrand of Blancfort": "the Grand Master of the Templars Bertrand of Blancfort was captured",
+      "knights": "captured by Nur al Din along with eighty seven knights near Banyas",
+      "Frankish warriors": "held to ransom like any other Frankish warriors",
+      "Manuel": "through intervention of Manuel, emperor of Byzantium",
+      "Odo of Saint Amand": "Saladin captured Odo ofSaint Amand, master ofthe Templars",
+      "Frankish aristocracy": "no differently than any other members ofthe Frankish aristocracy",
+      "Baldwin of Ibelin": "Baldwin ofIbelin was ransomed for 150,000 dinars",
+      "Hugh of Galilee": "Hugh ofGalilee for55,000",
+      "Odo": "exchange Grand Master Odo for an influential Muslim prisoner",
+      "Muslim prisoner": "exchange Grand Master Odo for an influential Muslim prisoner",
+      "Templar grand master": "release the Templar grand master for an appropriate ransom",
+      "prisoners": "Saladin captured over seven hundred prisoners and the Templars' newly fortified castle",
+      "crossbowmen": "ordered the execution of crossbowmen and Muslim apostates",
+      "Muslim apostates": "execution of crossbowmen and Muslim apostates who were in Crusader service",
+      "Crusader service": "Muslim apostates who were in Crusader service",
+      "Islam": "viewed as more ofa threat to Islam than the knights",
+      "Orders": "By the 1180s, the Orders were increasingly viewed as a serious threat",
+      "Frankish knights": "Many other Frankish knights were also superb warriors, but this alone did not merit their execution upon capture.",
+      "Assassins": "The legendary Assassins  fierce fanatical Islamic terrorists living in impregnable castles in the mountains of Syria",
+      "Christian rulers": "intimidateandmanipulateboth Christian andMuslim rulers in the twelfth century by the threat ofassassination",
+      "Muslim rulers": "intimidateandmanipulateboth Christian andMuslim rulers in the twelfth century by the threat ofassassination",
+      "al Harawi": "one ofwhich was written by al Harawi, entitled Al Harawťs Discussion on the Stratagems ofWar",
+      "Latin clergy": "In describing the Latin clergy, al Harawi wrote: [The Sultan] should not neglect to write to the clergy",
+      "'Imad al Din al Isfahani": "Muslim rhetoric on this issue was often quite harsh. 'Imad al Din al Isfahani describes some ofthese attitudes:",
+      "the Khwarazmians": "Likewise, when the Khwarazmians (a Turkish people) took Jerusalem from the Crusaders in 1244",
+      "Ibn Zaki": "are well summarized by Ibn Zaki: 'I praise [God] ... for his cleansing of His Holy House'",
+      "Imad al Din": "Imad al Din described the horrible details of execution of the Military Orders after the battle",
+      "the army": "immediately the army brought forward at least a hundred of them. He ordered that they should be",
+      "scholars and Sufis": "With him was a whole band of scholars and Sufis [mystics] and a certain number of devout men",
+      "devout men and ascetics": "and a certain number of devout men and ascetics; each begged to be allowed to kill one of them",
+      "the troops": "the unbelievers showed black despair, the troops were drawn up in their ranks, the amirs",
+      "the amirs": "the troops were drawn up in their ranks, the amirs [commanders] stood in double file.",
+      "Ibn al Athir": "Ibn al Athir succinctly described Saladin's policy towards the Military Orders: 'It was [Saladin's]",
+      "Ayyubids": "struggles for predominance among the Ayyubids  Saladin's fractious successors",
+      "Ayyubid princes": "Some Ayyubid princes actually began to ally themselves with the Military Orders",
+      "al Salih Ayyub": "In 1240, al Salih Ayyub, sultan of Egypt, ceded Ascalon to Frankish barons",
+      "Frankish barons": "ceded Ascalon to Frankish barons allied with the Templars, hoping to undermine",
+      "Isma'il": "his rival from Damascus, Isma'il.51 This story demonstrates not only an indifference",
+      "Sultan Isma'il": "when Sultan Isma'il of Damascus allied with the Orders against Egypt",
+      "Ibrahim": "his general Ibrahim was allowed to stay in the monastic \"house of the Templars\"",
+      "Arab slaves": "One thousand Arab slaves were engaged in building Safed Castle for the Templars",
+      "Mamluks": "The Mamluks and the Expulsion of the Military Orders, 1250 1291",
+      "Mongols": "overcome the double threat of the Crusaders and Mongols, who had invaded the Near East",
+      "Baybars": "For under the great warlords Baybars (1260 1277) and Qalawun (1279 1290)",
+      "Qalawun": "Baybars (1260 1277) and Qalawun (1279 1290), the Mamluks of Egypt were able",
+      "Hospitaller": "Baybars does not seem to have made use of any special anti Templar or Hospitaller propaganda",
+      "Templar": "One Templar, who had once eaten with Baybars and therefore had a right to guest protection",
+      "the garrison": "he granted the entire garrison a safe conduct, which he honored",
+      "the Grand Master of the Hospitallers": "Baybars sent a letter taunting the Grand Master ofthe Hospitallers",
+      "frère Hugues": "This letter is addressed tofrèreHugues  may God make him one of those",
+      "the knights of the Temple": "The knights ofthe Temple, with many refugee civilians, had shut themselves inside",
+      "refugee civilians": "with many refugee civilians, had shut themselves inside their huge tower",
+      "the Sultan al Ashraf": "which the Sultan [al Ashraf] granted them",
+      "regulars [soldiers]": "a horde ofregulars [soldiers] and others swarmed in",
+      "the Mamluks": "as the Mamluks were takingpossession",
+      "the amir Kitbugha al Mansuri": "when the amir Kitbugha al Mansuri had gone up (to receive their surrender)",
+      "Western European Christians": "did notend Arab relations with Western European Christians",
+      "the Franciscans": "most notably the Franciscans  continued to live among the Muslims",
+      "St. Francis": "Franciscan tradition maintains that in 1219 St. Francis himselfobtained",
+      "the Sultan Al Salih Isma'il": "permission from the Sultan Al Salih Isma'il (1245 1249)",
+      "Pope Innocent IV": "ambassadors to Pope Innocent IV (1243 1254)",
+      "Pope Nicholas IV": "After the fall ofAcre in 1291, Pope Nicholas IV (1288 1292)",
+      "Latin monks": "for Latin monks to be allowed to remain in Jerusalem",
+      "Rupert of Sicily": "payment in 1300 of 32,000 ducats from Rupert ofSicily",
+      "Pope Clement VI": "officially authorized by Pope Clement VI in 1342",
+      "Western monks": "the Mamluks were permitting Western monks to visit, worship, and remain in the Holy Land",
+      "Franciscans": "their fourteenthcentury patronage of the Franciscans  described as \"men ofpeace,\"",
+      "Mamluk sultans": "There were manyadvantages thatMamluksultanshoped to obtain from the revitalization",
+      "Western pilgrims": "ifthe holy places were accessible to Western pilgrims, they might feel less inclination",
+      "Peter of Cyprus": "this is precisely what happened in 1365, when Peter of Cyprus (1359 1369) attacked Alexandria",
+      "Sultan al Ashraf Sha'ban": "The Egyptian sultan al Ashraf Sha'ban (1363 1376) arrested and executed the Franciscans",
+      "Franciscans of Jerusalem": "al Ashraf Sha'ban (1363 1376) arrested and executed the Franciscans of Jerusalem",
+      "Venetian merchants": "they must have received information on these events from the frequent visits ofVenetian merchants",
+      "Eastern Christians": "distinguish both between Eastern and Western Christians and between thevarious monastic orders",
+      "Western Christians": "distinguish both between Eastern and Western Christians and between thevarious monastic orders",
+      "Reynald de Chatillon": "The exception was Reynald de Chatillon, who was executed by Saladin for his barbarous attacks on Muslim pilgrims.",
+      "Muslim pilgrims": "executed by Saladin for his barbarous attacks on Muslim pilgrims.",
+      "Khalid ibn al Walid": "Likewise, Khalid ibn al Walid's treaty with Damascus states: This is what Khalid b. Walid gave to the inhabitants of Damascus.",
+      "Khalid b. Walid": "This is what Khalid b. Walid gave to the inhabitants of Damascus. He gave them security for their persons...",
+      "the inhabitants of Damascus": "This is what Khalid b. Walid gave to the inhabitants ofDamascus. He gave them security for their persons...",
+      "the caliphs": "On these terms they have alliance with God, and the protection of His Prophet, the caliphs, and the believers.",
+      "Baybars I": "the story of Baybars I appears on p. 84.",
+      "Abu Shama": "42. Abu Shama, Kitab al rawdatayany2vols. (Cairo, i954)> quoted in Hillenbrand, The Crusadesy 301.",
+      "Ibn al Qaysarani": "43. Ibn al Qaysarani, quoted in Hillenbrand, The Crusadesy151.",
+      "Al Maqrizi": "46. Al Maqrizi, Kitabal sulukytrans. R.J.C. Broadhurstas HistoryofAyyubidsand Mamluks",
+      "the Frankish or Latin Clergy": "The Third Return of the Frankish or Latin Clergy to the Custody and Service of the Holy Places",
+      "Abraham": "from the Days of Abraham to the Beginnings of Modern Times",
+      "the Military Orders": "the specific targeting of the Military Orders as special enemies of Islam",
+      "the Ottoman sultans": "continued after the Crusades in the policies of the Ottoman sultans.",
+      "Greek, Armenian, Georgian, and Syrian Christians and monks": "accommodations were made with Greek, Armenian, Georgian, and Syrian Christians and monks",
+      "'Ali": "a famous symbol of 'Ali, the fourth caliph and cousin of Muhammad."
+    },
     "links": [
       {
         "person": "Saladin, sultan of Egypt and Syria",
@@ -499,6 +669,11 @@
         "candidates": []
       },
       {
+        "person": "Muslims",
+        "top_candidate": null,
+        "candidates": []
+      },
+      {
         "person": "Jews",
         "top_candidate": null,
         "candidates": []
@@ -524,7 +699,7 @@
         "candidates": []
       },
       {
-        "person": "Bahira",
+        "person": "the monk Bahira",
         "top_candidate": null,
         "candidates": []
       },
@@ -535,6 +710,16 @@
       },
       {
         "person": "Ibn Ishaq",
+        "top_candidate": null,
+        "candidates": []
+      },
+      {
+        "person": "Bahira",
+        "top_candidate": null,
+        "candidates": []
+      },
+      {
+        "person": "the apostle of God [Muhammad]",
         "top_candidate": null,
         "candidates": []
       },
@@ -579,17 +764,7 @@
         "candidates": []
       },
       {
-        "person": "the followers",
-        "top_candidate": null,
-        "candidates": []
-      },
-      {
-        "person": "the true believers",
-        "top_candidate": null,
-        "candidates": []
-      },
-      {
-        "person": "the evil doers",
+        "person": "the believers",
         "top_candidate": null,
         "candidates": []
       },
@@ -599,7 +774,12 @@
         "candidates": []
       },
       {
-        "person": "the caliph 'Umar",
+        "person": "the Christians",
+        "top_candidate": null,
+        "candidates": []
+      },
+      {
+        "person": "'Umar",
         "top_candidate": null,
         "candidates": []
       },
@@ -610,11 +790,6 @@
       },
       {
         "person": "John of Damascus",
-        "top_candidate": null,
-        "candidates": []
-      },
-      {
-        "person": "the Umayyads",
         "top_candidate": null,
         "candidates": []
       },
@@ -634,12 +809,22 @@
         "candidates": []
       },
       {
+        "person": "the Muslims",
+        "top_candidate": null,
+        "candidates": []
+      },
+      {
         "person": "the Arabs",
         "top_candidate": null,
         "candidates": []
       },
       {
-        "person": "the Muslims",
+        "person": "the Coptic monks",
+        "top_candidate": null,
+        "candidates": []
+      },
+      {
+        "person": "the Franks",
         "top_candidate": null,
         "candidates": []
       },
@@ -676,7 +861,7 @@
         ]
       },
       {
-        "person": "the Franks",
+        "person": "the Templar knights",
         "top_candidate": null,
         "candidates": []
       },
@@ -692,11 +877,6 @@
       },
       {
         "person": "a group of Templars",
-        "top_candidate": null,
-        "candidates": []
-      },
-      {
-        "person": "Muslims",
         "top_candidate": null,
         "candidates": []
       },
@@ -831,28 +1011,12 @@
         "candidates": []
       },
       {
+        "person": "Islam",
+        "top_candidate": null,
+        "candidates": []
+      },
+      {
         "person": "Orders",
-        "top_candidate": null,
-        "candidates": []
-      },
-      {
-        "person": "Ibn al Athir",
-        "top_candidate": {
-          "outremer_id": "AUTH:CR197"
-        },
-        "candidates": [
-          {
-            "outremer_id": "AUTH:CR197"
-          }
-        ]
-      },
-      {
-        "person": "Templar and Hospitaller prisoners",
-        "top_candidate": null,
-        "candidates": []
-      },
-      {
-        "person": "Frankish armies",
         "top_candidate": null,
         "candidates": []
       },
@@ -932,6 +1096,17 @@
         "candidates": []
       },
       {
+        "person": "Ibn al Athir",
+        "top_candidate": {
+          "outremer_id": "AUTH:CR197"
+        },
+        "candidates": [
+          {
+            "outremer_id": "AUTH:CR197"
+          }
+        ]
+      },
+      {
         "person": "Ayyubids",
         "top_candidate": null,
         "candidates": []
@@ -972,37 +1147,7 @@
         "candidates": []
       },
       {
-        "person": "Muslim slaves",
-        "top_candidate": null,
-        "candidates": []
-      },
-      {
-        "person": "Christian and Muslim princes",
-        "top_candidate": null,
-        "candidates": []
-      },
-      {
         "person": "Mamluks",
-        "top_candidate": null,
-        "candidates": []
-      },
-      {
-        "person": "Mamluk sultans",
-        "top_candidate": null,
-        "candidates": []
-      },
-      {
-        "person": "Muslim princes",
-        "top_candidate": null,
-        "candidates": []
-      },
-      {
-        "person": "slave soldiers",
-        "top_candidate": null,
-        "candidates": []
-      },
-      {
-        "person": "Sultan al Salih",
         "top_candidate": null,
         "candidates": []
       },
@@ -1022,7 +1167,12 @@
         "candidates": []
       },
       {
-        "person": "Crusader cities and castles",
+        "person": "Hospitaller",
+        "top_candidate": null,
+        "candidates": []
+      },
+      {
+        "person": "Templar",
         "top_candidate": null,
         "candidates": []
       },
@@ -1032,7 +1182,7 @@
         "candidates": []
       },
       {
-        "person": "Grand Master of the Hospitallers",
+        "person": "the Grand Master of the Hospitallers",
         "top_candidate": null,
         "candidates": []
       },
@@ -1052,7 +1202,7 @@
         "candidates": []
       },
       {
-        "person": "Sultan al Ashraf",
+        "person": "the Sultan al Ashraf",
         "top_candidate": null,
         "candidates": []
       },
@@ -1067,17 +1217,7 @@
         "candidates": []
       },
       {
-        "person": "the Orders",
-        "top_candidate": null,
-        "candidates": []
-      },
-      {
-        "person": "amir Kitbugha al Mansuri",
-        "top_candidate": null,
-        "candidates": []
-      },
-      {
-        "person": "the Military Orders",
+        "person": "the amir Kitbugha al Mansuri",
         "top_candidate": null,
         "candidates": []
       },
@@ -1097,17 +1237,12 @@
         "candidates": []
       },
       {
-        "person": "Sultan Al Salih Isma'il",
+        "person": "the Sultan Al Salih Isma'il",
         "top_candidate": null,
         "candidates": []
       },
       {
         "person": "Pope Innocent IV",
-        "top_candidate": null,
-        "candidates": []
-      },
-      {
-        "person": "the sultans",
         "top_candidate": null,
         "candidates": []
       },
@@ -1118,16 +1253,6 @@
       },
       {
         "person": "Latin monks",
-        "top_candidate": null,
-        "candidates": []
-      },
-      {
-        "person": "clergy, monks, and men of peace",
-        "top_candidate": null,
-        "candidates": []
-      },
-      {
-        "person": "friars",
         "top_candidate": null,
         "candidates": []
       },
@@ -1148,6 +1273,11 @@
       },
       {
         "person": "Franciscans",
+        "top_candidate": null,
+        "candidates": []
+      },
+      {
+        "person": "Mamluk sultans",
         "top_candidate": null,
         "candidates": []
       },
@@ -1177,6 +1307,16 @@
         "candidates": []
       },
       {
+        "person": "Eastern Christians",
+        "top_candidate": null,
+        "candidates": []
+      },
+      {
+        "person": "Western Christians",
+        "top_candidate": null,
+        "candidates": []
+      },
+      {
         "person": "Reynald de Chatillon",
         "top_candidate": {
           "outremer_id": "AUTH:CR187"
@@ -1198,17 +1338,17 @@
         "candidates": []
       },
       {
-        "person": "inhabitants of Damascus",
+        "person": "Khalid b. Walid",
+        "top_candidate": null,
+        "candidates": []
+      },
+      {
+        "person": "the inhabitants of Damascus",
         "top_candidate": null,
         "candidates": []
       },
       {
         "person": "the caliphs",
-        "top_candidate": null,
-        "candidates": []
-      },
-      {
-        "person": "the believers",
         "top_candidate": null,
         "candidates": []
       },
@@ -1245,6 +1385,11 @@
       },
       {
         "person": "Abraham",
+        "top_candidate": null,
+        "candidates": []
+      },
+      {
+        "person": "the Military Orders",
         "top_candidate": null,
         "candidates": []
       },

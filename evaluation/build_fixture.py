@@ -24,6 +24,12 @@ Usage (from repo root):
 the nightly produced them, but recomputes the authority links with the code
 in this checkout (evaluation/_pipeline.relink) — so a fixture never carries
 links made by an older operating point (M19.3).
+
+``predictions.contexts`` (M21.4, #128) keeps each mention's extracted context
+sentence, keyed by name, so that ``harness --relink --rerank`` can run the
+reranker veto of M21.2 on the fixtures: the veto judges a mention *in its
+context*, and a fixture without contexts cannot exercise it. Names are the
+key because the pipeline emits one person entry per distinct name.
 """
 
 from __future__ import annotations
@@ -159,6 +165,11 @@ def build_fixtures(
         if pred_path.exists():
             data = json.loads(pred_path.read_text())
             persons = [p.get("name", "") for p in data.get("persons", [])]
+            contexts = {
+                p["name"]: p["context"]
+                for p in data.get("persons", [])
+                if p.get("name") and p.get("context")
+            }
             links = data.get("links", [])
             if relink:
                 from evaluation._pipeline import load_authority_lookup
@@ -168,6 +179,7 @@ def build_fixtures(
             fixture["predictions"] = {
                 "wikidata": wd_snap,
                 "persons": persons,
+                "contexts": contexts,
                 "links": _link_snapshot(links),
             }
         fixtures.append(fixture)
