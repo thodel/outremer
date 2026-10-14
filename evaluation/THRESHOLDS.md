@@ -58,6 +58,30 @@ regress below 2026-10-10" floor under the measured +0.155.
 Baseline band (deterministic under `--relink`): combined 0.9195 over 87
 pairs, 3 repeats, range 0.9195–0.9195 — `evaluation/baselines/epic19-post-repair.json`.
 
+### The reranker veto on the gold (M21.4, #128, 2026-10-14)
+
+The fixtures carry each mention's extracted context since this date, so
+`python -m evaluation.harness --relink --rerank` can run the veto of M21.2
+over them (GPUStack, so never in CI). Same gold, same floor 0.75:
+
+| | `--relink` | `--relink --rerank` |
+|---|---|---|
+| authority agreement / lift | 0.9577 / +0.155 | **0.9718 / +0.169** |
+| accept hit / miss | 14 / 0 | 13 / 1 |
+| reject still proposed | 3 | **1** |
+| combined over 87 pairs | 0.9195 | 0.9310 |
+| proposals checked / vetoed / errors | — | 31 / 15 / 0 |
+
+Vetoed and judged wrong: *Reynald de Chatillon* → Urban II (0.79, relevance
+0.23), *William Peyre* → William of Tyre (0.88, relevance 0.08). Vetoed and
+judged right: *Duke Godfrey* → Godfrey of Bouillon (1.00, relevance 0.18) —
+the same loss the corpus measurement of #126 showed for the bare *Godfrey*
+forms. The nightly of 2026-10-14, the first with the veto enabled, publishes
+exactly these figures (`status.json`: 0.9310, lift +0.2759), so the fixture
+measurement and the live run agree. The CI gate stays on `--relink` alone:
+its `--min-lift 0.10` floor is measured without the veto, and a veto that
+fails open (errors leave the fuzzy links) can never make it fail.
+
 ### Superseded: why the floor was 0.65 (2026-10-09)
 
 
