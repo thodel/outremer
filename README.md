@@ -244,7 +244,12 @@ context at all? Below `RERANK_MIN_RELEVANCE` (0.25, calibrated on the corpus
 top was already right wherever a right record existed, and reordering only
 lost two. OFF (the default) is byte-identical to the fuzzy linker. Measure
 with `python -m evaluation.rerank_report` on tei; each document records the
-run under `linking_engine`.
+run under `linking_engine`. On the gold, `python -m evaluation.harness
+--relink --rerank` runs the veto over the fixtures' mention contexts
+(M21.4, #128): 15 of 31 proposals vetoed, authority agreement 0.9577 →
+0.9718 — two judged-wrong links gone, one judged-right one lost (*Duke
+Godfrey*, relevance 0.18). Live on tei since 2026-10-12; the first nightly
+with the veto (2026-10-14) reproduces the fixture figure exactly.
 
 **Coverage against sourced lists (M19.2, #92).** `python scripts/audit_authority_coverage.py
 --benchmark data/audits/benchmarks/*.json` counts how many figures of each
@@ -326,8 +331,14 @@ python -m evaluation.harness
 # Score the *current* site/data output — run after a pipeline change
 python -m evaluation.harness --live
 
-# Regenerate fixtures after new adjudications arrive
-python -m evaluation.build_fixture
+# Regenerate fixtures after new adjudications arrive (links from the current linker)
+python -m evaluation.build_fixture --relink
+
+# Score the fixtures with the current linker code (offline; the CI gate)
+python -m evaluation.harness --relink
+
+# … plus the reranker veto over the fixtures' mention contexts (needs GPUStack)
+python -m evaluation.harness --relink --rerank
 ```
 
 **Extraction quality** is measured separately, against the full-gold fixture

@@ -24,15 +24,31 @@ def load_authority_lookup() -> list[dict]:
     return linker.build_authority_lookup(index)
 
 
-def relink(persons: list[str], authority_lookup: list[dict], **kwargs) -> list[dict]:
+def relink(
+    persons: list[str],
+    authority_lookup: list[dict],
+    *,
+    contexts: dict[str, str] | None = None,
+    rerank: bool = False,
+    **kwargs,
+) -> list[dict]:
     """Run the *current* linker over extracted person names.
 
     This is the measurement instrument for linker changes (M10.1–M10.3):
     extraction snapshots stay fixed, links are recomputed with the code
     under test — no LLM required.
+
+    ``rerank`` is explicit here, never read from the environment: a
+    measurement must say what it measured. With ``rerank=True`` the
+    reranker veto (M21.2) runs on GPUStack over each mention and its
+    ``contexts`` entry — that is the fixture-side measurement of M21.4
+    (#128); without contexts the veto only sees the bare name.
     """
-    person_dicts = [{"name": n} for n in persons if n]
-    return linker.link_voyagers_to_outremer(person_dicts, authority_lookup, **kwargs)
+    contexts = contexts or {}
+    person_dicts = [{"name": n, "context": contexts.get(n, "")} for n in persons if n]
+    return linker.link_voyagers_to_outremer(
+        person_dicts, authority_lookup, rerank=rerank, **kwargs
+    )
 
 
 # --- Recognition (M14.5, #124) -----------------------------------------------

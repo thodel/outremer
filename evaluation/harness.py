@@ -13,6 +13,7 @@ Fixture format (one JSON file per document in evaluation/fixtures/):
       "rejected": [["Miles of Clermont", "AUTH:CR119"]],
       "predictions": {                  # snapshot for offline/CI determinism
         "persons": ["..."],
+        "contexts": {"...": "..."},      # mention → extracted context (M21.4)
         "links": [ {"person": "...", "top_candidate": {"authority_id": "..."}} ]
       }
     }
@@ -25,6 +26,8 @@ helped.
 Usage (from repo root):
     python -m evaluation.harness
     python -m evaluation.harness --live --min-agreement 0.5
+    python -m evaluation.harness --relink            # current linker, offline
+    python -m evaluation.harness --relink --rerank   # + reranker veto (GPUStack)
 """
 
 from __future__ import annotations
@@ -105,26 +108,48 @@ def _load_recognition_events(doc_id: str) -> dict | None:
     return None
 
 
-def evaluate_fixture(fixture: dict, *, live: bool = False, relink: bool = False) -> dict:
+def _veto_summary(links: list[dict]) -> dict:
+    """What the reranker did to relinked links, from the marks it leaves."""
+    marks = [lk.get("rerank") for lk in links if lk.get("rerank")]
+    return {
+        "checked": sum(1 for m in marks if "veto" in m),
+        "vetoed": sum(1 for m in marks if m.get("veto")),
+        "errors": sum(1 for m in marks if "error" in m),
+    }
+
+
+def evaluate_fixture(
+    fixture: dict, *, live: bool = False, relink: bool = False, rerank: bool = False
+) -> dict:
     """Evaluate one fixture; returns {mode, extraction?, linking?, wikidata?}.
 
     ``relink`` recomputes authority links from the snapshot's extracted
     persons with the *current* linker code — the measurement mode for
     linker changes (extraction held constant, no LLM needed).
+
+    ``rerank`` additionally runs the reranker veto (M21.2) over the relinked
+    mentions and their fixture contexts (M21.4, #128). It needs GPUStack, so
+    it is never the CI default; the result carries a ``reranker`` summary.
     """
     doc_id = fixture["doc_id"]
     mode = fixture.get("mode", "adjudicated")
     preds = (
         load_predictions_live(doc_id) if live else fixture.get("predictions") or {}
     )
+    result: dict = {"mode": mode}
     if relink and preds.get("persons"):
         from evaluation._pipeline import load_authority_lookup
         from evaluation._pipeline import relink as _relink
 
         preds = dict(preds)
-        preds["links"] = _relink(preds["persons"], load_authority_lookup())
-
-    result: dict = {"mode": mode}
+        preds["links"] = _relink(
+            preds["persons"],
+            load_authority_lookup(),
+            contexts=preds.get("contexts"),
+            rerank=rerank,
+        )
+        if rerank:
+            result["reranker"] = _veto_summary(preds["links"])
     if mode == "full" and fixture.get("gold_persons"):
         result["extraction"] = extraction_prf(
             preds.get("persons", []), fixture["gold_persons"]
@@ -262,6 +287,12 @@ def main(argv: list[str] | None = None) -> int:
         "current linker code (measures linker changes, M10.x)",
     )
     ap.add_argument(
+        "--rerank",
+        action="store_true",
+        help="with --relink: run the reranker veto (M21.2) over the relinked "
+        "mentions and their fixture contexts; needs GPUStack (M21.4, #128)",
+    )
+    ap.add_argument(
         "--output",
         default=None,
         help="write full JSON results to this path",
@@ -299,6 +330,8 @@ def main(argv: list[str] | None = None) -> int:
         ap.error("--repeat must be at least 1")
     if args.repeat_command and not args.live:
         ap.error("--repeat-command requires --live")
+    if args.rerank and not args.relink:
+        ap.error("--rerank requires --relink (the veto runs on relinked links)")
 
     samples: list[dict] = []
     for sample_number in range(1, args.repeat + 1):
@@ -308,7 +341,7 @@ def main(argv: list[str] | None = None) -> int:
         for f in fixture_files:
             fixture = json.loads(f.read_text())
             doc_results[fixture["doc_id"]] = evaluate_fixture(
-                fixture, live=args.live, relink=args.relink
+                fixture, live=args.live, relink=args.relink, rerank=args.rerank
             )
 
         sample_totals: dict[str, list[int]] = {
@@ -389,6 +422,15 @@ def main(argv: list[str] | None = None) -> int:
                 f"proposing nothing would score; grow positive gold before "
                 f"trusting its agreement figure"
             )
+    if args.rerank:
+        tally = {"checked": 0, "vetoed": 0, "errors": 0}
+        for res in doc_results.values():
+            for k, v in (res.get("reranker") or {}).items():
+                tally[k] += v
+        print(
+            f"{'reranker veto':>24}: {tally['vetoed']} of {tally['checked']} "
+            f"relinked proposals vetoed, {tally['errors']} errors"
+        )
     if total_pairs:
         aggregate = good / total_pairs
         lift = aggregate - null_aggregate
