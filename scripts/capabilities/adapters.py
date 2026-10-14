@@ -435,19 +435,28 @@ def default_registry(log_path: Path | None = None) -> Any:
     except ImportError:  # direct `python scripts/discover_capabilities.py`
         from atr_client import AtrClient
 
+    try:
+        from scripts import config
+    except ImportError:  # direct `python scripts/discover_capabilities.py`
+        import config
+
     from .provenance import JsonlInvocationLog
     from .registry import CapabilityRegistry
 
     registry = CapabilityRegistry(
         invocation_log=JsonlInvocationLog(log_path) if log_path is not None else None
     )
+    # The three routed roles resolve exactly as the pipeline resolves them
+    # (M18.2, #88); a role left to the config default is "" here, because
+    # the adapter must report what the environment declares, not a fallback.
     models = {
-        "text": os.environ.get("GPUSTACK_MODEL_TEXT") or os.environ.get("EXTRACTION_MODEL", ""),
-        "vision": os.environ.get("GPUSTACK_MODEL_VISION") or os.environ.get("QWEN3_VL_MODEL", ""),
-        "orchestrator": os.environ.get("GPUSTACK_MODEL_ORCHESTRATOR") or os.environ.get("ORCHESTRATOR_MODEL", ""),
+        role: ("" if info["source"] == "default" else info["model"])
+        for role, info in config.model_roles().items()
+    }
+    models.update({
         "embedding": os.environ.get("GPUSTACK_MODEL_EMBEDDING", ""),
         "reranker": os.environ.get("GPUSTACK_MODEL_RERANKER", ""),
-    }
+    })
     registry.register(
         GPUStackAdapter(
             os.environ.get("GPUSTACK_BASE_URL", ""),

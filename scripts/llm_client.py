@@ -19,10 +19,10 @@ from typing import Any
 import openai
 
 from config import (
-    EXTRACTION_MODEL,
     EXTRACTION_SEED,
     GPUSTACK_API_KEY,
     GPUSTACK_BASE_URL,
+    GPUSTACK_MODEL_TEXT,
     GPUSTACK_TIMEOUT,
 )
 
@@ -86,7 +86,8 @@ def generate(
         prompt   — user message
         system   — optional system prompt
         images   — optional data: URLs sent as multimodal image parts
-        model    — override EXTRACTION_MODEL (None = use config default)
+        model    — override the TEXT role model (None = GPUSTACK_MODEL_TEXT);
+                   recognition passes the VISION role model here
         **kwargs — passed through to the API (temperature, max_tokens, …)
 
     Returns:
@@ -110,7 +111,7 @@ def generate(
 
     client = get_client()
     resp = client.chat.completions.create(
-        model=model or EXTRACTION_MODEL,
+        model=model or GPUSTACK_MODEL_TEXT,
         messages=messages,
         **kwargs,
     )
@@ -125,7 +126,7 @@ def generate(
         logger.warning(
             "%s stopped at the token limit (%s completion tokens) with %d chars "
             "of content%s",
-            model or EXTRACTION_MODEL,
+            model or GPUSTACK_MODEL_TEXT,
             getattr(usage, "completion_tokens", "?"),
             len(content),
             "" if content.strip() else

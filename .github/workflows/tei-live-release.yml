@@ -82,7 +82,7 @@ jobs:
           cp data/staging/run_report.json "${work}/text-run-report.json"
           .release-venv/bin/python scripts/release_control.py gate \
             --report "${work}/text-run-report.json" --output "${work}/text-gate.json" \
-            --expected-model "${EXTRACTION_MODEL}"
+            --expected-model "${GPUSTACK_MODEL_TEXT:-$EXTRACTION_MODEL}"
 
           .release-venv/bin/python scripts/run_pipeline.py \
             --file tests/fixtures/scans/magna-carta-1215-image-only.pdf \
@@ -92,7 +92,7 @@ jobs:
           cp data/staging/run_report.json "${work}/scan-run-report.json"
           .release-venv/bin/python scripts/release_control.py gate \
             --report "${work}/scan-run-report.json" --output "${work}/scan-gate.json" \
-            --expected-model "${EXTRACTION_MODEL}" --require-recognition
+            --expected-model "${GPUSTACK_MODEL_TEXT:-$EXTRACTION_MODEL}" --require-recognition
 
           .release-venv/bin/python scripts/release_control.py manifest \
             --preflight "${work}/preflight.json" \

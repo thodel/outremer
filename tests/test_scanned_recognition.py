@@ -310,7 +310,7 @@ def test_recognition_provenance_lands_in_the_document(monkeypatch, tmp_path):
     assert text
     prov = run_pipeline._last_recognition[str(FIXTURE)]
     assert prov["engine"] == "qwen3-vl" and prov["backend"] == "gpustack"
-    assert prov["model"] == config.QWEN3_VL_MODEL
+    assert prov["role"] == "vision" and prov["model"] == config.GPUSTACK_MODEL_VISION
     assert prov["pages"] == 1
     assert prov["decoding"]["frequency_penalty"] == 0.2
     assert prov["decoding"]["enable_thinking"] is False

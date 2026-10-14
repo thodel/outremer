@@ -48,7 +48,7 @@ VENV="$WORK/.venv/bin"
 "$VENV/python" scripts/release_control.py gate \
   --report data/staging/run_report.json \
   --output "$LOGDIR/gate-latest.json" \
-  --expected-model "$EXTRACTION_MODEL"
+  --expected-model "${GPUSTACK_MODEL_TEXT:-$EXTRACTION_MODEL}"
 
 # 4) Evaluation history (informational — never blocks publishing).
 "$VENV/python" -m evaluation.harness --live \

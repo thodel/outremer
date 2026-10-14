@@ -35,6 +35,9 @@ def build_status(
             "total_persons": r.get("total_persons"),
             "llm_provider": r.get("llm_provider"),
             "extraction_model": r.get("extraction_model"),
+            # role → {model, source}: which model served which role, and
+            # which env key said so (M18.2, #88)
+            "models": r.get("models") or {},
             "extraction_seed": r.get("extraction_seed"),
             "documents_by_engine": (r.get("extraction") or {}).get("documents_by_engine"),
             "fallback_chunks": ((r.get("extraction") or {}).get("degradation") or {}).get("fallback_chunks"),

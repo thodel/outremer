@@ -1204,12 +1204,13 @@ def _extract_gpustack_chunk(
     # Resolve the model from config at CALL time. A module-level constant
     # here was hardcoded to qwen3-30b-a3b-instruct — a model that no longer
     # exists on the stack — while claiming to mirror config; every chunk
-    # 404ed regardless of EXTRACTION_MODEL and the pipeline silently
+    # 404ed regardless of the environment and the pipeline silently
     # degraded to heuristic NER even inside the university network.
+    # Extraction is the TEXT role (M18.2, #88).
     from config import (
         EXTRACTION_DISABLE_THINKING,
         EXTRACTION_MAX_TOKENS,
-        EXTRACTION_MODEL,
+        GPUSTACK_MODEL_TEXT,
     )
 
     extra: dict[str, Any] = {}
@@ -1219,7 +1220,7 @@ def _extract_gpustack_chunk(
         extra["extra_body"] = {"chat_template_kwargs": {"enable_thinking": False}}
     raw_text = _llm_generate(
         prompt,
-        model=EXTRACTION_MODEL,
+        model=GPUSTACK_MODEL_TEXT,
         max_tokens=EXTRACTION_MAX_TOKENS,
         temperature=0.1,
         **extra,
@@ -1389,7 +1390,7 @@ def extract_persons_and_metadata(
     feedback_store = _load_entity_feedback(feedback_path)
     feedback_terms = _feedback_terms_for_prompt(feedback_store)
 
-    from config import EXTRACTION_MODEL, EXTRACTION_SEED, GPUSTACK_BASE_URL
+    from config import EXTRACTION_SEED, GPUSTACK_BASE_URL, GPUSTACK_MODEL_TEXT
 
     if GPUSTACK_BASE_URL:
         result = _extract_gpustack(
@@ -1411,7 +1412,8 @@ def extract_persons_and_metadata(
             provider = "mixed"
         result["engine"] = {
             "provider": provider,
-            "model": EXTRACTION_MODEL if provider != "heuristic" else None,
+            "role": "text",
+            "model": GPUSTACK_MODEL_TEXT if provider != "heuristic" else None,
             "seed": EXTRACTION_SEED,
             "configured_provider": "gpustack",
             "chunks": n_chunks,
