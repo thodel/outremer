@@ -16352,8 +16352,43 @@
     },
     "the grand master of the hospitallers": {
       "person": "the Grand Master of the Hospitallers",
-      "candidates": [],
-      "queried_at": "2026-08-29T11:26:00.609158"
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 4,
+      "candidates": [
+        {
+          "qid": "Q2057332",
+          "label": "Sancho of Aragon",
+          "description": "master the Order of Alcántara",
+          "url": "https://www.wikidata.org/wiki/Q2057332",
+          "score": 0.6,
+          "birth_year": 1398,
+          "death_year": 1416,
+          "matched": "Sancho de Aragón, Grand Master of Alcantara"
+        },
+        {
+          "qid": "Q3419195",
+          "label": "Raoul III of Vexin",
+          "description": "Count of Valois, Chief advisor of the Royal Council of King Henry I of France",
+          "url": "https://www.wikidata.org/wiki/Q3419195",
+          "score": 0.6,
+          "birth_year": 992,
+          "death_year": 1060,
+          "matched": "Le Grand"
+        },
+        {
+          "qid": "Q587697",
+          "label": "Afonso I of Portugal",
+          "description": "king of Portugal from 1139 to 1185",
+          "url": "https://www.wikidata.org/wiki/Q587697",
+          "score": 0.6,
+          "birth_year": 1109,
+          "death_year": 1185,
+          "matched": "Le Grand"
+        }
+      ],
+      "queried_at": "2026-10-14T01:36:45.285200+00:00"
     },
     "the sultan al ashraf": {
       "person": "the Sultan al Ashraf",
@@ -17177,16 +17212,56 @@
         }
       ],
       "queried_at": "2026-10-13T01:39:53.759621+00:00"
+    },
+    "the monk bahira": {
+      "person": "the monk Bahira",
+      "status": "match",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 1,
+      "candidates": [
+        {
+          "qid": "Q551599",
+          "label": "Bahira",
+          "description": "6th-century monk said to have prophecied of Muhammad",
+          "url": "https://www.wikidata.org/wiki/Q551599",
+          "score": 0.65,
+          "birth_year": 600,
+          "death_year": 700,
+          "matched": "Bahira"
+        },
+        {
+          "qid": "Q106139223",
+          "label": "Godefroy the Monk",
+          "description": "Benediktinermönch; Verfasser einer Vita Hildegards von Bingen",
+          "url": "https://www.wikidata.org/wiki/Q106139223",
+          "score": 0.6,
+          "birth_year": null,
+          "death_year": 1175,
+          "matched": "Godefroy the Monk"
+        },
+        {
+          "qid": "Q11630312",
+          "label": "Kakusuke (monk)",
+          "description": "",
+          "url": "https://www.wikidata.org/wiki/Q11630312",
+          "score": 0.6,
+          "birth_year": 1013,
+          "death_year": 1063,
+          "matched": "Kakusuke (monk)"
+        }
+      ],
+      "queried_at": "2026-10-14T01:36:44.916752+00:00"
     }
   },
   "status": {
     "source": "wikidata_pre1500_snapshot",
     "snapshot": "2026-10-02T22:51:17+00:00",
-    "resolved": 4,
-    "cached": 193,
-    "re_resolved": 0,
-    "from_an_older_resolver": 1154,
+    "resolved": 2,
+    "cached": 196,
+    "re_resolved": 1,
+    "from_an_older_resolver": 1153,
     "refresh": "stale",
-    "ran_at": "2026-10-13T01:39:53.788803+00:00"
+    "ran_at": "2026-10-14T01:36:45.287275+00:00"
   }
 }
