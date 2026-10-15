@@ -6,10 +6,15 @@ LABEL org.opencontainers.image.source="https://github.com/thodel/outremer" \
 
 WORKDIR /app
 
+# git: the ATR client is pinned as a git+https URL (ADR 0002) — pip ignores
+# #subdirectory on archive URLs, so the slim image needs the binary to install
+# the lock file at all. Removed again after the install; it is not a runtime need.
 # The same pinned set as CI and the tei nightly; bump deps by regenerating
 # requirements.lock.txt, not here.
 COPY requirements.lock.txt .
-RUN pip install --no-cache-dir -r requirements.lock.txt
+RUN apt-get update && apt-get install -y --no-install-recommends git \
+    && pip install --no-cache-dir -r requirements.lock.txt \
+    && apt-get purge -y git && apt-get autoremove -y && rm -rf /var/lib/apt/lists/*
 
 COPY scripts/ ./scripts/
 # The evidence-first JSON Schema and SHACL shapes: every document is

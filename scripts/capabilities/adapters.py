@@ -430,10 +430,8 @@ def enabled(name: str, default: bool = False) -> bool:
 
 def default_registry(log_path: Path | None = None) -> Any:
     """Build adapters strictly from environment values, with no secret output."""
-    try:
-        from scripts.atr_client import AtrClient
-    except ImportError:  # direct `python scripts/discover_capabilities.py`
-        from atr_client import AtrClient
+    # The gateway's own client package (ADR 0002, #87), never a copy in scripts/.
+    from atr_client import AtrClient
 
     try:
         from scripts import config

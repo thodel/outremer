@@ -76,10 +76,16 @@ def vlm_ocr(pdf: Path) -> tuple[str, str]:
 
 
 def atr_client():
-    """The production ATR gateway client (URL, key and timeout from config)."""
+    """The production ATR gateway client (URL, key and timeout from config).
+
+    ``atr_client`` is the gateway's package (ADR 0002, #87); outremer's config
+    stays the one place its URL, key and timeout are read from.
+    """
     from atr_client import AtrClient
 
-    return AtrClient()
+    from config import ATR_API_KEY, ATR_GATEWAY_URL, ATR_HTTP_TIMEOUT
+
+    return AtrClient(ATR_GATEWAY_URL, api_key=ATR_API_KEY, timeout=ATR_HTTP_TIMEOUT)
 
 
 def recognise(pdf: Path) -> tuple[str, dict[str, int]]:

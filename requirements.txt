@@ -14,3 +14,6 @@ pyshacl==0.31.0
 jsonschema==4.25.1
 # pypdf image extraction for the VLM recognition path (scanned PDFs)
 pillow>=10.0
+# The ATR gateway client, owned by the gateway repo (ADR 0002, #87). Pinned to a
+# commit; bump the SHA in a PR, never copy the code into scripts/.
+atr-client @ git+https://github.com/thodel/serving-atr-inference@ebb933506a7cf98f539819a8366be5e518097c5c#subdirectory=clients/python
