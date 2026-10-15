@@ -1,25 +1,39 @@
 {
-  "generated_at": "2026-10-14T01:36:45.814595+00:00",
+  "generated_at": "2026-10-15T01:37:29.035609+00:00",
   "run": {
-    "run_at": "2026-10-14T01:36:45.311238+00:00",
+    "run_at": "2026-10-15T01:37:28.569096+00:00",
     "docs_total": 3,
     "docs_failed": 0,
-    "total_persons": 366,
+    "total_persons": 363,
     "llm_provider": "gpustack",
     "extraction_model": "qwen3.8-27b",
+    "models": {
+      "text": {
+        "model": "qwen3.8-27b",
+        "source": "EXTRACTION_MODEL"
+      },
+      "vision": {
+        "model": "qwen3.8-27b",
+        "source": "QWEN3_VL_MODEL"
+      },
+      "orchestrator": {
+        "model": "minimax-m2.7",
+        "source": "ORCHESTRATOR_MODEL"
+      }
+    },
     "extraction_seed": 42,
     "documents_by_engine": {
       "gpustack": 3
     },
     "fallback_chunks": 0,
-    "noise_share": 0.1223
+    "noise_share": 0.1295
   },
   "gate": {
     "status": "pass",
     "errors": []
   },
   "evaluation": {
-    "run_at": "2026-10-14T01:36:45.778437+00:00",
+    "run_at": "2026-10-15T01:37:28.999926+00:00",
     "combined_agreement": 0.9310344827586207,
     "segments": {
       "linking": {
