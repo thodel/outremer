@@ -38,7 +38,7 @@ The registry fails closed on invocation when no audit log is configured.
 - **ATR:** health/models, segmentation and attributed recognition/OCR. A thin
   shim around `AtrClient`. Per [ADR 0002](adr/0002-shared-code-with-agentic-historian.md)
   the client is the `atr-client` package owned by `serving-atr-inference`,
-  pinned by commit SHA in `requirements.lock.txt`; #87 performs the move.
+  pinned by commit SHA (`git+https://…#subdirectory=clients/python`) in `requirements.lock.txt`; #87 performs the move.
 - **MCP knowledge federation:** streamable-HTTP initialization, tool discovery
   and tool calls. Person results become *unreviewed external candidates* with
   source-local identity preserved; they are never merged directly into an

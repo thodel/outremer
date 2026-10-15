@@ -45,8 +45,13 @@ Facts that constrain the mechanism:
    nightly runs `pip install -r requirements.lock.txt` (then the pipeline
    under `--airgap`), CI and the Docker build install the same lock,
    agentic_historian installs `requirements.txt`. A URL pin is just another line.
-3. **The outremer image is `python:3.12-slim` without `git`.** A `git+https://`
-   pin would fail the Docker build; an archive URL does not need git.
+3. **pip honours `#subdirectory=` for VCS URLs only.** An archive URL
+   (`…/archive/<sha>.tar.gz#subdirectory=clients/python`) unpacks and then
+   reports "neither setup.py nor pyproject.toml found" — measured with pip
+   26.1 over `file://` and `http://`. A package that is not at a repository's
+   root therefore needs a `git+https://` pin, and a `git+https://` pin needs
+   the `git` binary where it is installed. The outremer image is
+   `python:3.12-slim`, which has none; CI runners and the tei venv have it.
 4. **The gateway repository already owns the wire contract.**
    `src/atr_serving/contracts.py` (pydantic only, "zero heavy deps") is
    imported by the gateway and every engine service, and its test suite runs
@@ -85,7 +90,7 @@ Each consumer pins the package to a 40-character commit SHA of the gateway
 repository, in the file it installs from:
 
 ```
-atr-client @ https://github.com/thodel/serving-atr-inference/archive/<sha>.tar.gz#subdirectory=clients/python
+atr-client @ git+https://github.com/thodel/serving-atr-inference@<sha>#subdirectory=clients/python
 ```
 
 - outremer: `requirements.lock.txt` (and `requirements.txt`, so a regenerated
@@ -97,7 +102,9 @@ atr-client @ https://github.com/thodel/serving-atr-inference/archive/<sha>.tar.g
   never change what a consumer runs.
 - A test in each consumer asserts that `atr_client` is imported from
   `site-packages`, not from the repository tree, and that the pin is a
-  40-hex SHA archive URL. A vendored copy reappearing fails CI.
+  `git+https://` URL on a 40-hex SHA. A vendored copy reappearing fails CI.
+- The outremer image installs `git` (one apt line in the Dockerfile) so the
+  same lock file builds there; the CI Docker job is where that is proven.
 
 ### 3. Who owns which operational constant
 
@@ -136,8 +143,10 @@ not "the same project".
   repository can run the real app in its tests.
 - **PyPI or an internal index.** Rejected: nothing private is involved and a
   publishing step is one more thing to forget between "merged" and "installed".
-- **`git+https://` pins.** Rejected for the mechanism, not the idea: the
-  outremer image has no `git`. Archive URLs are the same pin without the tool.
+- **Archive-URL pins (no `git` needed).** Preferred at first because the
+  outremer image has no `git`; rejected after measuring that pip ignores
+  `#subdirectory=` on archive URLs. Installing `git` in the image is the
+  smaller cost.
 
 ## Consequences
 
