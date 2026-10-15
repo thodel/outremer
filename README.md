@@ -62,6 +62,9 @@ outremer/
 ├── scrapers/                      Historical web scrapers
 ├── bib/                           BibTeX output
 ├── docs/                          Living documentation
+│   ├── adr/                           Decisions: 0001 tei deployment, 0002 code shared
+│   │                                  with agentic_historian (the ATR client is a pip
+│   │                                  package owned by serving-atr-inference)
 │   ├── LOCAL_LLM_ADAPTATION_PLAN.md   Full Epic 1–8 roadmap
 │   ├── EPIC4_HBLS_MCP.md              HBLS MCP server docs
 │   └── archive/                       Stale/historical docs
