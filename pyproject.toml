@@ -11,13 +11,18 @@ requires-python = ">=3.10"
 dependencies = []
 
 [project.optional-dependencies]
+# The MCP server (Epic 22). mcp 2.0 renamed FastMCP to MCPServer and dropped
+# mcp.server.fastmcp, so the major version is pinned deliberately. Not in the
+# runtime lock: the pipeline does not need it, the server is its own service.
+mcp = ["mcp>=2.0.0,<3"]
 dev = [
     "pytest>=8.0",
     "ruff>=0.8",
+    "mcp>=2.0.0,<3",
 ]
 
 [tool.setuptools]
-packages = ["evaluation"]
+packages = ["evaluation", "outremer_mcp"]
 
 [tool.ruff]
 line-length = 100
