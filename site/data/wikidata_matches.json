@@ -17261,16 +17261,56 @@
       "fits": 0,
       "candidates": [],
       "queried_at": "2026-10-15T01:37:28.544476+00:00"
+    },
+    "grand master odo": {
+      "person": "Grand Master Odo",
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 9,
+      "candidates": [
+        {
+          "qid": "Q131364521",
+          "label": "Eudes de Gournay",
+          "description": "noble normando",
+          "url": "https://www.wikidata.org/wiki/Q131364521",
+          "score": 0.6,
+          "birth_year": 860,
+          "death_year": 912,
+          "matched": "Odo"
+        },
+        {
+          "qid": "Q1380805",
+          "label": "Odo, Count of Toulouse",
+          "description": "French noble",
+          "url": "https://www.wikidata.org/wiki/Q1380805",
+          "score": 0.6,
+          "birth_year": 900,
+          "death_year": 918,
+          "matched": "Odo"
+        },
+        {
+          "qid": "Q1385987",
+          "label": "Odo, Count of Nevers",
+          "description": "French noble",
+          "url": "https://www.wikidata.org/wiki/Q1385987",
+          "score": 0.6,
+          "birth_year": 1230,
+          "death_year": 1266,
+          "matched": "Odo"
+        }
+      ],
+      "queried_at": "2026-10-16T01:50:10.743261+00:00"
     }
   },
   "status": {
     "source": "wikidata_pre1500_snapshot",
     "snapshot": "2026-10-02T22:51:17+00:00",
     "resolved": 1,
-    "cached": 195,
+    "cached": 193,
     "re_resolved": 0,
     "from_an_older_resolver": 1153,
     "refresh": "stale",
-    "ran_at": "2026-10-15T01:37:28.546382+00:00"
+    "ran_at": "2026-10-16T01:50:10.745467+00:00"
   }
 }
