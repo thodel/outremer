@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
-# Correct a split introduced on 2026-08-29 (#123 → #135). Run AS ROOT.
+# Correct a split introduced on 2026-08-29 (#123 → #134). Run AS ROOT.
+#
+# SUPERSEDED by worker-on-nightly.sh (#134): the packaged worker now runs
+# nightly.sh itself, so the timer is unmasked again and the cron line retired.
+# Kept for the record of why the timer was masked; do not run it again.
 #
 # root-install.sh enabled outremer-worker.timer and removed the interim cron.
 # But the packaged worker only runs run_pipeline.py: no git pull, no

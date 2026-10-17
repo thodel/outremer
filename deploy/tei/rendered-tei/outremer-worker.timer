@@ -1,10 +1,10 @@
 [Unit]
-Description=Schedule the Outremer production pipeline
+Description=Schedule the Outremer nightly (#134; replaces the 03:15 cron line)
 
 [Timer]
-OnCalendar=*-*-* 03:00:00 Europe/Zurich
+OnCalendar=*-*-* 03:15:00 Europe/Zurich
 Persistent=true
-RandomizedDelaySec=10m
+AccuracySec=1min
 Unit=outremer-worker.service
 
 [Install]

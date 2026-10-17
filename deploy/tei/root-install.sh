@@ -62,7 +62,8 @@ echo "== 4. state seed =="
 chown -R outremer:outremer /var/lib/outremer/state
 
 echo "== 5. systemd units =="
-# NOTE: rendered units ship MemoryMax=8G; tei has 3.8G RAM. Cap lower here.
+# NOTE: tei has 3.8G RAM. The web unit ships 512M; the worker (#134) ships
+# MemoryHigh=2G/MemoryMax=3G, so this sed no longer matches anything there.
 for u in outremer-web.service outremer-worker.service outremer-worker.timer; do
   sed 's/^MemoryMax=8G/MemoryMax=2G/' "$HERE/rendered-tei/$u" > "/etc/systemd/system/$u"
 done
