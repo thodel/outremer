@@ -1,14 +1,18 @@
 # User-level unit for the outremer MCP server on tei (Epic 22, #129; Linger=yes on tei).
 # Install:  cp deploy/tei/outremer-mcp.user.service ~/.config/systemd/user/outremer-mcp.service
 #           systemctl --user daemon-reload && systemctl --user enable --now outremer-mcp
-# Serves the published site/data of the nightly checkout (gate-checked, committed
-# to main) on loopback; nginx proxies /mcp/outremer/mcp and /mcp/outremer/health (#131).
-# After a nightly the server re-reads the data by itself (it stats status.json).
+# Serves the PUBLISHED mirror /var/lib/outremer/state/site/data on loopback — the
+# nightly writes it only after the provenance gate passed. Never point this at
+# work/site/data: the pipeline writes there before the gate decides, so after a
+# refused night it holds refused output (2026-10-17). nginx proxies
+# /mcp/outremer/mcp and /mcp/outremer/health (#131). The server re-reads the
+# data by itself after a nightly (it stats status.json). dh reads the mirror
+# through the outremer group.
 [Unit]
 Description=outremer MCP server (loopback :8014; nginx proxies /mcp/outremer/)
 
 [Service]
-Environment=OUTREMER_MCP_SITE_DATA=%h/outremer/work/site/data
+Environment=OUTREMER_MCP_SITE_DATA=/var/lib/outremer/state/site/data
 Environment=OUTREMER_MCP_HTTP_PATH=/mcp/outremer/mcp
 Environment=OUTREMER_MCP_PORT=8014
 WorkingDirectory=%h/outremer/work

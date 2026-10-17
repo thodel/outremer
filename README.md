@@ -536,8 +536,12 @@ python -m outremer_mcp.server --site-data site/data --port 8014 --http-path /mcp
 curl -s http://127.0.0.1:8014/health
 ```
 
-The server re-reads `site/data` when `status.json` changes, i.e. after each
-nightly. On tei it runs as the dh user unit
+The server re-reads its data when `status.json` changes, i.e. after each
+nightly. On tei it reads the published mirror `/var/lib/outremer/state/site/data`,
+which the nightly writes only after the gate passed — never `work/site/data`,
+where the pipeline writes before the gate decides. A document newer than the
+last gated run in `status.json` is withheld (`withheld_documents` in
+`corpus_stats`, `withheld` in `/health`). On tei it runs as the dh user unit
 [`deploy/tei/outremer-mcp.user.service`](deploy/tei/outremer-mcp.user.service)
 (no root needed); the nginx locations are in
 [`deploy/tei/nginx-mcp-outremer.conf`](deploy/tei/nginx-mcp-outremer.conf)

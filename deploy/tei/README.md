@@ -175,8 +175,9 @@ by #115.
 
 ## MCP server (Epic 22)
 
-`outremer-mcp.user.service` serves the published `site/data` of the nightly
-checkout over MCP on loopback port 8014 as a dh user unit (install lines in the
+`outremer-mcp.user.service` serves the published mirror
+`/var/lib/outremer/state/site/data` (written only after the gate) over MCP on
+loopback port 8014 as a dh user unit (install lines in the
 file; Linger is on). `nginx-mcp-outremer.conf` holds the two locations root
 adds to the vhost (#131). Health without nginx:
 `curl -s http://127.0.0.1:8014/health`.

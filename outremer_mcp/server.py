@@ -146,6 +146,7 @@ async def health_check(request) -> JSONResponse:
         run = (c.status.get("run") or {})
         return JSONResponse({
             "status": "ok", "records": len(c.records), "documents": len(c.documents),
+            "withheld": len(c.withheld),
             "run_at": run.get("run_at"), "gate": (c.status.get("gate") or {}).get("status"),
         })
     except Exception as exc:  # the data directory is missing or unreadable
