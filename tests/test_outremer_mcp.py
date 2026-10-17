@@ -134,6 +134,26 @@ def test_the_server_rereads_after_the_nightly_republished(site_data, corpus):
     assert server.corpus_stats()["authority"]["records"] == 3
 
 
+def test_a_document_newer_than_the_last_gated_run_is_withheld(site_data):
+    """2026-10-17: the pipeline rewrote the documents heuristically, the gate
+    refused, and status.json still named the last passing run. Such a document
+    was never published and must not be served."""
+    refused = dict(DOC, doc_id="hamblin-x", run_at="2026-10-17T02:51:26+00:00",
+                   extraction_engine={"provider": "heuristic"})
+    (site_data / "hamblin-x.json").write_text(json.dumps(refused))
+    c = Corpus(site_data).load()
+    server.set_corpus(c)
+    assert list(c.documents) == ["munro-popescrusades-1916"] and c.withheld == ["hamblin-x"]
+    assert server.corpus_stats()["withheld_documents"] == ["hamblin-x"]
+    assert all(h["document"]["doc_id"] != "hamblin-x" for h in server.search_mentions("Urban"))
+
+
+def test_the_tei_unit_reads_the_published_mirror_not_the_work_tree():
+    unit = (Path(__file__).resolve().parents[1] / "deploy" / "tei" / "outremer-mcp.user.service").read_text()
+    assert "OUTREMER_MCP_SITE_DATA=/var/lib/outremer/state/site/data" in unit
+    assert "work/site/data\n" not in unit and "SITE_DATA=%h/outremer/work" not in unit
+
+
 def test_http_path_is_normalised_to_the_public_form():
     assert server.normalise_path("/mcp/outremer/mcp/") == "/mcp/outremer/mcp"
     assert server.normalise_path("mcp") == "/mcp" and server.normalise_path("") == "/mcp"
@@ -173,7 +193,7 @@ def running_server(site_data: Path):
 def test_health_route_names_the_run_and_its_gate(running_server):
     with urllib.request.urlopen(f"http://127.0.0.1:{running_server}/health", timeout=5) as resp:
         body = json.loads(resp.read())
-    assert body == {"status": "ok", "records": 2, "documents": 1,
+    assert body == {"status": "ok", "records": 2, "documents": 1, "withheld": 0,
                     "run_at": "2026-10-15T01:36:00+00:00", "gate": "pass"}
 
 

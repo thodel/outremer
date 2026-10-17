@@ -2,10 +2,14 @@
 
 What is served and why only that (Epic 22, "Abgrenzung"): the nightly on tei
 runs the pipeline, passes it through the provenance gate, and only then
-commits ``site/data``. Those files are the publication; the work tree's
-staging and the review database are not. This module reads the published
-directory and nothing else, and it re-reads it when ``status.json`` changes,
-which is once a night.
+mirrors ``site/`` to ``/var/lib/outremer/state/site`` and commits it. On tei
+the server must read that mirror, never the work tree: the pipeline writes
+``work/site/data`` *before* the gate decides, so after a refused night the
+work tree holds the refused output next to the last passing ``status.json``
+(2026-10-17: 28/28 chunks heuristic, gate refused, work tree still said
+"pass"). As a second line of defence, a document whose ``run_at`` is later
+than the last gated run in ``status.json`` is withheld and counted, not
+served. The corpus re-reads itself when ``status.json`` changes.
 
 Name search goes through ``scripts/linker.py`` — the same code that links
 mentions to records in production — so a search hit and a pipeline link mean
@@ -62,6 +66,7 @@ class Corpus:
     documents: dict[str, Document] = field(default_factory=dict)
     status: dict = field(default_factory=dict)
     authority_meta: dict = field(default_factory=dict)
+    withheld: list[str] = field(default_factory=list)
     _stamp: tuple = ()
 
     # ── loading ──────────────────────────────────────────────────────────────
@@ -81,12 +86,18 @@ class Corpus:
         self.lookup = linker.build_authority_lookup({"persons": persons})
         status_path = self.site_data / "status.json"
         self.status = json.loads(status_path.read_text(encoding="utf-8")) if status_path.exists() else {}
+        gated_at = ((self.status.get("run") or {}).get("run_at")) or ""
         docs: dict[str, Document] = {}
+        withheld: list[str] = []
         for path in sorted(self.site_data.glob("*.json")):
             if path.name in {"authority.json", "status.json", "wikidata_matches.json", "index.json"}:
                 continue
             data = json.loads(path.read_text(encoding="utf-8"))
             if not isinstance(data, dict) or data.get("doc_id") != path.stem or "persons" not in data:
+                continue
+            if gated_at and (data.get("run_at") or "") > gated_at:
+                # written by a run after the last one the gate passed: not published
+                withheld.append(path.stem)
                 continue
             meta = data.get("metadata") or {}
             docs[path.stem] = Document(
@@ -97,6 +108,7 @@ class Corpus:
                 extraction_engine=data.get("extraction_engine"), path=path,
             )
         self.documents = docs
+        self.withheld = withheld
         self._stamp = self._current_stamp()
         return self
 
@@ -243,6 +255,7 @@ class Corpus:
             "authority": {"records": len(self.records), "generated_at": self.authority_meta.get("generated_at"),
                           "wikidata_qid": dict(qid)},
             "documents": docs,
+            "withheld_documents": list(self.withheld),
             "mentions": sum(len(d.persons) for d in self.documents.values()),
             "links_by_status": dict(bands),
             "last_run": {"run_at": run.get("run_at"), "gate": (self.status.get("gate") or {}).get("status"),
