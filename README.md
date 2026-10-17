@@ -505,6 +505,48 @@ The linker matches against all variant forms using `rapidfuzz` token-sort ratio 
 
 ---
 
+## outremer as an MCP server
+
+outremer is itself a provider of the tei MCP fleet (Epic 22): the authority
+file and the published mentions are queryable over MCP, read-only, and only
+as published after the provenance gate (`site/data`, never the work tree's
+staging or the review database).
+
+| | |
+|---|---|
+| public endpoint | `https://tei.dh.unibe.ch/mcp/outremer/mcp` (streamable HTTP, mcp 2.0) |
+| health | `https://tei.dh.unibe.ch/mcp/outremer/health` — records, documents, last run, gate |
+| port on tei | **8014**, loopback, next to the fleet's 8000–8013 |
+| tools | `search_persons`, `get_person`, `corpus_stats`, `search_mentions` |
+| resources | `outremer://stats`, `outremer://person/{authority_id}` |
+
+`search_persons` runs the project's own linker over the preferred labels and
+every recorded name form (floor 0.6; a link asserts at 0.75), so a search hit
+and a pipeline link mean the same thing. `get_person` returns the record with
+its name forms and their provenance, the QID with its status, and the published
+mentions linked to it. `search_mentions` returns the extracted mention, its
+context sentence, the document and the machine-proposed link with its status
+band and reranker veto. An unknown id answers `{"error": …, "not_found": true}`
+so a client can tell "not in this corpus" from an outage. Every hit carries the
+Explorer URL and the URL of the published JSON it came from.
+
+```bash
+pip install -e '.[mcp]'
+python -m outremer_mcp.server --site-data site/data --port 8014 --http-path /mcp/outremer/mcp
+curl -s http://127.0.0.1:8014/health
+```
+
+The server re-reads `site/data` when `status.json` changes, i.e. after each
+nightly. On tei it runs as the dh user unit
+[`deploy/tei/outremer-mcp.user.service`](deploy/tei/outremer-mcp.user.service)
+(no root needed); the nginx locations are in
+[`deploy/tei/nginx-mcp-outremer.conf`](deploy/tei/nginx-mcp-outremer.conf)
+(#131, a root step). Behind nginx the server is mounted at its *public* path;
+the location and `OUTREMER_MCP_HTTP_PATH` must agree exactly, or every request
+answers a bare `Not Found`.
+
+---
+
 ## HBLS MCP Integration
 
 The HBLS (Historisches Biographisches Lexikon der Schweiz) MCP server runs on tei at `http://localhost:8003`. Use it to cross-reference extracted persons against HBLS biographical data:

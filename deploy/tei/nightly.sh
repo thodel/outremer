@@ -32,6 +32,10 @@ set -a; . "$ENVFILE"; set +a
 VENV="$WORK/.venv/bin"
 "$VENV/pip" install -q -r requirements.lock.txt
 "$VENV/pip" install -q -e . --no-deps
+# The MCP server (Epic 22) runs from this venv as a dh user unit; its only
+# extra dependency is kept here so a rebuilt venv does not silently drop it
+# (2026-10-15: `import mcp` had resolved to a stray directory, not a package).
+"$VENV/pip" install -q "mcp>=2.0.0,<3"
 
 # 1) Capability preflight: GPUStack up, configured models actually exist.
 "$VENV/python" scripts/release_control.py preflight \
