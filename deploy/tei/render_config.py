@@ -19,6 +19,10 @@ TOKENS = {
     "RUNTIME_USER",
     "WEB_UPSTREAM",
     "API_UPSTREAM",
+    "WORK_ROOT",
+    "WORKER_USER",
+    "WORKER_HOME",
+    "NIGHTLY_LOG",
 }
 TOKEN_RE = re.compile(r"@([A-Z_]+)@")
 SAFE_USER_RE = re.compile(r"^[a-z_][a-z0-9_-]{0,31}$")
@@ -92,6 +96,11 @@ def parser() -> argparse.ArgumentParser:
     result.add_argument("--runtime-user", type=runtime_user, default="outremer")
     result.add_argument("--web-upstream", type=upstream, default="http://127.0.0.1:8088")
     result.add_argument("--api-upstream", type=upstream, default="http://127.0.0.1:8089")
+    # The nightly worker (#134) runs deploy/tei/nightly.sh from a working
+    # checkout owned by the account that holds the GitHub push credentials.
+    result.add_argument("--worker-user", type=runtime_user, default="dh")
+    result.add_argument("--worker-home", type=absolute_path, default="/home/dh")
+    result.add_argument("--work-root", type=absolute_path, default="/home/dh/outremer/work")
     result.add_argument("--output-dir", type=Path, required=True)
     result.add_argument(
         "--template-dir",
@@ -111,7 +120,14 @@ def main() -> int:
         "RUNTIME_USER": args.runtime_user,
         "WEB_UPSTREAM": args.web_upstream,
         "API_UPSTREAM": args.api_upstream,
+        "WORK_ROOT": args.work_root,
+        "WORKER_USER": args.worker_user,
+        "WORKER_HOME": args.worker_home,
+        # nightly.sh logs to $HOME/outremer/logs; the unit appends to the same file
+        "NIGHTLY_LOG": str(Path(args.worker_home) / "outremer" / "logs" / "nightly.log"),
     }
+    if Path(args.worker_home) not in Path(args.work_root).parents:
+        raise SystemExit("--work-root must lie inside --worker-home (ReadWritePaths covers the home)")
     for path in render_directory(args.template_dir, args.output_dir, values):
         print(path)
     return 0

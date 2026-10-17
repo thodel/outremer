@@ -4,8 +4,11 @@ This directory packages the current Outremer system as two separate concerns:
 
 - `outremer-web.service` serves the generated static research interface on a
   loopback port; nginx publishes it below a configurable URL prefix.
-- `outremer-worker.service` is a bounded, one-shot pipeline job. Its timer is
-  optional; manual and deployment-runner invocation use the same unit.
+- `outremer-worker.service` is the nightly: a one-shot unit that runs
+  `deploy/tei/nightly.sh` as the account owning the work checkout (pull,
+  preflight, pipeline under `--airgap`, **provenance gate**, status, mirror,
+  publish). Its timer replaces the former 03:15 cron line (#134); output is
+  appended to `~/outremer/logs/nightly.log` as before.
 
 Server-side multi-user review/API state is intentionally not invented here; it
 belongs to #114. The nginx template reserves `<base>/api/` for that service.
@@ -181,3 +184,25 @@ loopback port 8014 as a dh user unit (install lines in the
 file; Linger is on). `nginx-mcp-outremer.conf` holds the two locations root
 adds to the vhost (#131). Health without nginx:
 `curl -s http://127.0.0.1:8014/health`.
+
+## Nightly as a systemd timer (#134)
+
+Until 2026-10 the packaged worker ran only `run_pipeline.py` — no pull, no
+gate, no publish — and was masked; the nightly ran from dh's crontab. The
+worker now **is** `nightly.sh` (rendered from
+`templates/outremer-worker.service.template`), so there is one implementation
+of the safe order and systemd adds `Persistent=true` (a missed night runs at
+boot), hardening and `systemctl status`.
+
+Move a host over once, as root:
+
+```bash
+sudo bash /home/dh/outremer/work/deploy/tei/worker-on-nightly.sh
+```
+
+It installs and verifies the units, unmasks the service, enables the timer
+and removes only the nightly line from dh's crontab (the 08:00 healthcheck
+stays). It does not start a run; `nightly.sh` holds a flock, so a leftover cron
+run and a timer run can never overlap. Check after the next night:
+`systemctl status outremer-worker`, `journalctl -u outremer-worker`, and the
+log the healthcheck reads.
