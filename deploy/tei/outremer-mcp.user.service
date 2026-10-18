@@ -15,6 +15,9 @@ Description=outremer MCP server (loopback :8014; nginx proxies /mcp/outremer/)
 Environment=OUTREMER_MCP_SITE_DATA=/var/lib/outremer/state/site/data
 Environment=OUTREMER_MCP_HTTP_PATH=/mcp/outremer/mcp
 Environment=OUTREMER_MCP_PORT=8014
+# nginx forwards Host: tei.dh.unibe.ch; without it every request is 421 (mcp 2.x
+# DNS-rebinding guard admits only loopback hosts by default).
+Environment=OUTREMER_MCP_ALLOWED_HOSTS=tei.dh.unibe.ch
 WorkingDirectory=%h/outremer/work
 ExecStart=%h/outremer/work/.venv/bin/python -m outremer_mcp.server
 Restart=on-failure
