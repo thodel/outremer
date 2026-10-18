@@ -173,7 +173,8 @@ def running_server(site_data: Path):
     thread = threading.Thread(
         target=server.main,
         args=(["--site-data", str(site_data), "--host", "127.0.0.1", "--port", str(port),
-               "--http-path", "/mcp/outremer/mcp", "--explorer-url", "https://example.test/outremer/"],),
+               "--http-path", "/mcp/outremer/mcp", "--explorer-url", "https://example.test/outremer/",
+               "--allowed-hosts", "public.example"],),
         daemon=True,
     )
     thread.start()
@@ -219,3 +220,30 @@ def test_official_client_round_trip_at_the_public_path(running_server):
     assert (first if isinstance(first, dict) else first[0])["authority_id"] == "AUTH:CR184"
     body = json.loads(missing.content[0].text)
     assert body["not_found"] is True and not missing.is_error
+
+
+INIT = {"jsonrpc": "2.0", "id": 1, "method": "initialize",
+        "params": {"protocolVersion": "2025-06-18", "capabilities": {},
+                   "clientInfo": {"name": "probe", "version": "0"}}}
+
+
+def _initialize_with_host(port: int, host: str) -> int:
+    import httpx
+
+    r = httpx.post(f"http://127.0.0.1:{port}/mcp/outremer/mcp", json=INIT, timeout=10,
+                   headers={"Host": host, "Accept": "application/json, text/event-stream"})
+    return r.status_code
+
+
+def test_the_public_host_nginx_forwards_is_admitted_and_others_are_not(running_server):
+    """2026-10-18: behind nginx (Host: tei.dh.unibe.ch) every request answered
+    421 — mcp 2.x admits only loopback hosts on a loopback bind. The configured
+    public host must pass; an unknown host must still be refused."""
+    assert _initialize_with_host(running_server, "public.example") == 200
+    assert _initialize_with_host(running_server, f"127.0.0.1:{running_server}") == 200
+    assert _initialize_with_host(running_server, "evil.example") == 421
+
+
+def test_the_tei_unit_admits_the_public_host():
+    unit = (Path(__file__).resolve().parents[1] / "deploy" / "tei" / "outremer-mcp.user.service").read_text()
+    assert "OUTREMER_MCP_ALLOWED_HOSTS=tei.dh.unibe.ch" in unit

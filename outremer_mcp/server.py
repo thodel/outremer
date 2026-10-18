@@ -20,6 +20,7 @@ import os
 from pathlib import Path
 
 from mcp.server.mcpserver import MCPServer
+from mcp.server.transport_security import TransportSecuritySettings
 from starlette.responses import JSONResponse
 
 from outremer_mcp.corpus import Corpus
@@ -32,6 +33,24 @@ DEFAULT_SITE_DATA = os.environ.get("OUTREMER_MCP_SITE_DATA", "site/data")
 DEFAULT_HOST = os.environ.get("OUTREMER_MCP_HOST", "127.0.0.1")
 DEFAULT_PORT = int(os.environ.get("OUTREMER_MCP_PORT", "8014"))
 DEFAULT_EXPLORER = os.environ.get("OUTREMER_MCP_EXPLORER_URL", "https://tei.dh.unibe.ch/outremer/")
+# Public host names nginx forwards (comma-separated). mcp 2.x guards against
+# DNS rebinding and, on a loopback bind, admits only localhost Host headers —
+# so behind nginx, which forwards Host: tei.dh.unibe.ch, every request got
+# "421 Invalid Host header" (2026-10-18). These names are added to the
+# loopback defaults; the guard stays on and any other Host is still refused.
+DEFAULT_ALLOWED_HOSTS = os.environ.get("OUTREMER_MCP_ALLOWED_HOSTS", "")
+
+LOOPBACK_HOSTS = ["127.0.0.1:*", "localhost:*", "[::1]:*"]
+LOOPBACK_ORIGINS = ["http://127.0.0.1:*", "http://localhost:*", "http://[::1]:*"]
+
+
+def transport_security(public_hosts: str) -> TransportSecuritySettings:
+    """The loopback defaults of mcp, plus each public host (bare and with a port)."""
+    names = [h.strip() for h in (public_hosts or "").split(",") if h.strip()]
+    hosts = LOOPBACK_HOSTS + [v for n in names for v in (n, f"{n}:*")]
+    origins = LOOPBACK_ORIGINS + [f"https://{n}" for n in names]
+    return TransportSecuritySettings(enable_dns_rebinding_protection=True,
+                                     allowed_hosts=hosts, allowed_origins=origins)
 
 
 def normalise_path(path: str | None) -> str:
@@ -166,6 +185,9 @@ def parse_args(argv=None):
                          "a reverse proxy (env OUTREMER_MCP_HTTP_PATH)")
     ap.add_argument("--explorer-url", default=DEFAULT_EXPLORER,
                     help="URL hits cite (env OUTREMER_MCP_EXPLORER_URL)")
+    ap.add_argument("--allowed-hosts", default=DEFAULT_ALLOWED_HOSTS,
+                    help="comma-separated public Host names a reverse proxy forwards "
+                         "(env OUTREMER_MCP_ALLOWED_HOSTS); loopback is always allowed")
     args = ap.parse_args(argv)
     args.http_path = normalise_path(args.http_path)
     return args
@@ -178,9 +200,11 @@ def main(argv=None) -> None:
     logger.info("site data: %s — %d records, %d documents, gate %s, run %s",
                 args.site_data, len(c.records), len(c.documents),
                 (c.status.get("gate") or {}).get("status"), (c.status.get("run") or {}).get("run_at"))
-    logger.info("Starting outremer MCP server on %s:%s%s", args.host, args.port, args.http_path)
+    security = transport_security(args.allowed_hosts)
+    logger.info("Starting outremer MCP server on %s:%s%s (hosts: %s)", args.host, args.port,
+                args.http_path, ", ".join(security.allowed_hosts))
     mcp.run(transport="streamable-http", host=args.host, port=args.port,
-            streamable_http_path=args.http_path)
+            streamable_http_path=args.http_path, transport_security=security)
 
 
 if __name__ == "__main__":
