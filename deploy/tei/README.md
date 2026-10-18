@@ -202,7 +202,10 @@ sudo bash /home/dh/outremer/work/deploy/tei/worker-on-nightly.sh
 
 It installs and verifies the units, unmasks the service, enables the timer
 and removes only the nightly line from dh's crontab (the 08:00 healthcheck
-stays). It does not start a run; `nightly.sh` holds a flock, so a leftover cron
-run and a timer run can never overlap. Check after the next night:
+stays). Enabling the timer may start a run at once: with `Persistent=true` and
+no stamp yet, systemd catches up on a 03:15 that has already passed today (it
+did on 2026-10-18 at 15:36 CEST). That run is a normal nightly, gate included;
+`nightly.sh` holds a flock, so a leftover cron run and a timer run can never
+overlap. Check after the next night:
 `systemctl status outremer-worker`, `journalctl -u outremer-worker`, and the
 log the healthcheck reads.

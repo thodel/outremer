@@ -9,8 +9,11 @@
 #   2. installs them, unmasks the service fix-worker-split.sh had masked,
 #      verifies the units, enables the timer (03:15 Europe/Zurich)
 #   3. removes the nightly line from dh's crontab; the healthcheck line stays
-# It does not start a run. A cron run and a timer run cannot overlap anyway:
-# nightly.sh takes a flock and the second one exits "another run is active".
+# Enabling the timer CAN start a run at once: with Persistent=true and no
+# stamp yet, systemd treats today's 03:15 as missed if it has passed and fires
+# immediately (seen 2026-10-18 15:36 CEST). That run is a normal nightly, gate
+# included. A cron run and a timer run cannot overlap: nightly.sh takes a
+# flock and the second one exits "another run is active".
 set -euo pipefail
 [ "$(id -u)" = 0 ] || { echo "run as root"; exit 1; }
 HERE="$(cd "$(dirname "$0")" && pwd)"
@@ -45,4 +48,6 @@ fi
 echo "== verify =="
 systemctl list-timers outremer-worker.timer --no-pager
 echo "crontab dh:"; crontab -u dh -l | grep -n outremer || true
-echo "done — next run at 03:15; afterwards: journalctl -u outremer-worker; tail /home/dh/outremer/logs/nightly.log"
+systemctl is-active -q outremer-worker.service \
+  && echo "note: a run started now (Persistent=true caught up on today's missed 03:15)"
+echo "done — then nightly at 03:15; check: systemctl status outremer-worker; tail /home/dh/outremer/logs/nightly.log"
