@@ -6,6 +6,8 @@
 #   2. the provenance gate passed
 #   3. the published status file agrees (0 fallback chunks)
 #   4. weekly: scanned-page recognition still reads the hi-res fixture
+#   5. the MCP server (Epic 22) answers, locally and through nginx, and serves
+#      gate-checked data only (#131)
 # On failure: writes an ALERT file into the log dir and a syslog line via
 # logger(1). Channel escalation (mail/Discord) is an operator decision —
 # see #115; this script is the hook to attach it to.
@@ -41,6 +43,37 @@ if [ ! -f "$CANARY_OK" ] || [ -n "$(find "$CANARY_OK" -mtime +6)" ]; then
   else
     FAILS="$FAILS ocr-canary-failed(see ocr-canary.log);"
   fi
+fi
+
+# 5. MCP server (#131). Local first: the dh user unit outremer-mcp on :8014.
+# Then the public route nginx adds; a 404 there means the location is missing,
+# a 502 that nginx cannot reach the unit. The body must say ok, name records,
+# carry the gate verdict of the data it serves, and withhold nothing — a
+# withheld document means the server is pointed at ungated output (#178).
+MCP_LOCAL="${OUTREMER_MCP_HEALTH:-http://127.0.0.1:8014/health}"
+MCP_PUBLIC="${OUTREMER_MCP_PUBLIC_HEALTH:-https://tei.dh.unibe.ch/mcp/outremer/health}"
+mcp_verdict() {
+  curl -s -m 10 "$1" | python3 -c '
+import json, sys
+try:
+    d = json.load(sys.stdin)
+except Exception:
+    print("unreadable"); sys.exit()
+bad = []
+if d.get("status") != "ok": bad.append("status=%s" % d.get("status"))
+if not d.get("records"): bad.append("records=%s" % d.get("records"))
+if d.get("gate") != "pass": bad.append("gate=%s" % d.get("gate"))
+if d.get("withheld"): bad.append("withheld=%s" % d.get("withheld"))
+print(",".join(bad) or "ok")' 2>/dev/null || echo unreachable
+}
+V=$(mcp_verdict "$MCP_LOCAL"); [ "$V" = "ok" ] || FAILS="$FAILS mcp-local($V);"
+# curl prints 000 itself when nothing answered; `|| echo 000` would append a second.
+CODE=$(curl -s -o /dev/null -w "%{http_code}" -m 10 "$MCP_PUBLIC" 2>/dev/null)
+CODE=${CODE:-000}
+if [ "$CODE" = "200" ]; then
+  V=$(mcp_verdict "$MCP_PUBLIC"); [ "$V" = "ok" ] || FAILS="$FAILS mcp-public($V);"
+else
+  FAILS="$FAILS mcp-public=HTTP$CODE;"
 fi
 
 if [ -n "$FAILS" ]; then
