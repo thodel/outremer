@@ -12,7 +12,9 @@ Usage:
 from __future__ import annotations
 
 import functools
+import inspect
 import logging
+import re
 import time
 from typing import Any
 
@@ -31,6 +33,62 @@ logger = logging.getLogger(__name__)
 # Reusable client (singleton per process)
 _client: openai.OpenAI | None = None
 
+_SSE_PREFIX = re.compile(rb"^\s*data:\s*")
+_HOP_HEADERS = {"content-length", "content-encoding", "transfer-encoding"}
+
+# openai 2.x is built on ``httpx``, openai 3.x on its vendored ``httpx2``. The
+# transport must subclass whichever the installed SDK hands its requests to,
+# so take the module from the SDK's own client class rather than importing one.
+httpx = inspect.getmodule(openai.DefaultHttpxClient.__mro__[1])
+
+
+class LenientJSONTransport(httpx.BaseTransport):
+    """Strip an SSE ``data: `` frame from a non-streaming JSON reply.
+
+    Since 16./17.10.2026 GPUStack answers ``stream=false`` chat completions
+    with ``content-type: application/json`` but a body of
+    ``data: {...chat.completion...}`` — one frame, no ``[DONE]``, no newline.
+    The openai SDK takes the content type at its word and fails on the first
+    byte, so every extraction chunk fell back to heuristic NER and the
+    provenance gate refused the night. The admins have not fixed it, so the
+    client reads past the frame: only when the declared type is JSON and the
+    body starts with ``data:``. Streaming replies and clean JSON pass through
+    untouched. Each stripped reply is logged once per process so the
+    regression stays visible in the nightly log.
+    """
+
+    def __init__(self, inner: httpx.BaseTransport | None = None) -> None:
+        self._inner = inner or httpx.HTTPTransport()
+        self.stripped = 0
+
+    def handle_request(self, request: httpx.Request) -> httpx.Response:
+        response = self._inner.handle_request(request)
+        ctype = response.headers.get("content-type", "")
+        if not ctype.lower().startswith("application/json"):
+            return response
+        response.read()  # decodes content-encoding; the body is now plain bytes
+        body = response.content
+        match = _SSE_PREFIX.match(body)
+        if match is None:
+            return response
+        self.stripped += 1
+        if self.stripped == 1:
+            logger.warning(
+                "GPUStack framed a non-streaming JSON reply as an SSE event "
+                "(%s); stripping the prefix", request.url.path,
+            )
+        headers = [(k, v) for k, v in response.headers.raw if k.decode().lower() not in _HOP_HEADERS]
+        return httpx.Response(
+            response.status_code,
+            headers=headers,
+            content=body[match.end():],
+            request=request,
+            extensions=response.extensions,
+        )
+
+    def close(self) -> None:
+        self._inner.close()
+
 
 def get_client() -> openai.OpenAI:
     """Return a shared OpenAI client pointed at GPUSTACK_BASE_URL."""
@@ -40,6 +98,7 @@ def get_client() -> openai.OpenAI:
             base_url=GPUSTACK_BASE_URL,
             api_key=GPUSTACK_API_KEY or "dummy",
             timeout=GPUSTACK_TIMEOUT,
+            http_client=openai.DefaultHttpxClient(transport=LenientJSONTransport()),
         )
     return _client
 

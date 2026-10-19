@@ -125,3 +125,101 @@ def test_with_retry_backoff_is_exponential(monkeypatch):
         flaky()
     assert calls["n"] == 3
     assert delays == [2.0, 4.0]
+
+
+# ── GPUStack SSE-framed JSON (regression since 16./17.10.2026) ──────────────
+#
+# Measured against gpustack.unibe.ch on 19.10.2026: ``stream=false`` returns
+# ``content-type: application/json`` with the body ``data: {...}`` — one
+# frame, no newline, no ``[DONE]`` — and gzip-encoded when the client
+# accepts it.
+
+import gzip
+import json
+
+import openai
+
+httpx = llm_client.httpx  # the SDK's own httpx (httpx or httpx2)
+
+_COMPLETION = {
+    "id": "chatcmpl-x", "object": "chat.completion", "created": 1, "model": "m",
+    "choices": [{"index": 0, "finish_reason": "stop",
+                 "message": {"role": "assistant", "content": "OK"}}],
+    "usage": {"prompt_tokens": 1, "completion_tokens": 1, "total_tokens": 2},
+}
+
+
+def _gpustack(body: bytes, ctype="application/json", gzipped=False):
+    """A mock upstream that answers every POST with the given body."""
+    def handler(request: httpx.Request) -> httpx.Response:
+        headers = {"content-type": ctype}
+        content = body
+        if gzipped:
+            content = gzip.compress(body)
+            headers["content-encoding"] = "gzip"
+        return httpx.Response(200, headers=headers, content=content)
+    return httpx.MockTransport(handler)
+
+
+def _client_over(transport: httpx.BaseTransport) -> openai.OpenAI:
+    return openai.OpenAI(
+        base_url="http://gpustack.test/v1", api_key="k", max_retries=0,
+        http_client=openai.DefaultHttpxClient(transport=transport),
+    )
+
+
+def _ask(client: openai.OpenAI) -> str:
+    resp = client.chat.completions.create(model="m", messages=[{"role": "user", "content": "p"}])
+    return resp.choices[0].message.content
+
+
+def test_sdk_fails_on_the_framed_body_without_the_fix():
+    """Counter-test: the guard matters. The bare SDK chokes on ``data: {``.
+
+    The nightly of 17./18.10.2026 named exactly this: ``JSONDecodeError``.
+    """
+    framed = b"data: " + json.dumps(_COMPLETION).encode()
+    with pytest.raises((openai.APIError, json.JSONDecodeError)):
+        _ask(_client_over(_gpustack(framed)))
+
+
+def test_lenient_transport_strips_the_sse_frame(caplog):
+    framed = b"data: " + json.dumps(_COMPLETION).encode()
+    transport = llm_client.LenientJSONTransport(_gpustack(framed))
+    with caplog.at_level(logging.WARNING, logger="llm_client"):
+        assert _ask(_client_over(transport)) == "OK"
+        assert _ask(_client_over(transport)) == "OK"
+    assert transport.stripped == 2
+    assert caplog.text.count("framed a non-streaming JSON reply") == 1
+
+
+def test_lenient_transport_decodes_gzip_before_looking():
+    framed = b"data: " + json.dumps(_COMPLETION).encode()
+    transport = llm_client.LenientJSONTransport(_gpustack(framed, gzipped=True))
+    assert _ask(_client_over(transport)) == "OK"
+    assert transport.stripped == 1
+
+
+def test_lenient_transport_leaves_clean_json_alone():
+    transport = llm_client.LenientJSONTransport(_gpustack(json.dumps(_COMPLETION).encode()))
+    assert _ask(_client_over(transport)) == "OK"
+    assert transport.stripped == 0
+
+
+def test_lenient_transport_leaves_event_streams_alone():
+    """A real stream is ``text/event-stream``; its frames must survive."""
+    chunk = {"id": "c", "object": "chat.completion.chunk", "created": 1, "model": "m",
+             "choices": [{"index": 0, "delta": {"content": "OK"}, "finish_reason": None}]}
+    body = b"data: " + json.dumps(chunk).encode() + b"\n\ndata: [DONE]\n\n"
+    transport = llm_client.LenientJSONTransport(_gpustack(body, ctype="text/event-stream"))
+    client = _client_over(transport)
+    stream = client.chat.completions.create(
+        model="m", messages=[{"role": "user", "content": "p"}], stream=True)
+    assert [c.choices[0].delta.content for c in stream] == ["OK"]
+    assert transport.stripped == 0
+
+
+def test_get_client_uses_the_lenient_transport(monkeypatch):
+    monkeypatch.setattr(llm_client, "_client", None)
+    client = llm_client.get_client()
+    assert isinstance(client._client._transport, llm_client.LenientJSONTransport)
