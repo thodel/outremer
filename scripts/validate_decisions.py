@@ -27,6 +27,12 @@ the file, the superseding record names the reason in ``comment``, and
 every consumer (fixture builder, worksheet, conflict detection) works on
 ``effective_decisions()`` — the records that are still in force.
 
+A reviewer's own later record replaces their earlier one for the same pair
+(M13.3, #179): the Explorer's withdrawal is an ``unresolved`` record by the
+same ``client_id`` and takes only that reviewer's vote out of the gold.
+Without ``supersedes`` it leaves every other reviewer's decision in force.
+Records without a usable ``submitted_at`` are never replaced this way.
+
 Multi-reviewer merge rules:
   - Per (doc_id, person, id) key, decisions from different client_ids are tracked separately
   - A conflict arises when the same key has both accept and reject decisions from different clients
@@ -194,53 +200,66 @@ def decision_key(doc_id: str, person: str, outremer_id: str | None) -> str:
     return _normalise_key(doc_id, " ".join((person or "").split()), outremer_id or "")
 
 
-def effective_decisions(raw: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    """The decisions still in force after superseding (raw dicts, order kept).
+def _raw_key(d: dict[str, Any]) -> str:
+    return decision_key(str(d.get("doc_id") or ""), str(d.get("person") or ""),
+                        str(d.get("outremer_id") or ""))
 
-    For each key, the latest decision flagged ``supersedes`` retires every
-    decision submitted before it — from any reviewer. Decisions without a
-    usable ``submitted_at`` cannot be superseded by timestamp and are kept.
+
+def _in_force(items: list, key, ts, client, supersedes) -> list:
+    """Shared rule for raw dicts and DecisionRecords.
+
+    1. For each pair, the latest record flagged ``supersedes`` retires every
+       record submitted before it — from any reviewer.
+    2. For each (pair, reviewer), only the latest timestamped record is in
+       force: a reviewer's later decision replaces their earlier one.
+    Records without a usable ``submitted_at`` are kept by both rules.
     """
     cutoff: dict[str, str] = {}
-    for d in raw:
-        if not isinstance(d, dict) or not d.get("supersedes"):
+    latest: dict[tuple[str, str], str] = {}
+    for it in items:
+        t = ts(it)
+        if not t:
             continue
-        ts = str(d.get("submitted_at") or "").strip()
-        if not ts:
+        k = key(it)
+        if supersedes(it) and t > cutoff.get(k, ""):
+            cutoff[k] = t
+        kc = (k, client(it))
+        if t > latest.get(kc, ""):
+            latest[kc] = t
+    kept = []
+    for it in items:
+        k, t = key(it), ts(it)
+        if not t:
+            kept.append(it)
             continue
-        key = decision_key(str(d.get("doc_id") or ""), str(d.get("person") or ""),
-                           str(d.get("outremer_id") or ""))
-        if ts > cutoff.get(key, ""):
-            cutoff[key] = ts
-    kept: list[dict[str, Any]] = []
-    for d in raw:
-        if not isinstance(d, dict):
-            continue
-        key = decision_key(str(d.get("doc_id") or ""), str(d.get("person") or ""),
-                           str(d.get("outremer_id") or ""))
-        ts = str(d.get("submitted_at") or "").strip()
-        if key in cutoff and ts and ts < cutoff[key]:
+        if k in cutoff and t < cutoff[k]:
             continue  # superseded
-        kept.append(d)
+        if t < latest[(k, client(it))]:
+            continue  # this reviewer decided again later
+        kept.append(it)
     return kept
+
+
+def effective_decisions(raw: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """The decisions still in force (raw dicts, order kept) — see ``_in_force``."""
+    return _in_force(
+        [d for d in raw if isinstance(d, dict)],
+        key=_raw_key,
+        ts=lambda d: str(d.get("submitted_at") or "").strip(),
+        client=lambda d: str(d.get("client_id") or "anonymous").strip(),
+        supersedes=lambda d: bool(d.get("supersedes")),
+    )
 
 
 def effective_records(records: list[DecisionRecord]) -> list[DecisionRecord]:
     """Same rule as effective_decisions(), on validated records."""
-    cutoff: dict[str, str] = {}
-    for r in records:
-        if r.supersedes and r.submitted_at:
-            key = decision_key(r.doc_id, r.person, r.outremer_id)
-            if r.submitted_at > cutoff.get(key, ""):
-                cutoff[key] = r.submitted_at
-    return [
-        r for r in records
-        if not (
-            decision_key(r.doc_id, r.person, r.outremer_id) in cutoff
-            and r.submitted_at
-            and r.submitted_at < cutoff[decision_key(r.doc_id, r.person, r.outremer_id)]
-        )
-    ]
+    return _in_force(
+        records,
+        key=lambda r: decision_key(r.doc_id, r.person, r.outremer_id),
+        ts=lambda r: r.submitted_at or "",
+        client=lambda r: r.client_id or "anonymous",
+        supersedes=lambda r: r.supersedes,
+    )
 
 
 def _detect_conflicts(

@@ -37,6 +37,21 @@ VENV="$WORK/.venv/bin"
 # (2026-10-15: `import mcp` had resolved to a stray directory, not a package).
 "$VENV/pip" install -q "mcp>=2.0.0,<3"
 
+# 0) Adjudications (M13.3, #179): carry new review-API events into
+#    data/decisions.json and rebuild the gold fixtures from them, so a decision
+#    made in the Explorer counts in tonight's harness and is published as a
+#    diff below. The API is a dh user unit on loopback; if it is down, the
+#    night goes on without new gold and says so.
+if "$VENV/python" scripts/import_review_decisions.py \
+     --url "${REVIEW_API_URL:-http://127.0.0.1:8089}" \
+     --decisions data/decisions.json | tee "$LOGDIR/review-import-latest.log"; then
+  if ! git diff --quiet -- data/decisions.json; then
+    "$VENV/python" -m evaluation.build_fixture --relink
+  fi
+else
+  echo "::warning::review import failed — adjudications stay as they were (see review-import-latest.log)"
+fi
+
 # 1) Capability preflight: GPUStack up, configured models actually exist.
 "$VENV/python" scripts/release_control.py preflight \
   --config "$ETC/live-capabilities.json" \
@@ -90,9 +105,11 @@ else
   echo "note: $PUBLIC_SITE not writable — public site not refreshed"
 fi
 
-# 5) Publish.
+# 5) Publish. decisions.json and the fixtures ride in the same commit as the
+#    run they first counted in (M13.3): the diff is the audit trail.
 git add site/index.json site/data site/bib site/evidence bib \
-        data/entity_feedback.json data/evidence data/staging/eval_history.jsonl
+        data/entity_feedback.json data/evidence data/staging/eval_history.jsonl \
+        data/decisions.json evaluation/fixtures
 if git diff --cached --quiet; then
   echo "no changes to publish"
 else

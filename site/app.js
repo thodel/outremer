@@ -6,19 +6,46 @@ import {
 /**
  * app.js — Outremer explorer + Human-in-the-Loop adjudication
  *
- * Local decisions  → localStorage (outremer_decisions_v1)
- * Server decisions → POST/DELETE /webhook/outremer-decision  (central store, no login)
- *                    GET  /webhook/outremer-decisions/{doc_id} (community aggregate)
+ * Local decisions  → localStorage (outremer_decisions_v1), the offline copy
+ * Server decisions → the review API on tei (scripts/review_api.py, M13.3 #179):
+ *                    POST   /decisions            one adjudication event
+ *                    DELETE /decisions            a withdrawal (itself an event)
+ *                    GET    /decisions?doc_id=…   current votes of every reviewer
+ *                    The nightly carries the log into data/decisions.json and
+ *                    rebuilds the gold fixtures from it — nothing to export by hand.
  *
  * An anonymous but stable client_id is generated per browser and stored in
  * localStorage so a user's votes can be upserted without a login system.
+ * Writes need the review token (asked for once, kept in localStorage).
  */
 
 // ── Config ─────────────────────────────────────────────────────────────────
 
-const API_BASE    = "https://www.hodelweb.ch/webhook";
+// The explorer is served twice: on tei below /outremer/ (same origin as the
+// API) and on GitHub Pages (CORS: the API allows https://thodel.github.io).
+const REVIEW_API_HOST = "https://tei.dh.unibe.ch";
+function reviewApiBase() {
+  const override = localStorage.getItem("outremer_review_api");
+  if (override) return override.replace(/\/$/, "");
+  const sameHost = location.origin === REVIEW_API_HOST && location.pathname.startsWith("/outremer/");
+  return (sameHost ? "" : REVIEW_API_HOST) + "/outremer/api";
+}
+const API_BASE    = reviewApiBase();
 const STORAGE_KEY = "outremer_decisions_v1";
 const CLIENT_KEY  = "outremer_client_id";
+const TOKEN_KEY   = "outremer_review_token";
+
+function getReviewToken() { return localStorage.getItem(TOKEN_KEY) || ""; }
+function setReviewToken(t) {
+  if (t && t.trim()) localStorage.setItem(TOKEN_KEY, t.trim());
+  else localStorage.removeItem(TOKEN_KEY);
+}
+window.saveReviewToken = function () {
+  const input = document.getElementById("reviewTokenInput");
+  setReviewToken(input ? input.value : "");
+  const saved = document.getElementById("reviewTokenSaved");
+  if (saved) { saved.style.display = "inline"; setTimeout(() => saved.style.display = "none", 1500); }
+};
 
 // ── Client ID (anonymous, stable per browser) ──────────────────────────────
 
@@ -387,11 +414,12 @@ function hasConflictInLink(link, docId) {
 
 async function fetchCommunityVotes(docId) {
   try {
-    const res = await fetch(`${API_BASE}/outremer-decisions/${encodeURIComponent(docId)}`,
+    const res = await fetch(`${API_BASE}/decisions?doc_id=${encodeURIComponent(docId)}`,
                             { cache: "no-store" });
     if (!res.ok) return;
     const data = await res.json();
-    communityVotes = buildCommunityIndex(data);
+    // "unresolved" is a withdrawal: that reviewer no longer votes on the pair.
+    communityVotes = buildCommunityIndex(data.filter(d => d.decision !== "unresolved"));
   } catch {
     communityVotes = {};
   }
@@ -399,26 +427,51 @@ async function fetchCommunityVotes(docId) {
 
 // ── Server sync ────────────────────────────────────────────────────────────
 
-async function syncDecisionToServer(docId, person, outremer_id, decision, comment) {
-  const payload = {
-    doc_id: docId, person, outremer_id, decision, comment,
-    client_id: CLIENT_ID,
-    scholar_name: getScholarName() || null,
-  };
-  const res = await fetch(`${API_BASE}/outremer-decision`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload),
-  });
-  if (!res.ok) throw new Error(`Server ${res.status}`);
+// The explorer's button states are finer than the file format the pipeline
+// validates (scripts/validate_decisions.py). Map them; the reason survives in
+// the comment. Entity-level flags arrive already canonical.
+function apiDecision(decision) {
+  const d = String(decision || "");
+  if (d === "reject:wrong_entity") return "not_a_person";
+  if (d === "reject:wrong_era")    return "wrong_era";
+  if (d.startsWith("reject"))      return "reject";
+  return d;
+}
+function apiComment(decision, comment) {
+  const d = String(decision || "");
+  const reason = d.startsWith("reject:") ? `reason: ${d.slice(7)}` : "";
+  return [reason, (comment || "").trim()].filter(Boolean).join(" — ");
 }
 
+async function reviewRequest(method, payload) {
+  const headers = { "Content-Type": "application/json" };
+  const token = getReviewToken();
+  if (token) headers["X-Review-Token"] = token;
+  const res = await fetch(`${API_BASE}/decisions`, {
+    method, headers, body: JSON.stringify(payload),
+  });
+  if (res.status === 401) throw new Error("needs review token");
+  if (!res.ok) throw new Error(`Server ${res.status}`);
+  return res;
+}
+
+async function syncDecisionToServer(docId, person, outremer_id, decision, comment) {
+  return reviewRequest("POST", {
+    doc_id: docId, person, outremer_id,
+    decision: apiDecision(decision),
+    comment: apiComment(decision, comment),
+    client_id: CLIENT_ID,
+    scholar_name: getScholarName() || null,
+  });
+}
+
+// A withdrawal is an event too (the API appends "unresolved" by this
+// reviewer); the audit trail never loses the earlier decision.
 async function deleteDecisionFromServer(docId, person, outremer_id) {
-  const payload = { doc_id: docId, person, outremer_id, client_id: CLIENT_ID };
-  await fetch(`${API_BASE}/outremer-decision`, {
-    method: "DELETE",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload),
+  return reviewRequest("DELETE", {
+    doc_id: docId, person, outremer_id,
+    client_id: CLIENT_ID,
+    scholar_name: getScholarName() || null,
   });
 }
 
@@ -790,7 +843,7 @@ function renderCandidateRow(link, candidate, docId, decisions) {
       try {
         await deleteDecisionFromServer(dId, person, oId);
         setSyncOk(syncEl);
-      } catch { setSyncErr(syncEl); }
+      } catch (err) { setSyncErr(syncEl, err); }
     } else {
       d[key] = { decision: finalAction, comment: d[key]?.comment || "", ts: new Date().toISOString() };
       saveDecisions(d);
@@ -809,7 +862,7 @@ function renderCandidateRow(link, candidate, docId, decisions) {
         }
         const nextCanon = canonicalDecision(finalAction);
         bucket[nextCanon] = (bucket[nextCanon] || 0) + 1;
-      } catch { setSyncErr(syncEl); }
+      } catch (err) { setSyncErr(syncEl, err); }
     }
   }
 
@@ -841,7 +894,7 @@ function renderCandidateRow(link, candidate, docId, decisions) {
           try {
             await syncDecisionToServer(dId, person, oId, reason, d[key].comment);
             setSyncOk(syncEl);
-          } catch { setSyncErr(syncEl); }
+          } catch (err) { setSyncErr(syncEl, err); }
         }
       }
     });
@@ -862,7 +915,7 @@ function renderCandidateRow(link, candidate, docId, decisions) {
     try {
       await syncDecisionToServer(dId, person, oId, d[key].decision, d[key].comment);
       setSyncOk(syncEl);
-    } catch { setSyncErr(syncEl); }
+    } catch (err) { setSyncErr(syncEl, err); }
   });
 
   // ── Group toggle handler ─────────────────────────────────────────────────
@@ -895,7 +948,12 @@ function renderCandidateRow(link, candidate, docId, decisions) {
 
 function setSyncPending(el) { el.textContent = "⟳"; el.className = "sync-indicator sync-pending"; el.title = "Syncing…"; }
 function setSyncOk(el)      { el.textContent = "✓"; el.className = "sync-indicator sync-ok";      el.title = "Synced to server"; }
-function setSyncErr(el)     { el.textContent = "✗"; el.className = "sync-indicator sync-err";     el.title = "Sync failed — decision saved locally"; }
+function setSyncErr(el, err) {
+  el.textContent = "✗"; el.className = "sync-indicator sync-err";
+  el.title = String(err?.message || "").includes("token")
+    ? "Not recorded on the server: enter the review token (top of page) — decision saved locally"
+    : "Sync failed — decision saved locally";
+}
 
 // ── Wikidata candidate row (with adjudication buttons) ─────────────────────
 
@@ -965,7 +1023,7 @@ function renderWikidataCandidateRow(link, c, docId, decisions) {
       try {
         await deleteDecisionFromServer(docId, link.person, oId);
         setSyncOk(syncEl);
-      } catch { setSyncErr(syncEl); }
+      } catch (err) { setSyncErr(syncEl, err); }
     } else {
       d[k] = { decision: finalAction, ts: new Date().toISOString() };
       saveDecisions(d);
@@ -983,7 +1041,7 @@ function renderWikidataCandidateRow(link, c, docId, decisions) {
         }
         const nextCanon = canonicalDecision(finalAction);
         bucket[nextCanon] = (bucket[nextCanon] || 0) + 1;
-      } catch { setSyncErr(syncEl); }
+      } catch (err) { setSyncErr(syncEl, err); }
     }
   }
 
@@ -1011,7 +1069,7 @@ function renderWikidataCandidateRow(link, c, docId, decisions) {
           try {
             await syncDecisionToServer(docId, link.person, oId, reason);
             setSyncOk(syncEl);
-          } catch { setSyncErr(syncEl); }
+          } catch (err) { setSyncErr(syncEl, err); }
         }
       }
     });
@@ -1439,6 +1497,7 @@ document.getElementById("exportTeiBtn")?.addEventListener("click", exportTei);
 document.getElementById("exportJsonLdBtn")?.addEventListener("click", exportJsonLd);
 
 initScholarName();
+{ const t = document.getElementById("reviewTokenInput"); if (t) t.value = getReviewToken(); }
 
 document.getElementById("toggleRaw").addEventListener("click", function () {
   const raw = document.getElementById("raw");

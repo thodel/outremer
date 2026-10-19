@@ -139,3 +139,40 @@ def test_fixture_wikidata_snapshot_keeps_the_resolver_envelope(tmp_path):
     entry = fx["predictions"]["wikidata"]["baldwin of ibelin"]
     assert entry["status"] == "ambiguous" and entry["fits"] == 2
     assert entry["candidates"] == [{"qid": "Q2891991", "score": 1.0}, {"qid": "Q804832", "score": 1.0}]
+
+
+# ── M13.3 (#179): a reviewer's later record replaces their earlier one ───────
+
+OWN_ACCEPT = {
+    "doc_id": "doc1", "person": "Hugh", "outremer_id": "AUTH:CR7",
+    "decision": "accept", "client_id": "rev-a", "submitted_at": "2026-10-20T10:00:00",
+}
+OWN_WITHDRAWAL = {**OWN_ACCEPT, "decision": "unresolved",
+                  "comment": "withdrawn in the Explorer", "submitted_at": "2026-10-20T10:05:00"}
+OTHER_ACCEPT = {**OWN_ACCEPT, "client_id": "rev-b", "submitted_at": "2026-10-20T10:01:00"}
+
+
+def test_a_reviewers_later_record_replaces_their_earlier_one():
+    kept = effective_decisions([OWN_ACCEPT, OWN_WITHDRAWAL])
+    assert kept == [OWN_WITHDRAWAL]
+
+
+def test_a_withdrawal_without_supersedes_leaves_other_reviewers_in_force():
+    kept = effective_decisions([OWN_ACCEPT, OTHER_ACCEPT, OWN_WITHDRAWAL])
+    assert kept == [OTHER_ACCEPT, OWN_WITHDRAWAL]
+
+
+def test_records_without_a_timestamp_are_never_replaced():
+    undated = {k: v for k, v in OWN_ACCEPT.items() if k != "submitted_at"}
+    kept = effective_decisions([undated, OWN_WITHDRAWAL])
+    assert kept == [undated, OWN_WITHDRAWAL]
+
+
+def test_effective_records_applies_the_same_rule(tmp_path):
+    p = tmp_path / "d.json"
+    p.write_text(json.dumps([OWN_ACCEPT, OTHER_ACCEPT, OWN_WITHDRAWAL]))
+    result = validate_decisions_file(p)
+    assert not result.errors
+    from validate_decisions import effective_records
+    assert [(r.client_id, r.decision) for r in effective_records(result.records)] == [
+        ("rev-b", "accept"), ("rev-a", "unresolved")]

@@ -227,6 +227,15 @@
           <button class="btn-primary" id="scholarSaveBtn" onclick="saveScholarName()">Save name</button>
           <span class="scholar-saved" id="scholarSaved">✓ Saved</span>
         </div>
+        <!-- Review token: decisions are recorded on the server (and become
+             gold in the next nightly) only with it; without, they stay in
+             this browser. Ask the project for the token. -->
+        <div class="scholar-entry">
+          <label>🔑 Review token (records decisions on the server):</label>
+          <input type="password" id="reviewTokenInput" placeholder="from the project" maxlength="120" autocomplete="off" />
+          <button class="btn-primary" id="reviewTokenSaveBtn" onclick="saveReviewToken()">Save token</button>
+          <span class="scholar-saved" id="reviewTokenSaved">✓ Saved</span>
+        </div>
       </div>
     </div>
 
