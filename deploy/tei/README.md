@@ -10,8 +10,15 @@ This directory packages the current Outremer system as two separate concerns:
   publish). Its timer replaces the former 03:15 cron line (#134); output is
   appended to `~/outremer/logs/nightly.log` as before.
 
-Server-side multi-user review/API state is intentionally not invented here; it
-belongs to #114. The nginx template reserves `<base>/api/` for that service.
+- `outremer-review-api.user.service` (a `dh` user unit, loopback :8089; nginx
+  proxies `<base>/api/`) is the append-only store the Explorer writes to.
+  The nightly's first step (`scripts/import_review_decisions.py`, M13.3 #179)
+  carries its new events into `data/decisions.json`, rebuilds the gold
+  fixtures and publishes both in the run's commit. Writes need
+  `REVIEW_API_TOKEN` (in `outremer.env`); reviewers enter it once in the
+  Explorer. Deploying a new API version: `git pull` in the work checkout, then
+  `systemctl --user restart outremer-review-api`; the v1 database gains its
+  new column on first start.
 
 All commands below are an operator runbook, not an automated authorization to
 change production. Replace example version `v0.1.0` and paths only after the
@@ -34,8 +41,8 @@ deployment ADR (#110) and infrastructure prerequisites are approved.
 
 Never store mutable state or credentials under a release directory. The static
 site in `site/` is a release/export seed; production pipeline output is directed
-to `OUTREMER_SITE_DIR`. Until #114 moves reviews server-side, browser-local
-review data must still be exported before browser storage is cleared.
+to `OUTREMER_SITE_DIR`. Review decisions live server-side (above); the
+browser copy is a convenience, not the record.
 
 ## Capability opt-in
 

@@ -129,6 +129,19 @@ def test_nightly_gates_before_it_publishes() -> None:
     assert script.index("--airgap") < gate
 
 
+def test_nightly_imports_adjudications_before_the_pipeline_and_publishes_them() -> None:
+    """M13.3 (#179): review-API events become decisions.json and rebuilt
+    fixtures before the run, and ride in the same publish commit. An
+    unreachable API is a warning, never a stop."""
+    script = (ROOT / "deploy" / "tei" / "nightly.sh").read_text()
+    imp = script.index("scripts/import_review_decisions.py")
+    assert imp < script.index("release_control.py preflight")
+    assert script.index("evaluation.build_fixture --relink") < script.index("scripts/run_pipeline.py")
+    assert "::warning::review import failed" in script
+    publish = script[script.index("git add"):script.index("git push origin main")]
+    assert "data/decisions.json" in publish and "evaluation/fixtures" in publish
+
+
 def test_work_root_must_lie_inside_the_worker_home(tmp_path: Path) -> None:
     import subprocess
     import sys

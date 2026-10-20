@@ -428,20 +428,42 @@ cd site && python3 -m http.server 8080
 5. Filter bar focuses on unreviewed or flagged items.
 6. **Export decisions** downloads adjudications as `outremer-decisions-YYYY-MM-DD.json`.
 
-Decisions are persisted in browser `localStorage` — survive page refreshes, scoped per-document.
+Decisions are persisted in browser `localStorage` — survive page refreshes, scoped per-document —
+and, with the review token entered once at the top of the page, recorded on the
+server as well (`scripts/review_api.py` on tei, an append-only event log).
 
-**From export to pipeline impact — the feedback round-trip:**
-
-Scholar decisions flow back into the pipeline via a JSON file that the pipeline reads on the next run:
+**The adjudication round trip (M13.3, #179) — no hand-off needed:**
 
 ```
-Explorer review → [Export decisions JSON] → data/decisions.json → pipeline run → entity_feedback.json
+Explorer ─POST/DELETE─▶ review API (reviews.db, append-only)
+                            │  nightly 03:15: scripts/import_review_decisions.py
+                            ▼
+                     data/decisions.json  ──▶  evaluation.build_fixture --relink
+                            │                          │
+                            └── same commit ◀──────────┘   harness --live measures against the new gold
 ```
 
-**Steps to close the loop:**
+- Every decision carries the reviewer's pseudonym (`client_id`, `scholar_name`) and time.
+- Taking a decision back is a new `unresolved` record by the same reviewer, never a deletion;
+  it removes only that reviewer's vote (`validate_decisions.effective_decisions`).
+- The importer validates the merged file before writing and leaves it untouched on any error;
+  the nightly commits `data/decisions.json` and `evaluation/fixtures/` together, so the diff is
+  the audit trail. **Export decisions** still downloads the browser's copy.
+- Without the token, decisions stay in the browser (the sync mark says so).
 
-1. In the Explorer, click **Export decisions** — a file like `outremer-decisions-2026-07-10.json` downloads.
-2. Save it to the repo as `data/decisions.json` (or any path you pass with `--review-decisions-path`).
+**Running the import by hand** (on tei, where the API listens on loopback):
+
+```bash
+python scripts/import_review_decisions.py --dry-run   # what would be carried over
+python scripts/import_review_decisions.py             # append, validate, write
+python -m evaluation.build_fixture --relink           # gold follows the decisions
+```
+
+**Feeding decisions into extraction** is a separate, explicit step the nightly
+does not take (it changes which names the extractor blocks or allows):
+
+1. `data/decisions.json` is kept current by the nightly (above).
+2. (Any path works with `--review-decisions-path`.)
 3. Run the pipeline with both flags:
 
    ```bash
