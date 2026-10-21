@@ -1967,15 +1967,15 @@
       ]
     },
     "crusaders": {
-      "count": 15,
-      "last_context": "probably in early September after the departure of most of the crusaders",
-      "last_seen": "2026-10-20T01:35:46.602719+00:00",
+      "count": 10,
+      "last_context": "most crusaders did not settle in the East",
+      "last_seen": "2026-10-21T01:35:31.947608+00:00",
       "name": "crusaders",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
-          "count": 9,
+          "count": 5,
           "reasons": {
-            "known_bad_entity": 9
+            "known_bad_entity": 5
           }
         },
         "data/raw/Munro-PopesCrusades-1916.pdf": {
@@ -1985,14 +1985,14 @@
           }
         },
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
-          "count": 4,
+          "count": 3,
           "reasons": {
-            "known_bad_entity": 4
+            "known_bad_entity": 3
           }
         }
       },
       "reasons": {
-        "known_bad_entity": 15
+        "known_bad_entity": 10
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
@@ -3028,20 +3028,20 @@
       ]
     },
     "fulcher of chartres": {
-      "count": 2,
+      "count": 3,
       "last_context": "The knight Fulcher of Chartres, who became a great lord in Edessa, had been a follower of Peter the Hermit",
-      "last_seen": "2026-10-20T01:35:46.602719+00:00",
+      "last_seen": "2026-10-21T01:35:31.947608+00:00",
       "name": "Fulcher of Chartres",
       "per_source": {
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
-          "count": 2,
+          "count": 3,
           "reasons": {
-            "known_bad_entity": 2
+            "known_bad_entity": 3
           }
         }
       },
       "reasons": {
-        "known_bad_entity": 2
+        "known_bad_entity": 3
       },
       "sources": [
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf"
@@ -5544,18 +5544,18 @@
     "monk": {
       "count": 1,
       "last_context": "sees in the distance the flickering light from the lamp ofa monk reading in his cell and finds shelter",
-      "last_seen": "2026-10-15T01:25:40.291731+00:00",
+      "last_seen": "2026-10-21T01:24:51.805827+00:00",
       "name": "monk",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
           "count": 1,
           "reasons": {
-            "known_bad_entity": 1
+            "lowercase_non_name": 1
           }
         }
       },
       "reasons": {
-        "known_bad_entity": 1
+        "lowercase_non_name": 1
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
@@ -7979,9 +7979,9 @@
       ]
     },
     "the pope": {
-      "count": 13,
+      "count": 15,
       "last_context": "Thomas Fuller, later, put it bluntly, the pope \"got a bag of money by it.\"",
-      "last_seen": "2026-10-20T01:29:03.403911+00:00",
+      "last_seen": "2026-10-21T01:29:11.034505+00:00",
       "name": "the Pope",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
@@ -7991,14 +7991,14 @@
           }
         },
         "data/raw/Munro-PopesCrusades-1916.pdf": {
-          "count": 11,
+          "count": 13,
           "reasons": {
-            "known_bad_entity": 11
+            "known_bad_entity": 13
           }
         }
       },
       "reasons": {
-        "known_bad_entity": 13
+        "known_bad_entity": 15
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
@@ -8026,20 +8026,20 @@
       ]
     },
     "the sultan": {
-      "count": 2,
-      "last_context": "One reason for the Sultan's wrath against them",
-      "last_seen": "2026-10-16T01:30:57.627350+00:00",
+      "count": 4,
+      "last_context": "The sultan granted this request of the pope",
+      "last_seen": "2026-10-21T01:24:51.805827+00:00",
       "name": "the Sultan",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
-          "count": 2,
+          "count": 4,
           "reasons": {
-            "known_bad_entity": 2
+            "known_bad_entity": 4
           }
         }
       },
       "reasons": {
-        "known_bad_entity": 2
+        "known_bad_entity": 4
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"

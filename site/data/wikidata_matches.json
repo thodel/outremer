@@ -23543,8 +23543,33 @@
     },
     "commander of the hospitallers": {
       "person": "commander of the Hospitallers",
-      "candidates": [],
-      "queried_at": "2026-09-09T01:41:45.179743"
+      "status": "match",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 1,
+      "candidates": [
+        {
+          "qid": "Q23043386",
+          "label": "Gregory the Commander",
+          "description": "sasanian military leader",
+          "url": "https://www.wikidata.org/wiki/Q23043386",
+          "score": 0.6,
+          "birth_year": null,
+          "death_year": 501,
+          "matched": "Gregory the Commander"
+        },
+        {
+          "qid": "Q5649204",
+          "label": "Hanno",
+          "description": "Carthaginian general, Messana garrison commander",
+          "url": "https://www.wikidata.org/wiki/Q5649204",
+          "score": 0.56,
+          "birth_year": null,
+          "death_year": -201,
+          "matched": "Hanno, Messana garrison commander"
+        }
+      ],
+      "queried_at": "2026-10-21T01:35:34.726859+00:00"
     },
     "ibn al furat": {
       "person": "Ibn al Furat",
@@ -25844,11 +25869,11 @@
   "status": {
     "source": "wikidata_pre1500_snapshot",
     "snapshot": "2026-10-02T22:51:17+00:00",
-    "resolved": 3,
-    "cached": 188,
-    "re_resolved": 2,
-    "from_an_older_resolver": 725,
+    "resolved": 1,
+    "cached": 189,
+    "re_resolved": 1,
+    "from_an_older_resolver": 724,
     "refresh": "stale",
-    "ran_at": "2026-10-20T01:35:50.027900+00:00"
+    "ran_at": "2026-10-21T01:35:34.728673+00:00"
   }
 }
