@@ -245,16 +245,29 @@
       "source_offset": null
     },
     {
-      "name": "the Popes",
-      "raw_mention": "The Popes",
+      "name": "the Children's Crusade",
+      "raw_mention": "the Children's Crusade",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": "movement",
+      "gender": "unknown",
+      "group": true,
+      "context": "outburst of religious enthusiasm led to the Children's Crusade, which was to be a missionary",
+      "confidence": 0.4,
+      "source_offset": null
+    },
+    {
+      "name": "The Popes",
+      "raw_mention": "the Popes",
       "title": "Pope",
       "epithet": null,
       "toponym": null,
-      "role": "religious leader",
+      "role": "pontiffs",
       "gender": "m",
       "group": true,
-      "context": "The Popes offered privileges, both spiritual and temporal, to all who took the Cross.",
-      "confidence": 0.8,
+      "context": "Consequently the Popes became much more powerful, especially through their control over the appointment",
+      "confidence": 0.85,
       "source_offset": null
     },
     {
@@ -319,7 +332,7 @@
       "gender": "m",
       "group": false,
       "context": "movement in which both the German emperor and the French king participated this usurpation",
-      "confidence": 0.8,
+      "confidence": 0.7,
       "source_offset": null
     },
     {
@@ -332,7 +345,7 @@
       "gender": "m",
       "group": false,
       "context": "both the German emperor and the French king participated this usurpation passed without much",
-      "confidence": 0.8,
+      "confidence": 0.7,
       "source_offset": null
     },
     {
@@ -380,7 +393,7 @@
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "warrior",
+      "role": "soldier",
       "gender": "m",
       "group": true,
       "context": "the Popes interfered in case of capture of individual crusaders by their enemies and also to prevent",
@@ -393,7 +406,7 @@
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "adversary",
+      "role": "enemy",
       "gender": "unknown",
       "group": true,
       "context": "capture of individual crusaders by their enemies and also to prevent warfare which would hinder",
@@ -419,8 +432,8 @@
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "tournament fighter",
-      "gender": "m",
+      "role": "tournament participant",
+      "gender": "unknown",
       "group": true,
       "context": "repeatedly forbidding tournaments and threatening to excommunicate all participants. Other instances",
       "confidence": 0.5,
@@ -484,7 +497,7 @@
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "monarch",
+      "role": "king",
       "gender": "m",
       "group": false,
       "context": "When an energetic pontiff, Gregory IX., was elected, Frederic was obliged to start on his expedition",
@@ -492,7 +505,7 @@
       "source_offset": null
     },
     {
-      "name": "the Moslems",
+      "name": "The Moslems",
       "raw_mention": "the Moslems",
       "title": null,
       "epithet": null,
@@ -505,7 +518,7 @@
       "source_offset": null
     },
     {
-      "name": "the Albigenses",
+      "name": "The Albigenses",
       "raw_mention": "the Albigenses",
       "title": null,
       "epithet": null,
@@ -518,7 +531,7 @@
       "source_offset": null
     },
     {
-      "name": "the heathen",
+      "name": "The heathen",
       "raw_mention": "the heathen",
       "title": null,
       "epithet": null,
@@ -531,106 +544,28 @@
       "source_offset": null
     },
     {
-      "name": "Christian lands",
-      "raw_mention": "Christian lands",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": "political/religious entity",
-      "gender": "unknown",
-      "group": true,
-      "context": "This century also saw the temporary union of almost all Christian lands under the authority of the Pope",
-      "confidence": 0.7,
-      "source_offset": null
-    },
-    {
-      "name": "Bishops of heretical churches in Syria",
-      "raw_mention": "Bishops of heretical churches in Syria",
-      "title": "Bishops",
-      "epithet": null,
-      "toponym": "Syria",
-      "role": "clergy",
-      "gender": "m",
-      "group": true,
-      "context": "Bishops of heretical churches in Syria acknowledged the supremacy of the Latin Church",
-      "confidence": 0.8,
-      "source_offset": null
-    },
-    {
-      "name": "the ruler of Armenia",
+      "name": "The ruler of Armenia",
       "raw_mention": "The ruler of Armenia",
-      "title": "ruler",
+      "title": "Ruler",
       "epithet": null,
       "toponym": "Armenia",
       "role": "monarch",
       "gender": "m",
       "group": false,
       "context": "The ruler of Armenia sought to have the title of king bestowed upon him by the Pope",
-      "confidence": 0.85,
-      "source_offset": null
-    },
-    {
-      "name": "the Armenian Church",
-      "raw_mention": "the Armenian Church",
-      "title": null,
-      "epithet": null,
-      "toponym": "Armenian",
-      "role": "religious institution",
-      "gender": "unknown",
-      "group": true,
-      "context": "promised in return to bring the Armenian Church under the Pope. For a time there seemed",
       "confidence": 0.7,
-      "source_offset": null
-    },
-    {
-      "name": "the Church",
-      "raw_mention": "the Church",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": "institution",
-      "gender": "unknown",
-      "group": true,
-      "context": "The crusades also brought to the Church and to the Popes an enormous increase in wealth",
-      "confidence": 0.7,
-      "source_offset": null
-    },
-    {
-      "name": "the Orders of the Temple and Hospital",
-      "raw_mention": "The Orders of the Temple and Hospital",
-      "title": "Orders",
-      "epithet": null,
-      "toponym": null,
-      "role": "military religious orders",
-      "gender": "unknown",
-      "group": true,
-      "context": "property to ecclesiastical foundations under conditions very advantageous to the latter. The Orders of the Temple and Hospital",
-      "confidence": 0.9,
-      "source_offset": null
-    },
-    {
-      "name": "Men who had taken the Cross",
-      "raw_mention": "Men who had taken the Cross",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": "crusaders",
-      "gender": "m",
-      "group": true,
-      "context": "received great endowments and became very wealthy. Men who had taken the Cross and were unable to go",
-      "confidence": 0.8,
       "source_offset": null
     },
     {
       "name": "St. Louis",
       "raw_mention": "St. Louis",
-      "title": "St.",
+      "title": "Saint",
       "epithet": null,
       "toponym": null,
-      "role": "king/saint",
+      "role": "king",
       "gender": "m",
       "group": false,
-      "context": "little or nothing; the heroic St. Louis had been obliged to ransom himself from captivity. These failures",
+      "context": "the heroic St. Louis had been obliged to ransom himself from captivity",
       "confidence": 0.95,
       "source_offset": null
     },
@@ -643,7 +578,7 @@
       "role": "pope",
       "gender": "m",
       "group": false,
-      "context": "For the First Crusade Urban II. had appointed a papal legate, Ademar of Puy, who proved of great",
+      "context": "For the First Crusade Urban II. had appointed a papal legate, Ademar of Puy",
       "confidence": 0.95,
       "source_offset": null
     },
@@ -656,12 +591,12 @@
       "role": "papal legate",
       "gender": "m",
       "group": false,
-      "context": "For the First Crusade Urban II. had appointed a papal legate, Ademar of Puy, who proved of great assistance",
+      "context": "For the First Crusade Urban II. had appointed a papal legate, Ademar of Puy, who proved",
       "confidence": 0.95,
       "source_offset": null
     },
     {
-      "name": "the crusaders",
+      "name": "The crusaders",
       "raw_mention": "the crusaders",
       "title": null,
       "epithet": null,
@@ -669,7 +604,7 @@
       "role": "warriors",
       "gender": "unknown",
       "group": true,
-      "context": "he died before the capture of Jerusalem and his loss was keenly felt by the crusaders. Although other legates",
+      "context": "he died before the capture of Jerusalem and his loss was keenly felt by the crusaders",
       "confidence": 0.9,
       "source_offset": null
     },
@@ -682,7 +617,7 @@
       "role": "legate",
       "gender": "m",
       "group": false,
-      "context": "no one played a prominent part, except Cardinal Pelagius, whose lack of tact, to put it mildly, was principally",
+      "context": "no one played a prominent part, except Cardinal Pelagius, whose lack of tact, to put it",
       "confidence": 0.95,
       "source_offset": null
     },
@@ -695,7 +630,7 @@
       "role": "pope",
       "gender": "m",
       "group": false,
-      "context": "With the exceptions of Urban II. and Innocent III., the Popes did not take an active part in laying",
+      "context": "With the exceptions of Urban II. and Innocent III., the Popes did not take an active part",
       "confidence": 0.95,
       "source_offset": null
     },
@@ -708,25 +643,25 @@
       "role": "pope",
       "gender": "m",
       "group": false,
-      "context": "the expedition for which Urban made the plans was successful ; Innocent's orders were not obeyed. The leaders",
+      "context": "the expedition for which Urban made the plans was successful ; Innocent's orders were not obeyed",
       "confidence": 0.9,
       "source_offset": null
     },
     {
       "name": "St. Bernard",
       "raw_mention": "St. Bernard",
-      "title": "St.",
+      "title": "Saint",
       "epithet": null,
       "toponym": null,
-      "role": "saint/preacher",
+      "role": "church leader",
       "gender": "m",
       "group": false,
-      "context": "The leaders in the Church, like St. Bernard, were able to throw the blame for failure upon the ignorance",
+      "context": "The leaders in the Church, like St. Bernard, were able to throw the blame for failure",
       "confidence": 0.95,
       "source_offset": null
     },
     {
-      "name": "the leaders",
+      "name": "The leaders",
       "raw_mention": "the leaders",
       "title": null,
       "epithet": null,
@@ -734,12 +669,12 @@
       "role": "commanders",
       "gender": "unknown",
       "group": true,
-      "context": "When, before its capture in 1099, the leaders gathered to discuss the election of a ruler, the Church party",
-      "confidence": 0.7,
+      "context": "before its capture in 1099, the leaders gathered to discuss the election of a ruler",
+      "confidence": 0.6,
       "source_offset": null
     },
     {
-      "name": "the Church party in the army",
+      "name": "The Church party in the army",
       "raw_mention": "the Church party in the army",
       "title": null,
       "epithet": null,
@@ -747,25 +682,12 @@
       "role": "faction",
       "gender": "unknown",
       "group": true,
-      "context": "the leaders gathered to discuss the election of a ruler, the Church party in the army protested, saying that",
-      "confidence": 0.8,
+      "context": "the leaders gathered to discuss the election of a ruler, the Church party in the army protested",
+      "confidence": 0.7,
       "source_offset": null
     },
     {
-      "name": "our Saviour",
-      "raw_mention": "our Saviour",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": "religious figure",
-      "gender": "m",
-      "group": false,
-      "context": "ought to wear a crown of gold where our Saviour had worn a crown of thorns. For the moment the nobles",
-      "confidence": 0.9,
-      "source_offset": null
-    },
-    {
-      "name": "the nobles",
+      "name": "The nobles",
       "raw_mention": "the nobles",
       "title": null,
       "epithet": null,
@@ -773,7 +695,7 @@
       "role": "aristocracy",
       "gender": "unknown",
       "group": true,
-      "context": "where our Saviour had worn a crown of thorns. For the moment the nobles yielded; after the capture of the",
+      "context": "ought to wear a crown of gold where our Saviour had worn a crown of thorns. For the moment the nobles yielded",
       "confidence": 0.8,
       "source_offset": null
     },
@@ -786,7 +708,7 @@
       "role": "ruler",
       "gender": "m",
       "group": false,
-      "context": "the moment the nobles yielded; after the capture of the city they elected Godfrey, Defender of the Holy Sepulcher",
+      "context": "after the capture of the city they elected Godfrey, Defender of the Holy Sepulcher",
       "confidence": 0.95,
       "source_offset": null
     },
@@ -838,7 +760,7 @@
       "role": "patriarch",
       "gender": "m",
       "group": false,
-      "context": "promising that he would hand over Jerusalem to the Patriarch when he had secured other conquests",
+      "context": "in which the Patriarch was clearly subordinate to the King",
       "confidence": 0.8,
       "source_offset": null
     },
@@ -851,7 +773,7 @@
       "role": "king",
       "gender": "m",
       "group": false,
-      "context": "in which the Patriarch was clearly subordinate to the King, and the latter was wholly independent of the Pope",
+      "context": "in which the Patriarch was clearly subordinate to the King, and the latter was wholly independent",
       "confidence": 0.8,
       "source_offset": null
     },
@@ -927,9 +849,9 @@
       "epithet": null,
       "toponym": null,
       "role": "clergy",
-      "gender": "m",
+      "gender": "unknown",
       "group": true,
-      "context": "Despite the efforts of the Pope and of the leading churchmen in the Holy Land he made peace",
+      "context": "Despite the efforts of the Pope and of the leading churchmen in the Holy Land",
       "confidence": 0.7,
       "source_offset": null
     },
@@ -960,7 +882,7 @@
       "source_offset": null
     },
     {
-      "name": "heretics",
+      "name": "the heretics",
       "raw_mention": "heretics",
       "title": null,
       "epithet": null,
@@ -973,26 +895,13 @@
       "source_offset": null
     },
     {
-      "name": "Moslems",
-      "raw_mention": "Moslems",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": "muslims",
-      "gender": "unknown",
-      "group": true,
-      "context": "both heretics and Moslems, adopted the customs of their wives, and some of their superstitions",
-      "confidence": 0.8,
-      "source_offset": null
-    },
-    {
       "name": "the Templars",
       "raw_mention": "the Templars",
       "title": null,
       "epithet": null,
       "toponym": null,
       "role": "knights",
-      "gender": "m",
+      "gender": "unknown",
       "group": true,
       "context": "Even the Templars were generally believed to be contaminated by the Mohammedan beliefs",
       "confidence": 0.9,
@@ -1005,7 +914,7 @@
       "epithet": null,
       "toponym": null,
       "role": "chroniclers",
-      "gender": "m",
+      "gender": "unknown",
       "group": true,
       "context": "The monastic chroniclers, especially those from the West, are very outspoken about the evil lives",
       "confidence": 0.7,
@@ -1057,7 +966,7 @@
       "epithet": null,
       "toponym": null,
       "role": "clergy",
-      "gender": "m",
+      "gender": "unknown",
       "group": true,
       "context": "all teaching in France, Germany and England had been done by the clerics and the crusaders",
       "confidence": 0.7,
@@ -1070,10 +979,10 @@
       "epithet": null,
       "toponym": null,
       "role": "chronicler",
-      "gender": "m",
+      "gender": "unknown",
       "group": false,
       "context": "One chronicler of the First Crusade naively expressed his surprise at the bravery of the Turks",
-      "confidence": 0.6,
+      "confidence": 0.5,
       "source_offset": null
     },
     {
@@ -1112,7 +1021,7 @@
       "gender": "m",
       "group": false,
       "context": "For the Turk never ventures upon close fight; but, when driven from his station",
-      "confidence": 0.7,
+      "confidence": 0.6,
       "source_offset": null
     },
     {
@@ -1122,7 +1031,7 @@
       "epithet": null,
       "toponym": null,
       "role": "preachers",
-      "gender": "m",
+      "gender": "unknown",
       "group": true,
       "context": "Many of the preachers were charged with misappropriation of the funds which they raised",
       "confidence": 0.7,
@@ -1176,7 +1085,7 @@
       "role": "historiographer",
       "gender": "m",
       "group": false,
-      "context": "e. g., Matthew Paris, the historiographer of the monastery of St.",
+      "context": "But the same idea was common ; e. g., Matthew Paris, the historiographer of the monastery",
       "confidence": 0.95,
       "source_offset": null
     },
@@ -1456,7 +1365,15 @@
       "status": "no_match"
     },
     {
-      "person": "the Popes",
+      "person": "the Children's Crusade",
+      "person_group": true,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "The Popes",
       "person_group": true,
       "candidates": [],
       "top_candidate": null,
@@ -1608,7 +1525,7 @@
       "status": "no_match"
     },
     {
-      "person": "the Moslems",
+      "person": "The Moslems",
       "person_group": true,
       "candidates": [],
       "top_candidate": null,
@@ -1616,7 +1533,7 @@
       "status": "no_match"
     },
     {
-      "person": "the Albigenses",
+      "person": "The Albigenses",
       "person_group": true,
       "candidates": [],
       "top_candidate": null,
@@ -1624,7 +1541,7 @@
       "status": "no_match"
     },
     {
-      "person": "the heathen",
+      "person": "The heathen",
       "person_group": true,
       "candidates": [],
       "top_candidate": null,
@@ -1632,56 +1549,8 @@
       "status": "no_match"
     },
     {
-      "person": "Christian lands",
-      "person_group": true,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Bishops of heretical churches in Syria",
-      "person_group": true,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "the ruler of Armenia",
+      "person": "The ruler of Armenia",
       "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "the Armenian Church",
-      "person_group": true,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "the Church",
-      "person_group": true,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "the Orders of the Temple and Hospital",
-      "person_group": true,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Men who had taken the Cross",
-      "person_group": true,
       "candidates": [],
       "top_candidate": null,
       "confidence": 0.0,
@@ -1706,7 +1575,7 @@
           "score": 1.0,
           "match_type": "exact",
           "evidence": "exact match: 'urban ii' ↔ 'Urban II'",
-          "relevance": 0.453
+          "relevance": 0.4974
         }
       ],
       "top_candidate": {
@@ -1716,13 +1585,13 @@
         "score": 1.0,
         "match_type": "exact",
         "evidence": "exact match: 'urban ii' ↔ 'Urban II'",
-        "relevance": 0.453
+        "relevance": 0.4974
       },
       "confidence": 1.0,
       "status": "high",
       "rerank": {
         "model": "jina-reranker-v2-base-multilingual",
-        "top_relevance": 0.453,
+        "top_relevance": 0.4974,
         "min_relevance": 0.25,
         "veto": false
       }
@@ -1736,7 +1605,7 @@
       "status": "no_match"
     },
     {
-      "person": "the crusaders",
+      "person": "The crusaders",
       "person_group": true,
       "candidates": [],
       "top_candidate": null,
@@ -1778,7 +1647,7 @@
           "score": 0.7826,
           "match_type": "fuzzy",
           "evidence": "fuzzy match: 'st bernard' ↔ 'Bernard of Dorat'",
-          "relevance": 0.0927
+          "relevance": 0.0921
         }
       ],
       "top_candidate": null,
@@ -1786,13 +1655,13 @@
       "status": "no_match",
       "rerank": {
         "model": "jina-reranker-v2-base-multilingual",
-        "top_relevance": 0.0927,
+        "top_relevance": 0.0921,
         "min_relevance": 0.25,
         "veto": true
       }
     },
     {
-      "person": "the leaders",
+      "person": "The leaders",
       "person_group": true,
       "candidates": [],
       "top_candidate": null,
@@ -1800,7 +1669,7 @@
       "status": "no_match"
     },
     {
-      "person": "the Church party in the army",
+      "person": "The Church party in the army",
       "person_group": true,
       "candidates": [],
       "top_candidate": null,
@@ -1808,15 +1677,7 @@
       "status": "no_match"
     },
     {
-      "person": "our Saviour",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "the nobles",
+      "person": "The nobles",
       "person_group": true,
       "candidates": [],
       "top_candidate": null,
@@ -1968,15 +1829,7 @@
       "status": "no_match"
     },
     {
-      "person": "heretics",
-      "person_group": true,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Moslems",
+      "person": "the heretics",
       "person_group": true,
       "candidates": [],
       "top_candidate": null,
@@ -2156,7 +2009,7 @@
     }
   },
   "text_sha256": "28b5e7f7d267c7053cea13ed28ba90b3c67af1d49c0cc99e70602c4724054560",
-  "run_at": "2026-10-23T01:31:56.675831+00:00",
+  "run_at": "2026-10-24T01:29:37.894237+00:00",
   "recognition": null,
   "extraction_mode": "gpustack",
   "extraction_engine": {
@@ -2171,18 +2024,18 @@
   },
   "language_hint": null,
   "quality": {
-    "filtered_problem_entities": 16,
+    "filtered_problem_entities": 17,
     "feedback_store": "data/entity_feedback.json",
     "noise": {
-      "extracted_total": 111,
-      "kept": 95,
-      "filtered": 16,
+      "extracted_total": 105,
+      "kept": 88,
+      "filtered": 17,
       "filtered_by_reason": {
-        "known_bad_entity": 14,
+        "known_bad_entity": 15,
         "lowercase_non_name": 2
       },
-      "low_confidence_kept": 4,
-      "noise_share": 0.1441
+      "low_confidence_kept": 5,
+      "noise_share": 0.1619
     }
   }
 }
