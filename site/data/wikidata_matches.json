@@ -10187,8 +10187,43 @@
     },
     "radulfus aloensis": {
       "person": "Radulfus Aloensis",
-      "candidates": [],
-      "queried_at": "2026-02-22T21:17:37.481957"
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 2,
+      "candidates": [
+        {
+          "qid": "Q18530687",
+          "label": "Ralph",
+          "description": "chancellor of the Kingdom of Jerusalem and bishop of Bethlehem",
+          "url": "https://www.wikidata.org/wiki/Q18530687",
+          "score": 0.65,
+          "birth_year": 1110,
+          "death_year": 1174,
+          "matched": "Radulfus"
+        },
+        {
+          "qid": "Q3419111",
+          "label": "Raoul",
+          "description": "bishop of Coutances",
+          "url": "https://www.wikidata.org/wiki/Q3419111",
+          "score": 0.65,
+          "birth_year": null,
+          "death_year": 1110,
+          "matched": "Radulfus"
+        },
+        {
+          "qid": "Q105487591",
+          "label": "Radulf of Ribe",
+          "description": "Danish monk and writer (?-1171), author of the treatise De calice spiritali",
+          "url": "https://www.wikidata.org/wiki/Q105487591",
+          "score": 0.6,
+          "birth_year": null,
+          "death_year": 1171,
+          "matched": "Radulfus de Ribe"
+        }
+      ],
+      "queried_at": "2026-10-25T02:40:29.509780+00:00"
     },
     "italian priest": {
       "person": "Italian priest",
@@ -25869,11 +25904,11 @@
   "status": {
     "source": "wikidata_pre1500_snapshot",
     "snapshot": "2026-10-02T22:51:17+00:00",
-    "resolved": 0,
-    "cached": 192,
-    "re_resolved": 0,
-    "from_an_older_resolver": 724,
+    "resolved": 1,
+    "cached": 194,
+    "re_resolved": 1,
+    "from_an_older_resolver": 723,
     "refresh": "stale",
-    "ran_at": "2026-10-24T01:36:42.486686+00:00"
+    "ran_at": "2026-10-25T02:40:29.510648+00:00"
   }
 }
