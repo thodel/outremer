@@ -25899,16 +25899,56 @@
         }
       ],
       "queried_at": "2026-10-20T01:35:50.006250+00:00"
+    },
+    "islam": {
+      "person": "Islam",
+      "status": "ambiguous",
+      "source": "wikidata_pre1500_snapshot",
+      "snapshot": "2026-10-02T22:51:17+00:00",
+      "fits": 8,
+      "candidates": [
+        {
+          "qid": "Q107357119",
+          "label": "Shihab al-Islam",
+          "description": "وزير في الدولة السلجوقية",
+          "url": "https://www.wikidata.org/wiki/Q107357119",
+          "score": 0.6,
+          "birth_year": null,
+          "death_year": 1121,
+          "matched": "Shihab al-Islam"
+        },
+        {
+          "qid": "Q138567807",
+          "label": "Muḥammad ibn ʻAbd al-Raḥmān al-Bakrī",
+          "description": "person represented in or related to a manuscript or object cataloged in Hill Museum & Manuscript Library's Reading Room or Museum",
+          "url": "https://www.wikidata.org/wiki/Q138567807",
+          "score": 0.6,
+          "birth_year": 1404,
+          "death_year": 1486,
+          "matched": "Shaykh al-Islām Jalāl al-Dīn Muḥammad ibn al-Shaykh ʻIzz al-Dīn ʻAbd al-Raḥmān al-Bakrī al-Shāfiʻī"
+        },
+        {
+          "qid": "Q182914",
+          "label": "Hasan ibn Ali",
+          "description": "5th Rashidun Caliph (r. 661) and second Shia Imam",
+          "url": "https://www.wikidata.org/wiki/Q182914",
+          "score": 0.6,
+          "birth_year": 625,
+          "death_year": 669,
+          "matched": "Fifth Caliph of Islam"
+        }
+      ],
+      "queried_at": "2026-10-27T02:35:10.410625+00:00"
     }
   },
   "status": {
     "source": "wikidata_pre1500_snapshot",
     "snapshot": "2026-10-02T22:51:17+00:00",
-    "resolved": 0,
-    "cached": 185,
+    "resolved": 1,
+    "cached": 190,
     "re_resolved": 0,
     "from_an_older_resolver": 723,
     "refresh": "stale",
-    "ran_at": "2026-10-26T02:35:06.189700+00:00"
+    "ran_at": "2026-10-27T02:35:10.414864+00:00"
   }
 }

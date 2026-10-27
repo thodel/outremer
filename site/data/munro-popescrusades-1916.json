@@ -55,23 +55,10 @@
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "Divine",
+      "role": "Divine Figure",
       "gender": "m",
       "group": false,
       "context": "it is Christ who commands. Moreover, if those who set out thither lose their lives",
-      "confidence": 0.8,
-      "source_offset": null
-    },
-    {
-      "name": "God",
-      "raw_mention": "God",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": "Divine",
-      "gender": "m",
-      "group": false,
-      "context": "this I grant through the power of God vested in me.",
       "confidence": 0.8,
       "source_offset": null
     },
@@ -344,7 +331,7 @@
       "role": "king",
       "gender": "m",
       "group": false,
-      "context": "should be allowed. Philip Augustus actually followed the mandate, by an ordinance arranging",
+      "context": "enforce this. Philip Augustus actually followed the mandate, by an ordinance arranging the extent",
       "confidence": 0.95,
       "source_offset": null
     },
@@ -384,7 +371,20 @@
       "gender": "m",
       "group": true,
       "context": "the Popes interfered in case of capture of individual crusaders by their enemies and also to prevent",
-      "confidence": 0.6,
+      "confidence": 0.7,
+      "source_offset": null
+    },
+    {
+      "name": "their enemies",
+      "raw_mention": "their enemies",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": "adversary",
+      "gender": "unknown",
+      "group": true,
+      "context": "capture of individual crusaders by their enemies and also to prevent warfare which would hinder",
+      "confidence": 0.4,
       "source_offset": null
     },
     {
@@ -406,10 +406,10 @@
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "tournament participant",
-      "gender": "unknown",
+      "role": "tournament fighter",
+      "gender": "m",
       "group": true,
-      "context": "forbidding tournaments and threatening to excommunicate all participants. Other instances might be cited",
+      "context": "forbidding tournaments and threatening to excommunicate all participants. Other instances might",
       "confidence": 0.5,
       "source_offset": null
     },
@@ -520,7 +520,7 @@
     {
       "name": "The ruler of Armenia",
       "raw_mention": "The ruler of Armenia",
-      "title": "Ruler",
+      "title": "ruler",
       "epithet": null,
       "toponym": "Armenia",
       "role": "monarch",
@@ -533,7 +533,7 @@
     {
       "name": "St. Louis",
       "raw_mention": "St. Louis",
-      "title": "Saint",
+      "title": "St.",
       "epithet": null,
       "toponym": null,
       "role": "king",
@@ -549,7 +549,7 @@
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "pope",
+      "role": "pontiff",
       "gender": "m",
       "group": false,
       "context": "For the First Crusade Urban II. had appointed a papal legate, Ademar of Puy",
@@ -565,7 +565,7 @@
       "role": "papal legate",
       "gender": "m",
       "group": false,
-      "context": "For the First Crusade Urban II. had appointed a papal legate, Ademar of Puy, who proved",
+      "context": "For the First Crusade Urban II. had appointed a papal legate, Ademar of Puy, who proved of great",
       "confidence": 0.95,
       "source_offset": null
     },
@@ -591,7 +591,7 @@
       "role": "legate",
       "gender": "m",
       "group": false,
-      "context": "no one played a prominent part, except Cardinal Pelagius, whose lack of tact, to put it",
+      "context": "no one played a prominent part, except Cardinal Pelagius, whose lack of tact, to put it mildly",
       "confidence": 0.95,
       "source_offset": null
     },
@@ -601,7 +601,7 @@
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "pope",
+      "role": "pontiff",
       "gender": "m",
       "group": false,
       "context": "With the exceptions of Urban II. and Innocent III., the Popes did not take an active part",
@@ -610,11 +610,11 @@
     },
     {
       "name": "Innocent",
-      "raw_mention": "Innocent",
+      "raw_mention": "Innocent's",
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "pope",
+      "role": "pontiff",
       "gender": "m",
       "group": false,
       "context": "the expedition for which Urban made the plans was successful ; Innocent's orders were not obeyed",
@@ -624,7 +624,7 @@
     {
       "name": "St. Bernard",
       "raw_mention": "St. Bernard",
-      "title": "Saint",
+      "title": "St.",
       "epithet": null,
       "toponym": null,
       "role": "church leader",
@@ -643,7 +643,7 @@
       "role": "commanders",
       "gender": "unknown",
       "group": true,
-      "context": "before its capture in 1099, the leaders gathered to discuss the election of a ruler",
+      "context": "When, before its capture in 1099, the leaders gathered to discuss the election of a ruler",
       "confidence": 0.6,
       "source_offset": null
     },
@@ -1108,7 +1108,7 @@
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "clergy",
+      "role": "religious reformers",
       "gender": "unknown",
       "group": true,
       "context": "All reformers in the Church felt that this wealth had brought corruption in its train",
@@ -1220,14 +1220,6 @@
     },
     {
       "person": "Christ",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "God",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -1420,6 +1412,14 @@
     },
     {
       "person": "individual crusaders",
+      "person_group": true,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "their enemies",
       "person_group": true,
       "candidates": [],
       "top_candidate": null,
@@ -1967,7 +1967,7 @@
     }
   },
   "text_sha256": "28b5e7f7d267c7053cea13ed28ba90b3c67af1d49c0cc99e70602c4724054560",
-  "run_at": "2026-10-26T02:28:26.805170+00:00",
+  "run_at": "2026-10-27T02:28:27.513836+00:00",
   "recognition": null,
   "extraction_mode": "gpustack",
   "extraction_engine": {
@@ -1992,7 +1992,7 @@
         "known_bad_entity": 15,
         "lowercase_non_name": 2
       },
-      "low_confidence_kept": 4,
+      "low_confidence_kept": 5,
       "noise_share": 0.165
     }
   }
