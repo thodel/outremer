@@ -85,7 +85,7 @@
       "gender": "m",
       "group": false,
       "context": "Thomas Fuller, later, put it bluntly, the pope \"got a bag of money by it.\"",
-      "confidence": 0.4,
+      "confidence": 0.3,
       "source_offset": null
     },
     {
@@ -344,7 +344,7 @@
       "role": "king",
       "gender": "m",
       "group": false,
-      "context": "enforce this. Philip Augustus actually followed the mandate, by an ordinance arranging the extent",
+      "context": "should be allowed. Philip Augustus actually followed the mandate, by an ordinance arranging",
       "confidence": 0.95,
       "source_offset": null
     },
@@ -383,7 +383,7 @@
       "role": "soldier",
       "gender": "m",
       "group": true,
-      "context": "the Church the Popes interfered in case of capture of individual crusaders by their enemies and",
+      "context": "the Popes interfered in case of capture of individual crusaders by their enemies and also to prevent",
       "confidence": 0.6,
       "source_offset": null
     },
@@ -398,6 +398,19 @@
       "group": true,
       "context": "They even interfered with the amusements of the nobility, repeatedly forbidding tournaments and",
       "confidence": 0.6,
+      "source_offset": null
+    },
+    {
+      "name": "all participants",
+      "raw_mention": "all participants",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": "tournament participant",
+      "gender": "unknown",
+      "group": true,
+      "context": "repeatedly forbidding tournaments and threatening to excommunicate all participants. Other instances",
+      "confidence": 0.5,
       "source_offset": null
     },
     {
@@ -435,7 +448,7 @@
       "role": "emperor",
       "gender": "m",
       "group": false,
-      "context": "can be illustrated in many ways. Frederic II., in a burst of enthusiasm caused by his unexpected",
+      "context": "illustrated in many ways. Frederic II., in a burst of enthusiasm caused by his unexpected",
       "confidence": 0.95,
       "source_offset": null
     },
@@ -986,19 +999,6 @@
       "source_offset": null
     },
     {
-      "name": "the preachers",
-      "raw_mention": "the preachers",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": "preachers",
-      "gender": "unknown",
-      "group": true,
-      "context": "Many of the preachers were charged with misappropriation of the funds which they raised",
-      "confidence": 0.7,
-      "source_offset": null
-    },
-    {
       "name": "Walter von der Vogelweide",
       "raw_mention": "Walter von der Vogelweide",
       "title": null,
@@ -1047,7 +1047,7 @@
       "gender": "m",
       "group": false,
       "context": "e. g., Matthew Paris, the historiographer of the monastery of St.",
-      "confidence": 0.95,
+      "confidence": 0.9,
       "source_offset": null
     },
     {
@@ -1060,7 +1060,7 @@
       "gender": "unknown",
       "group": false,
       "context": "Albans writes : \" By divers wiles the Roman curia strove to take their property from the simple people of God",
-      "confidence": 0.4,
+      "confidence": 0.3,
       "source_offset": null
     },
     {
@@ -1095,7 +1095,7 @@
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "religious reformers",
+      "role": "clergy",
       "gender": "unknown",
       "group": true,
       "context": "All reformers in the Church felt that this wealth had brought corruption in its train",
@@ -1112,7 +1112,7 @@
       "gender": "m",
       "group": false,
       "context": "The fall of the Latin Empire of Constantinople led to the return of the Greek patriarch.",
-      "confidence": 0.7,
+      "confidence": 0.6,
       "source_offset": null
     }
   ],
@@ -1415,6 +1415,14 @@
     },
     {
       "person": "the nobility",
+      "person_group": true,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "all participants",
       "person_group": true,
       "candidates": [],
       "top_candidate": null,
@@ -1854,14 +1862,6 @@
       "status": "no_match"
     },
     {
-      "person": "the preachers",
-      "person_group": true,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
       "person": "Walter von der Vogelweide",
       "person_group": false,
       "candidates": [],
@@ -1946,7 +1946,7 @@
     }
   },
   "text_sha256": "28b5e7f7d267c7053cea13ed28ba90b3c67af1d49c0cc99e70602c4724054560",
-  "run_at": "2026-10-31T02:28:25.487149+00:00",
+  "run_at": "2026-11-01T02:28:10.668451+00:00",
   "recognition": null,
   "extraction_mode": "gpustack",
   "extraction_engine": {
