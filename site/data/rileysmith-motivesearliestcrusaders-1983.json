@@ -115,19 +115,6 @@
       "source_offset": null
     },
     {
-      "name": "nations",
-      "raw_mention": "nations",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": "collective",
-      "gender": "unknown",
-      "group": true,
-      "context": "We see nations moved by the inspiration of God.... The highest offices of government, the lordships of castles",
-      "confidence": 0.5,
-      "source_offset": null
-    },
-    {
       "name": "the crusaders",
       "raw_mention": "the crusaders",
       "title": null,
@@ -167,8 +154,8 @@
       "source_offset": null
     },
     {
-      "name": "prophets",
-      "raw_mention": "prophets",
+      "name": "certain prophets",
+      "raw_mention": "certain prophets",
       "title": null,
       "epithet": null,
       "toponym": null,
@@ -176,7 +163,7 @@
       "gender": "unknown",
       "group": true,
       "context": "summoned to go to the Promised Land by certain prophets recently arisen among them or by signs in the heavens",
-      "confidence": 0.6,
+      "confidence": 0.5,
       "source_offset": null
     },
     {
@@ -232,16 +219,16 @@
       "source_offset": null
     },
     {
-      "name": "the first king of Jerusalem",
-      "raw_mention": "the first king of lerusalem",
-      "title": "king",
+      "name": "the Egyptian army",
+      "raw_mention": "the Egyptian army",
+      "title": null,
       "epithet": null,
-      "toponym": "Jerusalem",
-      "role": "king",
-      "gender": "m",
-      "group": false,
-      "context": "Fulcher of Chartres, the chaplain of the first king of lerusalem, reported that in",
-      "confidence": 0.9,
+      "toponym": "Egyptian",
+      "role": "army",
+      "gender": "unknown",
+      "group": true,
+      "context": "and the victory over the Egyptian army on I 2 August, most crusaders decided to return home.",
+      "confidence": 0.85,
       "source_offset": null
     },
     {
@@ -631,7 +618,7 @@
       "gender": "unknown",
       "group": true,
       "context": "leading what must have been a section of Bohemond's Italian Norman army",
-      "confidence": 0.9,
+      "confidence": 0.85,
       "source_offset": null
     },
     {
@@ -666,11 +653,11 @@
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "prince",
+      "role": "crusader leader",
       "gender": "m",
       "group": false,
-      "context": "For a reference to the Wiscardides as soldiers of Bohemond's army",
-      "confidence": 0.9,
+      "context": "Leaving aside Bohemond himself and Tancred, we have the names of io members",
+      "confidence": 0.95,
       "source_offset": null
     },
     {
@@ -718,7 +705,7 @@
       "title": null,
       "epithet": null,
       "toponym": "Anzi",
-      "role": "crusader",
+      "role": "knight",
       "gender": "m",
       "group": false,
       "context": "two, Robert fitz Gerard and Robert of Anzi, accompanied Tancred to Jerusalem",
@@ -849,23 +836,10 @@
       "epithet": null,
       "toponym": null,
       "role": "knights",
-      "gender": "m",
+      "gender": "unknown",
       "group": true,
       "context": "in which Godfrey's followers summoned him to Jerusalem after the duke's death, they referred to themselves",
       "confidence": 0.8,
-      "source_offset": null
-    },
-    {
-      "name": "knights and prince of the kingdom of Jerusalem",
-      "raw_mention": "knights and prince of the kingdom of Jerusalem",
-      "title": null,
-      "epithet": null,
-      "toponym": "Jerusalem",
-      "role": "nobility",
-      "gender": "m",
-      "group": true,
-      "context": "according to Albert of Aachen, as 'knights and prince of the kingdom of Jerusalem': the 'prince' could only have been Galdemar",
-      "confidence": 0.7,
       "source_offset": null
     },
     {
@@ -874,24 +848,11 @@
       "title": "King",
       "epithet": null,
       "toponym": null,
-      "role": "monarch",
+      "role": "king",
       "gender": "m",
       "group": false,
       "context": "resolved in Galdemar's favour by King Baldwin I, one of whose first acts was to visit Hebron",
       "confidence": 0.95,
-      "source_offset": null
-    },
-    {
-      "name": "Roman of Le Puy",
-      "raw_mention": "Roman of Le Puy",
-      "title": null,
-      "epithet": null,
-      "toponym": "Le Puy",
-      "role": "castellan",
-      "gender": "m",
-      "group": false,
-      "context": "A third member of Raymond's army may have been Roman of Le Puy, who was to play an important part",
-      "confidence": 0.9,
       "source_offset": null
     },
     {
@@ -908,16 +869,29 @@
       "source_offset": null
     },
     {
-      "name": "Adhemar",
-      "raw_mention": "Adhemar",
+      "name": "Roman of Le Puy",
+      "raw_mention": "Roman of Le Puy",
       "title": null,
       "epithet": null,
-      "toponym": null,
-      "role": "papal legate",
+      "toponym": "Le Puy",
+      "role": "castellan",
       "gender": "m",
       "group": false,
-      "context": "accompanied the papal legate Adhemar and had transferred his allegiance directly to Raymond after Adhemar's death",
+      "context": "A third member of Raymond's army may have been Roman of Le Puy, who was to play an important part",
       "confidence": 0.9,
+      "source_offset": null
+    },
+    {
+      "name": "Adhemar",
+      "raw_mention": "Adhemar",
+      "title": "Papal Legate",
+      "epithet": null,
+      "toponym": null,
+      "role": "legate",
+      "gender": "m",
+      "group": false,
+      "context": "brother of the papal legate Adhemar. He must have travelled to Syria in the legate's company",
+      "confidence": 0.95,
       "source_offset": null
     },
     {
@@ -965,10 +939,10 @@
       "title": null,
       "epithet": null,
       "toponym": "Quiersy",
-      "role": "nobleman",
+      "role": "noble",
       "gender": "m",
       "group": false,
-      "context": "but he must have been related to, and may have accompanied, Gerard of Quiersy, who was quite prominent",
+      "context": "must have been related to, and may have accompanied, Gerard of Quiersy, who was quite prominent",
       "confidence": 0.9,
       "source_offset": null
     },
@@ -978,7 +952,7 @@
       "title": null,
       "epithet": null,
       "toponym": "Montpinson",
-      "role": "crusader",
+      "role": "knight",
       "gender": "m",
       "group": false,
       "context": "Ralph of Montpinson in Normandy probably arrived with Duke Robert of Normandy's forces, although he too could have been",
@@ -1020,7 +994,7 @@
       "role": "count",
       "gender": "m",
       "group": false,
-      "context": "Anjou crusaded in the Angevin company which must have followed either Stephen of Blois or Hugh of Vermandois",
+      "context": "Angevin company which must have followed either Stephen of Blois or Hugh of Vermandois. He fled from Antioch",
       "confidence": 0.9,
       "source_offset": null
     },
@@ -1033,7 +1007,7 @@
       "role": "count",
       "gender": "m",
       "group": false,
-      "context": "Anjou crusaded in the Angevin company which must have followed either Stephen of Blois or Hugh of Vermandois",
+      "context": "must have followed either Stephen of Blois or Hugh of Vermandois. He fled from Antioch in the summer of IO98",
       "confidence": 0.9,
       "source_offset": null
     },
@@ -1046,8 +1020,8 @@
       "role": "lord",
       "gender": "m",
       "group": false,
-      "context": "Roman was later to be lord of Oultrejourdain.",
-      "confidence": 0.8,
+      "context": "Roman was later to be lord of Oultrejourdain",
+      "confidence": 0.9,
       "source_offset": null
     },
     {
@@ -1060,7 +1034,7 @@
       "gender": "m",
       "group": false,
       "context": "Robert fitzGodwin was an English knight who had served in the Anglo Saxon fleet",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "source_offset": null
     },
     {
@@ -1072,8 +1046,8 @@
       "role": "leader",
       "gender": "m",
       "group": false,
-      "context": "fleet operating on behalf of the Byzantine Empire under Edgar Atheling.",
-      "confidence": 0.9,
+      "context": "operating on behalf of the Byzantine Empire under Edgar Atheling",
+      "confidence": 0.95,
       "source_offset": null
     },
     {
@@ -1095,10 +1069,10 @@
       "title": null,
       "epithet": null,
       "toponym": "the Principality",
-      "role": "relative of Bohemond",
+      "role": "relative",
       "gender": "m",
       "group": false,
-      "context": "at least two of them, Richard of the Principality and Robert fitz Gerard, being Bohemond's relatives.",
+      "context": "at least two of them, Richard of the Principality and Robert fitz Gerard, being Bohemond's relatives",
       "confidence": 0.9,
       "source_offset": null
     },
@@ -1108,11 +1082,11 @@
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "magister militum",
+      "role": "knight",
       "gender": "m",
       "group": false,
-      "context": "One, Ilger Bigod, was from Normandy proper, one, William the Carpenter",
-      "confidence": 0.9,
+      "context": "One, Ilger Bigod, was from Normandy proper",
+      "confidence": 0.95,
       "source_offset": null
     },
     {
@@ -1124,8 +1098,8 @@
       "role": "viscount",
       "gender": "m",
       "group": false,
-      "context": "William the Carpenter, Viscount of Melun, was from the Ile de France",
-      "confidence": 0.9,
+      "context": "one, William the Carpenter, Viscount of Melun, was from the Ile de France",
+      "confidence": 0.95,
       "source_offset": null
     },
     {
@@ -1134,10 +1108,10 @@
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "crusader",
+      "role": "knight",
       "gender": "m",
       "group": false,
-      "context": "Antioch: Adam fitz Michael,1 Humphrey fitz Ralph,2 Ilger Bigod,3",
+      "context": "settled with Bohemond in Antioch: Adam fitz Michael, Humphrey fitz Ralph",
       "confidence": 0.9,
       "source_offset": null
     },
@@ -1147,10 +1121,10 @@
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "crusader",
+      "role": "knight",
       "gender": "m",
       "group": false,
-      "context": "Adam fitz Michael,1 Humphrey fitz Ralph,2 Ilger Bigod,3",
+      "context": "Adam fitz Michael, Humphrey fitz Ralph, Ilger Bigod, Richard of the Principality",
       "confidence": 0.9,
       "source_offset": null
     },
@@ -1160,10 +1134,10 @@
       "title": null,
       "epithet": null,
       "toponym": "Sourdeval",
-      "role": "crusader",
+      "role": "knight",
       "gender": "m",
       "group": false,
-      "context": "Richard of the Principality,4 Robert of Sourdeval,5 Robert fitzTristan6",
+      "context": "Richard of the Principality, Robert of Sourdeval, Robert fitzTristan",
       "confidence": 0.9,
       "source_offset": null
     },
@@ -1173,10 +1147,10 @@
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "crusader",
+      "role": "knight",
       "gender": "m",
       "group": false,
-      "context": "Robert of Sourdeval,5 Robert fitzTristan6 and William the Carpenter.7",
+      "context": "Robert of Sourdeval, Robert fitzTristan and William the Carpenter",
       "confidence": 0.9,
       "source_offset": null
     },
@@ -1186,11 +1160,11 @@
       "title": null,
       "epithet": null,
       "toponym": "Chartres",
-      "role": "crusader",
+      "role": "knight",
       "gender": "m",
       "group": false,
       "context": "For his brother Bartholomew Boel of Chartres, see Raymond of Aguilers",
-      "confidence": 0.8,
+      "confidence": 0.85,
       "source_offset": null
     },
     {
@@ -1222,7 +1196,7 @@
     {
       "name": "William Peyre",
       "raw_mention": "William Peyre",
-      "title": "lord",
+      "title": "Lord",
       "epithet": null,
       "toponym": "Cunlhat",
       "role": "knight",
@@ -1236,7 +1210,7 @@
       "name": "Peter Bartholomew",
       "raw_mention": "Peter Bartholomew",
       "title": null,
-      "epithet": "the visionary",
+      "epithet": null,
       "toponym": null,
       "role": "visionary",
       "gender": "m",
@@ -1276,7 +1250,7 @@
       "raw_mention": "Bertrand Porcellet",
       "title": null,
       "epithet": null,
-      "toponym": "Arles",
+      "toponym": null,
       "role": "lord",
       "gender": "m",
       "group": false,
@@ -1294,7 +1268,7 @@
       "gender": "m",
       "group": false,
       "context": "Ralph later became a captain of Henry I of England's household troops",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "source_offset": null
     },
     {
@@ -1311,6 +1285,19 @@
       "source_offset": null
     },
     {
+      "name": "the Greek emperor",
+      "raw_mention": "the Greek emperor",
+      "title": "emperor",
+      "epithet": null,
+      "toponym": null,
+      "role": "emperor",
+      "gender": "m",
+      "group": false,
+      "context": "but he was wrong to deny the Greek emperor authority over his principality.",
+      "confidence": 0.8,
+      "source_offset": null
+    },
+    {
       "name": "Robert fitz Godwin",
       "raw_mention": "Robert fitz Godwin",
       "title": null,
@@ -1319,7 +1306,7 @@
       "role": "settler",
       "gender": "m",
       "group": false,
-      "context": "and Robert fitz Godwin seems to have been a disinherited AngloSaxon",
+      "context": "and Robert fitz Godwin seems to have been a disinherited AngloSaxon.",
       "confidence": 0.9,
       "source_offset": null
     },
@@ -1332,7 +1319,7 @@
       "role": "crusader",
       "gender": "m",
       "group": false,
-      "context": "Another example was provided by Arpin of Bourges, who sold his property and departed for Palestine",
+      "context": "Another example was provided by Arpin of Bourges, who sold his property and departed",
       "confidence": 0.9,
       "source_offset": null
     },
@@ -1342,37 +1329,11 @@
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "collective",
+      "role": "enemy",
       "gender": "unknown",
       "group": true,
       "context": "Wounded and captured by the Egyptians in 1102, he eventually returned home",
       "confidence": 0.8,
-      "source_offset": null
-    },
-    {
-      "name": "the Greek emperor",
-      "raw_mention": "the Greek emperor",
-      "title": "emperor",
-      "epithet": null,
-      "toponym": null,
-      "role": "sovereign",
-      "gender": "m",
-      "group": false,
-      "context": "but he was wrong to deny the Greek emperor authority over his principality",
-      "confidence": 0.85,
-      "source_offset": null
-    },
-    {
-      "name": "Count Beugnot",
-      "raw_mention": "Count Beugnot",
-      "title": "Count",
-      "epithet": null,
-      "toponym": null,
-      "role": "historian",
-      "gender": "m",
-      "group": false,
-      "context": "Professor Prawer, following the nineteenth century historian Count Beugnot, has maintained that there were allodial properties",
-      "confidence": 0.1,
       "source_offset": null
     },
     {
@@ -1384,29 +1345,16 @@
       "role": "vassal",
       "gender": "m",
       "group": false,
-      "context": "The Hugh of Bethsan, who witnessed a charter in II 5 5 as a royal vassal (Rohricht, Regesta, no. 299), was probably never lord",
+      "context": "The Hugh of Bethsan, who witnessed a charter in II 5 5 as a royal vassal (Rohricht, Regesta, no. 299)",
       "confidence": 0.85,
       "source_offset": null
     },
     {
-      "name": "John of Jaffa",
-      "raw_mention": "John of Jaffa",
-      "title": null,
-      "epithet": null,
-      "toponym": "Jaffa",
-      "role": "lawgiver",
-      "gender": "m",
-      "group": false,
-      "context": "Bethsan was certainly regarded as a fief in the i i 8os, the period in which a list of services incorporated into John of Jaffa's lawbook",
-      "confidence": 0.9,
-      "source_offset": null
-    },
-    {
       "name": "Eustace",
-      "raw_mention": "his brother Eustace's lordship of Boulogne",
+      "raw_mention": "his brother Eustace's",
       "title": null,
       "epithet": null,
-      "toponym": "Boulogne",
+      "toponym": null,
       "role": "lord",
       "gender": "m",
       "group": false,
@@ -1459,7 +1407,7 @@
       "title": null,
       "epithet": null,
       "toponym": "Nesle",
-      "role": "crusader",
+      "role": "knight",
       "gender": "m",
       "group": false,
       "context": "Drogo of Nesle had been in Emicho of Leiningen's ill fated company",
@@ -1472,10 +1420,10 @@
       "title": null,
       "epithet": null,
       "toponym": "Biandrate",
-      "role": "crusader",
+      "role": "settler",
       "gender": "m",
       "group": false,
-      "context": "settlers from Lombardy   Albert of Biandrate5 and Otto of Altaspata6",
+      "context": "brought in a new generation of settlers from Lombardy   Albert of Biandrate5 and Otto of Altaspata6",
       "confidence": 0.9,
       "source_offset": null
     },
@@ -1485,7 +1433,7 @@
       "title": null,
       "epithet": null,
       "toponym": "Altaspata",
-      "role": "crusader",
+      "role": "settler",
       "gender": "m",
       "group": false,
       "context": "Albert of Biandrate5 and Otto of Altaspata6   and from Lower Lorraine",
@@ -1498,10 +1446,10 @@
       "title": null,
       "epithet": null,
       "toponym": "Brussels",
-      "role": "crusader",
+      "role": "settler",
       "gender": "m",
       "group": false,
-      "context": "Flanders: Gotman of Brussels,7 Hugh of St Omer,8 Baldwin of Hemstrut9",
+      "context": "Flanders: Gotman of Brussels,7 Hugh of St Omer,8 Baldwin of Hemstrut9 and Ralph of Aalst.",
       "confidence": 0.9,
       "source_offset": null
     },
@@ -1511,10 +1459,10 @@
       "title": null,
       "epithet": null,
       "toponym": "Hemstrut",
-      "role": "crusader",
+      "role": "settler",
       "gender": "m",
       "group": false,
-      "context": "Hugh of St Omer,8 Baldwin of Hemstrut9 and Ralph of Aalst",
+      "context": "Hugh of St Omer,8 Baldwin of Hemstrut9 and Ralph of Aalst.",
       "confidence": 0.9,
       "source_offset": null
     },
@@ -1524,10 +1472,10 @@
       "title": null,
       "epithet": null,
       "toponym": "Aalst",
-      "role": "crusader",
+      "role": "settler",
       "gender": "m",
       "group": false,
-      "context": "Baldwin of Hemstrut9 and Ralph of Aalst",
+      "context": "Baldwin of Hemstrut9 and Ralph of Aalst.",
       "confidence": 0.9,
       "source_offset": null
     },
@@ -1566,7 +1514,20 @@
       "role": "king",
       "gender": "m",
       "group": false,
-      "context": "RHC oc. iii. 563, 568; Baldwin III, 'Historia Nicaena', RHC oc. v. I79",
+      "context": "Baldwin III, 'Historia Nicaena', RHC oc. v. I79, i8i",
+      "confidence": 0.9,
+      "source_offset": null
+    },
+    {
+      "name": "Radulfus Aloensis",
+      "raw_mention": "Radulfus Aloensis",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": "landholder",
+      "gender": "m",
+      "group": false,
+      "context": "Is he the Radulfus Aloensis, who held property, including Montjoie, near Jerusalem?",
       "confidence": 0.8,
       "source_offset": null
     }
@@ -1685,14 +1646,6 @@
       }
     },
     {
-      "person": "nations",
-      "person_group": true,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
       "person": "the crusaders",
       "person_group": true,
       "candidates": [],
@@ -1741,7 +1694,7 @@
       "status": "no_match"
     },
     {
-      "person": "prophets",
+      "person": "certain prophets",
       "person_group": true,
       "candidates": [],
       "top_candidate": null,
@@ -1805,8 +1758,8 @@
       "status": "no_match"
     },
     {
-      "person": "the first king of Jerusalem",
-      "person_group": false,
+      "person": "the Egyptian army",
+      "person_group": true,
       "candidates": [],
       "top_candidate": null,
       "confidence": 0.0,
@@ -2391,14 +2344,6 @@
       }
     },
     {
-      "person": "knights and prince of the kingdom of Jerusalem",
-      "person_group": true,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
       "person": "King Baldwin I",
       "person_group": false,
       "candidates": [],
@@ -2407,7 +2352,7 @@
       "status": "no_match"
     },
     {
-      "person": "Roman of Le Puy",
+      "person": "Raymond",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -2415,7 +2360,7 @@
       "status": "no_match"
     },
     {
-      "person": "Raymond",
+      "person": "Roman of Le Puy",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -2721,6 +2666,14 @@
       "status": "no_match"
     },
     {
+      "person": "the Greek emperor",
+      "person_group": false,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
       "person": "Robert fitz Godwin",
       "person_group": false,
       "candidates": [],
@@ -2745,31 +2698,7 @@
       "status": "no_match"
     },
     {
-      "person": "the Greek emperor",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "Count Beugnot",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
       "person": "Hugh of Bethsan",
-      "person_group": false,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "John of Jaffa",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -2827,7 +2756,7 @@
           "score": 0.7742,
           "match_type": "fuzzy",
           "evidence": "fuzzy match: 'albert of biandrate' ↔ 'Albert the Bear'",
-          "relevance": 0.1588
+          "relevance": 0.1243
         }
       ],
       "top_candidate": null,
@@ -2835,7 +2764,7 @@
       "status": "no_match",
       "rerank": {
         "model": "jina-reranker-v2-base-multilingual",
-        "top_relevance": 0.1588,
+        "top_relevance": 0.1243,
         "min_relevance": 0.25,
         "veto": true
       }
@@ -2895,6 +2824,30 @@
       "top_candidate": null,
       "confidence": 0.0,
       "status": "no_match"
+    },
+    {
+      "person": "Radulfus Aloensis",
+      "person_group": false,
+      "candidates": [
+        {
+          "outremer_id": "AUTH:CR186",
+          "outremer_name": "Ralph of Caen",
+          "type": "person",
+          "score": 0.8889,
+          "match_type": "fuzzy",
+          "evidence": "fuzzy match: 'radulfus aloensis' ↔ 'Ralph of Caen'",
+          "relevance": 0.1686
+        }
+      ],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match",
+      "rerank": {
+        "model": "jina-reranker-v2-base-multilingual",
+        "top_relevance": 0.1686,
+        "min_relevance": 0.25,
+        "veto": true
+      }
     }
   ],
   "linking_engine": {
@@ -2903,13 +2856,13 @@
     "reranker": {
       "model": "jina-reranker-v2-base-multilingual",
       "min_relevance": 0.25,
-      "checked": 17,
-      "vetoed": 10,
+      "checked": 18,
+      "vetoed": 11,
       "errors": 0
     }
   },
   "text_sha256": "92cc17aaccd31d44795d1a77f0c423d97bca6f4dd157c918a698c381361e51dc",
-  "run_at": "2026-11-01T02:34:49.725532+00:00",
+  "run_at": "2026-11-02T02:36:19.700635+00:00",
   "recognition": null,
   "extraction_mode": "gpustack",
   "extraction_engine": {
@@ -2924,18 +2877,19 @@
   },
   "language_hint": null,
   "quality": {
-    "filtered_problem_entities": 11,
+    "filtered_problem_entities": 10,
     "feedback_store": "data/entity_feedback.json",
     "noise": {
-      "extracted_total": 131,
-      "kept": 120,
-      "filtered": 11,
+      "extracted_total": 127,
+      "kept": 117,
+      "filtered": 10,
       "filtered_by_reason": {
-        "known_bad_entity": 6,
-        "modern_scholar": 5
+        "known_bad_entity": 5,
+        "lowercase_non_name": 1,
+        "modern_scholar": 4
       },
-      "low_confidence_kept": 1,
-      "noise_share": 0.084
+      "low_confidence_kept": 0,
+      "noise_share": 0.0787
     }
   }
 }
