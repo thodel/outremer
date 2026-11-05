@@ -7979,26 +7979,26 @@
       ]
     },
     "the pope": {
-      "count": 13,
+      "count": 15,
       "last_context": "Thomas Fuller, later, put it bluntly, the pope \"got a bag of money by it.\"",
-      "last_seen": "2026-11-04T02:28:35.848244+00:00",
-      "name": "The Pope",
+      "last_seen": "2026-11-05T02:28:37.365956+00:00",
+      "name": "the Pope",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
-          "count": 1,
+          "count": 2,
           "reasons": {
-            "known_bad_entity": 1
+            "known_bad_entity": 2
           }
         },
         "data/raw/Munro-PopesCrusades-1916.pdf": {
-          "count": 12,
+          "count": 13,
           "reasons": {
-            "known_bad_entity": 12
+            "known_bad_entity": 13
           }
         }
       },
       "reasons": {
-        "known_bad_entity": 13
+        "known_bad_entity": 15
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
@@ -8027,19 +8027,19 @@
     },
     "the sultan": {
       "count": 1,
-      "last_context": "The Sultan [Saladin] sought out the Templars and Hospitallers who had been captured",
-      "last_seen": "2026-11-04T02:24:02.866921+00:00",
-      "name": "the Sultan",
+      "last_context": "The sultan granted this request of the pope",
+      "last_seen": "2026-11-05T02:24:19.503583+00:00",
+      "name": "the sultan",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
           "count": 1,
           "reasons": {
-            "known_bad_entity": 1
+            "lowercase_non_name": 1
           }
         }
       },
       "reasons": {
-        "known_bad_entity": 1
+        "lowercase_non_name": 1
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
