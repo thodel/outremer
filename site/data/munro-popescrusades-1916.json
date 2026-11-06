@@ -258,7 +258,7 @@
       "source_offset": null
     },
     {
-      "name": "The Popes",
+      "name": "the Popes",
       "raw_mention": "the Popes",
       "title": "Pope",
       "epithet": null,
@@ -310,6 +310,19 @@
       "source_offset": null
     },
     {
+      "name": "their suzerains",
+      "raw_mention": "their suzerains",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": "lord",
+      "gender": "m",
+      "group": true,
+      "context": "circumstances, to mortgage their fiefs without the consent of their suzerains; this was a direct",
+      "confidence": 0.6,
+      "source_offset": null
+    },
+    {
       "name": "the German emperor",
       "raw_mention": "the German emperor",
       "title": "emperor",
@@ -319,7 +332,7 @@
       "gender": "m",
       "group": false,
       "context": "movement in which both the German emperor and the French king participated this usurpation",
-      "confidence": 0.7,
+      "confidence": 0.8,
       "source_offset": null
     },
     {
@@ -332,7 +345,7 @@
       "gender": "m",
       "group": false,
       "context": "both the German emperor and the French king participated this usurpation passed without much",
-      "confidence": 0.7,
+      "confidence": 0.8,
       "source_offset": null
     },
     {
@@ -344,7 +357,7 @@
       "role": "king",
       "gender": "m",
       "group": false,
-      "context": "enforce this. Philip Augustus actually followed the mandate, by an ordinance arranging the extent",
+      "context": "should be allowed. Philip Augustus actually followed the mandate, by an ordinance arranging",
       "confidence": 0.95,
       "source_offset": null
     },
@@ -357,7 +370,7 @@
       "role": "lender",
       "gender": "unknown",
       "group": true,
-      "context": "provoked less opposition because the creditors were frequently Jews. As each crusader was under",
+      "context": "property rights provoked less opposition because the creditors were frequently Jews.",
       "confidence": 0.5,
       "source_offset": null
     },
@@ -370,7 +383,7 @@
       "role": "ethnic group",
       "gender": "unknown",
       "group": true,
-      "context": "opposition because the creditors were frequently Jews. As each crusader was under the protection",
+      "context": "less opposition because the creditors were frequently Jews. As each crusader was under the",
       "confidence": 0.7,
       "source_offset": null
     },
@@ -388,6 +401,19 @@
       "source_offset": null
     },
     {
+      "name": "their enemies",
+      "raw_mention": "their enemies",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": "enemy",
+      "gender": "unknown",
+      "group": true,
+      "context": "capture of individual crusaders by their enemies and also to prevent warfare which would hinder",
+      "confidence": 0.4,
+      "source_offset": null
+    },
+    {
       "name": "the nobility",
       "raw_mention": "the nobility",
       "title": null,
@@ -396,8 +422,21 @@
       "role": "social class",
       "gender": "unknown",
       "group": true,
-      "context": "They even interfered with the amusements of the nobility, repeatedly forbidding tournaments and",
+      "context": "They even interfered with the amusements of the nobility, repeatedly forbidding tournaments",
       "confidence": 0.6,
+      "source_offset": null
+    },
+    {
+      "name": "all participants",
+      "raw_mention": "all participants",
+      "title": null,
+      "epithet": null,
+      "toponym": null,
+      "role": "tournament participant",
+      "gender": "unknown",
+      "group": true,
+      "context": "repeatedly forbidding tournaments and threatening to excommunicate all participants. Other instances",
+      "confidence": 0.5,
       "source_offset": null
     },
     {
@@ -435,7 +474,7 @@
       "role": "emperor",
       "gender": "m",
       "group": false,
-      "context": "illustrated in many ways. Frederic II., in a burst of enthusiasm caused by his unexpected",
+      "context": "can be illustrated in many ways. Frederic II., in a burst of enthusiasm caused by his",
       "confidence": 0.95,
       "source_offset": null
     },
@@ -466,7 +505,7 @@
       "source_offset": null
     },
     {
-      "name": "The Moslems",
+      "name": "the Moslems",
       "raw_mention": "the Moslems",
       "title": null,
       "epithet": null,
@@ -474,12 +513,12 @@
       "role": "religious group",
       "gender": "unknown",
       "group": true,
-      "context": "privileges, spiritual and temporal, which were given to those who went on expeditions against the Moslems",
+      "context": "privileges, spiritual and temporal, which were given to those who went on expeditions against the Moslems.",
       "confidence": 0.9,
       "source_offset": null
     },
     {
-      "name": "The Albigenses",
+      "name": "the Albigenses",
       "raw_mention": "the Albigenses",
       "title": null,
       "epithet": null,
@@ -492,7 +531,7 @@
       "source_offset": null
     },
     {
-      "name": "The heathen",
+      "name": "the heathen",
       "raw_mention": "the heathen",
       "title": null,
       "epithet": null,
@@ -500,12 +539,12 @@
       "role": "pagans",
       "gender": "unknown",
       "group": true,
-      "context": "against heretics like the Albigenses, or against the heathen in the north and northeast of Europe",
+      "context": "or against the heathen in the north and northeast of Europe. These armies played an important part",
       "confidence": 0.8,
       "source_offset": null
     },
     {
-      "name": "The ruler of Armenia",
+      "name": "the ruler of Armenia",
       "raw_mention": "The ruler of Armenia",
       "title": "ruler",
       "epithet": null,
@@ -514,7 +553,7 @@
       "gender": "m",
       "group": false,
       "context": "The ruler of Armenia sought to have the title of king bestowed upon him by the Pope",
-      "confidence": 0.8,
+      "confidence": 0.7,
       "source_offset": null
     },
     {
@@ -526,7 +565,7 @@
       "role": "king",
       "gender": "m",
       "group": false,
-      "context": "the heroic St. Louis had been obliged to ransom himself from captivity",
+      "context": "little or nothing; the heroic St. Louis had been obliged to ransom himself from captivity.",
       "confidence": 0.95,
       "source_offset": null
     },
@@ -539,7 +578,7 @@
       "role": "pope",
       "gender": "m",
       "group": false,
-      "context": "For the First Crusade Urban II. had appointed a papal legate, Ademar of Puy",
+      "context": "For the First Crusade Urban II. had appointed a papal legate, Ademar of Puy, who proved of great assistance",
       "confidence": 0.95,
       "source_offset": null
     },
@@ -552,12 +591,12 @@
       "role": "papal legate",
       "gender": "m",
       "group": false,
-      "context": "For the First Crusade Urban II. had appointed a papal legate, Ademar of Puy, who proved of great",
+      "context": "For the First Crusade Urban II. had appointed a papal legate, Ademar of Puy, who proved of great assistance",
       "confidence": 0.95,
       "source_offset": null
     },
     {
-      "name": "The crusaders",
+      "name": "the crusaders",
       "raw_mention": "the crusaders",
       "title": null,
       "epithet": null,
@@ -565,7 +604,7 @@
       "role": "warriors",
       "gender": "unknown",
       "group": true,
-      "context": "he died before the capture of Jerusalem and his loss was keenly felt by the crusaders",
+      "context": "he died before the capture of Jerusalem and his loss was keenly felt by the crusaders.",
       "confidence": 0.9,
       "source_offset": null
     },
@@ -578,7 +617,7 @@
       "role": "legate",
       "gender": "m",
       "group": false,
-      "context": "no one played a prominent part, except Cardinal Pelagius, whose lack of tact, to put it mildly",
+      "context": "no one played a prominent part, except Cardinal Pelagius, whose lack of tact, to put it mildly,",
       "confidence": 0.95,
       "source_offset": null
     },
@@ -591,20 +630,20 @@
       "role": "pope",
       "gender": "m",
       "group": false,
-      "context": "With the exceptions of Urban II. and Innocent III., the Popes did not take an active part",
+      "context": "With the exceptions of Urban II. and Innocent III., the Popes did not take an active part in laying",
       "confidence": 0.95,
       "source_offset": null
     },
     {
       "name": "Innocent",
-      "raw_mention": "Innocent's",
+      "raw_mention": "Innocent",
       "title": null,
       "epithet": null,
       "toponym": null,
       "role": "pope",
       "gender": "m",
       "group": false,
-      "context": "the expedition for which Urban made the plans was successful ; Innocent's orders were not obeyed",
+      "context": "the expedition for which Urban made the plans was successful ; Innocent's orders were not obeyed.",
       "confidence": 0.9,
       "source_offset": null
     },
@@ -617,12 +656,12 @@
       "role": "church leader",
       "gender": "m",
       "group": false,
-      "context": "The leaders in the Church, like St. Bernard, were able to throw the blame for failure",
+      "context": "The leaders in the Church, like St. Bernard, were able to throw the blame for failure upon the ignorance",
       "confidence": 0.95,
       "source_offset": null
     },
     {
-      "name": "The leaders",
+      "name": "the leaders",
       "raw_mention": "the leaders",
       "title": null,
       "epithet": null,
@@ -630,12 +669,12 @@
       "role": "commanders",
       "gender": "unknown",
       "group": true,
-      "context": "When, before its capture in 1099, the leaders gathered to discuss the election of a ruler",
+      "context": "When, before its capture in 1099, the leaders gathered to discuss the election of a ruler, the Church party",
       "confidence": 0.6,
       "source_offset": null
     },
     {
-      "name": "The Church party",
+      "name": "the Church party",
       "raw_mention": "the Church party",
       "title": null,
       "epithet": null,
@@ -643,12 +682,12 @@
       "role": "faction",
       "gender": "unknown",
       "group": true,
-      "context": "the leaders gathered to discuss the election of a ruler, the Church party in the army protested",
-      "confidence": 0.7,
+      "context": "gathered to discuss the election of a ruler, the Church party in the army protested, saying that no earthly",
+      "confidence": 0.6,
       "source_offset": null
     },
     {
-      "name": "The nobles",
+      "name": "the nobles",
       "raw_mention": "the nobles",
       "title": null,
       "epithet": null,
@@ -656,8 +695,8 @@
       "role": "aristocracy",
       "gender": "unknown",
       "group": true,
-      "context": "For the moment the nobles yielded; after the capture of the city they elected Godfrey",
-      "confidence": 0.8,
+      "context": "ought to wear a crown of gold where our Saviour had worn a crown of thorns. For the moment the nobles yielded;",
+      "confidence": 0.7,
       "source_offset": null
     },
     {
@@ -669,7 +708,7 @@
       "role": "ruler",
       "gender": "m",
       "group": false,
-      "context": "For the moment the nobles yielded; after the capture of the city they elected Godfrey, Defender of the Holy Sepulcher",
+      "context": "For the moment the nobles yielded; after the capture of the city they elected Godfrey, Defender of the Holy Sepulcher.",
       "confidence": 0.95,
       "source_offset": null
     },
@@ -734,7 +773,7 @@
       "role": "king",
       "gender": "m",
       "group": false,
-      "context": "in which the Patriarch was clearly subordinate to the King, and the latter was wholly independent",
+      "context": "in which the Patriarch was clearly subordinate to the King, and the latter was wholly independent of the Pope",
       "confidence": 0.8,
       "source_offset": null
     },
@@ -744,7 +783,7 @@
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "non Christians",
+      "role": "non believers",
       "gender": "unknown",
       "group": true,
       "context": "carrying on trade with the infidels. They viewed askance the bands of crusaders",
@@ -810,7 +849,7 @@
       "epithet": null,
       "toponym": null,
       "role": "clergy",
-      "gender": "unknown",
+      "gender": "m",
       "group": true,
       "context": "Despite the efforts of the Pope and of the leading churchmen in the Holy Land he made peace",
       "confidence": 0.7,
@@ -826,7 +865,7 @@
       "gender": "unknown",
       "group": true,
       "context": "he made peace with the Mohammedans and secured Jerusalem by diplomacy",
-      "confidence": 0.9,
+      "confidence": 0.8,
       "source_offset": null
     },
     {
@@ -862,7 +901,7 @@
       "epithet": null,
       "toponym": null,
       "role": "knights",
-      "gender": "unknown",
+      "gender": "m",
       "group": true,
       "context": "Even the Templars were generally believed to be contaminated by the Mohammedan beliefs",
       "confidence": 0.9,
@@ -875,10 +914,10 @@
       "epithet": null,
       "toponym": null,
       "role": "chroniclers",
-      "gender": "unknown",
+      "gender": "m",
       "group": true,
       "context": "The monastic chroniclers, especially those from the West, are very outspoken about the evil lives",
-      "confidence": 0.6,
+      "confidence": 0.7,
       "source_offset": null
     },
     {
@@ -927,7 +966,7 @@
       "epithet": null,
       "toponym": null,
       "role": "clergy",
-      "gender": "unknown",
+      "gender": "m",
       "group": true,
       "context": "all teaching in France, Germany and England had been done by the clerics and the crusaders",
       "confidence": 0.7,
@@ -940,7 +979,7 @@
       "epithet": null,
       "toponym": null,
       "role": "chronicler",
-      "gender": "unknown",
+      "gender": "m",
       "group": false,
       "context": "One chronicler of the First Crusade naively expressed his surprise at the bravery of the Turks",
       "confidence": 0.5,
@@ -952,11 +991,11 @@
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "muslims/turks",
+      "role": "turks",
       "gender": "unknown",
       "group": true,
       "context": "naively expressed his surprise at the bravery of the Turks who he had been taught to believe",
-      "confidence": 0.9,
+      "confidence": 0.8,
       "source_offset": null
     },
     {
@@ -969,7 +1008,7 @@
       "gender": "m",
       "group": false,
       "context": "for William of Malmesbury reports that the Pope said: the Turks are",
-      "confidence": 0.95,
+      "confidence": 0.9,
       "source_offset": null
     },
     {
@@ -978,7 +1017,7 @@
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "muslim/turk",
+      "role": "turk",
       "gender": "m",
       "group": false,
       "context": "For the Turk never ventures upon close fight; but, when driven from his station",
@@ -992,7 +1031,7 @@
       "epithet": null,
       "toponym": null,
       "role": "preachers",
-      "gender": "unknown",
+      "gender": "m",
       "group": true,
       "context": "Many of the preachers were charged with misappropriation of the funds which they raised",
       "confidence": 0.7,
@@ -1004,7 +1043,7 @@
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "poet/minnesinger",
+      "role": "poet",
       "gender": "m",
       "group": false,
       "context": "Walter von der Vogelweide voices this feeling in his verses :",
@@ -1017,7 +1056,7 @@
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "poet/minnesinger",
+      "role": "poet",
       "gender": "m",
       "group": false,
       "context": "As Walter was a partisan of the Hohenstaufens and opposed to the papacy he might be considered",
@@ -1334,7 +1373,7 @@
       "status": "no_match"
     },
     {
-      "person": "The Popes",
+      "person": "the Popes",
       "person_group": true,
       "candidates": [],
       "top_candidate": null,
@@ -1359,6 +1398,14 @@
     },
     {
       "person": "vassals",
+      "person_group": true,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "their suzerains",
       "person_group": true,
       "candidates": [],
       "top_candidate": null,
@@ -1414,7 +1461,23 @@
       "status": "no_match"
     },
     {
+      "person": "their enemies",
+      "person_group": true,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
       "person": "the nobility",
+      "person_group": true,
+      "candidates": [],
+      "top_candidate": null,
+      "confidence": 0.0,
+      "status": "no_match"
+    },
+    {
+      "person": "all participants",
       "person_group": true,
       "candidates": [],
       "top_candidate": null,
@@ -1462,7 +1525,7 @@
       "status": "no_match"
     },
     {
-      "person": "The Moslems",
+      "person": "the Moslems",
       "person_group": true,
       "candidates": [],
       "top_candidate": null,
@@ -1470,7 +1533,7 @@
       "status": "no_match"
     },
     {
-      "person": "The Albigenses",
+      "person": "the Albigenses",
       "person_group": true,
       "candidates": [],
       "top_candidate": null,
@@ -1478,7 +1541,7 @@
       "status": "no_match"
     },
     {
-      "person": "The heathen",
+      "person": "the heathen",
       "person_group": true,
       "candidates": [],
       "top_candidate": null,
@@ -1486,7 +1549,7 @@
       "status": "no_match"
     },
     {
-      "person": "The ruler of Armenia",
+      "person": "the ruler of Armenia",
       "person_group": false,
       "candidates": [],
       "top_candidate": null,
@@ -1512,7 +1575,7 @@
           "score": 1.0,
           "match_type": "exact",
           "evidence": "exact match: 'urban ii' ↔ 'Urban II'",
-          "relevance": 0.4974
+          "relevance": 0.4173
         }
       ],
       "top_candidate": {
@@ -1522,13 +1585,13 @@
         "score": 1.0,
         "match_type": "exact",
         "evidence": "exact match: 'urban ii' ↔ 'Urban II'",
-        "relevance": 0.4974
+        "relevance": 0.4173
       },
       "confidence": 1.0,
       "status": "high",
       "rerank": {
         "model": "jina-reranker-v2-base-multilingual",
-        "top_relevance": 0.4974,
+        "top_relevance": 0.4173,
         "min_relevance": 0.25,
         "veto": false
       }
@@ -1542,7 +1605,7 @@
       "status": "no_match"
     },
     {
-      "person": "The crusaders",
+      "person": "the crusaders",
       "person_group": true,
       "candidates": [],
       "top_candidate": null,
@@ -1584,7 +1647,7 @@
           "score": 0.7826,
           "match_type": "fuzzy",
           "evidence": "fuzzy match: 'st bernard' ↔ 'Bernard of Dorat'",
-          "relevance": 0.0921
+          "relevance": 0.0927
         }
       ],
       "top_candidate": null,
@@ -1592,13 +1655,13 @@
       "status": "no_match",
       "rerank": {
         "model": "jina-reranker-v2-base-multilingual",
-        "top_relevance": 0.0921,
+        "top_relevance": 0.0927,
         "min_relevance": 0.25,
         "veto": true
       }
     },
     {
-      "person": "The leaders",
+      "person": "the leaders",
       "person_group": true,
       "candidates": [],
       "top_candidate": null,
@@ -1606,7 +1669,7 @@
       "status": "no_match"
     },
     {
-      "person": "The Church party",
+      "person": "the Church party",
       "person_group": true,
       "candidates": [],
       "top_candidate": null,
@@ -1614,7 +1677,7 @@
       "status": "no_match"
     },
     {
-      "person": "The nobles",
+      "person": "the nobles",
       "person_group": true,
       "candidates": [],
       "top_candidate": null,
@@ -1946,7 +2009,7 @@
     }
   },
   "text_sha256": "28b5e7f7d267c7053cea13ed28ba90b3c67af1d49c0cc99e70602c4724054560",
-  "run_at": "2026-11-05T02:28:38.342243+00:00",
+  "run_at": "2026-11-06T02:30:02.086197+00:00",
   "recognition": null,
   "extraction_mode": "gpustack",
   "extraction_engine": {
@@ -1964,15 +2027,15 @@
     "filtered_problem_entities": 17,
     "feedback_store": "data/entity_feedback.json",
     "noise": {
-      "extracted_total": 102,
-      "kept": 85,
+      "extracted_total": 105,
+      "kept": 88,
       "filtered": 17,
       "filtered_by_reason": {
         "known_bad_entity": 15,
         "lowercase_non_name": 2
       },
-      "low_confidence_kept": 4,
-      "noise_share": 0.1667
+      "low_confidence_kept": 5,
+      "noise_share": 0.1619
     }
   }
 }
