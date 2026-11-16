@@ -165,3 +165,15 @@ WIKIDATA_SNAPSHOT = _get("WIKIDATA_SNAPSHOT", "")
 LINK_CANDIDATE_FLOOR = float(_get("LINK_CANDIDATE_FLOOR", "0.75"))
 LINK_MEDIUM          = float(_get("LINK_MEDIUM", "0.75"))
 LINK_HIGH            = float(_get("LINK_HIGH", "0.90"))
+
+# Fusion (M16.2, #80; Epic 16, #66): consensus + bounded LLM arbitration.
+# When the max pairwise CER of the candidate pool is below this threshold
+# the engines agree and the consensus is taken with zero arbitration calls.
+# Inherited constant from the epic (#66, ADR 0002); PR #187's
+# ENSEMBLE_AGREEMENT_CER reuses the same value on the ensemble side.
+FUSION_AGREEMENT_CER_THRESHOLD = float(_get("FUSION_AGREEMENT_CER_THRESHOLD", "0.05"))
+# "vote" = align + vote + arbitrate unresolved spans (one bounded LLM call
+# per span); "llm_merge" = one LLM call merges the raw texts. The
+# agreement gate runs before the strategy either way: an agreeing page
+# takes the consensus even under "llm_merge".
+FUSION_STRATEGY = _get("FUSION_STRATEGY", "vote")
