@@ -143,6 +143,26 @@ QWEN3_VL_DISABLE_THINKING = _get("QWEN3_VL_DISABLE_THINKING", "true").lower() ==
 VLM_FREQUENCY_PENALTY = float(_get("VLM_FREQUENCY_PENALTY", "0.2"))
 VLM_PRESENCE_PENALTY = float(_get("VLM_PRESENCE_PENALTY", "0.0"))
 
+# Ensemble recognition dials (M16.1, #79; Epic 16, #66): one candidate per
+# engine family (VLM + best kraken + best TrOCR) in round 1, grown while the
+# candidates disagree. Every added candidate is one real GPU inference
+# (~30–60 s per model per page) — coverage/cost dials, not quality knobs.
+ENSEMBLE_MIN_ENGINES = int(_get("ENSEMBLE_MIN_ENGINES", "3"))
+ENSEMBLE_MAX_LOOPS = int(_get("ENSEMBLE_MAX_LOOPS", "4"))
+ENSEMBLE_PER_ENGINE = int(_get("ENSEMBLE_PER_ENGINE", "3"))
+# Below this max-pairwise candidate distance the pool is in agreement and no
+# further candidates are added. Inherited from #66 (FUSION_AGREEMENT_CER_
+# THRESHOLD = 0.05, the "engines agree" constant), cited per ADR 0002.
+ENSEMBLE_AGREEMENT_CER = float(_get("ENSEMBLE_AGREEMENT_CER", "0.05"))
+# Curated best-first order of the gateway model pools. Only models measured on
+# this corpus get an explicit rank (the M14.5 fixture run, #124); the remaining
+# pool depth is filled from the gateway registry in registry order — coverage,
+# never a quality claim.
+ENSEMBLE_MODEL_ORDER: dict[str, tuple[str, ...]] = {
+    "kraken": ("kraken-catmus_medieval",),
+    "trocr": ("trocr-essoins-middle-latin",),
+}
+
 # OCR
 # "qwen3-vl" - the GPUStack vision model behind the VISION role (qwen3.8-27b).
 # It is the only engine: the Mistral API fallback was removed (M14.2/M17.2),
