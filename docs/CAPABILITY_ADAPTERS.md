@@ -43,6 +43,13 @@ The registry fails closed on invocation when no audit log is configured.
   and tool calls. Person results become *unreviewed external candidates* with
   source-local identity preserved; they are never merged directly into an
   Outremer authority record.
+- **MCP federation (tei fleet):** one streamable-HTTP source per institution —
+  `MCP_BASE_URL` plus `/mcp/<name>/mcp`, overridable per institution via
+  `MCP_FEDERATION_<NAME>_URL`; built-in row mappings for hls, ssrq and kf
+  (the ch-h-bot MCP-per-institution pattern, #127). `search_persons` results
+  become the same unreviewed candidates with source-local ids
+  (`per-…`/`per…`) preserved. A failed source lands in the result's
+  `failures`; only when every source fails is the call an error.
 - **QLever:** read-only SPARQL. Update operations are rejected even if hidden
   behind `PREFIX`/`BASE` declarations.
 - **Voyant:** explicit, mutating corpus hand-off of approved non-empty text.
@@ -58,6 +65,7 @@ GPUStack is required. Other providers are off unless enabled:
 OUTREMER_CAPABILITY_ATR=true
 OUTREMER_CAPABILITY_ATR_REQUIRED=false
 OUTREMER_CAPABILITY_MCP=false
+OUTREMER_CAPABILITY_MCP_FEDERATION=false
 OUTREMER_CAPABILITY_QLEVER=false
 OUTREMER_CAPABILITY_VOYANT=false
 OUTREMER_CAPABILITY_AGENT_TOOLS=false
@@ -65,7 +73,11 @@ OUTREMER_CAPABILITY_AGENT_TOOLS=false
 
 Endpoints and credentials retain their service-specific variables:
 `GPUSTACK_BASE_URL`, `GPUSTACK_API_KEY`, `ATR_GATEWAY_URL`, `ATR_API_KEY`,
-`MCP_BASE_URL`, `MCP_API_KEY`, `QLEVER_ENDPOINT`, `VOYANT_API_URL`, and
+`MCP_BASE_URL`, `MCP_API_KEY`, `MCP_FEDERATION_SOURCES`,
+`MCP_FEDERATION_<NAME>_URL` (per-institution endpoint override) and
+`MCP_FEDERATION_<NAME>_AUTH` (per-institution complete `Authorization`
+header value, e.g. the fleet hls server's `Basic` challenge),
+`QLEVER_ENDPOINT`, `VOYANT_API_URL`, and
 `OUTREMER_TOOL_PROVIDER_URL`. Reports contain endpoint URLs but never keys.
 
 ## Startup discovery

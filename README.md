@@ -103,6 +103,7 @@ nothing else is ever contacted:
 | `GPUSTACK_BASE_URL` | `gpustack.unibe.ch` | LLM extraction and recognition of scanned pages (qwen3.8-27b) |
 | `ATR_GATEWAY_URL` | the ATR gateway (idhefix) | ATR recognition engines (kraken, TrOCR), when configured |
 | `MCP_BASE_URL` | `tei.dh.unibe.ch` | MCP federation candidates (M21.3), when configured and enabled |
+| `MCP_FEDERATION_<NAME>_URL` | e.g. `127.0.0.1` | per-institution MCP federation endpoints (M21.3), when configured |
 
 Wikidata is reached only through the local snapshot (`WIKIDATA_SNAPSHOT`, #83);
 with the guard on and no snapshot, reconciliation fails instead of calling

@@ -44,6 +44,13 @@ class TestPermittedHosts:
         monkeypatch.setenv("GPUSTACK_BASE_URL", "https://gpustack.unibe.ch/v1")
         assert "query.wikidata.org" not in airgap.permitted_hosts()
 
+    def test_federation_override_extends_the_allow_list(self, monkeypatch):
+        monkeypatch.setenv("GPUSTACK_BASE_URL", "https://gpustack.unibe.ch/v1")
+        monkeypatch.setenv("MCP_BASE_URL", "https://tei.dh.unibe.ch/mcp")
+        monkeypatch.setenv("MCP_FEDERATION_HLS_URL", "http://127.0.0.1:8123/mcp")
+        hosts = airgap.permitted_hosts()
+        assert hosts == {"gpustack.unibe.ch", "tei.dh.unibe.ch", "127.0.0.1"}
+
 
 class TestGuard:
     def test_blocked_connect_raises_permission_error(self, guard_off):

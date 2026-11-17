@@ -7,6 +7,7 @@ refused unless it targets one of the configured inference services:
     GPUSTACK_BASE_URL   LLM extraction and page recognition (qwen3.8-27b)
     ATR_GATEWAY_URL     ATR recognition engines (kraken, TrOCR), if set
     MCP_BASE_URL        MCP federation candidates, if set
+    MCP_FEDERATION_<NAME>_URL  per-institution MCP federation endpoints (M21.3), if set
 
 A blocked connection raises ``PermissionError("EGRESS BLOCKED: …")``, which
 the pipeline reports as a failed document rather than empty output.
@@ -60,6 +61,13 @@ def permitted_hosts() -> set[str]:
         host = urlparse(_config_value(var)).hostname
         if host:
             hosts.add(host.casefold())
+    # MCP federation per-institution overrides (M21.3, #127):
+    # MCP_FEDERATION_<NAME>_URL, e.g. the loopback fleet endpoint on tei.
+    for var, value in os.environ.items():
+        if var.startswith("MCP_FEDERATION_") and var.endswith("_URL"):
+            host = urlparse(value).hostname
+            if host:
+                hosts.add(host.casefold())
     return hosts
 
 
