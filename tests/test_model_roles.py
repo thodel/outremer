@@ -20,7 +20,7 @@ def test_role_key_beats_legacy_key_beats_default():
         "legacy-model", "EXTRACTION_MODEL")
     assert config.resolve_model_role("text", {}) == ("qwen3.8-27b", "default")
     assert config.resolve_model_role("vision", {"QWEN3_VL_MODEL": "v"}) == ("v", "QWEN3_VL_MODEL")
-    assert config.resolve_model_role("orchestrator", {}) == ("minimax-m2.7", "default")
+    assert config.resolve_model_role("orchestrator", {}) == ("qwen3.8-27b", "default")
 
 
 def test_an_empty_role_key_does_not_shadow_the_legacy_key():
@@ -33,7 +33,7 @@ def test_model_roles_mapping_carries_the_source_of_every_role():
     assert config.model_roles(env) == {
         "text": {"model": "t", "source": "GPUSTACK_MODEL_TEXT"},
         "vision": {"model": "v", "source": "QWEN3_VL_MODEL"},
-        "orchestrator": {"model": "minimax-m2.7", "source": "default"},
+        "orchestrator": {"model": "qwen3.8-27b", "source": "default"},
     }
 
 
