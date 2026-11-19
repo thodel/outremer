@@ -31,7 +31,7 @@ def main():
     print(f"\n[2/4] Testing GPUSTACK_MODEL_ORCHESTRATOR={GPUSTACK_MODEL_ORCHESTRATOR}…")
     try:
         out2 = generate(
-            'Say "Hello from MiniMax" in exactly those words. No other text.',
+            'Say "Hello from the orchestrator" in exactly those words. No other text.',
             model=GPUSTACK_MODEL_ORCHESTRATOR,
             max_tokens=32,
         )

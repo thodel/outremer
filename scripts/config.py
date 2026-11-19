@@ -9,7 +9,7 @@ Env vars (set in .env.gpustack, git-ignored):
     GPUSTACK_TIMEOUT     - request timeout in seconds (default 120)
     GPUSTACK_MODEL_TEXT  - TEXT role: person extraction, metadata (default qwen3.8-27b)
     GPUSTACK_MODEL_VISION - VISION role: recognition of scanned pages (default qwen3.8-27b)
-    GPUSTACK_MODEL_ORCHESTRATOR - ORCH role: orchestration (default minimax-m2.7)
+    GPUSTACK_MODEL_ORCHESTRATOR - ORCH role: orchestration (default qwen3.8-27b)
     EXTRACTION_MODEL / QWEN3_VL_MODEL / ORCHESTRATOR_MODEL
                          - deprecated aliases of the three roles, still read
                            when the role key is unset (M18.2, #88)
@@ -80,14 +80,17 @@ ATR_HTTP_TIMEOUT = float(_get("ATR_HTTP_TIMEOUT", "300"))
 #   3. the default below
 # Model ids must match exactly how models are registered in GPUStack. The
 # previous default, qwen3-30b-a3b-instruct, is no longer served: a fresh
-# checkout without an .env pointed extraction at a 404. The run report
+# checkout without an .env pointed extraction at a 404. minimax-m2.7, the
+# orchestrator's default until 19.11.2026, was withdrawn from GPUStack too:
+# the tei nightly's preflight refused every run from 18.11. on
+# ("required model(s) missing: ['minimax-m2.7']"). The run report
 # records which key supplied each role (``models``), so a published run
 # states its mapping instead of implying it.
 MODEL_ROLES: dict[str, tuple[str, str, str]] = {
     # role: (role key, legacy key, default)
     "text": ("GPUSTACK_MODEL_TEXT", "EXTRACTION_MODEL", "qwen3.8-27b"),
     "vision": ("GPUSTACK_MODEL_VISION", "QWEN3_VL_MODEL", "qwen3.8-27b"),
-    "orchestrator": ("GPUSTACK_MODEL_ORCHESTRATOR", "ORCHESTRATOR_MODEL", "minimax-m2.7"),
+    "orchestrator": ("GPUSTACK_MODEL_ORCHESTRATOR", "ORCHESTRATOR_MODEL", "qwen3.8-27b"),
 }
 
 

@@ -18,7 +18,7 @@ A proof-of-concept pipeline for AI-assisted prosopography of the medieval Levant
 
 ## Architecture
 
-**Layer 1 — LLM extraction.** Reads historical texts (PDF or plain text) and extracts person-like signals: names, titles, epithets, roles, collective groups. Uses GPUStack-hosted models (`qwen3.8-27b` for extraction, `qwen3.8-27b` for scanned-PDF OCR, `minimax-m2.7` for orchestration). Falls back to heuristic regex NER when GPUStack is unavailable; a scanned page that the vision model cannot read stays empty and is reported as such — there is no external OCR fallback.
+**Layer 1 — LLM extraction.** Reads historical texts (PDF or plain text) and extracts person-like signals: names, titles, epithets, roles, collective groups. Uses GPUStack-hosted models (`qwen3.8-27b` for extraction, `qwen3.8-27b` for scanned-PDF OCR, `qwen3.8-27b` for orchestration). Falls back to heuristic regex NER when GPUStack is unavailable; a scanned page that the vision model cannot read stays empty and is reported as such — there is no external OCR fallback.
 
 > **Which engine produced the published data.** Since 2026-08-29 the nightly
 > run happens on `tei.dh.unibe.ch` inside the university network, where GPUStack
@@ -146,7 +146,8 @@ ATR_HTTP_TIMEOUT=300
 # NB: qwen3-30b-a3b-instruct no longer exists on the stack (checked 2026-08-29)
 GPUSTACK_MODEL_TEXT=qwen3.8-27b
 GPUSTACK_MODEL_VISION=qwen3.8-27b
-GPUSTACK_MODEL_ORCHESTRATOR=minimax-m2.7
+GPUSTACK_MODEL_ORCHESTRATOR=qwen3.8-27b
+# NB: minimax-m2.7 is no longer on the stack either (checked 2026-11-19)
 EXTRACTION_SEED=42
 EXTRACTION_MAX_TOKENS=6000
 # Qwen3 hybrids think silently until the budget is gone and return empty
