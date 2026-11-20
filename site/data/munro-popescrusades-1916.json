@@ -310,19 +310,6 @@
       "source_offset": null
     },
     {
-      "name": "their suzerains",
-      "raw_mention": "their suzerains",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": "lord",
-      "gender": "m",
-      "group": true,
-      "context": "circumstances, to mortgage their fiefs without the consent of their suzerains; this was a direct",
-      "confidence": 0.6,
-      "source_offset": null
-    },
-    {
       "name": "the German emperor",
       "raw_mention": "the German emperor",
       "title": "emperor",
@@ -332,7 +319,7 @@
       "gender": "m",
       "group": false,
       "context": "movement in which both the German emperor and the French king participated this usurpation",
-      "confidence": 0.8,
+      "confidence": 0.7,
       "source_offset": null
     },
     {
@@ -345,7 +332,7 @@
       "gender": "m",
       "group": false,
       "context": "both the German emperor and the French king participated this usurpation passed without much",
-      "confidence": 0.8,
+      "confidence": 0.7,
       "source_offset": null
     },
     {
@@ -370,7 +357,7 @@
       "role": "lender",
       "gender": "unknown",
       "group": true,
-      "context": "property rights provoked less opposition because the creditors were frequently Jews.",
+      "context": "provoked less opposition because the creditors were frequently Jews. As each crusader was under",
       "confidence": 0.5,
       "source_offset": null
     },
@@ -383,7 +370,7 @@
       "role": "ethnic group",
       "gender": "unknown",
       "group": true,
-      "context": "less opposition because the creditors were frequently Jews. As each crusader was under the",
+      "context": "opposition because the creditors were frequently Jews. As each crusader was under the protection",
       "confidence": 0.7,
       "source_offset": null
     },
@@ -401,19 +388,6 @@
       "source_offset": null
     },
     {
-      "name": "their enemies",
-      "raw_mention": "their enemies",
-      "title": null,
-      "epithet": null,
-      "toponym": null,
-      "role": "enemy",
-      "gender": "unknown",
-      "group": true,
-      "context": "capture of individual crusaders by their enemies and also to prevent warfare which would hinder",
-      "confidence": 0.4,
-      "source_offset": null
-    },
-    {
       "name": "the nobility",
       "raw_mention": "the nobility",
       "title": null,
@@ -422,7 +396,7 @@
       "role": "social class",
       "gender": "unknown",
       "group": true,
-      "context": "They even interfered with the amusements of the nobility, repeatedly forbidding tournaments",
+      "context": "They even interfered with the amusements of the nobility, repeatedly forbidding tournaments and",
       "confidence": 0.6,
       "source_offset": null
     },
@@ -432,10 +406,10 @@
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "tournament participant",
-      "gender": "unknown",
+      "role": "tournament fighter",
+      "gender": "m",
       "group": true,
-      "context": "repeatedly forbidding tournaments and threatening to excommunicate all participants. Other instances",
+      "context": "forbidding tournaments and threatening to excommunicate all participants. Other instances might be cited",
       "confidence": 0.5,
       "source_offset": null
     },
@@ -474,7 +448,7 @@
       "role": "emperor",
       "gender": "m",
       "group": false,
-      "context": "can be illustrated in many ways. Frederic II., in a burst of enthusiasm caused by his",
+      "context": "illustrated in many ways. Frederic II., in a burst of enthusiasm caused by his unexpected",
       "confidence": 0.95,
       "source_offset": null
     },
@@ -682,7 +656,7 @@
       "role": "faction",
       "gender": "unknown",
       "group": true,
-      "context": "gathered to discuss the election of a ruler, the Church party in the army protested, saying that no earthly",
+      "context": "the leaders gathered to discuss the election of a ruler, the Church party in the army protested, saying that",
       "confidence": 0.6,
       "source_offset": null
     },
@@ -773,7 +747,7 @@
       "role": "king",
       "gender": "m",
       "group": false,
-      "context": "in which the Patriarch was clearly subordinate to the King, and the latter was wholly independent of the Pope",
+      "context": "in which the Patriarch was clearly subordinate to the King, and the latter was wholly independent",
       "confidence": 0.8,
       "source_offset": null
     },
@@ -783,7 +757,7 @@
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "non believers",
+      "role": "non Christians",
       "gender": "unknown",
       "group": true,
       "context": "carrying on trade with the infidels. They viewed askance the bands of crusaders",
@@ -849,7 +823,7 @@
       "epithet": null,
       "toponym": null,
       "role": "clergy",
-      "gender": "m",
+      "gender": "unknown",
       "group": true,
       "context": "Despite the efforts of the Pope and of the leading churchmen in the Holy Land he made peace",
       "confidence": 0.7,
@@ -865,7 +839,7 @@
       "gender": "unknown",
       "group": true,
       "context": "he made peace with the Mohammedans and secured Jerusalem by diplomacy",
-      "confidence": 0.8,
+      "confidence": 0.9,
       "source_offset": null
     },
     {
@@ -901,7 +875,7 @@
       "epithet": null,
       "toponym": null,
       "role": "knights",
-      "gender": "m",
+      "gender": "unknown",
       "group": true,
       "context": "Even the Templars were generally believed to be contaminated by the Mohammedan beliefs",
       "confidence": 0.9,
@@ -914,10 +888,10 @@
       "epithet": null,
       "toponym": null,
       "role": "chroniclers",
-      "gender": "m",
+      "gender": "unknown",
       "group": true,
       "context": "The monastic chroniclers, especially those from the West, are very outspoken about the evil lives",
-      "confidence": 0.7,
+      "confidence": 0.6,
       "source_offset": null
     },
     {
@@ -966,7 +940,7 @@
       "epithet": null,
       "toponym": null,
       "role": "clergy",
-      "gender": "m",
+      "gender": "unknown",
       "group": true,
       "context": "all teaching in France, Germany and England had been done by the clerics and the crusaders",
       "confidence": 0.7,
@@ -979,7 +953,7 @@
       "epithet": null,
       "toponym": null,
       "role": "chronicler",
-      "gender": "m",
+      "gender": "unknown",
       "group": false,
       "context": "One chronicler of the First Crusade naively expressed his surprise at the bravery of the Turks",
       "confidence": 0.5,
@@ -991,11 +965,11 @@
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "turks",
+      "role": "muslims/turks",
       "gender": "unknown",
       "group": true,
       "context": "naively expressed his surprise at the bravery of the Turks who he had been taught to believe",
-      "confidence": 0.8,
+      "confidence": 0.9,
       "source_offset": null
     },
     {
@@ -1008,7 +982,7 @@
       "gender": "m",
       "group": false,
       "context": "for William of Malmesbury reports that the Pope said: the Turks are",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "source_offset": null
     },
     {
@@ -1017,7 +991,7 @@
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "turk",
+      "role": "muslim/turk",
       "gender": "m",
       "group": false,
       "context": "For the Turk never ventures upon close fight; but, when driven from his station",
@@ -1031,7 +1005,7 @@
       "epithet": null,
       "toponym": null,
       "role": "preachers",
-      "gender": "m",
+      "gender": "unknown",
       "group": true,
       "context": "Many of the preachers were charged with misappropriation of the funds which they raised",
       "confidence": 0.7,
@@ -1043,7 +1017,7 @@
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "poet",
+      "role": "poet/minnesinger",
       "gender": "m",
       "group": false,
       "context": "Walter von der Vogelweide voices this feeling in his verses :",
@@ -1056,7 +1030,7 @@
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "poet",
+      "role": "poet/minnesinger",
       "gender": "m",
       "group": false,
       "context": "As Walter was a partisan of the Hohenstaufens and opposed to the papacy he might be considered",
@@ -1082,10 +1056,10 @@
       "title": null,
       "epithet": null,
       "toponym": null,
-      "role": "historiographer",
+      "role": "chronicler",
       "gender": "m",
       "group": false,
-      "context": "e. g., Matthew Paris, the historiographer of the monastery of St.",
+      "context": "But the same idea was common ; e. g., Matthew Paris, the historiographer of the monastery",
       "confidence": 0.95,
       "source_offset": null
     },
@@ -1405,14 +1379,6 @@
       "status": "no_match"
     },
     {
-      "person": "their suzerains",
-      "person_group": true,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
       "person": "the German emperor",
       "person_group": false,
       "candidates": [],
@@ -1454,14 +1420,6 @@
     },
     {
       "person": "individual crusaders",
-      "person_group": true,
-      "candidates": [],
-      "top_candidate": null,
-      "confidence": 0.0,
-      "status": "no_match"
-    },
-    {
-      "person": "their enemies",
       "person_group": true,
       "candidates": [],
       "top_candidate": null,
@@ -2009,7 +1967,7 @@
     }
   },
   "text_sha256": "28b5e7f7d267c7053cea13ed28ba90b3c67af1d49c0cc99e70602c4724054560",
-  "run_at": "2026-11-06T02:30:02.086197+00:00",
+  "run_at": "2026-11-20T02:41:48.674988+00:00",
   "recognition": null,
   "extraction_mode": "gpustack",
   "extraction_engine": {
@@ -2027,15 +1985,15 @@
     "filtered_problem_entities": 17,
     "feedback_store": "data/entity_feedback.json",
     "noise": {
-      "extracted_total": 105,
-      "kept": 88,
+      "extracted_total": 103,
+      "kept": 86,
       "filtered": 17,
       "filtered_by_reason": {
         "known_bad_entity": 15,
         "lowercase_non_name": 2
       },
-      "low_confidence_kept": 5,
-      "noise_share": 0.1619
+      "low_confidence_kept": 4,
+      "noise_share": 0.165
     }
   }
 }

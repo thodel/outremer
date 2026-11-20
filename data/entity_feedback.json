@@ -1967,9 +1967,9 @@
       ]
     },
     "crusaders": {
-      "count": 11,
-      "last_context": "Crusaders gave freely to the Church before starting for the East; they also mortgaged or sold their",
-      "last_seen": "2026-11-04T02:28:35.848244+00:00",
+      "count": 10,
+      "last_context": "most crusaders did not settle in the East",
+      "last_seen": "2026-11-20T02:49:31.248272+00:00",
       "name": "crusaders",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
@@ -1985,14 +1985,14 @@
           }
         },
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
-          "count": 4,
+          "count": 3,
           "reasons": {
-            "known_bad_entity": 4
+            "known_bad_entity": 3
           }
         }
       },
       "reasons": {
-        "known_bad_entity": 11
+        "known_bad_entity": 10
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
@@ -5542,20 +5542,20 @@
       ]
     },
     "monk": {
-      "count": 1,
-      "last_context": "sees in the distance the flickering light from the lamp ofa monk reading in his cell and finds shelter",
-      "last_seen": "2026-10-21T01:24:51.805827+00:00",
+      "count": 2,
+      "last_context": "there was a monk there in his cell by the name of Bahira",
+      "last_seen": "2026-11-20T02:36:44.124634+00:00",
       "name": "monk",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
-          "count": 1,
+          "count": 2,
           "reasons": {
-            "lowercase_non_name": 1
+            "lowercase_non_name": 2
           }
         }
       },
       "reasons": {
-        "lowercase_non_name": 1
+        "lowercase_non_name": 2
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
@@ -8026,20 +8026,20 @@
       ]
     },
     "the sultan": {
-      "count": 2,
+      "count": 4,
       "last_context": "The sultan granted this request of the pope",
-      "last_seen": "2026-11-06T02:25:30.468273+00:00",
-      "name": "the sultan",
+      "last_seen": "2026-11-20T02:36:44.124634+00:00",
+      "name": "the Sultan",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
-          "count": 2,
+          "count": 4,
           "reasons": {
-            "lowercase_non_name": 2
+            "known_bad_entity": 4
           }
         }
       },
       "reasons": {
-        "lowercase_non_name": 2
+        "known_bad_entity": 4
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
