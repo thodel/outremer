@@ -1967,15 +1967,15 @@
       ]
     },
     "crusaders": {
-      "count": 9,
-      "last_context": "following the expulsion of the Crusaders, the Arabs simply ceased to pay further attention",
-      "last_seen": "2026-11-21T02:25:31.183094+00:00",
+      "count": 17,
+      "last_context": "probably in early September after the departure of most of the crusaders",
+      "last_seen": "2026-11-22T02:37:04.751173+00:00",
       "name": "crusaders",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
-          "count": 4,
+          "count": 11,
           "reasons": {
-            "known_bad_entity": 4
+            "known_bad_entity": 11
           }
         },
         "data/raw/Munro-PopesCrusades-1916.pdf": {
@@ -1985,14 +1985,14 @@
           }
         },
         "data/raw/RileySmith-MotivesEarliestCrusaders-1983.pdf": {
-          "count": 3,
+          "count": 4,
           "reasons": {
-            "known_bad_entity": 3
+            "known_bad_entity": 4
           }
         }
       },
       "reasons": {
-        "known_bad_entity": 9
+        "known_bad_entity": 17
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
@@ -5542,20 +5542,20 @@
       ]
     },
     "monk": {
-      "count": 2,
-      "last_context": "there was a monk there in his cell by the name of Bahira",
-      "last_seen": "2026-11-20T02:36:44.124634+00:00",
+      "count": 1,
+      "last_context": "sees in the distance the flickering light from the lamp ofa monk reading in his cell and finds shelter",
+      "last_seen": "2026-11-22T02:25:55.733304+00:00",
       "name": "monk",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
-          "count": 2,
+          "count": 1,
           "reasons": {
-            "lowercase_non_name": 2
+            "known_bad_entity": 1
           }
         }
       },
       "reasons": {
-        "lowercase_non_name": 2
+        "known_bad_entity": 1
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
@@ -7979,9 +7979,9 @@
       ]
     },
     "the pope": {
-      "count": 15,
+      "count": 14,
       "last_context": "Thomas Fuller, later, put it bluntly, the pope \"got a bag of money by it.\"",
-      "last_seen": "2026-11-05T02:28:37.365956+00:00",
+      "last_seen": "2026-11-22T02:30:04.772534+00:00",
       "name": "the Pope",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
@@ -7991,14 +7991,14 @@
           }
         },
         "data/raw/Munro-PopesCrusades-1916.pdf": {
-          "count": 13,
+          "count": 12,
           "reasons": {
-            "known_bad_entity": 13
+            "known_bad_entity": 12
           }
         }
       },
       "reasons": {
-        "known_bad_entity": 15
+        "known_bad_entity": 14
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
