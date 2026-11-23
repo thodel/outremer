@@ -1967,15 +1967,15 @@
       ]
     },
     "crusaders": {
-      "count": 17,
-      "last_context": "probably in early September after the departure of most of the crusaders",
-      "last_seen": "2026-11-22T02:37:04.751173+00:00",
+      "count": 11,
+      "last_context": "following the expulsion of the Crusaders, the Arabs simply ceased to pay further attention",
+      "last_seen": "2026-11-23T02:24:55.380791+00:00",
       "name": "crusaders",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
-          "count": 11,
+          "count": 5,
           "reasons": {
-            "known_bad_entity": 11
+            "known_bad_entity": 5
           }
         },
         "data/raw/Munro-PopesCrusades-1916.pdf": {
@@ -1992,7 +1992,7 @@
         }
       },
       "reasons": {
-        "known_bad_entity": 17
+        "known_bad_entity": 11
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
@@ -5544,18 +5544,18 @@
     "monk": {
       "count": 1,
       "last_context": "sees in the distance the flickering light from the lamp ofa monk reading in his cell and finds shelter",
-      "last_seen": "2026-11-22T02:25:55.733304+00:00",
+      "last_seen": "2026-11-23T02:24:55.380791+00:00",
       "name": "monk",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
           "count": 1,
           "reasons": {
-            "known_bad_entity": 1
+            "lowercase_non_name": 1
           }
         }
       },
       "reasons": {
-        "known_bad_entity": 1
+        "lowercase_non_name": 1
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf"
@@ -7979,9 +7979,9 @@
       ]
     },
     "the pope": {
-      "count": 14,
+      "count": 15,
       "last_context": "Thomas Fuller, later, put it bluntly, the pope \"got a bag of money by it.\"",
-      "last_seen": "2026-11-22T02:30:04.772534+00:00",
+      "last_seen": "2026-11-23T02:29:40.572679+00:00",
       "name": "the Pope",
       "per_source": {
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf": {
@@ -7991,14 +7991,14 @@
           }
         },
         "data/raw/Munro-PopesCrusades-1916.pdf": {
-          "count": 12,
+          "count": 13,
           "reasons": {
-            "known_bad_entity": 12
+            "known_bad_entity": 13
           }
         }
       },
       "reasons": {
-        "known_bad_entity": 14
+        "known_bad_entity": 15
       },
       "sources": [
         "data/raw/Hamblin-MuslimPerspectivesMilitary-2001.pdf",
