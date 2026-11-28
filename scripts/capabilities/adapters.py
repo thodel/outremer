@@ -61,8 +61,9 @@ class HttpAdapter:
     def request(self, method: str, path: str = "", **kwargs: Any) -> httpx.Response:
         if not self.endpoint:
             raise CapabilityError("endpoint is not configured")
+        url = f"{self.endpoint}/{path.lstrip('/')}" if path else self.endpoint
         return checked(
-            self.transport(method, f"{self.endpoint}/{path.lstrip('/')}", timeout=self.timeout, **kwargs)
+            self.transport(method, url, timeout=self.timeout, **kwargs)
         )
 
     def availability(
@@ -217,9 +218,10 @@ class ATRAdapter:
 class MCPAdapter(HttpAdapter):
     CONTRACT_VERSION = "2024-11-05"
 
-    def __init__(self, endpoint: str, *, api_key: str = "", required: bool = False, enabled: bool = False, transport: Transport | None = None) -> None:
+    def __init__(self, endpoint: str, *, api_key: str = "", required: bool = False, enabled: bool = False, transport: Transport | None = None, authorization: str = "") -> None:
         super().__init__(endpoint, transport=transport)
         self.api_key = api_key
+        self.authorization = authorization
         self.descriptor = CapabilityDescriptor(
             "mcp",
             "agentic-historian-knowledge-hub",
@@ -244,7 +246,9 @@ class MCPAdapter(HttpAdapter):
 
     def _rpc(self, method: str, params: dict[str, Any], rpc_id: int = 2) -> tuple[httpx.Response, dict[str, Any]]:
         headers = {"Accept": "application/json, text/event-stream", "Content-Type": "application/json"}
-        if self.api_key:
+        if self.authorization:
+            headers["Authorization"] = self.authorization
+        elif self.api_key:
             headers["Authorization"] = f"Bearer {self.api_key}"
         initialize = {
             "jsonrpc": "2.0",
@@ -438,6 +442,7 @@ def default_registry(log_path: Path | None = None) -> Any:
     except ImportError:  # direct `python scripts/discover_capabilities.py`
         import config
 
+    from .mcp_federation import build_federation_from_env
     from .provenance import JsonlInvocationLog
     from .registry import CapabilityRegistry
 
@@ -481,6 +486,7 @@ def default_registry(log_path: Path | None = None) -> Any:
             enabled=enabled("OUTREMER_CAPABILITY_MCP"),
         )
     )
+    registry.register(build_federation_from_env())
     registry.register(QLeverAdapter(os.environ.get("QLEVER_ENDPOINT", ""), enabled=enabled("OUTREMER_CAPABILITY_QLEVER")))
     registry.register(VoyantAdapter(os.environ.get("VOYANT_API_URL", ""), enabled=enabled("OUTREMER_CAPABILITY_VOYANT")))
     registry.register(RemoteToolAdapter(os.environ.get("OUTREMER_TOOL_PROVIDER_URL", ""), enabled=enabled("OUTREMER_CAPABILITY_AGENT_TOOLS")))
